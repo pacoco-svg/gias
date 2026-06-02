@@ -1,0 +1,24 @@
+<div id="mapa" style="height:400px; border-radius:12px; overflow:hidden; margin:1rem 0;"></div>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const lista = ["Catedral de Santa María del Fiore, Florencia","Baptisterio, Florencia","Trattoria local, Florencia","Hotel Savoy, Florencia","Galería Uffizi, Florencia","Ponte Vecchio, Florencia","Palacio Pitti, Florencia","Jardines de Boboli, Florencia","Teatro del Maggio Musicale Fiorentino, Florencia","Piazza del Campo, Siena","Palacio Público, Siena","Catedral de Siena, Siena","Museo dell’Opera, Siena","Osteria Le Logge, Siena","Hotel Athena, Siena","Bodega, Región de Chianti","Greve in Chianti, Chianti","Castello di Spaltenna, Gaiole in Chianti","Torres medievales, San Gimignano","Museo, San Gimignano","Gelateria Dondoli, San Gimignano","Ristorante La Mandragola, San Gimignano","Hotel L’Antico Pozzo, San Gimignano","Teatro Romano, Volterra","Museo Etrusco, Volterra","Piazza dei Priori, Volterra","Fortaleza Medicea, Volterra","Osteria La Carabaccia, Volterra","Villa Porta all’Arco, Volterra","Plaza de los Milagros, Pisa","Torre de Pisa, Pisa","Catedral de Pisa, Pisa","Museo dell’Opera del Duomo, Pisa","Río Arno, Pisa","Ristorante La Buca, Pisa","Hotel Relais dell’Orologio, Pisa","Murallas renacentistas, Lucca","Catedral de San Martino, Lucca","Plaza del Anfiteatro, Lucca","Trattoria Da Leo, Lucca","Hotel Palazzo Alexander, Lucca","Museo Diocesano, Cortona","Piazza della Repubblica, Cortona","Fortaleza Medicea, Cortona","La Bucaccia da Romano, Cortona","Hotel San Michele, Cortona","Basílica de San Francesco, Arezzo","Capilla Bacci, Arezzo","Mercado local, Arezzo","Il Saraceno, Arezzo","Hotel Continentale, Arezzo","Catedral, Montepulciano","Piazza Grande, Montepulciano","Bodega tradicional, Montepulciano","La Grotta del Pugile, Montepulciano","Etruscan Chocohotel, Montepulciano","Piazza della Signoria, Florencia","Enoteca Pinchiorri, Florencia"];
+
+const map = L.map('mapa');
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+const bounds = [];
+lista.forEach((lugar, i) => {
+  fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(lugar)}&format=json&limit=1`)
+    .then(r => r.json())
+    .then(data => {
+      if (data[0]) {
+        const lat = parseFloat(data[0].lat);
+        const lon = parseFloat(data[0].lon);
+        L.marker([lat, lon]).addTo(map).bindPopup(`<b>${i+1}. ${lugar}</b>`);
+        bounds.push([lat, lon]);
+        if (bounds.length === lista.length) map.fitBounds(bounds);
+      }
+    });
+});
+</script>
