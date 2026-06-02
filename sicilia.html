@@ -1,0 +1,27 @@
+<div id="mapa" style="height:400px; border-radius:12px; overflow:hidden; margin:1rem 0;"></div>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const lista = ["Catedral de Palermo, Palermo","Palacio de los Normandos, Palermo","Mercado de Ballarò, Palermo","Iglesia de San Cataldo, Palermo","Teatro Massimo, Palermo","Grand Hotel Wagner, Palermo","Catedral de Monreale, Monreale","Hotel Le Calette, Cefalù","Catedral normanda de Cefalù, Cefalù","Valle de los Templos, Agrigento","Museo Archeologico Regionale, Agrigento","Hotel Villa Athena, Agrigento","Villa Romana del Casale, Piazza Armerina","Escalinata di Santa Maria del Monte, Caltagirone","Hotel Villa del Lauro, Caltagirone","Algilà Ortigia Charme Hotel, Siracusa","Isla de Ortigia, Siracusa","Fuente de Aretusa, Siracusa","Parque Arqueológico Neápolis, Siracusa","Hotel Porta Reale, Noto","Ciudad de Noto, Noto","Reserva Natural de Vendicari, Sicilia","Marzamemi, Sicilia","Monte Etna, Sicilia","Hotel Villa Schuler, Taormina","Teatro Antiguo de Taormina, Taormina","Corso Umberto, Taormina","Isola Bella, Taormina","Catedral de Messina, Messina","Campanario con reloj astronómico, Messina","Museo Internacional de Marionetas Antonio Pasqualino, Palermo","Barrio de Kalsa, Palermo"];
+const map = L.map('mapa');
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+const bounds = [];
+
+function geocodificar(lista, i) {
+  if (i >= lista.length) return;
+  fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(lista[i])}&format=json&limit=1`)
+    .then(r => r.json())
+    .then(data => {
+      if (data[0]) {
+        const lat = parseFloat(data[0].lat);
+        const lon = parseFloat(data[0].lon);
+        L.marker([lat, lon]).addTo(map).bindPopup(`<b>${i+1}. ${lista[i]}</b>`);
+        bounds.push([lat, lon]);
+        if (bounds.length > 1) map.fitBounds(bounds);
+      }
+      setTimeout(() => geocodificar(lista, i + 1), 300);
+    });
+}
+
+geocodificar(lista, 0);
+</script>
