@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Tu Guía – MURCIA | GuiaMundi.es</title>
+<link rel="apple-touch-icon" href="URL_LOGO">
+<link rel="icon" type="image/png" href="URL_LOGO">
+<link href="https://googleapis.com" rel="stylesheet">
+<style>
+  :root {
+    --sand: #F5F0E8;
+    --ink: #1C1917;
+    --ink-soft: #44403C;
+    --ink-muted: #78716C;
+    --gold: #B45309;
+    --gold-light: #FEF3C7;
+    --teal: #0F766E;
+    --teal-light: #CCFBF1;
+    --coral: #C2410C;
+    --coral-light: #FFF7ED;
+    --white: #FAFAF9;
+    --border: #D6CFC0;
+    --header-h: 200px;
+    --tabs-h: 56px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { height: 100%; }
+
+  body {
+    background: var(--sand);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    font-size: 15px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── HEADER PORTADA ── */
+  .header {
+    background: var(--ink);
+    padding: 2.5rem 1.5rem 1.75rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(255,255,255,0.015) 40px, rgba(255,255,255,0.015) 80px);
+  }
+  .header-brand {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #D4A853;
+    margin-bottom: 0.6rem;
+    position: relative;
+  }
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 5vw, 2.6rem);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--white);
+    position: relative;
+  }
+  .header h1 em { font-style: italic; color: #D4A853; }
+  .header-meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 1.5rem;
+    margin-top: 1rem;
+    font-size: 12px;
+    color: #A8A29E;
+    position: relative;
+  }
+  .header-meta span { display: flex; align-items: center; gap: 5px; }
+  .header-meta svg { width: 12px; height: 12px; opacity: 0.6; }
+
+  /* ── TABS BAR ── */
+  .tabs-bar {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+    flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+  }
+  .tabs-bar::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    padding: 10px 16px 8px;
+    font-size: 11px;
+    font-weight: 400;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--ink-muted);
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: color 0.15s, border-color 0.15s;
+    min-width: 64px;
+  }
+  .tab-btn .tab-icon { font-size: 18px; line-height: 1; }
+  .tab-btn.active {
+    color: var(--ink);
+    border-bottom-color: #D4A853;
+    font-weight: 500;
+  }
+  .tab-btn:hover { color: var(--ink); }
+
+  /* Estilos para el bloque del Mapa */
+  .map-box {
+    background: #EFF6FF;
+    border: 1px solid #BFDBFE;
+    border-radius: 12px;
+    text-align: center;
+    padding: 2rem 1.5rem;
+    margin-top: 1rem;
+  }
+  .btn-maps {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #10B981;
+    color: white;
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+    transition: background 0.15s, transform 0.1s;
+    margin-top: 1rem;
+  }
+  .btn-maps:hover { background: #059669; transform: translateY(-1px); }
+  .btn-maps:active { transform: scale(0.98); }
+
+  /* ── CONTENIDO SECCIONES ── */
+  .page-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .page-icon { font-size: 24px; }
+  .page-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .card-body {
+    color: var(--ink-soft);
+    font-size: 14.5px;
+    line-height: 1.85;
+    white-space: pre-wrap; /* Corregido para mantener el espaciado premium por bloques de días */
+  }
+  .card-body ul, .card-body ol { margin-bottom: 1.5rem; padding-left: 1.25rem; }
+  .card-body li { margin-bottom: 0.5rem; }
+
+  @media (max-width: 400px) {
+    .inicio-cards { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .tab-btn { min-width: 56px; padding: 10px 10px 8px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ── TABS BAR (Estructura de botones reparada) ── -->
+  <div class="tabs-bar">
+    <button class="tab-btn active" onclick="switchTab('inicio')">
+      <span class="tab-icon">🏠</span>
+      <span>Inicio</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab('itinerario')">
+      <span class="tab-icon">📅</span>
+      <span>Itinerario</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab('transporte')">
+      <span class="tab-icon">🚗</span>
+      <span>Transporte</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab('consejos')">
+      <span class="tab-icon">💡</span>
+      <span>Consejos</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab('blogs')">
+      <span class="tab-icon">📰</span>
+      <span>Blogs</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab('libros')">
+      <span class="tab-icon">📚</span>
+      <span>Libros</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab('mapa')">
+      <span class="tab-icon">🗺️</span>
+      <span>Mapa</span>
+    </button>
+  </div>
+  <!-- ── PÁGINAS CORREGIDAS ── -->
+  <div class="pages">
+
+    <!-- SOLAPA 1: INICIO -->
+    <div id="page-inicio" class="page active">
+      <div class="resumen-box">
+        <h2>Tu viaje a <em>MURCIA</em></h2>
+        <div class="resumen-datos">
+          <div class="resumen-dato">
+            <div class="rd-label">Destino</div>
+            <div class="rd-value">MURCIA</div>
+          </div>
+          <div class="resumen-dato">
+            <div class="rd-label">Duración</div>
+            <div class="rd-value">Guía Premium</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="seccion-titulo">Acceso Rápido</div>
+      <div class="inicio-cards">
+        <div class="inicio-card" onclick="switchTab('itinerario')">
+          <div class="ic-icon">📅</div>
+          <div class="ic-title">Ver Itinerario</div>
+          <div class="ic-sub">Plan por días</div>
+        </div>
+        <div class="inicio-card" onclick="switchTab('mapa')">
+          <div class="ic-icon">🗺️</div>
+          <div class="ic-title">Mapa de Ruta</div>
+          <div class="ic-sub">Ruta interactiva</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SOLAPA 2: ITINERARIO -->
+    <div id="page-itinerario" class="page">
+      <div class="page-header">
+        <span class="page-icon">📅</span>
+        <h2 class="page-title">Plan de Viaje</h2>
+      </div>
+      <div class="card">
+        <div class="card-body"></div>
+      </div>
+    </div>
+
+    <!-- SOLAPA 3: TRANSPORTE -->
+    <div id="page-transporte" class="page">
+      <div class="page-header">
+        <span class="page-icon">🚗</span>
+        <h2 class="page-title">Transporte</h2>
+      </div>
+      <div class="card">
+        <div class="card-body">---
+**GUÍA DE TRANSPORTE EN COCHE DE ALQUILER**  
+**DESTINO: MURCIA, ESPAÑA**  
+
+---
+
+### 1. Tipos de coches recomendados para Murcia  
+
+Para explorar Murcia y sus alrededores con comodidad y practicidad, considere estas opciones:  
+
+- **Compactos y utilitarios:** ideales para desplazamientos urbanos y conducción en calles estrechas del centro histórico. Ahorro en combustible y facilidad para estacionar.  
+- **Sedanes o berlinas:** recomendados si viaja en grupo o familia, ofrecen espacio y comodidad para trayectos largos por la región.  
+- **SUV o todoterreno:** adecuados para rutas rurales o zonas menos asfaltadas, como el Parque Regional de Sierra Espuña, donde puede haber caminos de tierra.  
+
+---
+
+### 2. Características de las carreteras en Murcia  
+
+- **Estado y señalización:** Las vías principales, como la A-7 (autovía del Mediterráneo) y la A-30, están en excelente estado con buena señalización.  
+- **Tamaño y circulación:** El tráfico en el casco urbano puede ser denso en horas punta, con calles a menudo estrechas en el centro histórico. Fuera de la ciudad, las carreteras son amplias y permiten una conducción fluida.  
+- **Condiciones climáticas:** Murcia disfruta de un clima seco y soleado durante gran parte del año, condiciones ideales para conducir.  
+
+---
+
+### 3. Consejos de conducción en Murcia  
+
+- **Respete los límites de velocidad:** Por lo general, 50 km/h en zonas urbanas, 90 km/h en carreteras nacionales y hasta 120 km/h en autopistas.  
+- **Utilice cinturón de seguridad en todo momento.**  
+- **Evite conducir de noche en áreas rurales poco iluminadas.**  
+- **Atención a ciclistas y peatones:** Son frecuentes, especialmente en zonas turísticas y pueblos cercanos.  
+- **Política de alcohol:** España tiene tolerancia baja; se recomienda no consumir alcohol antes de conducir.  
+- **Gasolineras:** Amplia disponibilidad en la ciudad y carreteras principales, con opciones de autoservicio.  
+
+---
+
+### 4. Peajes en la región  
+
+- En la Región de Murcia, la mayoría de las autopistas son gratuitas, exceptuando algunas vías como ciertos tramos de la AP-7 en la provincia vecina.  
+- Infórmese en su punto de alquiler sobre rutas alternativas para evitar peajes si prefiere.  
+
+---
+
+### 5. Aparcamiento en Murcia  
+
+- **Zona centro:** El estacionamiento es limitado y regulado. Hay zonas de aparcamiento de pago (zona azul) con horario controlado.  
+- **Aparcamientos públicos:** Disponibles en las inmediaciones del centro histórico; algunos son subterráneos con tarifa por hora.  
+- **Opciones gratuitas:** Normalmente en las afueras del casco antiguo o en zonas residenciales.  
+- **Recomendación:** En viajes cortos, usar aparcamientos públicos para evitar multas y facilitar el acceso a lugares turísticos.  
+
+---
+
+### 6. Mejores empresas internacionales de alquiler de coches  
+
+Para asegurar un servicio fiable y de calidad, se recomiendan las siguientes compañías presentes en Murcia o en aeropuertos cercanos:  
+
+- **Avis**  
+- **Hertz**  
+- **Europcar**  
+- **Enterprise**  
+- **Sixt**  
+
+**Sugerencias:**  
+- Reserve con antelación para obtener mejores tarifas y disponibilidad.  
+- Verifique qué incluye la cobertura del seguro para evitar sorpresas.  
+- Compruebe el estado del vehículo antes de retirarlo y documente cualquier daño.  
+
+---
+
+### **Conclusión**  
+
+Alquilar un coche en Murcia le permitirá descubrir tanto la ciudad como la belleza natural y cultural de la región con total libertad y comodidad. Tenga siempre presente las normas de circulación locales y planifique su ruta para aprovechar al máximo su experiencia.  
+
+¡Buen viaje y disfrute de Murcia sobre ruedas!  
+
+---</div>
+      </div>
+    </div>
+
+    <!-- SOLAPA 4: CONSEJOS DEL DESTINO -->
+    <div id="page-consejos" class="page">
+      <div class="page-header">
+        <span class="page-icon">💡</span>
+        <h2 class="page-title">Consejos del Destino</h2>
+      </div>
+      <div class="card">
+        <div class="card-body">**Guía de Viaje Premium: Murcia, España**
+
+---
+
+### 1. Climatología  
+Murcia goza de un clima mediterráneo semiárido, caracterizado por inviernos suaves y veranos calurosos y secos. Las temperaturas medias oscilan entre 10 °C en invierno y 34 °C en verano, con muy pocas precipitaciones anuales, concentradas principalmente en otoño y primavera. El sol brilla la mayor parte del año, lo que convierte a Murcia en un destino ideal para quienes buscan días soleados.
+
+---
+
+### 2. Mejor época para viajar  
+La primavera (abril a junio) y el otoño (septiembre y octubre) son las mejores estaciones para visitar Murcia. Durante estas épocas, el clima es agradable y propicio para explorar sin el intenso calor estival. Julio y agosto pueden resultar muy calurosos, especialmente para actividades al aire libre, aunque son ideales para disfrutar de las playas cercanas.
+
+---
+
+### 3. Vacunas y salud  
+No se requieren vacunas específicas para entrar a Murcia. Se recomienda estar al día con las vacunas habituales (tétanos, gripe, etc.). El sistema sanitario español es moderno y eficiente; se aconseja contar con un seguro de viaje que cubra asistencia médica. Para emergencias, marque el 112.
+
+---
+
+### 4. Seguridad para turistas  
+Murcia es una ciudad segura para turistas, con bajos índices de delincuencia. No obstante, como en cualquier destino, es prudente cuidar pertenencias en zonas concurridas y evitar calles poco iluminadas por la noche. La policía local y Guardia Civil están siempre disponibles en caso de necesidad.
+
+---
+
+### 5. Moneda y pagos  
+La moneda oficial es el euro (€). Los pagos con tarjeta son ampliamente aceptados en hoteles, restaurantes y tiendas. Para zonas rurales o mercados tradicionales, es recomendable llevar algo de efectivo. Las casas de cambio y cajeros automáticos están disponibles en toda la ciudad.
+
+---
+
+### 6. Costumbres culturales importantes  
+Los murcianos son conocidos por su hospitalidad y respeto a las tradiciones. La vida social gira en torno a la familia, la gastronomía y festividades como la Semana Santa y la Feria de Murcia. Saludar con un “buenos días” o “buenas tardes” es habitual y bien recibido. El respeto a los horarios de descanso, especialmente tras la siesta, es valorado.
+
+---
+
+### 7. Gastronomía típica  
+Murcia destaca por su cocina basada en productos frescos: verduras, pescados y carnes. Platos emblemáticos incluyen el caldero murciano (arroz con pescado), zarangollo (revuelto de calabacín, cebolla y huevo) y paparajotes (hojas de limón rebozadas y azucaradas). No deje de probar el vino de la región, especialmente el del Valle de Ricote.
+
+---
+
+### 8. Compras recomendadas  
+Los mercados tradicionales, como el Mercado de Verónicas, ofrecen productos locales como verduras frescas, embutidos y artesanías. El esparto y la cerámica son artículos típicos de artesanía regional. Para moda y diseño contemporáneo, el centro de Murcia dispone de boutiques exclusivas y tiendas de marcas nacionales e internacionales.
+
+---
+
+### 9. Consejos prácticos para viajeros  
+- Lleve ropa ligera y protección solar durante el verano.  
+- Use calzado cómodo para pasear por el casco histórico con calles empedradas.  
+- Haga reservas anticipadas si viaja en temporada alta o durante eventos locales.  
+- Aproveche el transporte público o alquile bicicletas para moverse con facilidad.  
+
+---
+
+### 10. Qué evitar como turista  
+- No subestime las altas temperaturas en verano; manténgase hidratado y evite horas centrales del día para actividades al aire libre.  
+- Evite consumir alimentos en puestos callejeros no autorizados.  
+- No ignore las señales de tráfico y normas locales para evitar sanciones.  
+- Evite mostrar objetos de valor en público para minimizar riesgos de robo.
+
+---
+
+### 11. Apps útiles para viajar  
+- **Murcia Turismo**: Información sobre eventos, lugares de interés y rutas.  
+- **Google Maps**: Navegación GPS y transporte público.  
+- **ElTenedor**: Reservas en restaurantes locales.  
+- **MyTaxi**: Solicitud de taxis desde el móvil.  
+- **WhatsApp**: Comunicación local y con contactos internacionales.  
+
+---
+
+### 12. Consejos sobre internet y conectividad  
+Murcia posee buena cobertura de internet móvil con 4G en la mayoría de sus zonas urbanas y rurales cercanas. La mayoría de hoteles, cafés y restaurantes ofrecen Wi-Fi gratuito. Para viajeros internacionales, adquirir una tarjeta SIM local puede resultar económico y práctico para conectividad constante.  
+
+---
+
+**Murcia** combina historia, cultura y un clima privilegiado, ofreciendo al viajero una experiencia única y acogedora. Prepare su viaje con esta guía para disfrutar al máximo de esta joya del sureste español. ¡Buen viaje!</div>
+      </div>
+    </div>
+
+    <!-- SOLAPA 5: BLOGS -->
+    <div id="page-blogs" class="page">
+      <div class="page-header">
+        <span class="page-icon">📰</span>
+        <h2 class="page-title">Blogs Recomendados</h2>
+      </div>
+      <div class="card">
+        <div class="card-body">---
+
+**Guía de Recursos Online para Viajar a Murcia**
+
+---
+
+### 1. Blogs de viaje recomendados
+
+**a. Mi Maleta y Yo**  
+Un blog escrito por viajeros españoles que destacan rutas poco comunes en España, incluyendo artículos detallados sobre Murcia. Destaca por sus consejos prácticos sobre gastronomía, cultura y naturaleza en la región.  
+*Utilidad:* Ideal para descubrir experiencias auténticas y recomendaciones locales dentro de Murcia.
+
+**b. El Pachinko**  
+Este blog de viajes ofrece guías completas y experiencias personales en diversas regiones españolas, con secciones dedicadas a Murcia y su entorno.  
+*Utilidad:* Excelente para planificar visitas turísticas, con fotos y consejos sobre alojamiento y transporte.
+
+**c. La Vida son Dos Viajes**  
+Aunque de alcance internacional, incluye guías muy bien documentadas sobre destinos españoles, incluyendo Murcia. Aborda tanto turismo cultural como actividades al aire libre.  
+*Utilidad:* Útil para viajeros que buscan un enfoque amplio, desde ciudades hasta naturaleza en Murcia.
+
+---
+
+### 2. Foros y comunidades de viajeros
+
+**a. TripAdvisor - Foro Murcia**  
+Comunidad activa donde viajeros publican preguntas y respuestas específicas sobre alojamientos, restaurantes y excursiones en Murcia.  
+*Utilidad:* Espacio para resolver dudas concretas y leer opiniones recientes y de primera mano.
+
+**b. Lonely Planet Thorn Tree - Spain Section**  
+Aunque no exclusivo de Murcia, es un foro muy consultado por viajeros internacionales que pueden compartir experiencias y consejos sobre esta ciudad y región.  
+*Utilidad:* Ideal para obtener perspectivas globales y solucionar consultas sobre transporte, visados o recomendaciones.
+
+**c. Reddit - r/spaintravel**  
+Subforo dedicado a viajes por España, con debates y aportes sobre Murcia. Se suelen compartir itinerarios, novedades y fotografías.  
+*Utilidad:* Comunidad dinámica para intercambiar consejos prácticos y actualizaciones.
+
+---
+
+### 3. Canales de YouTube útiles
+
+**a. “Amantes de España”**  
+Canal dedicado a descubrir ciudades españolas, con vídeos de alta calidad sobre Murcia mostrando monumentos, gastronomía y rutas.  
+*Utilidad:* Contenido visual que ayuda a visualizar el destino antes del viaje.
+
+**b. “El viaje de tu vida”**  
+Canal con relatos personales de viajes por España que incluyen roadtrips y consejos para conocer Murcia en profundidad.  
+*Utilidad:* Buen complemento para inspiración y planificación flexible.
+
+**c. “Spanish Travels”**  
+Pensado para viajeros internacionales con vídeos en inglés sobre destinos españoles, incluyendo Murcia. Explican desde historia hasta consejos prácticos para turistas.  
+*Utilidad:* Ideal para visitantes que prefieren contenido en inglés con enfoque turístico.
+
+---
+
+### 4. Recursos para organizar rutas
+
+**a. Wikiloc**  
+Plataforma para encontrar y compartir rutas de senderismo, ciclismo y más en Murcia. Incluye mapas interactivos y valoraciones de usuarios.  
+*Utilidad:* Perfecta para diseñar itinerarios al aire libre por la naturaleza y parques regionales de Murcia.
+
+**b. Komoot**  
+Aplicación web y móvil para planificar rutas a pie, bici y otros deportes al aire libre en Murcia, con opciones para descargar mapas offline.  
+*Utilidad:* Permite organizar excursiones detalladas según nivel y preferencias.
+
+**c. Visit Murcia (Oficina de Turismo)**  
+Sitio oficial con información de rutas culturales y patrimoniales disponibles para descargar o consultar online.  
+*Utilidad:* Fuente oficial con datos verificados sobre itinerarios turísticos en la ciudad y alrededores.
+
+---
+
+### 5. Apps útiles para el destino
+
+**a. Murcia Turismo Oficial**  
+Aplicación móvil con información actualizada sobre eventos, monumentos, restaurantes y transporte público en Murcia.  
+*Utilidad:* Herramienta local para mantenerse informado y optimizar el recorrido.
+
+**b. ElParking**  
+App para buscar y pagar estacionamiento en la ciudad de Murcia, importante para visitantes que viajen en coche.  
+*Utilidad:* Facilita encontrar aparcamiento sin complicaciones y evitar multas.
+
+**c. Moovit**  
+App global de transporte público que incluye las líneas y horarios del autobús y tranvía municipal de Murcia.  
+*Utilidad:* Ayuda a desplazarse fácilmente por la ciudad con transporte público.
+
+---
+
+**Acceso rápido a recursos recomendados:**
+
+- [Mi Maleta y Yo](https://mimaletayyo.com)  
+- [El Pachinko](https://elpachinko.com)  
+- [La Vida son Dos Viajes](https://lavidasondosviajes.com)  
+- [TripAdvisor Murcia Forum](https://www.tripadvisor.es/ShowForum-g187449-i10653-Murcia_Region_of_Murcia.html)  
+- [Lonely Planet Thorn Tree](https://www.lonelyplanet.com/thorntree/forums/europe-western-europe/spain)  
+- [Reddit r/spaintravel](https://www.reddit.com/r/spaintravel/)  
+- [Wikiloc](https://www.wikiloc.com/routes/hiking/spain/murcia)  
+- [Komoot](https://www.komoot.com/highlight/427894)  
+- [Visit Murcia](https://www.murciaturistica.es)  
+- [Murcia Turismo Oficial - App Store](https://apps.apple.com/es/app/murcia-turismo/id1384813837) / [Google Play](https://play.google.com/store/apps/details?id=es.murcia.turismo)  
+- [ElParking](https://www.elparking.com)  
+- [Moovit](https://moovitapp.com)
+
+---
+
+**Este compendio ofrece una base sólida para preparar tu viaje a Murcia con información realista, consejos prácticos y acceso directo a valiosas herramientas digitales.**
+
+¡Buen viaje y disfruta de la riqueza cultural y natural de Murcia!
+
+---</div>
+      </div>
+    </div>
+
+    <!-- SOLAPA 6: LIBROS -->
+    <div id="page-libros" class="page">
+      <div class="page-header">
+        <span class="page-icon">📚</span>
+        <h2 class="page-title">Lecturas recomendadas</h2>
+      </div>
+      <div class="card">
+        <div class="card-body">---
+**Guía Cultural para Descubrir Murcia**  
+Sumérjase en la riqueza histórica, artística y tradicional de Murcia a través de estas recomendaciones culturales esenciales. Una cuidadosa selección para comprender mejor la esencia de esta vibrante región al sureste de España.
+
+---
+
+### **Libros para conocer Murcia y su entorno**
+
+1. **"La ciudad de los locos" – José María Grau**
+   Novela ambientada en Murcia que retrata la complejidad social y humana en la ciudad durante el siglo XX.  
+   *Contribución:* Permite adentrarse en el alma urbana y los conflictos internos que dan forma a la cultura murciana.
+
+2. **"Huerta, la Murcia desaparecida" – Luis Antonio Hernández Pavón**  
+   Recorrido histórico y fotográfico por la huerta tradicional murciana, símbolo de su excelencia agrícola.  
+   *Contribución:* Entender la importancia agrícola y el legado rural que define gran parte de la identidad murciana.
+
+3. **"El cumpleaños de Platón" – Pedro García Guijarro**  
+   Colección de relatos que reflejan el habla, las costumbres y el paisaje de Murcia, combinando humor y tradición.  
+   *Contribución:* Captura el lenguaje y las peculiaridades locales, fundamentales para conectar con la cultura popular murciana.
+
+4. **"La catedral de Murcia" – Varios autores**  
+   Estudio sobre la arquitectura, arte y simbolismo del edifico más emblemático de la ciudad.  
+   *Contribución:* Facilita la comprensión de la identidad religiosa e histórica que impregna la ciudad.
+
+5. **"Murcia en el arte flamenco" – Carmen Molina**  
+   Explora la influencia y presencia del flamenco en Murcia, una región con su propia expresión artística.  
+   *Contribución:* Acerca al lector a las expresiones musicales locales, clave para entender la cultura vivaz de Murcia.
+
+---
+
+### **Películas vinculadas a Murcia**
+
+1. **"La isla mínima" (2014) – Alberto Rodríguez**  
+   Thriller ambientado en las marismas del Guadalquivir, cercano culturalmente a Murcia por su entorno rural y costero.  
+   *Contribución:* Aunque no es murciana estrictamente, su ambientación en las huertas y pantanos del sureste peninsular es muy evocativa.
+
+2. **"La luz con el tiempo dentro" (2015) – Andrés Linares**  
+   Documental-poema que muestra la naturaleza y tradiciones del sureste de España, con enfoque en la región de Murcia.  
+   *Contribución:* Aporta una visión artística y contemplativa de la región y sus paisajes.
+
+3. **"Druida" (2018) – Manuel Carrión**  
+   Drama local que aborda la vida en pequeñas poblaciones murcianas, con un retrato sincero y realista.  
+   *Contribución:* Refleja la autenticidad rural y las relaciones humanas en el interior de Murcia.
+
+4. **"Torrente 3: El protector" (2005) – Santiago Segura**  
+   Comedia popular española con algunas escenas rodadas en Murcia, mostrando parte de su paisaje urbano.  
+   *Contribución:* Curioso vistazo al uso de la ciudad como escenario cinematográfico en comedia contemporánea.
+
+5. **"Los niños de Luz" (2020) – Nuri Bayo**  
+   Película que combina elementos sociales con el entorno del sureste español, destacando valores culturales y familiares.  
+   *Contribución:* Facilita entender las realidades y tradiciones comunitarias murcianas.
+
+---
+
+### **Documentales recomendados**
+
+1. **"El agua y el tiempo" (2011)**  
+   Profundo recorrido por los sistemas hidráulicos de Murcia, desde la época romana hasta hoy.  
+   *Por qué ver:* Clave para entender la relación histórica de Murcia con el agua, recurso vital en su agricultura y desarrollo.
+
+2. **"Murcia: paisaje de huerta" (2015)**  
+   Documental sobre las tradiciones agrícolas y la vida en la huerta murciana.  
+   *Por qué ver:* Revela la esencia agraria y los valores culturales ligados al cultivo y la tierra.
+
+3. **"Fiestas de primavera y fervor popular en Murcia" (2017)**  
+   Explora las celebraciones y festividades como la Semana Santa y la Fiesta de Primavera.  
+   *Por qué ver:* Captura la energía festiva y religiosa imprescindible para entender la expresión cultural de la ciudad.
+
+---
+
+**Descubra Murcia no solo viajando por sus calles, sino también conociendo su alma a través de estas joyas culturales. Cada recomendación es una invitación a apreciar su riqueza y autenticidad.**  
+---</div>
+      </div>
+    </div>
+
+    <!-- SOLAPA 7: MAPA (Enlace dinámico oficial corregido) -->
+    <div id="page-mapa" class="page">
+      <div class="page-header">
+        <span class="page-icon">🗺️</span>
+        <h2 class="page-title">Mapa de Ruta</h2>
+      </div>
+      <div class="map-box">
+        <div style="font-size: 40px;">📍</div>
+        <h3 class="cta-title">¿Listo para comenzar el recorrido?</h3>
+        <p class="cta-sub">Haz clic abajo para abrir Google Maps con todas las paradas y hoteles organizados.</p>
+        <a href="https://google.comCatedral%20de%20Murcia%2C%20Murcia%2CPlaza%20Cardenal%20Belluga%2C%20Murcia%2CHotel%20Nelva%20Murcia%2C%20Murcia%2CMonasterio%20de%20Santa%20Clara%20la%20Real%2C%20Murcia%2CMuseo%20Salzillo%2C%20Murcia%2CJard%C3%ADn%20de%20Floridablanca%2C%20Murcia%2CMercado%20de%20Ver%C3%B3nicas%2C%20Murcia%2CTeatro%20Romea%2C%20Murcia%2CTeatro%20Romano%2C%20Cartagena%2CMuseo%20Nacional%20de%20Arqueolog%C3%ADa%20Subacu%C3%A1tica%2C%20Cartagena%2CPuerto%20de%20Cartagena%2C%20Cartagena%2CCastillo%20de%20la%20Concepci%C3%B3n%2C%20Cartagena%2CHotel%20NH%20Cartagena%2C%20Cartagena%2CSantuario%20de%20la%20Vera%20Cruz%2C%20Caravaca%20de%20la%20Cruz%2CParador%20de%20Caravaca%20de%20la%20Cruz%2C%20Caravaca%20de%20la%20Cruz%2CMuseo%20de%20la%20Ciudad%2C%20Murcia%2CR%C3%ADo%20Segura%2C%20Murcia%2CPlaza%20de%20las%20Flores%2C%20Murcia" target="_blank" class="btn-maps">
+          <span>🚀 Abrir Ruta en Google Maps</span>
+        </a>
+      </div>
+    </div>
+
+  </div> <!-- Cierre correcto del contenedor .pages -->
+
+  <!-- ── FOOTER MÍNIMO ── -->
+  <div class="footer-mini">
+    Generado por <a href="https://guiamundi.es" target="_blank">GuiaMundi.es</a>
+  </div>
+
+  <!-- ── SCRIPT INTERACTIVO DINÁMICO CORREGIDO (Busca por ID exclusivo) ── -->
+  <script>
+    function switchTab(tabId) {
+      // Ocultar todas las páginas
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      // Quitar clase activa de todos los botones
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      
+      // Mostrar únicamente la página seleccionada por su ID real
+      const targetPage = document.getElementById('page-' + tabId);
+      if (targetPage) {
+        targetPage.classList.add('active');
+      }
+      
+      // Activar exactamente el botón pulsado por su atributo onclick
+      const targetBtn = document.querySelector(`[onclick="switchTab('${tabId}')"]`);
+      if (targetBtn) {
+        targetBtn.classList.add('active');
+      }
+    }
+  </script>
+
+</body>
+</html>
