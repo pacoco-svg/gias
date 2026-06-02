@@ -1,0 +1,30 @@
+' target='_blank'>📍 Día 1</a>
+' target='_blank'>📍 Día 2</a>
+' target='_blank'>📍 Día 3</a>
+<div id="mapa" style="height:400px; border-radius:12px; overflow:hidden; margin:1rem 0;"></div>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const lista = ["Plaza Skanderbeg, Tirana","Museo Nacional de Historia, Tirana","Mezquita Et'hem Bey, Tirana","BunkArt 2, Tirana","Restaurante Blloku, Tirana","Castillo de Krujë, Krujë","Museo Etnográfico, Krujë","Bazar de Krujë, Krujë","Hotel Plaza Tirana, Tirana","Castillo de Rozafa, Shkodër","Museo Histórico de Shkodër, Shkodër","Bazar antiguo, Shkodër","Restaurante junto al río, Shkodër","Hotel Tradita, Shkodër","Museo Etnográfico de Theth, Theth","Cascada de Theth, Theth","Theth Guesthouse, Theth","Cañón de Theth, Theth","Torre de la Balada, Theth","Valbona Village Hotel, Valbona","Parque Nacional Valbona, Valbona","Hotel Mangalemi, Berat","Castillo de Berat, Berat","Museo Onufri, Berat","Museo Alejandro Moisiu, Berat","Barrio Mangalem, Berat","Barrio Gorica, Berat","Castillo de Gjirokastër, Gjirokastër","Casa Museo Ismail Kadare, Gjirokastër","Hotel Gjirokastër, Gjirokastër","Mansión Zekate, Gjirokastër","Museo de Armas, Gjirokastër","Hammam antiguo, Gjirokastër","Restaurante gourmet, Tirana"];
+const map = L.map('mapa');
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+const bounds = [];
+
+function geocodificar(lista, i) {
+  if (i >= lista.length) return;
+  fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(lista[i])}&format=json&limit=1`)
+    .then(r => r.json())
+    .then(data => {
+      if (data[0]) {
+        const lat = parseFloat(data[0].lat);
+        const lon = parseFloat(data[0].lon);
+        L.marker([lat, lon]).addTo(map).bindPopup(`<b>${i+1}. ${lista[i]}</b>`);
+        bounds.push([lat, lon]);
+        if (bounds.length > 1) map.fitBounds(bounds);
+      }
+      setTimeout(() => geocodificar(lista, i + 1), 300);
+    });
+}
+
+geocodificar(lista, 0);
+</script>
