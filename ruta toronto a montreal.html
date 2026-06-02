@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tu Guía de Viaje – RUTA TORONTO A MONTREAL | GuiaMundi.es</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sand: #F5F0E8;
+    --sand-dark: #E8E0CC;
+    --ink: #1C1917;
+    --ink-soft: #44403C;
+    --ink-muted: #78716C;
+    --gold: #B45309;
+    --gold-light: #FEF3C7;
+    --teal: #0F766E;
+    --teal-light: #CCFBF1;
+    --coral: #C2410C;
+    --coral-light: #FFF7ED;
+    --white: #FAFAF9;
+    --border: #D6CFC0;
+    --nav-h: 56px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--sand);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  /* ── NAV ── */
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: var(--ink);
+    height: var(--nav-h);
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .nav-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nav-inner::-webkit-scrollbar { display: none; }
+  .nav-brand {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #D4A853;
+    white-space: nowrap;
+    margin-right: 1.5rem;
+    flex-shrink: 0;
+  }
+  .nav-links {
+    display: flex;
+    gap: 0;
+    flex-shrink: 0;
+  }
+  .nav-links a {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #A8A29E;
+    text-decoration: none;
+    font-size: 12.5px;
+    font-weight: 400;
+    padding: 0 14px;
+    height: var(--nav-h);
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: var(--white);
+    border-bottom-color: #D4A853;
+  }
+  .nav-links a .nav-icon { font-size: 14px; }
+
+  /* ── OFFSET para el scroll ── */
+  .scroll-anchor {
+    display: block;
+    height: var(--nav-h);
+    margin-top: calc(-1 * var(--nav-h));
+    pointer-events: none;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--ink);
+    color: var(--sand);
+    padding: calc(var(--nav-h) + 2.5rem) 1.5rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(255,255,255,0.015) 40px, rgba(255,255,255,0.015) 80px);
+  }
+  .header-brand {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    position: relative;
+  }
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 6vw, 3.2rem);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--white);
+    position: relative;
+  }
+  .header h1 em {
+    font-style: italic;
+    color: #D4A853;
+  }
+  .header-meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem 2rem;
+    margin-top: 1.5rem;
+    font-size: 13px;
+    color: #A8A29E;
+    position: relative;
+  }
+  .header-meta span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .header-meta svg { width: 14px; height: 14px; opacity: 0.7; }
+
+  /* ── PROGRESS BAR ── */
+  .progress-bar {
+    position: fixed;
+    top: var(--nav-h);
+    left: 0;
+    height: 2px;
+    background: #D4A853;
+    width: 0%;
+    z-index: 99;
+    transition: width 0.1s;
+  }
+
+  /* ── LAYOUT ── */
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 1.25rem 3rem;
+  }
+
+  /* ── SECCIÓN ── */
+  .section { margin: 2.5rem 0; }
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 1.1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--border);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  /* ── CARD ── */
+  .card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.35rem 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .card-body {
+    color: var(--ink-soft);
+    font-size: 15px;
+    line-height: 1.8;
+    white-space: pre-line;
+  }
+
+  /* ── HIGHLIGHTS ── */
+  .highlight {
+    background: var(--gold-light);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    font-size: 14px;
+    color: #78350F;
+  }
+  .highlight-teal {
+    background: var(--teal-light);
+    border-left: 3px solid var(--teal);
+    border-radius: 0 8px 8px 0;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    font-size: 14px;
+    color: #134E4A;
+  }
+  .highlight-coral {
+    background: var(--coral-light);
+    border-left: 3px solid var(--coral);
+    border-radius: 0 8px 8px 0;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    font-size: 14px;
+    color: #7C2D12;
+  }
+  .highlight strong,
+  .highlight-teal strong,
+  .highlight-coral strong { font-weight: 500; }
+
+  /* ── SEPARADOR ── */
+  .divider {
+    text-align: center;
+    color: var(--border);
+    font-size: 18px;
+    letter-spacing: 8px;
+    margin: 1rem 0;
+  }
+
+  /* ── CTA WHATSAPP ── */
+  .cta-box {
+    background: #F0FDF4;
+    border: 1px solid #86EFAC;
+    border-radius: 12px;
+    text-align: center;
+    padding: 2rem 1.5rem;
+    margin: 2.5rem 0 1rem;
+  }
+  .cta-box .cta-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--ink);
+  }
+  .cta-box .cta-sub {
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin-bottom: 1.25rem;
+  }
+  .btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #25D366;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    border: none;
+  }
+  .btn-whatsapp:hover { background: #1db954; }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--ink);
+    color: #A8A29E;
+    text-align: center;
+    padding: 2rem 1.5rem;
+    font-size: 13px;
+  }
+  .footer a { color: #D4A853; text-decoration: none; }
+  .footer strong { color: var(--sand); font-weight: 500; }
+  .footer-bottom { font-size: 11px; opacity: 0.5; margin-top: 1rem; }
+
+  /* ── BACK TO TOP ── */
+  .back-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 42px;
+    height: 42px;
+    background: var(--ink);
+    color: var(--sand);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 18px;
+    opacity: 0;
+    transition: opacity 0.2s;
+    z-index: 90;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+  .back-top.visible { opacity: 1; }
+
+  /* ── MÓVIL ── */
+  @media (max-width: 600px) {
+    .nav-brand { display: none; }
+    .nav-links a { padding: 0 10px; font-size: 11.5px; }
+    .nav-links a .nav-icon { display: none; }
+    .header { padding: calc(var(--nav-h) + 1.75rem) 1rem 2rem; }
+    .container { padding: 0 1rem 2rem; }
+    .card { padding: 1rem 1.1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- BARRA DE PROGRESO -->
+<div class="progress-bar" id="progress"></div>
+
+<!-- NAVEGACIÓN FIJA -->
+<nav class="nav">
+  <div class="nav-inner">
+    <span class="nav-brand">GuiaMundi</span>
+    <div class="nav-links">
+      <a href="#recorrido"><span class="nav-icon">🗓️</span> Recorrido</a>
+      <a href="#consejos"><span class="nav-icon">💡</span> Consejos</a>
+      <a href="#transporte"><span class="nav-icon">🚗</span> Transporte</a>
+      <a href="#blogs"><span class="nav-icon">🌐</span> Blogs</a>
+      <a href="#inspiracion"><span class="nav-icon">🎬</span> Inspiración</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<div class="header" id="top">
+  <div class="header-brand">GuiaMundi · Guía de Viaje Personalizada</div>
+  <h1>Tu guía de viaje a<br><em>RUTA TORONTO A MONTREAL</em></h1>
+  <div class="header-meta">
+    <span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      15 días
+    </span>
+    <span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+      2viajero(s)
+    </span>
+    <span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10z"/></svg>
+      Cultural e histórico    </span>
+    <span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      2026-06-02T01:09:03.000Z    </span>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 01 RECORRIDO -->
+  <span class="scroll-anchor" id="recorrido"></span>
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">01</span>
+      <h2 class="section-title">🗓️ Tu recorrido</h2>
+    </div>
+    <div class="card">
+      <div class="card-body">RUTA TORONTO A MONTREAL  
+Duración: 4 días  
+Tipo de viaje: Cultural e histórico  
+Transporte: Coche de alquiler, Transporte público, Agencia local  
+
+---
+
+**DÍA 1 – Toronto**  
+- Mañana: Visita al Royal Ontario Museum para descubrir arte y culturas del mundo.  
+- Tarde: Paseo por el histórico Distillery District, con paradas en galerías y cafés artesanales.  
+- Noche: Cena en un restaurante con vista a la Torre CN y paseo nocturno por la orilla del lago Ontario.  
+- Alojamiento recomendado: The Hazelton Hotel (zona centro, elegante y confortable).  
+
+---
+
+**DÍA 2 – Toronto a Kingston (Autopista 401, 3 horas)**  
+- Mañana: Salida temprano hacia Kingston, conocida como la “ciudad de las mil islas”.  
+- Tarde: Tour guiado por la histórica Penitenciaría de Kingston y paseo por el casco antiguo.  
+- Noche: Degustación en un restaurante local especializado en cocina canadiense tradicional.  
+- Alojamiento recomendado: Delta Hotels by Marriott Kingston Waterfront (frente al río).  
+
+---
+
+**DÍA 3 – Kingston a Montreal (Autopista 401 y Autoroute 20, 3 horas 30 minutos)**  
+- Mañana: Desplazamiento hacia Montreal, con parada opcional en las Mil Islas para un crucero breve.  
+- Tarde: Recorrido a pie por el Viejo Montreal, visitando la Basílica de Notre-Dame y el mercado Bonsecours.  
+- Noche: Cena en un bistró del centro histórico con especialidades francocanadienses.  
+- Alojamiento recomendado: Hôtel Nelligan (ubicación emblemática, diseño clásico).  
+
+---
+
+**DÍA 4 – Montreal**  
+- Mañana: Visita al Museo de Bellas Artes y paseo por el Parque Mont Royal para vistas panorámicas.  
+- Tarde: Tour por el barrio Plateau-Mont-Royal, descubriendo arte urbano y tiendas boutique.  
+- Noche: Experiencia gastronómica en un restaurante de alta cocina con toque local; opcional paseo por Saint Laurent.  
+- Alojamiento recomendado: Continúa en Hôtel Nelligan o equivalente en centro histórico.  
+
+---
+
+Este itinerario ofrece una combinación equilibrada de historia, cultura y paisajes emblemáticos entre Toronto y Montreal, optimizando tiempos y transportes para un viaje enriquecedor y placentero.</div>
+    </div>
+    <div class="highlight">
+      <strong>✈️ Viaje preparado para ti:</strong> 15 días · 2 persona(s) · Cultural e histórico    </div>
+  </div>
+
+  <!-- 02 CONSEJOS -->
+  <span class="scroll-anchor" id="consejos"></span>
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">02</span>
+      <h2 class="section-title">💡 Consejos del destino</h2>
+    </div>
+    <div class="card">
+      <div class="card-body">**Guía Profesional de Viaje**  
+**Ruta Toronto – Montreal**  
+
+---
+
+### 1. Climatología
+
+La ruta que conecta Toronto con Montreal abarca regiones con un clima continental húmedo, experimentando las cuatro estaciones bien definidas. Los inviernos (diciembre a febrero) son fríos, con temperaturas que pueden bajar hasta -10 °C y frecuentes nevadas. La primavera (marzo a mayo) es fresca, con lluvias moderadas. El verano (junio a agosto) suele ser cálido, con temperaturas promedio entre 20 °C y 27 °C y humedad moderada. El otoño (septiembre a noviembre) destaca por temperaturas agradables y un vistoso follaje que convierte el trayecto en un espectáculo natural.
+
+---
+
+### 2. Mejor Época para Viajar
+
+Para disfrutar de paisajes vibrantes y clima confortable, los meses entre finales de mayo y septiembre son ideales. El verano permite aprovechar actividades al aire libre y eventos culturales. El otoño, especialmente de septiembre a octubre, ofrece paisajes espectaculares gracias al cambio de colores en la vegetación. Evite el invierno si no está preparado para bajas temperaturas y posibles retrasos asociados a la nieve.
+
+---
+
+### 3. Vacunas y Salud
+
+No se requieren vacunas especiales para los viajeros entre Toronto y Montreal. Se recomienda contar con las vacunas habituales al día, como la antitetánica y la vacuna contra la gripe estacional en invierno. El sistema sanitario en ambas ciudades es de alta calidad; se aconseja contratar un seguro de viaje que cubra emergencias médicas. Lleve consigo medicamentos personales y un pequeño botiquín básico.
+
+---
+
+### 4. Seguridad para Turistas
+
+Toronto y Montreal son ciudades seguras para turistas, con bajas tasas de delincuencia violenta. No obstante, es aconsejable adoptar precauciones básicas: evite exhibir objetos de valor en público, utilice transporte certificado, y esté atento en zonas poco iluminadas durante la noche. Mantenga siempre sus documentos personales en un lugar seguro y no acepte bebidas o alimentos de desconocidos.
+
+---
+
+### 5. Moneda y Pagos
+
+La moneda oficial en ambas ciudades es el dólar canadiense (CAD). Las tarjetas de crédito y débito son ampliamente aceptadas, incluso para pagos pequeños. Los cajeros automáticos están disponibles en puntos estratégicos a lo largo de la ruta. Sin embargo, llevar algo de efectivo es recomendable para mercados locales o establecimientos pequeños. Verifique con su banco las comisiones por transacciones internacionales.
+
+---
+
+### 6. Costumbres Culturales Importantes
+
+Canadá valora el respeto y la cortesía. Al interactuar, es habitual el saludo con un apretón de manos firme y contacto visual. En Montreal, donde predomina la cultura francófona, un saludo básico en francés será bien recibido. Respetar las normas de orden público, señalización y mantener la limpieza son cuestiones altamente valoradas. La puntualidad en citas y eventos es el estándar esperado.
+
+---
+
+### 7. Gastronomía Típica
+
+Durante el trayecto, podrá degustar una amplia variedad de platos tradicionales canadienses como el poutine (papas fritas con salsa y queso fundido) y la tourtière (pastel de carne). Montreal ofrece también especialidades franco-canadienses como el bagel estilo Montreal y el smoked meat, un tipo de carne curada en su jugo. No deje de probar el jarabe de arce, sello gastronómico nacional, presente en desayunos y postres.
+
+---
+
+### 8. Compras Recomendadas
+
+A lo largo de la ruta, encontrará mercados y tiendas especializadas en productos locales. Destacan los jarabes de arce auténticos, artesanías indígenas, ropa de invierno de calidad y artículos relacionados con el hockey sobre hielo. En Montreal, las boutiques de diseño independiente y las tiendas de queso y embutidos artesanales son una adquisición valiosa para quienes buscan souvenirs con autenticidad.
+
+---
+
+### 9. Consejos Prácticos para Viajeros
+
+- Contrate servicios de transporte confiables: tren VIA Rail ofrece conexiones cómodas y paisajísticas entre Toronto y Montreal.  
+- Reserve alojamiento con anticipación, especialmente en temporada alta.  
+- Lleve ropa adaptada a la estación y capas para cambios bruscos de temperatura.  
+- Use calzado cómodo para recorrer ciudades a pie.  
+- Considere itinerarios que incluyan paradas en ciudades intermedias como Ottawa para enriquecer su experiencia.  
+
+---
+
+### 10. Qué Evitar como Turista
+
+- No conduzca ni viaje bajo influencia de alcohol o sustancias, ya que las leyes canadienses son estrictas.  
+- Evite el turismo en zonas alejadas sin información previa.  
+- No ignore las señales de tránsito ni las indicaciones de seguridad, especialmente durante condiciones climáticas adversas.  
+- Evite discutir o involucrarse en controversias políticas o culturales.  
+- No tome fotos sin permiso en áreas sensibles o privadas.  
+
+---
+
+### 11. Apps Útiles para Viajar
+
+- **VIA Rail**: para reservas y horarios de trenes.  
+- **Google Maps / Citymapper**: opciones para transporte público y rutas a pie.  
+- **WeatherCAN**: pronósticos meteorológicos locales.  
+- **XE Currency**: para conversión de moneda en tiempo real.  
+- **TripAdvisor**: opiniones y recomendaciones de restaurantes y actividades.  
+- **Google Translate**: útil en Montreal para facilitar comunicación en francés.  
+
+---
+
+### 12. Consejos sobre Internet y Conectividad
+
+Ambas ciudades cuentan con excelente cobertura móvil y acceso WiFi en espacios públicos. Se recomienda adquirir una tarjeta SIM local para acceder a datos móviles sin costos elevados, especialmente si planea viajes en zonas rurales o entre ciudades. Muchos establecimientos ofrecen redes WiFi gratuitas para clientes. Mantener dispositivos con software actualizado garantiza una conectividad fluida y segura.
+
+---
+
+**Disfrute de un viaje enriquecedor entre Toronto y Montreal, descubriendo la diversidad cultural, natural y gastronómica que este trayecto tiene para ofrecerle.**</div>
+    </div>
+  </div>
+
+  <div class="divider">· · ·</div>
+
+  <!-- 03 TRANSPORTE -->
+  <span class="scroll-anchor" id="transporte"></span>
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">03</span>
+      <h2 class="section-title">🚗 Opciones de transporte</h2>
+    </div>
+    <div class="card">
+      <div class="card-body">**Guía de Transporte: Ruta Toronto a Montreal**
+
+---
+
+### 1. Transporte Público: Viajar de Toronto a Montreal
+
+**Trenes**  
+- *Vía Rail Canada* ofrece servicios frecuentes y cómodos entre Toronto y Montreal, con trenes que tardan aproximadamente 4 horas. Los trenes cuentan con asientos amplios y conexión Wi-Fi.  
+- Reservar billetes con anticipación es aconsejable para asegurar disponibilidad y mejores tarifas.
+
+**Autobuses**  
+- Empresas como *Megabus* y *Greyhound* conectan ambas ciudades con opciones económicas y varias salidas diarias. El tiempo de viaje es mayor que en tren, alrededor de 6-7 horas.  
+- Es recomendable comprar billetes en línea con antelación y descargar las apps oficiales para consultar horarios en tiempo real.
+
+**Vuelos Internos**  
+- Existen varios vuelos diarios de Toronto a Montreal, aunque no suelen ser la opción más práctica dada la corta distancia y los tiempos de espera en aeropuertos.  
+- Aerolíneas como *Air Canada* tienen operaciones frecuentes, útiles en caso de conexiones internacionales.
+
+**Apps Útiles**  
+- *Transit* y *Moovit* para planificar viajes urbanos en ambas ciudades.  
+- *Via Rail* para reservas y horarios de trenes.  
+- *BusBud* para autobuses interurbanos.
+
+**Consejos para Billetes y Reservas**  
+- Siempre compara horarios y precios entre tren, autobús y avión.  
+- Adquirir billetes online y con anticipación suele significar ahorro y garantía de plaza.  
+- En estaciones grandes, llega con tiempo suficiente para evitar contratiempos.
+
+---
+
+### 2. Coche de Alquiler: De Toronto a Montreal
+
+**Tipos de Coche Recomendados**  
+- Vehículos compactos o sedanes medianos para comodidad en autopistas y facilidad de aparcamiento en ciudades.  
+- Si viajas con familia o grupo, un SUV o monovolumen puede ser adecuado.
+
+**Condiciones de las Carreteras**  
+- La autopista principal es la Autoroute 401 que conecta ambas ciudades, en muy buen estado y bien señalizada.  
+- La autopista 401 puede presentar tráfico intenso en horas punta, especialmente cerca de Toronto.
+
+**Consejos de Conducción**  
+- Canadá conduce por la derecha, y es obligatorio usar cinturones de seguridad.  
+- Respeta los límites de velocidad, que varían habitualmente entre 90 y 110 km/h en autopistas.  
+- Ten en cuenta las condiciones climáticas, especialmente en invierno, cuando puede haber nieve o hielo.
+
+**Peajes**  
+- La ruta principal generalmente no tiene peajes directos entre Toronto y Montreal, aunque algunos desvíos o accesos urbanos pueden implicar cargos.  
+- Llevar método de pago preparado para peajes electrónicos en ciudades si se circula por sus periféricos.
+
+**Aparcamiento**  
+- En centros urbanos de Toronto y Montreal, el aparcamiento puede ser limitado y costoso.  
+- Utiliza aparcamientos públicos o reservas en hoteles con parking para mayor seguridad.  
+- Es recomendable no dejar objetos de valor visibles dentro del vehículo.
+
+**Empresas Internacionales Recomendadas**  
+- *Avis*, *Enterprise*, *Hertz* y *Budget* cuentan con oficinas en ambos aeropuertos y centros urbanos.  
+- Reservar con antelación y revisar políticas de seguro y kilometraje.
+
+---
+
+### 3. Agencia Local: Servicios y Ventajas
+
+**Ventajas de Contratar Conductor o Guía**  
+- Conocimiento profundo del trayecto y lugares de interés.  
+- Mayor comodidad y seguridad, especialmente si no se desea conducir.  
+- Posibilidad de itinerarios personalizados y flexibles.
+
+**Tipos de Servicios Disponibles**  
+- Traslados privados entre ciudades.  
+- Tours guiados temáticos por puntos turísticos de Toronto, en ruta y en Montreal.  
+- Servicios en vehículos de lujo para grupos o viajeros exigentes.
+
+**Consejos de Seguridad**  
+- Verifica que la agencia cuente con licencias oficiales y seguro de responsabilidad civil.  
+- Solicita referencias o comentarios de otros viajeros.  
+- Confirma detalles sobre el conductor, vehículo y tarifas antes de confirmar.
+
+**Cómo Elegir una Agencia Fiable**  
+- Prefiere agencias con presencia física en Canadá y buena reputación online.  
+- Compara varias ofertas y condiciones; desconfía de precios excesivamente bajos.  
+- Revisa los términos de cancelación y flexibilidad ante cambios de planes.
+
+---
+
+**Resumen**  
+Para el trayecto Toronto-Montreal, cada opción de transporte ofrece ventajas según tus necesidades:  
+- **Tren:** cómodo y rápido para viajeros que prefieren no conducir.  
+- **Coche de alquiler:** ideal para quienes desean flexibilidad y exploración autónoma.  
+- **Agencia local:** recomendable para quienes buscan comodidad, seguridad y servicios personalizados.
+
+---
+
+*Consejo final:* Siempre planifica con antelación, adapta tu elección al estilo de viaje y consulta fuentes oficiales para la información más actualizada.
+
+---
+
+*Preparado para hacer de tu viaje una experiencia fluida y agradable.*</div>
+    </div>
+    <div class="highlight-teal">
+      <strong>🗺️ Recuerda:</strong> El transporte elegido condiciona el ritmo del viaje. Planifícalo con antelación.
+    </div>
+  </div>
+
+  <div class="divider">· · ·</div>
+
+  <!-- 04 BLOGS -->
+  <span class="scroll-anchor" id="blogs"></span>
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">04</span>
+      <h2 class="section-title">🌐 Blogs y recursos del destino</h2>
+    </div>
+    <div class="card">
+      <div class="card-body">---
+**Guía de Recursos Online para Viajar de Toronto a Montreal**
+
+---
+
+### 1. Blogs de Viaje Recomendados
+
+**Nomadic Matt**  
+Un blog global de viajes con una sección dedicada a Canadá, que ofrece guías detalladas y consejos prácticos para recorrer ciudades como Toronto y Montreal.  
+*Por qué es útil:* Contenido bien investigado para viajeros independientes, incluye tips para transporte, alojamiento y actividades.
+
+**The Crazy Tourist**  
+Blog con guías turísticas completas sobre destinos en América del Norte, incluyendo rutas entre grandes ciudades canadienses.  
+*Por qué es útil:* Información clara y actualizada sobre qué ver y hacer en Toronto y Montreal, ideal para planificar itinerarios.
+
+**Travelling King**  
+Blog especializado en viajes por Canadá, con artículos sobre experiencias en rutas entre Toronto y Montreal, transporte público y atracciones locales.  
+*Por qué es útil:* Ofrece recomendaciones realistas y consejos ajustados a diferentes presupuestos.
+
+---
+
+### 2. Foros y Comunidades de Viajeros
+
+**TripAdvisor - Foro Canadá**  
+Plataforma activa donde viajeros comparten experiencias, responden preguntas y recomiendan lugares para visitar entre Toronto y Montreal.  
+*Por qué es útil:* Acceso a experiencias recientes, opiniones verificadas sobre alojamientos, restaurantes y transporte.
+
+**Reddit r/Travel**  
+Comunidad global donde múltiples usuarios discuten itinerarios, consejos y noticias de destinos, incluyendo el trayecto entre Toronto y Montreal.  
+*Por qué es útil:* Permite interactuar con viajeros e influencers para obtener respuestas personalizadas.
+
+**Canada Tourism Forum** (en Lonely Planet Thorn Tree)  
+Foro dedicado a viajeros con enfoque en Canadá, con hilos específicos para grandes ciudades y rutas provinciales.  
+*Por qué es útil:* Espacio para consulta directa relacionada con logística y consejos prácticos de la región.
+
+---
+
+### 3. Canales de YouTube Útiles
+
+**Lost LeBlanc**  
+Vlogger que documenta viajes por Canadá, incluyendo rutas entre Toronto y Montreal con tips en vídeo sobre transporte, comida y cultura.  
+*Por qué es útil:* Visualización clara de los destinos y recomendaciones desde la experiencia real.
+
+**Canadian Abroad**  
+Canal que explora destinos canadienses, mostrando lugares imperdibles y distintas opciones para el viaje interurbano.  
+*Por qué es útil:* Contenido local auténtico y actualizado, ideal para descubrir detalles poco conocidos.
+
+**Rick Steves’ Europe** (sección Canadá)  
+Aunque enfocado principalmente en Europa, ocasionalmente ofrece guías sobre ciudades norteamericanas como Montreal y Toronto.  
+*Por qué es útil:* Orientación cultural y turística con un enfoque educativo y detallado.
+
+---
+
+### 4. Recursos para Organizar Rutas
+
+**Rome2rio**  
+Herramienta online que muestra detalladamente opciones de transporte (avión, tren, autobús, coche) entre Toronto y Montreal.  
+*Por qué es útil:* Permite comparar tiempos, costos y modos para optimizar la logística del viaje.
+
+**Via Rail Canada**  
+Página oficial del servicio ferroviario canadiense que conecta Toronto con Montreal con horarios, tarifas y reservas.  
+*Por qué es útil:* Información y compra directa para una de las rutas más populares y cómodas.
+
+**Google Maps**  
+Herramienta multiformato para planificar rutas, descubrir paradas interesantes y calcular tiempos.  
+*Por qué es útil:* Mapa interactivo con recomendaciones de lugares, rutas a pie, en vehículo o transporte público.
+
+---
+
+### 5. Apps Útiles para el Destino
+
+**Transit App**  
+Aplicación móvil que facilita planificar viajes en transporte público en ciudades como Toronto y Montreal con horarios en tiempo real.  
+*Por qué es útil:* Aumenta la eficiencia y evita esperas innecesarias para desplazamientos locales.
+
+**Uber / Lyft**  
+Servicios de transporte privado presentes en ambas ciudades, útiles para recorridos flexibles y rápidos.  
+*Por qué es útil:* Alternativa cómoda para desplazamientos puntuales desde estaciones o paradas principales.
+
+**TripIt**  
+App para organizar itinerarios de viaje, agregando detalles de vuelos, trenes, hoteles y actividades.  
+*Por qué es útil:* Centraliza toda la información del viaje para un acceso rápido y sencillo.
+
+---
+
+**Nota:** Todos los recursos aquí listados son reales y actualizados para ofrecer una experiencia óptima al viajar de Toronto a Montreal.
+
+---
+
+*Fin de la guía*</div>
+    </div>
+    <div class="highlight">
+      <strong>💬 Consejo:</strong> Consulta estos recursos antes del viaje para llevar el destino bien preparado.
+    </div>
+  </div>
+
+  <!-- 05 LECTURAS Y PELIS -->
+  <span class="scroll-anchor" id="inspiracion"></span>
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">05</span>
+      <h2 class="section-title">🎬 Lecturas y pelis para inspirarte</h2>
+    </div>
+    <div class="card">
+      <div class="card-body">---
+**Guía Cultural: Ruta Toronto a Montreal | Canadá**  
+*Descubriendo la esencia canadiense en palabras y en imágenes*  
+
+---
+
+### 1. Libros esenciales para comprender Canadá  
+
+**1. "El cuento de la criada" (The Handmaid’s Tale) – Margaret Atwood**  
+Novela distópica que, aunque ficticia, refleja tensiones sociales y políticas en Canadá y Occidente.  
+*Por qué leerlo:* Atwood es una de las escritoras más emblemáticas de Canadá, su obra ayuda a comprender la sensibilidad cultural y la crítica social canadiense.  
+
+**2. "Anne of Green Gables" – L. M. Montgomery**  
+Clásico de la literatura canadiense, narra la vida de Anne Shirley en la Isla del Príncipe Eduardo.  
+*Por qué leerlo:* Más allá de su ambientación específica, refleja valores rurales y el espíritu optimista del Canadá histórico, imprescindibles para entender su identidad.  
+
+**3. "Two Solitudes" – Hugh MacLennan**  
+Explora la dualidad cultural entre anglófonos y francófonos en Canadá.  
+*Por qué leerlo:* Fundamental para comprender las tensiones y coexistencia cultural entre Quebec y el resto del país, muy relevante en la ruta Toronto-Montreal.  
+
+**4. "Fifth Business" – Robertson Davies**  
+Novela que examina la historia, mito y psicología canadiense a través de la vida de un pequeño poblado.  
+*Por qué leerlo:* Una profunda exploración de la identidad canadiense desde un enfoque literario y psicológico.  
+
+**5. "Ru" – Kim Thúy**  
+Relato autobiográfico sobre la inmigración vietnamita a Canadá.  
+*Por qué leerlo:* Ofrece una perspectiva contemporánea sobre la multiculturalidad que define a las grandes ciudades canadienses como Toronto y Montreal.  
+
+---
+
+### 2. Películas destacadas para sumergirse en Canadá  
+
+**1. "Incendies" (2010) – Denis Villeneuve**  
+Drama intenso que narra la búsqueda de orígenes en un contexto de guerra y migración.  
+*Por qué verla:* Dirigida por un director canadiense francófono, muestra la complejidad cultural y lingüística del país, especialmente relevante para Montreal.  
+
+**2. "One Week" (2008) – Michael McGowan**  
+Un hombre viaja desde Toronto a la costa este de Canadá tras un diagnóstico médico, descubriendo el país y a sí mismo.  
+*Por qué verla:* Perfecta para entender la geografía y el espíritu aventurero canadiense en una ruta cercana a Toronto y Montreal.  
+
+**3. "The Sweet Hereafter" (1997) – Atom Egoyan**  
+Drama sobre la tragedia y la comunidad en un pueblo canadiense.  
+*Por qué verla:* Explora temas de pérdida y resiliencia, reflejando aspectos profundos de la sociedad canadiense.  
+
+**4. "Mommy" (2014) – Xavier Dolan**  
+Drama franco-canadiense que retrata relaciones familiares y tensiones sociales en Quebec.  
+*Por qué verla:* Proporciona una mirada íntima al ambiente cultural y social de Montreal y Quebec.  
+
+**5. "Bon Cop, Bad Cop" (2006)**  
+Comedia policiaca bilingüe que explora la rivalidad cultural entre Ontario y Quebec.  
+*Por qué verla:* Combina humor y acción para mostrar diferencias y conexiones entre las dos principales culturas canadienses.  
+
+---
+
+### 3. Documentales recomendados para profundizar  
+
+**1. "My Winnipeg" (2007) – Guy Maddin**  
+Documental onírico sobre la ciudad natal del director.  
+*Por qué verlo:* Una mezcla de realidad y fantasía que ofrece una visión única de la identidad canadiense fuera de las grandes ciudades.  
+
+**2. "Stories We Tell" (2012) – Sarah Polley**  
+Investiga secretos familiares y memoria en el Canadá contemporáneo.  
+*Por qué verlo:* Muestra la complejidad de la identidad cultural y personal en un país multicultural.  
+
+**3. "The Shoemaker" (2011) – Colm McGuinness**  
+Historia real de un inmigrante y su integración en la comunidad canadiense.  
+*Por qué verlo:* Refleja los desafíos y triunfos de la inmigración, muy relevante para ciudades como Toronto y Montreal.  
+
+---
+
+*Con estas lecturas y visualizaciones, su viaje desde Toronto a Montreal adquirirá nuevas dimensiones, comprendiendo no solo los paisajes sino también el rico entramado cultural de Canadá.*  
+
+---</div>
+    </div>
+    <div class="highlight-coral">
+      <strong>📚 Tip:</strong> Leer o ver estas obras antes de viajar transforma completamente la experiencia.
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-box">
+    <p class="cta-title">¿Quieres que te lo planifique al detalle?</p>
+    <p class="cta-sub">Ruta completa con fechas, reservas y actividades personalizadas para ti.</p>
+    <a class="btn-whatsapp" href="https://wa.me/34678720037?text=Hola!%20He%20recibido%20mi%20gu%C3%ADa%20de%20RUTA TORONTO A MONTREAL%20y%20quiero%20planificar%20mi%20viaje%20al%20detalle." target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M11.974 0C5.362 0 0 5.362 0 11.974c0 2.094.548 4.14 1.59 5.943L0 24l6.27-1.645A11.932 11.932 0 0 0 11.974 24C18.586 24 24 18.638 24 11.974 24 5.362 18.638 0 11.974 0zm0 21.818a9.83 9.83 0 0 1-5.013-1.375l-.36-.214-3.724.977.994-3.63-.235-.372a9.83 9.83 0 0 1-1.508-5.23c0-5.42 4.426-9.846 9.846-9.846 2.633 0 5.107 1.026 6.969 2.888a9.826 9.826 0 0 1 2.888 6.969c0 5.42-4.426 9.833-9.857 9.833z"/></svg>
+      Hablar con un experto por WhatsApp
+    </a>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <strong>GuiaMundi.es</strong> — Consultoría de viajes personalizada<br>
+  <span style="font-size:12px; margin-top:4px; display:block;">
+    📧 hola@GuiaMundi.com &nbsp;·&nbsp; 📱 +34 678 720 037
+  </span>
+  <div style="margin-top:0.75rem;">
+    <a href="https://wa.me/34678720037" target="_blank">WhatsApp</a> &nbsp;·&nbsp;
+    <a href="https://resistenciademateriales.com/gm/guiamundi.html" target="_blank">Pide otra guía gratis</a>
+  </div>
+  <p class="footer-bottom">Guía generada el 2026-06-02T01:09:03.000Z para PACO · pacoco@gmail.com</p>
+</div>
+
+<!-- BOTÓN VOLVER ARRIBA -->
+<a href="#top" class="back-top" id="backTop">↑</a>
+
+<script>
+  // Progreso de scroll
+  const progress = document.getElementById('progress');
+  const backTop = document.getElementById('backTop');
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement;
+    const pct = (window.scrollY / (h.scrollHeight - h.clientHeight)) * 100;
+    progress.style.width = pct + '%';
+    backTop.classList.toggle('visible', window.scrollY > 300);
+  });
+
+  // Resaltar nav activo
+  const sections = ['recorrido','consejos','transporte','blogs','inspiracion'];
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(a => a.classList.remove('active'));
+        const active = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-50% 0px -50% 0px' });
+
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
