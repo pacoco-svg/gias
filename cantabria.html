@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Tu Guía – cantabria | GuiaMundi.es</title>
+<link rel="apple-touch-icon" href="URL_LOGO">
+<link rel="icon" type="image/png" href="URL_LOGO">
+<link href="https://googleapis.com" rel="stylesheet">
+<style>
+  :root {
+    --sand: #F5F0E8;
+    --ink: #1C1917;
+    --ink-soft: #44403C;
+    --ink-muted: #78716C;
+    --gold: #B45309;
+    --gold-light: #FEF3C7;
+    --teal: #0F766E;
+    --teal-light: #CCFBF1;
+    --coral: #C2410C;
+    --coral-light: #FFF7ED;
+    --white: #FAFAF9;
+    --border: #D6CFC0;
+    --header-h: 200px;
+    --tabs-h: 56px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { height: 100%; }
+
+  body {
+    background: var(--sand);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    font-size: 15px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── HEADER PORTADA ── */
+  .header {
+    background: var(--ink);
+    padding: 2.5rem 1.5rem 1.75rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(255,255,255,0.015) 40px, rgba(255,255,255,0.015) 80px);
+  }
+  .header-brand {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #D4A853;
+    margin-bottom: 0.6rem;
+    position: relative;
+  }
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 5vw, 2.6rem);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--white);
+    position: relative;
+  }
+  .header h1 em { font-style: italic; color: #D4A853; }
+  .header-meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 1.5rem;
+    margin-top: 1rem;
+    font-size: 12px;
+    color: #A8A29E;
+    position: relative;
+  }
+  .header-meta span { display: flex; align-items: center; gap: 5px; }
+  .header-meta svg { width: 12px; height: 12px; opacity: 0.6; }
+
+  /* ── TABS BAR ── */
+  .tabs-bar {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+    flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+  }
+  .tabs-bar::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    padding: 10px 16px 8px;
+    font-size: 11px;
+    font-weight: 400;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--ink-muted);
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: color 0.15s, border-color 0.15s;
+    min-width: 64px;
+  }
+  .tab-btn .tab-icon { font-size: 18px; line-height: 1; }
+  .tab-btn.active {
+    color: var(--ink);
+    border-bottom-color: #D4A853;
+    font-weight: 500;
+  }
+  .tab-btn:hover { color: var(--ink); }
+
+  /* ── PÁGINAS ── */
+  .pages {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+  }
+  .page {
+    display: none;
+    height: 100%;
+    overflow-y: auto;
+    padding: 1.5rem 1.25rem 5rem;
+    max-width: 760px;
+    margin: 0 auto;
+    animation: fadeIn 0.2s ease;
+  }
+  .page.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── PÁGINA INICIO ── */
+  .inicio-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 0.5rem;
+  }
+  .inicio-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.1rem 1rem;
+    cursor: pointer;
+    transition: border-color 0.15s, transform 0.1s;
+    text-align: center;
+  }
+  .inicio-card:hover { border-color: #D4A853; transform: translateY(-1px); }
+  .inicio-card:active { transform: scale(0.98); }
+  .inicio-card .ic-icon { font-size: 26px; margin-bottom: 6px; }
+  .inicio-card .ic-title {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+  .inicio-card .ic-sub { font-size: 11px; color: var(--ink-muted); }
+
+  .resumen-box {
+    background: var(--ink);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.25rem;
+    color: var(--sand);
+  }
+  .resumen-box h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: 0.75rem;
+    color: var(--white);
+  }
+  .resumen-box h2 em { font-style: italic; color: #D4A853; }
+  .resumen-datos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .resumen-dato {
+    background: rgba(255,255,255,0.07);
+    border-radius: 8px;
+    padding: 8px 10px;
+  }
+  .resumen-dato .rd-label { font-size: 10px; color: #A8A29E; text-transform: uppercase; letter-spacing: 1px; }
+  .resumen-dato .rd-value { font-size: 13px; color: var(--white); margin-top: 2px; }
+
+  .seccion-titulo { font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-muted); margin: 1.25rem 0 0.75rem; }
+
+  /* ── CONTENIDO SECCIONES ── */
+  .page-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .page-icon { font-size: 24px; }
+  .page-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .card-body {
+    color: var(--ink-soft);
+    font-size: 14.5px;
+    line-height: 1.85;
+    white-space: pre-wrap; /* Mantiene estrictamente los saltos de línea de la IA */
+  }
+  /* Estilo automático para dar espacio premium a las viñetas y bloques */
+  .card-body ul, .card-body ol { margin-bottom: 1.5rem; padding-left: 1.25rem; }
+  .card-body li { margin-bottom: 0.5rem; }
+
+
+
+
+  .highlight {
+    background: var(--gold-light);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+    padding: 0.9rem 1.1rem;
+    margin: 1rem 0;
+    font-size: 13.5px;
+    color: #78350F;
+  }
+  .highlight-teal {
+    background: var(--teal-light);
+    border-left: 3px solid var(--teal);
+    border-radius: 0 8px 8px 0;
+    padding: 0.9rem 1.1rem;
+    margin: 1rem 0;
+    font-size: 13.5px;
+    color: #134E4A;
+  }
+  .highlight-coral {
+    background: var(--coral-light);
+    border-left: 3px solid var(--coral);
+    border-radius: 0 8px 8px 0;
+    padding: 0.9rem 1.1rem;
+    margin: 1rem 0;
+    font-size: 13.5px;
+    color: #7C2D12;
+  }
+  .highlight strong, .highlight-teal strong, .highlight-coral strong { font-weight: 500; }
+
+  /* Estilos para el bloque del Mapa */
+  .map-box {
+    background: #EFF6FF;
+    border: 1px solid #BFDBFE;
+    border-radius: 12px;
+    text-align: center;
+    padding: 2rem 1.5rem;
+    margin-top: 1rem;
+  }
+  .btn-maps {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #10B981;
+    color: white;
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+    transition: background 0.15s, transform 0.1s;
+    margin-top: 1rem;
+  }
+  .btn-maps:hover { background: #059669; transform: translateY(-1px); }
+  .btn-maps:active { transform: scale(0.98); }
+
+  /* ── CTA WHATSAPP ── */
+  .cta-box {
+    background: #F0FDF4;
+    border: 1px solid #86EFAC;
+    border-radius: 12px;
+    text-align: center;
+    padding: 1.5rem 1.25rem;
+    margin: 1.5rem 0 0;
+  }
+  .cta-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    color: var(--ink);
+  }
+  .cta-sub { font-size: 13px; color: var(--ink-soft); margin-bottom: 1rem; }
+  .btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #25D366;
+    color: white;
+    padding: 11px 22px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+  }
+  .btn-whatsapp:hover { background: #1db954; }
+
+  /* ── FOOTER MÍNIMO ── */
+  .footer-mini {
+    text-align: center;
+    padding: 1rem;
+    font-size: 11px;
+    color: var(--ink-muted);
+    border-top: 1px solid var(--border);
+    background: var(--white);
+    flex-shrink: 0;
+  }
+  .footer-mini a { color: var(--gold); text-decoration: none; }
+
+  @media (max-width: 400px) {
+    .inicio-cards { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .tab-btn { min-width: 56px; padding: 10px 10px 8px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ── TABS BAR ── -->
+  <div class="tabs-bar">
+    <button class="tab-btn active" onclick="switchTab('inicio')">
+      <span class="tab-icon">🏠</span>
+      <span>Inicio</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab('itinerario')">
+      <span class="tab-icon">📅</span>
+      <span>Itinerario</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab('transporte')">
+      <span class="tab-icon">🚗</span>
+      <span>Transporte</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab('consejos')">
+      <span class="tab-icon">💡</span>
+      <span>Consejos</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab('blogs')">
+      <span class="tab-icon">📰</span>
+      <span>Blogs</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab('libros')">
+      <span class="tab-icon">📚</span>
+      <span>Libros</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab('mapa')">
+      <span class="tab-icon">🗺️</span>
+      <span>Mapa</span>
+    </button>
+  </div>
+  <!-- ── PÁGINAS ── -->
+  <div class="pages">
+
+    <!-- SOLAPA 1: INICIO -->
+    <div id="page-inicio" class="page active">
+      <div class="resumen-box">
+        <h2>Tu viaje a <em>cantabria</em></h2>
+        <div class="resumen-datos">
+          <div class="resumen-dato">
+            <div class="rd-label">Destino</div>
+            <div class="rd-value">cantabria</div>
+          </div>
+          <div class="resumen-dato">
+            <div class="rd-label">Duración</div>
+            <div class="rd-value">Guía Premium</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="seccion-titulo">Acceso Rápido</div>
+      <div class="inicio-cards">
+        <div class="inicio-card" onclick="switchTab('itinerario')">
+          <div class="ic-icon">📅</div>
+          <div class="ic-title">Ver Itinerario</div>
+          <div class="ic-sub">Plan por días</div>
+        </div>
+        <div class="inicio-card" onclick="switchTab('mapa')">
+          <div class="ic-icon">🗺️</div>
+          <div class="ic-title">Mapa de Ruta</div>
+          <div class="ic-sub">Ruta interactiva</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SOLAPA 2: ITINERARIO -->
+    <div id="page-itinerario" class="page">
+      <div class="page-header">
+        <span class="page-icon">📅</span>
+        <h2 class="page-title">Plan de Viaje</h2>
+      </div>
+      <div class="card">
+        <div class="card-body">{
+  "itinerario_texto": "DÍA 1 – Santander\n- Mañana: Llegada a Santander, recogida del coche de alquiler y paseo por la Playa del Sardinero.\n- Tarde: Visita al Palacio de la Magdalena y sus jardines, explorando también las vistas al mar Cantábrico.\n- Noche: Cena en el restaurante Cañadío y paseo nocturno por el Paseo de Pereda.\n- Alojamiento recomendado: Gran Hotel Sardinero Santander\n\nDÍA 2 – Parque Natural de las Dunas de Liencres y Santillana del Mar\n- Mañana: Excursión por las Dunas de Liencres, ideal para senderismo y observación de flora y fauna.\n- Tarde: Desplazamiento a Santillana del Mar, visita al casco histórico y la Colegiata de Santa Juliana.\n- Noche: Cena en el restaurante El Castillo, degustando platos cántabros tradicionales.\n- Alojamiento recomendado: Hotel Villa de Santillana\n\nDÍA 3 – Cuevas de Altamira y Comillas\n- Mañana: Recorrido por el Museo y réplica de las Cuevas de Altamira, patrimonio prehistórico.\n- Tarde: Conducción hacia Comillas para visitar el Capricho de Gaudí y el Palacio de Sobrellano.\n- Noche: Cena frente al mar en restaurante Marucho, con especialidad en pescado fresco.\n- Alojamiento recomendado: Hotel Marqués de Comillas\n\nDÍA 4 – Parque Natural Saja-Besaya\n- Mañana: Ruta de senderismo por el Parque Natural Saja-Besaya, disfrutando de bosques y ríos.\n- Tarde: Descanso en el entorno natural y visita a Bárcena Mayor, uno de los pueblos más bonitos de España.\n- Noche: Cena en Posada La Casa del Agua en Bárcena Mayor.\n- Alojamiento recomendado: Posada La Casa del Agua, Bárcena Mayor\n\nDÍA 5 – Picos de Europa: Fuente Dé y Potes\n- Mañana: Conducción a Fuente Dé y subida en teleférico para acceder a rutas panorámicas.\n- Tarde: Descenso y visita al pintoresco pueblo de Potes, con degustación de orujo local.\n- Noche: Cena tradicional en Casa Cayo en Potes.\n- Alojamiento recomendado: Parador de Fuente Dé\n\nDÍA 6 – Parque Natural de Oyambre y San Vicente de la Barquera\n- Mañana: Recorrido en coche por el Parque Natural de Oyambre, con paradas para senderismo y fotografía.\n- Tarde: Visita al casco histórico y al Castillo de San Vicente de la Barquera.\n- Noche: Cena en restaurante El Remedio, especialista en mariscos.\n- Alojamiento recomendado: Hotel Don Pablo, San Vicente de la Barquera\n\nDÍA 7 – Regreso a Santander y fin del viaje\n- Mañana: Desplazamiento a Santander, parada en la Península de la Magdalena para última exploración.\n- Tarde: Devolución del coche de alquiler y tiempo libre para compras o visita a Centro Botín.\n- Noche: Traslado al aeropuerto o estación según horario de salida.",
+  "puntos_mapa": [
+    "Playa del Sardinero, Santander",
+    "Palacio de la Magdalena, Santander",
+    "Paseo de Pereda, Santander",
+    "Gran Hotel Sardinero, Santander",
+    "Dunas de Liencres, Santander",
+    "Santillana del Mar, Cantabria",
+    "Colegiata de Santa Juliana, Santillana del Mar",
+    "El Castillo, Santillana del Mar",
+    "Hotel Villa de Santillana, Santillana del Mar",
+    "Museo y Cueva de Altamira, Santillana del Mar",
+    "Capricho de Gaudí, Comillas",
+    "Palacio de Sobrellano, Comillas",
+    "Marucho, Comillas",
+    "Hotel Marqués de Comillas, Comillas",
+    "Parque Natural Saja-Besaya, Cantabria",
+    "Bárcena Mayor, Cantabria",
+    "Posada La Casa del Agua, Bárcena Mayor",
+    "Fuente Dé, Cantabria",
+    "Teleférico de Fuente Dé, Cantabria",
+    "Potes, Cantabria",
+    "Casa Cayo, Potes",
+    "Parador de Fuente Dé, Cantabria",
+    "Parque Natural de Oyambre, Cantabria",
+    "Castillo de San Vicente de la Barquera, San Vicente de la Barquera",
+    "El Remedio, San Vicente de la Barquera",
+    "Hotel Don Pablo, San Vicente de la Barquera",
+    "Península de la Magdalena, Santander",
+    "Centro Botín, Santander"
+  ]
+}</div>
+      </div>
+    </div>
+
+    <!-- SOLAPA 3: TRANSPORTE -->
+    <div id="page-transporte" class="page">
+      <div class="page-header">
+        <span class="page-icon">🚗</span>
+        <h2 class="page-title">Transporte</h2>
+      </div>
+      <div class="card">
+        <div class="card-body">---
+# Guía de Transporte para Viajar a Cantabria
+
+---
+
+## Transporte en Cantabria: Coche de Alquiler y Transporte Público
+
+Cantabria, con sus paisajes verdes, costa atlántica y riqueza cultural, es un destino ideal para explorar tanto en coche de alquiler como con transporte público. A continuación, te ofrecemos información práctica y consejos para elegir la mejor opción para tu viaje.
+
+---
+
+## Transporte en Coche de Alquiler
+
+### Tipos de coches recomendados
+- **Compactos y medianos:** ideales para terrenos urbanos y viajes entre pueblos. Eficiencia en consumo y fácil estacionamiento.
+- **SUV o todoterreno ligero:** recomendados si planeas visitar zonas rurales o la montaña, como los Picos de Europa, donde las carreteras pueden ser estrechas y con curvas.
+- **Vehículos automáticos o diésel:** si no estás acostumbrado a cambios manuales o buscas mejor autonomía en carretera.
+
+### Características de las carreteras en Cantabria
+- La red principal está bien mantenida, con carreteras nacionales (como la N-623) y autopistas (como la A-8, la Autovía del Cantábrico).
+- Algunas rutas secundarias, especialmente en zonas montañosas, pueden ser estrechas y con curvas.
+- Señalización clara, pero recomendables precaución en días de lluvia o niebla.
+
+### Consejos de conducción
+- Mantén velocidades moderadas; la orografía hace que muchas carreteras tengan limitaciones por seguridad.
+- Atención en zonas naturales protegidas, donde la fauna puede cruzar de manera inesperada.
+- Respeta las normas locales y evita conducir bajo condiciones meteorológicas adversas.
+
+### Peajes
+- La A-8 tiene algunos tramos con peaje, aunque se puede optar por carreteras nacionales alternativas sin coste.
+- Infórmate siempre antes de la ruta para planificar tu presupuesto.
+
+### Aparcamiento
+- En ciudades como Santander o Torrelavega existen zonas de parking regulado (SER).
+- Aparcamientos públicos y gratuitos suelen estar disponibles en áreas rurales y en las afueras de localidades turísticas.
+- En parques naturales, suele haber aparcamientos habilitados cerca de puntos de interés.
+
+### Empresas recomendadas de alquiler
+- Compañías internacionales con presencia en la región: **Avis, Europcar, Hertz y Sixt**.
+- Reserva con antelación para asegurar disponibilidad y mejores tarifas.
+- Verifica las condiciones del seguro y kilómetros incluidos.
+
+---
+
+## Transporte Público en Cantabria
+
+### Tren
+- La red ferroviaria no es muy extensa pero conecta Santander con ciudades importantes como Bilbao y Madrid con servicios modernos.
+- El tren de Cercanías Santander cubre rutas locales, útil para desplazamientos en la capital.
+- Consulta horarios y compra billetes en la página de **Renfe**; la compra anticipada suele ser más económica.
+
+### Autobuses
+- La empresa principal es **AUTOBUSES LUIS CARLOS REY**, que conecta pueblos y ciudades dentro de Cantabria.
+- También hay rutas interregionales hacia Asturias, País Vasco y Castilla y León.
+- Los billetes se pueden adquirir al conductor o en estaciones principales; algunas líneas permiten compra online.
+- Frecuencia variable, más limitada en fines de semana y festivos.
+
+### Ferris y vuelos internos
+- No existen ferris ni vuelos internos relevantes para desplazarse dentro de Cantabria.
+- Para conexiones aéreas, el aeropuerto de Santander ofrece vuelos nacionales y algunos internacionales.
+
+### Aplicaciones útiles para moverse
+- **Renfe Cercanías:** para información y billetes de trenes regionales.
+- **Moovit y Google Maps:** para planificar rutas en transporte público.
+- Aplicaciones de las compañías de autobuses locales permiten verificar horarios en tiempo real.
+
+### Consejos para billetes y reservas
+- Compra los billetes con anticipación en temporada alta para asegurar plaza.
+- Consulta posibles tarjetas o bonos de transporte que proporcionen descuentos.
+- Llega siempre con tiempo suficiente a las paradas y estaciones, ya que la frecuencia puede ser baja en ciertas rutas.
+
+---
+
+## Conclusión
+
+Tanto el coche de alquiler como el transporte público ofrecen ventajas concretas para descubrir Cantabria. Si buscas flexibilidad y acceso a zonas remotas, el coche es la mejor opción. Para un viaje más sostenible y sin preocupaciones de parking o peajes, las opciones de tren y autobús tienen buen soporte, especialmente en las rutas principales. Prepara tu viaje con anticipación y disfruta de una experiencia sin contratiempos.
+
+---
+
+### Información de contacto y recursos útiles
+- Renfe: www.renfe.com
+- Empresa de autobuses local: www.autocaresrey.com
+- Alquiler de coches: www.avis.es | www.europcar.es | www.hertz.es | www.sixt.es
+- Turismo Cantabria: www.turismodecantabria.com
+
+---</div>
+      </div>
+    </div>
+
+    <!-- SOLAPA 4: CONSEJOS DEL DESTINO -->
+    <div id="page-consejos" class="page">
+      <div class="page-header">
+        <span class="page-icon">💡</span>
+        <h2 class="page-title">Consejos del Destino</h2>
+      </div>
+      <div class="card">
+        <div class="card-body"># Guía de Viaje a Cantabria
+
+---
+
+## 1. Climatología  
+Cantabria tiene un clima oceánico, caracterizado por inviernos suaves y veranos frescos. La región recibe abundantes lluvias durante todo el año, con mayor frecuencia en otoño y primavera. Las temperaturas varían entre 8 °C en invierno y 24 °C en verano, creando un ambiente ideal para disfrutar de la naturaleza en cualquier estación.
+
+## 2. Mejor época para viajar  
+La primavera (abril-junio) y el verano (julio-septiembre) son las mejores temporadas para visitar Cantabria, gracias a temperaturas agradables y días soleados. El otoño ofrece paisajes espectaculares con tonos cálidos, aunque es más húmedo. El invierno es templado, pero puede presentar lluvias frecuentes que limitan las actividades al aire libre.
+
+## 3. Vacunas y salud  
+No se requieren vacunas especiales para viajar a Cantabria. Se recomienda tener el calendario de vacunación habitual al día. La región cuenta con una buena infraestructura sanitaria, con hospitales y centros médicos accesibles. Es aconsejable contratar un seguro de viaje que cubra asistencia médica y eventualidades.
+
+## 4. Seguridad para turistas  
+Cantabria es una región segura para el turista, con bajos índices de criminalidad. Es conveniente mantener precauciones básicas como vigilar los objetos personales y evitar zonas poco transitadas de noche. Los deslizamientos en caminos rurales pueden ocurrir tras lluvias intensas, por lo que se recomienda consultar el estado de vías locales.
+
+## 5. Moneda y pagos  
+La moneda oficial es el euro (€). La mayoría de los establecimientos turísticos aceptan tarjetas de crédito y débito, aunque en pueblos pequeños es habitual el uso de efectivo. Se aconseja llevar algo de efectivo para lugares sin acceso a terminales y cambiar moneda en bancos o casas oficiales para evitar comisiones elevadas.
+
+## 6. Costumbres culturales importantes  
+Los cántabros valoran la amabilidad y la cortesía, por lo que es recomendable saludar al entrar en tiendas o restaurantes. La siesta sigue vigente en ciertas zonas, con comercios cerrando después del mediodía. Las festividades locales, como las ferias tradicionales, representan una oportunidad para apreciar la cultura regional, especialmente la música, la danza y la artesanía.
+
+## 7. Gastronomía típica  
+La cocina cántabra destaca por su sabor natural y productos frescos del mar y la montaña. No deje de probar el cocido montañés, las rabas (calamares fritos), la anchoa de Santoña y los sobaos pasiegos como postre. Además, quesos artesanales y el orujo son opciones imperdibles para los amantes de la gastronomía regional.
+
+## 8. Compras recomendadas  
+Artesanías en madera y cerámica, productos gourmet como miel, quesos y conservas de pescado son souvenirs ideales. En las boutiques y mercados locales encontrará prendas de lana y objetos inspirados en la tradición pasiega. Recuerde que algunos mercados abren solo en días específicos de la semana.
+
+## 9. Consejos prácticos para viajeros  
+- Use calzado cómodo y preparado para caminar en terrenos húmedos.  
+- Consulte siempre el pronóstico del tiempo antes de excursiones al aire libre.  
+- Reserve alojamiento y actividades con anticipación en temporada alta.  
+- Lleve un adaptador de enchufe tipo F, el estándar europeo.  
+- Aprenda algunas frases básicas en español para facilitar la comunicación.
+
+## 10. Qué evitar como turista  
+Evite intervenir en celebraciones tradicionales sin invitación o conocimientos sobre el evento. No interrumpa la vida rural y natural tomando fotografías en propiedades privadas sin permiso. Asimismo, procure no alimentarse en exceso de comida de calle para prevenir molestias estomacales.
+
+## 11. Apps útiles para viajar  
+- **Renfe Cercanías:** para información y horarios del transporte ferroviario.  
+- **AEMET:** pronóstico meteorológico oficial de España.  
+- **Google Maps:** navegación y acceso a puntos de interés locales.  
+- **Traductor de Google:** para traducción instantánea de textos y conversaciones.  
+- **TripAdvisor:** opiniones y recomendaciones sobre restaurantes y actividades.
+
+## 12. Consejos sobre internet y conectividad  
+Cantabria cuenta con cobertura móvil adecuada en áreas urbanas y turísticas, pero en zonas rurales puede ser limitada. Se recomienda adquirir una tarjeta SIM local para reducir costos y mejorar el acceso. Muchos alojamientos y establecimientos ofrecen Wi-Fi gratuito; sin embargo, evite compartir información sensible en redes públicas sin protección.
+
+---
+
+**Disfrute de Cantabria con responsabilidad y respeto por su cultura y entorno natural, para una experiencia inolvidable.**</div>
+      </div>
+    </div>
+
+    <!-- SOLAPA 5: BLOGS -->
+    <div id="page-blogs" class="page">
+      <div class="page-header">
+        <span class="page-icon">📰</span>
+        <h2 class="page-title">Blogs Recomendados</h2>
+      </div>
+      <div class="card">
+        <div class="card-body">---
+# Guía de Recursos Online para Viajar a Cantabria
+
+---
+
+## 1. Blogs de Viaje Recomendados
+
+### 1.1 Viajar por Cantabria  
+**Descripción:** Blog especializado en turismo por Cantabria que ofrece guías detalladas, recomendaciones de lugares poco conocidos, gastronomía local y eventos culturales.  
+**Utilidad:** Ideal para disponer de información actualizada y consejos prácticos directamente sobre Cantabria, basados en experiencias reales y locales.  
+
+### 1.2 Mi Viaje por Cantabria  
+**Descripción:** Blog personal con relatos y fotografías de rutas senderistas, playas, y patrimonio histórico en Cantabria.  
+**Utilidad:** Perfecto para viajeros interesados en la naturaleza y actividades al aire libre, con itinerarios claros y accesibles.  
+
+### 1.3 El Pachinko (sección Cantabria)  
+**Descripción:** Blog de viajes con una sección dedicada a Cantabria donde se combinan aspectos culturales, turísticos y gastronómicos.  
+**Utilidad:** Ofrece un enfoque más amplio que combina turismo rural y urbano con recomendaciones actuales.  
+
+---
+
+## 2. Foros y Comunidades de Viajeros
+
+### 2.1 TripAdvisor - Foro de Cantabria  
+**Descripción:** Comunidad activa con preguntas y respuestas sobre alojamiento, actividades, restaurantes y consejos de viaje en Cantabria.  
+**Utilidad:** Ideal para resolver dudas específicas y obtener opiniones actualizadas de viajeros y locales.  
+[Acceder al foro](https://www.tripadvisor.es/ShowForum-g187453-i2360-Cantabria.html)
+
+### 2.2 Lonely Planet Thorn Tree - Sección España / Cantabria  
+**Descripción:** Foro de viajeros internacional donde se pueden encontrar hilos dedicados a Cantabria con sugerencias detalladas y debates.  
+**Utilidad:** Plataforma global que facilita información multicultural y consejos prácticos para todo tipo de viajeros.  
+[Acceder al foro](https://www.lonelyplanet.com/thorntree/forums/europe-western-europe/spain)
+
+### 2.3 El Rincón del Viajero - Foro España  
+**Descripción:** Foro en español donde usuarios comparten experiencias y consejos sobre viajes en España, incluyendo Cantabria.  
+**Utilidad:** Muy útil para recibir información directa de comunidades hispanohablantes, con enfoque en itinerarios y logística.  
+[Acceder al foro](https://www.elrincondelviajero.com/foro)
+
+---
+
+## 3. Canales de YouTube Útiles
+
+### 3.1 Cantabria Infinita  
+**Descripción:** Canal oficial de promoción turística de Cantabria que publica videos de alta calidad sobre destinos, cultura y eventos.  
+**Utilidad:** Fuente confiable para conocer visualmente los atractivos turísticos y planificar visitas.  
+[Visitar canal](https://www.youtube.com/user/CantabriaInfinita)
+
+### 3.2 La Ruta Natural  
+**Descripción:** Canal dedicado a rutas senderistas y naturaleza con numerosos vídeos grabados en Cantabria.  
+**Utilidad:** Perfecto para explorar opciones de senderismo y áreas naturales con descripciones detalladas y consejos prácticos.  
+[Visitar canal](https://www.youtube.com/user/LaRutaNatural)
+
+### 3.3 Guia-cantabria  
+**Descripción:** Canal con vídeos de puntos de interés, eventos y recomendaciones gastronómicas en Cantabria.  
+**Utilidad:** Complementa la planificación con recomendaciones locales y atractivos culturales.  
+[Visitar canal](https://www.youtube.com/channel/UCRdTFQWq5_jQVxkz0XK56Uw)
+
+---
+
+## 4. Recursos para Organizar Rutas
+
+### 4.1 Wikiloc  
+**Descripción:** Plataforma y app donde usuarios comparten rutas de senderismo, ciclismo y turismo aventura, con muchas propuestas en Cantabria.  
+**Utilidad:** Permite descargar mapas, obtener condiciones y leer opiniones que ayudan a planificar salidas seguras y adaptadas al nivel deseado.  
+[Acceder a Wikiloc Cantabria](https://es.wikiloc.com/rutas/senderismo/cantabria)
+
+### 4.2 Google Maps  
+**Descripción:** Servicio de mapas e itinerarios con puntos de interés, reseñas y rutas personalizadas en Cantabria.  
+**Utilidad:** Herramienta esencial para planificar desplazamientos, encontrar restaurantes, miradores y valorar tiempos de viaje.  
+[Acceder a Google Maps](https://www.google.com/maps)
+
+### 4.3 RouteYou  
+**Descripción:** Plataforma especializada en rutas para bici, senderismo y motor, con mapas e información detallada sobre Cantabria.  
+**Utilidad:** Ideal para usuarios que buscan rutas bien descritas y estructura para crear planes diarios.  
+[Acceder a RouteYou](https://es.routeyou.com/)
+
+---
+
+## 5. Apps Útiles para el Destino
+
+### 5.1 Cantabria Infinita (Oficial)  
+**Descripción:** Aplicación oficial de turismo de Cantabria que ofrece información sobre alojamientos, actividades, eventos y rutas.  
+**Utilidad:** Herramienta integral para descubrir y reservar experiencias, con datos siempre actualizados y accesibles offline.  
+
+### 5.2 OruxMaps  
+**Descripción:** Aplicación de mapas offline y navegación GPS, muy utilizada para senderismo y rutas en zonas rurales como Cantabria.  
+**Utilidad:** Fundamental para quienes practican senderismo o ciclismo, ofrece trackeo y soporte en lugares con poca cobertura.  
+
+### 5.3 El Tiempo de AEMET  
+**Descripción:** App oficial de la Agencia Estatal de Meteorología de España que proporciona pronósticos detallados, alertas y condiciones meteorológicas.  
+**Utilidad:** Imprescindible para planificar actividades al aire libre y evitar contratiempos climáticos en Cantabria.  
+
+---
+
+Este conjunto de recursos facilitará la preparación minuciosa de su viaje a Cantabria, permitiendo disfrutar al máximo de su riqueza natural, cultural y gastronómica con seguridad y comodidad.  
+
+¡Buen viaje!  
+
+---
+
+[Volver al índice](#)
+
+---</div>
+      </div>
+    </div>
+
+    <!-- SOLAPA 6: LIBROS -->
+    <div id="page-libros" class="page">
+      <div class="page-header">
+        <span class="page-icon">📚</span>
+        <h2 class="page-title">Lecturas recomendadas</h2>
+      </div>
+      <div class="card">
+        <div class="card-body">---
+
+# Cantabria: Recomendaciones Culturales Esenciales  
+
+Para descubrir la esencia de Cantabria más allá de sus paisajes, te proponemos una selección de obras literarias, cinematográficas y documentales que ofrecen perspectivas enriquecedoras sobre su historia, tradición y vida cotidiana. Ideal para viajeros que desean sumergirse en la cultura regional antes o durante su visita.
+
+---
+
+## Libros Recomendados  
+
+### 1. **Los mares del Sur** – Manuel Vázquez Montalbán  
+Una novela de misterio ambientada en Cantabria que combina thriller y crítica social.  
+*¿Por qué leerlo?* Refleja la atmósfera urbana de Santander y transporta al lector a su enclave costero con un enfoque contemporáneo y cultural.
+
+### 2. **Cuatro estaciones en la vida de un pájaro** – Antonio Colinas  
+Una obra poética que capta los paisajes y la naturaleza cántabra en sus distintas estaciones.  
+*¿Por qué leerlo?* Permite apreciar la conexión profunda entre la tierra y su gente, con una mirada intimista sobre el entorno natural de Cantabria.
+
+### 3. **El sueño de Escipión** – César Pérez Gellida  
+Thriller histórico que contiene pasajes relacionados con la historia de la región y su importancia en la Edad Antigua.  
+*¿Por qué leerlo?* Ayuda a contextualizar la presencia romana y la evolución histórica que influyó en Cantabria.
+
+### 4. **La niña sin nombre** – José Luis García Martín  
+Novela que aborda recuerdos y tradiciones de la vida rural cántabra.  
+*¿Por qué leerlo?* Retrata la realidad campesina y la tradición oral, fundamentales para entender el patrimonio cultural local.
+
+### 5. **Cuentos del Norte de España** – Varios autores  
+Antología que recoge relatos y leyendas populares propias de Cantabria y regiones cercanas.  
+*¿Por qué leerlo?* Ofrece una oportunidad para acercarse al folklore y el imaginario colectivo de sus habitantes.
+
+---
+
+## Películas Fundamentales  
+
+### 1. **La fuente del deseo** (2001) – Manuel Gutiérrez Aragón  
+Drama que muestra el entorno urbano y los paisajes naturales de Cantabria.  
+*¿Por qué verla?* Retrata las tradiciones y conflictos personales enmarcados en un contexto regional muy reconocible.
+
+### 2. **El Pico** (1983) – Eloy de la Iglesia  
+Clásico del cine español ambientado en la juventud urbana de Santander durante los años 80.  
+*¿Por qué verla?* Es un documento sociológico que ofrece una mirada cruda a la vida cántabra reciente, con trasfondo social y cultural.
+
+### 3. **Las Mocedades de Ulises** (1996) – Montxo Armendáriz  
+Película en la que aparecen localizaciones cántabras y se reflejan aspectos del oficio de la pesca tradicional.  
+*¿Por qué verla?* Ayuda a conocer el modo de vida marinero aún vigente y su importancia económica y cultural.
+
+### 4. **Chosen** (2023) – Película de suspense rodada parcialmente en Cantabria  
+Suspense que utiliza los bosques y cuevas de la región como escenario fundamental.  
+*¿Por qué verla?* Destaca la belleza natural y la atmósfera misteriosa de la orografía cántabra.
+
+### 5. **Los últimos días en la Tierra** (1975) – Documental ficcionado de producción local  
+Un acercamiento a las costumbres y tradiciones rurales en el Cantabria profunda.  
+*¿Por qué verla?* Testimonio audiovisual del estilo de vida tradicional que aún persiste en muchas zonas de la región.
+
+---
+
+## Documentales Imprescindibles  
+
+### 1. **Cantabria: tierra de historia y naturaleza** (2021)  
+Un paseo visual por las cuevas prehistóricas de Altamira, las montañas y las costas cántabras.  
+*¿Por qué verlo?* Fascinante para descubrir la riqueza arqueológica y paisajística, clave para comprender la identidad regional.
+
+### 2. **La Cueva de Altamira: El Santuario de la Prehistoria** (2019)  
+Documental centrado en la famosa cueva y sus pinturas rupestres reconocidas mundialmente.  
+*¿Por qué verlo?* Permite apreciar el patrimonio cultural universal que posee Cantabria y la conexión humana con el arte primitivo.
+
+### 3. **Potes y el Valle de Liébana: Corazón de Cantabria** (2020)  
+Explora la gastronomía, festividades y tradiciones del valle como reflejo del alma rural cántabra.  
+*¿Por qué verlo?* Una invitación a entender los valores locales y su forma de vida auténtica y ancestral.
+
+---
+
+**Descubre Cantabria de la mano de sus voces literarias, su cine y sus imágenes documentales para vivir una experiencia cultural completa y significativa.**  
+
+---</div>
+      </div>
+    </div>
+
+    <!-- SOLAPA 7: MAPA -->
+    <div id="page-mapa" class="page">
+      <div class="page-header">
+        <span class="page-icon">🗺️</span>
+        <h2 class="page-title">Mapa de Ruta</h2>
+      </div>
+      <div class="map-box">
+        <div style="font-size: 40px;">📍</div>
+        <h3 class="cta-title">¿Listo para comenzar el recorrido?</h3>
+        <p class="cta-sub">Haz clic abajo para abrir Google Maps con todas las paradas y hoteles organizados.</p>
+     
+<a href="https://google.comPlaya%20del%20Sardinero%2C%20Santander%2C%C2%A0Palacio%20de%20la%20Magdalena%2C%20Santander%2C%C2%A0Paseo%20de%20Pereda%2C%20Santander%2C%C2%A0Gran%20Hotel%20Sardinero%2C%20Santander%2C%C2%A0Dunas%20de%20Liencres%2C%20Santander%2C%C2%A0Santillana%20del%20Mar%2C%20Cantabria%2C%C2%A0Colegiata%20de%20Santa%20Juliana%2C%20Santillana%20del%20Mar%2C%C2%A0El%20Castillo%2C%20Santillana%20del%20Mar%2C%C2%A0Hotel%20Villa%20de%20Santillana%2C%20Santillana%20del%20Mar%2C%C2%A0Museo%20y%20Cueva%20de%20Altamira%2C%20Santillana%20del%20Mar%2C%C2%A0Capricho%20de%20Gaud%C3%AD%2C%20Comillas%2C%C2%A0Palacio%20de%20Sobrellano%2C%20Comillas%2C%C2%A0Marucho%2C%20Comillas%2C%C2%A0Hotel%20Marqu%C3%A9s%20de%20Comillas%2C%20Comillas%2C%C2%A0Parque%20Natural%20Saja-Besaya%2C%20Cantabria%2C%C2%A0B%C3%A1rcena%20Mayor%2C%20Cantabria%2C%C2%A0Posada%20La%20Casa%20del%20Agua%2C%20B%C3%A1rcena%20Mayor%2C%C2%A0Fuente%20D%C3%A9%2C%20Cantabria%2C%C2%A0Telef%C3%A9rico%20de%20Fuente%20D%C3%A9%2C%20Cantabria%2C%C2%A0Potes%2C%20Cantabria%2C%C2%A0Casa%20Cayo%2C%20Potes%2C%C2%A0Parador%20de%20Fuente%20D%C3%A9%2C%20Cantabria%2C%C2%A0Parque%20Natural%20de%20Oyambre%2C%20Cantabria%2C%C2%A0Castillo%20de%20San%20Vicente%20de%20la%20Barquera%2C%20San%20Vicente%20de%20la%20Barquera%2C%C2%A0El%20Remedio%2C%20San%20Vicente%20de%20la%20Barquera%2C%C2%A0Hotel%20Don%20Pablo%2C%20San%20Vicente%20de%20la%20Barquera%2C%C2%A0Pen%C3%ADnsula%20de%20la%20Magdalena%2C%20Santander%2C%C2%A0Centro%20Bot%C3%ADn%2C%20Santander." target="_blank" class="btn-maps">
+
+
+
+
+
+
+
+          <span>🚀 Abrir Ruta en Google Maps</span>
+        </a>
+      </div>
+    </div>
+
+  </div> <!-- Cierre del contenedor .pages -->
+
+  <!-- ── FOOTER MÍNIMO ── -->
+  <div class="footer-mini">
+    Generado por <a href="https://guiamundi.es" target="_blank">GuiaMundi.es</a>
+  </div>
+
+  <!-- ── SCRIPT INTERACTIVO DINÁMICO ── -->
+  <script>
+    function switchTab(tabId) {
+      // Ocultar todas las páginas
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      // Quitar clase activa de todos los botones
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      
+      // Mostrar la página seleccionada
+      const targetPage = document.getElementById('page-' + tabId);
+      if (targetPage) targetPage.classList.add('active');
+      
+      // Activar el botón correspondiente de forma dinámica
+      const targetBtn = document.querySelector(`[onclick="switchTab('${tabId}')"]`);
+      if (targetBtn) targetBtn.classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
