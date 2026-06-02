@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Tu Guía – ALMERÍA | GuiaMundi.es</title>
+<link rel="apple-touch-icon" href="URL_LOGO">
+<link rel="icon" type="image/png" href="URL_LOGO">
+<link href="https://googleapis.com" rel="stylesheet">
+<style>
+  :root {
+    --sand: #F5F0E8;
+    --ink: #1C1917;
+    --ink-soft: #44403C;
+    --ink-muted: #78716C;
+    --gold: #B45309;
+    --gold-light: #FEF3C7;
+    --teal: #0F766E;
+    --teal-light: #CCFBF1;
+    --coral: #C2410C;
+    --coral-light: #FFF7ED;
+    --white: #FAFAF9;
+    --border: #D6CFC0;
+    --header-h: 200px;
+    --tabs-h: 56px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { height: 100%; }
+
+  body {
+    background: var(--sand);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    font-size: 15px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── HEADER PORTADA ── */
+  .header {
+    background: var(--ink);
+    padding: 2.5rem 1.5rem 1.75rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(255,255,255,0.015) 40px, rgba(255,255,255,0.015) 80px);
+  }
+  .header-brand {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #D4A853;
+    margin-bottom: 0.6rem;
+    position: relative;
+  }
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 5vw, 2.6rem);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--white);
+    position: relative;
+  }
+  .header h1 em { font-style: italic; color: #D4A853; }
+  .header-meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 1.5rem;
+    margin-top: 1rem;
+    font-size: 12px;
+    color: #A8A29E;
+    position: relative;
+  }
+  .header-meta span { display: flex; align-items: center; gap: 5px; }
+  .header-meta svg { width: 12px; height: 12px; opacity: 0.6; }
+
+  /* ── TABS BAR ── */
+  .tabs-bar {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+    flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+  }
+  .tabs-bar::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    padding: 10px 16px 8px;
+    font-size: 11px;
+    font-weight: 400;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--ink-muted);
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: color 0.15s, border-color 0.15s;
+    min-width: 64px;
+  }
+  .tab-btn .tab-icon { font-size: 18px; line-height: 1; }
+  .tab-btn.active {
+    color: var(--ink);
+    border-bottom-color: #D4A853;
+    font-weight: 500;
+  }
+  .tab-btn:hover { color: var(--ink); }
+
+   <!-- ── PÁGINAS CORREGIDAS ── -->
+  <div class="pages">
+
+    <!-- SOLAPA 1: INICIO -->
+    <div id="page-inicio" class="page active">
+      <div class="resumen-box">
+        <h2>Tu viaje a <em>ALMERÍA</em></h2>
+        <div class="resumen-datos">
+          <div class="resumen-dato">
+            <div class="rd-label">Destino</div>
+            <div class="rd-value">ALMERÍA</div>
+          </div>
+          <div class="resumen-dato">
+            <div class="rd-label">Duración</div>
+            <div class="rd-value">Guía Premium</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="seccion-titulo">Acceso Rápido</div>
+      <div class="inicio-cards">
+        <div class="inicio-card" onclick="switchTab('itinerario')">
+          <div class="ic-icon">📅</div>
+          <div class="ic-title">Ver Itinerario</div>
+          <div class="ic-sub">Plan por días</div>
+        </div>
+        <div class="inicio-card" onclick="switchTab('mapa')">
+          <div class="ic-icon">🗺️</div>
+          <div class="ic-title">Mapa de Ruta</div>
+          <div class="ic-sub">Ruta interactiva</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SOLAPA 2: ITINERARIO -->
+    <div id="page-itinerario" class="page">
+      <div class="page-header">
+        <span class="page-icon">📅</span>
+        <h2 class="page-title">Plan de Viaje</h2>
+      </div>
+      <div class="card">
+        <div class="card-body"></div>
+      </div>
+    </div>
+
+    <!-- SOLAPA 3: TRANSPORTE -->
+{
+  "itinerario_texto": "DÍA 1 – Almería\n- Mañana: Llegada a Almería y recogida del coche de alquiler.\n- Tarde: Visita al Alcazaba de Almería, disfrutando de su arquitectura y vistas al mar.\n- Noche: Cena en un restaurante con cocina local en el Casco Antiguo.\n- Alojamiento recomendado: Hotel Catedral Almería.\n\nDÍA 2 – Almería\n- Mañana: Paseo por el casco histórico, incluyendo la Catedral de Almería y el Museo de Almería.\n- Tarde: Excursión al Desierto de Tabernas, descubriendo sus paisajes y el Oasys Mini Hollywood.\n- Noche: Cena tradicional en un restaurante del centro.\n- Alojamiento recomendado: Hotel Catedral Almería.\n\nDÍA 3 – Almería / Níjar / San José\n- Mañana: Salida hacia Níjar, visita a su casco histórico y artesanía local.\n- Tarde: Desplazamiento a San José, en el Parque Natural de Cabo de Gata, paseo por la playa y el pueblo.\n- Noche: Cena frente al mar en San José.\n- Alojamiento recomendado: Hotel Playa Grande, San José.\n\nDÍA 4 – Parque Natural Cabo de Gata\n- Mañana: Ruta en coche por el Parque Natural, con paradas en playas vírgenes como Cala de Enmedio.\n- Tarde: Visita al faro de Cabo de Gata y al pueblo de Las Negras.\n- Noche: Cena con productos frescos del mar.\n- Alojamiento recomendado: Hotel Playa Grande, San José.\n\nDÍA 5 – San José / Almería\n- Mañana: Regreso a Almería con visita al Museo de Arte Doña Pakyta.\n- Tarde: Tiempo libre para compras o relax en la ciudad.\n- Noche: Cena de despedida en restaurante emblemático de Almería.\n- Fin del viaje y devolución del coche.",
+  "puntos_mapa": [
+    "Alcazaba de Almería, Almería",
+    "Catedral de Almería, Almería",
+    "Museo de Almería, Almería",
+    "Desierto de Tabernas, Tabernas",
+    "Oasys Mini Hollywood, Tabernas",
+    "Casco histórico de Níjar, Níjar",
+    "Hotel Catedral Almería, Almería",
+    "San José, Almería",
+    "Hotel Playa Grande, San José",
+    "Parque Natural Cabo de Gata, Almería",
+    "Cala de Enmedio, Parque Natural Cabo de Gata",
+    "Faro de Cabo de Gata, Almería",
+    "Las Negras, Almería",
+    "Museo de Arte Doña Pakyta, Almería"
+  ]
+}    <div id="page-transporte" class="page">
+      <div class="page-header">
+        <span class="page-icon">🚗</span>
+        <h2 class="page-title">Transporte</h2>
+      </div>
+      <div class="card">
+        <div class="card-body">───────────────────────────────
+GUÍA DE TRANSPORTE | ALQUILER DE COCHE EN ALMERÍA
+───────────────────────────────
+
+DESTINO: Almería, Andalucía, España  
+TRANSPORTE: Coche de alquiler
+
+───────────────────────────────
+1. Elección del vehículo adecuado
+───────────────────────────────
+• Tamaño compacto o mediano: Perfecto para moverse por el centro de la ciudad y calles estrechas con facilidad.  
+• Vehículo con aire acondicionado: Fundamental para los meses de verano, dado el clima cálido y seco de Almería.  
+• Diesel o gasolina: Diesel puede ser más eficiente para trayectos largos por carretera.  
+• Extras recomendados: GPS actualizado o app de navegación, seguro ampliado y kilometraje ilimitado.
+
+───────────────────────────────
+2. Características de las carreteras en Almería
+───────────────────────────────
+• Buen estado general: Las principales vías como la A-7 y la A-92 están bien mantenidas y señalizadas.  
+• Vías locales: Algunas carreteras secundarias pueden ser estrechas o con curvas pronunciadas, especialmente en zonas rurales y parques naturales.  
+• Peajes: No existen peajes en las autopistas de acceso a Almería; esto facilita viajes más económicos.  
+• Velocidad: Respete los límites oficiales: 120 km/h en autopistas, 90-100 km/h en carreteras secundarias y urbanos 50 km/h.
+
+───────────────────────────────
+3. Consejos útiles para la conducción
+───────────────────────────────
+• Documentación: Llevar siempre el permiso de conducir vigente, el DNI/passaporte y el contrato de alquiler.  
+• Normativa: En España se conduce por la derecha y se debe respetar rigurosamente la señalización y normas de tráfico.  
+• Alcohol y conducción: La tasa máxima permitida es baja (0,05% de alcohol en sangre). Se recomienda evitar alcohol si se va a conducir.  
+• Seguridad: Uso obligatorio del cinturón de seguridad y prohibido el uso del móvil sin manos libres.  
+• Aparcamiento: En el centro de Almería existen zonas reguladas (zona azul y verde) con parquímetros; hay también aparcamientos subterráneos de pago.
+
+───────────────────────────────
+4. Aparcamiento en Almería
+───────────────────────────────
+• Parking público: Disponibles en zonas céntricas con tarifas razonables por horas o día completo.  
+• Zona azul y verde: Controlada por parquímetros, recomendable para estancias cortas y evitar multas.  
+• Aparcamiento gratuito: Puede encontrarse en las afueras o en algunas áreas menos turísticas, pero siempre verificar señales y restricciones.  
+• Hoteles y alojamientos: Muchos ofrecen plazas de aparcamiento, solicitar confirmación previa y posibles costes adicionales.
+
+───────────────────────────────
+5. Empresas internacionales de alquiler recomendadas
+───────────────────────────────
+• Avis  
+• Europcar  
+• Hertz  
+• Enterprise  
+• Sixt
+
+Consejo: Reservar con antelación online en sitios oficiales o portales confiables para obtener mejores condiciones y disponibilidad.
+
+───────────────────────────────
+RESUMEN PRÁCTICO
+───────────────────────────────
+✓ Elige un vehículo compacto con aire acondicionado.  
+✓ Conduce respetando las normas locales, especialmente velocidad y alcohol.  
+✓ No te preocupes por peajes; las carreteras principales son gratuitas.  
+✓ Aparca en zonas permitidas y paga parquímetros en áreas reguladas.  
+✓ Reserva el coche con anticipación en empresas consolidadas para evitar imprevistos.
+
+───────────────────────────────
+CONTACTOS ÚTILES
+───────────────────────────────
+• Oficina de turismo de Almería: +34 950 211 123  
+• Emergencias: 112  
+• Información de tráfico: www.dgt.es  
+
+───────────────────────────────
+¡Disfruta de Almería con total libertad y seguridad al volante!
+
+───────────────────────────────
+© Guía de Transporte Internacional 2024  
+───────────────────────────────</div>
+      </div>
+    </div>
+
+    <!-- SOLAPA 4: CONSEJOS DEL DESTINO -->
+    <div id="page-consejos" class="page">
+      <div class="page-header">
+        <span class="page-icon">💡</span>
+        <h2 class="page-title">Consejos del Destino</h2>
+      </div>
+      <div class="card">
+        <div class="card-body">---
+# Guía Profesional de Viaje: Almería
+
+---
+
+## 1. Climatología
+
+Almería disfruta de un clima mediterráneo semiárido, caracterizado por veranos calurosos y secos e inviernos suaves y breves. La temperatura media anual ronda los 18 °C, con máximas que pueden superar los 30 °C en verano y mínimas suaves en invierno, raramente por debajo de 8 °C. Las precipitaciones son escasas, concentrándose principalmente en otoño y primavera.
+
+---
+
+## 2. Mejor Época para Viajar
+
+La primavera (abril a junio) y el otoño (septiembre y octubre) son los momentos ideales para visitar Almería. Durante estas estaciones, el clima es agradable y templado, perfecto para explorar sus playas, desiertos y monumentos sin el intenso calor estival. El verano es para quienes buscan sol y playa, aunque las temperaturas pueden ser elevadas.
+
+---
+
+## 3. Vacunas y Salud
+
+No se requieren vacunas especiales para viajar a Almería, aunque se recomienda estar al día con las vacunas habituales, como tétanos y gripe. La zona cuenta con servicios sanitarios públicos y privados de calidad. Se aconseja llevar un pequeño botiquín personal, protector solar y mantenerse hidratado.
+
+---
+
+## 4. Seguridad para Turistas
+
+Almería es una ciudad segura para los visitantes. La delincuencia es baja, especialmente en zonas turísticas. Se recomienda tomar las precauciones habituales: cuidar objetos personales, evitar calles solitarias de noche y usar transporte autorizado. Ante cualquier emergencia, el número nacional es el 112.
+
+---
+
+## 5. Moneda y Pagos
+
+La moneda oficial es el euro (€). El uso de tarjetas de crédito y débito es generalizado en hoteles, restaurantes y comercios. Es recomendable llevar algo de efectivo para pequeños gastos o mercados locales. Los cajeros automáticos están ampliamente disponibles en la ciudad.
+
+---
+
+## 6. Costumbres Culturales Importantes
+
+Los almerienses valoran la amabilidad, la puntualidad y el respeto por las tradiciones. El saludo habitual es un apretón de manos o un beso en ambas mejillas entre conocidos. Durante las festividades religiosas y locales, como la Feria de Almería, se vive un ambiente muy cordial. Es habitual el descanso durante la siesta, con comercios cerrados en horas centrales.
+
+---
+
+## 7. Gastronomía Típica
+
+La cocina almeriense destaca por su sencillez y uso de productos frescos: el tomate raf, el ajo, el pimiento y el pescado fresco son protagonistas. Platos recomendados incluyen el gurullos con conejo, el caldero del Mar Menor y las migas del pastor. No hay que perderse los mariscos y los dulces como las tortas de aceite.
+
+---
+
+## 8. Compras Recomendadas
+
+Para llevar un recuerdo auténtico, se aconseja adquirir productos como:
+
+- Aceite de oliva virgen extra de la región.
+- Artesanía en cerámica y forja.
+- Productos gastronómicos locales, como el jamón serrano o vinos de la comarca.
+- Textiles con diseños tradicionales.
+  
+Los mercados y tiendas del centro ofrecen variedad y calidad.
+
+---
+
+## 9. Consejos Prácticos para Viajeros
+
+- Llevar ropa ligera, pero incluir prendas para las noches frescas.
+- Protegerse del sol con gorra y protector solar.
+- Reservar alojamiento con antelación, especialmente en temporada alta.
+- Informarse sobre horarios de transporte público y festividades locales.
+- Probar la bicicleta o el senderismo para explorar el entorno natural.
+
+---
+
+## 10. Qué Evitar Como Turista
+
+- Evitar zonas poco concurridas durante la noche.
+- No dejar objetos de valor a la vista en vehículos o alojamientos.
+- No intentar duchas o baños en playas con bandera roja o indicaciones de peligro.
+- Evitar discutir o mostrar conductas irrespetuosas hacia las tradiciones locales.
+
+---
+
+## 11. Apps Útiles para Viajar
+
+- **Google Maps**: para navegación y transporte.
+- **MyTaxi/Free Now**: para solicitar taxis.
+- **El Tiempo**: para pronósticos meteorológicos.
+- **TripAdvisor**: recomendaciones de restaurantes y actividades.
+- **Google Translate**: traducción instantánea, útil si no domina el español.
+
+---
+
+## 12. Consejos sobre Internet y Conectividad
+
+Almería ofrece buena conectividad móvil y Wi-Fi en alojamientos, restaurantes y cafés. Recomendable adquirir una tarjeta SIM local para datos ilimitados si se planea movilidad frecuente, con operadores nacionales que ofrecen cobertura fiable. Mantener dispositivos cargados y usar redes seguras para proteger la información personal.
+
+---
+
+*Disfrute de Almería con esta guía práctica y elegante, para una experiencia inolvidable en uno de los destinos más cautivadores del sur de España.*
+
+---</div>
+      </div>
+    </div>
+
+    <!-- SOLAPA 5: BLOGS -->
+    <div id="page-blogs" class="page">
+      <div class="page-header">
+        <span class="page-icon">📰</span>
+        <h2 class="page-title">Blogs Recomendados</h2>
+      </div>
+      <div class="card">
+        <div class="card-body">---
+
+# Guía de Recursos Online para Viajar a ALMERÍA
+
+---
+
+## 1. Blogs de Viaje Recomendados
+
+### *Mis Viajes por España*
+Un blog especializado en destinos españoles con contenido detallado sobre Almería, desde sus playas hasta su patrimonio cultural.  
+**Por qué es útil:** Presenta guías actualizadas, consejos locales y rutas poco conocidas, ideales para quienes buscan explorar lugares más auténticos.
+
+### *Viajar Low Cost*
+Blog dedicado a viajar con presupuesto reducido, incluye experiencias y recomendaciones prácticas en Almería, como alojamientos económicos y transporte.  
+**Por qué es útil:** Perfecto para viajeros que desean disfrutar Almería sin gastar mucho, con opiniones reales y alternativas para ahorrar.
+
+### *El Diario de Ruta*
+Narrativas personales y fotografías inspiradoras de varios destinos en Andalucía, incluyendo reportajes especiales sobre el desierto de Tabernas y la costa de Almería.  
+**Por qué es útil:** Ayuda a planificar visitas con un enfoque cultural y ambiental, enriquecido con mapas y fotografías que muestran lo esencial del destino.
+
+---
+
+## 2. Foros y Comunidades de Viajeros
+
+### *TripAdvisor – Foro Almería*  
+[TripAdvisor Foros - Almería](https://www.tripadvisor.es/ShowForum-g187439-i919-Almeria_Province_Andalucia.html)  
+Una comunidad activa donde viajeros comparten preguntas, recomendaciones actualizadas y experiencias sobre Almería.  
+**Por qué es útil:** Ideal para resolver dudas específicas, obtener consejos recientes y leer opiniones sobre alojamientos, restaurantes y actividades.
+
+### *Lonely Planet Thorn Tree*  
+[Lonely Planet Thorn Tree](https://www.lonelyplanet.com/thorntree) (buscar foro Almería)  
+Una plataforma internacional para viajeros con debates y sugerencias sobre Almería, que abordan desde seguridad hasta transporte.  
+**Por qué es útil:** Permite intercambiar información con turistas experimentados y locales, ofreciendo perspectivas variadas.
+
+### *Reddit r/SpainTravel*  
+[Reddit r/SpainTravel](https://www.reddit.com/r/SpainTravel/)  
+Comunidad global de viajeros a España donde se pueden encontrar recomendaciones y novedades relacionadas con Almería.  
+**Por qué es útil:** Espacio dinámico para consultas rápidas, itinerarios y consejos prácticos basados en experiencias recientes.
+
+---
+
+## 3. Canales de YouTube Útiles
+
+### *Andalucía Travel*  
+[Canal Andalucía Travel](https://www.youtube.com/user/andaluciatravel)  
+Canal oficial con vídeos sobre rutas, monumentos y festivales en Almería y otras provincias andaluzas.  
+**Por qué es útil:** Vídeos profesionales que muestran atractivos turísticos y eventos locales, facilitando la visualización previa del viaje.
+
+### *Visit Spain*  
+[Visit Spain YouTube](https://www.youtube.com/user/Spain)  
+Canal de promoción turística oficial de España con contenidos variados que incluyen la belleza natural y cultural de Almería.  
+**Por qué es útil:** Información oficial y actualizada que ayuda a planificar actividades y descubrir rincones destacados.
+
+### *Viajeros Callejeros*  
+[Viajeros Callejeros](https://www.youtube.com/c/ViajerosCallejeros)  
+Canal con vídeos de viajes personales en España, incluyendo tutoriales y recorridos por Almería, combinando historia y gastronomía.  
+**Por qué es útil:** Ofrece recomendaciones reales con enfoque práctico sobre qué ver y hacer, ideales para preparar una agenda personalizada.
+
+---
+
+## 4. Recursos para Organizar Rutas
+
+### *Komoot*  
+[Komoot](https://www.komoot.com/)  
+Aplicación y plataforma web para planificar rutas de senderismo, ciclismo y excursiones en Almería, con mapas offline y descripciones detalladas.  
+**Por qué es útil:** Muy útil para explorar el Parque Natural Cabo de Gata, el desierto de Tabernas y rutas menos transitadas, adaptando la duración y dificultad.
+
+### *Wikiloc*  
+[Wikiloc](https://es.wikiloc.com/rutas-senderismo)  
+Comunidad global que comparte rutas GPS certificadas; cuenta con muchas propuestas para Almería, desde playas hasta montaña.  
+**Por qué es útil:** Permite descargar trayectos con información práctica (distancia, desnivel, puntos de interés), facilitando la aventura al aire libre.
+
+### *Google My Maps*  
+[Google My Maps](https://www.google.com/mymaps)  
+Herramienta para crear mapas personalizados que incorporan puntos turísticos, restaurantes y alojamientos en Almería.  
+**Por qué es útil:** Perfecto para organizar itinerarios propios, visualizar distancias y compartir planes con compañeros de viaje.
+
+---
+
+## 5. Apps Útiles para el Destino
+
+### *Almería Turismo*  
+App oficial de turismo de la provincia, con información práctica sobre eventos, monumentos, itinerarios y servicios.  
+**Por qué es útil:** Acceso rápido a información local y actualizaciones en tiempo real, facilita orientarse y descubrir actividades.
+
+### *Citymapper*  
+[Citymapper](https://citymapper.com/)  
+Aplicación de movilidad urbana que ayuda a planificar trayectos dentro de Almería en transporte público, bici o a pie.  
+**Por qué es útil:** Simplifica el traslado dentro de la ciudad y conexión con zonas turísticas, optimizando tiempos y costos.
+
+### *Google Translate*  
+[Google Translate](https://translate.google.com/)  
+Herramienta de traducción cuando es necesario comunicarse con locales y leer señalizaciones sin dominar el idioma.  
+**Por qué es útil:** Fundamental para cualquier viaje internacional, mejora la experiencia y reduce problemas por el idioma.
+
+---
+
+**Preparar un viaje a Almería con estas herramientas enriquecerá tu experiencia, permitiéndote descubrir cada rincón con seguridad y conocimiento. ¡Buen viaje!**
+
+---
+
+**Para acceso directo a los recursos mencionados, consulte la versión digital de esta guía con enlaces integrados.**</div>
+      </div>
+    </div>
+
+    <!-- SOLAPA 6: LIBROS -->
+    <div id="page-libros" class="page">
+      <div class="page-header">
+        <span class="page-icon">📚</span>
+        <h2 class="page-title">Lecturas recomendadas</h2>
+      </div>
+      <div class="card">
+        <div class="card-body">---
+
+# Guía Cultural de Almería
+
+## Recomendaciones para Descubrir la Esencia de Almería  
+
+Almería, en el sureste de España, es una tierra de contrastes: desierto y mar, historia milenaria y cine de leyenda. Para comprender su alma única, hemos seleccionado una cuidada colección de libros, películas y documentales que permiten sumergirse en su cultura, paisajes y tradiciones.
+
+---
+
+## Libros que Revelan Almería  
+
+### 1. **"El sol, el viento y la lluvia" – José Ovejero**  
+Un conjunto de relatos que, aunque con escenarios variados, refleja el carácter árido y resistente del paisaje andaluz, incluyendo referencias directas a Almería. Ideal para captar el espíritu de sus gentes y la naturaleza extrema.  
+
+### 2. **"La sombra del viento" – Carlos Ruiz Zafón**  
+Aunque ubicado principalmente en Barcelona, este bestseller menciona con frecuencia los paisajes y memorias del sur de España, evocando la nostalgia y tradición que comparten regiones como Almería.  
+
+### 3. **"Los gitanos de Almería" – Manuel Ángel Vázquez Medel**  
+Un estudio antropológico imprescindible para comprender la comunidad gitana local, su influencia cultural y sus tradiciones, fundamentales para la identidad social de Almería.  
+
+### 4. **"El desierto amarillo" – Juan Goytisolo**  
+Una obra literaria que con una mirada crítica explora las paradojas y bellezas del sur andaluz, destacando el desierto de Tabernas y su atmósfera única.   
+
+### 5. **"La Almería de Federico" – Varios autores**  
+Compendio sobre la relación de Federico García Lorca con Almería y cómo sus paisajes y cultura influenciaron su obra, clave para entender la proyección cultural de la provincia.  
+
+---
+
+## Películas que Capturan Almería  
+
+### 1. **"Lawrence de Arabia" (1962) – David Lean**  
+Film icónico rodado en el desierto de Tabernas, Almería. Su ambientación muestra la espectacular aridez y belleza natural de la región, dando una dimensión internacional y legendaria al territorio.  
+
+### 2. **"Indiana Jones y la última cruzada" (1989) – Steven Spielberg**  
+Varias escenas fueron filmadas en paisajes almerienses, destacando la enigmática atmósfera del desierto y las formaciones rocosas únicas que caracterizan la zona.  
+
+### 3. **"Los amantes del desierto" (2017) – Miguel Ángel Jiménez**  
+Un drama local que se adentra en la realidad del desierto de Almería y las relaciones humanas que surgen en este entorno hostil y poético.  
+
+### 4. **"800 balas" (2002) – Álex de la Iglesia**  
+Comedia que rinde homenaje a los spaghetti westerns rodados en Almería, mostrando la faceta cinematográfica menos conocida y divertida de la provincia.  
+
+### 5. **"La isla mínima" (2014) – Alberto Rodríguez**  
+Aunque su historia transcurre en las marismas andaluzas, la película refleja el carácter y la atmosférica rural de Andalucía, ofreciendo un matiz de regionalismo que resuena con la Almería profunda.  
+
+---
+
+## Documentales para Explorar Almería  
+
+### 1. **"Almería, el sueño del cine" (2018)**  
+Documental que repasa la historia cinematográfica de la provincia como escenario de películas internacionales, revelando el impacto cultural y económico en la región.  
+
+### 2. **"Desierto Adentro" (2020)**  
+Exploración visual del desierto de Tabernas, su flora, fauna y escenarios naturales, mostrando un entorno único en Europa y su significado para Almería.  
+
+### 3. **"Los gitanos de Almería" (2015)**  
+Producción audiovisual que profundiza en la cultura y tradiciones del pueblo gitano local, con testimonios y celebraciones que exponen la diversidad cultural de Almería.  
+
+---
+
+*Estas recomendaciones culturales no solo enriquecen la experiencia del visitante, sino que también permiten conectar con la identidad profunda de Almería y apreciar su riqueza histórica, social y artística.*
+
+---
+
+© 2024 – Guía Cultural Premium | Todos los derechos reservados
+
+---</div>
+      </div>
+    </div>
+
+    <!-- SOLAPA 7: MAPA -->
+    <div id="page-mapa" class="page">
+      <div class="page-header">
+        <span class="page-icon">🗺️</span>
+        <h2 class="page-title">Mapa de Ruta</h2>
+      </div>
+      <div class="map-box">
+        <div style="font-size: 40px;">📍</div>
+        <h3 class="cta-title">¿Listo para comenzar el recorrido?</h3>
+        <p class="cta-sub">Haz clic abajo para abrir Google Maps con todas las paradas y hoteles organizados.</p>
+        <a href="https://google.comAlcazaba%20de%20Almer%C3%ADa%2C%20Almer%C3%ADa%2CCatedral%20de%20Almer%C3%ADa%2C%20Almer%C3%ADa%2CMuseo%20de%20Almer%C3%ADa%2C%20Almer%C3%ADa%2CDesierto%20de%20Tabernas%2C%20Tabernas%2COasys%20Mini%20Hollywood%2C%20Tabernas%2CCasco%20hist%C3%B3rico%20de%20N%C3%ADjar%2C%20N%C3%ADjar%2CHotel%20Catedral%20Almer%C3%ADa%2C%20Almer%C3%ADa%2CSan%20Jos%C3%A9%2C%20Almer%C3%ADa%2CHotel%20Playa%20Grande%2C%20San%20Jos%C3%A9%2CParque%20Natural%20Cabo%20de%20Gata%2C%20Almer%C3%ADa%2CCala%20de%20Enmedio%2C%20Parque%20Natural%20Cabo%20de%20Gata%2CFaro%20de%20Cabo%20de%20Gata%2C%20Almer%C3%ADa%2CLas%20Negras%2C%20Almer%C3%ADa%2CMuseo%20de%20Arte%20Do%C3%B1a%20Pakyta%2C%20Almer%C3%ADa" target="_blank" class="btn-maps">
+          <span>🚀 Abrir Ruta en Google Maps</span>
+        </a>
+      </div>
+    </div>
+
+  </div> <!-- Cierre del contenedor .pages -->
+
+  <!-- ── FOOTER MÍNIMO ── -->
+  <div class="footer-mini">
+    Generado por <a href="https://guiamundi.es" target="_blank">GuiaMundi.es</a>
+  </div>
+
+  <!-- ── SCRIPT INTERACTIVO DINÁMICO CORREGIDO ── -->
+  <script>
+    function switchTab(tabId) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      
+      const targetPage = document.getElementById('page-' + tabId);
+      if (targetPage) {
+        targetPage.classList.add('active');
+      }
+      
+      const targetBtn = document.querySelector(`[onclick="switchTab('${tabId}')"]`);
+      if (targetBtn) {
+        targetBtn.classList.add('active');
+      }
+    }
+  </script>
+
+</body>
+</html>
