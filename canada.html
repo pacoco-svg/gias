@@ -1,0 +1,25 @@
+<div id="mapa" style="height:400px; border-radius:12px; overflow:hidden; margin:1rem 0;"></div>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const puntos = Museo Real de Ontario, Toronto","Torre CN, Toronto","Distillery Historic District, Toronto","Mercado St. Lawrence, Toronto","Museo Bata Shoe, Toronto","Fairmont Royal York Hotel, Toronto","Delta Hotels by Marriott Kingston Waterfront, Kingston","Fort Henry, Kingston","Casco antiguo, Kingston","Río San Lorenzo Mil Islas, Kingston","Fairmont Château Laurier, Ottawa","Parlamento de Canadá, Ottawa","Museo de Historia, Ottawa","Canal Rideau, Ottawa","ByWard Market, Ottawa","Hôtel Manoir Victoria, Quebec","Viejo Quebec, Quebec","Place Royale, Quebec","Château Frontenac, Quebec","Fortificaciones de Quebec, Quebec","Barrio Petit Champlain, Quebec","Museo de la Civilización, Quebec","Hôtel Le St-James, Montreal","Viejo Montreal, Montreal","Basílica de Notre-Dame, Montreal","Museo de Bellas Artes, Montreal","Parque Mont-Royal, Montreal","Barrio Plateau, Montreal","The Forks Market, Winnipeg","Museo Canadiense de Derechos Humanos, Winnipeg","Fairmont Winnipeg, Winnipeg","Lower Fort Garry, Winnipeg","Jardín Botánico de Assiniboine Park, Winnipeg";
+const lista = ["Museo Real de Ontario, Toronto","Torre CN, Toronto","Distillery Historic District, Toronto","Mercado St. Lawrence, Toronto","Museo Bata Shoe, Toronto","Fairmont Royal York Hotel, Toronto","Delta Hotels by Marriott Kingston Waterfront, Kingston","Fort Henry, Kingston","Casco antiguo, Kingston","Río San Lorenzo Mil Islas, Kingston","Fairmont Château Laurier, Ottawa","Parlamento de Canadá, Ottawa","Museo de Historia, Ottawa","Canal Rideau, Ottawa","ByWard Market, Ottawa","Hôtel Manoir Victoria, Quebec","Viejo Quebec, Quebec","Place Royale, Quebec","Château Frontenac, Quebec","Fortificaciones de Quebec, Quebec","Barrio Petit Champlain, Quebec","Museo de la Civilización, Quebec","Hôtel Le St-James, Montreal","Viejo Montreal, Montreal","Basílica de Notre-Dame, Montreal","Museo de Bellas Artes, Montreal","Parque Mont-Royal, Montreal","Barrio Plateau, Montreal","The Forks Market, Winnipeg","Museo Canadiense de Derechos Humanos, Winnipeg","Fairmont Winnipeg, Winnipeg","Lower Fort Garry, Winnipeg","Jardín Botánico de Assiniboine Park, Winnipeg"];
+
+const map = L.map('mapa');
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+const bounds = [];
+lista.forEach((lugar, i) => {
+  fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(lugar)}&format=json&limit=1`)
+    .then(r => r.json())
+    .then(data => {
+      if (data[0]) {
+        const lat = parseFloat(data[0].lat);
+        const lon = parseFloat(data[0].lon);
+        L.marker([lat, lon]).addTo(map).bindPopup(`<b>${i+1}. ${lugar}</b>`);
+        bounds.push([lat, lon]);
+        if (bounds.length === lista.length) map.fitBounds(bounds);
+      }
+    });
+});
+</script>
