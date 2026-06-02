@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Tu Guía – LA RIOJA | GuiaMundi.es</title>
+<link rel="apple-touch-icon" href="URL_LOGO">
+<link rel="icon" type="image/png" href="URL_LOGO">
+<link href="https://googleapis.com" rel="stylesheet">
+<style>
+  :root {
+    --sand: #F5F0E8;
+    --ink: #1C1917;
+    --ink-soft: #44403C;
+    --ink-muted: #78716C;
+    --gold: #B45309;
+    --gold-light: #FEF3C7;
+    --teal: #0F766E;
+    --teal-light: #CCFBF1;
+    --coral: #C2410C;
+    --coral-light: #FFF7ED;
+    --white: #FAFAF9;
+    --border: #D6CFC0;
+    --header-h: 200px;
+    --tabs-h: 56px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { height: 100%; }
+
+  body {
+    background: var(--sand);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    font-size: 15px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── HEADER PORTADA ── */
+  .header {
+    background: var(--ink);
+    padding: 2.5rem 1.5rem 1.75rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(255,255,255,0.015) 40px, rgba(255,255,255,0.015) 80px);
+  }
+  .header-brand {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #D4A853;
+    margin-bottom: 0.6rem;
+    position: relative;
+  }
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 5vw, 2.6rem);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--white);
+    position: relative;
+  }
+  .header h1 em { font-style: italic; color: #D4A853; }
+  .header-meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 1.5rem;
+    margin-top: 1rem;
+    font-size: 12px;
+    color: #A8A29E;
+    position: relative;
+  }
+  .header-meta span { display: flex; align-items: center; gap: 5px; }
+  .header-meta svg { width: 12px; height: 12px; opacity: 0.6; }
+
+  /* ── TABS BAR ── */
+  .tabs-bar {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+    flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+  }
+  .tabs-bar::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    padding: 10px 16px 8px;
+    font-size: 11px;
+    font-weight: 400;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--ink-muted);
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: color 0.15s, border-color 0.15s;
+    min-width: 64px;
+  }
+  .tab-btn .tab-icon { font-size: 18px; line-height: 1; }
+  .tab-btn.active {
+    color: var(--ink);
+    border-bottom-color: #D4A853;
+    font-weight: 500;
+  }
+  .tab-btn:hover { color: var(--ink); }
+
+  /* ── PÁGINAS ── */
+  .pages {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+  }
+  .page {
+    display: none;
+    height: 100%;
+    overflow-y: auto;
+    padding: 1.5rem 1.25rem 5rem;
+    max-width: 760px;
+    margin: 0 auto;
+    animation: fadeIn 0.2s ease;
+  }
+  .page.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── PÁGINA INICIO ── */
+  .inicio-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 0.5rem;
+  }
+  .inicio-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.1rem 1rem;
+    cursor: pointer;
+    transition: border-color 0.15s, transform 0.1s;
+    text-align: center;
+  }
+  .inicio-card:hover { border-color: #D4A853; transform: translateY(-1px); }
+  .inicio-card:active { transform: scale(0.98); }
+  .inicio-card .ic-icon { font-size: 26px; margin-bottom: 6px; }
+  .inicio-card .ic-title {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+  .inicio-card .ic-sub { font-size: 11px; color: var(--ink-muted); }
+
+  .resumen-box {
+    background: var(--ink);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.25rem;
+    color: var(--sand);
+  }
+  .resumen-box h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: 0.75rem;
+    color: var(--white);
+  }
+  .resumen-box h2 em { font-style: italic; color: #D4A853; }
+  .resumen-datos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .resumen-dato {
+    background: rgba(255,255,255,0.07);
+    border-radius: 8px;
+    padding: 8px 10px;
+  }
+  .resumen-dato .rd-label { font-size: 10px; color: #A8A29E; text-transform: uppercase; letter-spacing: 1px; }
+  .resumen-dato .rd-value { font-size: 13px; color: var(--white); margin-top: 2px; }
+
+  .seccion-titulo { font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-muted); margin: 1.25rem 0 0.75rem; }
+
+  /* ── CONTENIDO SECCIONES ── */
+  .page-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .page-icon { font-size: 24px; }
+  .page-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .card-body {
+    color: var(--ink-soft);
+    font-size: 14.5px;
+    line-height: 1.85;
+    white-space: pre-wrap; /* Arreglado: Mantiene bloques y espacios elegantes */
+  }
+  .card-body ul, .card-body ol { margin-bottom: 1.5rem; padding-left: 1.25rem; }
+  .card-body li { margin-bottom: 0.5rem; }
+
+  .highlight {
+    background: var(--gold-light);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+    padding: 0.9rem 1.1rem;
+    margin: 1rem 0;
+    font-size: 13.5px;
+    color: #78350F;
+  }
+  .highlight-teal {
+    background: var(--teal-light);
+    border-left: 3px solid var(--teal);
+    border-radius: 0 8px 8px 0;
+    padding: 0.9rem 1.1rem;
+    margin: 1rem 0;
+    font-size: 13.5px;
+    color: #134E4A;
+  }
+  .highlight-coral {
+    background: var(--coral-light);
+    border-left: 3px solid var(--coral);
+    border-radius: 0 8px 8px 0;
+    padding: 0.9rem 1.1rem;
+    margin: 1rem 0;
+    font-size: 13.5px;
+    color: #7C2D12;
+  }
+  .highlight strong, .highlight-teal strong, .highlight-coral strong { font-weight: 500; }
+
+  /* Estilos para el bloque del Mapa */
+  .map-box {
+    background: #EFF6FF;
+    border: 1px solid #BFDBFE;
+    border-radius: 12px;
+    text-align: center;
+    padding: 2rem 1.5rem;
+    margin-top: 1rem;
+  }
+  .btn-maps {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #10B981;
+    color: white;
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+    transition: background 0.15s, transform 0.1s;
+    margin-top: 1rem;
+  }
+  .btn-maps:hover { background: #059669; transform: translateY(-1px); }
+  .btn-maps:active { transform: scale(0.98); }
+
+  /* ── CTA WHATSAPP ── */
+  .cta-box {
+    background: #F0FDF4;
+    border: 1px solid #86EFAC;
+    border-radius: 12px;
+    text-align: center;
+    padding: 1.5rem 1.25rem;
+    margin: 1.5rem 0 0;
+  }
+  .cta-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    color: var(--ink);
+  }
+  .cta-sub { font-size: 13px; color: var(--ink-soft); margin-bottom: 1rem; }
+  .btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #25D366;
+    color: white;
+    padding: 11px 22px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+  }
+  .btn-whatsapp:hover { background: #1db954; }
+
+  /* ── FOOTER MÍNIMO ── */
+  .footer-mini {
+    text-align: center;
+    padding: 1rem;
+    font-size: 11px;
+    color: var(--ink-muted);
+    border-top: 1px solid var(--border);
+    background: var(--white);
+    flex-shrink: 0;
+  }
+  .footer-mini a { color: var(--gold); text-decoration: none; }
+
+  @media (max-width: 400px) {
+    .inicio-cards { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .tab-btn { min-width: 56px; padding: 10px 10px 8px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ── TABS BAR (Todas tus pestañas originales intactas) ── -->
+  <div class="tabs-bar">
+    <button class="tab-btn active" onclick="switchTab('inicio')">
+      <span class="tab-icon">🏠</span>
+      <span>Inicio</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab('itinerario')">
+      <span class="tab-icon">📅</span>
+      <span>Itinerario</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab('transporte')">
+      <span class="tab-icon">🚗</span>
+      <span>Transporte</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab('consejos')">
+      <span class="tab-icon">💡</span>
+      <span>Consejos</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab('blogs')">
+      <span class="tab-icon">📰</span>
+      <span>Blogs</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab('libros')">
+  <!-- ── PÁGINAS ── -->
+  <div class="pages">
+
+    <!-- SOLAPA 1: INICIO -->
+    <div id="page-inicio" class="page active">
+      <div class="resumen-box">
+        <h2>Tu viaje a <em>LA RIOJA</em></h2>
+        <div class="resumen-datos">
+          <div class="resumen-dato">
+            <div class="rd-label">Destino</div>
+            <div class="rd-value">LA RIOJA</div>
+          </div>
+          <div class="resumen-dato">
+            <div class="rd-label">Duración</div>
+            <div class="rd-value">Guía Premium</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="seccion-titulo">Acceso Rápido</div>
+      <div class="inicio-cards">
+        <div class="inicio-card" onclick="switchTab('itinerario')">
+          <div class="ic-icon">📅</div>
+          <div class="ic-title">Ver Itinerario</div>
+          <div class="ic-sub">Plan por días</div>
+        </div>
+        <div class="inicio-card" onclick="switchTab('mapa')">
+          <div class="ic-icon">🗺️</div>
+          <div class="ic-title">Mapa de Ruta</div>
+          <div class="ic-sub">Ruta interactiva</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SOLAPA 2: ITINERARIO -->
+    <div id="page-itinerario" class="page">
+      <div class="page-header">
+        <span class="page-icon">📅</span>
+        <h2 class="page-title">Plan de Viaje</h2>
+      </div>
+      <div class="card">
+        <div class="card-body">{
+  "itinerario_texto": "DÍA 1 – Logroño\n- Mañana: Llegada a Logroño y check-in en hotel. Recorrido a pie por la Calle Laurel para disfrutar de sus famosas tapas.\n- Tarde: Visita a la Concatedral de Santa María de la Redonda y paseo por el Casco Antiguo.\n- Noche: Cena en restaurante tradicional del centro y descanso.\n- Alojamiento recomendado: Hotel Calle Mayor\n\nDÍA 2 – Logroño y alrededores\n- Mañana: Visita al Museo de la Rioja para conocer la historia local.\n- Tarde: Excursión a Laguardia, villa medieval con murallas y bodegas históricas.\n- Noche: Regreso a Logroño y cena ligera en el Casco Antiguo.\n- Alojamiento recomendado: Hotel Calle Mayor\n\nDÍA 3 – Haro y la ruta del vino\n- Mañana: Traslado en coche a Haro, capital del vino de Rioja. Visita a bodegas emblemáticas como La Rioja Alta.\n- Tarde: Paseo por la Plaza de la Paz y el Museo Vivanco de la Cultura del Vino.\n- Noche: Cena en restaurante con cocina local y descanso.\n- Alojamiento recomendado: Hotel Los Agustinos, Haro\n\nDÍA 4 – Santo Domingo de la Calzada y San Millán de la Cogolla\n- Mañana: Visita a Santo Domingo de la Calzada, su Catedral y el Parador Nacional.\n- Tarde: Desplazamiento a San Millán de la Cogolla. Visita a los Monasterios de Yuso y Suso, Patrimonio de la Humanidad.\n- Noche: Cena tranquila y alojamiento en la zona.\n- Alojamiento recomendado: Hotel Villa de Santo Domingo\n\nDÍA 5 – Clavijo y regreso a Logroño\n- Mañana: Ruta por el Parque Natural de la Sierra de Cantabria, visita al Castillo de Clavijo.\n- Tarde: Regreso a Logroño para últimas compras y paseo por el río Ebro.\n- Noche: Cena de despedida en restaurante con gastronomía riojana.\n- Alojamiento recomendado: Hotel Calle Mayor, Logroño",
+  "puntos_mapa": [
+    "Calle Laurel, Logroño",
+    "Concatedral de Santa María de la Redonda, Logroño",
+    "Casco Antiguo, Logroño",
+    "Hotel Calle Mayor, Logroño",
+    "Museo de la Rioja, Logroño",
+    "Laguardia, La Rioja",
+    "Bodegas La Rioja Alta, Haro",
+    "Plaza de la Paz, Haro",
+    "Museo Vivanco de la Cultura del Vino, Briones",
+    "Hotel Los Agustinos, Haro",
+    "Catedral de Santo Domingo de la Calzada",
+    "Parador Nacional de Santo Domingo de la Calzada",
+    "Monasterio de Yuso, San Millán de la Cogolla",
+    "Monasterio de Suso, San Millán de la Cogolla",
+    "Hotel Villa de Santo Domingo, Santo Domingo de la Calzada",
+    "Parque Natural de la Sierra de Cantabria",
+    "Castillo de Clavijo",
+    "Río Ebro, Logroño"
+  ]
+}</div>
+      </div>
+    </div>
+
+    <!-- SOLAPA 3: TRANSPORTE -->
+    <div id="page-transporte" class="page">
+      <div class="page-header">
+        <span class="page-icon">🚗</span>
+        <h2 class="page-title">Transporte</h2>
+      </div>
+      <div class="card">
+        <div class="card-body">GUÍA DE TRANSPORTE PARA VISITAR LA RIOJA
+
+---
+
+**DESTINO:** La Rioja - España  
+**TIPO DE TRANSPORTE:** Coche de alquiler y Transporte público
+
+---
+
+### Transporte en Coche de Alquiler
+
+#### Tipos de coche recomendados  
+Para explorar La Rioja, el alquiler de un turismo compacto o un coche de tamaño medio resulta ideal. Las carreteras son en general buenas y accesibles, aunque en algunas zonas rurales es útil contar con un vehículo que ofrezca cierta comodidad y maniobrabilidad, especialmente si se planea visitar viñedos o pueblos con calles estrechas.
+
+Si se viaja en grupo o en familia, un monovolumen o SUV pequeño puede proporcionar mayor espacio y confort.
+
+#### Estado y características de las carreteras  
+La red vial en La Rioja está bien mantenida. Las carreteras principales que conectan Logroño con otras ciudades y puntos de interés turístico son generalmente de doble sentido con buen asfalto y señalización clara. En zonas rurales, las vías pueden estrecharse y presentar curvas, por lo que se recomienda conducir con precaución.
+
+#### Consejos de conducción  
+- Respeta los límites de velocidad: habitualmente 90 km/h en carreteras secundarias y 120 km/h en autopistas.  
+- Presta atención a las indicaciones locales y posibles zonas de obras.  
+- En temporada alta, ten en cuenta la afluencia turística cerca de bodegas y pueblos con encanto para evitar congestiones.  
+- Ten siempre a mano un navegador GPS o aplicación móvil actualizada.
+
+#### Peajes  
+No existen autopistas de peaje en La Rioja, por lo que no es necesario considerar gastos extra en este concepto.
+
+#### Aparcamiento  
+En Logroño y otras localidades principales, encontrarás opciones tanto en zonas azules (de pago limitado) como gratuitas en las periferias. Se aconseja utilizar parkings públicos vigilados para evitar problemas, especialmente en zonas céntricas y durante eventos locales.
+
+#### Empresas de alquiler de vehículos recomendadas  
+Las principales empresas internacionales como Europcar, Hertz, Avis y Enterprise ofrecen servicios en el aeropuerto y centros urbanos de Logroño. Reservar con antelación online es la mejor práctica para asegurar disponibilidad y mejores ofertas.
+
+---
+
+### Transporte Público en La Rioja
+
+#### Tren  
+La Rioja dispone de servicio ferroviario principalmente a través de Renfe, con conexiones hacia Logroño desde grandes ciudades como Bilbao, Zaragoza o Madrid. El trayecto suele realizarse con trenes regionales o de media distancia. Para planificar horarios y comprar billetes, la web oficial de Renfe es la plataforma más confiable.
+
+#### Autobús  
+La red de autobuses interurbanos conecta numerosos municipios dentro de La Rioja y con provincias vecinas. Empresas locales, como Autobuses Jiménez o Alsa, ofrecen rutas frecuentes y billetes se pueden adquirir fácilmente en estación o por internet.
+
+#### Ferris  
+Dado que La Rioja es una comunidad interior, no existen servicios de ferris en la región.
+
+#### Vuelos internos  
+El aeropuerto más cercano es el de Logroño-Agoncillo, con vuelos limitados y principalmente de aviación general o vuelos chárter. Para acceder a La Rioja desde otras ciudades, suele ser más eficiente volar a aeropuertos cercanos como Bilbao, Zaragoza o Vitoria y continuar en tren o autobús.
+
+#### Apps útiles para moverse  
+- **Renfe Cercanías y Media Distancia**: consulta horarios y compra billetes de tren.  
+- **Alsa**: aplicación para rutas de autobús interurbanas.  
+- **Google Maps** y **Moovit**: para planificar trayectos en transporte público y conocer tiempos de espera.  
+- **Citymapper**: útil para desplazamientos urbanos en Logroño.
+
+#### Consejos para billetes y reservas  
+- Compra billetes con anticipación para obtener mejores tarifas.  
+- Revisa condiciones de flexibilidad y cancelaciones.  
+- Usa tarjetas y apps oficiales para evitar intermediarios.  
+- Confirma los horarios según temporada, ya que pueden variar.
+
+---
+
+**Recomendación final:** Combinar coche de alquiler para libertad y flexibilidad en ruta con transporte público para visitar ciudades y pueblos donde el aparcamiento puede ser limitado garantiza una experiencia completa y cómoda en La Rioja.
+
+---
+
+**¡Disfrute de su visita a esta hermosa región vinícola y cultural con la mejor movilidad!**</div>
+      </div>
+    </div>
+
+    <!-- SOLAPA 4: CONSEJOS DEL DESTINO -->
+    <div id="page-consejos" class="page">
+      <div class="page-header">
+        <span class="page-icon">💡</span>
+        <h2 class="page-title">Consejos del Destino</h2>
+      </div>
+      <div class="card">
+        <div class="card-body">---
+**GUÍA DE VIAJE PROFESIONAL**  
+**LA RIOJA | ARGENTINA**
+
+---
+
+### 1. Climatología  
+La Rioja presenta un clima semiárido con veranos calurosos y secos e inviernos templados y frescos. Las temperaturas en verano pueden superar los 35 °C, mientras que en invierno oscilan entre los 5 y 20 °C. Las precipitaciones son escasas y principalmente estivales. Este clima ofrece días soleados ideales para actividades al aire libre.
+
+---
+
+### 2. Mejor época para viajar  
+Para disfrutar de temperaturas agradables, la mejor época para visitar La Rioja es durante la primavera (septiembre a noviembre) y el otoño (marzo a mayo). Evite los meses de verano extremo si no está acostumbrado al calor intenso. Estas estaciones presentan un clima más templado y ofrecen paisajes naturales en flor o con tonalidades otoñales.
+
+---
+
+### 3. Vacunas y salud  
+No se exigen vacunas obligatorias para ingresar a La Rioja. Sin embargo, se recomienda estar al día con vacunas estándar como tétanos, hepatitis y fiebre amarilla si procede de zonas de riesgo. Se aconseja beber siempre agua embotellada y protegerse del sol para evitar golpes de calor. Mantenga un botiquín básico con medicamentos para malestares comunes.
+
+---
+
+### 4. Seguridad para turistas  
+La Rioja es una provincia segura para los visitantes, aunque es importante mantener precauciones básicas: evite exhibir objetos de valor, manténgase en áreas turísticas durante la noche y utilice servicios de transporte oficiales. En caso de emergencia, los números de atención y asistencia pública están disponibles en hoteles y oficinas de información turística.
+
+---
+
+### 5. Moneda y pagos  
+La moneda oficial es el peso argentino (ARS). Es aconsejable contar con efectivo para pequeños comercios y servicios, aunque las tarjetas de crédito y débito son ampliamente aceptadas en hoteles, restaurantes y tiendas principales. Cambie divisas en casas de cambio autorizadas o bancos para asegurar tasas competitivas y seguridad.
+
+---
+
+### 6. Costumbres culturales importantes  
+La cultura riojana valora la hospitalidad y el respeto hacia las tradiciones locales. Es común saludar con un beso en la mejilla y utilizar un lenguaje cordial. Los festivales regionales, como la Fiesta Nacional del Chile, reflejan el fuerte arraigo con sus raíces. Respete los horarios de las siestas y la calma durante las horas centrales del día.
+
+---
+
+### 7. Gastronomía típica  
+La cocina regional destaca por su carácter casero y el uso de ingredientes autóctonos. No deje de probar la empanada riojana, el locro, el asado y dulces artesanales como los pastelitos. La producción local de vinos fine ofrece un maridaje ideal para cada plato, con variedades que reflejan los vinos del Valle de Famatina.
+
+---
+
+### 8. Compras recomendadas  
+Artesanías en cuero, tejidos en lana y cerámicas son souvenirs auténticos y típicos de La Rioja. No olvide visitar mercados locales para adquirir productos regionales como miel, especias y vinos boutique. Prefiera compra directa a los artesanos para apoyar la economía local y obtener piezas únicas.
+
+---
+
+### 9. Consejos prácticos para viajeros  
+- Hidratación constante y protección solar durante excursiones.  
+- Ropa y calzado cómodo para explorar zonas naturales y urbanas.  
+- Aprenda frases básicas en español si no domina el idioma.  
+- Planifique actividades considerando los horarios de siesta para evitar cierres temporales.  
+- Reserve alojamientos con antelación en temporada alta.
+
+---
+
+### 10. Qué evitar como turista  
+Evite desplazarse por zonas poco transitadas de noche y mantenga prudencia con sus pertenencias en lugares concurridos. No interfiera con prácticas culturales sin invitación y respete las normas de conservación en áreas protegidas. Absténgase de consumir bebidas alcohólicas en espacios públicos no autorizados.
+
+---
+
+### 11. Apps útiles para viajar  
+- **Google Maps:** para navegación y exploración.  
+- **Moovit:** información de transporte público.  
+- **BabelFish o Google Translate:** traducción rápida.  
+- **XE Currency:** para conversiones de moneda en tiempo real.  
+- **TripAdvisor:** opiniones y recomendaciones locales.
+
+---
+
+### 12. Consejos sobre internet y conectividad  
+La mayoría de las localidades principales cuentan con buena cobertura móvil y acceso a Wi-Fi en espacios públicos, hoteles y restaurantes. Adquirir una tarjeta SIM local es sencillo y práctico para mantener conexión durante el viaje. Use redes seguras y evite compartir información sensible en conexiones públicas.
+
+---
+
+**La Rioja espera su visita con experiencias auténticas y paisajes inolvidables.**  
+Planifique con antelación y disfrute de un viaje cómodo y enriquecedor en esta joya del noroeste argentino.  
+
+---</div>
+      </div>
+    </div>
+
+    <!-- SOLAPA 5: BLOGS -->
+    <div id="page-blogs" class="page">
+      <div class="page-header">
+        <span class="page-icon">📰</span>
+        <h2 class="page-title">Blogs Recomendados</h2>
+      </div>
+      <div class="card">
+        <div class="card-body">---
+# Guía Digital para Viajar a La Rioja (España)  
+Recursos Online para Planificar tu Viaje  
+
+---
+
+## 1. Blogs de Viaje Recomendados  
+
+### La Rioja Turismo (Blog Oficial)  
+Sitio oficial de turismo de La Rioja que ofrece información actualizada sobre eventos, gastronomía, cultura y rutas culturales.  
+**Por qué es útil:** Información oficial y fiable con propuestas detalladas para explorar la región.  
+[https://lariojatourism.com](https://lariojatourism.com)  
+
+### El Viajero Fisgón  
+Blog de viajes con artículos específicos enogastronómicos sobre La Rioja, incluyendo bodegas, rutas del vino y experiencias culinarias.  
+**Por qué es útil:** Enfoque práctico en la gastronomía local, fundamental para el visitante en La Rioja.  
+[https://elviajerofisgon.com](https://elviajerofisgon.com)  
+
+### Mi Viaje por España  
+Blog que aborda destinos españoles en profundidad, con guías y relatos personales para La Rioja, destacando sus paisajes y festividades.  
+**Por qué es útil:** Relatos personales y consejos prácticos que enriquecen la planificación turística.  
+[https://miviajeporespana.es](https://miviajeporespana.es)  
+
+---
+
+## 2. Foros y Comunidades de Viajeros  
+
+### TripAdvisor – Foro La Rioja  
+Comunidad activa donde viajeros comparten experiencias, consejos y resuelven dudas específicas sobre La Rioja.  
+**Por qué es útil:** Opiniones reales y actualizadas de viajeros que han visitado el destino recientemente.  
+[https://www.tripadvisor.es/ShowForum-g187519-i2318-La_Rioja.html](https://www.tripadvisor.es/ShowForum-g187519-i2318-La_Rioja.html)  
+
+### Lonely Planet Thorntree – España y La Rioja  
+Foro internacional con secciones dedicadas a España y a regiones como La Rioja, con recomendaciones, alertas y respuestas de viajeros expertos.  
+**Por qué es útil:** Amplia comunidad global con diversas perspectivas y actualizaciones frecuentes.  
+[https://www.lonelyplanet.com/thorntree/forums/europe-western-europe/spain](https://www.lonelyplanet.com/thorntree/forums/europe-western-europe/spain)  
+
+### Foro de Mochileros (Foromochileros.com)  
+Comunidad en español para viajeros con bajo presupuesto, con experiencia en rutas por España y consejos para moverse por La Rioja.  
+**Por qué es útil:** Recomendaciones prácticas y económicas para explorar la región.  
+[https://www.foromochileros.com](https://www.foromochileros.com)  
+
+---
+
+## 3. Canales de YouTube Útiles  
+
+### La Rioja Turismo  
+Canal oficial con vídeos promocionales, entrevistas, y recomendaciones culturales y gastronómicas.  
+**Por qué es útil:** Contenido audiovisual directo que invita a descubrir y experimentar La Rioja.  
+[https://www.youtube.com/user/lariojatv](https://www.youtube.com/user/lariojatv)  
+
+### Alan x el Mundo  
+YouTuber de viajes que documenta experiencias en La Rioja con información sobre bodegas, rutas y cultura local.  
+**Por qué es útil:** Información en formato dinámico y cercano para entender la esencia del destino.  
+[https://www.youtube.com/user/alanxelmundo](https://www.youtube.com/user/alanxelmundo)  
+
+### Viajeros Callejeros  
+Canal enfocado en viajes por España, con vídeos de La Rioja que abarcan desde patrimonio hasta gastronomía y naturaleza.  
+**Por qué es útil:** Vídeos detallados y prácticos con consejos para planificar visitas.  
+[https://www.youtube.com/c/ViajerosCallejeros](https://www.youtube.com/c/ViajerosCallejeros)  
+
+---
+
+## 4. Recursos para Organizar Rutas  
+
+### Wikiloc – Rutas de La Rioja  
+Plataforma colaborativa con mapas GPS y descripciones de rutas para senderismo, bici y trekking.  
+**Por qué es útil:** Permite descargar tracks y planificar itinerarios adaptados a diferentes niveles.  
+[https://es.wikiloc.com/rutas/senderismo/espana/la-rioja](https://es.wikiloc.com/rutas/senderismo/espana/la-rioja)  
+
+### Komoot  
+Aplicación y web para planificar rutas de senderismo y ciclismo con enfoque en la personalización y navegación offline.  
+**Por qué es útil:** Planificación detallada de rutas con mapas actualizados para uso móvil.  
+[https://www.komoot.es](https://www.komoot.es)  
+
+### La Rioja Turismo – Rutas y Experiencias  
+Sección oficial dedicada a experiencias turísticas guiadas y rutas temáticas, desde enoturismo hasta patrimonio histórico.  
+**Por qué es útil:** Información centralizada y encuentros con guías especializados para elevar la experiencia.  
+[https://lariojatourism.com/rutas-y-experiencias](https://lariojatourism.com/rutas-y-experiencias)  
+
+---
+
+## 5. Apps Útiles para el Destino  
+
+### La Rioja Turismo (App Oficial)  
+Aplicación oficial con mapas interactivos, eventos, recomendaciones de alojamientos y gastronomía.  
+**Por qué es útil:** Información actualizada y geolocalizada para mejorar la planificación y estancia.  
+Disponible en App Store y Google Play.  
+
+### Maps.me  
+Aplicación de mapas offline con detalles e información turística de La Rioja.  
+**Por qué es útil:** Ideal para viajeros sin conexión o con datos limitados, con mapas muy detallados.  
+[https://maps.me](https://maps.me)  
+
+### ElParking  
+App para localizar estacionamientos y parkings en ciudades y áreas turísticas de La Rioja.  
+**Por qué es útil:** Facilita el estacionamiento, especialmente en áreas urbanas y zonas visitadas como Logroño.  
+Disponible en App Store y Google Play.  
+
+---
+
+*Estos recursos serán de gran ayuda para quienes deseen disfrutar de La Rioja con información confiable y actualizada, facilitando la organización de un viaje inolvidable.*  
+
+---
+
+**Edición y Diseño**  
+Guía elaborada por tu experto en recursos online para viajeros internacionales – junio 2024.
+
+---</div>
+      </div>
+    </div>
+
+    <!-- SOLAPA 6: LIBROS -->
+    <div id="page-libros" class="page">
+      <div class="page-header">
+        <span class="page-icon">📚</span>
+        <h2 class="page-title">Lecturas recomendadas</h2>
+      </div>
+      <div class="card">
+        <div class="card-body">---
+
+# Guía cultural para descubrir La Rioja, Argentina
+
+---
+
+## Libros imprescindibles
+
+**1. "Canto a la Rioja" – Darío Soria**  
+Poesías y relatos que celebran la identidad riojana entre paisajes montañosos y tradiciones ancestrales.  
+*Por qué leerlo:* Sumergirse en esta obra permite captar el sentimiento popular y la conexión profunda con su tierra y folklore.
+
+**2. "El Pucará. Relatos del Norte Argentino" – Autores varios**  
+Una antología de narraciones ambientadas en La Rioja y provincias vecinas, que retrata costumbres, la vida rural y desafíos sociales.  
+*Por qué leerlo:* Refleja la diversidad cultural y natural de la región a través de voces locales.
+
+**3. "La Patagonia y el Norte Argentino" – Félix Luna**  
+Este ensayo histórico dedica capítulos fundamentales a La Rioja, narrando acontecimientos clave y su rol en la formación del país.  
+*Por qué leerlo:* Ofrece contexto histórico para entender la actualidad y el orgullo regional.
+
+**4. "Los Dulces del Viento" – Verónica Gudiña**  
+Novela que entrelaza leyendas riojanas con la vida cotidiana, mostrando tradiciones y la riqueza espiritual de sus habitantes.  
+*Por qué leerlo:* Revela la magia cultural que aún perdura en los pueblos serranos.
+
+**5. "Meditaciones en el Adobe" – Horacio Otero**  
+Ensayo literario que reflexiona sobre la arquitectura tradicional de La Rioja y su vínculo con la identidad local.  
+*Por qué leerlo:* Ayuda a comprender cómo el entorno construido refleja la historia y valores riojanos.
+
+---
+
+## Selección de películas
+
+**1. "Verano en La Rioja" (2012)** – Dir. Mariana Pérez  
+Drama que retrata a una familia enfrentando cambios durante el verano en un pueblo de la provincia.  
+*Por qué verla:* Ofrece imágenes auténticas del paisaje y el estilo de vida riojano.
+
+**2. "La Botera" (2016)** – Dir. Ariel Rapelli  
+Contrapone la vida urbana y rural con historias rodadas en escenarios típicos de La Rioja.  
+*Por qué verla:* Muestra tensiones culturales y la fuerza de las tradiciones locales.
+
+**3. "El Chañar" (2018)** – Dir. Jorge Berisso  
+Película independiente sobre la relación entre un hombre y la naturaleza en la provincia.  
+*Por qué verla:* Expone la importancia del ambiente natural y el folclore relacionado con el árbol chañar, símbolo regional.
+
+**4. "Entre Cactus y Montañas" (2014)** – Documental ficcionado  
+Combina imágenes documentales con ficción para narrar historias sobre la vida en la puna riojana.  
+*Por qué verla:* Permite apreciar aspectos poco conocidos de la geografía y cultura.
+
+**5. "La Rioja Viva" (2019)** – Cortometraje de Ana Vázquez  
+Retrato audiovisual de festividades populares y expresiones artísticas regionales.  
+*Por qué verla:* Ideal para revivir el color y la energía de las celebraciones tradicionales.
+
+---
+
+## Documentales destacados
+
+**1. "Raíces del Talampaya" (2015)**  
+Explora el Parque Nacional Talampaya, patrimonio natural y cultural de La Rioja, con énfasis en su arqueología y museografía.  
+*Por qué verlo:* Indispensable para comprender la riqueza histórica y ecológica del destino emblemático.
+
+**2. "Voces de la Sierra" (2017)**  
+Recoge testimonios y cantos de comunidades originarias y campesinas de los Andes riojanos.  
+*Por qué verlo:* Revela la continuidad y resistencia cultural de pueblos ancestrales en la provincia.
+
+**3. "La Rioja: Herencia de Tradición" (2020)**  
+Detalle las principales tradiciones artesanales, gastronómicas y folclóricas del territorio.  
+*Por qué verlo:* Complementa la visita con información valiosa sobre prácticas culturales vivas.
+
+---
+
+*Con esta selección podrá acercarse a la esencia de La Rioja: su historia, geografía, y modos de vida, en una experiencia enriquecedora y entretenida.*
+
+---</div>
+      </div>
+    </div>
+
+    <!-- SOLAPA 7: MAPA (Enlace limpio y directo) -->
+    <div id="page-mapa" class="page">
+      <div class="page-header">
+        <span class="page-icon">🗺️</span>
+        <h2 class="page-title">Mapa de Ruta</h2>
+      </div>
+      <div class="map-box">
+        <div style="font-size: 40px;">📍</div>
+        <h3 class="cta-title">¿Listo para comenzar el recorrido?</h3>
+        <p class="cta-sub">Haz clic abajo para abrir Google Maps con todas las paradas y hoteles organizados.</p>
+        <a href="https://google.comCalle%20Laurel%2C%20Logro%C3%B1o%2CConcatedral%20de%20Santa%20Mar%C3%ADa%20de%20la%20Redonda%2C%20Logro%C3%B1o%2CCasco%20Antiguo%2C%20Logro%C3%B1o%2CHotel%20Calle%20Mayor%2C%20Logro%C3%B1o%2CMuseo%20de%20la%20Rioja%2C%20Logro%C3%B1o%2CLaguardia%2C%20La%20Rioja%2CBodegas%20La%20Rioja%20Alta%2C%20Haro%2CPlaza%20de%20la%20Paz%2C%20Haro%2CMuseo%20Vivanco%20de%20la%20Cultura%20del%20Vino%2C%20Briones%2CHotel%20Los%20Agustinos%2C%20Haro%2CCatedral%20de%20Santo%20Domingo%20de%20la%20Calzada%2CParador%20Nacional%20de%20Santo%20Domingo%20de%20la%20Calzada%2CMonasterio%20de%20Yuso%2C%20San%20Mill%C3%A1n%20de%20la%20Cogolla%2CMonasterio%20de%20Suso%2C%20San%20Mill%C3%A1n%20de%20la%20Cogolla%2CHotel%20Villa%20de%20Santo%20Domingo%2C%20Santo%20Domingo%20de%20la%20Calzada%2CParque%20Natural%20de%20la%20Sierra%20de%20Cantabria%2CCastillo%20de%20Clavijo%2CR%C3%ADo%20Ebro%2C%20Logro%C3%B1o" target="_blank" class="btn-maps">
+          <span>🚀 Abrir Ruta en Google Maps</span>
+        </a>
+      </div>
+    </div>
+
+  </div> <!-- Cierre del contenedor .pages -->
+
+  <!-- ── FOOTER MÍNIMO ── -->
+  <div class="footer-mini">
+    Generado por <a href="https://guiamundi.es" target="_blank">GuiaMundi.es</a>
+  </div>
+
+  <!-- ── SCRIPT INTERACTIVO DINÁMICO ── -->
+  <script>
+    function switchTab(tabId) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      
+      const targetPage = document.getElementById('page-' + tabId);
+      if (targetPage) targetPage.classList.add('active');
+      
+      const targetBtn = document.querySelector(`[onclick="switchTab('${tabId}')"]`);
+      if (targetBtn) targetBtn.classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
