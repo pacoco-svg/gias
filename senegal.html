@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tu Guía de Viaje – SENEGAL | GuiaMundi.es</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sand: #F5F0E8;
+    --sand-dark: #E8E0CC;
+    --ink: #1C1917;
+    --ink-soft: #44403C;
+    --ink-muted: #78716C;
+    --gold: #B45309;
+    --gold-light: #FEF3C7;
+    --teal: #0F766E;
+    --teal-light: #CCFBF1;
+    --coral: #C2410C;
+    --coral-light: #FFF7ED;
+    --white: #FAFAF9;
+    --border: #D6CFC0;
+    --nav-h: 56px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--sand);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  /* ── NAV ── */
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: var(--ink);
+    height: var(--nav-h);
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .nav-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nav-inner::-webkit-scrollbar { display: none; }
+  .nav-brand {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #D4A853;
+    white-space: nowrap;
+    margin-right: 1.5rem;
+    flex-shrink: 0;
+  }
+  .nav-links {
+    display: flex;
+    gap: 0;
+    flex-shrink: 0;
+  }
+  .nav-links a {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #A8A29E;
+    text-decoration: none;
+    font-size: 12.5px;
+    font-weight: 400;
+    padding: 0 14px;
+    height: var(--nav-h);
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: var(--white);
+    border-bottom-color: #D4A853;
+  }
+  .nav-links a .nav-icon { font-size: 14px; }
+
+  /* ── OFFSET para el scroll ── */
+  .scroll-anchor {
+    display: block;
+    height: var(--nav-h);
+    margin-top: calc(-1 * var(--nav-h));
+    pointer-events: none;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--ink);
+    color: var(--sand);
+    padding: calc(var(--nav-h) + 2.5rem) 1.5rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(255,255,255,0.015) 40px, rgba(255,255,255,0.015) 80px);
+  }
+  .header-brand {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    position: relative;
+  }
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 6vw, 3.2rem);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--white);
+    position: relative;
+  }
+  .header h1 em {
+    font-style: italic;
+    color: #D4A853;
+  }
+  .header-meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem 2rem;
+    margin-top: 1.5rem;
+    font-size: 13px;
+    color: #A8A29E;
+    position: relative;
+  }
+  .header-meta span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .header-meta svg { width: 14px; height: 14px; opacity: 0.7; }
+
+  /* ── PROGRESS BAR ── */
+  .progress-bar {
+    position: fixed;
+    top: var(--nav-h);
+    left: 0;
+    height: 2px;
+    background: #D4A853;
+    width: 0%;
+    z-index: 99;
+    transition: width 0.1s;
+  }
+
+  /* ── LAYOUT ── */
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 1.25rem 3rem;
+  }
+
+  /* ── SECCIÓN ── */
+  .section { margin: 2.5rem 0; }
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 1.1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--border);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  /* ── CARD ── */
+  .card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.35rem 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .card-body {
+    color: var(--ink-soft);
+    font-size: 15px;
+    line-height: 1.8;
+    white-space: pre-line;
+  }
+
+  /* ── HIGHLIGHTS ── */
+  .highlight {
+    background: var(--gold-light);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    font-size: 14px;
+    color: #78350F;
+  }
+  .highlight-teal {
+    background: var(--teal-light);
+    border-left: 3px solid var(--teal);
+    border-radius: 0 8px 8px 0;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    font-size: 14px;
+    color: #134E4A;
+  }
+  .highlight-coral {
+    background: var(--coral-light);
+    border-left: 3px solid var(--coral);
+    border-radius: 0 8px 8px 0;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    font-size: 14px;
+    color: #7C2D12;
+  }
+  .highlight strong,
+  .highlight-teal strong,
+  .highlight-coral strong { font-weight: 500; }
+
+  /* ── SEPARADOR ── */
+  .divider {
+    text-align: center;
+    color: var(--border);
+    font-size: 18px;
+    letter-spacing: 8px;
+    margin: 1rem 0;
+  }
+
+  /* ── CTA WHATSAPP ── */
+  .cta-box {
+    background: #F0FDF4;
+    border: 1px solid #86EFAC;
+    border-radius: 12px;
+    text-align: center;
+    padding: 2rem 1.5rem;
+    margin: 2.5rem 0 1rem;
+  }
+  .cta-box .cta-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--ink);
+  }
+  .cta-box .cta-sub {
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin-bottom: 1.25rem;
+  }
+  .btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #25D366;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    border: none;
+  }
+  .btn-whatsapp:hover { background: #1db954; }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--ink);
+    color: #A8A29E;
+    text-align: center;
+    padding: 2rem 1.5rem;
+    font-size: 13px;
+  }
+  .footer a { color: #D4A853; text-decoration: none; }
+  .footer strong { color: var(--sand); font-weight: 500; }
+  .footer-bottom { font-size: 11px; opacity: 0.5; margin-top: 1rem; }
+
+  /* ── BACK TO TOP ── */
+  .back-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 42px;
+    height: 42px;
+    background: var(--ink);
+    color: var(--sand);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 18px;
+    opacity: 0;
+    transition: opacity 0.2s;
+    z-index: 90;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+  .back-top.visible { opacity: 1; }
+
+  /* ── MÓVIL ── */
+  @media (max-width: 600px) {
+    .nav-brand { display: none; }
+    .nav-links a { padding: 0 10px; font-size: 11.5px; }
+    .nav-links a .nav-icon { display: none; }
+    .header { padding: calc(var(--nav-h) + 1.75rem) 1rem 2rem; }
+    .container { padding: 0 1rem 2rem; }
+    .card { padding: 1rem 1.1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- BARRA DE PROGRESO -->
+<div class="progress-bar" id="progress"></div>
+
+<!-- NAVEGACIÓN FIJA -->
+<nav class="nav">
+  <div class="nav-inner">
+    <span class="nav-brand">GuiaMundi</span>
+    <div class="nav-links">
+      <a href="#recorrido"><span class="nav-icon">🗓️</span> Recorrido</a>
+      <a href="#consejos"><span class="nav-icon">💡</span> Consejos</a>
+      <a href="#transporte"><span class="nav-icon">🚗</span> Transporte</a>
+      <a href="#blogs"><span class="nav-icon">🌐</span> Blogs</a>
+      <a href="#inspiracion"><span class="nav-icon">🎬</span> Inspiración</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<div class="header" id="top">
+  <div class="header-brand">GuiaMundi · Guía de Viaje Personalizada</div>
+  <h1>Tu guía de viaje a<br><em>SENEGAL</em></h1>
+  <div class="header-meta">
+    <span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      15 días
+    </span>
+    <span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+      2viajero(s)
+    </span>
+    <span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10z"/></svg>
+      Cultural e histórico    </span>
+    <span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      2026-06-02T00:59:34.000Z    </span>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 01 RECORRIDO -->
+  <span class="scroll-anchor" id="recorrido"></span>
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">01</span>
+      <h2 class="section-title">🗓️ Tu recorrido</h2>
+    </div>
+    <div class="card">
+      <div class="card-body">Itinerario Premium en Senegal  
+Duración: 7 días  
+Tipo de viaje: Cultural e histórico  
+Transporte: Coche de alquiler y excursiones con agencia local  
+
+---  
+
+**DÍA 1 – Dakar**  
+- Mañana: Llegada a Dakar, traslado al hotel y descanso breve.  
+- Tarde: Visita al Museo de Arte Africano IFAN y paseo por la Plaza de la Independencia.  
+- Noche: Cena en un restaurante tradicional con música en vivo.  
+- Alojamiento recomendado: Hotel King Fahd Palace.  
+
+**DÍA 2 – Dakar – Isla de Gorée**  
+- Mañana: Paseo en ferry a la Isla de Gorée; recorrido por la Casa de los Esclavos y galerías de arte local.  
+- Tarde: Almuerzo en la isla y caminata por sus calles históricas y miradores al Atlántico.  
+- Noche: Regreso a Dakar; cena libre.  
+- Alojamiento recomendado: Hotel King Fahd Palace.  
+
+**DÍA 3 – Dakar – Saint-Louis (Desplazamiento en coche, 270 km, 4h aprox.)**  
+- Mañana: Salida temprana hacia Saint-Louis; llegada y check-in en el hotel.  
+- Tarde: Visita guiada por el casco histórico, declarado Patrimonio de la Humanidad, con arquitectura colonial.  
+- Noche: Cena en le Jardin, restaurante con especialidades senegalesas.  
+- Alojamiento recomendado: Hotel La Résidence.  
+
+**DÍA 4 – Saint-Louis – Parque Nacional de Djoudj (excursión de día completo)**  
+- Mañana: Safari en el Parque Nacional de Aves de Djoudj, con observación de pelícanos y otras especies migratorias.  
+- Tarde: Almuerzo picnic y paseo en bote para disfrutar la biodiversidad del río Senegal.  
+- Noche: Regreso a Saint-Louis; descanso.  
+- Alojamiento recomendado: Hotel La Résidence.  
+
+**DÍA 5 – Saint-Louis – Touba – Kaolack (Desplazamiento por carretera, 350 km, 5h aprox.)**  
+- Mañana: Salida hacia Touba; visita a la Gran Mezquita, centro espiritual de Senegal.  
+- Tarde: Continuación hacia Kaolack, recorrido por mercados y encuentro con artesanos locales.  
+- Noche: Cena en hotel boutique, experiencia gastronómica senegalesa.  
+- Alojamiento recomendado: Hotel Royal.  
+
+**DÍA 6 – Kaolack – Sine Saloum (Desplazamiento 80 km, 1h30)**  
+- Mañana: Desplazamiento hacia la región de Sine Saloum; salida en lancha para visitar lagunas y pueblos tradicionales.  
+- Tarde: Almuerzo en contacto con comunidades locales y taller sobre pesca artesanal.  
+- Noche: Cena en ecolodge y descanso en plena naturaleza.  
+- Alojamiento recomendado: Lodge des Manguiers.  
+
+**DÍA 7 – Sine Saloum – Dakar (Desplazamiento 150 km, 2h30)**  
+- Mañana: Mañana libre para actividades opcionales: senderismo o visita cultural adicional.  
+- Tarde: Viaje de regreso a Dakar; tiempo libre para compras o visita al mercado Soumbédioune.  
+- Noche: Cena de despedida en restaurante gourmet.  
+- Alojamiento recomendado: Hotel King Fahd Palace o traslado al aeropuerto según horario.  
+
+---  
+
+Este recorrido combina la riqueza histórica y cultural de Senegal con sus paisajes naturales y la calidez de sus comunidades locales, utilizando un transporte cómodo y seguro que garantiza la experiencia auténtica sin perder eficiencia en los desplazamientos.</div>
+    </div>
+    <div class="highlight">
+      <strong>✈️ Viaje preparado para ti:</strong> 15 días · 2 persona(s) · Cultural e histórico    </div>
+  </div>
+
+  <!-- 02 CONSEJOS -->
+  <span class="scroll-anchor" id="consejos"></span>
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">02</span>
+      <h2 class="section-title">💡 Consejos del destino</h2>
+    </div>
+    <div class="card">
+      <div class="card-body">---
+# Guía de viaje premium a Senegal
+
+---
+
+## 1. Climatología
+
+Senegal disfruta de un clima tropical con dos estaciones bien definidas: la estación seca y la estación de lluvias. La temporada seca, que va de noviembre a mayo, se caracteriza por cielos despejados, temperaturas agradables y baja humedad. Durante la estación de lluvias, de junio a octubre, las precipitaciones son frecuentes, especialmente en agosto y septiembre, con un ambiente más cálido y húmedo. La región costera suele ser más suave que las zonas interiores.
+
+---
+
+## 2. Mejor época para viajar
+
+La mejor temporada para visitar Senegal es entre noviembre y marzo. Este periodo coincide con la estación seca y temperaturas templadas, ideales para recorrer ciudades, realizar safaris y explorar la costa sin la interrupción de lluvias. Evite la estación húmeda, especialmente agosto y septiembre, cuando las precipitaciones pueden dificultar ciertas actividades al aire libre.
+
+---
+
+## 3. Vacunas y salud
+
+Es imprescindible contar con la vacuna contra la fiebre amarilla para entrar al país; se exige el certificado de vacunación. También se recomienda tener al día las vacunas habituales: tétanos, difteria, hepatitis A y B, así como la profilaxis contra la malaria. Senegal dispone de instalaciones sanitarias básicas en grandes ciudades, pero se aconseja llevar un kit de primeros auxilios y medicamentos personales para viajes a zonas rurales.
+
+---
+
+## 4. Seguridad para turistas
+
+Senegal es uno de los países más seguros de África Occidental. Sin embargo, es aconsejable mantener las precauciones básicas como evitar zonas poco transitadas de noche, no exhibir objetos de valor y respetar las indicaciones locales. En áreas turísticas, es frecuente la presencia de vendedores ambulantes; mantenga siempre un respeto cordial y firme para evitar inconvenientes. En general, la hospitalidad senegalesa es destacada.
+
+---
+
+## 5. Moneda y pagos
+
+La moneda oficial es el Franco CFA (XOF), utilizado también en otros países del África Occidental. Es conveniente llevar euros o dólares para cambiar en casas de cambio oficiales. Los pagos en efectivo son predominantes, especialmente fuera de Dakar. Las tarjetas bancarias son aceptadas en grandes hoteles y restaurantes, pero no en mercados o establecimientos pequeños. Use cajeros automáticos en ciudades principales para evitar riesgos.
+
+---
+
+## 6. Costumbres culturales importantes
+
+La cultura senegalesa es rica en tradiciones y hospitalidad. El saludo es fundamental: se recomienda estrechar la mano con la izquierda bajo el brazo derecho doblado. El respeto por la jerarquía y los mayores es clave; hable con cortesía y evite gestos que puedan malinterpretarse. Senegal es predominantemente musulmán, por lo que se aconseja vestir con modestia, especialmente en áreas rurales y lugares de culto.
+
+---
+
+## 7. Gastronomía típica
+
+La cocina senegalesa es vibrante y sabrosa. Entre sus platos emblemáticos destacan:
+
+- **Thieboudienne**: arroz con pescado y verduras, considerado plato nacional.
+- **Yassa**: pollo o pescado marinado en limón y cebolla.
+- **Mafé**: guiso de carne en salsa de maní.
+  
+Los mercados ofrecen frutas frescas y especias. Se recomienda probar también los jugos naturales y el té verde, parte esencial del ritual social. 
+
+---
+
+## 8. Compras recomendadas
+
+Para llevar un recuerdo auténtico, Senegal ofrece:
+
+- Artesanía en madera y textiles tradicionales (como el bogolán).
+- Joyas de plata y conchas marinas.
+- Música local en CD o discos.
+- Café y especias locales.
+
+Mercados como Sandaga en Dakar son ideales para una experiencia de compra viva y directa con los artesanos.
+
+---
+
+## 9. Consejos prácticos para viajeros
+
+- Lleve ropa ligera y transpirable, con un pañuelo para cubrir cabeza y hombros.
+- Beba siempre agua embotellada y evite alimentos crudos o mal cocinados.
+- Use protector solar y repelente anti-mosquitos.
+- Aprenda algunas frases en francés o wolof para facilitar la comunicación.
+- Contrate guías locales para excursiones, aportando a la comunidad.
+
+---
+
+## 10. Qué evitar como turista
+
+- No fotografíe personas sin permiso, especialmente en zonas rurales y mercados.
+- Evite exhibir riqueza o joyería llamativa para no atraer atención indeseada.
+- No realice comentarios políticos o religiosos que puedan ser interpretados como ofensivos.
+- Absténgase de consumir drogas o involucrarse en situaciones de riesgo legal.
+- No descuide sus pertenencias en lugares públicos.
+
+---
+
+## 11. Apps útiles para viajar
+
+Para facilitar su estancia, descargue:
+
+- **Maps.me**: navegación offline.
+- **XE Currency**: conversor de moneda actualizado.
+- **WhatsApp**: principal medio para comunicarse localmente.
+- **Google Translate**: ayuda con francés y wolof.
+- **TravelSafe Pro**: para información sobre seguridad y salud.
+
+---
+
+## 12. Consejos sobre internet y conectividad
+
+Senegal cuenta con buena cobertura móvil en ciudades y zonas turísticas. Se recomienda adquirir una SIM local para acceso a datos y llamadas a bajo costo. El internet en hoteles es generalmente estable, aunque en áreas rurales puede ser limitado. Use redes Wi-Fi públicas con precaución y evite realizar transacciones sensibles en conexiones no seguras.
+
+---
+
+**Descubra Senegal con confianza y disfrute de una experiencia cultural enriquecedora en este vibrante país africano.**
+
+---</div>
+    </div>
+  </div>
+
+  <div class="divider">· · ·</div>
+
+  <!-- 03 TRANSPORTE -->
+  <span class="scroll-anchor" id="transporte"></span>
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">03</span>
+      <h2 class="section-title">🚗 Opciones de transporte</h2>
+    </div>
+    <div class="card">
+      <div class="card-body">**GUÍA DE TRANSPORTE EN SENEGAL**  
+*Conducción con coche de alquiler y contratación de agencia local*  
+
+---
+
+### Alquilar un coche en Senegal: recomendaciones prácticas  
+
+**Tipos de vehículos recomendados**  
+Para explorar Senegal, es aconsejable optar por vehículos resistentes que se adapten tanto a la ciudad como a carreteras secundarias. Un SUV o un 4x4 es ideal para rutas que incluyen caminos rurales o accesos a parques nacionales. En Dakar y sus alrededores, un coche compacto funciona bien para desplazamientos urbanos.  
+
+**Condiciones de las carreteras**  
+Las principales carreteras están generalmente asfaltadas y en buen estado, especialmente las que conectan Dakar con Saint-Louis, Ziguinchor o la costa. En cambio, muchas vías secundarias pueden ser irregulares, con tramos sin pavimento o baches, y en época de lluvias pueden volverse difíciles sin un vehículo adecuado.  
+
+**Consejos de conducción en Senegal**  
+- Conduzca siempre con precaución y respeto a las normas locales.  
+- La circulación es por la derecha.  
+- Evite conducir de noche fuera de las grandes ciudades debido a la baja iluminación y posible presencia de animales o peatones en la vía.  
+- El uso del cinturón de seguridad es obligatorio.  
+- El consumo de alcohol debe evitarse antes de conducir, ya que las sanciones pueden ser estrictas.  
+- En carreteras secundarias, reduzca la velocidad para evitar baches o vehículos lentos.  
+- Mantenga siempre visible la documentación del vehículo y permiso de circulación.  
+
+**Peajes y estacionamiento**  
+Senegal cuenta con algunos peajes en carreteras principales, especialmente en autopistas cerca de Dakar. Las tarifas suelen ser razonables. En ciudades grandes, los estacionamientos están disponibles, pero puede ser difícil encontrar lugar en áreas céntricas. Se recomienda usar aparcamientos vigilados cuando sea posible y evitar dejar objetos a la vista dentro del vehículo.  
+
+**Empresas internacionales de alquiler**  
+En Dakar y el aeropuerto internacional Blaise Diagne operan varias compañías reconocidas mundialmente, como Avis, Hertz, Europcar y Sixt. Reservar con antelación online es recomendable para garantizar disponibilidad y mejores tarifas. Pregunte por condiciones de seguro y asistencia en carretera.  
+
+---
+
+### Contratar agencia local con conductor o guía: ventajas y consejos  
+
+**Ventajas de contratar un servicio local**  
+- Conocimiento experto del territorio, idioma y costumbres locales.  
+- Comodidad y menor estrés al no tener que preocuparse por la navegación ni el tráfico.  
+- Posibilidad de acceso a rutas y experiencias auténticas, fuera de circuitos turísticos convencionales.  
+- Seguridad adicional, especialmente en trayectos largos o zonas menos accesibles.  
+
+**Tipos de servicios disponibles**  
+- Traslados privados aeropuerto-hotel y entre ciudades.  
+- Excursiones de día completo con guía y conductor.  
+- Tours temáticos: culturales, históricos, naturaleza, playas.  
+- Vehículos adaptados para grupos, familias o viajeros con necesidades especiales.  
+
+**Consejos de seguridad**  
+- Verifique que la empresa cuente con licencias y seguros vigentes.  
+- Solicite referencias o recomendaciones de otros viajeros.  
+- Confirme detalles claros sobre tarifas, horarios y rutas antes de contratar.  
+- Evite pagos en efectivo sin contrato o recibo.  
+
+**Cómo elegir una agencia fiable**  
+- Priorice agencias establecidas con presencia online y opiniones positivas verificables.  
+- Prefiera aquellas que ofrecen atención previa personalizada y flexibilidad.  
+- Pregunte por vehículos modernos y mantenimiento frecuente.  
+- Considere agencias recomendadas por hoteles o embajadas.  
+
+---
+
+### Resumen: recomendaciones finales para moverse en Senegal  
+- Combine alquiler de coche y guía local para un viaje cómodo y seguro.  
+- Use 4x4 para explorar fuera de Dakar y acceso a parques o zonas rurales.  
+- Conduzca a la defensiva y evite jornadas nocturnas en carretera.  
+- Reserve coche y servicios con anticipación mediante plataformas internacionales y agencias locales reconocidas.  
+- Valore la contratación de conductor si desconoce las condiciones locales o busca máxima comodidad.  
+
+Este enfoque integral garantiza que su experiencia en Senegal sea práctica, segura y enriquecedora desde el punto de vista cultural y turístico.  
+
+---  
+
+**Viaje seguro y disfrute cada kilómetro en Senegal.**</div>
+    </div>
+    <div class="highlight-teal">
+      <strong>🗺️ Recuerda:</strong> El transporte elegido condiciona el ritmo del viaje. Planifícalo con antelación.
+    </div>
+  </div>
+
+  <div class="divider">· · ·</div>
+
+  <!-- 04 BLOGS -->
+  <span class="scroll-anchor" id="blogs"></span>
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">04</span>
+      <h2 class="section-title">🌐 Blogs y recursos del destino</h2>
+    </div>
+    <div class="card">
+      <div class="card-body">---
+
+# Recursos Online para Preparar tu Viaje a Senegal
+
+---
+
+## 1. Blogs de Viaje Recomendados
+
+### Nomad Revelations  
+Blog de una pareja que viaja por África, con relatos detallados y consejos prácticos sobre Senegal.  
+**Por qué es útil:** Proporciona información actualizada sobre cultura local, transporte y lugares poco turísticos.
+
+### The Culture Trip - Senegal  
+Sección dedicada a Senegal en un portal global de viajes y cultura.  
+**Por qué es útil:** Artículos bien investigados sobre historia, gastronomía y experiencias culturales que enriquecen el viaje.
+
+### The Blonde Abroad – África  
+Aunque general sobre África, incluye posts específicos sobre Senegal, destacando actividades y recomendaciones para mujeres viajeros.  
+**Por qué es útil:** Información útil sobre seguridad y experiencias personales que convierten el viaje en algo seguro y memorable.
+
+---
+
+## 2. Foros y Comunidades de Viajeros
+
+### TripAdvisor - Foro de Senegal  
+Comunidad activa donde viajeros comparten preguntas, consejos y experiencias recientes.  
+**Por qué es útil:** Actualización rápida sobre alojamientos, situaciones locales y recomendaciones personalizadas.
+
+### Lonely Planet Thorn Tree - Senegal  
+Un foro internacional con amplia información sobre Senegal, transporte, alojamiento y recomendaciones.  
+**Por qué es útil:** Permite conectar con viajeros que han visitado recientemente el país, además de expertos en destinos africanos.
+
+### Facebook Group: Travelers Around Senegal  
+Grupo privado dedicado a viajeros que planean o están realizando un viaje por Senegal.  
+**Por qué es útil:** Soporte instantáneo, recomendaciones locales y oportunidad para contactos con otros viajeros.
+
+---
+
+## 3. Canales de YouTube Útiles
+
+### Wolof Coach  
+Canal especializado en cultura y lengua senegalesa, además de ofrecer guías turísticas de distintas regiones.  
+**Por qué es útil:** Facilita una inmersión cultural con vídeos en idioma local y explicaciones prácticas para viajeros.
+
+### Exploring with Josh – Senegal  
+Documentales y vlogs de un viajero explorando Senegal con consejos sobre seguridad y entretenimiento.  
+**Por qué es útil:** Contenido visual real que permite planificar rutas con base en la experiencia personal del creador.
+
+### VagaBrothers – Travel Senegal  
+Serie de videos sobre viajar en África que incluye episodios específicos en Senegal enfocados en cultura y gastronomía.  
+**Por qué es útil:** Combina aprendizaje cultural con recomendaciones prácticas y destinos imperdibles.
+
+---
+
+## 4. Recursos para Organizar Rutas
+
+### Rome2rio  
+Herramienta online para calcular rutas, combinando vuelos, trenes, ferris y transporte terrestre dentro de Senegal y hacia países limítrofes.  
+**Por qué es útil:** Permite planificar trayectos eficientes y comparar opciones según horario y precio.
+
+### Google My Maps  
+Servicio para crear mapas personalizados y planificar visitas a puntos de interés en Senegal.  
+**Por qué es útil:** Visualiza y comparte itinerarios, ayudando a organizar días para optimizar tiempo y desplazamientos.
+
+### Viator – Tours en Senegal  
+Plataforma para reservar excursiones guiadas y actividades locales en destinos principales como Dakar, Saint-Louis o el Parque Nacional Niokolo-Koba.  
+**Por qué es útil:** Facilita la reserva anticipada y asegura experiencias auténticas con operadores confiables.
+
+---
+
+## 5. Apps Útiles para el Destino
+
+### Maps.me  
+Mapa offline preciso para Senegal, incluyendo senderos, restaurantes y puntos de interés.  
+**Por qué es útil:** Navegación sin necesidad de internet, esencial en zonas rurales o con cobertura limitada.
+
+### XE Currency  
+Conversor actualizado de monedas, indispensable para manejar el franco CFA con precisión.  
+**Por qué es útil:** Ayuda a controlar gastos y evitar errores en transacciones.
+
+### WhatsApp  
+Aplicación de mensajería ampliamente usada en Senegal para comunicación directa con guías, anfitriones y otros viajeros.  
+**Por qué es útil:** Medio principal de contacto, accesible solo con conexión a internet, favoreciendo la comunicación rápida.
+
+### Uber (en Dakar)  
+Aunque limitado a Dakar, Uber está disponible y facilita desplazamientos seguros dentro de la capital.  
+**Por qué es útil:** Evita regateos y problemas de transporte, especialmente para viajeros primerizos.
+
+---
+
+**Esperamos que esta guía te facilite la preparación de tu aventura por Senegal, brindándote herramientas confiables y consejos de expertos para que disfrutes de un viaje memorable.**
+
+---
+
+*Para acceder directamente a estos recursos, aquí tienes el [PDF con todos los links] (Enlace para descargar).*</div>
+    </div>
+    <div class="highlight">
+      <strong>💬 Consejo:</strong> Consulta estos recursos antes del viaje para llevar el destino bien preparado.
+    </div>
+  </div>
+
+  <!-- 05 LECTURAS Y PELIS -->
+  <span class="scroll-anchor" id="inspiracion"></span>
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">05</span>
+      <h2 class="section-title">🎬 Lecturas y pelis para inspirarte</h2>
+    </div>
+    <div class="card">
+      <div class="card-body">---
+
+**Guía Cultural para Viajeros – Senegal**
+
+---
+
+### 1. Libros Recomendados
+
+**1.1. “Écailles de lune” – Ousmane Sembène**  
+Un apasionante relato que aborda las tradiciones y los desafíos modernos de Senegal a través de la vida de una joven mujer.  
+*Por qué leerlo:* Ofrece una mirada profunda a la sociedad senegalesa desde la perspectiva de uno de sus escritores más emblemáticos.
+
+**1.2. “Le Mandat” – Ousmane Sembène**  
+Novela que captura las complejidades del Senegal colonial con humor y crítica social.  
+*Por qué leerlo:* Refleja el impacto del colonialismo francés en la vida cotidiana y las relaciones familiares senegalesas.
+
+**1.3. “Soñando con las fieras” – Aminata Sow Fall**  
+Historia sobre la lucha personal y social en el contexto urbano de Dakar.  
+*Por qué leerlo:* Explora el proceso de urbanización y sus efectos en la cultura local, brindando una visión contemporánea del país.
+
+**1.4. “El baile de los espíritus” – Ken Bugul**  
+Una novela semi-autobiográfica que habla de identidad, exilio y retorno a las raíces.  
+*Por qué leerlo:* Permite comprender los dilemas y riquezas culturales desde la perspectiva de una mujer senegalesa.
+
+**1.5. “L’enfant noir” (El niño negro) – Camara Laye**  
+Clásico de la literatura africana sobre la infancia en Guinea, con fuerte acercamiento cultural común a Senegal.  
+*Por qué leerlo:* Comprender las tradiciones y la infancia en el África Occidental, muy ligada a la cultura senegalesa.
+
+---
+
+### 2. Películas Destacadas
+
+**2.1. “La Noire de…” (1966) – Ousmane Sembène**  
+Considerada la primera película del África subsahariana, narra la historia de una joven senegalesa que emigrar a Francia.  
+*Por qué verla:* Revela las tensiones del colonialismo y las dificultades del exilio.
+
+**2.2. “Moolaadé” (2004) – Ousmane Sembène**  
+Aborda la lucha contra la mutilación genital femenina en una comunidad rural.  
+*Por qué verla:* Es una poderosa mirada sobre las tradiciones, los derechos humanos y la resistencia social en Senegal.
+
+**2.3. “Tey” (2012) – Alain Gomis**  
+Experiencia poética y visual en Dakar, explorando la vida, la muerte y el tiempo.  
+*Por qué verla:* Captura la atmósfera y espiritualidad senegalesa contemporánea.
+
+**2.4. “Tout simplement” (2007) – Moussa Sene Absa**  
+Comedia dramática que retrata la coexistencia de modernidad y tradiciones en Dakar.  
+*Por qué verla:* Ofrece una mirada fresca y auténtica a la vida cotidiana y las tensiones urbanas.
+
+**2.5. “Faat Kiné” (2000) – Ousmane Sembène**  
+Historia de una mujer fuerte que desafía convenciones sociales en Dakar.  
+*Por qué verla:* Destaca el papel y la emancipación femenina dentro de la sociedad senegalesa.
+
+---
+
+### 3. Documentales Recomendados
+
+**3.1. “Demain, ailleurs” (Mañana, en otro lugar, 2017)**  
+Explora las soluciones sostenibles en comunidades africanas, incluyendo Senegal, mostrando iniciativas culturales y sociales.  
+*Por qué verlo:* Abre una ventana a los proyectos comunitarios y el dinamismo social del país.
+
+**3.2. “Pulaaku: The Fulani Code” (2010)**  
+Documental sobre el pueblo Fula y sus tradiciones que también forman parte importante en Senegal.  
+*Por qué verlo:* Entender la diversidad étnica y cultural que coexiste dentro de Senegal.
+
+**3.3. “Senegal, un patrimoine en danger” (Senegal, un patrimonio en peligro, 2014)**  
+Analiza la conservación y transformación del patrimonio histórico y cultural senegalés.  
+*Por qué verlo:* Concientiza sobre los esfuerzos para preservar la cultura en un país en constante cambio.
+
+---
+
+**Conclusión**  
+Este conjunto de libros, películas y documentales ofrece una inmersión completa en la historia, la sociedad, las tradiciones y los retos contemporáneos de Senegal. Al explorar estas recomendaciones, el viajero podrá comprender mejor la riqueza cultural y humana que define a este fascinante destino del África Occidental.
+
+---
+
+*Fin del dossier cultural – Senegal*
+
+---</div>
+    </div>
+    <div class="highlight-coral">
+      <strong>📚 Tip:</strong> Leer o ver estas obras antes de viajar transforma completamente la experiencia.
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-box">
+    <p class="cta-title">¿Quieres que te lo planifique al detalle?</p>
+    <p class="cta-sub">Ruta completa con fechas, reservas y actividades personalizadas para ti.</p>
+    <a class="btn-whatsapp" href="https://wa.me/34678720037?text=Hola!%20He%20recibido%20mi%20gu%C3%ADa%20de%20SENEGAL%20y%20quiero%20planificar%20mi%20viaje%20al%20detalle." target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M11.974 0C5.362 0 0 5.362 0 11.974c0 2.094.548 4.14 1.59 5.943L0 24l6.27-1.645A11.932 11.932 0 0 0 11.974 24C18.586 24 24 18.638 24 11.974 24 5.362 18.638 0 11.974 0zm0 21.818a9.83 9.83 0 0 1-5.013-1.375l-.36-.214-3.724.977.994-3.63-.235-.372a9.83 9.83 0 0 1-1.508-5.23c0-5.42 4.426-9.846 9.846-9.846 2.633 0 5.107 1.026 6.969 2.888a9.826 9.826 0 0 1 2.888 6.969c0 5.42-4.426 9.833-9.857 9.833z"/></svg>
+      Hablar con un experto por WhatsApp
+    </a>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <strong>GuiaMundi.es</strong> — Consultoría de viajes personalizada<br>
+  <span style="font-size:12px; margin-top:4px; display:block;">
+    📧 hola@GuiaMundi.com &nbsp;·&nbsp; 📱 +34 678 720 037
+  </span>
+  <div style="margin-top:0.75rem;">
+    <a href="https://wa.me/34678720037" target="_blank">WhatsApp</a> &nbsp;·&nbsp;
+    <a href="https://resistenciademateriales.com/gm/guiamundi.html" target="_blank">Pide otra guía gratis</a>
+  </div>
+  <p class="footer-bottom">Guía generada el 2026-06-02T00:59:34.000Z para PACO · pacoco@gmail.com</p>
+</div>
+
+<!-- BOTÓN VOLVER ARRIBA -->
+<a href="#top" class="back-top" id="backTop">↑</a>
+
+<script>
+  // Progreso de scroll
+  const progress = document.getElementById('progress');
+  const backTop = document.getElementById('backTop');
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement;
+    const pct = (window.scrollY / (h.scrollHeight - h.clientHeight)) * 100;
+    progress.style.width = pct + '%';
+    backTop.classList.toggle('visible', window.scrollY > 300);
+  });
+
+  // Resaltar nav activo
+  const sections = ['recorrido','consejos','transporte','blogs','inspiracion'];
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(a => a.classList.remove('active'));
+        const active = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-50% 0px -50% 0px' });
+
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
