@@ -1,0 +1,25 @@
+<div id="mapa" style="height:400px; border-radius:12px; overflow:hidden; margin:1rem 0;"></div>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const puntos = Torre CN, Toronto","Galería de Arte de Ontario, Toronto","The Omni King Edward Hotel, Toronto","Museo Real de Ontario, Toronto","Distillery District, Toronto","Residence Inn by Marriott Kingston Water's Edge, Kingston","Fort Henry, Kingston","Fairmont Château Laurier, Ottawa","Parlamento de Canadá, Ottawa","Museo de Historia de Canadá, Ottawa","ByWard Market, Ottawa","Hotel Nelligan, Montreal","Basílica de Notre-Dame, Montreal","Museo de Bellas Artes de Montreal, Montreal","Parque Mont-Royal, Montreal","Mercado Jean-Talon, Montreal","Hôtel Pierre-Percé, Trois-Rivières","Museo de las Religiones, Trois-Rivières","Fairmont Le Château Frontenac, Quebec","Ciudadela de Quebec, Quebec","Museo de la Civilización, Quebec","Barrio Petit Champlain, Quebec","Isla de Orleans, Quebec";
+const lista = ["Torre CN, Toronto","Galería de Arte de Ontario, Toronto","The Omni King Edward Hotel, Toronto","Museo Real de Ontario, Toronto","Distillery District, Toronto","Residence Inn by Marriott Kingston Water's Edge, Kingston","Fort Henry, Kingston","Fairmont Château Laurier, Ottawa","Parlamento de Canadá, Ottawa","Museo de Historia de Canadá, Ottawa","ByWard Market, Ottawa","Hotel Nelligan, Montreal","Basílica de Notre-Dame, Montreal","Museo de Bellas Artes de Montreal, Montreal","Parque Mont-Royal, Montreal","Mercado Jean-Talon, Montreal","Hôtel Pierre-Percé, Trois-Rivières","Museo de las Religiones, Trois-Rivières","Fairmont Le Château Frontenac, Quebec","Ciudadela de Quebec, Quebec","Museo de la Civilización, Quebec","Barrio Petit Champlain, Quebec","Isla de Orleans, Quebec"];
+
+const map = L.map('mapa');
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+const bounds = [];
+lista.forEach((lugar, i) => {
+  fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(lugar)}&format=json&limit=1`)
+    .then(r => r.json())
+    .then(data => {
+      if (data[0]) {
+        const lat = parseFloat(data[0].lat);
+        const lon = parseFloat(data[0].lon);
+        L.marker([lat, lon]).addTo(map).bindPopup(`<b>${i+1}. ${lugar}</b>`);
+        bounds.push([lat, lon]);
+        if (bounds.length === lista.length) map.fitBounds(bounds);
+      }
+    });
+});
+</script>
