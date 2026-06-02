@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Tu Guía – RUT POR ALGARVE DESDE FARO  | GuiaMundi.es</title>
+<link rel="apple-touch-icon" href="URL_LOGO">
+<link rel="icon" type="image/png" href="URL_LOGO">
+<link href="https://googleapis.com" rel="stylesheet">
+<style>
+  :root {
+    --sand: #F5F0E8;
+    --ink: #1C1917;
+    --ink-soft: #44403C;
+    --ink-muted: #78716C;
+    --gold: #B45309;
+    --gold-light: #FEF3C7;
+    --teal: #0F766E;
+    --teal-light: #CCFBF1;
+    --coral: #C2410C;
+    --coral-light: #FFF7ED;
+    --white: #FAFAF9;
+    --border: #D6CFC0;
+    --header-h: 200px;
+    --tabs-h: 56px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { height: 100%; }
+
+  body {
+    background: var(--sand);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    font-size: 15px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── HEADER PORTADA ── */
+  .header {
+    background: var(--ink);
+    padding: 2.5rem 1.5rem 1.75rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(255,255,255,0.015) 40px, rgba(255,255,255,0.015) 80px);
+  }
+  .header-brand {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #D4A853;
+    margin-bottom: 0.6rem;
+    position: relative;
+  }
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 5vw, 2.6rem);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--white);
+    position: relative;
+  }
+  .header h1 em { font-style: italic; color: #D4A853; }
+  .header-meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 1.5rem;
+    margin-top: 1rem;
+    font-size: 12px;
+    color: #A8A29E;
+    position: relative;
+  }
+  .header-meta span { display: flex; align-items: center; gap: 5px; }
+  .header-meta svg { width: 12px; height: 12px; opacity: 0.6; }
+
+  /* ── TABS BAR ── */
+  .tabs-bar {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+    flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+  }
+  .tabs-bar::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    padding: 10px 16px 8px;
+    font-size: 11px;
+    font-weight: 400;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--ink-muted);
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: color 0.15s, border-color 0.15s;
+    min-width: 64px;
+  }
+  .tab-btn .tab-icon { font-size: 18px; line-height: 1; }
+  .tab-btn.active {
+    color: var(--ink);
+    border-bottom-color: #D4A853;
+    font-weight: 500;
+  }
+  .tab-btn:hover { color: var(--ink); }
+
+  /* ── PÁGINAS ── */
+  .pages {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+  }
+  .page {
+    display: none;
+    height: 100%;
+    overflow-y: auto;
+    padding: 1.5rem 1.25rem 5rem;
+    max-width: 760px;
+    margin: 0 auto;
+    animation: fadeIn 0.2s ease;
+  }
+  .page.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── PÁGINA INICIO ── */
+  .inicio-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 0.5rem;
+  }
+  .inicio-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.1rem 1rem;
+    cursor: pointer;
+    transition: border-color 0.15s, transform 0.1s;
+    text-align: center;
+  }
+  .inicio-card:hover { border-color: #D4A853; transform: translateY(-1px); }
+  .inicio-card:active { transform: scale(0.98); }
+  .inicio-card .ic-icon { font-size: 26px; margin-bottom: 6px; }
+  .inicio-card .ic-title {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+  .inicio-card .ic-sub { font-size: 11px; color: var(--ink-muted); }
+
+  .resumen-box {
+    background: var(--ink);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.25rem;
+    color: var(--sand);
+  }
+  .resumen-box h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: 0.75rem;
+    color: var(--white);
+  }
+  .resumen-box h2 em { font-style: italic; color: #D4A853; }
+  .resumen-datos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .resumen-dato {
+    background: rgba(255,255,255,0.07);
+    border-radius: 8px;
+    padding: 8px 10px;
+  }
+  .resumen-dato .rd-label { font-size: 10px; color: #A8A29E; text-transform: uppercase; letter-spacing: 1px; }
+  .resumen-dato .rd-value { font-size: 13px; color: var(--white); margin-top: 2px; }
+
+  .seccion-titulo { font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-muted); margin: 1.25rem 0 0.75rem; }
+
+  /* ── CONTENIDO SECCIONES ── */
+  .page-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .page-icon { font-size: 24px; }
+  .page-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .card-body {
+    color: var(--ink-soft);
+    font-size: 14.5px;
+    line-height: 1.85;
+    white-space: pre-line;
+  }
+
+  .highlight {
+    background: var(--gold-light);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+    padding: 0.9rem 1.1rem;
+    margin: 1rem 0;
+    font-size: 13.5px;
+    color: #78350F;
+  }
+  .highlight-teal {
+    background: var(--teal-light);
+    border-left: 3px solid var(--teal);
+    border-radius: 0 8px 8px 0;
+    padding: 0.9rem 1.1rem;
+    margin: 1rem 0;
+    font-size: 13.5px;
+    color: #134E4A;
+  }
+  .highlight-coral {
+    background: var(--coral-light);
+    border-left: 3px solid var(--coral);
+    border-radius: 0 8px 8px 0;
+    padding: 0.9rem 1.1rem;
+    margin: 1rem 0;
+    font-size: 13.5px;
+    color: #7C2D12;
+  }
+  .highlight strong, .highlight-teal strong, .highlight-coral strong { font-weight: 500; }
+
+  /* ── ESTILOS EXCLUSIVOS SOLAPA MAPA ── */
+  .map-box {
+    background: #EFF6FF;
+    border: 1px solid #BFDBFE;
+    border-radius: 12px;
+    text-align: center;
+    padding: 2rem 1.5rem;
+    margin-top: 1rem;
+  }
+  .btn-maps {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #10B981;
+    color: white;
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+    transition: background 0.15s, transform 0.1s;
+    margin-top: 1rem;
+  }
+  .btn-maps:hover { background: #059669; transform: translateY(-1px); }
+  .btn-maps:active { transform: scale(0.98); }
+
+  /* ── CTA WHATSAPP ── */
+  .cta-box {
+    background: #F0FDF4;
+    border: 1px solid #86EFAC;
+    border-radius: 12px;
+    text-align: center;
+    padding: 1.5rem 1.25rem;
+    margin: 1.5rem 0 0;
+  }
+  .cta-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    color: var(--ink);
+  }
+  .cta-sub { font-size: 13px; color: var(--ink-soft); margin-bottom: 1rem; }
+  .btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #25D366;
+    color: white;
+    padding: 11px 22px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+  }
+  .btn-whatsapp:hover { background: #1db954; }
+
+  /* ── FOOTER MÍNIMO ── */
+  .footer-mini {
+    text-align: center;
+    padding: 1rem;
+    font-size: 11px;
+    color: var(--ink-muted);
+    border-top: 1px solid var(--border);
+    background: var(--white);
+    flex-shrink: 0;
+  }
+  .footer-mini a { color: var(--gold); text-decoration: none; }
+
+  @media (max-width: 400px) {
+    .inicio-cards { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .tab-btn { min-width: 56px; padding: 10px 10px 8px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ── TABS BAR (Navegación superior) ── -->
+  <div class="tabs-bar">
+    <button class="tab-btn active" onclick="switchTab('inicio')">
+      <span class="tab-icon">🏠</span>
+      <span>Inicio</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab('itinerario')">
+      <span class="tab-icon">📅</span>
+      <span>Itinerario</span>
+    </button>
+    <!-- SOLAPA DE MAPA -->
+    <button class="tab-btn" onclick="switchTab('mapa')">
+      <span class="tab-icon">🗺️</span>
+      <span>Mapa</span>
+    </button>
+  </div>
+
+  <!-- ── CONTENEDOR DE PÁGINAS ── -->
+  <div class="pages">
+
+    <!-- SOLAPA 1: INICIO -->
+    <div id="page-inicio" class="page active">
+      <div class="resumen-box">
+        <h2>Tu viaje a <em>RUT POR ALGARVE DESDE FARO </em></h2>
+        <div class="resumen-datos">
+          <div class="resumen-dato">
+            <div class="rd-label">Destino</div>
+            <div class="rd-value">RUT POR ALGARVE DESDE FARO </div>
+          </div>
+          <div class="resumen-dato">
+            <div class="rd-label">Duración</div>
+            <div class="rd-value">Guía Premium</div>
