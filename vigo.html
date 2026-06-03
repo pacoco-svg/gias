@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Tu Guía – VIGO| GuiaMundi.es</title>
+<link rel="apple-touch-icon" href="URL_LOGO">
+<link rel="icon" type="image/png" href="URL_LOGO">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sand: #F5F0E8; --ink: #1C1917; --ink-soft: #44403C; --ink-muted: #78716C;
+    --gold: #B45309; --gold-light: #FEF3C7; --teal: #0F766E; --teal-light: #CCFBF1;
+    --coral: #C2410C; --coral-light: #FFF7ED; --white: #FAFAF9; --border: #D6CFC0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { height: 100%; }
+  body { background: var(--sand); color: var(--ink); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.7; font-size: 15px; display: flex; flex-direction: column; }
+
+  .header { background: var(--ink); padding: 2.5rem 1.5rem 1.75rem; text-align: center; position: relative; overflow: hidden; flex-shrink: 0; }
+  .header::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(255,255,255,0.015) 40px, rgba(255,255,255,0.015) 80px); }
+  .header-brand { font-size: 10px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; color: #D4A853; margin-bottom: 0.6rem; position: relative; }
+  .header h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 5vw, 2.6rem); font-weight: 400; line-height: 1.15; color: var(--white); position: relative; }
+  .header h1 em { font-style: italic; color: #D4A853; }
+  .header-meta { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1.5rem; margin-top: 1rem; font-size: 12px; color: #A8A29E; position: relative; }
+  .header-meta span { display: flex; align-items: center; gap: 5px; }
+  .header-meta svg { width: 12px; height: 12px; opacity: 0.6; }
+
+  .tabs-bar { background: var(--white); border-bottom: 1px solid var(--border); display: flex; overflow-x: auto; scrollbar-width: none; flex-shrink: 0; position: sticky; top: 0; z-index: 50; box-shadow: 0 1px 8px rgba(0,0,0,0.06); }
+  .tabs-bar::-webkit-scrollbar { display: none; }
+  .tab-btn { display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 10px 16px 8px; font-size: 11px; font-weight: 400; font-family: 'DM Sans', sans-serif; color: var(--ink-muted); background: none; border: none; border-bottom: 2px solid transparent; cursor: pointer; white-space: nowrap; flex-shrink: 0; transition: color 0.15s, border-color 0.15s; min-width: 64px; }
+  .tab-btn .tab-icon { font-size: 18px; line-height: 1; }
+  .tab-btn.active { color: var(--ink); border-bottom-color: #D4A853; font-weight: 500; }
+
+  .pages { flex: 1; overflow: hidden; position: relative; }
+  .page { display: none; height: 100%; overflow-y: auto; padding: 1.5rem 1.25rem 5rem; max-width: 760px; margin: 0 auto; animation: fadeIn 0.2s ease; }
+  .page.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+  .inicio-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 0.5rem; }
+  .inicio-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.1rem 1rem; cursor: pointer; transition: border-color 0.15s, transform 0.1s; text-align: center; }
+  .inicio-card:hover { border-color: #D4A853; transform: translateY(-1px); }
+  .inicio-card .ic-icon { font-size: 26px; margin-bottom: 6px; }
+  .inicio-card .ic-title { font-size: 12px; font-weight: 500; color: var(--ink); margin-bottom: 2px; }
+  .inicio-card .ic-sub { font-size: 11px; color: var(--ink-muted); }
+
+  .resumen-box { background: var(--ink); border-radius: 12px; padding: 1.25rem 1.5rem; margin-bottom: 1.25rem; }
+  .resumen-box h2 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 400; margin-bottom: 0.75rem; color: var(--white); }
+  .resumen-box h2 em { font-style: italic; color: #D4A853; }
+  .resumen-datos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .resumen-dato { background: rgba(255,255,255,0.07); border-radius: 8px; padding: 8px 10px; }
+  .resumen-dato .rd-label { font-size: 10px; color: #A8A29E; text-transform: uppercase; letter-spacing: 1px; }
+  .resumen-dato .rd-value { font-size: 13px; color: var(--white); margin-top: 2px; }
+  .seccion-titulo { font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-muted); margin: 1.25rem 0 0.75rem; }
+
+  .page-header { display: flex; align-items: center; gap: 10px; margin-bottom: 1.25rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border); }
+  .page-icon { font-size: 24px; }
+  .page-title { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 600; color: var(--ink); }
+
+  .card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem 1.5rem; margin-bottom: 1rem; }
+  .card-body { color: var(--ink-soft); font-size: 14.5px; line-height: 1.85; white-space: pre-line; }
+
+  .highlight { background: var(--gold-light); border-left: 3px solid var(--gold); border-radius: 0 8px 8px 0; padding: 0.9rem 1.1rem; margin: 1rem 0; font-size: 13.5px; color: #78350F; }
+  .highlight-teal { background: var(--teal-light); border-left: 3px solid var(--teal); border-radius: 0 8px 8px 0; padding: 0.9rem 1.1rem; margin: 1rem 0; font-size: 13.5px; color: #134E4A; }
+  .highlight-coral { background: var(--coral-light); border-left: 3px solid var(--coral); border-radius: 0 8px 8px 0; padding: 0.9rem 1.1rem; margin: 1rem 0; font-size: 13.5px; color: #7C2D12; }
+  .highlight strong, .highlight-teal strong, .highlight-coral strong { font-weight: 500; }
+
+  /* BLOQUES DÍA */
+  .dia-bloque { background: var(--white); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 1rem; overflow: hidden; }
+  .dia-header { background: var(--ink); color: var(--sand); padding: 0.7rem 1.25rem; display: flex; align-items: center; justify-content: space-between; }
+  .dia-numero { font-family: 'Playfair Display', serif; font-size: 0.9rem; font-weight: 600; color: #D4A853; letter-spacing: 1px; }
+  .dia-contenido { padding: 1rem 1.25rem; color: var(--ink-soft); font-size: 14px; line-height: 1.85; white-space: pre-line; }
+  .dia-mapa-btn { display: inline-flex; align-items: center; gap: 6px; margin: 0 1.25rem 1rem; padding: 8px 14px; background: var(--sand); border: 1px solid var(--border); border-radius: 8px; font-size: 12.5px; font-weight: 500; color: var(--teal); text-decoration: none; transition: background 0.15s, border-color 0.15s; }
+  .dia-mapa-btn:hover { background: var(--teal-light); border-color: var(--teal); }
+
+  .cta-box { background: #F0FDF4; border: 1px solid #86EFAC; border-radius: 12px; text-align: center; padding: 1.5rem 1.25rem; margin: 1.5rem 0 0; }
+  .cta-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 0.4rem; color: var(--ink); }
+  .cta-sub { font-size: 13px; color: var(--ink-soft); margin-bottom: 1rem; }
+  .btn-whatsapp { display: inline-flex; align-items: center; gap: 8px; background: #25D366; color: white; padding: 11px 22px; border-radius: 8px; font-size: 13px; font-weight: 500; text-decoration: none; }
+
+  .footer-mini { text-align: center; padding: 1rem; font-size: 11px; color: var(--ink-muted); border-top: 1px solid var(--border); background: var(--white); flex-shrink: 0; }
+  .footer-mini a { color: var(--gold); text-decoration: none; }
+
+  @media (max-width: 400px) {
+    .tab-btn { min-width: 56px; padding: 10px 10px 8px; }
+    .page { padding: 1.25rem 1rem 5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-brand">GuiaMundi · Guía Personalizada</div>
+  <h1>Tu viaje a<br><em>VIGO</em></h1>
+  <div class="header-meta">
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>5 días</span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>2viajero(s)</span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10z"/></svg>Cultural e histórico</span>
+  </div>
+</div>
+
+<div class="tabs-bar">
+  <button class="tab-btn active" onclick="showTab('inicio')"><span class="tab-icon">🏠</span>Inicio</button>
+  <button class="tab-btn" onclick="showTab('recorrido')"><span class="tab-icon">🗓️</span>Recorrido</button>
+  <button class="tab-btn" onclick="showTab('consejos')"><span class="tab-icon">💡</span>Consejos</button>
+  <button class="tab-btn" onclick="showTab('transporte')"><span class="tab-icon">🚗</span>Transporte</button>
+  <button class="tab-btn" onclick="showTab('blogs')"><span class="tab-icon">🌐</span>Blogs</button>
+  <button class="tab-btn" onclick="showTab('inspiracion')"><span class="tab-icon">🎬</span>Inspiración</button>
+</div>
+
+<div class="pages">
+
+  <!-- INICIO -->
+  <div class="page active" id="page-inicio">
+    <div class="resumen-box">
+      <h2>Viaje a <em>VIGO</em></h2>
+      <div class="resumen-datos">
+        <div class="resumen-dato"><div class="rd-label">Duración</div><div class="rd-value">5 días</div></div>
+        <div class="resumen-dato"><div class="rd-label">Viajeros</div><div class="rd-value">2persona(s)</div></div>
+        <div class="resumen-dato"><div class="rd-label">Tipo</div><div class="rd-value">Cultural e histórico</div></div>
+        <div class="resumen-dato"><div class="rd-label">Generada</div><div class="rd-value">2026-06-03T01:55:44.000Z</div></div>
+      </div>
+    </div>
+    <p class="seccion-titulo">Tu guía incluye</p>
+    <div class="inicio-cards">
+      <div class="inicio-card" onclick="showTab('recorrido')"><div class="ic-icon">🗓️</div><div class="ic-title">Recorrido</div><div class="ic-sub">Itinerario día a día</div></div>
+      <div class="inicio-card" onclick="showTab('consejos')"><div class="ic-icon">💡</div><div class="ic-title">Consejos</div><div class="ic-sub">Tips del destino</div></div>
+      <div class="inicio-card" onclick="showTab('transporte')"><div class="ic-icon">🚗</div><div class="ic-title">Transporte</div><div class="ic-sub">Cómo moverte</div></div>
+      <div class="inicio-card" onclick="showTab('blogs')"><div class="ic-icon">🌐</div><div class="ic-title">Blogs</div><div class="ic-sub">Recursos online</div></div>
+      <div class="inicio-card" onclick="showTab('inspiracion')" style="grid-column:span 2"><div class="ic-icon">🎬</div><div class="ic-title">Lecturas y Pelis</div><div class="ic-sub">Inspírate antes de viajar</div></div>
+    </div>
+    <div class="cta-box" style="margin-top:1.25rem;">
+      <p class="cta-title">¿Lo planificamos al detalle?</p>
+      <p class="cta-sub">Reservas, actividades y ruta personalizada para ti.</p>
+      <a class="btn-whatsapp" href="https://wa.me/34678720037?text=Hola!%20He%20recibido%20mi%20gu%C3%ADa%20de%20VIGOVIGO%20y%20quiero%20planificar%20mi%20viaje." target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M11.974 0C5.362 0 0 5.362 0 11.974c0 2.094.548 4.14 1.59 5.943L0 24l6.27-1.645A11.932 11.932 0 0 0 11.974 24C18.586 24 24 18.638 24 11.974 24 5.362 18.638 0 11.974 0zm0 21.818a9.83 9.83 0 0 1-5.013-1.375l-.36-.214-3.724.977.994-3.63-.235-.372a9.83 9.83 0 0 1-1.508-5.23c0-5.42 4.426-9.846 9.846-9.846 2.633 0 5.107 1.026 6.969 2.888a9.826 9.826 0 0 1 2.888 6.969c0 5.42-4.426 9.833-9.857 9.833z"/></svg>
+        Hablar por WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- RECORRIDO CON BLOQUES POR DÍA -->
+  <div class="page" id="page-recorrido">
+    <div class="page-header">
+      <span class="page-icon">🗓️</span>
+      <h2 class="page-title">Tu recorrido</h2>
+    </div>
+
+<div class=\0><div class=\0><span class=\0>DÍA 1</span></div><div class=\0</div><a class=\0 href=\NaN target=\>🗺️ Ver Día 1 en Google Maps</a></div>
+<div class=\0><div class=\0><span class=\0>DÍA 2</span></div><div class=\0</div><a class=\0 href=\NaN target=\>🗺️ Ver Día 2 en Google Maps</a></div>
+<div class=\0><div class=\0><span class=\0>DÍA 3</span></div><div class=\0</div><a class=\0 href=\NaN target=\>🗺️ Ver Día 3 en Google Maps</a></div>
+<div class=\0><div class=\0><span class=\0>DÍA 4</span></div><div class=\0</div><a class=\0 href=\NaN target=\>🗺️ Ver Día 4 en Google Maps</a></div>
+<div class=\0><div class=\0><span class=\0>DÍA 5</span></div><div class=\0</div><a class=\0 href=\NaN target=\>🗺️ Ver Día 5 en Google Maps</a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="highlight">
+      <strong>✈️ Preparado para ti:</strong> 5 días · 2 persona(s) · Cultural e histórico    </div>
+  </div>
+
+  <!-- CONSEJOS -->
+  <div class="page" id="page-consejos">
+    <div class="page-header"><span class="page-icon">💡</span><h2 class="page-title">Consejos del destino</h2></div>
+    <div class="card"><div class="card-body">Guía Profesional de Viaje: Vigo, España
+
+1. Climatología
+Vigo, situada en la costa noroeste de la península ibérica, disfruta de un clima oceánico suave. Los inviernos son templados, con temperaturas que rara vez bajan de 8 °C, y los veranos frescos, con medias en torno a 20-25 °C. Las precipitaciones son moderadas y distribuidas a lo largo del año, siendo el otoño la estación más lluviosa. La humedad es característica debido a la proximidad al océano Atlántico.
+
+2. Mejor época para viajar
+La primavera (abril a junio) y principios del otoño (septiembre y octubre) representan las mejores épocas para visitar Vigo, debido a un clima agradable y menos afluencia turística. El verano atrae más visitantes y ofrece temperaturas suaves ideales para disfrutar de las playas y actividades al aire libre.
+
+3. Vacunas y salud
+No se requieren vacunas especiales para viajar a Vigo. Se recomienda tener al día las vacunas habituales (tétanos, gripe estacional). Para emergencias, Vigo cuenta con centros de salud y hospitales bien equipados. Es aconsejable contratar un seguro de viaje que cubra asistencia médica.
+
+4. Seguridad para turistas
+Vigo es una ciudad segura para viajeros, con niveles bajos de delincuencia. Como en cualquier destino urbano, se recomienda vigilar las pertenencias personales, especialmente en zonas concurridas y estaciones de transporte. Evitar exhibir objetos de valor para minimizar riesgos.
+
+5. Moneda y pagos
+La moneda oficial es el euro (€). Vigo dispone de numerosos cajeros automáticos y la mayoría de establecimientos aceptan tarjetas de crédito y débito. Para pequeñas compras o mercados, es útil llevar algo de efectivo. Los pagos móviles son cada vez más comunes.
+
+6. Costumbres culturales importantes
+La hospitalidad gallega es notable; se valora la cortesía y el respeto en las interacciones. El gallego y el español conviven en la región, con un fuerte arraigo cultural. Participar en festividades locales, como la Fiesta de la Reconquista o las celebraciones del mar, enriquece la experiencia.
+
+7. Gastronomía típica
+La gastronomía de Vigo destaca por su excepcional marisco fresco: mejillones, almejas, pulpo a la gallega y ostras. Platos emblemáticos incluyen el “lacón con grelos” y la empanada gallega. Los vinos albariño y ribeiro acompañan perfectamente estas delicias.
+
+8. Compras recomendadas
+Recomendada la adquisición de productos artesanales como la cerámica, los encajes, y textiles de Galicia. También destacan los mercados de pescado fresco y tiendas gourmet con conservas de calidad. Para recordar la visita, los licores tradicionales y la ropa local son buenas opciones.
+
+9. Consejos prácticos para viajeros
+- Calzado cómodo: las calles del casco antiguo son empedradas.
+- Adaptador de enchufe tipo F (Schuko).
+- Reservar alojamiento con antelación en temporada alta.
+- Probar el transporte público: bus urbano y taxis.
+- Informarse sobre horarios locales para comidas y tiendas.
+
+10. Qué evitar como turista
+- No obviar las señales de tráfico y normas de circulación al alquilar vehículos.
+- Evitar áreas poco iluminadas por la noche.
+- No perder la oportunidad de respetar las tradiciones y el entorno natural.
+- No consumir productos alimenticios en la vía pública fuera de áreas autorizadas.
+
+11. Apps útiles para viajar
+- Moovit: para transporte público en Vigo.
+- TripAdvisor: recomendaciones actualizadas de restaurantes y actividades.
+- XE Currency: cambio de moneda en tiempo real.
+- Google Maps: navegación y puntos de interés.
+- Translator de Google: para facilitar la comunicación en gallego o español.
+
+12. Consejos sobre internet y conectividad
+Vigo cuenta con buena cobertura móvil y múltiples puntos Wi-Fi gratuitos en áreas públicas y comercios. Se recomienda adquirir una tarjeta SIM local para mejor conexión y ahorrar en roaming. Para mayor seguridad, utilizar redes VPN en conexiones públicas y mantener dispositivos protegidos.
+
+---
+Esta guía está concebida para ofrecer una experiencia completa y confortable a quienes eligen Vigo como destino, combinando prácticas recomendaciones con el encanto de esta vibrante ciudad gallega.</div></div>
+  </div>
+
+  <!-- TRANSPORTE -->
+  <div class="page" id="page-transporte">
+    <div class="page-header"><span class="page-icon">🚗</span><h2 class="page-title">Opciones de transporte</h2></div>
+    <div class="card"><div class="card-body">GUÍA DE TRANSPORTE PARA VIAJAR A VIGO  
+------------------------------------------------------
+
+**DESTINO**  
+VIGO, capital de la provincia de Pontevedra en Galicia, al noroeste de España, reconocido por su puerto, gastronomía y proximidad a las Rías Baixas.
+
+---
+
+### TRANSPORTE RECOMENDADO: COCHE DE ALQUILER Y TRANSPORTE PÚBLICO
+
+---
+
+### COCHE DE ALQUILER EN VIGO  
+
+**Tipos de coche recomendados**  
+- **Compactos o medianos**: Ideales para moverse por la ciudad y alrededores, ofrecen buen manejo en calles estrechas del casco antiguo.  
+- **SUV o todoterreno pequeño**: Recomendados si planeas excursiones por zonas rurales o rutas de montaña cerca de Vigo.  
+- **Vehículos ecológicos o híbridos**: Galicia está fomentando la movilidad sostenible; varias agencias ofrecen estas opciones.
+
+**Carreteras y condiciones de conducción**  
+- Vigo cuenta con buenas conexiones por autopistas (AP-9, A-55) hacia otras ciudades gallegas y Portugal.  
+- Las carreteras principales están en buen estado, pero ten precaución con carreteras secundarias de montaña, que pueden ser estrechas y sinuosas.  
+- El clima atlántico puede generar lluvias frecuentes, por lo que es importante conducir con precaución en condiciones húmedas.
+
+**Peajes**  
+- La autopista AP-9 que conecta Vigo con ciudades como Pontevedra, Santiago de Compostela y A Coruña es una vía de peaje.  
+- Es recomendable informarse en las oficinas de alquiler sobre sistemas de pago electrónico para peajes, ya que facilitan el paso sin detenerse.
+
+**Aparcamiento**  
+- En el centro de Vigo hay zonas de aparcamiento regulado (ORA). Las tarifas y horarios suelen estar indicados claramente.  
+- Existen parkings públicos cubiertos en puntos estratégicos.  
+- Para estancias largas, es aconsejable utilizar parkings privados para mayor seguridad y facilidad.
+
+**Empresas de alquiler internacionales**  
+- Las compañías con presencia en Vigo incluyen:  
+  - Europcar  
+  - Hertz  
+  - Avis  
+  - Sixt  
+  - Enterprise  
+- Reservar con antelación vía web suele garantizar mejores tarifas y disponibilidad.
+
+---
+
+### TRANSPORTE PÚBLICO EN VIGO  
+
+**Trenes**  
+- Vigo dispone de estación de tren Vigo-Guixar y Vigo-Urzáiz, conectando con destinos nacionales como Madrid, Barcelona y ciudades gallegas.  
+- Para trayectos regionales, los trenes de Media Distancia y de cercanías son cómodos y puntuales.  
+- Se recomienda comprar billetes con antelación en la web de RENFE o mediante apps oficiales.
+
+**Autobuses**  
+- La red urbana de Vitrasa cubre toda la ciudad con líneas frecuentes y accesibles.  
+- Para viajar por la provincia y región existen autobuses de Monbús y de otros operadores regionales.  
+- Los billetes pueden adquirirse en taquillas, máquinas automáticas o a bordo (en algunos casos, con coste adicional).
+
+**Ferries**  
+- Vigo es un puerto importante con conexiones marítimas a las Islas Cíes (Parque Nacional de las Illas Atlánticas), utilizando servicios regulares de la naviera Bonifacio.  
+- También hay ferries a Portugal (Caminha) y rutas turísticas, ideales para excursiones de un día.
+
+**Vuelos internos**  
+- El Aeropuerto de Vigo (VGO) ofrece vuelos nacionales hacia Madrid y otras ciudades principales, gestionados por aerolíneas como Iberia y Air Europa.  
+- Para desplazamientos internos rápidos, el avión es conveniente, pero la proximidad de ciudades gallegas hace que tren y coche sean opciones preferidas.
+
+**Apps útiles**  
+- **Vitrasa Móbil** (autobuses urbanos Vigo)  
+- **Renfe Ticket** (comprar billetes de tren)  
+- **Google Maps / Moovit** para planificar rutas a pie o en transporte público  
+- **Bonifacio App** para reservas de ferry a las Islas Cíes
+
+**Consejos billetes y reservas**  
+- Adquiere billetes de tren con al menos una semana de antelación para mejores precios.  
+- Consulta horarios de ferries con anticipación, especialmente fuera de temporada alta.  
+- Para buses urbanos, los billetes sencillos se compran en el transporte, pero las tarjetas recargables pueden ahorrar costes en múltiples viajes.
+
+---
+
+### RECOMENDACIONES GENERALES  
+
+- Lleva siempre una copia del DNI o pasaporte y carnet de conducir internacional si corresponde.  
+- Respeta las normas de circulación y estacionamiento para evitar multas.  
+- Consulta el pronóstico del tiempo antes de salir, especialmente si conduces por zonas rurales.  
+- Familiarízate con señales de tráfico en Galicia, algunas en gallego.  
+- Si usas apps para reservas, confirma horarios y cancelaciones para evitar contratiempos.
+
+---
+
+**Vigo es una ciudad muy accesible tanto en coche como en transporte público.** Escoge la opción más acorde a tu itinerario y comodidad para disfrutar plenamente de esta joya atlántica.  
+
+¡Buen viaje y feliz estancia!</div></div>
+    <div class="highlight-teal"><strong>🗺️ Recuerda:</strong> El transporte condiciona el ritmo del viaje. Planifícalo con antelación.</div>
+  </div>
+
+  <!-- BLOGS -->
+  <div class="page" id="page-blogs">
+    <div class="page-header"><span class="page-icon">🌐</span><h2 class="page-title">Blogs y recursos</h2></div>
+    <div class="card"><div class="card-body">---
+
+# Guía práctica para preparar tu viaje a Vigo
+
+---
+
+## 1. Blogs de viaje recomendados
+
+### a) **Mi Viaje por el Mundo**
+Un blog que recoge experiencias detalladas y consejos para moverse por España, con atención a destinos como Vigo y la región de Galicia. Ideal para viajeros que buscan rutas culturales y gastronómicas.
+
+**Por qué es útil:** Información actualizada y consejos prácticos sobre qué visitar, dónde comer y eventos locales en Vigo.
+
+[Visitar Mi Viaje por el Mundo](https://miviaje.net)
+
+---
+
+### b) **Viajeros Callejeros**
+Este blog ofrece guías muy completas, redactadas por viajeros con experiencia, que incluyen Vigo en sus recorridos por Galicia. Destacan las recomendaciones de atractivos naturales, paseos urbanos y excursiones desde la ciudad.
+
+**Por qué es útil:** Mapas descargables y propuestas para todos los tipos de viajeros (familias, mochileros, escapadas cortas).
+
+[Visitar Viajeros Callejeros](https://viajeroscallejeros.com/)
+
+---
+
+## 2. Foros y comunidades de viajeros
+
+### a) **TripAdvisor - Foro Vigo**
+Una sección dedicada a Vigo dentro del foro general de TripAdvisor. Aquí puedes consultar opiniones actuales, preguntas frecuentes y consejos directos de viajeros y locales.
+
+**Por qué es útil:** Permite resolver dudas específicas, detectar eventos o recomendaciones de último momento.
+
+[Acceder al foro de Vigo en TripAdvisor](https://www.tripadvisor.es/ShowForum-g187496-i6049-Vigo_Pontevedra_Province_Galicia.html)
+
+---
+
+### b) **Lonely Planet Thorn Tree - Galicia**
+Comunidad internacional donde viajeros comparten consejos sobre Galicia, incluyendo Vigo. El foro Thorn Tree es activo y ofrece respuestas a preguntas prácticas sobre transporte, alojamiento y actividades.
+
+**Por qué es útil:** Interacción directa con viajeros experimentados y recomendaciones actualizadas.
+
+[Visitar Thorn Tree de Lonely Planet](https://www.lonelyplanet.com/thorntree/forums/europe-western-europe/spain/galicia)
+
+---
+
+## 3. Canales de YouTube útiles
+
+### a) **Mola Viajar**
+Este canal ofrece reportajes y visitas por España con episodios dedicados a Vigo y sus alrededores, explorando desde la arquitectura hasta la gastronomía local.
+
+**Por qué es útil:** Contenido visual que permite anticipar la experiencia y orientarse mejor en el destino.
+
+[Ver canal Mola Viajar](https://www.youtube.com/c/MolaViajar)
+
+---
+
+### b) **Explora Galicia**
+Canal centrado en Galicia, con videos detallados para viajeros que quieren conocer el patrimonio natural y cultural de Vigo y la comarca.
+
+**Por qué es útil:** Consejos prácticos y rutas en video con espacios poco conocidos por turistas.
+
+[Ver canal Explora Galicia](https://www.youtube.com/c/ExploraGalicia)
+
+---
+
+## 4. Recursos para organizar rutas
+
+### a) **Komoot**
+Plataforma para planificar rutas de senderismo, ciclismo y trekking. Muy útil para explorar la naturaleza alrededor de Vigo, como las Islas Cíes y rutas costeras.
+
+**Por qué es útil:** Permite descargar mapas offline y crear itinerarios personalizados con información detallada de dificultad y tiempo.
+
+[Visitar Komoot](https://www.komoot.com)
+
+---
+
+### b) **Visit A Coruña – Vigo Connection**
+Aunque el sitio es de A Coruña, dispone de guías y conexiones interurbanas muy prácticas para organizar rutas y desplazamientos por Galicia incluyendo Vigo.
+
+**Por qué es útil:** Facilita combinar visitas a Vigo con otras ciudades gallegas aprovechando transporte local.
+
+[Visitar Turismo de Galicia](https://www.turismo.gal)
+
+---
+
+## 5. Apps útiles para el destino
+
+### a) **Camina Galicia**
+App oficial para senderistas con mapas y rutas en toda Galicia, ideal para los que quieren descubrir Vigo a pie o su entorno natural.
+
+**Por qué es útil:** Información fiable y actualizada sobre caminos, con detalles en modo offline.
+
+Disponible en App Store y Google Play.
+
+---
+
+### b) **Moovit**
+Aplicación líder en transporte público que cubre las líneas de autobús urbano de Vigo y conecta con servicios regionales de tren y bus.
+
+**Por qué es útil:** Facilita planificar desplazamientos dentro de la ciudad con horarios y alertas en tiempo real.
+
+Disponible en App Store y Google Play.
+
+---
+
+# Conclusión
+
+Esta selección de recursos digitales te ayudará a preparar un viaje a Vigo con información fiable, rutas bien organizadas y consejos prácticos para aprovechar al máximo tu estancia, tanto en la ciudad como en sus alrededores naturales y culturales.
+
+---
+
+[Volver al índice](#)
+
+---
+
+*Este documento ha sido elaborado con el propósito de ofrecer una planificación sólida y veraz para viajeros interesados en Vigo, Galicia.*</div></div>
+    <div class="highlight"><strong>💬 Consejo:</strong> Consulta estos recursos antes del viaje para llegar bien preparado.</div>
+  </div>
+
+  <!-- INSPIRACIÓN -->
+  <div class="page" id="page-inspiracion">
+    <div class="page-header"><span class="page-icon">🎬</span><h2 class="page-title">Lecturas y pelis</h2></div>
+    <div class="card"><div class="card-body">---
+**Guía Cultural para Vigo**  
+*Descubra la esencia de Galicia a través de su literatura, cine y documentales*
+
+---
+
+### Libros Recomendados
+
+**1. “La sombra del viento”**  
+*Carlos Ruiz Zafón*  
+Un viaje fascinante por la literatura y los secretos ocultos en las calles de Barcelona, pero con resonancias sobre la identidad y la memoria españolas que enriquecen la comprensión de la cultura española en general.  
+*Por qué conocerlo:* Aunque no ambientado en Galicia, ofrece claves sobre la historia y alma españolas que reflejan también la Galicia contemporánea, como Vigo, una ciudad marcada por su propio pasado y presente.
+
+**2. “Cantares gallegos”**  
+*Rosalía de Castro*  
+Obra fundamental de la literatura gallega, este poemario captura la esencia del alma rural y la identidad de Galicia a través de sus versos en gallego.  
+*Por qué conocerlo:* Permite conectar con la raíz cultural de Vigo y Galicia, entendido a través de su lengua y su tradición literaria.
+
+**3. “O lapis do carpinteiro” ("El lápiz del carpintero")**  
+*Manuel Rivas*  
+Novela que combina la historia con la sensibilidad gallega, situada en la Guerra Civil española, con personajes vinculados a la región.  
+*Por qué conocerlo:* Ofrece perspectiva histórica y emocional sobre Galicia, permitiendo entender la realidad y sentimientos que siguen vivos en Vigo.
+
+**4. “Atlántico”**  
+*Tino Fernández*  
+Libro fotográfico que recoge imágenes de la costa atlántica gallega, incluyendo paisajes emblemáticos alrededor de Vigo.  
+*Por qué conocerlo:* Ideal para quienes prefieren lo visual y desean descubrir el entorno natural y marítimo que define esta ciudad portuaria.
+
+**5. “Vigo, la ciudad que soñó con el mar”**  
+*Varios autores*  
+Compilación de ensayos y relatos que narran la historia, evolución social y económica de Vigo desde sus orígenes hasta hoy.  
+*Por qué conocerlo:* Perfecto para quienes buscan una visión profunda y documentada de la ciudad.
+
+---
+
+### Películas Esenciales
+
+**1. “Mar adentro” (2004)**  
+*Dirección: Alejandro Amenábar*  
+Un poderoso drama basado en la historia real de Ramón Sampedro, un gallego que luchó por el derecho a la eutanasia.  
+*Por qué ayuda a conocer Vigo:* Aunque ambientada en Galicia, refleja la profundidad emocional y los dilemas éticos en una sociedad tradicional, incluyendo elementos culturales propios del entorno gallego.
+
+**2. “O que arde” (2019)**  
+*Dirección: Oliver Laxe*  
+Drama contemplativo que narra la relación de un hombre con su tierra y los incendios forestales que afectan Galicia.  
+*Por qué ayuda a conocer Vigo:* Impregna la conexión espiritual y física con la naturaleza típica de la región que rodea a Vigo.
+
+**3. “Una razón brillante” (2019)**  
+*Dirección: Gerardo Herrero*  
+Drama filmado parcialmente en escenarios gallegos, entre ellos Vigo, que aborda temas sociales y personales con perspectiva local.  
+*Por qué ayuda a conocer Vigo:* Muestra la vida cotidiana y los desafíos actuales en la sociedad gallega.
+
+**4. “A Esmorga” (2014)**  
+*Dirección: Ignacio Vilar*  
+Adaptación de la novela gallega que retrata la cultura local, la fiesta y los lazos personales en un pequeño pueblo.  
+*Por qué ayuda a conocer Vigo:* Aunque no está filmada en Vigo directamente, el ambiente y las tradiciones reflejadas son similares a las que se viven en la comarca.
+
+**5. “A lingua das bolboretas” (2000)**  
+*Dirección: José Manuel Novoa*  
+Un filme en gallego que explora las familias, la identidad y la lengua propia de Galicia.  
+*Por qué ayuda a conocer Vigo:* Se sumerge en la cultura lingüística que también predomina en Vigo y su entorno.
+
+---
+
+### Documentales Para Profundizar
+
+**1. “Galicia, un mundo aparte”**  
+Documental que ofrece una visión panorámica de la cultura gallega, su naturaleza, tradiciones y gastronomía.  
+*Por qué ayuda a conocer Vigo:* Presenta el contexto regional esencial para entender a Vigo.
+
+**2. “El pulpo, alma de Galicia”**  
+Explora la importancia del pulpo en la gastronomía y cultura gallega, símbolo culinario presente en Vigo.  
+*Por qué ayuda a conocer Vigo:* Invita a descubrir un elemento central de la identidad viguesa: su excelso marisco.
+
+**3. “La ría de Vigo: vida y trabajo”**  
+Documental que muestra la vida en la ría, desde la pesca tradicional hasta la industria naval.  
+*Por qué ayuda a conocer Vigo:* Aborda la relación profunda entre la ciudad y su entorno marítimo, clave para comprender su economía y modo de vida.
+
+---
+
+**Descubra la Galicia de Vigo no sólo con la mirada, sino también con el alma y la mente, a través de estas recomendaciones culturales imprescindibles.**  
+
+---</div></div>
+    <div class="highlight-coral"><strong>📚 Tip:</strong> Leer o ver estas obras antes de viajar transforma la experiencia.</div>
+  </div>
+
+</div>
+
+<div class="footer-mini">
+  <strong>GuiaMundi.es</strong> · <a href="https://wa.me/34678720037">WhatsApp</a> · <a href="https://resistenciademateriales.com/gm/guiamundi.html">Pide otra guía</a>
+  <br>Generada el 2026-06-03T01:56:38.000Z para FJ</div>
+
+<script>
+  function showTab(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('page-' + id).classList.add('active');
+    const btns = document.querySelectorAll('.tab-btn');
+    const ids = ['inicio','recorrido','consejos','transporte','blogs','inspiracion'];
+    btns[ids.indexOf(id)].classList.add('active');
+    btns[ids.indexOf(id)].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }
+</script>
+</body>
+</html>
