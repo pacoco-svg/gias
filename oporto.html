@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Tu Guía – OPORTO| GuiaMundi.es</title>
+<link rel="apple-touch-icon" href="URL_LOGO">
+<link rel="icon" type="image/png" href="URL_LOGO">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sand: #F5F0E8; --ink: #1C1917; --ink-soft: #44403C; --ink-muted: #78716C;
+    --gold: #B45309; --gold-light: #FEF3C7; --teal: #0F766E; --teal-light: #CCFBF1;
+    --coral: #C2410C; --coral-light: #FFF7ED; --white: #FAFAF9; --border: #D6CFC0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { height: 100%; }
+  body { background: var(--sand); color: var(--ink); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.7; font-size: 15px; display: flex; flex-direction: column; }
+
+  .header { background: var(--ink); padding: 2.5rem 1.5rem 1.75rem; text-align: center; position: relative; overflow: hidden; flex-shrink: 0; }
+  .header::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(255,255,255,0.015) 40px, rgba(255,255,255,0.015) 80px); }
+  .header-brand { font-size: 10px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; color: #D4A853; margin-bottom: 0.6rem; position: relative; }
+  .header h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 5vw, 2.6rem); font-weight: 400; line-height: 1.15; color: var(--white); position: relative; }
+  .header h1 em { font-style: italic; color: #D4A853; }
+  .header-meta { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1.5rem; margin-top: 1rem; font-size: 12px; color: #A8A29E; position: relative; }
+  .header-meta span { display: flex; align-items: center; gap: 5px; }
+  .header-meta svg { width: 12px; height: 12px; opacity: 0.6; }
+
+  .tabs-bar { background: var(--white); border-bottom: 1px solid var(--border); display: flex; overflow-x: auto; scrollbar-width: none; flex-shrink: 0; position: sticky; top: 0; z-index: 50; box-shadow: 0 1px 8px rgba(0,0,0,0.06); }
+  .tabs-bar::-webkit-scrollbar { display: none; }
+  .tab-btn { display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 10px 16px 8px; font-size: 11px; font-weight: 400; font-family: 'DM Sans', sans-serif; color: var(--ink-muted); background: none; border: none; border-bottom: 2px solid transparent; cursor: pointer; white-space: nowrap; flex-shrink: 0; transition: color 0.15s, border-color 0.15s; min-width: 64px; }
+  .tab-btn .tab-icon { font-size: 18px; line-height: 1; }
+  .tab-btn.active { color: var(--ink); border-bottom-color: #D4A853; font-weight: 500; }
+
+  .pages { flex: 1; overflow: hidden; position: relative; }
+  .page { display: none; height: 100%; overflow-y: auto; padding: 1.5rem 1.25rem 5rem; max-width: 760px; margin: 0 auto; animation: fadeIn 0.2s ease; }
+  .page.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+  .inicio-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 0.5rem; }
+  .inicio-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.1rem 1rem; cursor: pointer; transition: border-color 0.15s, transform 0.1s; text-align: center; }
+  .inicio-card:hover { border-color: #D4A853; transform: translateY(-1px); }
+  .inicio-card .ic-icon { font-size: 26px; margin-bottom: 6px; }
+  .inicio-card .ic-title { font-size: 12px; font-weight: 500; color: var(--ink); margin-bottom: 2px; }
+  .inicio-card .ic-sub { font-size: 11px; color: var(--ink-muted); }
+
+  .resumen-box { background: var(--ink); border-radius: 12px; padding: 1.25rem 1.5rem; margin-bottom: 1.25rem; }
+  .resumen-box h2 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 400; margin-bottom: 0.75rem; color: var(--white); }
+  .resumen-box h2 em { font-style: italic; color: #D4A853; }
+  .resumen-datos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .resumen-dato { background: rgba(255,255,255,0.07); border-radius: 8px; padding: 8px 10px; }
+  .resumen-dato .rd-label { font-size: 10px; color: #A8A29E; text-transform: uppercase; letter-spacing: 1px; }
+  .resumen-dato .rd-value { font-size: 13px; color: var(--white); margin-top: 2px; }
+  .seccion-titulo { font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-muted); margin: 1.25rem 0 0.75rem; }
+
+  .page-header { display: flex; align-items: center; gap: 10px; margin-bottom: 1.25rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border); }
+  .page-icon { font-size: 24px; }
+  .page-title { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 600; color: var(--ink); }
+
+  .card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem 1.5rem; margin-bottom: 1rem; }
+  .card-body { color: var(--ink-soft); font-size: 14.5px; line-height: 1.85; white-space: pre-line; }
+
+  .highlight { background: var(--gold-light); border-left: 3px solid var(--gold); border-radius: 0 8px 8px 0; padding: 0.9rem 1.1rem; margin: 1rem 0; font-size: 13.5px; color: #78350F; }
+  .highlight-teal { background: var(--teal-light); border-left: 3px solid var(--teal); border-radius: 0 8px 8px 0; padding: 0.9rem 1.1rem; margin: 1rem 0; font-size: 13.5px; color: #134E4A; }
+  .highlight-coral { background: var(--coral-light); border-left: 3px solid var(--coral); border-radius: 0 8px 8px 0; padding: 0.9rem 1.1rem; margin: 1rem 0; font-size: 13.5px; color: #7C2D12; }
+  .highlight strong, .highlight-teal strong, .highlight-coral strong { font-weight: 500; }
+
+  /* BLOQUES DÍA */
+  .dia-bloque { background: var(--white); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 1rem; overflow: hidden; }
+  .dia-header { background: var(--ink); color: var(--sand); padding: 0.7rem 1.25rem; display: flex; align-items: center; justify-content: space-between; }
+  .dia-numero { font-family: 'Playfair Display', serif; font-size: 0.9rem; font-weight: 600; color: #D4A853; letter-spacing: 1px; }
+  .dia-contenido { padding: 1rem 1.25rem; color: var(--ink-soft); font-size: 14px; line-height: 1.85; white-space: pre-line; }
+  .dia-mapa-btn { display: inline-flex; align-items: center; gap: 6px; margin: 0 1.25rem 1rem; padding: 8px 14px; background: var(--sand); border: 1px solid var(--border); border-radius: 8px; font-size: 12.5px; font-weight: 500; color: var(--teal); text-decoration: none; transition: background 0.15s, border-color 0.15s; }
+  .dia-mapa-btn:hover { background: var(--teal-light); border-color: var(--teal); }
+
+  .cta-box { background: #F0FDF4; border: 1px solid #86EFAC; border-radius: 12px; text-align: center; padding: 1.5rem 1.25rem; margin: 1.5rem 0 0; }
+  .cta-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 0.4rem; color: var(--ink); }
+  .cta-sub { font-size: 13px; color: var(--ink-soft); margin-bottom: 1rem; }
+  .btn-whatsapp { display: inline-flex; align-items: center; gap: 8px; background: #25D366; color: white; padding: 11px 22px; border-radius: 8px; font-size: 13px; font-weight: 500; text-decoration: none; }
+
+  .footer-mini { text-align: center; padding: 1rem; font-size: 11px; color: var(--ink-muted); border-top: 1px solid var(--border); background: var(--white); flex-shrink: 0; }
+  .footer-mini a { color: var(--gold); text-decoration: none; }
+
+  @media (max-width: 400px) {
+    .tab-btn { min-width: 56px; padding: 10px 10px 8px; }
+    .page { padding: 1.25rem 1rem 5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-brand">GuiaMundi · Guía Personalizada</div>
+  <h1>Tu viaje a<br><em>OPORTO</em></h1>
+  <div class="header-meta">
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>5 días</span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>2viajero(s)</span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10z"/></svg>Cultural e histórico</span>
+  </div>
+</div>
+
+<div class="tabs-bar">
+  <button class="tab-btn active" onclick="showTab('inicio')"><span class="tab-icon">🏠</span>Inicio</button>
+  <button class="tab-btn" onclick="showTab('recorrido')"><span class="tab-icon">🗓️</span>Recorrido</button>
+  <button class="tab-btn" onclick="showTab('consejos')"><span class="tab-icon">💡</span>Consejos</button>
+  <button class="tab-btn" onclick="showTab('transporte')"><span class="tab-icon">🚗</span>Transporte</button>
+  <button class="tab-btn" onclick="showTab('blogs')"><span class="tab-icon">🌐</span>Blogs</button>
+  <button class="tab-btn" onclick="showTab('inspiracion')"><span class="tab-icon">🎬</span>Inspiración</button>
+</div>
+
+<div class="pages">
+
+  <!-- INICIO -->
+  <div class="page active" id="page-inicio">
+    <div class="resumen-box">
+      <h2>Viaje a <em>OPORTO</em></h2>
+      <div class="resumen-datos">
+        <div class="resumen-dato"><div class="rd-label">Duración</div><div class="rd-value">5 días</div></div>
+        <div class="resumen-dato"><div class="rd-label">Viajeros</div><div class="rd-value">2persona(s)</div></div>
+        <div class="resumen-dato"><div class="rd-label">Tipo</div><div class="rd-value">Cultural e histórico</div></div>
+        <div class="resumen-dato"><div class="rd-label">Generada</div><div class="rd-value">2026-06-03T01:47:25.000Z</div></div>
+      </div>
+    </div>
+    <p class="seccion-titulo">Tu guía incluye</p>
+    <div class="inicio-cards">
+      <div class="inicio-card" onclick="showTab('recorrido')"><div class="ic-icon">🗓️</div><div class="ic-title">Recorrido</div><div class="ic-sub">Itinerario día a día</div></div>
+      <div class="inicio-card" onclick="showTab('consejos')"><div class="ic-icon">💡</div><div class="ic-title">Consejos</div><div class="ic-sub">Tips del destino</div></div>
+      <div class="inicio-card" onclick="showTab('transporte')"><div class="ic-icon">🚗</div><div class="ic-title">Transporte</div><div class="ic-sub">Cómo moverte</div></div>
+      <div class="inicio-card" onclick="showTab('blogs')"><div class="ic-icon">🌐</div><div class="ic-title">Blogs</div><div class="ic-sub">Recursos online</div></div>
+      <div class="inicio-card" onclick="showTab('inspiracion')" style="grid-column:span 2"><div class="ic-icon">🎬</div><div class="ic-title">Lecturas y Pelis</div><div class="ic-sub">Inspírate antes de viajar</div></div>
+    </div>
+    <div class="cta-box" style="margin-top:1.25rem;">
+      <p class="cta-title">¿Lo planificamos al detalle?</p>
+      <p class="cta-sub">Reservas, actividades y ruta personalizada para ti.</p>
+      <a class="btn-whatsapp" href="https://wa.me/34678720037?text=Hola!%20He%20recibido%20mi%20gu%C3%ADa%20de%20OPORTOOPORTO%20y%20quiero%20planificar%20mi%20viaje." target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M11.974 0C5.362 0 0 5.362 0 11.974c0 2.094.548 4.14 1.59 5.943L0 24l6.27-1.645A11.932 11.932 0 0 0 11.974 24C18.586 24 24 18.638 24 11.974 24 5.362 18.638 0 11.974 0zm0 21.818a9.83 9.83 0 0 1-5.013-1.375l-.36-.214-3.724.977.994-3.63-.235-.372a9.83 9.83 0 0 1-1.508-5.23c0-5.42 4.426-9.846 9.846-9.846 2.633 0 5.107 1.026 6.969 2.888a9.826 9.826 0 0 1 2.888 6.969c0 5.42-4.426 9.833-9.857 9.833z"/></svg>
+        Hablar por WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- RECORRIDO CON BLOQUES POR DÍA -->
+  <div class="page" id="page-recorrido">
+    <div class="page-header">
+      <span class="page-icon">🗓️</span>
+      <h2 class="page-title">Tu recorrido</h2>
+    </div>
+
+<div class=\0><div class=\0><span class=\0>DÍA 1</span></div><div class=\0</div><a class=\0 href=\NaN target=\>🗺️ Ver Día 1 en Google Maps</a></div>
+<div class=\0><div class=\0><span class=\0>DÍA 2</span></div><div class=\0</div><a class=\0 href=\NaN target=\>🗺️ Ver Día 2 en Google Maps</a></div>
+<div class=\0><div class=\0><span class=\0>DÍA 3</span></div><div class=\0</div><a class=\0 href=\NaN target=\>🗺️ Ver Día 3 en Google Maps</a></div>
+<div class=\0><div class=\0><span class=\0>DÍA 4</span></div><div class=\0</div><a class=\0 href=\NaN target=\>🗺️ Ver Día 4 en Google Maps</a></div>
+<div class=\0><div class=\0><span class=\0>DÍA 5</span></div><div class=\0</div><a class=\0 href=\NaN target=\>🗺️ Ver Día 5 en Google Maps</a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="highlight">
+      <strong>✈️ Preparado para ti:</strong>  días ·  persona(s) · 
+    </div>
+  </div>
+
+  <!-- CONSEJOS -->
+  <div class="page" id="page-consejos">
+    <div class="page-header"><span class="page-icon">💡</span><h2 class="page-title">Consejos del destino</h2></div>
+    <div class="card"><div class="card-body"></div></div>
+  </div>
+
+  <!-- TRANSPORTE -->
+  <div class="page" id="page-transporte">
+    <div class="page-header"><span class="page-icon">🚗</span><h2 class="page-title">Opciones de transporte</h2></div>
+    <div class="card"><div class="card-body"></div></div>
+    <div class="highlight-teal"><strong>🗺️ Recuerda:</strong> El transporte condiciona el ritmo del viaje. Planifícalo con antelación.</div>
+  </div>
+
+  <!-- BLOGS -->
+  <div class="page" id="page-blogs">
+    <div class="page-header"><span class="page-icon">🌐</span><h2 class="page-title">Blogs y recursos</h2></div>
+    <div class="card"><div class="card-body"></div></div>
+    <div class="highlight"><strong>💬 Consejo:</strong> Consulta estos recursos antes del viaje para llegar bien preparado.</div>
+  </div>
+
+  <!-- INSPIRACIÓN -->
+  <div class="page" id="page-inspiracion">
+    <div class="page-header"><span class="page-icon">🎬</span><h2 class="page-title">Lecturas y pelis</h2></div>
+    <div class="card"><div class="card-body"></div></div>
+    <div class="highlight-coral"><strong>📚 Tip:</strong> Leer o ver estas obras antes de viajar transforma la experiencia.</div>
+  </div>
+
+</div>
+
+<div class="footer-mini">
+  <strong>GuiaMundi.es</strong> · <a href="https://wa.me/34678720037">WhatsApp</a> · <a href="https://resistenciademateriales.com/gm/guiamundi.html">Pide otra guía</a>
+  <br>Generada el  para 
+</div>
+
+<script>
+  function showTab(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('page-' + id).classList.add('active');
+    const btns = document.querySelectorAll('.tab-btn');
+    const ids = ['inicio','recorrido','consejos','transporte','blogs','inspiracion'];
+    btns[ids.indexOf(id)].classList.add('active');
+    btns[ids.indexOf(id)].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }
+</script>
+</body>
+</html>
