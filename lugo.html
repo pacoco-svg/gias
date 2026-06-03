@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Tu Guía – LUGO | GuiaMundi.es</title>
+<link rel="apple-touch-icon" href="URL_LOGO">
+<link rel="icon" type="image/png" href="URL_LOGO">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sand: #F5F0E8; --ink: #1C1917; --ink-soft: #44403C; --ink-muted: #78716C;
+    --gold: #B45309; --gold-light: #FEF3C7; --teal: #0F766E; --teal-light: #CCFBF1;
+    --coral: #C2410C; --coral-light: #FFF7ED; --white: #FAFAF9; --border: #D6CFC0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { height: 100%; }
+  body { background: var(--sand); color: var(--ink); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.7; font-size: 15px; display: flex; flex-direction: column; }
+  .header { background: var(--ink); padding: 2.5rem 1.5rem 1.75rem; text-align: center; position: relative; overflow: hidden; flex-shrink: 0; }
+  .header::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(255,255,255,0.015) 40px, rgba(255,255,255,0.015) 80px); }
+  .header-brand { font-size: 10px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; color: #D4A853; margin-bottom: 0.6rem; position: relative; }
+  .header h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 5vw, 2.6rem); font-weight: 400; line-height: 1.15; color: var(--white); position: relative; }
+  .header h1 em { font-style: italic; color: #D4A853; }
+  .header-meta { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1.5rem; margin-top: 1rem; font-size: 12px; color: #A8A29E; position: relative; }
+  .header-meta span { display: flex; align-items: center; gap: 5px; }
+  .header-meta svg { width: 12px; height: 12px; opacity: 0.6; }
+  .tabs-bar { background: var(--white); border-bottom: 1px solid var(--border); display: flex; overflow-x: auto; scrollbar-width: none; flex-shrink: 0; position: sticky; top: 0; z-index: 50; box-shadow: 0 1px 8px rgba(0,0,0,0.06); }
+  .tabs-bar::-webkit-scrollbar { display: none; }
+  .tab-btn { display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 10px 16px 8px; font-size: 11px; font-weight: 400; font-family: 'DM Sans', sans-serif; color: var(--ink-muted); background: none; border: none; border-bottom: 2px solid transparent; cursor: pointer; white-space: nowrap; flex-shrink: 0; transition: color 0.15s, border-color 0.15s; min-width: 64px; }
+  .tab-btn .tab-icon { font-size: 18px; line-height: 1; }
+  .tab-btn.active { color: var(--ink); border-bottom-color: #D4A853; font-weight: 500; }
+  .pages { flex: 1; overflow: hidden; position: relative; }
+  .page { display: none; height: 100%; overflow-y: auto; padding: 1.5rem 1.25rem 5rem; max-width: 760px; margin: 0 auto; animation: fadeIn 0.2s ease; }
+  .page.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+  .inicio-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 0.5rem; }
+  .inicio-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.1rem 1rem; cursor: pointer; transition: border-color 0.15s, transform 0.1s; text-align: center; }
+  .inicio-card:hover { border-color: #D4A853; transform: translateY(-1px); }
+  .inicio-card .ic-icon { font-size: 26px; margin-bottom: 6px; }
+  .inicio-card .ic-title { font-size: 12px; font-weight: 500; color: var(--ink); margin-bottom: 2px; }
+  .inicio-card .ic-sub { font-size: 11px; color: var(--ink-muted); }
+  .resumen-box { background: var(--ink); border-radius: 12px; padding: 1.25rem 1.5rem; margin-bottom: 1.25rem; }
+  .resumen-box h2 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 400; margin-bottom: 0.75rem; color: var(--white); }
+  .resumen-box h2 em { font-style: italic; color: #D4A853; }
+  .resumen-datos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .resumen-dato { background: rgba(255,255,255,0.07); border-radius: 8px; padding: 8px 10px; }
+  .resumen-dato .rd-label { font-size: 10px; color: #A8A29E; text-transform: uppercase; letter-spacing: 1px; }
+  .resumen-dato .rd-value { font-size: 13px; color: var(--white); margin-top: 2px; }
+  .seccion-titulo { font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-muted); margin: 1.25rem 0 0.75rem; }
+  .page-header { display: flex; align-items: center; gap: 10px; margin-bottom: 1.25rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border); }
+  .page-icon { font-size: 24px; }
+  .page-title { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 600; color: var(--ink); }
+  .card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem 1.5rem; margin-bottom: 1rem; }
+  .card-body { color: var(--ink-soft); font-size: 14.5px; line-height: 1.85; white-space: pre-line; }
+  .highlight { background: var(--gold-light); border-left: 3px solid var(--gold); border-radius: 0 8px 8px 0; padding: 0.9rem 1.1rem; margin: 1rem 0; font-size: 13.5px; color: #78350F; }
+  .highlight-teal { background: var(--teal-light); border-left: 3px solid var(--teal); border-radius: 0 8px 8px 0; padding: 0.9rem 1.1rem; margin: 1rem 0; font-size: 13.5px; color: #134E4A; }
+  .highlight-coral { background: var(--coral-light); border-left: 3px solid var(--coral); border-radius: 0 8px 8px 0; padding: 0.9rem 1.1rem; margin: 1rem 0; font-size: 13.5px; color: #7C2D12; }
+  .highlight strong, .highlight-teal strong, .highlight-coral strong { font-weight: 500; }
+  .dia-bloque { background: var(--white); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 1rem; overflow: hidden; }
+  .dia-bloque:empty { display: none; }
+  .dia-header { background: var(--ink); color: var(--sand); padding: 0.7rem 1.25rem; }
+  .dia-numero { font-family: 'Playfair Display', serif; font-size: 0.9rem; font-weight: 600; color: #D4A853; letter-spacing: 1px; }
+  .dia-contenido { padding: 1rem 1.25rem; color: var(--ink-soft); font-size: 14px; line-height: 1.85; white-space: pre-line; }
+  .dia-mapa-btn { display: inline-flex; align-items: center; gap: 6px; margin: 0 1.25rem 1rem; padding: 8px 14px; background: var(--sand); border: 1px solid var(--border); border-radius: 8px; font-size: 12.5px; font-weight: 500; color: var(--teal); text-decoration: none; transition: background 0.15s, border-color 0.15s; }
+  .dia-mapa-btn:hover { background: var(--teal-light); border-color: var(--teal); }
+  .cta-box { background: #F0FDF4; border: 1px solid #86EFAC; border-radius: 12px; text-align: center; padding: 1.5rem 1.25rem; margin: 1.5rem 0 0; }
+  .cta-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 0.4rem; color: var(--ink); }
+  .cta-sub { font-size: 13px; color: var(--ink-soft); margin-bottom: 1rem; }
+  .btn-whatsapp { display: inline-flex; align-items: center; gap: 8px; background: #25D366; color: white; padding: 11px 22px; border-radius: 8px; font-size: 13px; font-weight: 500; text-decoration: none; }
+  .footer-mini { text-align: center; padding: 1rem; font-size: 11px; color: var(--ink-muted); border-top: 1px solid var(--border); background: var(--white); flex-shrink: 0; }
+  .footer-mini a { color: var(--gold); text-decoration: none; }
+  @media (max-width: 400px) { .tab-btn { min-width: 56px; padding: 10px 10px 8px; } .page { padding: 1.25rem 1rem 5rem; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-brand">GuiaMundi · Guía Personalizada</div>
+  <h1>Tu viaje a<br><em>LUGO</em></h1>
+  <div class="header-meta">
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>5 días</span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>2 viajero(s)</span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10z"/></svg>Cultural e histórico</span>
+  </div>
+</div>
+
+<div class="tabs-bar">
+  <button class="tab-btn active" onclick="showTab('inicio')"><span class="tab-icon">🏠</span>Inicio</button>
+  <button class="tab-btn" onclick="showTab('recorrido')"><span class="tab-icon">🗓️</span>Recorrido</button>
+  <button class="tab-btn" onclick="showTab('consejos')"><span class="tab-icon">💡</span>Consejos</button>
+  <button class="tab-btn" onclick="showTab('transporte')"><span class="tab-icon">🚗</span>Transporte</button>
+  <button class="tab-btn" onclick="showTab('blogs')"><span class="tab-icon">🌐</span>Blogs</button>
+  <button class="tab-btn" onclick="showTab('inspiracion')"><span class="tab-icon">🎬</span>Inspiración</button>
+</div>
+
+<div class="pages">
+
+  <!-- INICIO -->
+  <div class="page active" id="page-inicio">
+    <div class="resumen-box">
+      <h2>Viaje a <em>LUGO</em></h2>
+      <div class="resumen-datos">
+        <div class="resumen-dato"><div class="rd-label">Duración</div><div class="rd-value">5 días</div></div>
+        <div class="resumen-dato"><div class="rd-label">Viajeros</div><div class="rd-value">2 persona(s)</div></div>
+        <div class="resumen-dato"><div class="rd-label">Tipo</div><div class="rd-value">Cultural e histórico</div></div>
+        <div class="resumen-dato"><div class="rd-label">Generada</div><div class="rd-value">3 Jun 2026</div></div>
+      </div>
+    </div>
+    <p class="seccion-titulo">Tu guía incluye</p>
+    <div class="inicio-cards">
+      <div class="inicio-card" onclick="showTab('recorrido')"><div class="ic-icon">🗓️</div><div class="ic-title">Recorrido</div><div class="ic-sub">Itinerario día a día</div></div>
+      <div class="inicio-card" onclick="showTab('consejos')"><div class="ic-icon">💡</div><div class="ic-title">Consejos</div><div class="ic-sub">Tips del destino</div></div>
+      <div class="inicio-card" onclick="showTab('transporte')"><div class="ic-icon">🚗</div><div class="ic-title">Transporte</div><div class="ic-sub">Cómo moverte</div></div>
+      <div class="inicio-card" onclick="showTab('blogs')"><div class="ic-icon">🌐</div><div class="ic-title">Blogs</div><div class="ic-sub">Recursos online</div></div>
+      <div class="inicio-card" onclick="showTab('inspiracion')" style="grid-column:span 2"><div class="ic-icon">🎬</div><div class="ic-title">Lecturas y Pelis</div><div class="ic-sub">Inspírate antes de viajar</div></div>
+    </div>
+    <div class="cta-box" style="margin-top:1.25rem;">
+      <p class="cta-title">¿Lo planificamos al detalle?</p>
+      <p class="cta-sub">Reservas, actividades y ruta personalizada para ti.</p>
+      <a class="btn-whatsapp" href="https://wa.me/34678720037?text=Hola!%20He%20recibido%20mi%20gu%C3%ADa%20de%20LUGO%20y%20quiero%20planificar%20mi%20viaje." target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M11.974 0C5.362 0 0 5.362 0 11.974c0 2.094.548 4.14 1.59 5.943L0 24l6.27-1.645A11.932 11.932 0 0 0 11.974 24C18.586 24 24 18.638 24 11.974 24 5.362 18.638 0 11.974 0zm0 21.818a9.83 9.83 0 0 1-5.013-1.375l-.36-.214-3.724.977.994-3.63-.235-.372a9.83 9.83 0 0 1-1.508-5.23c0-5.42 4.426-9.846 9.846-9.846 2.633 0 5.107 1.026 6.969 2.888a9.826 9.826 0 0 1 2.888 6.969c0 5.42-4.426 9.833-9.857 9.833z"/></svg>
+        Hablar por WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- RECORRIDO -->
+  <div class="page" id="page-recorrido">
+    <div class="page-header">
+      <span class="page-icon">🗓️</span>
+      <h2 class="page-title">Tu recorrido</h2>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 1</span></div>
+      <div class="dia-contenido">DÍA 1 – Lugo
+- Mañana: Llegada a Lugo y check-in en el hotel. Visita a la Muralla Romana, Patrimonio de la Humanidad.
+- Tarde: Recorrido por el casco histórico, incluyendo la Catedral de Santa María y el Museo Provincial.
+- Noche: Cena tradicional gallega en restaurante local.
+- Alojamiento recomendado: Hotel Méndez Núñez</div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir/Muralla%20Romana%2C%20Lugo/Catedral%20de%20Santa%20Mar%C3%ADa%2C%20Lugo/Museo%20Provincial%2C%20Lugo/" target="_blank">🗺️ Ver Día 1 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 2</span></div>
+      <div class="dia-contenido">DÍA 2 – Lugo
+- Mañana: Paseo por el parque Rosalía de Castro y visita a la Puerta de San Pedro.
+- Tarde: Excursión al yacimiento arqueológico de A Cividade de Viladonga, a 30 km.
+- Noche: Cena en el casco antiguo con platos típicos.
+- Alojamiento recomendado: Hotel Méndez Núñez</div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir/Parque%20Rosal%C3%ADa%20de%20Castro%2C%20Lugo/Puerta%20de%20San%20Pedro%2C%20Lugo/A%20Cividade%20de%20Viladonga%2C%20Lugo/" target="_blank">🗺️ Ver Día 2 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 3</span></div>
+      <div class="dia-contenido">DÍA 3 – Lugo a Mondoñedo
+- Mañana: Salida en coche hacia Mondoñedo (45 min). Visita a la Catedral de Mondoñedo.
+- Tarde: Exploración del casco histórico y paseo por la ría de Foz cercana.
+- Noche: Cena en Mondoñedo degustando mariscos.
+- Alojamiento recomendado: Parador de Mondoñedo</div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir/Catedral%20de%20Mondo%C3%B1edo%2C%20Mondo%C3%B1edo/R%C3%ADa%20de%20Foz%2C%20Foz//" target="_blank">🗺️ Ver Día 3 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 4</span></div>
+      <div class="dia-contenido">DÍA 4 – Lugo
+- Mañana: Regreso a Lugo. Visita al Museo Interactivo de la Historia de Lugo.
+- Tarde: Ruta gastronómica por los mercados locales y degustación de empanada gallega.
+- Noche: Velada cultural con espectáculo de música tradicional en la ciudad.
+- Alojamiento recomendado: Hotel Méndez Núñez</div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir/Museo%20Interactivo%20de%20la%20Historia%2C%20Lugo/Mercados%20locales%2C%20Lugo//" target="_blank">🗺️ Ver Día 4 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 5</span></div>
+      <div class="dia-contenido">DÍA 5 – Lugo
+- Mañana: Visita al Puente Romano y recorrido por la Muralla para vistas panorámicas.
+- Tarde: Recorrido libre por tiendas de artesanía y despedida con café en plaza mayor.
+- Noche: Salida o noche adicional según planificación.
+- Alojamiento recomendado: Hotel Méndez Núñez</div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir/Puente%20Romano%2C%20Lugo/Muralla%20Romana%2C%20Lugo/Plaza%20Mayor%2C%20Lugo/" target="_blank">🗺️ Ver Día 5 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 6</span></div>
+      <div class="dia-contenido"></div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir////" target="_blank">🗺️ Ver Día 6 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 7</span></div>
+      <div class="dia-contenido"></div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir////" target="_blank">🗺️ Ver Día 7 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 8</span></div>
+      <div class="dia-contenido"></div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir////" target="_blank">🗺️ Ver Día 8 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 9</span></div>
+      <div class="dia-contenido"></div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir////" target="_blank">🗺️ Ver Día 9 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 10</span></div>
+      <div class="dia-contenido"></div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir////" target="_blank">🗺️ Ver Día 10 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 11</span></div>
+      <div class="dia-contenido"></div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir////" target="_blank">🗺️ Ver Día 11 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 12</span></div>
+      <div class="dia-contenido"></div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir////" target="_blank">🗺️ Ver Día 12 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 13</span></div>
+      <div class="dia-contenido"></div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir////" target="_blank">🗺️ Ver Día 13 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 14</span></div>
+      <div class="dia-contenido"></div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir////" target="_blank">🗺️ Ver Día 14 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 15</span></div>
+      <div class="dia-contenido"></div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir////" target="_blank">🗺️ Ver Día 15 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 16</span></div>
+      <div class="dia-contenido"></div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir////" target="_blank">🗺️ Ver Día 16 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 17</span></div>
+      <div class="dia-contenido"></div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir////" target="_blank">🗺️ Ver Día 17 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 18</span></div>
+      <div class="dia-contenido"></div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir////" target="_blank">🗺️ Ver Día 18 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 19</span></div>
+      <div class="dia-contenido"></div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir////" target="_blank">🗺️ Ver Día 19 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 20</span></div>
+      <div class="dia-contenido"></div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir////" target="_blank">🗺️ Ver Día 20 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 21</span></div>
+      <div class="dia-contenido"></div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir////" target="_blank">🗺️ Ver Día 21 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 22</span></div>
+      <div class="dia-contenido"></div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir////" target="_blank">🗺️ Ver Día 22 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 23</span></div>
+      <div class="dia-contenido"></div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir////" target="_blank">🗺️ Ver Día 23 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 24</span></div>
+      <div class="dia-contenido"></div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir////" target="_blank">🗺️ Ver Día 24 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 25</span></div>
+      <div class="dia-contenido"></div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir////" target="_blank">🗺️ Ver Día 25 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 26</span></div>
+      <div class="dia-contenido"></div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir////" target="_blank">🗺️ Ver Día 26 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 27</span></div>
+      <div class="dia-contenido"></div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir////" target="_blank">🗺️ Ver Día 27 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 28</span></div>
+      <div class="dia-contenido"></div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir////" target="_blank">🗺️ Ver Día 28 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 29</span></div>
+      <div class="dia-contenido"></div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir////" target="_blank">🗺️ Ver Día 29 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 30</span></div>
+      <div class="dia-contenido"></div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir////" target="_blank">🗺️ Ver Día 30 en Google Maps</a>
+    </div>
+
+    <div class="highlight">
+      <strong>✈️ Preparado para ti:</strong> 5 días · 2 persona(s) · Cultural e histórico
+    </div>
+  </div>
+
+  <!-- CONSEJOS -->
+  <div class="page" id="page-consejos">
+    <div class="page-header"><span class="page-icon">💡</span><h2 class="page-title">Consejos del destino</h2></div>
+    <div class="card"><div class="card-body">**Guía de Viaje Premium: Lugo, España**
+
+---
+
+### 1. Climatología  
+Lugo presenta un clima oceánico atlántico, caracterizado por inviernos suaves y veranos frescos. Las precipitaciones son frecuentes y bien distribuidas a lo largo del año, aportando un entorno verde y exuberante. La temperatura media anual ronda los 13 °C, con máximas en verano que rara vez superan los 28 °C y mínimas invernales alrededor de 4 °C.
+
+---
+
+### 2. Mejor época para viajar  
+La primavera (abril a junio) y el otoño (septiembre y octubre) ofrecen un equilibrio ideal entre buen tiempo, menor afluencia turística y paisajes en plena expresión natural. En verano, aunque el clima es agradable, la ciudad puede presentar más visitantes, especialmente durante festividades locales.
+
+---
+
+### 3. Vacunas y salud  
+No se requieren vacunas especiales para viajar a Lugo ni a España en general. Se recomienda estar al día con las vacunas habituales (tétanos, difteria, tosferina). Los servicios médicos en Lugo son de alta calidad; se aconseja contratar un seguro de viaje que cubra asistencia sanitaria y posibles repatriaciones.
+
+---
+
+### 4. Seguridad para turistas  
+Lugo es una ciudad segura, con bajos índices de criminalidad. Como en cualquier destino urbano, se aconseja mantener precauciones básicas: cuidar objetos personales, evitar zonas poco iluminadas de noche y utilizar transporte autorizado. El entorno es especialmente amigable para turistas en visitas culturales y al aire libre.
+
+---
+
+### 5. Moneda y pagos  
+La moneda oficial es el euro (€). El uso de tarjetas de crédito y débito es ampliamente aceptado en hoteles, restaurantes y comercios. Sin embargo, es útil llevar algo de efectivo para mercados, pequeños establecimientos y transporte local. Los cajeros automáticos están disponibles en toda la ciudad.
+
+---
+
+### 6. Costumbres culturales importantes  
+Lugo goza de una rica tradición gallega donde se valora la amabilidad y la buena educación. El saludo habitual es un apretón de manos o, entre conocidos, dos besos en la mejilla. La puntualidad es apreciada, aunque la vida social suele ser relajada. La festividad del Arde Lucus, que recrea la época romana, es un evento clave para comprender el patrimonio local.
+
+---
+
+### 7. Gastronomía típica  
+La cocina lucense destaca por productos frescos y de calidad. Platos emblemáticos incluyen el pulpo a la gallega, la zorza (carne de cerdo adobada), el lacón con grelos y el queso de tetilla. No deje de probar los mariscos frescos y los postres tradicionales como la tarta de Santiago. La oferta de vinos locales complementa la experiencia gastronómica.
+
+---
+
+### 8. Compras recomendadas  
+Para llevar un recuerdo auténtico, opte por productos artesanales como la cerámica gallega, tejidos tradicionales o la famosa cuchillería de la región. Los mercados locales y tiendas especializadas ofrecen quesos, embutidos y licores típicos, ideales para regalar o degustar en casa.
+
+---
+
+### 9. Consejos prácticos para viajeros  
+- Calzado cómodo para recorrer la muralla romana y calles empedradas.  
+- Consultar horarios de apertura de museos y sitios históricos con anticipación.  
+- Llevar ropa impermeable ligera, dado el clima variable.  
+- Reservar alojamiento con suficiente antelación en temporada alta y festivales.
+
+---
+
+### 10. Qué evitar como turista  
+- No subestime la climatología cambiante; evite planificar actividades al aire libre sin alternativas cubiertas.  
+- Evite exhibir objetos de valor en lugares concurridos.  
+- No pierda la oportunidad de probar la gastronomía local por optar por cadenas internacionales.  
+- Evite alterar costumbres locales; respete los horarios y tradiciones.
+
+---
+
+### 11. Apps útiles para viajar  
+- **Google Maps:** navegación y transporte público.  
+- **ElTiempo.es:** previsión meteorológica precisa.  
+- **Renfe Cercanías:** información sobre trenes y horarios.  
+- **Google Translate:** para facilitar la comunicación ocasional.  
+- **TripAdvisor:** opiniones y recomendaciones actualizadas.  
+
+---
+
+### 12. Consejos sobre internet y conectividad  
+Lugo cuenta con una buena cobertura 4G y acceso Wi-Fi en la mayoría de hoteles, cafés y espacios públicos. Para mayor comodidad, se recomienda adquirir una tarjeta SIM local si se planea una estancia prolongada o se necesita conexión constante. Muchos establecimientos ofrecen acceso gratuito tras solicitud o consumo.
+
+---
+
+**Disfrute de Lugo con confianza y elegancia, explorando su riqueza cultural y natural con el mejor asesoramiento.**</div></div>
+  </div>
+
+  <!-- TRANSPORTE -->
+  <div class="page" id="page-transporte">
+    <div class="page-header"><span class="page-icon">🚗</span><h2 class="page-title">Opciones de transporte</h2></div>
+    <div class="card"><div class="card-body">---
+**Guía de Transporte para Viajar a Lugo en Coche de Alquiler**
+
+---
+
+### Elección del Coche: ¿Qué vehículo es ideal para tu viaje?
+Para desplazarte cómodamente por Lugo y sus alrededores, considera las siguientes opciones:
+
+- **Turismos compactos o medianos:** Ideales para moverse por la ciudad y vías rurales, ofrecen buena maniobrabilidad y eficiencia en consumo.
+- **Todoterrenos o SUV compactos:** Recomendados si planeas excursiones por zonas montañosas o caminos rurales poco asfaltados.
+- **Vehículos automáticos:** Para mayor comodidad en tráfico urbano y viajes largos, aunque opción menos frecuente en España; mejor reservar con antelación.
+
+---
+
+### Condiciones de las Carreteras en Lugo y alrededores
+
+- **Red Viaria Principal:** Lugo cuenta con carreteras nacionales (N-634) y autopistas cercanas como la AP-9, que conecta con grandes ciudades gallegas.
+- **Estado y señalización:** Las vías están en buen estado y bien señalizadas. Respeta los límites de velocidad y ten precaución en carreteras secundarias y de montaña, especialmente en días de lluvia o niebla.
+- **Conducción en casco urbano:** El centro histórico de Lugo tiene calles estrechas y algunas zonas peatonales; es recomendable estacionar en aparcamientos de las afueras.
+
+---
+
+### Recomendaciones de Conducción y Seguridad
+
+- Circula siempre por la derecha y usa el cinturón de seguridad.
+- Atención a las rotondas y señales; en España la prioridad es para quien ya está dentro de la rotonda.
+- Evita conducir bajo los efectos del alcohol y consulta el pronóstico meteorológico antes de salir.
+- Lleva siempre los documentos en regla: permiso de conducir válido, contrato de alquiler y seguro.
+
+---
+
+### Peajes: ¿Dónde encontrarlos y cómo pagarlos?
+
+- La autopista **AP-9**, cercana a Lugo, es de peaje; el resto del trayecto hasta la ciudad suele ser por vías libres de pago.
+- Métodos de pago: efectivo, tarjeta bancaria o telepeaje (VIA-T), que facilita el paso sin detener el vehículo.
+- Pregunta en la agencia de alquiler si el vehículo dispone de dispositivo VIA-T.
+
+---
+
+### Aparcamiento en Lugo: Qué debes saber
+
+- El centro histórico tiene zonas de aparcamiento regulado (zona ORA) con tiempo máximo y tarifas variables.
+- Existen parkings subterráneos y al aire libre en las inmediaciones del casco antiguo.
+- Para estancias largas, busca aparcamientos fuera del centro y utiliza transporte público o caminatas.
+
+---
+
+### Empresas Recomendadas para Alquiler de Coches
+
+Para asegurar un servicio fiable y atención profesional, opta por compañías internacionales reconocidas, tales como:
+
+- **Europcar**  
+- **Hertz**  
+- **Avis**  
+- **Sixt**  
+
+Estas empresas ofrecen vehículos en óptimas condiciones y facilitan asistencia en carretera y seguros adaptados a necesidades del viajero.
+
+---
+
+### Consejos Finales para un Viaje Seguro y Cómodo
+
+- Reserva el vehículo con anticipación para asegurar disponibilidad y mejores tarifas.
+- Revisa el estado del coche al recogerlo y comunica cualquier daño para evitar cargos indebidos.
+- Lleva GPS o usa aplicaciones móviles como Google Maps para facilitar la navegación.
+- Infórmate sobre restricciones locales y zonas peatonales en Lugo para evitar sanciones.
+
+---
+
+**Disfruta de tu viaje a Lugo con total confianza y comodidad, explorando esta hermosa ciudad y su entorno con la libertad que te ofrece un coche de alquiler.**
+
+---
+
+*Esta guía está diseñada para facilitarte tu movilidad y está basada en información actual y fiable, pensando en tu experiencia y seguridad.*</div></div>
+    <div class="highlight-teal"><strong>🗺️ Recuerda:</strong> El transporte condiciona el ritmo del viaje. Planifícalo con antelación.</div>
+  </div>
+
+  <!-- BLOGS -->
+  <div class="page" id="page-blogs">
+    <div class="page-header"><span class="page-icon">🌐</span><h2 class="page-title">Blogs y recursos</h2></div>
+    <div class="card"><div class="card-body">---
+  
+**GUÍA ONLINE PARA VIAJAR A LUGO, GALICIA**  
+
+---
+
+### 1. Blogs de viaje recomendados
+
+**a) Mi Ruta Galicia**  
+Un blog especializado en rutas por Galicia, con atención especial a Lugo y su provincia. Publica guías detalladas, consejos prácticos y fotos actualizadas.  
+*Por qué es útil:* Permite descubrir lugares emblemáticos y joyas menos conocidas de Lugo, facilitando preparar un itinerario completo.
+
+**b) El Pachinko**  
+Blog de viaje con entradas bien documentadas sobre Galicia, que incluyen experiencias personales en Lugo y alrededores, recomendaciones gastronómicas y culturales.  
+*Por qué es útil:* Proporciona una narrativa cercana y consejos realistas sobre cómo moverse, dónde comer y qué ver en Lugo.
+
+**c) La Viajera Empedernida**  
+Blog con enfoque en viajes por España, varias entradas sobre la Ruta de la Plata y otros recorridos que pasan por Lugo. Recomendaciones sobre alojamiento y actividades.  
+*Por qué es útil:* Ayuda a planificar viajes en coche incluyendo Lugo, con información práctica para viajeros independientes.
+
+---
+
+### 2. Foros y comunidades de viajeros
+
+**a) TripAdvisor - Foro de Lugo**  
+Comunidad activa en TripAdvisor donde viajeros comparten experiencias recientes, dudas y consejos específicos sobre Lugo.  
+*Por qué es útil:* Actualizaciones en tiempo real y opiniones variadas que ayudan a tomar decisiones sobre visitas, reservas y restaurantes.  
+[Acceder al foro de Lugo en TripAdvisor](https://www.tripadvisor.es/ShowForum-g187569-i769-Lugo_Galicia.html)
+
+**b) Rick Steves Travel Forum**  
+Aunque más enfocado en viajes internacionales, tiene secciones para España y Galicia que incluyen debates sobre ciudades como Lugo.  
+*Por qué es útil:* Foro internacional donde se puede consultar sobre rutas, transporte y experiencias desde una perspectiva global.
+
+**c) Spain Travel Forum (Lonely Planet)**  
+Amplia comunidad en el foro de Lonely Planet que cubre destinos españoles, con hilos dedicados a Galicia y Lugo.  
+*Por qué es útil:* Recomendaciones de viajeros experimentados y expertos en destinos españoles, con información práctica.
+
+---
+
+### 3. Canales de YouTube útiles
+
+**a) Galicia Bonita**  
+Canal dedicado a mostrar la naturaleza, cultura y patrimonio gallego con videos profesionales de distintas ciudades y rutas, incluyendo Lugo.  
+*Por qué es útil:* Permite visualizar el destino con vídeo de alta calidad y preparar visitas a los sitios más destacados.
+
+**b) Caminos de Santiago TV**  
+Explora rutas del Camino de Santiago, muchas de las cuales atraviesan Lugo. Incluye vídeos explicativos de etapas, alojamientos y paisajes.  
+*Por qué es útil:* Útil para quienes planean rutas de peregrinación o desean conocer de forma detallada el tramo gallego que pasa por Lugo.
+
+**c) Lost LeBlanc**  
+Aunque es un creador de contenido global, en ocasiones tiene videos sobre Galicia y España con consejos para viajeros independientes.  
+*Por qué es útil:* Contenido muy visual y consejos útiles para organizar viajes con buen balance entre cultura y naturaleza.
+
+---
+
+### 4. Recursos para organizar rutas
+
+**a) Wikiloc**  
+Plataforma colaborativa con miles de rutas de senderismo, ciclismo y coche por Lugo y provincia, con mapas descargables.  
+*Por qué es útil:* Ideal para personalizar excursiones al aire libre, ver distancias, dificultad y puntos de interés en detalle.  
+[Visitar Wikiloc](https://www.wikiloc.com/rutas/senderismo/espana/galicia/lugo)
+
+**b) Google My Maps**  
+Herramienta para crear mapas personalizados con puntos de interés, alojamientos y restaurantes en Lugo, permitiendo planificar rutas a medida.  
+*Por qué es útil:* Facilita organizar la logística visualmente y compartir el itinerario con otros viajeros.
+
+**c) Galicia Turismo - Rutas**  
+Web oficial de turismo que ofrece rutas temáticas y sugerencias para disfrutar Lugo y alrededores con itinerarios bien diseñados.  
+*Por qué es útil:* Información oficial, actualizada y adecuada para presupuestos y tiempos variados.  
+[Galicia Turismo oficial](https://www.turismo.gal/que-facer/actividades/rutas?langId=es_ES)
+
+---
+
+### 5. Apps útiles para el destino Lugo
+
+**a) Galicia Turismo** (iOS y Android)  
+Aplicación oficial para descubrir atractivos, rutas y eventos culturales en Lugo y el resto de Galicia. Permite descargar información para consultar offline.  
+*Por qué es útil:* Información oficial con mapas, eventos, y posibilidades de contacto directo con servicios turísticos.
+
+**b) Camino de Santiago - Wise Pilgrim App** (iOS y Android)  
+Complementa el recorrido por Lugo para quienes transitan por el Camino Francés o el Camino Primitivo. Incluye albergues, mapas y consejos para peregrinos.  
+*Por qué es útil:* Perfecta para quienes visitan Lugo dentro del contexto del Camino.
+
+**c) Wikiloc** (iOS y Android)  
+App que acompaña la plataforma web, permite descargar mapas, utilizar GPS en rutas y registrar recorridos en tiempo real en Lugo.  
+*Por qué es útil:* Para senderismo, ciclismo y excursiones, con soporte en campo incluso sin cobertura.
+
+**d) Google Maps** (iOS y Android)  
+Imprescindible para navegación, con actualización en tiempo real del tráfico y recomendaciones de negocios locales en Lugo.  
+*Por qué es útil:* Navegación precisa y funcionalidades colaborativas con otros usuarios.
+
+---
+
+**Este dossier reúne los mejores recursos online para preparar un viaje a Lugo con garantías de información actualizada, calidad y utilidad real. Utilícelos para optimizar su planificación y disfrutar de esta histórica ciudad gallega plenamente.**
+
+---</div></div>
+    <div class="highlight"><strong>💬 Consejo:</strong> Consulta estos recursos antes del viaje para llegar bien preparado.</div>
+  </div>
+
+  <!-- INSPIRACIÓN -->
+  <div class="page" id="page-inspiracion">
+    <div class="page-header"><span class="page-icon">🎬</span><h2 class="page-title">Lecturas y pelis</h2></div>
+    <div class="card"><div class="card-body">---
+**Guía Cultural de Lugo**  
+*Sumérgete en la historia, vida y tradiciones de Lugo a través de sus expresiones culturales más emblemáticas.*
+
+---
+
+### Libros Recomendados
+
+**1. “O Códice Calixtino”**  
+*Descripción:* Manuscrito medieval único que contiene relatos, himnos y numerosas pistas sobre el Camino de Santiago, cuyos caminos pasan muy cerca de Lugo.  
+*Por qué ayuda:* Permite comprender la importancia religiosa y cultural de Lugo en la época medieval y su relación con peregrinajes y tradiciones gallegas.
+
+**2. “Lugo, ciudad amurallada” – Xosé Lois García**  
+*Descripción:* Libro histórico detallado sobre la Muralla Romana de Lugo, Patrimonio de la Humanidad.  
+*Por qué ayuda:* Profundiza en el símbolo arquitectónico y cultural más emblemático de Lugo, imprescindible para conocer su esencia.
+
+**3. “Los maquis: la resistencia en Galicia” – Fernando Sánchez Dragó**  
+*Descripción:* Narrativa sobre la guerrilla antifranquista en Galicia, con episodios en la provincia de Lugo.  
+*Por qué ayuda:* Ofrece una perspectiva histórica y social para entender parte del pasado reciente y las luchas sociales en esta región.
+
+**4. “Memorias dun neno labrego” – Xosé Neira Vilas**  
+*Descripción:* Novela gallega que describe la vida rural gallega en la primera mitad del siglo XX, con una sensibilidad muy cercana al entorno lucense.  
+*Por qué ayuda:* Refleja la cultura campesina y tradicional que ha moldeado la identidad de Lugo y su entorno natural.
+
+**5. “Tiempo de silencio” – Luís Seoane**  
+*Descripción:* Ensayo y ficción sobre Galicia, escrito por uno de los grandes intelectuales gallegos. Contiene referencias a la cultura y el entorno de Lugo.  
+*Por qué ayuda:* Profundiza en la sensibilidad cultural gallega, extensión necesaria para entender la idiosincrasia local.
+
+---
+
+### Películas Recomendadas
+
+**1. “Mar Adentro” (2004) – Alejandro Amenábar**  
+*Descripción:* Drama basado en la vida de Ramón Sampedro, un gallego tetrapléjico que luchó por el derecho a morir dignamente.  
+*Por qué ayuda:* Rodada en parte en Galicia, refleja la relación del gallego con su tierra y temas profundos sobre la vida que también resuenan en Lugo.
+
+**2. “Días azules” (2012) – Germán Roda**  
+*Descripción:* Película que explora vivencias y escenarios en el corazón de Galicia, capturando la atmósfera del norte gallego.  
+*Por qué ayuda:* Aporta imágenes y emociones que trasmiten la naturaleza y sociedad del entorno de Lugo.
+
+**3. “A Esmorga” (La Borrachera) (2014) – Ignacio Vilar**  
+*Descripción:* Basada en la novela de Eduardo Blanco Amor, narra una intensa noche de tres amigos en una ciudad gallega, muy cercana al sentir de Lugo.  
+*Por qué ayuda:* Permite sentir la cultura popular y las tradiciones festivas gallegas que todavía se viven en las calles lucenses.
+
+**4. “Os fenómenos” (2014) – Alfonso Zarauza**  
+*Descripción:* Comedia dramática que refleja costumbres y maneras de ser en el mundo rural gallego, con guiños al entorno lucense.  
+*Por qué ayuda:* Muestra la autenticidad del día a día en Lugo y la mezcla de la modernidad con lo tradicional.
+
+**5. “O que arde” (2019) – Oliver Laxe**  
+*Descripción:* Drama sobre la relación del hombre con la naturaleza en Galicia, rodado en espacios naturales cercanos a Lugo.  
+*Por qué ayuda:* Destaca la importancia del paisaje gallego, la naturaleza y la cultura rural tan presente en Lugo.
+
+---
+
+### Documentales Recomendados
+
+**1. “Camino de Santiago: La ruta de los peregrinos”**  
+*Descripción:* Documental que recorre el Camino de Santiago, con especial atención a la etapa de Lugo y su muralla.  
+*Por qué ayuda:* Entiende Lugo como enclave clave en la peregrinación cultural y espiritual europea.
+
+**2. “Galicia, un paraíso atlántico”**  
+*Descripción:* Recorre las maravillas naturales, folclore y tradiciones de Galicia, con segmentos dedicados a Lugo.  
+*Por qué ayuda:* Permite apreciar la riqueza natural y cultural que rodea a Lugo en su contexto regional.
+
+**3. “Las murallas de Lugo”**  
+*Descripción:* Documental específico sobre la construcción, historia y conservación de la muralla romana.  
+*Por qué ayuda:* Es fundamental para conocer uno de los elementos patrimoniales mejor conservados y que mejor define la ciudad.
+
+---
+
+_Disfrute de un viaje que va más allá del paisaje, adentrándose en la identidad luguense a través de sus letras, imágenes y memoria._  
+---</div></div>
+    <div class="highlight-coral"><strong>📚 Tip:</strong> Leer o ver estas obras antes de viajar transforma la experiencia.</div>
+  </div>
+
+</div>
+
+<div class="footer-mini">
+  <strong>GuiaMundi.es</strong> · <a href="https://wa.me/34678720037">WhatsApp</a> · <a href="https://resistenciademateriales.com/gm/guiamundi.html">Pide otra guía</a>
+  <br>Generada el 3 Jun 2026 para FJ
+</div>
+
+<script>
+  // Ocultar bloques de días vacíos
+  document.querySelectorAll('.dia-bloque').forEach(b => {
+    const contenido = b.querySelector('.dia-contenido');
+    if (!contenido || contenido.textContent.trim() === '') b.style.display = 'none';
+  });
+
+  function showTab(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('page-' + id).classList.add('active');
+    const btns = document.querySelectorAll('.tab-btn');
+    const ids = ['inicio','recorrido','consejos','transporte','blogs','inspiracion'];
+    btns[ids.indexOf(id)].classList.add('active');
+    btns[ids.indexOf(id)].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }
+</script>
+</body>
+</html>
