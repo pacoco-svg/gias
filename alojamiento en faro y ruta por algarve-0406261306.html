@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Tu Guía – ALOJAMIENTO EN FARO Y RUTA POR ALGARVE | GuiaMundi.es</title>
+<link rel="apple-touch-icon" href="URL_LOGO">
+<link rel="icon" type="image/png" href="URL_LOGO">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sand: #F5F0E8; --ink: #1C1917; --ink-soft: #44403C; --ink-muted: #78716C;
+    --gold: #B45309; --gold-light: #FEF3C7; --teal: #0F766E; --teal-light: #CCFBF1;
+    --coral: #C2410C; --coral-light: #FFF7ED; --white: #FAFAF9; --border: #D6CFC0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { height: 100%; }
+  body { background: var(--sand); color: var(--ink); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.7; font-size: 15px; display: flex; flex-direction: column; }
+  .header { background: var(--ink); padding: 2.5rem 1.5rem 1.75rem; text-align: center; position: relative; overflow: hidden; flex-shrink: 0; }
+  .header::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(255,255,255,0.015) 40px, rgba(255,255,255,0.015) 80px); }
+  .header-brand { font-size: 10px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; color: #D4A853; margin-bottom: 0.6rem; position: relative; }
+  .header h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 5vw, 2.6rem); font-weight: 400; line-height: 1.15; color: var(--white); position: relative; }
+  .header h1 em { font-style: italic; color: #D4A853; }
+  .header-meta { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1.5rem; margin-top: 1rem; font-size: 12px; color: #A8A29E; position: relative; }
+  .header-meta span { display: flex; align-items: center; gap: 5px; }
+  .header-meta svg { width: 12px; height: 12px; opacity: 0.6; }
+  .tabs-bar { background: var(--white); border-bottom: 1px solid var(--border); display: flex; overflow-x: auto; scrollbar-width: none; flex-shrink: 0; position: sticky; top: 0; z-index: 50; box-shadow: 0 1px 8px rgba(0,0,0,0.06); }
+  .tabs-bar::-webkit-scrollbar { display: none; }
+  .tab-btn { display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 10px 16px 8px; font-size: 11px; font-weight: 400; font-family: 'DM Sans', sans-serif; color: var(--ink-muted); background: none; border: none; border-bottom: 2px solid transparent; cursor: pointer; white-space: nowrap; flex-shrink: 0; transition: color 0.15s, border-color 0.15s; min-width: 64px; }
+  .tab-btn .tab-icon { font-size: 18px; line-height: 1; }
+  .tab-btn.active { color: var(--ink); border-bottom-color: #D4A853; font-weight: 500; }
+  .pages { flex: 1; overflow: hidden; position: relative; }
+  .page { display: none; height: 100%; overflow-y: auto; padding: 1.5rem 1.25rem 5rem; max-width: 760px; margin: 0 auto; animation: fadeIn 0.2s ease; }
+  .page.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+  .inicio-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 0.5rem; }
+  .inicio-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.1rem 1rem; cursor: pointer; transition: border-color 0.15s, transform 0.1s; text-align: center; }
+  .inicio-card:hover { border-color: #D4A853; transform: translateY(-1px); }
+  .inicio-card .ic-icon { font-size: 26px; margin-bottom: 6px; }
+  .inicio-card .ic-title { font-size: 12px; font-weight: 500; color: var(--ink); margin-bottom: 2px; }
+  .inicio-card .ic-sub { font-size: 11px; color: var(--ink-muted); }
+  .resumen-box { background: var(--ink); border-radius: 12px; padding: 1.25rem 1.5rem; margin-bottom: 1.25rem; }
+  .resumen-box h2 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 400; margin-bottom: 0.75rem; color: var(--white); }
+  .resumen-box h2 em { font-style: italic; color: #D4A853; }
+  .resumen-datos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .resumen-dato { background: rgba(255,255,255,0.07); border-radius: 8px; padding: 8px 10px; }
+  .resumen-dato .rd-label { font-size: 10px; color: #A8A29E; text-transform: uppercase; letter-spacing: 1px; }
+  .resumen-dato .rd-value { font-size: 13px; color: var(--white); margin-top: 2px; }
+  .seccion-titulo { font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-muted); margin: 1.25rem 0 0.75rem; }
+  .page-header { display: flex; align-items: center; gap: 10px; margin-bottom: 1.25rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border); }
+  .page-icon { font-size: 24px; }
+  .page-title { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 600; color: var(--ink); }
+  .card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem 1.5rem; margin-bottom: 1rem; }
+  .card-body { color: var(--ink-soft); font-size: 14.5px; line-height: 1.85; white-space: pre-line; }
+  .highlight { background: var(--gold-light); border-left: 3px solid var(--gold); border-radius: 0 8px 8px 0; padding: 0.9rem 1.1rem; margin: 1rem 0; font-size: 13.5px; color: #78350F; }
+  .highlight-teal { background: var(--teal-light); border-left: 3px solid var(--teal); border-radius: 0 8px 8px 0; padding: 0.9rem 1.1rem; margin: 1rem 0; font-size: 13.5px; color: #134E4A; }
+  .highlight-coral { background: var(--coral-light); border-left: 3px solid var(--coral); border-radius: 0 8px 8px 0; padding: 0.9rem 1.1rem; margin: 1rem 0; font-size: 13.5px; color: #7C2D12; }
+  .highlight strong, .highlight-teal strong, .highlight-coral strong { font-weight: 500; }
+  .dia-bloque { background: var(--white); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 1rem; overflow: hidden; }
+  .dia-bloque:empty { display: none; }
+  .dia-header { background: var(--ink); color: var(--sand); padding: 0.7rem 1.25rem; }
+  .dia-numero { font-family: 'Playfair Display', serif; font-size: 0.9rem; font-weight: 600; color: #D4A853; letter-spacing: 1px; }
+  .dia-contenido { padding: 1rem 1.25rem; color: var(--ink-soft); font-size: 14px; line-height: 1.85; white-space: pre-line; }
+  .dia-mapa-btn { display: inline-flex; align-items: center; gap: 6px; margin: 0 1.25rem 1rem; padding: 8px 14px; background: var(--sand); border: 1px solid var(--border); border-radius: 8px; font-size: 12.5px; font-weight: 500; color: var(--teal); text-decoration: none; transition: background 0.15s, border-color 0.15s; }
+  .dia-mapa-btn:hover { background: var(--teal-light); border-color: var(--teal); }
+  .cta-box { background: #F0FDF4; border: 1px solid #86EFAC; border-radius: 12px; text-align: center; padding: 1.5rem 1.25rem; margin: 1.5rem 0 0; }
+  .cta-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 0.4rem; color: var(--ink); }
+  .cta-sub { font-size: 13px; color: var(--ink-soft); margin-bottom: 1rem; }
+  .btn-whatsapp { display: inline-flex; align-items: center; gap: 8px; background: #25D366; color: white; padding: 11px 22px; border-radius: 8px; font-size: 13px; font-weight: 500; text-decoration: none; }
+  .footer-mini { text-align: center; padding: 1rem; font-size: 11px; color: var(--ink-muted); border-top: 1px solid var(--border); background: var(--white); flex-shrink: 0; }
+  .footer-mini a { color: var(--gold); text-decoration: none; }
+  @media (max-width: 400px) { .tab-btn { min-width: 56px; padding: 10px 10px 8px; } .page { padding: 1.25rem 1rem 5rem; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-brand">GuiaMundi · Guía Personalizada</div>
+  <h1>Tu viaje a<br><em>ALOJAMIENTO EN FARO Y RUTA POR ALGARVE</em></h1>
+  <div class="header-meta">
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>7 días</span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>1 viajero(s)</span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10z"/></svg>Aventura y naturaleza</span>
+  </div>
+</div>
+
+<div class="tabs-bar">
+  <button class="tab-btn active" onclick="showTab('inicio')"><span class="tab-icon">🏠</span>Inicio</button>
+  <button class="tab-btn" onclick="showTab('recorrido')"><span class="tab-icon">🗓️</span>Recorrido</button>
+  <button class="tab-btn" onclick="showTab('consejos')"><span class="tab-icon">💡</span>Consejos</button>
+  <button class="tab-btn" onclick="showTab('transporte')"><span class="tab-icon">🚗</span>Transporte</button>
+  <button class="tab-btn" onclick="showTab('blogs')"><span class="tab-icon">🌐</span>Blogs</button>
+  <button class="tab-btn" onclick="showTab('inspiracion')"><span class="tab-icon">🎬</span>Inspiración</button>
+</div>
+
+<div class="pages">
+
+  <!-- INICIO -->
+  <div class="page active" id="page-inicio">
+    <div class="resumen-box">
+      <h2>Viaje a <em>ALOJAMIENTO EN FARO Y RUTA POR ALGARVE</em></h2>
+      <div class="resumen-datos">
+        <div class="resumen-dato"><div class="rd-label">Duración</div><div class="rd-value">7 días</div></div>
+        <div class="resumen-dato"><div class="rd-label">Viajeros</div><div class="rd-value">1 persona(s)</div></div>
+        <div class="resumen-dato"><div class="rd-label">Tipo</div><div class="rd-value">Aventura y naturaleza</div></div>
+        <div class="resumen-dato"><div class="rd-label">Generada</div><div class="rd-value">4 Jun 2026</div></div>
+      </div>
+    </div>
+    <p class="seccion-titulo">Tu guía incluye</p>
+    <div class="inicio-cards">
+      <div class="inicio-card" onclick="showTab('recorrido')"><div class="ic-icon">🗓️</div><div class="ic-title">Recorrido</div><div class="ic-sub">Itinerario día a día</div></div>
+      <div class="inicio-card" onclick="showTab('consejos')"><div class="ic-icon">💡</div><div class="ic-title">Consejos</div><div class="ic-sub">Tips del destino</div></div>
+      <div class="inicio-card" onclick="showTab('transporte')"><div class="ic-icon">🚗</div><div class="ic-title">Transporte</div><div class="ic-sub">Cómo moverte</div></div>
+      <div class="inicio-card" onclick="showTab('blogs')"><div class="ic-icon">🌐</div><div class="ic-title">Blogs</div><div class="ic-sub">Recursos online</div></div>
+      <div class="inicio-card" onclick="showTab('inspiracion')" style="grid-column:span 2"><div class="ic-icon">🎬</div><div class="ic-title">Lecturas y Pelis</div><div class="ic-sub">Inspírate antes de viajar</div></div>
+    </div>
+    <div class="cta-box" style="margin-top:1.25rem;">
+      <p class="cta-title">¿Lo planificamos al detalle?</p>
+      <p class="cta-sub">Reservas, actividades y ruta personalizada para ti.</p>
+      <a class="btn-whatsapp" href="https://wa.me/34678720037?text=Hola!%20He%20recibido%20mi%20gu%C3%ADa%20de%20ALOJAMIENTO%20EN%20FARO%20Y%20RUTA%20POR%20ALGARVE%20y%20quiero%20planificar%20mi%20viaje." target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M11.974 0C5.362 0 0 5.362 0 11.974c0 2.094.548 4.14 1.59 5.943L0 24l6.27-1.645A11.932 11.932 0 0 0 11.974 24C18.586 24 24 18.638 24 11.974 24 5.362 18.638 0 11.974 0zm0 21.818a9.83 9.83 0 0 1-5.013-1.375l-.36-.214-3.724.977.994-3.63-.235-.372a9.83 9.83 0 0 1-1.508-5.23c0-5.42 4.426-9.846 9.846-9.846 2.633 0 5.107 1.026 6.969 2.888a9.826 9.826 0 0 1 2.888 6.969c0 5.42-4.426 9.833-9.857 9.833z"/></svg>
+        Hablar por WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- RECORRIDO -->
+  <div class="page" id="page-recorrido">
+    <div class="page-header">
+      <span class="page-icon">🗓️</span>
+      <h2 class="page-title">Tu recorrido</h2>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 1</span></div>
+      <div class="dia-contenido">DÍA 1 – Faro
+- Mañana: Llegada a Faro, recogida del coche de alquiler. Paseo por el casco antiguo y visita a la Catedral de Faro.
+- Tarde: Explorar la Isla de Faro y su playa, ideal para una primera toma de contacto con la naturaleza.
+- Noche: Cena en un restaurante local con gastronomía del Algarve.
+- Alojamiento recomendado: Hotel Faro & Beach Club</div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir/Catedral%20de%20Faro%2C%20Faro/Isla%20de%20Faro%2C%20Faro//" target="_blank">🗺️ Ver Día 1 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 2</span></div>
+      <div class="dia-contenido">DÍA 2 – Parque Natural de Ria Formosa y Tavira
+- Mañana: Visita guiada en kayak por el Parque Natural de Ria Formosa para descubrir fauna y flora autóctonas.
+- Tarde: Recorrido por Tavira, con parada en el Castillo y sus puentes romanicos.
+- Noche: Cena tradicional en Tavira y vuelta a Faro.
+- Alojamiento recomendado: Hotel Faro & Beach Club</div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir/Parque%20Natural%20de%20Ria%20Formosa%2C%20Faro/Tavira%2C%20Tavira/Castillo%20de%20Tavira%2C%20Tavira/" target="_blank">🗺️ Ver Día 2 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 3</span></div>
+      <div class="dia-contenido">DÍA 3 – Lagos y Ponta da Piedade
+- Mañana: Conducción hacia Lagos. Visita al centro histórico y a la Iglesia de Santo António.
+- Tarde: Paseo en barco por Ponta da Piedade para admirar las formaciones rocosas y cuevas marítimas.
+- Noche: Disfrutar de la vibrante oferta gastronómica de Lagos.
+- Alojamiento recomendado: Casa Mãe, Lagos</div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir/Iglesia%20de%20Santo%20Ant%C3%B3nio%2C%20Lagos/Ponta%20da%20Piedade%2C%20Lagos//" target="_blank">🗺️ Ver Día 3 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 4</span></div>
+      <div class="dia-contenido">DÍA 4 – Sagres y Cabo de São Vicente
+- Mañana: Salida hacia Sagres. Visita a la Fortaleza de Sagres y su entorno natural.
+- Tarde: Recorrido al Faro de Cabo de São Vicente, punto más suroeste de Europa.
+- Noche: Cena de mariscos frescos en Sagres.
+- Alojamiento recomendado: Memmo Baleeira Hotel, Sagres</div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir/Fortaleza%20de%20Sagres%2C%20Sagres/Faro%20de%20Cabo%20de%20S%C3%A3o%20Vicente%2C%20Sagres//" target="_blank">🗺️ Ver Día 4 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 5</span></div>
+      <div class="dia-contenido">DÍA 5 – Monchique y Caldas de Monchique
+- Mañana: Ruta por la sierra de Monchique. Parada en Foia, el punto más alto del Algarve.
+- Tarde: Visita termal y relajación en Caldas de Monchique.
+- Noche: Cena en Monchique con productos locales.
+- Alojamiento recomendado: Monchique Resort & Spa</div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir/Foia%2C%20Monchique/Caldas%20de%20Monchique%2C%20Monchique//" target="_blank">🗺️ Ver Día 5 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 6</span></div>
+      <div class="dia-contenido">DÍA 6 – Silves y Albufeira
+- Mañana: Visita cultural a Silves, Castillo de Silves y catedral gótica.
+- Tarde: Traslado a Albufeira para un recorrido por su casco antiguo.
+- Noche: Degustación en un restaurante con vista al mar.
+- Alojamiento recomendado: Vila Gale Collection Resort, Albufeira</div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir/Castillo%20de%20Silves%2C%20Silves/Catedral%20de%20Silves%2C%20Silves/Albufeira%2C%20Albufeira/" target="_blank">🗺️ Ver Día 6 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 7</span></div>
+      <div class="dia-contenido">DÍA 7 – Vuelta a Faro y despedida
+- Mañana: Relax en la playa de Faro o visita a Mercado Municipal para recuerdos.
+- Tarde: Devolución del coche de alquiler y traslado al aeropuerto.
+- Noche: Vuelo de regreso o estancia adicional según preferencia.
+- Alojamiento recomendado: Hotel Faro & Beach Club (opcional)</div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir/Mercado%20Municipal%20de%20Faro%2C%20Faro///" target="_blank">🗺️ Ver Día 7 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 8</span></div>
+      <div class="dia-contenido"></div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir////" target="_blank">🗺️ Ver Día 8 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 9</span></div>
+      <div class="dia-contenido"></div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir////" target="_blank">🗺️ Ver Día 9 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 10</span></div>
+      <div class="dia-contenido"></div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir////" target="_blank">🗺️ Ver Día 10 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 11</span></div>
+      <div class="dia-contenido"></div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir////" target="_blank">🗺️ Ver Día 11 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 12</span></div>
+      <div class="dia-contenido"></div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir////" target="_blank">🗺️ Ver Día 12 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 13</span></div>
+      <div class="dia-contenido"></div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir////" target="_blank">🗺️ Ver Día 13 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 14</span></div>
+      <div class="dia-contenido"></div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir////" target="_blank">🗺️ Ver Día 14 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 15</span></div>
+      <div class="dia-contenido"></div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir////" target="_blank">🗺️ Ver Día 15 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 16</span></div>
+      <div class="dia-contenido"></div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir////" target="_blank">🗺️ Ver Día 16 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 17</span></div>
+      <div class="dia-contenido"></div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir////" target="_blank">🗺️ Ver Día 17 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 18</span></div>
+      <div class="dia-contenido"></div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir////" target="_blank">🗺️ Ver Día 18 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 19</span></div>
+      <div class="dia-contenido"></div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir////" target="_blank">🗺️ Ver Día 19 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 20</span></div>
+      <div class="dia-contenido"></div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir////" target="_blank">🗺️ Ver Día 20 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 21</span></div>
+      <div class="dia-contenido"></div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir////" target="_blank">🗺️ Ver Día 21 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 22</span></div>
+      <div class="dia-contenido"></div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir////" target="_blank">🗺️ Ver Día 22 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 23</span></div>
+      <div class="dia-contenido"></div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir////" target="_blank">🗺️ Ver Día 23 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 24</span></div>
+      <div class="dia-contenido"></div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir////" target="_blank">🗺️ Ver Día 24 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 25</span></div>
+      <div class="dia-contenido"></div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir////" target="_blank">🗺️ Ver Día 25 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 26</span></div>
+      <div class="dia-contenido"></div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir////" target="_blank">🗺️ Ver Día 26 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 27</span></div>
+      <div class="dia-contenido"></div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir////" target="_blank">🗺️ Ver Día 27 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 28</span></div>
+      <div class="dia-contenido"></div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir////" target="_blank">🗺️ Ver Día 28 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 29</span></div>
+      <div class="dia-contenido"></div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir////" target="_blank">🗺️ Ver Día 29 en Google Maps</a>
+    </div>
+
+    <div class="dia-bloque">
+      <div class="dia-header"><span class="dia-numero">DÍA 30</span></div>
+      <div class="dia-contenido"></div>
+      <a class="dia-mapa-btn" href="https://www.google.com/maps/dir////" target="_blank">🗺️ Ver Día 30 en Google Maps</a>
+    </div>
+
+    <div class="highlight">
+      <strong>✈️ Preparado para ti:</strong> 7 días · 1 persona(s) · Aventura y naturaleza
+    </div>
+  </div>
+
+  <!-- CONSEJOS -->
+  <div class="page" id="page-consejos">
+    <div class="page-header"><span class="page-icon">💡</span><h2 class="page-title">Consejos del destino</h2></div>
+    <div class="card"><div class="card-body"># Guía Profesional de Viaje: Alojamiento en Faro y Ruta por Algarve
+
+---
+
+## 1. Climatología  
+El Algarve goza de un clima mediterráneo con veranos cálidos y secos e inviernos suaves y húmedos. En Faro, las temperaturas en verano suelen oscilar entre 25 y 30 °C, mientras que en invierno rondan los 10 a 15 °C. La región disfruta de abundante sol durante la mayor parte del año, siendo ideal para actividades al aire libre.
+
+---
+
+## 2. Mejor época para viajar  
+La primavera (abril a junio) y el otoño (septiembre a octubre) son temporadas óptimas por su clima agradable y menor afluencia turística. El verano, aunque caluroso y concurrido, es perfecto para quienes buscan disfrutar de playas y festividades locales.
+
+---
+
+## 3. Vacunas y salud  
+No se requieren vacunas especiales para visitar Portugal. Se recomienda contar con el calendario de vacunación habitual actualizado. Es aconsejable contratar un seguro médico de viaje que cubra posibles incidentes durante la estancia.
+
+---
+
+## 4. Seguridad para turistas  
+El Algarve es una región segura para viajeros, con baja tasa de delitos graves. Como en cualquier destino turístico, se recomienda mantener la precaución en lugares concurridos, cuidar objetos personales y evitar zonas poco iluminadas durante la noche.
+
+---
+
+## 5. Moneda y pagos  
+La moneda oficial es el euro (€). En Faro y el Algarve, la mayoría de los establecimientos aceptan tarjetas de crédito y débito internacional. Se recomienda llevar algo de efectivo para pequeños comercios o mercados locales.
+
+---
+
+## 6. Costumbres culturales importantes  
+Los habitantes del Algarve valoran la cortesía y el respeto. Es habitual saludar con un apretón de manos o un beso en la mejilla entre conocidos. La puntualidad es apreciada, sobre todo en eventos y reservas. Mostrar interés por la cultura local, como su música y tradiciones, favorecerá una experiencia más enriquecedora.
+
+---
+
+## 7. Gastronomía típica  
+La cocina algarvía destaca por sus platos de mariscos y pescados frescos, como la cataplana o el polvo à lagareiro (pulpo). Los vinos regionales, especialmente los blancos y rosados, complementan la oferta gastronómica. No deje de probar la medronho, aguardiente tradicional.
+
+---
+
+## 8. Compras recomendadas  
+Entre los productos locales más apreciados se encuentran el artesanado en cerámica, los bordados y los productos gastronómicos como el dulce de higo, el aceite de oliva y los vinos. Los mercados de Faro son excelentes para adquirir souvenirs auténticos.
+
+---
+
+## 9. Consejos prácticos para viajeros  
+- Reserve alojamiento con antelación, especialmente en temporada alta.  
+- Alquile vehículo para explorar el Algarve con flexibilidad.  
+- Lleve ropa cómoda y protección solar para las actividades al aire libre.  
+- Aprenda algunas frases básicas en portugués; la población local lo valorará.  
+
+---
+
+## 10. Qué evitar como turista  
+- Evite dejar objetos de valor a la vista en vehículos o alojamientos.  
+- No se adentre en áreas no señalizadas o naturales sin guía especializado.  
+- Evite manifestar actitudes irrespetuosas hacia las tradiciones locales.  
+- No asuma que todos hablan inglés; sea paciente y amable en la comunicación.
+
+---
+
+## 11. Apps útiles para viajar  
+- **Google Maps:** para navegación y planificación de rutas.  
+- **Emov Algarve:** información de transporte público y movilidad en la región.  
+- **Traductor de Google:** para traducción instantánea y frases básicas.  
+- **Visit Algarve:** guía oficial con eventos y recomendaciones locales.
+
+---
+
+## 12. Consejos sobre internet y conectividad  
+El Algarve cuenta con buena cobertura móvil e internet en zonas urbanas y turísticas. En Faro, muchos cafés y restaurantes ofrecen Wi-Fi gratuito. Para mayor comodidad, considere adquirir una tarjeta SIM local con datos para mantenerse conectado durante toda la visita.
+
+---
+
+Esta guía reúne la información esencial para que su estancia en Faro y recorrido por el Algarve sea segura, agradable y enriquecedora. ¡Disfrute de un viaje inolvidable!</div></div>
+  </div>
+
+  <!-- TRANSPORTE -->
+  <div class="page" id="page-transporte">
+    <div class="page-header"><span class="page-icon">🚗</span><h2 class="page-title">Opciones de transporte</h2></div>
+    <div class="card"><div class="card-body">**GUÍA DE TRANSPORTE PARA VIAJAR POR FARO Y EL ALGARVE**
+
+---
+
+## Introducción
+
+Esta guía proporciona recomendaciones prácticas para moverse en Faro y explorar la región del Algarve, combinando el uso de coche de alquiler y transporte público. Encontrará información útil sobre carreteras, aparcamientos, opciones de autobús y tren, y consejos para una experiencia de viaje segura y eficiente.
+
+---
+
+## Transporte en Faro y Algarve
+
+### 1. Alquiler de coche: la mejor opción para explorar el Algarve
+
+**Tipo de coche recomendado**  
+Para recorrer Faro y la región del Algarve, se recomienda alquilar un vehículo compacto o un turismo estándar. Estos coches son ideales para manejar por carreteras locales y aparcar en zonas urbanas. Si viaja con familia o grupo, un SUV mediano puede proporcionar mayor comodidad y espacio.
+
+**Carreteras y señalización**  
+Las carreteras del Algarve están en buen estado y bien señalizadas. Las principales vías son la A22 — también conocida como Via do Infante — una autovía que recorre la costa oeste del Algarve permitiendo desplazamientos rápidos entre ciudades como Faro, Lagos y Portimão. En zonas rurales, las carreteras pueden ser más estrechas, por lo que se recomienda precaución adicional.
+
+**Peajes**  
+La A22 es una carretera de peaje electrónico. No dispone de cabinas para pago en efectivo: los peajes se cobran a través de dispositivos electrónicos o por reconocimiento de matrícula. Al alquilar, consulte si el coche dispone de vía electrónica (dispositivo Via Verde), lo que facilitará el pago automático. También puede pagar los peajes en puntos habilitados o antes de devolver el vehículo.
+
+**Aparcamiento**  
+En Faro, el centro cuenta con áreas de aparcamiento pagado (zonas azules y verdes). Se aconseja utilizar los parkings públicos para garantizar seguridad. En zonas turísticas como Lagos o Albufeira, aparcar puede ser más complejo en temporada alta. Busque parkings vigilados y evite dejar objetos de valor visibles en el coche para prevenir robos.
+
+**Empresas de alquiler recomendadas**  
+Las compañías internacionales con presencia en Faro son las más fiables, entre ellas:  
+- Europcar  
+- Sixt  
+- Avis  
+- Hertz  
+- Enterprise
+
+Reserve con antelación online para conseguir mejores tarifas y verificar condiciones relacionadas con seguros y kilometraje.
+
+---
+
+### 2. Transporte público: opciones para moverse sin coche
+
+**Trenes**  
+La estación de tren de Faro conecta con Lisboa y otras localidades del Algarve. Para desplazamientos dentro de la región, la línea cremallera entre Faro y Vila Real de Santo António ofrece un servicio económico y seguro, ideal si se planea visitar varias ciudades sin conducir. Compre los billetes en las estaciones o apps oficiales como Comboios de Portugal para descuentos y horarios actualizados.
+
+**Autobuses**  
+La red de autobuses interurbanos (operada por EVA Transportes, entre otros) es extensa en el Algarve. Los autobuses comunican Faro con municipios cercanos como Tavira, Albufeira, y Lagos. Los billetes se pueden adquirir a bordo o en las estaciones; sin embargo, para rutas largas o en temporada alta se recomienda reservar con anticipación.
+
+**Ferries**  
+En ciertas localidades costeras, hay servicios limitados de ferry para cruzar rías o acceder a playas y parques naturales, pero no son una opción habitual para desplazamientos largos en Algarve.
+
+**Vuelos internos**  
+Dado que Faro dispone de aeropuerto internacional con buen acceso a Europa, no hay vuelos internos que conecten destinos dentro del Algarve, por lo que no es necesario considerar vuelos durante esta ruta.
+
+**Apps útiles para transporte público**  
+- CP (Comboios de Portugal): para horarios y billetes de tren.  
+- EVA Transportes: información sobre rutas y horarios de autobús.  
+- Google Maps o Citymapper: apoyo para planificación de rutas y transbordos.  
+- Moovit: app con actualizaciones de transporte público en tiempo real.
+
+---
+
+## Consejos generales para billetes y reservas
+
+- Compre billetes de tren y autobús con antelación, especialmente en verano y fines de semana.  
+- Mantenga billetes y documentos a mano durante el viaje para inspección.  
+- Considere tarjetas turísticas o pases de transporte si piensa utilizar frecuentemente el transporte público.  
+- Verifique horarios porque algunos servicios son limitados en domingos o festivos.  
+
+---
+
+## Resumen final
+
+| Transporte       | Ventajas                        | Recomendaciones clave                 |
+|------------------|--------------------------------|-------------------------------------|
+| Coche de alquiler| Máxima libertad y comodidad    | Reserva anticipada, tipo de coche compacto, revisar peajes electrónicos |
+| Transporte público| Económico y sostenible         | Planificar horarios, usar apps oficiales, comprar billetes con tiempo   |
+
+Con esta guía puede planificar un viaje seguro, cómodo y eficiente por Faro y el Algarve, disfrutando de cada destino con total tranquilidad.
+
+---
+
+**¡Buen viaje y disfrute del Algarve!**</div></div>
+    <div class="highlight-teal"><strong>🗺️ Recuerda:</strong> El transporte condiciona el ritmo del viaje. Planifícalo con antelación.</div>
+  </div>
+
+  <!-- BLOGS -->
+  <div class="page" id="page-blogs">
+    <div class="page-header"><span class="page-icon">🌐</span><h2 class="page-title">Blogs y recursos</h2></div>
+    <div class="card"><div class="card-body">---
+# Guía de Recursos Online para Planificar tu Viaje  
+## Alojamiento en Faro y Ruta por el Algarve  
+
+---
+
+### 1. Blogs de Viaje Recomendados
+
+**Portugalist**  
+Un blog especializado en Portugal que ofrece guías detalladas sobre el Algarve y Faro, con consejos sobre alojamiento, gastronomía y rutas panorámicas. Ideal para prepararte con información actualizada y completa.  
+https://www.portugalist.com  
+
+**The Culture Trip – Algarve Section**  
+Este blog recoge artículos culturales y turísticos, con recomendaciones sobre qué ver y dónde alojarte en Faro y el Algarve. Muy útil por su enfoque cultural y locales poco turísticos.  
+https://theculturetrip.com/europe/portugal/algarve  
+
+**A Beautiful Life Portugal**  
+Blog de una viajera local que escribe sobre experiencias reales en el Algarve, incluyendo alojamientos con encanto y alternativas para descubrir la región más allá de las zonas masificadas. Perfecto para viajeros que buscan autenticidad.  
+https://www.abeautifullife.pt  
+
+---
+
+### 2. Foros y Comunidades de Viajeros
+
+**TripAdvisor - Foro Algarve**  
+El foro más activo para preguntas específicas sobre el Algarve y Faro, desde recomendaciones de hoteles hasta rutas de senderismo. Permite interactuar con viajeros recientes que comparten experiencias y consejos prácticos.  
+https://www.tripadvisor.es/ShowForum-g189113-i219-Algarve.html  
+
+**Lonely Planet Thorntree - Portugal**  
+Comunidad global de viajeros con un apartado dedicado a Portugal y el Algarve. Es una excelente fuente para resolver dudas puntuales sobre transporte, alojamiento y rutas poco conocidas.  
+https://www.lonelyplanet.com/thorntree/categories/europe/netherlands  
+
+**Facebook - Grupos: "Algarve Travelers"**  
+Grupo dinámico para compartir recomendaciones actualizadas, ofertas de alojamiento y consejos para moverse por la región. La interacción directa con otros viajeros aporta información en tiempo real.  
+Busca en Facebook "Algarve Travelers"  
+
+---
+
+### 3. Canales de YouTube Útiles
+
+**Rick Steves Europe**  
+Cuenta con videos sobre el Algarve que incluyen los mejores alojamientos y rutas recomendadas, explicados por uno de los expertos en viajes europeos más reconocidos. El contenido es claro y profesional.  
+https://www.youtube.com/user/RickSteves  
+
+**Eva zu Beck**  
+Viajera que explora destinos fuera del circuito mainstream. Su experiencia en el Algarve brinda una perspectiva fresca de la región y consejos para moverse de forma independiente.  
+https://www.youtube.com/c/evazubeck  
+
+**Expedia**  
+Canal oficial de Expedia con videos cortos y prácticos sobre el Algarve y Faro, que ayudan a conocer la logística y organizar mejor la ruta y el alojamiento.  
+https://www.youtube.com/user/expedia  
+
+---
+
+### 4. Recursos para Organizar Rutas
+
+**AllTrails - Algarve**  
+Plataforma especializada en senderismo y rutas al aire libre. Perfecta para planificar caminatas y descubrir playas escondidas en el Algarve, con mapas y opiniones de otros usuarios.  
+https://www.alltrails.com/portugal/algarve  
+
+**Komoot**  
+Aplicación y web que permite diseñar rutas personalizadas para bici, senderismo o turismo urbano. Su cobertura de Faro y el Algarve es muy completa, y permite descargar mapas offline, clave para zonas rurales.  
+https://www.komoot.com  
+
+**Visit Algarve - Official Tourism Website**  
+El sitio oficial ofrece toda la información para planificar tu ruta, con itinerarios sugeridos, alojamientos y eventos locales. Garantiza información actual y fiable.  
+https://www.visitalgarve.pt  
+
+---
+
+### 5. Apps Útiles para el Destino
+
+**Google Maps**  
+Indispensable para navegación en carretera y a pie, además de consultas sobre restaurantes y alojamientos en tiempo real. Funciona bien en toda la región del Algarve.  
+
+**MTB Algarve (Android & iOS)**  
+Especializada para ciclistas, ofrece mapas detallados de rutas por el Algarve incluyendo Faro, con niveles de dificultad y puntos de interés. Muy recomendable si planeas recorrer la región en bicicleta.  
+
+**Booking.com**  
+Para reservar alojamiento con facilidad, permite filtrar hoteles, guesthouses y apartamentos según precio, ubicación y opiniones. Muy usada para encontrar alojamientos en Faro y el Algarve con cancelación flexible.
+
+**Moovit**  
+App para planificar viajes en transporte público dentro del Algarve, con horarios y rutas actualizadas. Útil para trayectos desde Faro a otras localidades del Algarve sin vehículo propio.  
+
+---
+
+*Esta selección ha sido curada para ofrecer recursos fiables, actuales y prácticos que aseguren una planificación eficiente y una experiencia de viaje satisfactoria en Faro y la región del Algarve.*
+
+---</div></div>
+    <div class="highlight"><strong>💬 Consejo:</strong> Consulta estos recursos antes del viaje para llegar bien preparado.</div>
+  </div>
+
+  <!-- INSPIRACIÓN -->
+  <div class="page" id="page-inspiracion">
+    <div class="page-header"><span class="page-icon">🎬</span><h2 class="page-title">Lecturas y pelis</h2></div>
+    <div class="card"><div class="card-body">---
+# Guía Cultural: Faro y Ruta por el Algarve, Portugal
+
+---
+
+## Libros Recomendados
+
+### 1. **“El Nombre de la Rosa” – José Saramago**  
+*Descripción:* Novela emblemática de uno de los escritores portugueses más destacados, que combina misterio con la riqueza histórica y cultural de Portugal.  
+*Relación con el destino:* Aunque no está ambientado directamente en el Algarve, permite comprender la profundidad literaria y cultural portuguesa, apreciando su tradición narrativa y el pensamiento crítico que caracteriza al país.
+
+### 2. **“Algarve” – Hugo Dinis**  
+*Descripción:* Crónica contemporánea que captura las transformaciones sociales y culturales del Algarve, desde su tradición pesquera hasta el auge turístico.  
+*Relación con el destino:* Perfecto para entender la evolución y los contrastes de la región que visitarás, con especial atención a Faro y sus alrededores.
+
+### 3. **“La Ciudad y los Perros” – Lídia Jorge**  
+*Descripción:* Obra de una de las voces femeninas más importantes de Portugal que aborda temas de identidad, memoria y pertenencia.  
+*Relación con el destino:* Brinda una perspectiva profunda sobre la sociedad portuguesa moderna, enriqueciendo la experiencia cultural durante la estancia.
+
+### 4. **“Alentejo Blue” – Monica Ali**  
+*Descripción:* Novela que explora la vida y los paisajes del sur de Portugal, destacando la conexión entre las personas y su tierra.  
+*Relación con el destino:* Aunque ambientado en la región vecina, comparte muchas similitudes con el Algarve, aportando una visión complementaria sobre la cultura rural y costera.
+
+### 5. **“The Portugese: A Modern History” – Barry Hatton**  
+*Descripción:* Ensayo que aborda los hitos históricos y sociales que han moldeado la Portugal contemporánea.  
+*Relación con el destino:* Ayuda a contextualizar históricamente la región del Algarve dentro del país, facilitando un viaje más enriquecido.
+
+---
+
+## Películas Recomendadas
+
+### 1. **“O Fantasma” (2000) – Director: João Pedro Rodrigues**  
+*Descripción:* Thriller psicológico en un escenario portugués contemporáneo, que explora la identidad y la marginalidad.  
+*Relación con el destino:* Ofrece un acercamiento a la sociedad urbana en Portugal, con imágenes que reflejan la atmósfera de ciudades como Faro.
+
+### 2. **“Tabu” (2012) – Director: Miguel Gomes**  
+*Descripción:* Película dividida en dos partes que mezcla memoria y exotismo, con paisajes y referencias a la historia colonial portuguesa.  
+*Relación con el destino:* Aunque no está rodada en el Algarve, su sensibilidad estética y narrativa invita a reflexionar sobre el pasado portugués y su huella cultural.
+
+### 3. **“Mysteries of Lisbon” (2010) – Director: Raúl Ruiz**  
+*Descripción:* Adaptación de la novela clásica portuguesa unida a elementos históricos y culturales del país.  
+*Relación con el destino:* Permite conocer el Portugal tradicional y sus costumbres, enriqueciendo la inmersión cultural durante la ruta por el Algarve.
+
+### 4. **“O Delfim” (2002) – Director: Fernando Lopes**  
+*Descripción:* Drama ambientado en la costa portuguesa, que refleja las tensiones sociales y políticas del país.  
+*Relación con el destino:* Excelente para captar el ambiente costero que caracteriza al Algarve, así como problemáticas locales de épocas pasadas.
+
+### 5. **“Call Girl” (2007) – Director: António-Pedro Vasconcelos**  
+*Descripción:* Thriller que retrata la sociedad portuguesa desde una perspectiva crítica y envolvente.  
+*Relación con el destino:* Aporta una visión contrastada de la realidad urbana y social, similar a la que se respira en las ciudades históricas que visitarás.
+
+---
+
+## Documentales Interesantes
+
+### 1. **“Portugal: The Man and the Sea”**  
+*Descripción:* Documental que explora la relación profunda entre el pueblo portugués y el océano, con imágenes impresionantes del litoral, incluyendo el Algarve.  
+*Relación con el destino:* Ayuda a comprender la importancia histórica y emocional del mar para las comunidades costeras como Faro, base de la navegación y la pesca.
+
+### 2. **“The Algarve: Secrets of the South”**  
+*Descripción:* Una visión detallada del Algarve, desde su geografía única hasta las tradiciones locales, la gastronomía y la vida silvestre.  
+*Relación con el destino:* Perfecto para nutrir el conocimiento sobre el entorno natural y cultural que te rodeará, incluyendo consejos para apreciar sus playas y pueblos.
+
+### 3. **“Lisbon Story”**  
+*Descripción:* Un retrato documental que muestra la transformación de Lisboa y su influencia en el resto del país.  
+*Relación con el destino:* Si bien se centra en la capital, profundiza en la identidad portuguesa que también se refleja en la hospitalidad y cultura algarvía.
+
+---
+
+> **Este conjunto de recomendaciones ha sido elaborado para complementar tu viaje, brindándote no solo entretenimiento sino también una comprensión profunda del alma portuguesa y del Algarve. Disfruta de la riqueza cultural que rodea Faro y su fascinante región.**
+
+---
+
+© 2024 Cultural Tours | Todos los derechos reservados  
+---</div></div>
+    <div class="highlight-coral"><strong>📚 Tip:</strong> Leer o ver estas obras antes de viajar transforma la experiencia.</div>
+  </div>
+
+</div>
+
+<div class="footer-mini">
+  <strong>GuiaMundi.es</strong> · <a href="https://wa.me/34678720037">WhatsApp</a> · <a href="https://resistenciademateriales.com/gm/guiamundi.html">Pide otra guía</a>
+  <br>Generada el 4 Jun 2026 para PACOCO
+</div>
+
+<script>
+  // Ocultar bloques de días vacíos
+  document.querySelectorAll('.dia-bloque').forEach(b => {
+    const contenido = b.querySelector('.dia-contenido');
+    if (!contenido || contenido.textContent.trim() === '') b.style.display = 'none';
+  });
+
+  function showTab(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('page-' + id).classList.add('active');
+    const btns = document.querySelectorAll('.tab-btn');
+    const ids = ['inicio','recorrido','consejos','transporte','blogs','inspiracion'];
+    btns[ids.indexOf(id)].classList.add('active');
+    btns[ids.indexOf(id)].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }
+</script>
+</body>
+</html>
