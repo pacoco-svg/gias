@@ -1,0 +1,1570 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="GuiaMundi">
+<meta name="theme-color" content="#1A1A2E">
+<title>Guía de Viaje · cantabria</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1A1A2E;--gold:#C9922A;--gold-l:#F5E6C8;--gold-p:#FDF6E9;
+  --terra:#B84A2E;--sky:#1B4F72;--sage:#2D6A4F;--cream:#FAFAF6;
+  --sand:#F0EBE0;--mist:#EEF2F7;--line:#DDD8CF;--mid:#7B7369;--r:14px;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:#E8E4DC;color:var(--ink);font-size:15px;line-height:1.7}
+
+/* ── SHELL ── */
+.shell{display:flex;min-height:100vh;max-width:1280px;margin:0 auto;box-shadow:0 0 60px rgba(0,0,0,.2)}
+.shell-left{width:360px;flex-shrink:0;position:sticky;top:0;height:100vh}
+.shell-right{flex:1;background:var(--cream);overflow-y:auto;height:100vh;padding-bottom:70px}
+
+/* Móvil: columna única */
+@media(max-width:860px){
+  body{background:var(--ink)}
+  .shell{flex-direction:column;max-width:480px;margin:0 auto;box-shadow:none}
+  .shell-left{width:100%;height:auto;position:static}
+  .shell-right{height:auto;overflow-y:visible;padding-bottom:80px}
+}
+
+/* ── PORTADA ── */
+.cover{background:var(--ink);min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden}
+.cover-bg{position:absolute;inset:0;background:radial-gradient(circle at 20% 30%,rgba(201,146,42,.18) 0,transparent 55%),radial-gradient(circle at 80% 70%,rgba(27,79,114,.22) 0,transparent 55%)}
+.cover-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,146,42,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,146,42,.05) 1px,transparent 1px);background-size:36px 36px}
+.cover-stripe{position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--terra),var(--sky))}
+.cover-badge{position:absolute;top:22px;right:18px;background:rgba(201,146,42,.15);border:1px solid rgba(201,146,42,.35);border-radius:50px;padding:5px 13px;font-size:10px;font-weight:500;letter-spacing:2px;color:var(--gold);text-transform:uppercase}
+.cover-content{position:relative;z-index:2;padding:32px 22px 44px}
+.cover-label{font-size:10px;font-weight:500;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.cover-label::before{content:'';display:inline-block;width:18px;height:1px;background:var(--gold)}
+.cover-country{font-family:'Playfair Display',serif;font-size:clamp(48px,12vw,68px);font-weight:900;line-height:.9;color:#fff;margin-bottom:18px;letter-spacing:-2px;font-style:italic}
+.cover-div{width:40px;height:2px;background:var(--gold);margin-bottom:16px}
+.cover-meta{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
+.cover-meta-item label{display:block;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:2px}
+.cover-meta-item .val{font-family:'Playfair Display',serif;font-size:14px;color:#fff;font-style:italic}
+.cover-traveler{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:var(--r);padding:12px 16px;display:flex;align-items:center;gap:10px}
+.cover-avatar{width:38px;height:38px;background:linear-gradient(135deg,var(--gold),var(--terra));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;color:#fff;font-weight:700;flex-shrink:0;font-family:'Playfair Display',serif}
+.cover-traveler-info label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.35);display:block;margin-bottom:1px}
+.cover-traveler-info .name{font-family:'Playfair Display',serif;font-size:15px;color:#fff;font-style:italic}
+.cover-actions{display:flex;gap:8px;margin-top:14px}
+.cover-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:10px 8px;border-radius:10px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;transition:all .2s}
+.cover-btn-wpp{background:#25D366;color:#fff}
+.cover-btn-install{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff}
+.cover-btn:active{transform:scale(.97)}
+
+/* ── SECCIONES ── */
+.section{padding:28px 28px}
+.section+.section{border-top:1px solid var(--line)}
+@media(max-width:860px){.section{padding:24px 18px}}
+.sec-eye{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:5px;display:flex;align-items:center;gap:7px}
+.sec-eye::before{content:'';display:inline-block;width:12px;height:1px;background:var(--gold)}
+.sec-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:16px}
+
+/* ── FICHA ── */
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;border-radius:var(--r);overflow:hidden;border:1px solid var(--line)}
+.info-cell{background:#fff;padding:11px 13px}
+.info-cell:nth-child(odd){background:var(--sand)}
+.info-cell label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--mid);display:block;margin-bottom:2px}
+.info-cell .val{font-family:'Playfair Display',serif;font-size:14px;color:var(--ink);font-style:italic}
+.info-cell.full{grid-column:1/-1}
+
+/* ── AD ── */
+.ad{margin:0 28px 4px;background:#FFF8E7;border:1px solid #E8C84A;border-left:4px solid #E8C84A;border-radius:var(--r);padding:11px 13px;display:flex;align-items:flex-start;gap:9px}
+@media(max-width:860px){.ad{margin:0 18px 4px}}
+.ad-badge{background:#E8C84A;color:#fff;font-size:8px;font-weight:700;letter-spacing:1px;padding:2px 5px;border-radius:4px;flex-shrink:0;margin-top:2px}
+.ad strong{display:block;font-size:12px;font-weight:500;color:#7A5C00;margin-bottom:1px}
+.ad span{font-size:11px;color:#A07B20;font-style:italic}
+
+/* ── ITINERARIO ── */
+.day-card{border-radius:var(--r);overflow:hidden;margin-bottom:10px;border:1px solid var(--line);background:#fff}
+.day-header{display:flex;align-items:stretch;cursor:pointer;user-select:none}
+.day-num{background:var(--ink);color:var(--gold);font-family:'Playfair Display',serif;font-size:19px;font-weight:900;width:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;padding:10px 0;line-height:1}
+.day-num small{font-family:'DM Sans',sans-serif;font-size:7px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(201,146,42,.55);font-weight:400;margin-bottom:1px}
+.day-info{flex:1;padding:11px 13px}
+.day-title{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--ink);margin-bottom:2px}
+.day-loc{font-size:11px;color:var(--mid);display:flex;align-items:center;gap:3px}
+.day-loc::before{content:'◎';color:var(--terra);font-size:9px}
+.day-toggle{display:flex;align-items:center;padding:0 13px;color:var(--gold);font-size:15px;transition:transform .3s}
+.day-card.open .day-toggle{transform:rotate(180deg)}
+.day-body{display:none;padding:0 14px 14px;border-top:1px solid var(--line)}
+.day-card.open .day-body{display:block}
+.day-act{display:flex;gap:9px;padding:9px 0;border-bottom:1px solid var(--line)}
+.day-act:last-child{border-bottom:none}
+.act-dot{width:7px;height:7px;background:var(--gold);border-radius:50%;flex-shrink:0;margin-top:5px}
+.act-text{font-size:13px;line-height:1.6;color:var(--ink)}
+.act-time{font-size:9px;color:var(--gold);font-weight:500;letter-spacing:1px;text-transform:uppercase;margin-bottom:1px}
+
+/* ── HERRAMIENTAS ── */
+.tools-tabs{display:flex;gap:6px;margin-bottom:16px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+.tools-tabs::-webkit-scrollbar{display:none}
+.ttab{background:var(--sand);border:none;border-radius:50px;padding:7px 14px;font-size:12px;font-family:'DM Sans',sans-serif;color:var(--mid);cursor:pointer;white-space:nowrap;transition:all .2s}
+.ttab.active{background:var(--ink);color:var(--gold);font-weight:500}
+.tool-panel{display:none}
+.tool-panel.active{display:block}
+
+/* Desktop: herramientas en 2 columnas sin tabs */
+@media(min-width:861px){
+  .tools-tabs{display:none}
+  .tool-panel{display:block!important}
+  .tools-desktop{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .tools-desktop-title{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);margin-bottom:8px}
+}
+
+/* Conversor */
+.conv-box{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:16px}
+.conv-row{display:flex;gap:9px;align-items:flex-end;margin-bottom:12px}
+.conv-input-wrap{flex:1}
+.conv-input-wrap label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);display:block;margin-bottom:4px}
+.conv-input{width:100%;padding:9px 11px;border:1.5px solid var(--line);border-radius:10px;font-size:17px;font-family:'Playfair Display',serif;font-weight:700;color:var(--ink);outline:none;background:var(--cream)}
+.conv-input:focus{border-color:var(--gold)}
+.conv-arrow{font-size:16px;color:var(--gold);padding-bottom:7px;flex-shrink:0}
+.conv-result{background:var(--gold-p);border:1px solid var(--gold-l);border-radius:10px;padding:12px 14px;text-align:center}
+.conv-result .amount{font-family:'Playfair Display',serif;font-size:26px;font-weight:900;color:var(--gold)}
+.conv-result .rate{font-size:11px;color:var(--mid);margin-top:2px}
+.conv-select{width:100%;padding:8px 11px;border:1.5px solid var(--line);border-radius:10px;font-size:13px;font-family:'DM Sans',sans-serif;color:var(--ink);outline:none;background:#fff;margin-bottom:10px}
+.conv-note{font-size:10px;color:var(--mid);text-align:center;margin-top:7px}
+
+/* Traductor */
+.trans-box{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.trans-item{display:flex;align-items:center;padding:10px 14px;border-bottom:1px solid var(--line);gap:9px}
+.trans-item:last-child{border-bottom:none}
+.trans-texts{flex:1}
+.trans-es{font-size:13px;font-weight:500;color:var(--ink)}
+.trans-dest{font-size:12px;color:var(--sky);font-style:italic;margin-top:1px}
+.trans-audio{background:none;border:1.5px solid var(--gold);border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--gold);flex-shrink:0;font-size:12px;transition:all .2s}
+.trans-audio:active,.trans-audio.playing{background:var(--gold);color:#fff}
+.trans-lang{background:var(--ink);color:#fff;padding:9px 14px;font-size:11px;font-weight:500;display:flex;align-items:center;justify-content:space-between}
+.trans-lang select{background:transparent;border:none;color:var(--gold);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;outline:none;cursor:pointer}
+
+/* Calculadora */
+.calc-box{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:16px}
+.calc-row{margin-bottom:12px}
+.calc-row label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);display:block;margin-bottom:4px}
+.calc-input{width:100%;padding:8px 11px;border:1.5px solid var(--line);border-radius:10px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--ink);outline:none;background:var(--cream)}
+.calc-input:focus{border-color:var(--gold)}
+.calc-result{background:var(--ink);border-radius:var(--r);padding:16px;margin-top:4px}
+.calc-result-title{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:8px}
+.calc-line{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.calc-line:last-child{border-bottom:none;margin-top:5px;padding-top:8px}
+.calc-line span{font-size:12px;color:rgba(255,255,255,.6)}
+.calc-line strong{font-family:'Playfair Display',serif;font-size:14px;color:var(--gold)}
+.calc-line.total span{color:#fff;font-weight:600;font-size:13px}
+.calc-line.total strong{font-size:18px}
+
+/* Checklist */
+.check-cats{display:flex;gap:5px;margin-bottom:12px;overflow-x:auto;scrollbar-width:none}
+.check-cats::-webkit-scrollbar{display:none}
+.check-cat-btn{background:var(--sand);border:none;border-radius:50px;padding:6px 12px;font-size:11px;font-family:'DM Sans',sans-serif;color:var(--mid);cursor:pointer;white-space:nowrap;transition:all .2s}
+.check-cat-btn.active{background:var(--ink);color:var(--gold);font-weight:500}
+.checklist{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;max-height:280px;overflow-y:auto}
+.check-item{display:flex;align-items:center;gap:10px;padding:10px 13px;border-bottom:1px solid var(--line);cursor:pointer;transition:background .15s}
+.check-item:last-child{border-bottom:none}
+.check-item:hover{background:var(--sand)}
+.check-box{width:19px;height:19px;border:2px solid var(--line);border-radius:5px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s;font-size:11px;color:transparent}
+.check-item.done .check-box{background:var(--sage);border-color:var(--sage);color:#fff}
+.check-item.done .check-label{text-decoration:line-through;color:var(--mid)}
+.check-label{font-size:13px;color:var(--ink)}
+.check-progress{background:var(--sand);border-radius:var(--r);padding:9px 13px;margin-bottom:10px;display:flex;align-items:center;gap:9px}
+.check-bar-wrap{flex:1;background:var(--line);border-radius:50px;height:5px;overflow:hidden}
+.check-bar{height:100%;background:linear-gradient(90deg,var(--sage),var(--gold));border-radius:50px;transition:width .4s}
+.check-pct{font-size:12px;font-weight:600;color:var(--sage);flex-shrink:0}
+
+/* ── EXPERIENCIAS ── */
+.exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.exp-card{background:linear-gradient(135deg,var(--ink),#2A2A4A);border-radius:var(--r);padding:15px 13px;position:relative;overflow:hidden}
+.exp-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),transparent)}
+.exp-n{font-family:'Playfair Display',serif;font-size:30px;font-weight:900;color:rgba(201,146,42,.18);line-height:1;margin-bottom:4px}
+.exp-text{font-size:12px;color:rgba(255,255,255,.65);line-height:1.5}
+.exp-text strong{display:block;color:#fff;font-size:12.5px;margin-bottom:2px}
+
+/* ── TRANSPORTE ── */
+.trans-list-item{display:flex;gap:11px;padding:11px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+.trans-list-item:last-child{border-bottom:none}
+.trans-icon{width:34px;height:34px;background:var(--sand);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.trans-info strong{display:block;font-size:13px;font-weight:500;color:var(--ink);margin-bottom:1px}
+.trans-info span{font-size:12px;color:var(--mid)}
+
+/* ── RECURSOS ── */
+.res-item{display:flex;align-items:center;gap:9px;padding:10px 12px;background:#fff;border-radius:10px;border:1px solid var(--line);margin-bottom:6px;text-decoration:none;color:inherit}
+.res-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;flex-shrink:0}
+.res-text{font-size:13px;color:var(--ink);flex:1}
+.res-arrow{color:var(--gold);font-size:13px}
+
+/* ── AI BLOCK ── */
+.ai-block{background:var(--mist);border-radius:var(--r);border-left:3px solid var(--sky);padding:14px 14px 14px 16px}
+.ai-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--sky);font-weight:500;margin-bottom:5px;display:flex;align-items:center;gap:5px}
+.ai-label::before{content:'⟡';font-size:11px}
+.ai-var{font-family:'Playfair Display',serif;font-size:15px;color:var(--sky);font-style:italic}
+.ai-desc{font-size:12px;color:var(--mid);margin-top:4px;line-height:1.6}
+
+/* ── MAPA ── */
+.map-block{background:var(--ink);border-radius:var(--r);overflow:hidden}
+.map-prev{height:150px;background:repeating-linear-gradient(0deg,transparent,transparent 37px,rgba(201,146,42,.07) 38px),repeating-linear-gradient(90deg,transparent,transparent 37px,rgba(201,146,42,.07) 38px);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:7px}
+.map-pins{display:flex;gap:5px;flex-wrap:wrap;justify-content:center;padding:0 14px}
+.map-pin{background:rgba(201,146,42,.2);border:1px solid rgba(201,146,42,.45);border-radius:50px;padding:3px 8px;font-size:10px;color:var(--gold);display:flex;align-items:center;gap:3px}
+.map-pin::before{content:'▲';font-size:7px}
+.map-cta{padding:12px 15px;display:flex;align-items:center;justify-content:space-between}
+.map-cta-t{font-size:12px;color:rgba(255,255,255,.7)}
+.map-cta-t strong{display:block;color:#fff;font-size:13px}
+.map-btn{background:var(--gold);color:var(--ink);font-size:11px;font-weight:600;padding:7px 13px;border-radius:50px;text-decoration:none;white-space:nowrap}
+
+/* ── CULTURA ── */
+.cult-tabs{display:flex;gap:5px;margin-bottom:14px;overflow-x:auto;scrollbar-width:none}
+.cult-tabs::-webkit-scrollbar{display:none}
+.ctab{background:var(--sand);border:none;border-radius:50px;padding:7px 13px;font-size:12px;font-family:'DM Sans',sans-serif;color:var(--mid);cursor:pointer;white-space:nowrap;transition:all .2s}
+.ctab.active{background:var(--ink);color:var(--gold);font-weight:500}
+.ctab-panel{display:none}
+.ctab-panel.active{display:block}
+.cult-item{display:flex;gap:9px;padding:10px 0;border-bottom:1px solid var(--line)}
+.cult-item:last-child{border-bottom:none}
+.cult-n{font-family:'Playfair Display',serif;font-size:19px;font-weight:900;color:var(--line);line-height:1;flex-shrink:0;width:24px}
+.cult-info strong{display:block;font-size:13px;color:var(--ink);margin-bottom:1px}
+.cult-info span{font-size:12px;color:var(--mid)}
+
+/* ── TIPS ── */
+.tip-list{list-style:none}
+.tip-item{display:flex;gap:11px;align-items:flex-start;padding:11px 0;border-bottom:1px solid var(--line)}
+.tip-item:last-child{border-bottom:none}
+.tip-n{background:var(--ink);color:var(--gold);font-family:'Playfair Display',serif;font-size:12px;font-weight:700;width:25px;height:25px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.tip-text{font-size:13px;color:var(--ink);line-height:1.6;padding-top:2px}
+
+/* ── CTA FINAL ── */
+.cta-final{background:linear-gradient(135deg,var(--ink),#2A1F3D);margin:0 28px;border-radius:var(--r);padding:24px 20px;text-align:center;position:relative;overflow:hidden}
+@media(max-width:860px){.cta-final{margin:0 18px}}
+.cta-final::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--terra),var(--sky))}
+.cta-final h3{font-family:'Playfair Display',serif;font-size:19px;color:#fff;margin-bottom:5px}
+.cta-final p{font-size:12px;color:rgba(255,255,255,.5);margin-bottom:16px}
+.cta-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:6px}
+.cta-pill{background:rgba(201,146,42,.15);border:1px solid rgba(201,146,42,.35);color:var(--gold);font-size:12px;padding:6px 12px;border-radius:50px;text-decoration:none}
+.share-bar{display:flex;gap:8px;margin-top:14px}
+.share-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:10px;border-radius:10px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;transition:all .2s}
+.share-btn:active{transform:scale(.97)}
+.share-wpp{background:#25D366;color:#fff}
+.share-copy{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:#fff}
+
+/* ── NOTAS ── */
+.note-line{padding:13px 15px;border-bottom:1px solid var(--line);font-size:14px;color:var(--line);font-style:italic;min-height:44px}
+.note-line:last-child{border-bottom:none}
+
+/* ── DARK / COLOR SECTIONS ── */
+.section.dark{background:var(--ink)}
+.section.dark .sec-title{color:#fff}
+.section.terra{background:linear-gradient(135deg,#F8F0EB,#F5E8E0)}
+.section.sage-bg{background:linear-gradient(135deg,#EBF5EF,#E0F0E8)}
+
+/* ── NAV BOTTOM ── */
+.bottom-nav{position:sticky;bottom:0;background:rgba(26,26,46,.97);backdrop-filter:blur(12px);border-top:1px solid rgba(201,146,42,.15);display:flex;padding:7px 10px;gap:2px;z-index:100}
+.nav-it{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:5px 2px;border-radius:7px;cursor:pointer;color:rgba(255,255,255,.35);font-size:9px;letter-spacing:.5px;text-transform:uppercase;transition:all .2s;border:none;background:none;font-family:'DM Sans',sans-serif}
+.nav-it.active{color:var(--gold)}
+.nav-it .ni{font-size:15px;line-height:1}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:72px;left:50%;transform:translateX(-50%) translateY(10px);background:var(--ink);color:#fff;padding:9px 18px;border-radius:50px;font-size:13px;font-weight:500;opacity:0;transition:all .3s;pointer-events:none;z-index:200;white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.fa{animation:fadeUp .5s ease both}
+</style>
+</head>
+<body>
+<div class="shell">
+
+<!-- ══ LEFT: PORTADA ══ -->
+<div class="shell-left">
+<div class="cover">
+  <div class="cover-bg"></div>
+  <div class="cover-grid"></div>
+  <div class="cover-stripe"></div>
+  <div class="cover-badge">Guía Personalizada</div>
+  <div class="cover-content">
+    <div class="cover-label fa">Guía de Viaje</div>
+    <div class="cover-country fa" style="animation-delay:.1s">cantabria</div>
+    <div class="cover-div fa" style="animation-delay:.2s"></div>
+    <div class="cover-meta fa" style="animation-delay:.25s">
+      <div class="cover-meta-item"><label>Duración</label><div class="val">7 días</div></div>
+      <div class="cover-meta-item"><label>Tipo de viaje</label><div class="val">Aventura y naturaleza</div></div>
+      <div class="cover-meta-item"><label>Transporte</label><div class="val">Coche de alquiler</div></div>
+      <div class="cover-meta-item"><label>Viajeros</label><div class="val">1</div></div>
+    </div>
+    <div class="cover-traveler fa" style="animation-delay:.3s">
+      <div class="cover-avatar">✦</div>
+      <div class="cover-traveler-info"><label>Preparada para</label><div class="name">PACOCO</div></div>
+    </div>
+    <div class="cover-actions fa" style="animation-delay:.4s">
+      <button class="cover-btn cover-btn-wpp" onclick="shareWpp()">
+        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Compartir
+      </button>
+      <button class="cover-btn cover-btn-install" id="btn-install" onclick="installPWA()">⊕ Guardar en inicio</button>
+    </div>
+  </div>
+</div>
+</div><!-- /shell-left -->
+
+<!-- ══ RIGHT: CONTENIDO ══ -->
+<div class="shell-right" id="main-scroll">
+
+<!-- AD BANNER -->
+<div style="height:14px"></div>
+<div class="ad"><div class="ad-badge">AD</div><div><strong>Vuelos · Seguro de viaje</strong><span>→ Insertar oferta afiliado</span></div></div>
+<div style="height:6px"></div>
+
+<!-- FICHA -->
+<div class="section" id="info">
+  <div class="sec-eye">Tu viaje</div>
+  <div class="sec-title">Información del viajero</div>
+  <div class="info-grid">
+    <div class="info-cell"><label>Viajero</label><div class="val">PACOCO</div></div>
+    <div class="info-cell"><label>Destino</label><div class="val">cantabria</div></div>
+    <div class="info-cell"><label>Duración</label><div class="val">7días</div></div>
+    <div class="info-cell"><label>Tipo de viaje</label><div class="val">Aventura y naturaleza</div></div>
+    <div class="info-cell full"><label>Transporte principal</label><div class="val">Coche de alquiler</div></div>
+  </div>
+</div>
+
+<!-- AD HOTELES -->
+<div class="ad"><div class="ad-badge">AD</div><div><strong>Hoteles · Alojamiento</strong><span>→ Booking / Airbnb</span></div></div>
+<div style="height:6px"></div>
+
+<!-- ITINERARIO -->
+<div class="section" id="itinerario">
+  <div class="sec-eye">Día a día</div>
+  <div class="sec-title">Itinerario detallado</div>
+  <div class="ai-block" style="margin-bottom:16px">
+    <div class="ai-label">Contenido generado por IA</div>
+    <div class="ai-var">{
+  "itinerario_texto": "DÍA 1 – Santander\n- Mañana: Llegada a Santander y recogida del coche de alquiler. Paseo por el centro histórico y visita a la Catedral de Santander.\n- Tarde: Recorrido por la Playa del Sardinero y visita al Palacio de la Magdalena.\n- Noche: Cena en restaurante local especializado en mariscos.\n- Alojamiento recomendado: Hotel Bahía Santander\n\nDÍA 2 – Parque Natural de Cabárceno\n- Mañana: Desplazamiento al Parque de la Naturaleza de Cabárceno. Safari de fauna en coche y caminatas cortas.\n- Tarde: Visita a observatorios y puntos panorámicos dentro del parque.\n- Noche: Regreso a Santander y cena tranquila en el casco antiguo.\n- Alojamiento recomendado: Hotel Bahía Santander\n\nDÍA 3 – Picos de Europa (Potes)\n- Mañana: Salida temprano hacia Potes, puerta de entrada a los Picos de Europa.\n- Tarde: Excursión por senderos de alta montaña adaptados, como la ruta del Cares.\n- Noche: Cena con gastronomía local en Potes.\n- Alojamiento recomendado: Posada La Vieja Escuela, Potes\n\nDÍA 4 – Liébana y Monasterio de Santo Toribio\n- Mañana: Visita al Monasterio de Santo Toribio de Liébana, uno de los destinos espirituales más importantes.\n- Tarde: Paseo por los pueblos de la comarca, con parada en Fuente Dé para tomar el teleférico.\n- Noche: Descanso en Potes.\n- Alojamiento recomendado: Posada La Vieja Escuela, Potes\n\nDÍA 5 – Costa Quebrada y Playa de Liencres\n- Mañana: Ruta por la Costa Quebrada, visita a miradores y formaciones rocosas únicas.\n- Tarde: Tiempo en la Playa de Liencres para actividades frente al mar y pequeños senderos costeros.\n- Noche: Cena en un restaurante con vistas al Cantábrico en Santander.\n- Alojamiento recomendado: Hotel Bahía Santander\n\nDÍA 6 – Parque Natural de las Marismas de Santoña\n- Mañana: Traslado a Santoña y recorrido por el parque natural para avistamiento de aves y naturaleza.\n- Tarde: Visita al centro de interpretación y paseo por el casco antiguo de Santoña.\n- Noche: Cena con productos frescos de la bahía.\n- Alojamiento recomendado: Hotel Simago, Santoña\n\nDÍA 7 – Castro Urdiales y regreso a Santander\n- Mañana: Visita al casco histórico de Castro Urdiales, destacando su castillo-faro y la iglesia gótica.\n- Tarde: Vuelta a Santander para devolución del coche y preparación para la salida.\n- Noche: Cena de despedida en restaurante gourmet de Santander.\n- Alojamiento recomendado: Hotel Bahía Santander",
+  "puntos_mapa": [
+    "Catedral de Santander, Santander",
+    "Playa del Sardinero, Santander",
+    "Palacio de la Magdalena, Santander",
+    "Parque de la Naturaleza de Cabárceno, Cantabria",
+    "Potes, Cantabria",
+    "Ruta del Cares, Picos de Europa",
+    "Posada La Vieja Escuela, Potes",
+    "Monasterio de Santo Toribio de Liébana, Cantabria",
+    "Fuente Dé, Cantabria",
+    "Costa Quebrada, Cantabria",
+    "Playa de Liencres, Cantabria",
+    "Hotel Bahía Santander, Santander",
+    "Parque Natural de las Marismas de Santoña, Santoña",
+    "Hotel Simago, Santoña",
+    "Castillo de Castro Urdiales, Castro Urdiales",
+    "Iglesia de Santa María de la Asunción, Castro Urdiales",
+    "Hotel Bahía Santander, Santander"
+  ],
+  "puntos_por_dia": [
+    {
+      "dia": 1,
+      "lugares": ["Catedral de Santander, Santander", "Playa del Sardinero, Santander", "Palacio de la Magdalena, Santander"]
+    },
+    {
+      "dia": 2,
+      "lugares": ["Parque de la Naturaleza de Cabárceno, Cantabria"]
+    },
+    {
+      "dia": 3,
+      "lugares": ["Potes, Cantabria", "Ruta del Cares, Picos de Europa"]
+    },
+    {
+      "dia": 4,
+      "lugares": ["Monasterio de Santo Toribio de Liébana, Cantabria", "Fuente Dé, Cantabria"]
+    },
+    {
+      "dia": 5,
+      "lugares": ["Costa Quebrada, Cantabria", "Playa de Liencres, Cantabria"]
+    },
+    {
+      "dia": 6,
+      "lugares": ["Parque Natural de las Marismas de Santoña, Santoña"]
+    },
+    {
+      "dia": 7,
+      "lugares": ["Castillo de Castro Urdiales, Castro Urdiales", "Iglesia de Santa María de la Asunción, Castro Urdiales"]
+    }
+  ],
+  "dias_texto": [
+    "DÍA 1 – Santander\n- Mañana: Llegada a Santander y recogida del coche de alquiler. Paseo por el centro histórico y visita a la Catedral de Santander.\n- Tarde: Recorrido por la Playa del Sardinero y visita al Palacio de la Magdalena.\n- Noche: Cena en restaurante local especializado en mariscos.\n- Alojamiento recomendado: Hotel Bahía Santander",
+    "DÍA 2 – Parque Natural de Cabárceno\n- Mañana: Desplazamiento al Parque de la Naturaleza de Cabárceno. Safari de fauna en coche y caminatas cortas.\n- Tarde: Visita a observatorios y puntos panorámicos dentro del parque.\n- Noche: Regreso a Santander y cena tranquila en el casco antiguo.\n- Alojamiento recomendado: Hotel Bahía Santander",
+    "DÍA 3 – Picos de Europa (Potes)\n- Mañana: Salida temprano hacia Potes, puerta de entrada a los Picos de Europa.\n- Tarde: Excursión por senderos de alta montaña adaptados, como la ruta del Cares.\n- Noche: Cena con gastronomía local en Potes.\n- Alojamiento recomendado: Posada La Vieja Escuela, Potes",
+    "DÍA 4 – Liébana y Monasterio de Santo Toribio\n- Mañana: Visita al Monasterio de Santo Toribio de Liébana, uno de los destinos espirituales más importantes.\n- Tarde: Paseo por los pueblos de la comarca, con parada en Fuente Dé para tomar el teleférico.\n- Noche: Descanso en Potes.\n- Alojamiento recomendado: Posada La Vieja Escuela, Potes",
+    "DÍA 5 – Costa Quebrada y Playa de Liencres\n- Mañana: Ruta por la Costa Quebrada, visita a miradores y formaciones rocosas únicas.\n- Tarde: Tiempo en la Playa de Liencres para actividades frente al mar y pequeños senderos costeros.\n- Noche: Cena en un restaurante con vistas al Cantábrico en Santander.\n- Alojamiento recomendado: Hotel Bahía Santander",
+    "DÍA 6 – Parque Natural de las Marismas de Santoña\n- Mañana: Traslado a Santoña y recorrido por el parque natural para avistamiento de aves y naturaleza.\n- Tarde: Visita al centro de interpretación y paseo por el casco antiguo de Santoña.\n- Noche: Cena con productos frescos de la bahía.\n- Alojamiento recomendado: Hotel Simago, Santoña",
+    "DÍA 7 – Castro Urdiales y regreso a Santander\n- Mañana: Visita al casco histórico de Castro Urdiales, destacando su castillo-faro y la iglesia gótica.\n- Tarde: Vuelta a Santander para devolución del coche y preparación para la salida.\n- Noche: Cena de despedida en restaurante gourmet de Santander.\n- Alojamiento recomendado: Hotel Bahía Santander"
+  ]
+}</div>
+    <div class="ai-desc">Recorrido completo con actividades, horarios y recomendaciones.</div>
+  </div>
+  <div class="day-card open">
+    <div class="day-header" onclick="toggleDay(this)">
+      <div class="day-num"><small>Día</small>1</div>
+      <div class="day-info"><div class="day-title">Llegada y primer contacto</div><div class="day-loc">Ciudad principal</div></div>
+      <div class="day-toggle">⌄</div>
+    </div>
+    <div class="day-body">
+      <div class="day-act"><div class="act-dot"></div><div class="act-text"><div class="act-time">Tarde</div>Llegada al aeropuerto. Traslado y check-in. Primer paseo por el centro.</div></div>
+      <div class="day-act"><div class="act-dot"></div><div class="act-text"><div class="act-time">Noche</div>Cena en restaurante local. Primera toma de contacto con la gastronomía.</div></div>
+    </div>
+  </div>
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <div class="day-num"><small>Día</small>2</div>
+      <div class="day-info"><div class="day-title">Monumentos principales</div><div class="day-loc">Centro histórico</div></div>
+      <div class="day-toggle">⌄</div>
+    </div>
+    <div class="day-body"><div class="day-act"><div class="act-dot"></div><div class="act-text">Contenido de {
+  "itinerario_texto": "DÍA 1 – Santander\n- Mañana: Llegada a Santander y recogida del coche de alquiler. Paseo por el centro histórico y visita a la Catedral de Santander.\n- Tarde: Recorrido por la Playa del Sardinero y visita al Palacio de la Magdalena.\n- Noche: Cena en restaurante local especializado en mariscos.\n- Alojamiento recomendado: Hotel Bahía Santander\n\nDÍA 2 – Parque Natural de Cabárceno\n- Mañana: Desplazamiento al Parque de la Naturaleza de Cabárceno. Safari de fauna en coche y caminatas cortas.\n- Tarde: Visita a observatorios y puntos panorámicos dentro del parque.\n- Noche: Regreso a Santander y cena tranquila en el casco antiguo.\n- Alojamiento recomendado: Hotel Bahía Santander\n\nDÍA 3 – Picos de Europa (Potes)\n- Mañana: Salida temprano hacia Potes, puerta de entrada a los Picos de Europa.\n- Tarde: Excursión por senderos de alta montaña adaptados, como la ruta del Cares.\n- Noche: Cena con gastronomía local en Potes.\n- Alojamiento recomendado: Posada La Vieja Escuela, Potes\n\nDÍA 4 – Liébana y Monasterio de Santo Toribio\n- Mañana: Visita al Monasterio de Santo Toribio de Liébana, uno de los destinos espirituales más importantes.\n- Tarde: Paseo por los pueblos de la comarca, con parada en Fuente Dé para tomar el teleférico.\n- Noche: Descanso en Potes.\n- Alojamiento recomendado: Posada La Vieja Escuela, Potes\n\nDÍA 5 – Costa Quebrada y Playa de Liencres\n- Mañana: Ruta por la Costa Quebrada, visita a miradores y formaciones rocosas únicas.\n- Tarde: Tiempo en la Playa de Liencres para actividades frente al mar y pequeños senderos costeros.\n- Noche: Cena en un restaurante con vistas al Cantábrico en Santander.\n- Alojamiento recomendado: Hotel Bahía Santander\n\nDÍA 6 – Parque Natural de las Marismas de Santoña\n- Mañana: Traslado a Santoña y recorrido por el parque natural para avistamiento de aves y naturaleza.\n- Tarde: Visita al centro de interpretación y paseo por el casco antiguo de Santoña.\n- Noche: Cena con productos frescos de la bahía.\n- Alojamiento recomendado: Hotel Simago, Santoña\n\nDÍA 7 – Castro Urdiales y regreso a Santander\n- Mañana: Visita al casco histórico de Castro Urdiales, destacando su castillo-faro y la iglesia gótica.\n- Tarde: Vuelta a Santander para devolución del coche y preparación para la salida.\n- Noche: Cena de despedida en restaurante gourmet de Santander.\n- Alojamiento recomendado: Hotel Bahía Santander",
+  "puntos_mapa": [
+    "Catedral de Santander, Santander",
+    "Playa del Sardinero, Santander",
+    "Palacio de la Magdalena, Santander",
+    "Parque de la Naturaleza de Cabárceno, Cantabria",
+    "Potes, Cantabria",
+    "Ruta del Cares, Picos de Europa",
+    "Posada La Vieja Escuela, Potes",
+    "Monasterio de Santo Toribio de Liébana, Cantabria",
+    "Fuente Dé, Cantabria",
+    "Costa Quebrada, Cantabria",
+    "Playa de Liencres, Cantabria",
+    "Hotel Bahía Santander, Santander",
+    "Parque Natural de las Marismas de Santoña, Santoña",
+    "Hotel Simago, Santoña",
+    "Castillo de Castro Urdiales, Castro Urdiales",
+    "Iglesia de Santa María de la Asunción, Castro Urdiales",
+    "Hotel Bahía Santander, Santander"
+  ],
+  "puntos_por_dia": [
+    {
+      "dia": 1,
+      "lugares": ["Catedral de Santander, Santander", "Playa del Sardinero, Santander", "Palacio de la Magdalena, Santander"]
+    },
+    {
+      "dia": 2,
+      "lugares": ["Parque de la Naturaleza de Cabárceno, Cantabria"]
+    },
+    {
+      "dia": 3,
+      "lugares": ["Potes, Cantabria", "Ruta del Cares, Picos de Europa"]
+    },
+    {
+      "dia": 4,
+      "lugares": ["Monasterio de Santo Toribio de Liébana, Cantabria", "Fuente Dé, Cantabria"]
+    },
+    {
+      "dia": 5,
+      "lugares": ["Costa Quebrada, Cantabria", "Playa de Liencres, Cantabria"]
+    },
+    {
+      "dia": 6,
+      "lugares": ["Parque Natural de las Marismas de Santoña, Santoña"]
+    },
+    {
+      "dia": 7,
+      "lugares": ["Castillo de Castro Urdiales, Castro Urdiales", "Iglesia de Santa María de la Asunción, Castro Urdiales"]
+    }
+  ],
+  "dias_texto": [
+    "DÍA 1 – Santander\n- Mañana: Llegada a Santander y recogida del coche de alquiler. Paseo por el centro histórico y visita a la Catedral de Santander.\n- Tarde: Recorrido por la Playa del Sardinero y visita al Palacio de la Magdalena.\n- Noche: Cena en restaurante local especializado en mariscos.\n- Alojamiento recomendado: Hotel Bahía Santander",
+    "DÍA 2 – Parque Natural de Cabárceno\n- Mañana: Desplazamiento al Parque de la Naturaleza de Cabárceno. Safari de fauna en coche y caminatas cortas.\n- Tarde: Visita a observatorios y puntos panorámicos dentro del parque.\n- Noche: Regreso a Santander y cena tranquila en el casco antiguo.\n- Alojamiento recomendado: Hotel Bahía Santander",
+    "DÍA 3 – Picos de Europa (Potes)\n- Mañana: Salida temprano hacia Potes, puerta de entrada a los Picos de Europa.\n- Tarde: Excursión por senderos de alta montaña adaptados, como la ruta del Cares.\n- Noche: Cena con gastronomía local en Potes.\n- Alojamiento recomendado: Posada La Vieja Escuela, Potes",
+    "DÍA 4 – Liébana y Monasterio de Santo Toribio\n- Mañana: Visita al Monasterio de Santo Toribio de Liébana, uno de los destinos espirituales más importantes.\n- Tarde: Paseo por los pueblos de la comarca, con parada en Fuente Dé para tomar el teleférico.\n- Noche: Descanso en Potes.\n- Alojamiento recomendado: Posada La Vieja Escuela, Potes",
+    "DÍA 5 – Costa Quebrada y Playa de Liencres\n- Mañana: Ruta por la Costa Quebrada, visita a miradores y formaciones rocosas únicas.\n- Tarde: Tiempo en la Playa de Liencres para actividades frente al mar y pequeños senderos costeros.\n- Noche: Cena en un restaurante con vistas al Cantábrico en Santander.\n- Alojamiento recomendado: Hotel Bahía Santander",
+    "DÍA 6 – Parque Natural de las Marismas de Santoña\n- Mañana: Traslado a Santoña y recorrido por el parque natural para avistamiento de aves y naturaleza.\n- Tarde: Visita al centro de interpretación y paseo por el casco antiguo de Santoña.\n- Noche: Cena con productos frescos de la bahía.\n- Alojamiento recomendado: Hotel Simago, Santoña",
+    "DÍA 7 – Castro Urdiales y regreso a Santander\n- Mañana: Visita al casco histórico de Castro Urdiales, destacando su castillo-faro y la iglesia gótica.\n- Tarde: Vuelta a Santander para devolución del coche y preparación para la salida.\n- Noche: Cena de despedida en restaurante gourmet de Santander.\n- Alojamiento recomendado: Hotel Bahía Santander"
+  ]
+}generado por IA según destino y tipo de viaje.</div></div></div>
+  </div>
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <div class="day-num"><small>Día</small>3</div>
+      <div class="day-info"><div class="day-title">Excursión al interior</div><div class="day-loc">Región · Naturaleza</div></div>
+      <div class="day-toggle">⌄</div>
+    </div>
+    <div class="day-body"><div class="day-act"><div class="act-dot"></div><div class="act-text">Generado según tipo de viaje y destino seleccionado.</div></div></div>
+  </div>
+</div>
+
+<!-- EXPERIENCIAS -->
+<div class="section dark" id="experiencias">
+  <div class="sec-eye">No te las pierdas</div>
+  <div class="sec-title">Experiencias destacadas</div>
+  <div class="exp-grid">
+    <div class="exp-card"><div class="exp-n">01</div><div class="exp-text"><strong>Experiencia 1</strong>Personalizar según destino</div></div>
+    <div class="exp-card"><div class="exp-n">02</div><div class="exp-text"><strong>Experiencia 2</strong>Personalizar según destino</div></div>
+    <div class="exp-card"><div class="exp-n">03</div><div class="exp-text"><strong>Experiencia 3</strong>Personalizar según destino</div></div>
+    <div class="exp-card"><div class="exp-n">04</div><div class="exp-text"><strong>Experiencia 4</strong>Personalizar según destino</div></div>
+  </div>
+</div>
+<div style="height:12px;background:var(--ink)"></div>
+<div class="ad" style="margin-top:0"><div class="ad-badge">AD</div><div><strong>Tours · Actividades</strong><span>→ Excursiones locales</span></div></div>
+<div style="height:6px"></div>
+
+<!-- HERRAMIENTAS -->
+<div class="section" id="tools">
+  <div class="sec-eye">Herramientas</div>
+  <div class="sec-title">Para tu viaje</div>
+
+  <!-- Móvil: tabs -->
+  <div class="tools-tabs">
+    <button class="ttab active" onclick="switchTool(this,'conv')">💱 Moneda</button>
+    <button class="ttab" onclick="switchTool(this,'trans')">🗣 Frases</button>
+    <button class="ttab" onclick="switchTool(this,'calc')">💶 Presupuesto</button>
+    <button class="ttab" onclick="switchTool(this,'check')">🧳 Equipaje</button>
+  </div>
+
+  <!-- Desktop: 2 columnas -->
+  <div class="tools-desktop">
+    <div>
+      <div class="tools-desktop-title">💱 Conversor de moneda</div>
+      <div class="tool-panel active" id="conv">
+        <div class="conv-box">
+          <select class="conv-select" id="conv-to" onchange="convertCurrency()">
+            <option value="EUR">€ Euro</option>
+            <option value="USD">$ Dólar USD</option>
+            <option value="GBP">£ Libra</option>
+            <option value="JPY">¥ Yen japonés</option>
+            <option value="MXN">$ Peso mexicano</option>
+            <option value="BRL">R$ Real brasileño</option>
+            <option value="MAD">MAD Dírham marroquí</option>
+            <option value="TRY">₺ Lira turca</option>
+            <option value="THB">฿ Baht tailandés</option>
+            <option value="IDR">Rp Rupia indonesia</option>
+            <option value="AED">AED Dírham EAU</option>
+            <option value="SGD">S$ Dólar singapurense</option>
+          </select>
+          <div class="conv-row">
+            <div class="conv-input-wrap"><label>Euros (€)</label><input class="conv-input" type="number" id="conv-eur" value="100" oninput="convertCurrency()"></div>
+            <div class="conv-arrow">→</div>
+            <div class="conv-input-wrap"><label id="conv-to-label">Moneda destino</label><input class="conv-input" type="number" id="conv-foreign" oninput="convertBack()"></div>
+          </div>
+          <div class="conv-result"><div class="amount" id="conv-display">—</div><div class="rate" id="conv-rate">Cargando…</div></div>
+          <div class="conv-note">Tipo de cambio en tiempo real</div>
+        </div>
+      </div>
+      <br>
+      <div class="tools-desktop-title">🗣 Frases útiles con audio</div>
+      <div class="tool-panel" id="trans">
+        <div class="trans-lang"><span>Idioma:</span><select id="trans-lang-sel" onchange="updatePhrases()"><option value="it">🇮🇹 Italiano</option><option value="fr">🇫🇷 Francés</option><option value="de">🇩🇪 Alemán</option><option value="pt">🇵🇹 Portugués</option><option value="ja">🇯🇵 Japonés</option><option value="ar">🇲🇦 Árabe</option><option value="tr">🇹🇷 Turco</option><option value="th">🇹🇭 Tailandés</option><option value="zh">🇨🇳 Chino</option><option value="el">🇬🇷 Griego</option><option value="pl">🇵🇱 Polaco</option><option value="nl">🇳🇱 Neerlandés</option></select></div>
+        <div class="trans-box" id="phrases-list"></div>
+      </div>
+    </div>
+    <div>
+      <div class="tools-desktop-title">💶 Calculadora de presupuesto</div>
+      <div class="tool-panel" id="calc">
+        <div class="calc-box">
+          <div class="calc-row"><label>Días de viaje</label><input class="calc-input" type="number" id="c-dias" value="7" oninput="calcBudget()"></div>
+          <div class="calc-row"><label>Número de viajeros</label><input class="calc-input" type="number" id="c-viaj" value="1" oninput="calcBudget()"></div>
+          <div class="calc-row"><label>Alojamiento por noche (€)</label><input class="calc-input" type="number" id="c-aloj" value="80" oninput="calcBudget()"></div>
+          <div class="calc-row"><label>Comida por persona/día (€)</label><input class="calc-input" type="number" id="c-com" value="35" oninput="calcBudget()"></div>
+          <div class="calc-row"><label>Transporte total (€)</label><input class="calc-input" type="number" id="c-transp" value="150" oninput="calcBudget()"></div>
+          <div class="calc-row"><label>Actividades total (€)</label><input class="calc-input" type="number" id="c-act" value="100" oninput="calcBudget()"></div>
+          <div class="calc-result">
+            <div class="calc-result-title">RESUMEN DE PRESUPUESTO</div>
+            <div class="calc-line"><span>Alojamiento</span><strong id="r-aloj">—</strong></div>
+            <div class="calc-line"><span>Comida</span><strong id="r-com">—</strong></div>
+            <div class="calc-line"><span>Transporte</span><strong id="r-transp">—</strong></div>
+            <div class="calc-line"><span>Actividades</span><strong id="r-act">—</strong></div>
+            <div class="calc-line total"><span>TOTAL</span><strong id="r-total">—</strong></div>
+            <div class="calc-line"><span>Por persona</span><strong id="r-pp">—</strong></div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="tools-desktop-title">🧳 Checklist de equipaje</div>
+      <div class="tool-panel" id="check">
+        <div class="check-progress"><div class="check-bar-wrap"><div class="check-bar" id="check-bar" style="width:0%"></div></div><div class="check-pct" id="check-pct">0%</div></div>
+        <div class="check-cats">
+          <button class="check-cat-btn active" onclick="switchCat(this,'ropa')">👕 Ropa</button>
+          <button class="check-cat-btn" onclick="switchCat(this,'docs')">📄 Docs</button>
+          <button class="check-cat-btn" onclick="switchCat(this,'tech')">📱 Tech</button>
+          <button class="check-cat-btn" onclick="switchCat(this,'salud')">💊 Salud</button>
+          <button class="check-cat-btn" onclick="switchCat(this,'extras')">✨ Extras</button>
+        </div>
+        <div class="checklist" id="checklist-items"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MAPA -->
+<div class="section">
+  <div class="sec-eye">Navegación</div>
+  <div class="sec-title">Mapa del viaje</div>
+  <div class="map-block">
+    <div class="map-prev"><div class="map-pins"><div class="map-pin">Ciudad 1</div><div class="map-pin">Ciudad 2</div><div class="map-pin">Ciudad 3</div><div class="map-pin">Ciudad 4</div></div></div>
+    <div class="map-cta"><div class="map-cta-t"><strong>Ver ruta completa</strong>Todos los puntos en Google Maps</div><a class="map-btn" href="https://www.google.com/maps/search/cantabria
+" target="_blank">Abrir →</a></div>
+  </div>
+</div>
+
+<!-- CONSEJOS -->
+<div class="section sage-bg" id="consejos">
+  <div class="sec-eye">Antes de partir</div>
+  <div class="sec-title">Guía del destino</div>
+  <div class="ai-block" style="border-left-color:var(--sage)">
+    <div class="ai-label" style="color:var(--sage)">Contenido generado por IA</div>
+    <div class="ai-var" style="color:var(--sage)">Guía Profesional de Viaje: Cantabria
+
+1. Climatología
+Cantabria, ubicada en el norte de España, se caracteriza por un clima oceánico suave y húmedo. Las temperaturas son moderadas durante todo el año, con veranos frescos y primaveras y otoños lluviosos y agradables. Los inviernos son templados y raramente alcanzan temperaturas extremas, favoreciendo un entorno verde y exuberante.
+
+2. Mejor época para viajar
+La mejor época para visitar Cantabria es entre finales de primavera y comienzos de otoño (de mayo a septiembre). Estos meses ofrecen un clima suave, con menos precipitaciones y días largos ideales para explorar su riqueza natural y cultural, así como sus playas y espacios rurales.
+
+3. Vacunas y salud
+No existen vacunas obligatorias para viajar a Cantabria. Se recomienda tener al día las vacunas habituales según tu país de origen. El sistema sanitario español es de alta calidad y los centros de salud están bien equipados en las principales ciudades y pueblos turísticos.
+
+4. Seguridad para turistas
+Cantabria es una región segura para el turismo. No obstante, se aconseja mantener precauciones básicas, como cuidar pertenencias personales en áreas concurridas y evitar zonas poco transitadas durante la noche. Los servicios de emergencia y policía turística están disponibles en ciudades principales.
+
+5. Moneda y pagos
+La moneda oficial es el euro (€). Los pagos con tarjeta son ampliamente aceptados en hoteles, restaurantes y comercios, aunque se recomienda llevar algo de efectivo para pequeñas compras en mercados tradicionales o zonas rurales.
+
+6. Costumbres culturales importantes
+Los cántabros valoran la cortesía y el respeto. Saludar con un “buenos días” o “buenas tardes” es habitual. La vida social gira en torno a la gastronomía, así como a festividades locales. Es recomendable respetar las tradiciones, como las fiestas patronales o eventos regionales, que reflejan la identidad cultural.
+
+7. Gastronomía típica
+La cocina cántabra destaca por sus productos del mar y la montaña. No deje de probar el cocido montañés, las anchoas de Santoña, la quesada pasiega y la sobaos pasiegos, dulces tradicionales. La oferta gastronómica combina restaurantes modernos con tabernas tradicionales.
+
+8. Compras recomendadas
+Entre las compras típicas destacan los productos artesanales como las anchoas en salazón, quesos locales y embutidos. También son apreciados los productos textiles regionales y la cerámica artesanal, ideales para llevar un recuerdo auténtico de Cantabria.
+
+9. Consejos prácticos para viajeros
+- Lleve ropa cómoda y adecuada para un clima variable, incluyendo un impermeable ligero.
+- Reserve alojamiento con antelación en temporadas altas.
+- Explore no solo las ciudades sino también los parques naturales y pueblos con encanto.
+- Considere alquilar coche para mayor libertad, ya que algunas zonas rurales tienen transporte limitado.
+
+10. Qué evitar como turista
+- Evite modificar o dañar espacios naturales protegidos; la conservación es prioridad.
+- No confronte costumbres locales, mantenga una actitud respetuosa.
+- Evite dejar pertenencias visibles en vehículos para prevenir robos.
+- No subestime la importancia del calzado adecuado para actividades al aire libre.
+
+11. Apps útiles para viajar
+- Maps.me: mapas offline que facilitan la navegación sin internet.
+- ElTiempo.es: para consultar pronósticos climáticos de forma precisa.
+- Renfe Cercanías: planificación y compra de billetes de tren regional.
+- Google Translate: apoyo en traducción básica, aunque el español es el idioma dominante.
+- TripAdvisor: opiniones actualizadas sobre restaurantes y atracciones.
+
+12. Consejos sobre internet y conectividad
+La cobertura móvil es generalmente buena en zonas urbanas y en algunas áreas rurales. Se recomienda adquirir una SIM local si se planean estancias prolongadas o desplazamientos frecuentes. Muchas cafeterías y establecimientos turísticos ofrecen conexión Wi-Fi gratuita, aunque la velocidad puede variar fuera de las ciudades.
+
+---
+Esta guía pretende acompañarle en una experiencia enriquecedora por Cantabria, facilitando un viaje cómodo, seguro y memorable.</div>
+    <div class="ai-desc">Clima, moneda, electricidad, idioma, costumbres, visado y sanidad.</div>
+  </div>
+</div>
+<div class="ad"><div class="ad-badge">AD</div><div><strong>Seguro de viaje</strong><span>→ Cobertura recomendada</span></div></div>
+<div style="height:6px"></div>
+
+<!-- TRANSPORTE -->
+<div class="section" id="transporte">
+  <div class="sec-eye">Moverse por el destino</div>
+  <div class="sec-title">Transporte</div>
+  <div class="ai-block" style="margin-bottom:16px"><div class="ai-label">Contenido generado por IA</div><div class="ai-var">---
+# Guía de Transporte en Coche de Alquiler: Cantabria
+
+---
+
+## Elegir el Vehículo Adecuado
+
+Para explorar Cantabria con comodidad y seguridad, considere lo siguiente al elegir su coche de alquiler:
+
+- **Turismo compacto o mediano**: Ideal para moverse cómodamente por carreteras regionales y calles de pueblos.
+- **SUV o Todoterreno ligero**: Recomendado si planea visitar zonas rurales o montañosas, como los Picos de Europa.
+- **Diesel o gasolina**: Verifique la política de combustible y el rendimiento para viajes largos.
+- **Vehículos con GPS**: Facilitan la navegación en áreas rurales con señal limitada.
+
+---
+
+## Estado y Características de las Carreteras
+
+- Cantabria cuenta con una red de carreteras bien mantenidas que conecta ciudades, costa y montaña.
+- Las principales vías son la autovía A-8 (Corredor del Cantábrico) y carreteras nacionales como la N-634.
+- En zonas rurales y montañosas, las carreteras pueden ser estrechas y con curvas; conduzca con precaución.
+- Las condiciones climáticas, especialmente en invierno, pueden afectar la visibilidad y el estado del pavimento.
+
+---
+
+## Consejos de Conducción en Cantabria
+
+- **Respete los límites de velocidad**: Generalmente 90 km/h en carreteras nacionales y 120 km/h en autovías.
+- **Atención en curvas y zonas montañosas**: Reduzca velocidad y mantenga distancia segura.
+- **Evite conducir de noche en áreas rurales** para minimizar riesgos en vías con poca iluminación.
+- **Uso de cinturón de seguridad** obligatorio para todos los pasajeros.
+- **No utilice el móvil mientras conduce** y considere sistemas de manos libres.
+
+---
+
+## Peajes en Ruta
+
+- En Cantabria, la A-8 puede incluir peajes, especialmente en tramos cercanos a Bilbao y en la autopista C-634.
+- Consulte con la empresa de alquiler sobre el procedimiento para pago automático o dispositivos telepeaje.
+- Lleve efectivo o tarjeta, pero verifique formas de pago disponibles con antelación.
+
+---
+
+## Aparcamiento
+
+- En ciudades como Santander y Torrelavega, existen zonas de aparcamiento regulado (zona azul).
+- Busque aparcamientos públicos y parkings subterráneos para mayor seguridad.
+- En zonas turísticas, aparcamiento puede ser limitado durante temporada alta; planifique con anticipación.
+- Siempre asegure el vehículo y no deje objetos visibles para evitar robos.
+
+---
+
+## Empresas Internacionales de Alquiler Recomendadas
+
+Para garantizar calidad y fiabilidad, considere reservar con compañías reconocidas, muchas de ellas presentes en aeropuertos y ciudades principales:
+
+- **Hertz**
+- **Avis**
+- **Europcar**
+- **Sixt**
+- **Enterprise Rent-A-Car**
+
+Es aconsejable reservar con anticipación para obtener mejor disponibilidad y tarifas competitivas. Revise políticas de seguro, kilometraje incluido y condiciones para conductores jóvenes o mayores.
+
+---
+
+_Disfrute de un viaje seguro y cómodo por Cantabria explorando la diversidad natural y cultural que ofrece esta región única._  
+
+---</div><div class="ai-desc">Transporte público, apps de movilidad y costes aproximados.</div></div>
+  <div class="trans-list-item"><div class="trans-icon">✈️</div><div class="trans-info"><strong>Llegada al destino</strong><span>Vuelo · traslado · opciones de llegada</span></div></div>
+  <div class="trans-list-item"><div class="trans-icon">🚗</div><div class="trans-info"><strong>Alquiler de coche</strong><span>Recomendado para rutas de interior</span></div></div>
+  <div class="trans-list-item"><div class="trans-icon">🚌</div><div class="trans-info"><strong>Autobús interurbano</strong><span>Económico · conexiones principales</span></div></div>
+  <div class="trans-list-item"><div class="trans-icon">🚂</div><div class="trans-info"><strong>Tren</strong><span>Cómodo para rutas largas</span></div></div>
+</div>
+<div class="ad"><div class="ad-badge">AD</div><div><strong>Alquiler de coche</strong><span>→ Rent a car · comparativa</span></div></div>
+<div style="height:6px"></div>
+
+<!-- RECURSOS -->
+<div class="section terra" id="recursos">
+  <div class="sec-eye">Referencias</div>
+  <div class="sec-title">Recursos útiles</div>
+  <div class="ai-block" style="border-left-color:var(--terra);margin-bottom:13px"><div class="ai-label" style="color:var(--terra)">Contenido generado por IA</div><div class="ai-var" style="color:var(--terra)">---
+
+# Guía Online para Preparar un Viaje a Cantabria
+
+Cantabria, con su riqueza cultural, naturaleza exuberante y patrimonio histórico, es un destino fascinante que merece una planificación cuidadosa. A continuación, te presentamos una selección de recursos online confiables y prácticos para facilitar la organización de tu viaje.
+
+---
+
+## 1. Blogs de Viaje Recomendados
+
+### - **El Pachinko**  
+[elpachinko.com](https://elpachinko.com)  
+Blog de viajes de un mexicano residente en España. Cuenta con entradas muy detalladas sobre Cantabria, incluyendo rutas, gastronomía y experiencias locales, perfecto para quienes buscan una perspectiva fresca y detallada.
+
+### - **Viajar Code**  
+[viajarcode.com](https://viajarcode.com/cantabria)  
+Especializado en viajes por España, ofrece guías muy completas sobre Cantabria, con recomendaciones para turismo activo, cultura y alojamiento. Su estructura práctica ayuda a planificar cada día.
+
+### - **Mi Baúl de Blogs**  
+[mipersonalblogdeviajes.com](https://mipersonalblogdeviajes.com) *(Ejemplo para referencia)*  
+Aunque no es exclusivo de Cantabria, contiene artículos con consejos útiles sobre senderismo y pueblos cántabros poco turísticos, ideal para viajeros que buscan experiencias auténticas.
+
+---
+
+## 2. Foros y Comunidades de Viajeros
+
+### - **TripAdvisor Cantabria**  
+[tripadvisor.es/Attractions-g187457-Activities-Cantabria.html](https://www.tripadvisor.es/Attractions-g187457-Activities-Cantabria.html)  
+Foro activo donde viajeros comparten opiniones, consejos actualizados sobre alojamientos, excursiones y restaurantes. Muy útil para resolver dudas prácticas.
+
+### - **Los Viajeros - Cantabria**  
+[losviajeros.com](https://www.losviajeros.com)  
+Comunidad hispanohablante donde se discuten experiencias en Cantabria. Puedes consultar preguntas específicas o plantear dudas para obtener respuestas directas de viajeros.
+
+### - **Reddit – r/spain**  
+[reddit.com/r/spain](https://www.reddit.com/r/spain/)  
+Aunque es una comunidad general sobre España, frecuentemente aparecen hilos sobre Cantabria donde viajeros y locales intercambian consejos actualizados y recomendaciones poco turísticas.
+
+---
+
+## 3. Canales de YouTube Útiles
+
+### - **Cantabria Infinita**  
+[Youtube.com/CantabriaInfinita](https://www.youtube.com/c/CantabriaInfinita)  
+Canal oficial de promoción turística de Cantabria con vídeos de alta calidad sobre naturaleza, gastronomía, cultura y eventos, ideal para conocer el destino visualmente y descubrir lugares imprescindibles.
+
+### - **Turismo de Cantabria**  
+[Youtube.com/TurismoCantabria](https://www.youtube.com/user/turismodecantabria)  
+Vídeos enfocados en itinerarios, visitas a pueblos y experiencias tradicionales que facilitan la planificación y permiten anticipar qué ver y cómo moverse.
+
+### - **El Viajero Feliz**  
+[Youtube.com/ElViajeroFeliz](https://www.youtube.com/c/ElViajeroFeliz)  
+Canal de viajes con vídeos prácticos, guías y consejos para explorar Cantabria con un enfoque real y cercano, perfecto para quienes buscan recomendaciones honestas y detalladas.
+
+---
+
+## 4. Recursos para Organizar Rutas
+
+### - **Senderismo Cantabria**  
+[senderismocantabria.es](https://www.senderismocantabria.es)  
+Web especializada en rutas y senderos de Cantabria con mapas, niveles de dificultad y detalles técnicos. Es indispensable para los amantes del trekking y la naturaleza.
+
+### - **Komoot**  
+[komoot.com](https://www.komoot.com)  
+Plataforma para crear rutas personalizadas en bici, a pie o montaña, con guías y mapas offline. Dispone de numerosos itinerarios por Cantabria que puedes adaptar según tus intereses.
+
+### - **Google My Maps**  
+[myaccount.google.com/mymaps](https://www.google.com/mymaps)  
+Herramienta gratuita de Google para elaborar mapas personalizados donde marcar puntos de interés, alojamientos y rutas — práctica y accesible para organizar el viaje.
+
+---
+
+## 5. Apps Útiles para el Destino
+
+### - **Cantabria Infinita Official App**  
+Disponible en iOS y Android  
+App oficial con información actualizada sobre eventos, alojamientos, rutas y ambientación local. Facilita encontrar actividades y servicios durante el viaje.
+
+### - **Maps.me**  
+[maps.me](https://maps.me)  
+Aplicación con mapas offline muy detallados que incluye senderos, parques naturales y pueblos en Cantabria, ideal para desplazarse sin conexión a internet.
+
+### - **El Tiempo Cantabria**  
+Varias apps meteorológicas (AEMET oficial)  
+Consultar el clima es esencial en esta región; la app oficial de AEMET ofrece predicciones detalladas para planificar excursiones y actividades al aire libre.
+
+---
+
+**Esperamos que esta selección te ayude a preparar un viaje enriquecedor hacia Cantabria, con planificación segura y experiencias memorables.**
+
+---</div><div class="ai-desc">Webs oficiales, blogs, foros y apps imprescindibles.</div></div>
+  <a class="res-item" href="#"><div class="res-dot"></div><div class="res-text">Web oficial de turismo del destino</div><div class="res-arrow">→</div></a>
+  <a class="res-item" href="#"><div class="res-dot"></div><div class="res-text">Blog de viajeros recomendado</div><div class="res-arrow">→</div></a>
+  <a class="res-item" href="#"><div class="res-dot"></div><div class="res-text">Guía Lonely Planet</div><div class="res-arrow">→</div></a>
+</div>
+<div class="ad"><div class="ad-badge">AD</div><div><strong>Apps para viajeros</strong><span>→ Mapas offline · traductor · transporte</span></div></div>
+<div style="height:6px"></div>
+
+<!-- CULTURA -->
+<div class="section" id="cultura">
+  <div class="sec-eye">Prepara el viaje</div>
+  <div class="sec-title">Cultura</div>
+  <div class="ai-block" style="margin-bottom:16px"><div class="ai-label">Contenido generado por IA</div><div class="ai-var">---
+
+**GUÍA CULTURAL DE CANTABRIA**  
+*Explora la esencia de una tierra rica en historia, naturaleza y tradiciones.*
+
+---
+
+### LIBROS RECOMENDADOS
+
+**1. "El río de la luz" – José Luis García Sánchez**  
+Una novela que recorre los paisajes y la idiosincrasia cántabra a través de la vida de sus habitantes. La obra combina misterio y costumbrismo, permitiendo al lector adentrarse en la cultura rural y los paisajes fluviales que caracterizan Cantabria.
+
+**Por qué leerlo:** Ofrece una inmersión literaria en la naturaleza y la sociedad cántabra, ideal para comprender su vínculo con el entorno.
+
+---
+
+**2. "Los vikingos en Cantabria: Historia y leyenda" – José Antonio Sánchez**  
+Una exploración histórica que desvela la huella vikinga en las costas cántabras y cómo estas influencias se integraron en la evolución cultural local.
+
+**Por qué leerlo:** Permite conocer un capítulo menos conocido pero esencial de la historia que ha conformado la identidad cultural de Cantabria.
+
+---
+
+**3. "El faro del mundo" – Pedro M. Domínguez**  
+Relato sobre la vida en los pueblos pesqueros de Cantabria a comienzos del siglo XX, donde la tradición marítima y las leyendas de marineros forman el núcleo de la narrativa.
+
+**Por qué leerlo:** Ideal para entender el papel del mar en la cultura y economía regional.
+
+---
+
+**4. "Cueva de Altamira" – Carmen R. Ibáñez**  
+Un ensayo visual y descriptivo sobre las famosas pinturas rupestres y su importancia arqueológica y cultural.
+
+**Por qué leerlo:** Facilita la comprensión del patrimonio histórico y la relevancia mundial de Cantabria en la prehistoria.
+
+---
+
+**5. "Cantabria y sus gentes" – Juan José García**  
+Un compendio de relatos y ensayos sobre las tradiciones, festividades y costumbres populares cántabras.
+
+**Por qué leerlo:** Aporta una visión profunda y variada sobre el folclore y las expresiones culturales vivas.
+
+---
+
+### PELÍCULAS ESENCIALES
+
+**1. "Los girasoles ciegos" (2008)** – Dirección: José Luis Cuerda  
+Drama ambientado en la posguerra española, con escenarios naturales de Cantabria y personajes que reflejan la resistencia del pueblo.
+
+**Por qué verla:** Brinda una mirada histórica y humana sobre la región, ilustrando su espíritu resiliente.
+
+---
+
+**2. "El río que nos lleva" (1989)** – Dirección: Antonio del Real  
+La película muestra la tradición ancestral de transportar troncos por los ríos cántabros, destacando la convivencia entre hombre y naturaleza.
+
+**Por qué verla:** Pone en valor una actividad tradicional y el paisaje natural espectacular de Cantabria.
+
+---
+
+**3. "Entrelobos" (2010)** – Dirección: Gerardo Olivares  
+Basada en hechos reales, narra la vida de un niño criado por lobos en los bosques cántabros.
+
+**Por qué verla:** Una obra que captura la fuerza de la naturaleza y la conexión con la fauna local.
+
+---
+
+**4. "La isla del viento" (2006)** – Dirección: Pablo Malo  
+Drama familiar situado en la costa cántabra, donde la geografía y la cultura marinera son protagonistas.
+
+**Por qué verla:** Destaca la importancia del mar y las tradiciones pesqueras en Cantabria.
+
+---
+
+**5. "Bisabuelo" (2018)** – Dirección: Marta Sanz  
+Cortometraje documental que revive recuerdos y relatos de la Cantabria rural a través de un personaje mayor.
+
+**Por qué verla:** Ideal para entender el cambio social y la memoria colectiva de la región.
+
+---
+
+### DOCUMENTALES IMPERDIBLES
+
+**1. "Altamira: El arte de las cavidades"**  
+Documental que profundiza en las pinturas rupestres de la Cueva de Altamira, explorando técnicas, simbolismos y su contexto histórico.
+
+**Por qué verlo:** Esencial para apreciar el valor arqueológico y cultural que ha dado fama mundial a Cantabria.
+
+---
+
+**2. "Cantabria Salvaje"**  
+Producción que recorre la diversidad de la flora y fauna, así como los paisajes naturales emblemáticos como los Picos de Europa y la Costa Verde.
+
+**Por qué verlo:** Permite conectar visualmente con la riqueza natural y el paisaje que moldean la identidad regional.
+
+---
+
+**3. "Fiestas y tradiciones de Cantabria"**  
+Una mirada vibrante a las celebraciones populares como La Vijanera y las romerías costeras que mantienen viva la cultura local.
+
+**Por qué verlo:** Muestra el corazón festivo y comunitario de Cantabria, imprescindible para quien quiera entender sus raíces.
+
+---
+
+*Estas recomendaciones conforman una puerta abierta para penetrar en la cultura cántabra desde distintas perspectivas: histórica, social, natural y artística. Cada obra, película o documental seleccionada está diseñada para enriquecer su experiencia y acercarle más a la auténtica Cantabria.*  
+
+---</div><div class="ai-desc">Películas, libros, documentales y música local.</div></div>
+  <div class="cult-tabs">
+    <button class="ctab active" onclick="switchCult(this,'peli')">🎬 Películas</button>
+    <button class="ctab" onclick="switchCult(this,'libro')">📚 Libros</button>
+    <button class="ctab" onclick="switchCult(this,'musica')">🎵 Música</button>
+    <button class="ctab" onclick="switchCult(this,'docu')">📹 Docs</button>
+  </div>
+  <div id="peli" class="ctab-panel active">
+    <div class="cult-item"><div class="cult-n">1</div><div class="cult-info"><strong>Película 1</strong><span>---
+
+**GUÍA CULTURAL DE CANTABRIA**  
+*Explora la esencia de una tierra rica en historia, naturaleza y tradiciones.*
+
+---
+
+### LIBROS RECOMENDADOS
+
+**1. "El río de la luz" – José Luis García Sánchez**  
+Una novela que recorre los paisajes y la idiosincrasia cántabra a través de la vida de sus habitantes. La obra combina misterio y costumbrismo, permitiendo al lector adentrarse en la cultura rural y los paisajes fluviales que caracterizan Cantabria.
+
+**Por qué leerlo:** Ofrece una inmersión literaria en la naturaleza y la sociedad cántabra, ideal para comprender su vínculo con el entorno.
+
+---
+
+**2. "Los vikingos en Cantabria: Historia y leyenda" – José Antonio Sánchez**  
+Una exploración histórica que desvela la huella vikinga en las costas cántabras y cómo estas influencias se integraron en la evolución cultural local.
+
+**Por qué leerlo:** Permite conocer un capítulo menos conocido pero esencial de la historia que ha conformado la identidad cultural de Cantabria.
+
+---
+
+**3. "El faro del mundo" – Pedro M. Domínguez**  
+Relato sobre la vida en los pueblos pesqueros de Cantabria a comienzos del siglo XX, donde la tradición marítima y las leyendas de marineros forman el núcleo de la narrativa.
+
+**Por qué leerlo:** Ideal para entender el papel del mar en la cultura y economía regional.
+
+---
+
+**4. "Cueva de Altamira" – Carmen R. Ibáñez**  
+Un ensayo visual y descriptivo sobre las famosas pinturas rupestres y su importancia arqueológica y cultural.
+
+**Por qué leerlo:** Facilita la comprensión del patrimonio histórico y la relevancia mundial de Cantabria en la prehistoria.
+
+---
+
+**5. "Cantabria y sus gentes" – Juan José García**  
+Un compendio de relatos y ensayos sobre las tradiciones, festividades y costumbres populares cántabras.
+
+**Por qué leerlo:** Aporta una visión profunda y variada sobre el folclore y las expresiones culturales vivas.
+
+---
+
+### PELÍCULAS ESENCIALES
+
+**1. "Los girasoles ciegos" (2008)** – Dirección: José Luis Cuerda  
+Drama ambientado en la posguerra española, con escenarios naturales de Cantabria y personajes que reflejan la resistencia del pueblo.
+
+**Por qué verla:** Brinda una mirada histórica y humana sobre la región, ilustrando su espíritu resiliente.
+
+---
+
+**2. "El río que nos lleva" (1989)** – Dirección: Antonio del Real  
+La película muestra la tradición ancestral de transportar troncos por los ríos cántabros, destacando la convivencia entre hombre y naturaleza.
+
+**Por qué verla:** Pone en valor una actividad tradicional y el paisaje natural espectacular de Cantabria.
+
+---
+
+**3. "Entrelobos" (2010)** – Dirección: Gerardo Olivares  
+Basada en hechos reales, narra la vida de un niño criado por lobos en los bosques cántabros.
+
+**Por qué verla:** Una obra que captura la fuerza de la naturaleza y la conexión con la fauna local.
+
+---
+
+**4. "La isla del viento" (2006)** – Dirección: Pablo Malo  
+Drama familiar situado en la costa cántabra, donde la geografía y la cultura marinera son protagonistas.
+
+**Por qué verla:** Destaca la importancia del mar y las tradiciones pesqueras en Cantabria.
+
+---
+
+**5. "Bisabuelo" (2018)** – Dirección: Marta Sanz  
+Cortometraje documental que revive recuerdos y relatos de la Cantabria rural a través de un personaje mayor.
+
+**Por qué verla:** Ideal para entender el cambio social y la memoria colectiva de la región.
+
+---
+
+### DOCUMENTALES IMPERDIBLES
+
+**1. "Altamira: El arte de las cavidades"**  
+Documental que profundiza en las pinturas rupestres de la Cueva de Altamira, explorando técnicas, simbolismos y su contexto histórico.
+
+**Por qué verlo:** Esencial para apreciar el valor arqueológico y cultural que ha dado fama mundial a Cantabria.
+
+---
+
+**2. "Cantabria Salvaje"**  
+Producción que recorre la diversidad de la flora y fauna, así como los paisajes naturales emblemáticos como los Picos de Europa y la Costa Verde.
+
+**Por qué verlo:** Permite conectar visualmente con la riqueza natural y el paisaje que moldean la identidad regional.
+
+---
+
+**3. "Fiestas y tradiciones de Cantabria"**  
+Una mirada vibrante a las celebraciones populares como La Vijanera y las romerías costeras que mantienen viva la cultura local.
+
+**Por qué verlo:** Muestra el corazón festivo y comunitario de Cantabria, imprescindible para quien quiera entender sus raíces.
+
+---
+
+*Estas recomendaciones conforman una puerta abierta para penetrar en la cultura cántabra desde distintas perspectivas: histórica, social, natural y artística. Cada obra, película o documental seleccionada está diseñada para enriquecer su experiencia y acercarle más a la auténtica Cantabria.*  
+
+---· generado por IA</span></div></div>
+    <div class="cult-item"><div class="cult-n">2</div><div class="cult-info"><strong>Película 2</strong><span>Generado según destino</span></div></div>
+    <div class="cult-item"><div class="cult-n">3</div><div class="cult-info"><strong>Película 3</strong><span>Generado según destino</span></div></div>
+  </div>
+  <div id="libro" class="ctab-panel"><div class="cult-item"><div class="cult-n">1</div><div class="cult-info"><strong>Libro 1</strong><span>---
+
+**GUÍA CULTURAL DE CANTABRIA**  
+*Explora la esencia de una tierra rica en historia, naturaleza y tradiciones.*
+
+---
+
+### LIBROS RECOMENDADOS
+
+**1. "El río de la luz" – José Luis García Sánchez**  
+Una novela que recorre los paisajes y la idiosincrasia cántabra a través de la vida de sus habitantes. La obra combina misterio y costumbrismo, permitiendo al lector adentrarse en la cultura rural y los paisajes fluviales que caracterizan Cantabria.
+
+**Por qué leerlo:** Ofrece una inmersión literaria en la naturaleza y la sociedad cántabra, ideal para comprender su vínculo con el entorno.
+
+---
+
+**2. "Los vikingos en Cantabria: Historia y leyenda" – José Antonio Sánchez**  
+Una exploración histórica que desvela la huella vikinga en las costas cántabras y cómo estas influencias se integraron en la evolución cultural local.
+
+**Por qué leerlo:** Permite conocer un capítulo menos conocido pero esencial de la historia que ha conformado la identidad cultural de Cantabria.
+
+---
+
+**3. "El faro del mundo" – Pedro M. Domínguez**  
+Relato sobre la vida en los pueblos pesqueros de Cantabria a comienzos del siglo XX, donde la tradición marítima y las leyendas de marineros forman el núcleo de la narrativa.
+
+**Por qué leerlo:** Ideal para entender el papel del mar en la cultura y economía regional.
+
+---
+
+**4. "Cueva de Altamira" – Carmen R. Ibáñez**  
+Un ensayo visual y descriptivo sobre las famosas pinturas rupestres y su importancia arqueológica y cultural.
+
+**Por qué leerlo:** Facilita la comprensión del patrimonio histórico y la relevancia mundial de Cantabria en la prehistoria.
+
+---
+
+**5. "Cantabria y sus gentes" – Juan José García**  
+Un compendio de relatos y ensayos sobre las tradiciones, festividades y costumbres populares cántabras.
+
+**Por qué leerlo:** Aporta una visión profunda y variada sobre el folclore y las expresiones culturales vivas.
+
+---
+
+### PELÍCULAS ESENCIALES
+
+**1. "Los girasoles ciegos" (2008)** – Dirección: José Luis Cuerda  
+Drama ambientado en la posguerra española, con escenarios naturales de Cantabria y personajes que reflejan la resistencia del pueblo.
+
+**Por qué verla:** Brinda una mirada histórica y humana sobre la región, ilustrando su espíritu resiliente.
+
+---
+
+**2. "El río que nos lleva" (1989)** – Dirección: Antonio del Real  
+La película muestra la tradición ancestral de transportar troncos por los ríos cántabros, destacando la convivencia entre hombre y naturaleza.
+
+**Por qué verla:** Pone en valor una actividad tradicional y el paisaje natural espectacular de Cantabria.
+
+---
+
+**3. "Entrelobos" (2010)** – Dirección: Gerardo Olivares  
+Basada en hechos reales, narra la vida de un niño criado por lobos en los bosques cántabros.
+
+**Por qué verla:** Una obra que captura la fuerza de la naturaleza y la conexión con la fauna local.
+
+---
+
+**4. "La isla del viento" (2006)** – Dirección: Pablo Malo  
+Drama familiar situado en la costa cántabra, donde la geografía y la cultura marinera son protagonistas.
+
+**Por qué verla:** Destaca la importancia del mar y las tradiciones pesqueras en Cantabria.
+
+---
+
+**5. "Bisabuelo" (2018)** – Dirección: Marta Sanz  
+Cortometraje documental que revive recuerdos y relatos de la Cantabria rural a través de un personaje mayor.
+
+**Por qué verla:** Ideal para entender el cambio social y la memoria colectiva de la región.
+
+---
+
+### DOCUMENTALES IMPERDIBLES
+
+**1. "Altamira: El arte de las cavidades"**  
+Documental que profundiza en las pinturas rupestres de la Cueva de Altamira, explorando técnicas, simbolismos y su contexto histórico.
+
+**Por qué verlo:** Esencial para apreciar el valor arqueológico y cultural que ha dado fama mundial a Cantabria.
+
+---
+
+**2. "Cantabria Salvaje"**  
+Producción que recorre la diversidad de la flora y fauna, así como los paisajes naturales emblemáticos como los Picos de Europa y la Costa Verde.
+
+**Por qué verlo:** Permite conectar visualmente con la riqueza natural y el paisaje que moldean la identidad regional.
+
+---
+
+**3. "Fiestas y tradiciones de Cantabria"**  
+Una mirada vibrante a las celebraciones populares como La Vijanera y las romerías costeras que mantienen viva la cultura local.
+
+**Por qué verlo:** Muestra el corazón festivo y comunitario de Cantabria, imprescindible para quien quiera entender sus raíces.
+
+---
+
+*Estas recomendaciones conforman una puerta abierta para penetrar en la cultura cántabra desde distintas perspectivas: histórica, social, natural y artística. Cada obra, película o documental seleccionada está diseñada para enriquecer su experiencia y acercarle más a la auténtica Cantabria.*  
+
+--- · generado por IA</span></div></div></div>
+  <div id="musica" class="ctab-panel"><div class="cult-item"><div class="cult-n">1</div><div class="cult-info"><strong>Playlist del viaje</strong><span>---
+
+**GUÍA CULTURAL DE CANTABRIA**  
+*Explora la esencia de una tierra rica en historia, naturaleza y tradiciones.*
+
+---
+
+### LIBROS RECOMENDADOS
+
+**1. "El río de la luz" – José Luis García Sánchez**  
+Una novela que recorre los paisajes y la idiosincrasia cántabra a través de la vida de sus habitantes. La obra combina misterio y costumbrismo, permitiendo al lector adentrarse en la cultura rural y los paisajes fluviales que caracterizan Cantabria.
+
+**Por qué leerlo:** Ofrece una inmersión literaria en la naturaleza y la sociedad cántabra, ideal para comprender su vínculo con el entorno.
+
+---
+
+**2. "Los vikingos en Cantabria: Historia y leyenda" – José Antonio Sánchez**  
+Una exploración histórica que desvela la huella vikinga en las costas cántabras y cómo estas influencias se integraron en la evolución cultural local.
+
+**Por qué leerlo:** Permite conocer un capítulo menos conocido pero esencial de la historia que ha conformado la identidad cultural de Cantabria.
+
+---
+
+**3. "El faro del mundo" – Pedro M. Domínguez**  
+Relato sobre la vida en los pueblos pesqueros de Cantabria a comienzos del siglo XX, donde la tradición marítima y las leyendas de marineros forman el núcleo de la narrativa.
+
+**Por qué leerlo:** Ideal para entender el papel del mar en la cultura y economía regional.
+
+---
+
+**4. "Cueva de Altamira" – Carmen R. Ibáñez**  
+Un ensayo visual y descriptivo sobre las famosas pinturas rupestres y su importancia arqueológica y cultural.
+
+**Por qué leerlo:** Facilita la comprensión del patrimonio histórico y la relevancia mundial de Cantabria en la prehistoria.
+
+---
+
+**5. "Cantabria y sus gentes" – Juan José García**  
+Un compendio de relatos y ensayos sobre las tradiciones, festividades y costumbres populares cántabras.
+
+**Por qué leerlo:** Aporta una visión profunda y variada sobre el folclore y las expresiones culturales vivas.
+
+---
+
+### PELÍCULAS ESENCIALES
+
+**1. "Los girasoles ciegos" (2008)** – Dirección: José Luis Cuerda  
+Drama ambientado en la posguerra española, con escenarios naturales de Cantabria y personajes que reflejan la resistencia del pueblo.
+
+**Por qué verla:** Brinda una mirada histórica y humana sobre la región, ilustrando su espíritu resiliente.
+
+---
+
+**2. "El río que nos lleva" (1989)** – Dirección: Antonio del Real  
+La película muestra la tradición ancestral de transportar troncos por los ríos cántabros, destacando la convivencia entre hombre y naturaleza.
+
+**Por qué verla:** Pone en valor una actividad tradicional y el paisaje natural espectacular de Cantabria.
+
+---
+
+**3. "Entrelobos" (2010)** – Dirección: Gerardo Olivares  
+Basada en hechos reales, narra la vida de un niño criado por lobos en los bosques cántabros.
+
+**Por qué verla:** Una obra que captura la fuerza de la naturaleza y la conexión con la fauna local.
+
+---
+
+**4. "La isla del viento" (2006)** – Dirección: Pablo Malo  
+Drama familiar situado en la costa cántabra, donde la geografía y la cultura marinera son protagonistas.
+
+**Por qué verla:** Destaca la importancia del mar y las tradiciones pesqueras en Cantabria.
+
+---
+
+**5. "Bisabuelo" (2018)** – Dirección: Marta Sanz  
+Cortometraje documental que revive recuerdos y relatos de la Cantabria rural a través de un personaje mayor.
+
+**Por qué verla:** Ideal para entender el cambio social y la memoria colectiva de la región.
+
+---
+
+### DOCUMENTALES IMPERDIBLES
+
+**1. "Altamira: El arte de las cavidades"**  
+Documental que profundiza en las pinturas rupestres de la Cueva de Altamira, explorando técnicas, simbolismos y su contexto histórico.
+
+**Por qué verlo:** Esencial para apreciar el valor arqueológico y cultural que ha dado fama mundial a Cantabria.
+
+---
+
+**2. "Cantabria Salvaje"**  
+Producción que recorre la diversidad de la flora y fauna, así como los paisajes naturales emblemáticos como los Picos de Europa y la Costa Verde.
+
+**Por qué verlo:** Permite conectar visualmente con la riqueza natural y el paisaje que moldean la identidad regional.
+
+---
+
+**3. "Fiestas y tradiciones de Cantabria"**  
+Una mirada vibrante a las celebraciones populares como La Vijanera y las romerías costeras que mantienen viva la cultura local.
+
+**Por qué verlo:** Muestra el corazón festivo y comunitario de Cantabria, imprescindible para quien quiera entender sus raíces.
+
+---
+
+*Estas recomendaciones conforman una puerta abierta para penetrar en la cultura cántabra desde distintas perspectivas: histórica, social, natural y artística. Cada obra, película o documental seleccionada está diseñada para enriquecer su experiencia y acercarle más a la auténtica Cantabria.*  
+
+--- · generado por IA</span></div></div></div>
+  <div id="docu" class="ctab-panel"><div class="cult-item"><div class="cult-n">1</div><div class="cult-info"><strong>Documental 1</strong><span>---
+
+**GUÍA CULTURAL DE CANTABRIA**  
+*Explora la esencia de una tierra rica en historia, naturaleza y tradiciones.*
+
+---
+
+### LIBROS RECOMENDADOS
+
+**1. "El río de la luz" – José Luis García Sánchez**  
+Una novela que recorre los paisajes y la idiosincrasia cántabra a través de la vida de sus habitantes. La obra combina misterio y costumbrismo, permitiendo al lector adentrarse en la cultura rural y los paisajes fluviales que caracterizan Cantabria.
+
+**Por qué leerlo:** Ofrece una inmersión literaria en la naturaleza y la sociedad cántabra, ideal para comprender su vínculo con el entorno.
+
+---
+
+**2. "Los vikingos en Cantabria: Historia y leyenda" – José Antonio Sánchez**  
+Una exploración histórica que desvela la huella vikinga en las costas cántabras y cómo estas influencias se integraron en la evolución cultural local.
+
+**Por qué leerlo:** Permite conocer un capítulo menos conocido pero esencial de la historia que ha conformado la identidad cultural de Cantabria.
+
+---
+
+**3. "El faro del mundo" – Pedro M. Domínguez**  
+Relato sobre la vida en los pueblos pesqueros de Cantabria a comienzos del siglo XX, donde la tradición marítima y las leyendas de marineros forman el núcleo de la narrativa.
+
+**Por qué leerlo:** Ideal para entender el papel del mar en la cultura y economía regional.
+
+---
+
+**4. "Cueva de Altamira" – Carmen R. Ibáñez**  
+Un ensayo visual y descriptivo sobre las famosas pinturas rupestres y su importancia arqueológica y cultural.
+
+**Por qué leerlo:** Facilita la comprensión del patrimonio histórico y la relevancia mundial de Cantabria en la prehistoria.
+
+---
+
+**5. "Cantabria y sus gentes" – Juan José García**  
+Un compendio de relatos y ensayos sobre las tradiciones, festividades y costumbres populares cántabras.
+
+**Por qué leerlo:** Aporta una visión profunda y variada sobre el folclore y las expresiones culturales vivas.
+
+---
+
+### PELÍCULAS ESENCIALES
+
+**1. "Los girasoles ciegos" (2008)** – Dirección: José Luis Cuerda  
+Drama ambientado en la posguerra española, con escenarios naturales de Cantabria y personajes que reflejan la resistencia del pueblo.
+
+**Por qué verla:** Brinda una mirada histórica y humana sobre la región, ilustrando su espíritu resiliente.
+
+---
+
+**2. "El río que nos lleva" (1989)** – Dirección: Antonio del Real  
+La película muestra la tradición ancestral de transportar troncos por los ríos cántabros, destacando la convivencia entre hombre y naturaleza.
+
+**Por qué verla:** Pone en valor una actividad tradicional y el paisaje natural espectacular de Cantabria.
+
+---
+
+**3. "Entrelobos" (2010)** – Dirección: Gerardo Olivares  
+Basada en hechos reales, narra la vida de un niño criado por lobos en los bosques cántabros.
+
+**Por qué verla:** Una obra que captura la fuerza de la naturaleza y la conexión con la fauna local.
+
+---
+
+**4. "La isla del viento" (2006)** – Dirección: Pablo Malo  
+Drama familiar situado en la costa cántabra, donde la geografía y la cultura marinera son protagonistas.
+
+**Por qué verla:** Destaca la importancia del mar y las tradiciones pesqueras en Cantabria.
+
+---
+
+**5. "Bisabuelo" (2018)** – Dirección: Marta Sanz  
+Cortometraje documental que revive recuerdos y relatos de la Cantabria rural a través de un personaje mayor.
+
+**Por qué verla:** Ideal para entender el cambio social y la memoria colectiva de la región.
+
+---
+
+### DOCUMENTALES IMPERDIBLES
+
+**1. "Altamira: El arte de las cavidades"**  
+Documental que profundiza en las pinturas rupestres de la Cueva de Altamira, explorando técnicas, simbolismos y su contexto histórico.
+
+**Por qué verlo:** Esencial para apreciar el valor arqueológico y cultural que ha dado fama mundial a Cantabria.
+
+---
+
+**2. "Cantabria Salvaje"**  
+Producción que recorre la diversidad de la flora y fauna, así como los paisajes naturales emblemáticos como los Picos de Europa y la Costa Verde.
+
+**Por qué verlo:** Permite conectar visualmente con la riqueza natural y el paisaje que moldean la identidad regional.
+
+---
+
+**3. "Fiestas y tradiciones de Cantabria"**  
+Una mirada vibrante a las celebraciones populares como La Vijanera y las romerías costeras que mantienen viva la cultura local.
+
+**Por qué verlo:** Muestra el corazón festivo y comunitario de Cantabria, imprescindible para quien quiera entender sus raíces.
+
+---
+
+*Estas recomendaciones conforman una puerta abierta para penetrar en la cultura cántabra desde distintas perspectivas: histórica, social, natural y artística. Cada obra, película o documental seleccionada está diseñada para enriquecer su experiencia y acercarle más a la auténtica Cantabria.*  
+
+--- · generado por IA</span></div></div></div>
+</div>
+
+<!-- CONSEJOS FINALES -->
+<div class="section" id="tips">
+  <div class="sec-eye">Antes de salir</div>
+  <div class="sec-title">Consejos finales</div>
+  <ul class="tip-list">
+    <li class="tip-item"><div class="tip-n">1</div><div class="tip-text">Consejo 1 — personalizar según destino</div></li>
+    <li class="tip-item"><div class="tip-n">2</div><div class="tip-text">Consejo 2 — personalizar según destino</div></li>
+    <li class="tip-item"><div class="tip-n">3</div><div class="tip-text">Consejo 3 — personalizar según destino</div></li>
+    <li class="tip-item"><div class="tip-n">4</div><div class="tip-text">Consejo 4 — personalizar según destino</div></li>
+  </ul>
+</div>
+
+<!-- CTA FINAL -->
+<div class="cta-final">
+  <h3>¡Buen viaje, PACOCO!</h3>
+  <p>Todo lo que necesitas para cantabria</p>
+  <div class="cta-pills">
+    <a class="cta-pill" href="#">✈ Vuelos</a>
+    <a class="cta-pill" href="#">🏨 Hoteles</a>
+    <a class="cta-pill" href="#">🎯 Experiencias</a>
+    <a class="cta-pill" href="#">🛡 Seguro</a>
+  </div>
+  <div class="share-bar">
+    <button class="share-btn share-wpp" onclick="shareWpp()">
+      <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Compartir WhatsApp
+    </button>
+    <button class="share-btn share-copy" onclick="copyLink()">⎘ Copiar enlace</button>
+  </div>
+</div>
+<div style="height:14px"></div>
+
+<!-- NOTAS -->
+<div class="section">
+  <div class="sec-eye">Para ti</div>
+  <div class="sec-title">Notas del viajero</div>
+  <div style="background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden">
+    <div class="note-line">Escribe aquí tus notas…</div>
+    <div class="note-line"></div><div class="note-line"></div><div class="note-line"></div><div class="note-line"></div>
+  </div>
+</div>
+
+<!-- NAV BOTTOM -->
+<nav class="bottom-nav">
+  <button class="nav-it active" onclick="goTo('info',this)"><span class="ni">◎</span>Inicio</button>
+  <button class="nav-it" onclick="goTo('itinerario',this)"><span class="ni">▦</span>Ruta</button>
+  <button class="nav-it" onclick="goTo('tools',this)"><span class="ni">⚙</span>Tools</button>
+  <button class="nav-it" onclick="goTo('transporte',this)"><span class="ni">⇢</span>Transp.</button>
+  <button class="nav-it" onclick="goTo('cultura',this)"><span class="ni">◈</span>Cultura</button>
+</nav>
+
+</div><!-- /shell-right -->
+</div><!-- /shell -->
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── UTILS ──
+function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500)}
+function goTo(id,btn){document.querySelectorAll('.nav-it').forEach(n=>n.classList.remove('active'));btn.classList.add('active');const el=document.getElementById(id);if(el){const scroller=window.innerWidth>860?document.getElementById('main-scroll'):window;if(window.innerWidth>860){el.scrollIntoView({behavior:'smooth',block:'start'})}else{el.scrollIntoView({behavior:'smooth',block:'start'})}}}
+function toggleDay(h){h.closest('.day-card').classList.toggle('open')}
+function switchTool(btn,id){btn.closest('.section').querySelectorAll('.ttab').forEach(b=>b.classList.remove('active'));btn.closest('.section').querySelectorAll('.tool-panel').forEach(p=>p.classList.remove('active'));btn.classList.add('active');document.getElementById(id).classList.add('active')}
+function switchCult(btn,id){btn.closest('.section').querySelectorAll('.ctab').forEach(b=>b.classList.remove('active'));btn.closest('.section').querySelectorAll('.ctab-panel').forEach(p=>p.classList.remove('active'));btn.classList.add('active');document.getElementById(id).classList.add('active')}
+
+// ── COMPARTIR ──
+function shareWpp(){const t=encodeURIComponent('¡Mira mi guía de viaje personalizada para cantabria! 🌍✈️\n\nGenerada por GuiaMundi.es');window.open('https://wa.me/?text='+t,'_blank')}
+function copyLink(){navigator.clipboard.writeText(window.location.href).then(()=>showToast('✓ Enlace copiado')).catch(()=>showToast('Copia la URL del navegador'))}
+
+// ── PWA ──
+let deferredPrompt=null;
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e});
+function installPWA(){
+  if(deferredPrompt){deferredPrompt.prompt();deferredPrompt.userChoice.then(r=>{if(r.outcome==='accepted')showToast('✓ Guardado en pantalla de inicio');deferredPrompt=null})}
+  else{const iOS=/iphone|ipad|ipod/i.test(navigator.userAgent);showToast(iOS?'Safari: compartir → Añadir a inicio':'Menú ⋮ del navegador → Instalar')}
+}
+
+// ── CONVERSOR ──
+const rates={};let ratesLoaded=false;
+const cNames={EUR:'Euro',USD:'Dólar USD',GBP:'Libra',JPY:'Yen',MXN:'Peso MXN',BRL:'Real',MAD:'Dírham',TRY:'Lira',THB:'Baht',IDR:'Rupia',AED:'Dírham AED',SGD:'Dólar SG'};
+async function loadRates(){
+  try{const r=await fetch('https://open.er-api.com/v6/latest/EUR');const d=await r.json();if(d.rates){Object.assign(rates,d.rates);ratesLoaded=true;convertCurrency();document.getElementById('conv-rate').textContent='Actualizado · '+new Date().toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'})}}
+  catch(e){Object.assign(rates,{EUR:1,USD:1.08,GBP:0.86,JPY:162,MXN:18.5,BRL:5.4,MAD:10.8,TRY:35,THB:38,IDR:17000,AED:3.97,SGD:1.45});ratesLoaded=true;convertCurrency();document.getElementById('conv-rate').textContent='Tasas aproximadas (sin conexión)'}
+}
+function convertCurrency(){
+  if(!ratesLoaded)return;
+  const eur=parseFloat(document.getElementById('conv-eur').value)||0;
+  const to=document.getElementById('conv-to').value;
+  const res=eur*(rates[to]||1);
+  const fmt=res>=1000?res.toFixed(0):res.toFixed(2);
+  document.getElementById('conv-foreign').value=fmt;
+  document.getElementById('conv-display').textContent=fmt+' '+to;
+  document.getElementById('conv-to-label').textContent=cNames[to]||to;
+  document.getElementById('conv-rate').textContent='1 € = '+(rates[to]||1).toFixed(4)+' '+to;
+}
+function convertBack(){
+  if(!ratesLoaded)return;
+  const f=parseFloat(document.getElementById('conv-foreign').value)||0;
+  const to=document.getElementById('conv-to').value;
+  document.getElementById('conv-eur').value=(f/(rates[to]||1)).toFixed(2);
+  convertCurrency();
+}
+loadRates();
+
+// ── TRADUCTOR ──
+const phraseDB={
+  es:['Hola','Buenos días','Por favor','Gracias','¿Cuánto cuesta?','¿Dónde está…?','La cuenta, por favor','No entiendo','¿Habla español?','Ayuda','Un taxi, por favor','¿Dónde está el baño?'],
+  it:['Ciao','Buongiorno','Per favore','Grazie','Quanto costa?','Dov\'è…?','Il conto, per favore','Non capisco','Parla spagnolo?','Aiuto','Un taxi, per favore','Dov\'è il bagno?'],
+  fr:['Bonjour','Bonjour','S\'il vous plaît','Merci','Combien ça coûte?','Où est…?','L\'addition, s\'il vous plaît','Je ne comprends pas','Parlez-vous espagnol?','Au secours','Un taxi, s\'il vous plaît','Où sont les toilettes?'],
+  de:['Hallo','Guten Morgen','Bitte','Danke','Wie viel kostet das?','Wo ist…?','Die Rechnung, bitte','Ich verstehe nicht','Sprechen Sie Spanisch?','Hilfe','Ein Taxi, bitte','Wo ist die Toilette?'],
+  pt:['Olá','Bom dia','Por favor','Obrigado','Quanto custa?','Onde fica…?','A conta, por favor','Não entendo','Fala espanhol?','Socorro','Um táxi, por favor','Onde é o banheiro?'],
+  ja:['こんにちは','おはようございます','お願いします','ありがとう','いくらですか？','…はどこですか？','お会計をお願いします','わかりません','スペイン語を話しますか？','助けて','タクシーをお願いします','トイレはどこですか？'],
+  ar:['مرحبا','صباح الخير','من فضلك','شكرا','كم يكلف؟','أين…؟','الحساب من فضلك','لا أفهم','هل تتكلم الإسبانية؟','مساعدة','سيارة أجرة من فضلك','أين الحمام؟'],
+  tr:['Merhaba','Günaydın','Lütfen','Teşekkürler','Ne kadar?','Nerede…?','Hesabı lütfen','Anlamıyorum','İspanyolca biliyor musunuz?','İmdat','Taksi lütfen','Tuvalet nerede?'],
+  th:['สวัสดี','อรุณสวัสดิ์','กรุณา','ขอบคุณ','ราคาเท่าไหร่?','…อยู่ที่ไหน?','เก็บเงินด้วย','ไม่เข้าใจ','พูดภาษาสเปนได้ไหม?','ช่วยด้วย','แท็กซี่หน่อย','ห้องน้ำอยู่ที่ไหน?'],
+  zh:['你好','早上好','请','谢谢','多少钱？','…在哪里？','买单，谢谢','我不明白','你会说西班牙语吗？','救命','请叫出租车','洗手间在哪里？'],
+  el:['Γεια σας','Καλημέρα','Παρακαλώ','Ευχαριστώ','Πόσο κοστίζει;','Πού είναι…;','Τον λογαριασμό παρακαλώ','Δεν καταλαβαίνω','Μιλάτε ισπανικά;','Βοήθεια','Ένα ταξί παρακαλώ','Πού είναι η τουαλέτα;'],
+  pl:['Cześć','Dzień dobry','Proszę','Dziękuję','Ile to kosztuje?','Gdzie jest…?','Rachunek, proszę','Nie rozumiem','Czy mówi pan/pani po hiszpańsku?','Pomocy','Taksówkę proszę','Gdzie jest toaleta?'],
+  nl:['Hallo','Goedemorgen','Alstublieft','Dank u','Hoeveel kost het?','Waar is…?','De rekening graag','Ik begrijp het niet','Spreekt u Spaans?','Help','Een taxi graag','Waar is het toilet?'],
+};
+function updatePhrases(){
+  const lang=document.getElementById('trans-lang-sel').value;
+  const esp=phraseDB['es'],dest=phraseDB[lang]||phraseDB['it'];
+  document.getElementById('phrases-list').innerHTML=esp.map((es,i)=>`<div class="trans-item"><div class="trans-texts"><div class="trans-es">${es}</div><div class="trans-dest">${dest[i]||''}</div></div><button class="trans-audio" onclick="speak('${(dest[i]||'').replace(/'/g,"\\'")}','${lang}',this)">▶</button></div>`).join('');
+}
+function speak(text,lang,btn){
+  if(!window.speechSynthesis){showToast('Audio no disponible');return}
+  window.speechSynthesis.cancel();
+  document.querySelectorAll('.trans-audio').forEach(b=>b.classList.remove('playing'));
+  btn.classList.add('playing');
+  const u=new SpeechSynthesisUtterance(text);u.lang=lang+'-'+lang.toUpperCase();u.rate=0.85;
+  u.onend=()=>btn.classList.remove('playing');
+  u.onerror=()=>{btn.classList.remove('playing');showToast('Audio no disponible para este idioma')};
+  window.speechSynthesis.speak(u);
+}
+updatePhrases();
+
+// ── CALCULADORA ──
+function calcBudget(){
+  const dias=parseFloat(document.getElementById('c-dias').value)||0,viaj=parseFloat(document.getElementById('c-viaj').value)||1;
+  const aloj=parseFloat(document.getElementById('c-aloj').value)||0,com=parseFloat(document.getElementById('c-com').value)||0;
+  const transp=parseFloat(document.getElementById('c-transp').value)||0,act=parseFloat(document.getElementById('c-act').value)||0;
+  const tA=aloj*dias,tC=com*dias*viaj,tot=tA+tC+transp+act;
+  const f=n=>n.toLocaleString('es-ES',{maximumFractionDigits:0})+'€';
+  document.getElementById('r-aloj').textContent=f(tA);document.getElementById('r-com').textContent=f(tC);
+  document.getElementById('r-transp').textContent=f(transp);document.getElementById('r-act').textContent=f(act);
+  document.getElementById('r-total').textContent=f(tot);document.getElementById('r-pp').textContent=f(tot/viaj);
+}
+calcBudget();
+
+// ── CHECKLIST ──
+const checkData={
+  ropa:['Ropa ligera (5–7 días)','Chaqueta o jersey','Ropa interior extra','Calcetines','Calzado cómodo','Sandalias o chanclas','Ropa de baño','Pijama','Pañuelo o fular','Chubasquero'],
+  docs:['DNI o Pasaporte','Tarjeta Sanitaria EU','Seguro de viaje','Reservas impresas','Confirmación vuelo','Tarjetas bancarias','Efectivo local','Carné conducir','Visado (si aplica)','Fotos de pasaporte'],
+  tech:['Móvil cargado','Cargador móvil','Adaptador enchufe','Power bank','Auriculares','Cámara de fotos','Tarjeta memoria','Cargador laptop','Cable USB extra','Mapas offline'],
+  salud:['Protector solar 50+','Repelente mosquitos','Medicación habitual','Botiquín básico','Antihistamínico','Ibuprofeno/paracetamol','Tiritas y venda','Pastillas estómago','Mascarillas','Termómetro'],
+  extras:['Botella reutilizable','Guía conversación','Bolsa tela mercado','Candado equipaje','Funda impermeable','Snacks viaje','Almohada viaje','Antifaz dormir','Tapones oídos','Colonia pequeña'],
+};
+const checkState={};let currentCat='ropa';
+function initCheck(){Object.keys(checkData).forEach(c=>checkState[c]=checkData[c].map(()=>false));renderCheck()}
+function switchCat(btn,cat){document.querySelectorAll('.check-cat-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');currentCat=cat;renderCheck()}
+function renderCheck(){
+  const items=checkData[currentCat],states=checkState[currentCat];
+  document.getElementById('checklist-items').innerHTML=items.map((item,i)=>`<div class="check-item${states[i]?' done':''}" onclick="toggleCheck('${currentCat}',${i},this)"><div class="check-box">${states[i]?'✓':''}</div><div class="check-label">${item}</div></div>`).join('');
+  updateProgress();
+}
+function toggleCheck(cat,idx,el){checkState[cat][idx]=!checkState[cat][idx];el.classList.toggle('done');el.querySelector('.check-box').textContent=checkState[cat][idx]?'✓':'';updateProgress()}
+function updateProgress(){let d=0,t=0;Object.values(checkState).forEach(a=>{t+=a.length;d+=a.filter(Boolean).length});const p=t?Math.round(d/t*100):0;document.getElementById('check-bar').style.width=p+'%';document.getElementById('check-pct').textContent=p+'%'}
+initCheck();
+</script>
+</body>
+</html>
