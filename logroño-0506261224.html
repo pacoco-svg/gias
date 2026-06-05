@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="GuiaMundi">
+<meta name="theme-color" content="#1A1A2E">
+<title>Guía de Viaje · logroño</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1A1A2E;--gold:#C9922A;--gold-l:#F5E6C8;--gold-p:#FDF6E9;
+  --terra:#B84A2E;--sky:#1B4F72;--sage:#2D6A4F;--cream:#FAFAF6;
+  --sand:#F0EBE0;--mist:#EEF2F7;--line:#DDD8CF;--mid:#7B7369;--r:14px;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:#E8E4DC;color:var(--ink);font-size:15px;line-height:1.7}
+
+/* ── SHELL ── */
+.shell{display:flex;min-height:100vh;max-width:1280px;margin:0 auto;box-shadow:0 0 60px rgba(0,0,0,.2)}
+.shell-left{width:360px;flex-shrink:0;position:sticky;top:0;height:100vh}
+.shell-right{flex:1;background:var(--cream);overflow-y:auto;height:100vh;padding-bottom:70px}
+@media(max-width:860px){
+  body{background:var(--ink)}
+  .shell{flex-direction:column;max-width:480px;margin:0 auto;box-shadow:none}
+  .shell-left{width:100%;height:auto;position:static}
+  .shell-right{height:auto;overflow-y:visible;padding-bottom:80px}
+}
+
+/* ── PORTADA ── */
+.cover{background:var(--ink);min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden}
+.cover-bg{position:absolute;inset:0;background:radial-gradient(circle at 20% 30%,rgba(201,146,42,.18) 0,transparent 55%),radial-gradient(circle at 80% 70%,rgba(27,79,114,.22) 0,transparent 55%)}
+.cover-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,146,42,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,146,42,.05) 1px,transparent 1px);background-size:36px 36px}
+.cover-stripe{position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--terra),var(--sky))}
+.cover-badge{position:absolute;top:22px;right:18px;background:rgba(201,146,42,.15);border:1px solid rgba(201,146,42,.35);border-radius:50px;padding:5px 13px;font-size:10px;font-weight:500;letter-spacing:2px;color:var(--gold);text-transform:uppercase}
+.cover-content{position:relative;z-index:2;padding:32px 22px 44px}
+.cover-label{font-size:10px;font-weight:500;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.cover-label::before{content:'';display:inline-block;width:18px;height:1px;background:var(--gold)}
+.cover-country{font-family:'Playfair Display',serif;font-size:clamp(48px,12vw,68px);font-weight:900;line-height:.9;color:#fff;margin-bottom:18px;letter-spacing:-2px;font-style:italic}
+.cover-div{width:40px;height:2px;background:var(--gold);margin-bottom:16px}
+.cover-meta{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
+.cover-meta-item label{display:block;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:2px}
+.cover-meta-item .val{font-family:'Playfair Display',serif;font-size:14px;color:#fff;font-style:italic}
+.cover-traveler{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:var(--r);padding:12px 16px;display:flex;align-items:center;gap:10px}
+.cover-avatar{width:38px;height:38px;background:linear-gradient(135deg,var(--gold),var(--terra));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;color:#fff;font-weight:700;flex-shrink:0}
+.cover-traveler-info label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.35);display:block;margin-bottom:1px}
+.cover-traveler-info .name{font-family:'Playfair Display',serif;font-size:15px;color:#fff;font-style:italic}
+.cover-actions{display:flex;gap:8px;margin-top:14px}
+.cover-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:10px 8px;border-radius:10px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;transition:all .2s}
+.cover-btn-wpp{background:#25D366;color:#fff}
+.cover-btn-install{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff}
+.cover-btn:active{transform:scale(.97)}
+
+/* ── SECCIONES ── */
+.section{padding:28px}
+.section+.section{border-top:1px solid var(--line)}
+@media(max-width:860px){.section{padding:22px 18px}}
+.sec-eye{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:5px;display:flex;align-items:center;gap:7px}
+.sec-eye::before{content:'';display:inline-block;width:12px;height:1px;background:var(--gold)}
+.sec-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:16px}
+
+/* ── FICHA ── */
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;border-radius:var(--r);overflow:hidden;border:1px solid var(--line)}
+.info-cell{background:#fff;padding:11px 13px}
+.info-cell:nth-child(odd){background:var(--sand)}
+.info-cell label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--mid);display:block;margin-bottom:2px}
+.info-cell .val{font-family:'Playfair Display',serif;font-size:14px;color:var(--ink);font-style:italic}
+.info-cell.full{grid-column:1/-1}
+
+/* ── AD ── */
+.ad{margin:0 28px 4px;background:#FFF8E7;border:1px solid #E8C84A;border-left:4px solid #E8C84A;border-radius:var(--r);padding:11px 13px;display:flex;align-items:flex-start;gap:9px}
+@media(max-width:860px){.ad{margin:0 18px 4px}}
+.ad-badge{background:#E8C84A;color:#fff;font-size:8px;font-weight:700;letter-spacing:1px;padding:2px 5px;border-radius:4px;flex-shrink:0;margin-top:2px}
+.ad strong{display:block;font-size:12px;font-weight:500;color:#7A5C00;margin-bottom:1px}
+.ad span{font-size:11px;color:#A07B20;font-style:italic}
+
+/* ── CONTENIDO HTML DE IA ── */
+.ai-content{font-size:14px;line-height:1.8;color:var(--ink)}
+.ai-content h1,.ai-content h2{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--ink);margin:18px 0 8px;padding-bottom:6px;border-bottom:2px solid var(--gold-l)}
+.ai-content h3{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--sky);margin:14px 0 6px}
+.ai-content p{margin-bottom:10px}
+.ai-content ul,.ai-content ol{padding-left:20px;margin-bottom:10px}
+.ai-content li{margin-bottom:4px}
+.ai-content a{color:var(--sky);text-decoration:none;border-bottom:1px solid var(--sky);font-weight:500;transition:all .2s}
+.ai-content a:hover{color:var(--gold);border-bottom-color:var(--gold)}
+.ai-content strong{font-weight:600;color:var(--ink)}
+.ai-content hr{border:none;border-top:1px solid var(--line);margin:16px 0}
+
+/* ── ITINERARIO ── */
+.day-card{border-radius:var(--r);overflow:hidden;margin-bottom:10px;border:1px solid var(--line);background:#fff}
+.day-header{display:flex;align-items:stretch;cursor:pointer;user-select:none}
+.day-num{background:var(--ink);color:var(--gold);font-family:'Playfair Display',serif;font-size:19px;font-weight:900;width:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;padding:10px 0;line-height:1}
+.day-num small{font-family:'DM Sans',sans-serif;font-size:7px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(201,146,42,.55);font-weight:400;margin-bottom:1px}
+.day-info{flex:1;padding:11px 13px}
+.day-title-h{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--ink);margin-bottom:2px}
+.day-loc{font-size:11px;color:var(--mid);display:flex;align-items:center;gap:3px}
+.day-loc::before{content:'◎';color:var(--terra);font-size:9px}
+.day-toggle{display:flex;align-items:center;padding:0 13px;color:var(--gold);font-size:15px;transition:transform .3s}
+.day-card.open .day-toggle{transform:rotate(180deg)}
+.day-body{display:none;padding:14px 16px;border-top:1px solid var(--line)}
+.day-card.open .day-body{display:block}
+.day-body .ai-content h3{margin-top:0}
+
+/* ── HERRAMIENTAS ── */
+.tools-tabs{display:flex;gap:6px;margin-bottom:16px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+.tools-tabs::-webkit-scrollbar{display:none}
+.ttab{background:var(--sand);border:none;border-radius:50px;padding:7px 14px;font-size:12px;font-family:'DM Sans',sans-serif;color:var(--mid);cursor:pointer;white-space:nowrap;transition:all .2s}
+.ttab.active{background:var(--ink);color:var(--gold);font-weight:500}
+.tool-panel{display:none}
+.tool-panel.active{display:block}
+@media(min-width:861px){
+  .tools-tabs{display:none}
+  .tool-panel{display:block!important}
+  .tools-desktop{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .tools-desktop-title{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+}
+
+/* Conversor */
+.conv-box{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:16px}
+.conv-row{display:flex;gap:9px;align-items:flex-end;margin-bottom:12px}
+.conv-input-wrap{flex:1}
+.conv-input-wrap label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);display:block;margin-bottom:4px}
+.conv-input{width:100%;padding:9px 11px;border:1.5px solid var(--line);border-radius:10px;font-size:17px;font-family:'Playfair Display',serif;font-weight:700;color:var(--ink);outline:none;background:var(--cream)}
+.conv-input:focus{border-color:var(--gold)}
+.conv-arrow{font-size:16px;color:var(--gold);padding-bottom:7px;flex-shrink:0}
+.conv-result{background:var(--gold-p);border:1px solid var(--gold-l);border-radius:10px;padding:12px 14px;text-align:center}
+.conv-result .amount{font-family:'Playfair Display',serif;font-size:26px;font-weight:900;color:var(--gold)}
+.conv-result .rate{font-size:11px;color:var(--mid);margin-top:2px}
+.conv-select{width:100%;padding:8px 11px;border:1.5px solid var(--line);border-radius:10px;font-size:13px;font-family:'DM Sans',sans-serif;color:var(--ink);outline:none;background:#fff;margin-bottom:10px}
+.conv-note{font-size:10px;color:var(--mid);text-align:center;margin-top:7px}
+
+/* Traductor */
+.trans-box{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.trans-item{display:flex;align-items:center;padding:10px 14px;border-bottom:1px solid var(--line);gap:9px}
+.trans-item:last-child{border-bottom:none}
+.trans-texts{flex:1}
+.trans-es{font-size:13px;font-weight:500;color:var(--ink)}
+.trans-dest{font-size:12px;color:var(--sky);font-style:italic;margin-top:1px}
+.trans-audio{background:none;border:1.5px solid var(--gold);border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--gold);flex-shrink:0;font-size:12px;transition:all .2s}
+.trans-audio:active,.trans-audio.playing{background:var(--gold);color:#fff}
+.trans-lang{background:var(--ink);color:#fff;padding:9px 14px;font-size:11px;font-weight:500;display:flex;align-items:center;justify-content:space-between;border-radius:var(--r) var(--r) 0 0}
+.trans-lang select{background:transparent;border:none;color:var(--gold);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;outline:none;cursor:pointer}
+
+/* Calculadora */
+.calc-box{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:16px}
+.calc-row{margin-bottom:10px}
+.calc-row label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);display:block;margin-bottom:4px}
+.calc-input{width:100%;padding:8px 11px;border:1.5px solid var(--line);border-radius:10px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--ink);outline:none;background:var(--cream)}
+.calc-input:focus{border-color:var(--gold)}
+.calc-result{background:var(--ink);border-radius:var(--r);padding:14px;margin-top:6px}
+.calc-result-title{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:8px}
+.calc-line{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.calc-line:last-child{border-bottom:none;margin-top:5px;padding-top:8px}
+.calc-line span{font-size:12px;color:rgba(255,255,255,.6)}
+.calc-line strong{font-family:'Playfair Display',serif;font-size:14px;color:var(--gold)}
+.calc-line.total span{color:#fff;font-weight:600;font-size:13px}
+.calc-line.total strong{font-size:18px}
+
+/* Checklist */
+.check-cats{display:flex;gap:5px;margin-bottom:10px;overflow-x:auto;scrollbar-width:none}
+.check-cats::-webkit-scrollbar{display:none}
+.check-cat-btn{background:var(--sand);border:none;border-radius:50px;padding:6px 12px;font-size:11px;font-family:'DM Sans',sans-serif;color:var(--mid);cursor:pointer;white-space:nowrap;transition:all .2s}
+.check-cat-btn.active{background:var(--ink);color:var(--gold);font-weight:500}
+.checklist{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;max-height:260px;overflow-y:auto}
+.check-item{display:flex;align-items:center;gap:10px;padding:10px 13px;border-bottom:1px solid var(--line);cursor:pointer;transition:background .15s}
+.check-item:last-child{border-bottom:none}
+.check-item:hover{background:var(--sand)}
+.check-box{width:19px;height:19px;border:2px solid var(--line);border-radius:5px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;color:transparent;transition:all .2s}
+.check-item.done .check-box{background:var(--sage);border-color:var(--sage);color:#fff}
+.check-item.done .check-label{text-decoration:line-through;color:var(--mid)}
+.check-label{font-size:13px;color:var(--ink)}
+.check-progress{background:var(--sand);border-radius:var(--r);padding:9px 13px;margin-bottom:10px;display:flex;align-items:center;gap:9px}
+.check-bar-wrap{flex:1;background:var(--line);border-radius:50px;height:5px;overflow:hidden}
+.check-bar{height:100%;background:linear-gradient(90deg,var(--sage),var(--gold));border-radius:50px;transition:width .4s}
+.check-pct{font-size:12px;font-weight:600;color:var(--sage);flex-shrink:0}
+
+/* ── MAPA ── */
+.map-block{background:var(--ink);border-radius:var(--r);overflow:hidden}
+.map-prev{height:140px;background:repeating-linear-gradient(0deg,transparent,transparent 37px,rgba(201,146,42,.07) 38px),repeating-linear-gradient(90deg,transparent,transparent 37px,rgba(201,146,42,.07) 38px);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px}
+.map-label{font-size:11px;color:rgba(255,255,255,.4);letter-spacing:1px}
+.map-icon{font-size:32px}
+.map-cta{padding:12px 15px;display:flex;align-items:center;justify-content:space-between}
+.map-cta-t{font-size:12px;color:rgba(255,255,255,.7)}
+.map-cta-t strong{display:block;color:#fff;font-size:13px}
+.map-btn{background:var(--gold);color:var(--ink);font-size:11px;font-weight:700;padding:9px 16px;border-radius:50px;text-decoration:none;white-space:nowrap}
+
+/* ── CULTURA TABS ── */
+.cult-tabs{display:flex;gap:5px;margin-bottom:14px;overflow-x:auto;scrollbar-width:none}
+.cult-tabs::-webkit-scrollbar{display:none}
+.ctab{background:var(--sand);border:none;border-radius:50px;padding:7px 13px;font-size:12px;font-family:'DM Sans',sans-serif;color:var(--mid);cursor:pointer;white-space:nowrap;transition:all .2s}
+.ctab.active{background:var(--ink);color:var(--gold);font-weight:500}
+.ctab-panel{display:none}
+.ctab-panel.active{display:block}
+
+/* ── EXPERIENCIAS ── */
+.exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:4px}
+.exp-card{background:linear-gradient(135deg,var(--ink),#2A2A4A);border-radius:var(--r);padding:15px 13px;position:relative;overflow:hidden}
+.exp-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),transparent)}
+.exp-n{font-family:'Playfair Display',serif;font-size:30px;font-weight:900;color:rgba(201,146,42,.18);line-height:1;margin-bottom:4px}
+.exp-text{font-size:12px;color:rgba(255,255,255,.65);line-height:1.5}
+.exp-text strong{display:block;color:#fff;font-size:12.5px;margin-bottom:2px}
+
+/* ── TIPS ── */
+.tip-list{list-style:none}
+.tip-item{display:flex;gap:11px;align-items:flex-start;padding:11px 0;border-bottom:1px solid var(--line)}
+.tip-item:last-child{border-bottom:none}
+.tip-n{background:var(--ink);color:var(--gold);font-family:'Playfair Display',serif;font-size:12px;font-weight:700;width:25px;height:25px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.tip-text{font-size:13px;color:var(--ink);line-height:1.6}
+
+/* ── CTA FINAL ── */
+.cta-final{background:linear-gradient(135deg,var(--ink),#2A1F3D);margin:0 28px;border-radius:var(--r);padding:24px 20px;text-align:center;position:relative;overflow:hidden}
+@media(max-width:860px){.cta-final{margin:0 18px}}
+.cta-final::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--terra),var(--sky))}
+.cta-final h3{font-family:'Playfair Display',serif;font-size:20px;color:#fff;margin-bottom:5px}
+.cta-final p{font-size:12px;color:rgba(255,255,255,.5);margin-bottom:16px}
+.cta-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-bottom:16px}
+.cta-pill{background:rgba(201,146,42,.15);border:1px solid rgba(201,146,42,.35);color:var(--gold);font-size:12px;padding:6px 12px;border-radius:50px;text-decoration:none}
+.share-bar{display:flex;gap:8px}
+.share-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:10px;border-radius:10px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;transition:all .2s}
+.share-btn:active{transform:scale(.97)}
+.share-wpp{background:#25D366;color:#fff}
+.share-copy{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:#fff}
+
+/* ── NOTAS ── */
+.note-area{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.note-line{padding:13px 15px;border-bottom:1px solid var(--line);font-size:14px;color:var(--line);font-style:italic;min-height:46px}
+.note-line:last-child{border-bottom:none}
+
+/* ── DARK / COLOR ── */
+.section.dark{background:var(--ink)}
+.section.dark .sec-title{color:#fff}
+.section.terra{background:linear-gradient(135deg,#F8F0EB,#F5E8E0)}
+.section.sage-bg{background:linear-gradient(135deg,#EBF5EF,#E0F0E8)}
+.section.sky-bg{background:linear-gradient(135deg,#EBF2F8,#E0EBF5)}
+
+/* ── NAV BOTTOM ── */
+.bottom-nav{position:sticky;bottom:0;background:rgba(26,26,46,.97);backdrop-filter:blur(12px);border-top:1px solid rgba(201,146,42,.15);display:flex;padding:7px 10px;gap:2px;z-index:100}
+.nav-it{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:5px 2px;border-radius:7px;cursor:pointer;color:rgba(255,255,255,.35);font-size:8px;letter-spacing:.5px;text-transform:uppercase;transition:all .2s;border:none;background:none;font-family:'DM Sans',sans-serif}
+.nav-it.active{color:var(--gold)}
+.nav-it .ni{font-size:15px;line-height:1}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:72px;left:50%;transform:translateX(-50%) translateY(10px);background:var(--ink);color:#fff;padding:9px 18px;border-radius:50px;font-size:13px;font-weight:500;opacity:0;transition:all .3s;pointer-events:none;z-index:200;white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.fa{animation:fadeUp .5s ease both}
+</style>
+</head>
+<body>
+<div class="shell">
+
+<!-- ══ LEFT: PORTADA ══ -->
+<div class="shell-left">
+<div class="cover">
+  <div class="cover-bg"></div>
+  <div class="cover-grid"></div>
+  <div class="cover-stripe"></div>
+  <div class="cover-badge">Guía Personalizada</div>
+  <div class="cover-content">
+    <div class="cover-label fa">Guía de Viaje · GuiaMundi.es</div>
+    <div class="cover-country fa" style="animation-delay:.1s">logroño</div>
+    <div class="cover-div fa" style="animation-delay:.2s"></div>
+    <div class="cover-meta fa" style="animation-delay:.25s">
+      <div class="cover-meta-item"><label>Duración</label><div class="val">1 días</div></div>
+      <div class="cover-meta-item"><label>Tipo de viaje</label><div class="val">Cultural e histórico</div></div>
+      <div class="cover-meta-item"><label>Transporte</label><div class="val">Coche de alquiler, Agencia local</div></div>
+      <div class="cover-meta-item"><label>Viajeros</label><div class="val">1</div></div>
+    </div>
+    <div class="cover-traveler fa" style="animation-delay:.3s">
+      <div class="cover-avatar">✦</div>
+      <div class="cover-traveler-info">
+        <label>Preparada para</label>
+        <div class="name">JAVIER</div>
+      </div>
+    </div>
+    <div class="cover-actions fa" style="animation-delay:.4s">
+      <button class="cover-btn cover-btn-wpp" onclick="shareWpp()">
+        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Compartir
+      </button>
+      <button class="cover-btn cover-btn-install" id="btn-install" onclick="installPWA()">⊕ Guardar en inicio</button>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══ RIGHT: CONTENIDO ══ -->
+<div class="shell-right" id="main-scroll">
+
+<!-- AD BANNER -->
+<div style="height:14px"></div>
+<div class="ad"><div class="ad-badge">AD</div><div><strong>Vuelos · Seguro de viaje</strong><span>→ Insertar banner afiliado aquí</span></div></div>
+<div style="height:6px"></div>
+
+<!-- ══ FICHA ══ -->
+<div class="section" id="info">
+  <div class="sec-eye">Tu viaje</div>
+  <div class="sec-title">Información del viajero</div>
+  <div class="info-grid">
+    <div class="info-cell"><label>Viajero</label><div class="val">JAVIER</div></div>
+    <div class="info-cell"><label>Destino</label><div class="val">logroño</div></div>
+    <div class="info-cell"><label>Duración</label><div class="val">1 días</div></div>
+    <div class="info-cell"><label>Tipo de viaje</label><div class="val">Cultural e histórico</div></div>
+    <div class="info-cell"><label>Viajeros</label><div class="val">1</div></div>
+    <div class="info-cell"><label>Transporte</label><div class="val">Coche de alquiler, Agencia local</div></div>
+  </div>
+</div>
+
+<!-- AD HOTELES -->
+<div class="ad"><div class="ad-badge">AD</div><div><strong>Hoteles · Alojamiento</strong><span>→ Booking / Airbnb / hoteles recomendados</span></div></div>
+<div style="height:6px"></div>
+
+<!-- ══ ITINERARIO ══ -->
+<div class="section" id="itinerario">
+  <div class="sec-eye">Día a día</div>
+  <div class="sec-title">Itinerario detallado</div>
+  <div id="itinerario-content" class="ai-content">
+    <h2>DÍA 1 – Descubriendo el corazón histórico y cultural de Logroño</h2>
+<ul>
+  <li><strong>Mañana:</strong> Comienza tu jornada en el centro histórico de Logroño, explorando la emblemática Calle Laurel, famosa por sus pinchos y ambiente animado desde primera hora. Camina hacia la Concatedral de Santa María de la Redonda para admirar su fachada renacentista y sus impresionantes obras de arte en el interior. Visita también el Museo de la Rioja para profundizar en la historia regional.</li>
+  <li><strong>Tarde:</strong> Tras un almuerzo relajado, dirígete al Parque del Ebro para disfrutar de un paseo bordeando el río. Luego, visita la iglesia de San Bartolomé y la Puerta del Revellín, antigua entrada fortificada de la ciudad, muy bien conservada. Aprovecha para pasear por el casco antiguo, apreciando su arquitectura medieval y los detalles históricos repartidos en cada esquina.</li>
+  <li><strong>Noche:</strong> Cena en el restaurante <strong>La Galería Gourmet</strong>, conocido por su cocina riojana moderna, donde podrás degustar platos tradicionales con un toque innovador en un ambiente acogedor. Tras la cena, disfruta de una copa de vino en alguna de las tabernas centenarias del casco antiguo, como <strong>Bar Soriano</strong>, para vivir la autenticidad logroñesa.</li>
+</ul>
+<p><strong>Alojamiento recomendado:</strong> <a href="https://www.hotelmarquesdelareyna.com" target="_blank">Hotel Marqués de Vallejo</a>, un hotel con encanto situado en un edificio histórico en el corazón de Logroño. Combina comodidad y una atmósfera auténtica que conecta con la esencia cultural de la ciudad.</p>
+  </div>
+</div>
+
+<!-- AD EXCURSIONES -->
+<div class="ad"><div class="ad-badge">AD</div><div><strong>Tours · Actividades · Excursiones</strong><span>→ Experiencias locales recomendadas</span></div></div>
+<div style="height:6px"></div>
+
+<!-- ══ EXPERIENCIAS ══ -->
+<div class="section dark" id="experiencias">
+  <div class="sec-eye">No te las pierdas</div>
+  <div class="sec-title">Experiencias destacadas</div>
+  <div id="exp-content" class="ai-content" style="color:rgba(255,255,255,.8)">
+      </div>
+</div>
+<div style="height:10px;background:var(--ink)"></div>
+
+<!-- ══ HERRAMIENTAS INTERACTIVAS ══ -->
+<div class="section" id="tools">
+  <div class="sec-eye">Herramientas</div>
+  <div class="sec-title">Para tu viaje</div>
+
+  <!-- Móvil: tabs -->
+  <div class="tools-tabs">
+    <button class="ttab active" onclick="switchTool(this,'conv')">💱 Moneda</button>
+    <button class="ttab" onclick="switchTool(this,'trans')">🗣 Frases</button>
+    <button class="ttab" onclick="switchTool(this,'calc')">💶 Presupuesto</button>
+    <button class="ttab" onclick="switchTool(this,'check')">🧳 Equipaje</button>
+  </div>
+
+  <!-- Desktop: 2 columnas siempre visibles -->
+  <div class="tools-desktop">
+    <div>
+      <div class="tools-desktop-title">💱 Conversor de moneda en tiempo real</div>
+      <div class="tool-panel active" id="conv">
+        <div class="conv-box">
+          <select class="conv-select" id="conv-to" onchange="convertCurrency()">
+            <option value="USD">$ Dólar estadounidense</option>
+            <option value="GBP">£ Libra esterlina</option>
+            <option value="JPY">¥ Yen japonés</option>
+            <option value="MXN">$ Peso mexicano</option>
+            <option value="BRL">R$ Real brasileño</option>
+            <option value="MAD">MAD Dírham marroquí</option>
+            <option value="TRY">₺ Lira turca</option>
+            <option value="THB">฿ Baht tailandés</option>
+            <option value="IDR">Rp Rupia indonesia</option>
+            <option value="AED">AED Dírham EAU</option>
+            <option value="SGD">S$ Dólar singapurense</option>
+            <option value="PLN">zł Esloti polaco</option>
+            <option value="CZK">Kč Corona checa</option>
+            <option value="HUF">Ft Forinto húngaro</option>
+            <option value="RON">RON Leu rumano</option>
+            <option value="DKK">kr Corona danesa</option>
+            <option value="SEK">kr Corona sueca</option>
+            <option value="NOK">kr Corona noruega</option>
+          </select>
+          <div class="conv-row">
+            <div class="conv-input-wrap">
+              <label>Euros (€)</label>
+              <input class="conv-input" type="number" id="conv-eur" value="100" oninput="convertCurrency()">
+            </div>
+            <div class="conv-arrow">⇄</div>
+            <div class="conv-input-wrap">
+              <label id="conv-to-label">Moneda destino</label>
+              <input class="conv-input" type="number" id="conv-foreign" oninput="convertBack()">
+            </div>
+          </div>
+          <div class="conv-result">
+            <div class="amount" id="conv-display">—</div>
+            <div class="rate" id="conv-rate">Cargando tipo de cambio…</div>
+          </div>
+          <div class="conv-note">Tipo de cambio en tiempo real · Fuente: open.er-api.com</div>
+        </div>
+      </div>
+
+      <br>
+      <div class="tools-desktop-title">🗣 Frases útiles con audio</div>
+      <div class="tool-panel" id="trans">
+        <div class="trans-lang">
+          <span>Selecciona el idioma del destino:</span>
+          <select id="trans-lang-sel" onchange="updatePhrases()">
+            <option value="it">🇮🇹 Italiano</option>
+            <option value="fr">🇫🇷 Francés</option>
+            <option value="de">🇩🇪 Alemán</option>
+            <option value="pt">🇵🇹 Portugués</option>
+            <option value="ja">🇯🇵 Japonés</option>
+            <option value="ar">🇲🇦 Árabe</option>
+            <option value="tr">🇹🇷 Turco</option>
+            <option value="th">🇹🇭 Tailandés</option>
+            <option value="zh">🇨🇳 Chino mandarín</option>
+            <option value="el">🇬🇷 Griego</option>
+            <option value="pl">🇵🇱 Polaco</option>
+            <option value="nl">🇳🇱 Neerlandés</option>
+            <option value="ru">🇷🇺 Ruso</option>
+            <option value="cs">🇨🇿 Checo</option>
+            <option value="ro">🇷🇴 Rumano</option>
+          </select>
+        </div>
+        <div class="trans-box" id="phrases-list"></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="tools-desktop-title">💶 Calculadora de presupuesto</div>
+      <div class="tool-panel" id="calc">
+        <div class="calc-box">
+          <div class="calc-row"><label>Días de viaje</label><input class="calc-input" type="number" id="c-dias" value="1" oninput="calcBudget()"></div>
+          <div class="calc-row"><label>Número de viajeros</label><input class="calc-input" type="number" id="c-viaj" value="1" oninput="calcBudget()"></div>
+          <div class="calc-row"><label>Alojamiento por noche (€)</label><input class="calc-input" type="number" id="c-aloj" value="80" oninput="calcBudget()"></div>
+          <div class="calc-row"><label>Comida por persona/día (€)</label><input class="calc-input" type="number" id="c-com" value="35" oninput="calcBudget()"></div>
+          <div class="calc-row"><label>Transporte total viaje (€)</label><input class="calc-input" type="number" id="c-transp" value="200" oninput="calcBudget()"></div>
+          <div class="calc-row"><label>Actividades total viaje (€)</label><input class="calc-input" type="number" id="c-act" value="150" oninput="calcBudget()"></div>
+          <div class="calc-result">
+            <div class="calc-result-title">RESUMEN DE PRESUPUESTO</div>
+            <div class="calc-line"><span>Alojamiento total</span><strong id="r-aloj">—</strong></div>
+            <div class="calc-line"><span>Comida total</span><strong id="r-com">—</strong></div>
+            <div class="calc-line"><span>Transporte</span><strong id="r-transp">—</strong></div>
+            <div class="calc-line"><span>Actividades</span><strong id="r-act">—</strong></div>
+            <div class="calc-line total"><span>TOTAL ESTIMADO</span><strong id="r-total">—</strong></div>
+            <div class="calc-line"><span>Por persona</span><strong id="r-pp">—</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <br>
+      <div class="tools-desktop-title">🧳 Checklist de equipaje interactiva</div>
+      <div class="tool-panel" id="check">
+        <div class="check-progress">
+          <div class="check-bar-wrap"><div class="check-bar" id="check-bar" style="width:0%"></div></div>
+          <div class="check-pct" id="check-pct">0% completado</div>
+        </div>
+        <div class="check-cats">
+          <button class="check-cat-btn active" onclick="switchCat(this,'ropa')">👕 Ropa</button>
+          <button class="check-cat-btn" onclick="switchCat(this,'docs')">📄 Docs</button>
+          <button class="check-cat-btn" onclick="switchCat(this,'tech')">📱 Tech</button>
+          <button class="check-cat-btn" onclick="switchCat(this,'salud')">💊 Salud</button>
+          <button class="check-cat-btn" onclick="switchCat(this,'extras')">✨ Extras</button>
+        </div>
+        <div class="checklist" id="checklist-items"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MAPA ══ -->
+<div class="section sky-bg">
+  <div class="sec-eye">Navegación</div>
+  <div class="sec-title">Mapa del viaje</div>
+  <div class="map-block">
+    <div class="map-prev">
+      <div class="map-icon">🗺️</div>
+      <div class="map-label">logroño · Ruta completa</div>
+    </div>
+    <div class="map-cta">
+      <div class="map-cta-t">
+        <strong>Abrir en Google Maps</strong>
+        Todos los puntos del recorrido
+      </div>
+      <a class="map-btn" href="https://www.google.com/maps/search/logroño" target="_blank">Ver mapa →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CONSEJOS ══ -->
+<div class="section sage-bg" id="consejos">
+  <div class="sec-eye">Antes de partir</div>
+  <div class="sec-title">Guía del destino</div>
+  <div id="consejos-content" class="ai-content">
+    <h2>Clima y mejor época</h2>
+<p>Logroño presenta un clima mediterráneo continentalizado. Las temperaturas varían notablemente durante el año:</p>
+<ul>
+  <li><strong>Enero:</strong> 4-11 °C, frío, ropa de abrigo.</li>
+  <li><strong>Febrero:</strong> 5-13 °C, frío, abrigo.</li>
+  <li><strong>Marzo:</strong> 7-16 °C, primavera, ropa ligera con algo de abrigo.</li>
+  <li><strong>Abril:</strong> 9-18 °C, primavera, ropa cómoda y ligera.</li>
+  <li><strong>Mayo:</strong> 12-22 °C, temp. agradables, ropa primaveral.</li>
+  <li><strong>Junio:</strong> 15-27 °C, calor suave, ropa fresca.</li>
+  <li><strong>Julio:</strong> 17-31 °C, verano caluroso, ropa ligera y protección solar.</li>
+  <li><strong>Agosto:</strong> 17-31 °C, verano, ropa ligera y gorra/sombrero.</li>
+  <li><strong>Septiembre:</strong> 15-26 °C, agradables tardes, ropa ligera.</li>
+  <li><strong>Octubre:</strong> 11-19 °C, fresco, algo de abrigo.</li>
+  <li><strong>Noviembre:</strong> 7-14 °C, frío moderado, abrigo.</li>
+  <li><strong>Diciembre:</strong> 5-11 °C, frío, ropa de invierno.</li>
+</ul>
+<p>La mejor época para visitar Logroño es primavera y principios de otoño, cuando el clima es más agradable para pasear y disfrutar del entorno.</p>
+
+<h2>Moneda y pagos</h2>
+<p>La moneda oficial en Logroño es el Euro (EUR).</p>
+<p>El tipo de cambio aproximado es 1 EUR = 1,00 EUR (es moneda local).</p>
+<p>En la mayoría de establecimientos aceptan tarjetas de crédito y débito, especialmente Visa y Mastercard. Es recomendable llevar algo de efectivo para pequeños comercios o mercados.</p>
+
+<h2>Electricidad y adaptadores</h2>
+<p>El voltaje en Logroño es de 230 V y la frecuencia de 50 Hz.</p>
+<p>El tipo de enchufe es el europeo estándar tipo C y F (dos clavijas redondas).</p>
+<p>Si vienes de otro continente, puede que necesites un adaptador o convertidor.</p>
+
+<h2>Idioma y comunicación</h2>
+<p>El idioma oficial es el español (castellano).</p>
+<p>En zonas turísticas y hoteles es común que hablen inglés, aunque no siempre con fluidez.</p>
+<p>Apps útiles para comunicación:</p>
+<ul>
+  <li><a href="https://translate.google.com" target="_blank">Google Translate</a> - traducción instantánea.</li>
+  <li><a href="https://www.diccionarios.com" target="_blank">Diccionarios.com</a> - recursos lingüísticos.</li>
+  <li><a href="https://www.whatsapp.com" target="_blank">WhatsApp</a> para comunicación fácil.</li>
+</ul>
+
+<h2>Visado y entrada</h2>
+<p>Para ciudadanos españoles y de la Unión Europea no es necesario visado para entrar en Logroño, que forma parte de España.</p>
+<p>Solo se necesita un documento nacional de identidad o pasaporte válido para viajar.</p>
+<p>Para ciudadanos de otros países conviene consultar las normativas vigentes de entrada a España.</p>
+
+<h2>Vacunas y salud</h2>
+<p>No se requieren vacunas obligatorias para entrar a Logroño.</p>
+<p>El agua del grifo es segura y potable.</p>
+<p>Se recomienda contratar un seguro médico de viaje que cubra cualquier contingencia.</p>
+
+<h2>Seguridad</h2>
+<p>Logroño es una ciudad segura para turistas, con baja tasa de criminalidad.</p>
+<p>Se recomienda tomar precauciones básicas como cuidar objetos personales en lugares concurridos.</p>
+<p>Zonas a evitar: el centro histórico es seguro; evitar calles muy solitarias de noche.</p>
+<p>Consejos básicos: usar taxis oficiales, no dejar objetos visibles en coche, y seguir indicaciones del personal turístico.</p>
+
+<h2>Costumbres y etiqueta</h2>
+<p>Los riojanos son amables y respetuosos. Algunas normas sociales:</p>
+<ul>
+  <li>Saludar con un “hola” y “buenos días” es habitual.</li>
+  <li>Propinas: no es obligatorio, pero dejar un 5-10% en restaurantes es habitual si el servicio fue bueno.</li>
+  <li>En templos y lugares religiosos se recomienda vestimenta modesta y respetuosa.</li>
+</ul>
+
+<h2>Apps imprescindibles</h2>
+<ul>
+  <li><a href="https://www.renfe.com" target="_blank">Renfe</a> - para transporte ferroviario.</li>
+  <li><a href="https://www.alsa.es" target="_blank">ALSA</a> - para autobuses interurbanos.</li>
+  <li><a href="https://maps.google.com" target="_blank">Google Maps</a> - mapas y navegación.</li>
+  <li><a href="https://translate.google.com" target="_blank">Google Translate</a> - traducción en tiempo real.</li>
+  <li><a href="https://www.bnext.es" target="_blank">Bnext</a> - para pagos con móvil y gestión de finanzas.</li>
+  <li><a href="https://www.taxify.com" target="_blank">Bolt</a> y <a href="https://www.free-now.com" target="_blank">Free Now</a> - para pedir taxis urbanos rápidamente.</li>
+</ul>
+  </div>
+</div>
+
+<!-- AD SEGURO -->
+<div class="ad"><div class="ad-badge">AD</div><div><strong>Seguro de viaje</strong><span>→ Cobertura recomendada para tu destino</span></div></div>
+<div style="height:6px"></div>
+
+<!-- ══ TRANSPORTE ══ -->
+<div class="section" id="transporte">
+  <div class="sec-eye">Moverse por el destino</div>
+  <div class="sec-title">Transporte</div>
+  <div id="transporte-content" class="ai-content">
+    <h2>Cómo llegar desde España</h2>
+<p>Logroño, capital de La Rioja, no cuenta con aeropuerto propio; por ello, la mayoría de los viajeros llegan desde aeropuertos cercanos.</p>
+<ul>
+  <li><strong>Vuelos directos:</strong> No existen vuelos directos a Logroño. Los aeropuertos principales para llegar son <strong>Aeropuerto de Bilbao</strong> (BIO) y <strong>Aeropuerto de Zaragoza</strong> (ZAZ).</li>
+  <li><strong>Tiempo de vuelo:</strong> Desde Madrid o Barcelona a Bilbao o Zaragoza, entre 1 y 1.5 horas.</li>
+  <li>Desde estos aeropuertos se puede continuar el viaje por tierra hasta Logroño.</li>
+</ul>
+
+<h2>Transporte desde el aeropuerto</h2>
+<ul>
+  <li><strong>Desde Aeropuerto de Bilbao:</strong> Autobús o taxi a la estación de autobuses o tren de Bilbao, luego conexión en autobús o tren a Logroño.</li>
+  <li><strong>Precio aproximado:</strong> Taxi al centro de Bilbao 25-30 €, luego autobús a Logroño 10-15 €.</li>
+  <li><strong>Tiempo:</strong> Total entre 2 y 3 horas dependiendo de conexiones.</li>
+  <li><strong>Desde Aeropuerto de Zaragoza:</strong> Taxi o autobús hacia la estación de tren o autobús de Zaragoza, conexión a Logroño por tren o bus.</li>
+  <li><strong>Precio aproximado:</strong> Taxi hasta Zaragoza centro unos 15 €, billete de tren o bus a Logroño 10-12 €.</li>
+  <li><strong>Tiempo:</strong> 2-2.5 horas en total aproximadamente.</li>
+</ul>
+
+<h2>Moverse por el destino</h2>
+<ul>
+  <li><strong>Transporte público:</strong> Logroño cuenta con un sistema de autobuses urbanos gestionados por <a href="https://www.lariojaturismo.com" target="_blank">La Rioja Turismo</a>.</li>
+  <li><strong>Metro:</strong> No hay metro en Logroño.</li>
+  <li><strong>Bus:</strong> Varias líneas urbanas conectan el centro con barrios y puntos importantes. Precio: billete sencillo alrededor de 1,30 €.</li>
+  <li><strong>Tren:</strong> La estación de tren de Logroño conecta con ciudades cercanas como Bilbao o Zaragoza. Precios variables según destino.</li>
+</ul>
+
+<h2>Alquiler de coche</h2>
+<p>Es recomendable alquilar coche para explorar La Rioja y alrededores dado que muchas bodegas y pueblos no están bien conectados por transporte público.</p>
+<ul>
+  <li><strong>Empresas:</strong> Hertz, Europcar, Avis y <a href="https://www.rentalcars.com" target="_blank">Rentalcars</a> operan en la región.</li>
+  <li><strong>Precio medio:</strong> Entre 30-50 € por día dependiendo del tipo de vehículo y temporada.</li>
+  <li><strong>Carnet internacional:</strong> No es necesario si el viajero posee licencia válida de la Unión Europea; para licencias fuera de la UE, sí se recomienda un carnet internacional.</li>
+</ul>
+
+<h2>Taxis y apps de movilidad</h2>
+<ul>
+  <li><strong>Taxi:</strong> Disponibles en toda la ciudad con tarifas aproximadas de 1,80 € de bajada de bandera y 1,10 €/km.</li>
+  <li><strong>Apps:</strong> No hay Uber o Bolt activos en Logroño.</li>
+  <li><strong>Apps locales:</strong> Se recomienda llamar taxis locales o pedir por teléfono en empresas como Radio Taxi Logroño (teléfono 941 226 000).</li>
+</ul>
+
+<h2>Consejos de conducción</h2>
+<ul>
+  <li><strong>Normas de tráfico:</strong> Se conduce por la derecha. Límites de velocidad generalmente 50 km/h en ciudad, 90-100 en carreteras locales y 120 km/h en autopistas.</li>
+  <li><strong>Peajes:</strong> No hay autopistas de peaje en La Rioja; las principales carreteras son gratuitas.</li>
+  <li><strong>Aparcamiento:</strong> Hay zonas azules en el centro con tarifa aproximada de 1-2 € la hora. Algunos aparcamientos públicos con tarifas diarias y parquímetros.</li>
+</ul>
+
+<h2>Transporte entre ciudades</h2>
+<ul>
+  <li><strong>Tren:</strong> Renfe opera trenes con conexiones con Bilbao, Zaragoza y Madrid. Precio desde 10-30 € según destino y antelación. Más información en <a href="https://www.renfe.com" target="_blank">Renfe</a>.</li>
+  <li><strong>Bus:</strong> Varias compañías como <a href="https://www.lolaauto.com" target="_blank">Lolaauto</a> ofrecen rutas interurbanas con precios económicos, desde 5 € a destinos cercanos.</li>
+  <li><strong>Vuelos internos:</strong> No hay vuelos internos a Logroño. El aeropuerto más cercano es Bilbao o Zaragoza para vuelos nacionales.</li>
+</ul>
+  </div>
+</div>
+
+<!-- AD COCHE -->
+<div class="ad"><div class="ad-badge">AD</div><div><strong>Alquiler de coche</strong><span>→ Rent a car · comparativa de precios</span></div></div>
+<div style="height:6px"></div>
+
+<!-- ══ RECURSOS Y BLOGS ══ -->
+<div class="section terra" id="recursos">
+  <div class="sec-eye">Recursos online</div>
+  <div class="sec-title">Blogs y enlaces útiles</div>
+  <div id="recursos-content" class="ai-content">
+    <h2>Web oficial de turismo</h2>
+<p><a href="https://www.larioja.org/turismo" target="_blank">Turismo La Rioja - Logroño</a></p>
+
+<h2>Blogs de viaje recomendados</h2>
+<ul>
+  <li><a href="https://viajeroscallejeros.com/logrono-que-ver/" target="_blank">Viajeros Callejeros - Logroño</a></li>
+  <li><a href="https://www.elviajerofisgón.com/logrono-que-ver/" target="_blank">El Viajero Fisgón - Logroño</a></li>
+  <li><a href="https://www.disfrutalogrono.com/" target="_blank">Disfruta Logroño</a></li>
+  <li><a href="https://pateandomundo.com/que-ver-en-logrono/" target="_blank">Pateando Mundo - Logroño</a></li>
+</ul>
+
+<h2>Foros y comunidades</h2>
+<ul>
+  <li><a href="https://www.tripadvisor.es/Attractions-g187495-Activities-Logrono_Province_of_La_Rioja.html" target="_blank">TripAdvisor - Actividades en Logroño</a></li>
+  <li><a href="https://www.lonelyplanet.com/spain/la-rioja/logrono/forums" target="_blank">Lonely Planet Thorntree - Logroño</a></li>
+  <li><a href="https://www.reddit.com/r/spain/comments/4uyjd5/logrono_travel_tips/" target="_blank">Reddit - Consejos para Logroño</a></li>
+</ul>
+
+<h2>Canales de YouTube</h2>
+<ul>
+  <li><a href="https://www.youtube.com/c/Viajeroscallejeros" target="_blank">Viajeros Callejeros</a></li>
+  <li><a href="https://www.youtube.com/c/ConPegayPaleta" target="_blank">Con Pega y Paleta</a></li>
+  <li><a href="https://www.youtube.com/c/UnSaborEnCadaPaso" target="_blank">Un Sabor en Cada Paso</a></li>
+</ul>
+
+<h2>Recursos para rutas</h2>
+<ul>
+  <li><a href="https://es.wikiloc.com/rutas/senderismo/logrono" target="_blank">Wikiloc - Rutas en Logroño</a></li>
+  <li><a href="https://www.alltrails.com/spain/la-rioja/logrono" target="_blank">AllTrails - Logroño</a></li>
+  <li><a href="https://www.google.com/maps/place/Logroño" target="_blank">Google Maps - Logroño</a></li>
+</ul>
+
+<h2>Apps imprescindibles</h2>
+<ul>
+  <li><a href="https://play.google.com/store/apps/details?id=es.larioja.turismorural" target="_blank">App Turismo La Rioja</a></li>
+  <li><a href="https://play.google.com/store/apps/details?id=com.google.android.apps.maps" target="_blank">Google Maps</a></li>
+  <li><a href="https://play.google.com/store/apps/details?id=es.wikiloc.app" target="_blank">Wikiloc</a></li>
+</ul>
+
+<h2>Webs de reservas</h2>
+<ul>
+  <li><a href="https://www.booking.com/city/es/logrono.html" target="_blank">Booking - Logroño</a></li>
+  <li><a href="https://www.airbnb.es/s/Logro%C3%B1o--Espa%C3%B1a/homes" target="_blank">Airbnb - Logroño</a></li>
+  <li><a href="https://www.getyourguide.com/logrono-l46550/" target="_blank">GetYourGuide - Logroño</a></li>
+  <li><a href="https://www.viator.com/Logrono/d7477-ttd" target="_blank">Viator - Logroño tours y actividades</a></li>
+</ul>
+  </div>
+</div>
+
+<!-- AD APPS -->
+<div class="ad"><div class="ad-badge">AD</div><div><strong>Apps para viajeros</strong><span>→ Mapas offline · traductor · transporte local</span></div></div>
+<div style="height:6px"></div>
+
+<!-- ══ CULTURA ══ -->
+<div class="section" id="cultura">
+  <div class="sec-eye">Prepara el viaje</div>
+  <div class="sec-title">Cultura · Libros · Películas · Música</div>
+  <div class="cult-tabs">
+    <button class="ctab active" onclick="switchCult(this,'peli')">🎬 Películas</button>
+    <button class="ctab" onclick="switchCult(this,'libro')">📚 Libros</button>
+    <button class="ctab" onclick="switchCult(this,'musica')">🎵 Música</button>
+    <button class="ctab" onclick="switchCult(this,'docu')">📹 Docs</button>
+  </div>
+  <div id="peli" class="ctab-panel active">
+    <div id="cultura-peli" class="ai-content"><h3>📚 "Historia de Logroño" – Manuel Bartolomé Cossío</h3>
+<p><strong>Por qué leerlo:</strong> Esta obra ofrece un profundo recorrido histórico por la ciudad, ideal para entender la evolución cultural y social de Logroño antes de visitarla.</p>
+
+<h3>📚 "Los vinos de La Rioja" – José Peñín</h3>
+<p><strong>Por qué leerlo:</strong> Fundamental para los amantes del vino, este libro explora las bodegas y tradiciones vitivinícolas de Logroño, ayudando a apreciar aún más la experiencia local.</p>
+
+<h3>📚 "Logroño, la ciudad en el Camino" – Various Authors</h3>
+<p><strong>Por qué leerlo:</strong> Una guía literaria que combina relatos y anécdotas de peregrinos y viajeros, transformando el quehacer cotidiano de la ciudad en una experiencia viva y narrativa.</p>
+
+<h3>📚 "El sumiller de Logroño" – Ana Martín</h3>
+<p><strong>Por qué leerlo:</strong> Es una novela ambientada en los bares y calles de Logroño, perfecta para captar la esencia social y gastronómica que define esta ciudad riojana.</p>
+
+<h3>📚 "La Rioja, tiempo de verano" – Lucía Etxebarría</h3>
+<p><strong>Por qué leerlo:</strong> Aunque no se centra exclusivamente en Logroño, este ensayo cultural muestra la vida y costumbres en la región, enriqueciendo la experiencia del viajero con detalles cotidianos y emocionales.</p></div>
+  </div>
+  <div id="libro" class="ctab-panel">
+    <div id="cultura-libro" class="ai-content">{"index":0,"message":{"role":"assistant","content":"<h3>📚 \"Historia de Logroño\" – Manuel Bartolomé Cossío</h3>\n<p><strong>Por qué leerlo:</strong> Esta obra ofrece un profundo recorrido histórico por la ciudad, ideal para entender la evolución cultural y social de Logroño antes de visitarla.</p>\n\n<h3>📚 \"Los vinos de La Rioja\" – José Peñín</h3>\n<p><strong>Por qué leerlo:</strong> Fundamental para los amantes del vino, este libro explora las bodegas y tradiciones vitivinícolas de Logroño, ayudando a apreciar aún más la experiencia local.</p>\n\n<h3>📚 \"Logroño, la ciudad en el Camino\" – Various Authors</h3>\n<p><strong>Por qué leerlo:</strong> Una guía literaria que combina relatos y anécdotas de peregrinos y viajeros, transformando el quehacer cotidiano de la ciudad en una experiencia viva y narrativa.</p>\n\n<h3>📚 \"El sumiller de Logroño\" – Ana Martín</h3>\n<p><strong>Por qué leerlo:</strong> Es una novela ambientada en los bares y calles de Logroño, perfecta para captar la esencia social y gastronómica que define esta ciudad riojana.</p>\n\n<h3>📚 \"La Rioja, tiempo de verano\" – Lucía Etxebarría</h3>\n<p><strong>Por qué leerlo:</strong> Aunque no se centra exclusivamente en Logroño, este ensayo cultural muestra la vida y costumbres en la región, enriqueciendo la experiencia del viajero con detalles cotidianos y emocionales.</p>","refusal":null,"annotations":[]},"logprobs":null,"finish_reason":"stop"}{"index":0,"message":{"role":"assistant","content":"<h3>📚 \"Historia de Logroño\" – Manuel Bartolomé Cossío</h3>\n<p><strong>Por qué leerlo:</strong> Esta obra ofrece un profundo recorrido histórico por la ciudad, ideal para entender la evolución cultural y social de Logroño antes de visitarla.</p>\n\n<h3>📚 \"Los vinos de La Rioja\" – José Peñín</h3>\n<p><strong>Por qué leerlo:</strong> Fundamental para los amantes del vino, este libro explora las bodegas y tradiciones vitivinícolas de Logroño, ayudando a apreciar aún más la experiencia local.</p>\n\n<h3>📚 \"Logroño, la ciudad en el Camino\" – Various Authors</h3>\n<p><strong>Por qué leerlo:</strong> Una guía literaria que combina relatos y anécdotas de peregrinos y viajeros, transformando el quehacer cotidiano de la ciudad en una experiencia viva y narrativa.</p>\n\n<h3>📚 \"El sumiller de Logroño\" – Ana Martín</h3>\n<p><strong>Por qué leerlo:</strong> Es una novela ambientada en los bares y calles de Logroño, perfecta para captar la esencia social y gastronómica que define esta ciudad riojana.</p>\n\n<h3>📚 \"La Rioja, tiempo de verano\" – Lucía Etxebarría</h3>\n<p><strong>Por qué leerlo:</strong> Aunque no se centra exclusivamente en Logroño, este ensayo cultural muestra la vida y costumbres en la región, enriqueciendo la experiencia del viajero con detalles cotidianos y emocionales.</p>","refusal":null,"annotations":[]},"logprobs":null,"finish_reason":"stop"}<h3>📚 "Historia de Logroño" – Manuel Bartolomé Cossío</h3>
+<p><strong>Por qué leerlo:</strong> Esta obra ofrece un profundo recorrido histórico por la ciudad, ideal para entender la evolución cultural y social de Logroño antes de visitarla.</p>
+
+<h3>📚 "Los vinos de La Rioja" – José Peñín</h3>
+<p><strong>Por qué leerlo:</strong> Fundamental para los amantes del vino, este libro explora las bodegas y tradiciones vitivinícolas de Logroño, ayudando a apreciar aún más la experiencia local.</p>
+
+<h3>📚 "Logroño, la ciudad en el Camino" – Various Authors</h3>
+<p><strong>Por qué leerlo:</strong> Una guía literaria que combina relatos y anécdotas de peregrinos y viajeros, transformando el quehacer cotidiano de la ciudad en una experiencia viva y narrativa.</p>
+
+<h3>📚 "El sumiller de Logroño" – Ana Martín</h3>
+<p><strong>Por qué leerlo:</strong> Es una novela ambientada en los bares y calles de Logroño, perfecta para captar la esencia social y gastronómica que define esta ciudad riojana.</p>
+
+<h3>📚 "La Rioja, tiempo de verano" – Lucía Etxebarría</h3>
+<p><strong>Por qué leerlo:</strong> Aunque no se centra exclusivamente en Logroño, este ensayo cultural muestra la vida y costumbres en la región, enriqueciendo la experiencia del viajero con detalles cotidianos y emocionales.</p></div>
+  </div>
+  <div id="musica" class="ctab-panel">
+    <div id="cultura-musica" class="ai-content"><h3>📚 "Historia de Logroño" – Manuel Bartolomé Cossío</h3>
+<p><strong>Por qué leerlo:</strong> Esta obra ofrece un profundo recorrido histórico por la ciudad, ideal para entender la evolución cultural y social de Logroño antes de visitarla.</p>
+
+<h3>📚 "Los vinos de La Rioja" – José Peñín</h3>
+<p><strong>Por qué leerlo:</strong> Fundamental para los amantes del vino, este libro explora las bodegas y tradiciones vitivinícolas de Logroño, ayudando a apreciar aún más la experiencia local.</p>
+
+<h3>📚 "Logroño, la ciudad en el Camino" – Various Authors</h3>
+<p><strong>Por qué leerlo:</strong> Una guía literaria que combina relatos y anécdotas de peregrinos y viajeros, transformando el quehacer cotidiano de la ciudad en una experiencia viva y narrativa.</p>
+
+<h3>📚 "El sumiller de Logroño" – Ana Martín</h3>
+<p><strong>Por qué leerlo:</strong> Es una novela ambientada en los bares y calles de Logroño, perfecta para captar la esencia social y gastronómica que define esta ciudad riojana.</p>
+
+<h3>📚 "La Rioja, tiempo de verano" – Lucía Etxebarría</h3>
+<p><strong>Por qué leerlo:</strong> Aunque no se centra exclusivamente en Logroño, este ensayo cultural muestra la vida y costumbres en la región, enriqueciendo la experiencia del viajero con detalles cotidianos y emocionales.</p></div>
+  </div>
+  <div id="docu" class="ctab-panel">
+    <div id="cultura-docu" class="ai-content"><h3>📚 "Historia de Logroño" – Manuel Bartolomé Cossío</h3>
+<p><strong>Por qué leerlo:</strong> Esta obra ofrece un profundo recorrido histórico por la ciudad, ideal para entender la evolución cultural y social de Logroño antes de visitarla.</p>
+
+<h3>📚 "Los vinos de La Rioja" – José Peñín</h3>
+<p><strong>Por qué leerlo:</strong> Fundamental para los amantes del vino, este libro explora las bodegas y tradiciones vitivinícolas de Logroño, ayudando a apreciar aún más la experiencia local.</p>
+
+<h3>📚 "Logroño, la ciudad en el Camino" – Various Authors</h3>
+<p><strong>Por qué leerlo:</strong> Una guía literaria que combina relatos y anécdotas de peregrinos y viajeros, transformando el quehacer cotidiano de la ciudad en una experiencia viva y narrativa.</p>
+
+<h3>📚 "El sumiller de Logroño" – Ana Martín</h3>
+<p><strong>Por qué leerlo:</strong> Es una novela ambientada en los bares y calles de Logroño, perfecta para captar la esencia social y gastronómica que define esta ciudad riojana.</p>
+
+<h3>📚 "La Rioja, tiempo de verano" – Lucía Etxebarría</h3>
+<p><strong>Por qué leerlo:</strong> Aunque no se centra exclusivamente en Logroño, este ensayo cultural muestra la vida y costumbres en la región, enriqueciendo la experiencia del viajero con detalles cotidianos y emocionales.</p></div>
+  </div>
+</div>
+
+<!-- ══ CURIOSIDADES ══ -->
+<div class="section sage-bg" id="curiosidades">
+  <div class="sec-eye">¿Sabías que…?</div>
+  <div class="sec-title">Curiosidades del destino</div>
+  <div id="curiosidades-content" class="ai-content">
+    <h3>💡 Planifica tu ruta según horarios</h3>
+<p>Consulta los horarios de apertura de la Concatedral de Santa María de la Redonda, Museo de la Rioja y sitios históricos para aprovechar cada minuto. Llegar a primera hora evita colas y te permite disfrutar con tranquilidad.</p>
+
+<h3>💡 Presupuesta con antelación</h3>
+<p>Calcula entre 50 y 70 € para entradas, pinchos y transporte local. Reserva online el Museo de la Rioja (5 €) para no perder tiempo en taquilla y destina al menos 20 € a pinchos en Calle Laurel.</p>
+
+<h3>💡 La hora de los pinchos</h3>
+<p>Visita Calle Laurel entre las 13:00 y las 15:00 y de 20:00 a 22:00. Pide “laraña” y champiñones al ajillo para probar clásicos riojanos. Lleva efectivo para agilizar el pago y evitar cargos de tarjeta.</p>
+
+<h3>💡 Fotografía la Puente de Piedra al amanecer</h3>
+<p>El puente renacentista y el Ebro captan colores suaves al alba. Sitúate en la orilla sur hacia las 7:30 h para obtener reflejos nítidos y calles vacías, ideal para encuadres limpios sin turistas.</p>
+
+<h3>💡 Evita errores con el transporte</h3>
+<p>Logroño es compacto: opta por caminar o usar taxis locales (tarifa fija cercana). El autobús urbano es sólo una opción si llegas con poco tiempo; no alquiles coche salvo que planees excursión al Rioja Alta.</p>
+
+<h3>💡 Aprovecha la tarjeta turística</h3>
+<p>La “Rioja Card” de 10 € incluye descuentos en museos y guías. Si visitas dos o más atracciones, la tarjeta te sale a cuenta y te regala consumición en alguna bodega urbana.</p>
+
+<h3>💡 Descubre el pasado medieval</h3>
+<p>Pasea por la Calle Portales y busca restos de la muralla en la calle Ruavieja. Una breve guía en papel (2 €) te ayudará a ubicar torres y puertas antiguas, enriqueciendo tu visita.</p>
+
+<h3>💡 Cómo gestionar propinas</h3>
+<p>En Logroño no es obligatorio dejar más del 5–10 % tras el ticket de bar o restaurante. Redondea la cuenta si el servicio fue excelente, pero no te sientas presionado a dejar un gran extra.</p>
+
+<h3>💡 Regateo y compras</h3>
+<p>En tiendas de vino y souvenirs no se regatea. Busca ofertas en tiendas de calle San Juan por la mañana, cuando reponen stock, y pregunta siempre por packs con descuento.</p>
+
+<h3>💡 El mejor momento para el vino</h3>
+<p>Reserva con antelación sesión de cata en alguna bodega urbana a partir de las 17:00 h, cuando los bares están menos concurridos. Aprenderás historia del Rioja y podrás comprar botellas exclusivas.</p>  </div>
+</div>
+
+<!-- ══ CONSEJOS FINALES ══ -->
+<div class="section" id="tips">
+  <div class="sec-eye">Antes de salir</div>
+  <div class="sec-title">Consejos finales</div>
+  <div id="tips-content" class="ai-content">
+    <h2>Clima y mejor época</h2>
+<p>Logroño presenta un clima mediterráneo continentalizado. Las temperaturas varían notablemente durante el año:</p>
+<ul>
+  <li><strong>Enero:</strong> 4-11 °C, frío, ropa de abrigo.</li>
+  <li><strong>Febrero:</strong> 5-13 °C, frío, abrigo.</li>
+  <li><strong>Marzo:</strong> 7-16 °C, primavera, ropa ligera con algo de abrigo.</li>
+  <li><strong>Abril:</strong> 9-18 °C, primavera, ropa cómoda y ligera.</li>
+  <li><strong>Mayo:</strong> 12-22 °C, temp. agradables, ropa primaveral.</li>
+  <li><strong>Junio:</strong> 15-27 °C, calor suave, ropa fresca.</li>
+  <li><strong>Julio:</strong> 17-31 °C, verano caluroso, ropa ligera y protección solar.</li>
+  <li><strong>Agosto:</strong> 17-31 °C, verano, ropa ligera y gorra/sombrero.</li>
+  <li><strong>Septiembre:</strong> 15-26 °C, agradables tardes, ropa ligera.</li>
+  <li><strong>Octubre:</strong> 11-19 °C, fresco, algo de abrigo.</li>
+  <li><strong>Noviembre:</strong> 7-14 °C, frío moderado, abrigo.</li>
+  <li><strong>Diciembre:</strong> 5-11 °C, frío, ropa de invierno.</li>
+</ul>
+<p>La mejor época para visitar Logroño es primavera y principios de otoño, cuando el clima es más agradable para pasear y disfrutar del entorno.</p>
+
+<h2>Moneda y pagos</h2>
+<p>La moneda oficial en Logroño es el Euro (EUR).</p>
+<p>El tipo de cambio aproximado es 1 EUR = 1,00 EUR (es moneda local).</p>
+<p>En la mayoría de establecimientos aceptan tarjetas de crédito y débito, especialmente Visa y Mastercard. Es recomendable llevar algo de efectivo para pequeños comercios o mercados.</p>
+
+<h2>Electricidad y adaptadores</h2>
+<p>El voltaje en Logroño es de 230 V y la frecuencia de 50 Hz.</p>
+<p>El tipo de enchufe es el europeo estándar tipo C y F (dos clavijas redondas).</p>
+<p>Si vienes de otro continente, puede que necesites un adaptador o convertidor.</p>
+
+<h2>Idioma y comunicación</h2>
+<p>El idioma oficial es el español (castellano).</p>
+<p>En zonas turísticas y hoteles es común que hablen inglés, aunque no siempre con fluidez.</p>
+<p>Apps útiles para comunicación:</p>
+<ul>
+  <li><a href="https://translate.google.com" target="_blank">Google Translate</a> - traducción instantánea.</li>
+  <li><a href="https://www.diccionarios.com" target="_blank">Diccionarios.com</a> - recursos lingüísticos.</li>
+  <li><a href="https://www.whatsapp.com" target="_blank">WhatsApp</a> para comunicación fácil.</li>
+</ul>
+
+<h2>Visado y entrada</h2>
+<p>Para ciudadanos españoles y de la Unión Europea no es necesario visado para entrar en Logroño, que forma parte de España.</p>
+<p>Solo se necesita un documento nacional de identidad o pasaporte válido para viajar.</p>
+<p>Para ciudadanos de otros países conviene consultar las normativas vigentes de entrada a España.</p>
+
+<h2>Vacunas y salud</h2>
+<p>No se requieren vacunas obligatorias para entrar a Logroño.</p>
+<p>El agua del grifo es segura y potable.</p>
+<p>Se recomienda contratar un seguro médico de viaje que cubra cualquier contingencia.</p>
+
+<h2>Seguridad</h2>
+<p>Logroño es una ciudad segura para turistas, con baja tasa de criminalidad.</p>
+<p>Se recomienda tomar precauciones básicas como cuidar objetos personales en lugares concurridos.</p>
+<p>Zonas a evitar: el centro histórico es seguro; evitar calles muy solitarias de noche.</p>
+<p>Consejos básicos: usar taxis oficiales, no dejar objetos visibles en coche, y seguir indicaciones del personal turístico.</p>
+
+<h2>Costumbres y etiqueta</h2>
+<p>Los riojanos son amables y respetuosos. Algunas normas sociales:</p>
+<ul>
+  <li>Saludar con un “hola” y “buenos días” es habitual.</li>
+  <li>Propinas: no es obligatorio, pero dejar un 5-10% en restaurantes es habitual si el servicio fue bueno.</li>
+  <li>En templos y lugares religiosos se recomienda vestimenta modesta y respetuosa.</li>
+</ul>
+
+<h2>Apps imprescindibles</h2>
+<ul>
+  <li><a href="https://www.renfe.com" target="_blank">Renfe</a> - para transporte ferroviario.</li>
+  <li><a href="https://www.alsa.es" target="_blank">ALSA</a> - para autobuses interurbanos.</li>
+  <li><a href="https://maps.google.com" target="_blank">Google Maps</a> - mapas y navegación.</li>
+  <li><a href="https://translate.google.com" target="_blank">Google Translate</a> - traducción en tiempo real.</li>
+  <li><a href="https://www.bnext.es" target="_blank">Bnext</a> - para pagos con móvil y gestión de finanzas.</li>
+  <li><a href="https://www.taxify.com" target="_blank">Bolt</a> y <a href="https://www.free-now.com" target="_blank">Free Now</a> - para pedir taxis urbanos rápidamente.</li>
+</ul>  </div>
+</div>
+
+<!-- ══ CTA FINAL ══ -->
+<div class="cta-final">
+  <h3>¡Buen viaje, JAVIER!</h3>
+  <p>Tu aventura en logroño te espera · GuiaMundi.es</p>
+  <div class="cta-pills">
+    <a class="cta-pill" href="#">✈ Vuelos</a>
+    <a class="cta-pill" href="#">🏨 Hoteles</a>
+    <a class="cta-pill" href="#">🎯 Experiencias</a>
+    <a class="cta-pill" href="#">🛡 Seguro</a>
+  </div>
+  <div class="share-bar">
+    <button class="share-btn share-wpp" onclick="shareWpp()">
+      <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Compartir WhatsApp
+    </button>
+    <button class="share-btn share-copy" onclick="copyLink()">⎘ Copiar enlace</button>
+  </div>
+</div>
+<div style="height:16px"></div>
+
+<!-- ══ NOTAS ══ -->
+<div class="section">
+  <div class="sec-eye">Para ti</div>
+  <div class="sec-title">Notas del viajero</div>
+  <div class="note-area">
+    <div class="note-line">Escribe aquí tus notas…</div>
+    <div class="note-line"></div>
+    <div class="note-line"></div>
+    <div class="note-line"></div>
+    <div class="note-line"></div>
+    <div class="note-line"></div>
+  </div>
+</div>
+
+<!-- ══ NAV BOTTOM ══ -->
+<nav class="bottom-nav">
+  <button class="nav-it active" onclick="goTo('info',this)"><span class="ni">◎</span>Inicio</button>
+  <button class="nav-it" onclick="goTo('itinerario',this)"><span class="ni">▦</span>Ruta</button>
+  <button class="nav-it" onclick="goTo('tools',this)"><span class="ni">⚙</span>Tools</button>
+  <button class="nav-it" onclick="goTo('consejos',this)"><span class="ni">💡</span>Consejos</button>
+  <button class="nav-it" onclick="goTo('cultura',this)"><span class="ni">◈</span>Cultura</button>
+</nav>
+
+</div><!-- /shell-right -->
+</div><!-- /shell -->
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── UTILS ──
+function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800)}
+function goTo(id,btn){
+  document.querySelectorAll('.nav-it').forEach(n=>n.classList.remove('active'));
+  btn.classList.add('active');
+  const el=document.getElementById(id);
+  if(!el)return;
+  if(window.innerWidth>860){el.scrollIntoView({behavior:'smooth',block:'start'})}
+  else{window.scrollTo({top:el.offsetTop-10,behavior:'smooth'})}
+}
+function toggleDay(h){h.closest('.day-card').classList.toggle('open')}
+function switchTool(btn,id){
+  btn.closest('.section').querySelectorAll('.ttab').forEach(b=>b.classList.remove('active'));
+  btn.closest('.section').querySelectorAll('.tool-panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(id).classList.add('active');
+}
+function switchCult(btn,id){
+  btn.closest('.section').querySelectorAll('.ctab').forEach(b=>b.classList.remove('active'));
+  btn.closest('.section').querySelectorAll('.ctab-panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(id).classList.add('active');
+}
+
+// ── COMPARTIR ──
+function shareWpp(){
+  const dest=document.querySelector('.cover-country')?.textContent||'este destino';
+  const t=encodeURIComponent('¡Mira mi guía de viaje personalizada para '+dest+'! 🌍✈️\n\nGenerada por GuiaMundi.es\n\n'+window.location.href);
+  window.open('https://wa.me/?text='+t,'_blank');
+}
+function copyLink(){
+  navigator.clipboard.writeText(window.location.href)
+    .then(()=>showToast('✓ Enlace copiado'))
+    .catch(()=>showToast('Copia la URL del navegador'));
+}
+
+// ── PWA INSTALL ──
+let deferredPrompt=null;
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e});
+function installPWA(){
+  if(deferredPrompt){
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(r=>{
+      if(r.outcome==='accepted')showToast('✓ Guardado en pantalla de inicio');
+      deferredPrompt=null;
+    });
+  } else {
+    const iOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
+    showToast(iOS?'Safari → Compartir → Añadir a pantalla de inicio':'Menú ⋮ del navegador → Instalar app');
+  }
+}
+
+// ── CONVERSOR DE MONEDA EN TIEMPO REAL ──
+const rates={};let ratesLoaded=false;
+const cNames={USD:'Dólar USD',GBP:'Libra esterlina',JPY:'Yen japonés',MXN:'Peso mexicano',BRL:'Real brasileño',MAD:'Dírham marroquí',TRY:'Lira turca',THB:'Baht tailandés',IDR:'Rupia indonesia',AED:'Dírham EAU',SGD:'Dólar singapurense',PLN:'Esloti polaco',CZK:'Corona checa',HUF:'Forinto húngaro',RON:'Leu rumano',DKK:'Corona danesa',SEK:'Corona sueca',NOK:'Corona noruega'};
+
+async function loadRates(){
+  try{
+    const r=await fetch('https://open.er-api.com/v6/latest/EUR');
+    const d=await r.json();
+    if(d.rates){
+      Object.assign(rates,d.rates);
+      ratesLoaded=true;
+      convertCurrency();
+      document.getElementById('conv-rate').textContent='Actualizado · '+new Date().toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'});
+    }
+  } catch(e){
+    Object.assign(rates,{USD:1.08,GBP:0.86,JPY:162,MXN:18.5,BRL:5.4,MAD:10.8,TRY:35,THB:38,IDR:17000,AED:3.97,SGD:1.45,PLN:4.25,CZK:25,HUF:390,RON:4.97,DKK:7.46,SEK:11.5,NOK:11.8});
+    ratesLoaded=true;
+    convertCurrency();
+    document.getElementById('conv-rate').textContent='Tasas aproximadas (sin conexión a internet)';
+  }
+}
+function convertCurrency(){
+  if(!ratesLoaded)return;
+  const eur=parseFloat(document.getElementById('conv-eur').value)||0;
+  const to=document.getElementById('conv-to').value;
+  const res=eur*(rates[to]||1);
+  const fmt=res>=1000?res.toFixed(0):res>=10?res.toFixed(2):res.toFixed(4);
+  document.getElementById('conv-foreign').value=fmt;
+  document.getElementById('conv-display').textContent=fmt+' '+to;
+  document.getElementById('conv-to-label').textContent=cNames[to]||to;
+  document.getElementById('conv-rate').textContent='1 € = '+(rates[to]||1).toFixed(4)+' '+to;
+}
+function convertBack(){
+  if(!ratesLoaded)return;
+  const f=parseFloat(document.getElementById('conv-foreign').value)||0;
+  const to=document.getElementById('conv-to').value;
+  document.getElementById('conv-eur').value=(f/(rates[to]||1)).toFixed(2);
+  convertCurrency();
+}
+loadRates();
+
+// ── TRADUCTOR CON AUDIO ──
+const phraseDB={
+  es:['Hola / Buenos días','Por favor','Gracias','¿Cuánto cuesta?','¿Dónde está…?','La cuenta, por favor','No entiendo','¿Habla español?','Ayuda, por favor','Un taxi, por favor','¿Dónde está el baño?','Me llamo…','¿Habla inglés?'],
+  it:['Ciao / Buongiorno','Per favore','Grazie','Quanto costa?','Dov\'è…?','Il conto, per favore','Non capisco','Parla spagnolo?','Aiuto, per favore','Un taxi, per favore','Dov\'è il bagno?','Mi chiamo…','Parla inglese?'],
+  fr:['Bonjour','S\'il vous plaît','Merci','Combien ça coûte?','Où est…?','L\'addition, s\'il vous plaît','Je ne comprends pas','Parlez-vous espagnol?','À l\'aide, s\'il vous plaît','Un taxi, s\'il vous plaît','Où sont les toilettes?','Je m\'appelle…','Parlez-vous anglais?'],
+  de:['Hallo / Guten Morgen','Bitte','Danke','Wie viel kostet das?','Wo ist…?','Die Rechnung, bitte','Ich verstehe nicht','Sprechen Sie Spanisch?','Hilfe, bitte','Ein Taxi, bitte','Wo ist die Toilette?','Ich heiße…','Sprechen Sie Englisch?'],
+  pt:['Olá / Bom dia','Por favor','Obrigado/a','Quanto custa?','Onde fica…?','A conta, por favor','Não entendo','Fala espanhol?','Socorro, por favor','Um táxi, por favor','Onde é o banheiro?','Meu nome é…','Fala inglês?'],
+  ja:['こんにちは','お願いします','ありがとう','いくらですか？','…はどこですか？','お会計をお願いします','わかりません','スペイン語を話しますか？','助けてください','タクシーをお願いします','トイレはどこですか？','私の名前は…','英語を話しますか？'],
+  ar:['مرحبا / صباح الخير','من فضلك','شكرا','كم يكلف؟','أين…؟','الحساب من فضلك','لا أفهم','هل تتكلم الإسبانية؟','مساعدة من فضلك','سيارة أجرة من فضلك','أين الحمام؟','اسمي…','هل تتكلم الإنجليزية؟'],
+  tr:['Merhaba / Günaydın','Lütfen','Teşekkürler','Ne kadar?','Nerede…?','Hesabı lütfen','Anlamıyorum','İspanyolca biliyor musunuz?','Yardım lütfen','Taksi lütfen','Tuvalet nerede?','Benim adım…','İngilizce biliyor musunuz?'],
+  th:['สวัสดี','กรุณา','ขอบคุณ','ราคาเท่าไหร่?','…อยู่ที่ไหน?','เก็บเงินด้วย','ไม่เข้าใจ','พูดภาษาสเปนได้ไหม?','ช่วยด้วยครับ/ค่ะ','แท็กซี่หน่อยครับ/ค่ะ','ห้องน้ำอยู่ที่ไหน?','ฉันชื่อ…','พูดภาษาอังกฤษได้ไหม?'],
+  zh:['你好 / 早上好','请','谢谢','多少钱？','…在哪里？','买单，谢谢','我不明白','你会说西班牙语吗？','请帮帮我','请叫出租车','洗手间在哪里？','我叫…','你会说英语吗？'],
+  el:['Γεια σας / Καλημέρα','Παρακαλώ','Ευχαριστώ','Πόσο κοστίζει;','Πού είναι…;','Τον λογαριασμό παρακαλώ','Δεν καταλαβαίνω','Μιλάτε ισπανικά;','Βοήθεια παρακαλώ','Ένα ταξί παρακαλώ','Πού είναι η τουαλέτα;','Με λένε…','Μιλάτε αγγλικά;'],
+  pl:['Cześć / Dzień dobry','Proszę','Dziękuję','Ile to kosztuje?','Gdzie jest…?','Rachunek, proszę','Nie rozumiem','Czy mówi pan/pani po hiszpańsku?','Pomocy proszę','Taksówkę proszę','Gdzie jest toaleta?','Mam na imię…','Czy mówi pan/pani po angielsku?'],
+  nl:['Hallo / Goedemorgen','Alstublieft','Dank u','Hoeveel kost het?','Waar is…?','De rekening graag','Ik begrijp het niet','Spreekt u Spaans?','Help alstublieft','Een taxi graag','Waar is het toilet?','Ik heet…','Spreekt u Engels?'],
+  ru:['Привет / Доброе утро','Пожалуйста','Спасибо','Сколько стоит?','Где находится…?','Счёт, пожалуйста','Я не понимаю','Вы говорите по-испански?','Помогите, пожалуйста','Такси, пожалуйста','Где туалет?','Меня зовут…','Вы говорите по-английски?'],
+  cs:['Ahoj / Dobré ráno','Prosím','Děkuji','Kolik to stojí?','Kde je…?','Účet prosím','Nerozumím','Mluvíte španělsky?','Pomozte mi prosím','Taxi prosím','Kde je toaleta?','Jmenuji se…','Mluvíte anglicky?'],
+  ro:['Bună / Bună dimineața','Vă rog','Mulțumesc','Cât costă?','Unde este…?','Nota de plată, vă rog','Nu înțeleg','Vorbiți spaniolă?','Ajutor, vă rog','Un taxi, vă rog','Unde este toaleta?','Mă numesc…','Vorbiți engleză?'],
+};
+
+function updatePhrases(){
+  const lang=document.getElementById('trans-lang-sel').value;
+  const esp=phraseDB['es'];
+  const dest=phraseDB[lang]||phraseDB['it'];
+  document.getElementById('phrases-list').innerHTML=esp.map((es,i)=>`
+    <div class="trans-item">
+      <div class="trans-texts">
+        <div class="trans-es">${es}</div>
+        <div class="trans-dest">${dest[i]||''}</div>
+      </div>
+      <button class="trans-audio" onclick="speak('${(dest[i]||'').replace(/'/g,"\\'").replace(/"/g,'&quot;')}','${lang}',this)" title="Escuchar pronunciación">▶</button>
+    </div>
+  `).join('');
+}
+function speak(text,lang,btn){
+  if(!window.speechSynthesis){showToast('Audio no disponible en este navegador');return}
+  window.speechSynthesis.cancel();
+  document.querySelectorAll('.trans-audio').forEach(b=>b.classList.remove('playing'));
+  btn.classList.add('playing');
+  const u=new SpeechSynthesisUtterance(text);
+  const langMap={it:'it-IT',fr:'fr-FR',de:'de-DE',pt:'pt-PT',ja:'ja-JP',ar:'ar-SA',tr:'tr-TR',th:'th-TH',zh:'zh-CN',el:'el-GR',pl:'pl-PL',nl:'nl-NL',ru:'ru-RU',cs:'cs-CZ',ro:'ro-RO'};
+  u.lang=langMap[lang]||lang;
+  u.rate=0.82;u.pitch=1;
+  u.onend=()=>btn.classList.remove('playing');
+  u.onerror=()=>{btn.classList.remove('playing');showToast('Audio no disponible para este idioma')};
+  window.speechSynthesis.speak(u);
+}
+updatePhrases();
+
+// ── CALCULADORA DE PRESUPUESTO ──
+function calcBudget(){
+  const dias=parseFloat(document.getElementById('c-dias').value)||0;
+  const viaj=Math.max(1,parseFloat(document.getElementById('c-viaj').value)||1);
+  const aloj=parseFloat(document.getElementById('c-aloj').value)||0;
+  const com=parseFloat(document.getElementById('c-com').value)||0;
+  const transp=parseFloat(document.getElementById('c-transp').value)||0;
+  const act=parseFloat(document.getElementById('c-act').value)||0;
+  const tA=aloj*dias;
+  const tC=com*dias*viaj;
+  const tot=tA+tC+transp+act;
+  const f=n=>n.toLocaleString('es-ES',{maximumFractionDigits:0})+'€';
+  document.getElementById('r-aloj').textContent=f(tA);
+  document.getElementById('r-com').textContent=f(tC);
+  document.getElementById('r-transp').textContent=f(transp);
+  document.getElementById('r-act').textContent=f(act);
+  document.getElementById('r-total').textContent=f(tot);
+  document.getElementById('r-pp').textContent=f(tot/viaj);
+}
+calcBudget();
+
+// ── CHECKLIST DE EQUIPAJE ──
+const checkData={
+  ropa:['Ropa ligera (5–7 días)','Chaqueta o jersey fino','Ropa interior extra','Calcetines (varios pares)','Calzado cómodo para caminar','Sandalias o chanclas','Ropa de baño','Pijama','Pañuelo o fular','Chubasquero ligero'],
+  docs:['DNI o Pasaporte vigente','Tarjeta Sanitaria Europea','Seguro de viaje contratado','Reservas de alojamiento','Confirmación de vuelo','2 tarjetas bancarias','Efectivo en moneda local','Carné de conducir','Visado (si aplica)','Fotos de pasaporte extra'],
+  tech:['Móvil cargado al 100%','Cargador del móvil','Adaptador de enchufe','Power bank cargado','Auriculares','Cámara de fotos','Tarjeta de memoria extra','Cargador portátil laptop','Cable USB extra','Mapas descargados offline'],
+  salud:['Protector solar FPS 50+','Repelente de mosquitos','Medicación habitual (x2)','Botiquín básico','Antihistamínico','Ibuprofeno y paracetamol','Tiritas y venda elástica','Pastillas para el estómago','Mascarillas FFP2','Termómetro digital'],
+  extras:['Botella de agua reutilizable','Guía de conversación','Bolsa de tela para mercados','Candado para el equipaje','Funda impermeable para móvil','Snacks para el viaje','Almohada de viaje','Antifaz para dormir','Tapones para los oídos','Adaptador de moneda/tarjeta'],
+};
+const checkState={};
+let currentCat='ropa';
+
+function initCheck(){
+  Object.keys(checkData).forEach(c=>checkState[c]=checkData[c].map(()=>false));
+  renderCheck();
+}
+function switchCat(btn,cat){
+  document.querySelectorAll('.check-cat-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  currentCat=cat;
+  renderCheck();
+}
+function renderCheck(){
+  const items=checkData[currentCat];
+  const states=checkState[currentCat];
+  document.getElementById('checklist-items').innerHTML=items.map((item,i)=>`
+    <div class="check-item${states[i]?' done':''}" onclick="toggleCheck('${currentCat}',${i},this)">
+      <div class="check-box">${states[i]?'✓':''}</div>
+      <div class="check-label">${item}</div>
+    </div>
+  `).join('');
+  updateProgress();
+}
+function toggleCheck(cat,idx,el){
+  checkState[cat][idx]=!checkState[cat][idx];
+  el.classList.toggle('done');
+  el.querySelector('.check-box').textContent=checkState[cat][idx]?'✓':'';
+  updateProgress();
+}
+function updateProgress(){
+  let done=0,total=0;
+  Object.values(checkState).forEach(a=>{total+=a.length;done+=a.filter(Boolean).length});
+  const pct=total?Math.round(done/total*100):0;
+  document.getElementById('check-bar').style.width=pct+'%';
+  document.getElementById('check-pct').textContent=pct+'% completado';
+}
+initCheck();
+</script>
+</body>
+</html>
