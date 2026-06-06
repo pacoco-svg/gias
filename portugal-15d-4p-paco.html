@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="GuiaMundi">
+<meta name="theme-color" content="#1A1A2E">
+<title>Guía de PORTUGAL · 15días</title>
+<link rel="manifest" href="data:application/json;charset=utf-8,%7B%22name%22%3A%22Gu%C3%ADa%20de%20PORTUGAL%22%2C%22short_name%22%3A%22PORTUGAL%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%231A1A2E%22%2C%22theme_color%22%3A%22%231A1A2E%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%2C%253Csvg%2520xmlns%3D%2527http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%2527%2520viewBox%3D%25270%25200%2520100%2520100%2527%253E%253Ctext%2520y%3D%2527.9em%2527%2520font-size%3D%252790%2527%253E%25F0%259F%258C%258D%253C%2Ftext%253E%253C%2Fsvg%253E%22%2C%22sizes%22%3A%22192x192%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%7D%5D%7D">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1A1A2E;--gold:#C9922A;--gold-l:#F5E6C8;--gold-p:#FDF6E9;
+  --terra:#B84A2E;--sky:#1B4F72;--sage:#2D6A4F;--cream:#FAFAF6;
+  --sand:#F0EBE0;--mist:#EEF2F7;--line:#DDD8CF;--mid:#7B7369;--r:14px;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overflow:hidden}
+body{font-family:'DM Sans',sans-serif;background:var(--ink);color:var(--ink);font-size:15px;line-height:1.7;display:flex;flex-direction:column}
+
+/* ── PORTADA ── */
+.cover{flex-shrink:0;background:var(--ink);padding:24px 20px 16px;position:relative;overflow:hidden;text-align:center}
+.cover-bg{position:absolute;inset:0;background:radial-gradient(circle at 30% 50%,rgba(201,146,42,.15) 0,transparent 60%),radial-gradient(circle at 70% 50%,rgba(27,79,114,.18) 0,transparent 60%)}
+.cover-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,146,42,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,146,42,.04) 1px,transparent 1px);background-size:32px 32px}
+.cover-stripe{position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--terra),var(--sky))}
+.cover-content{position:relative;z-index:2}
+.cover-eyebrow{font-size:9px;font-weight:500;letter-spacing:3px;color:rgba(201,146,42,.7);text-transform:uppercase;margin-bottom:6px}
+.cover-title{font-family:'Playfair Display',serif;font-size:clamp(28px,8vw,44px);font-weight:900;line-height:1;color:#fff;letter-spacing:-1px;font-style:italic;margin-bottom:4px}
+.cover-subtitle{font-size:13px;color:rgba(255,255,255,.45);margin-bottom:14px;letter-spacing:.5px}
+.cover-actions{display:flex;gap:8px;justify-content:center;max-width:340px;margin:0 auto}
+.cover-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:5px;padding:9px 10px;border-radius:9px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;transition:all .2s}
+.cover-btn-wpp{background:#25D366;color:#fff}
+.cover-btn-save{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#fff}
+.cover-btn:active{transform:scale(.96)}
+
+/* ── TABS NAV ── */
+.tabs-nav{flex-shrink:0;background:rgba(8,8,20,.97);border-bottom:1px solid rgba(201,146,42,.15);position:relative}
+.tabs-scroll{display:flex;overflow-x:auto;scrollbar-width:none;padding:0 12px}
+.tabs-scroll::-webkit-scrollbar{display:none}
+.tab-btn{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:3px;padding:11px 14px;border:none;background:none;color:rgba(255,255,255,.38);font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;cursor:pointer;transition:all .2s;border-bottom:2px solid transparent;white-space:nowrap;min-width:72px}
+.tab-btn .tab-icon{font-size:18px;line-height:1}
+.tab-btn.active{color:var(--gold);border-bottom-color:var(--gold)}
+.tab-btn:hover{color:rgba(255,255,255,.7)}
+/* Flecha indicadora de más tabs */
+.tabs-fade{position:absolute;right:0;top:0;bottom:0;width:40px;background:linear-gradient(to right,transparent,rgba(8,8,20,.97));pointer-events:none;display:flex;align-items:center;justify-content:flex-end;padding-right:6px}
+.tabs-fade span{color:var(--gold);font-size:16px;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
+
+/* ── CONTENIDO ── */
+.tabs-content{flex:1;overflow-y:auto;background:var(--cream)}
+.tab-panel{display:none;padding:22px 18px 32px;min-height:100%}
+.tab-panel.active{display:block}
+@media(min-width:700px){.tab-panel{max-width:800px;margin:0 auto;padding:28px 36px 40px}}
+
+/* ── TIPOGRAFÍA ── */
+.sec-eye{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:4px;display:flex;align-items:center;gap:6px}
+.sec-eye::before{content:'';display:inline-block;width:10px;height:1px;background:var(--gold)}
+.sec-title{font-family:'Playfair Display',serif;font-size:21px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:16px}
+
+/* ── FICHA MINI ── */
+.info-mini{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.info-tag{background:var(--sand);border:1px solid var(--line);border-radius:50px;padding:5px 12px;font-size:12px;color:var(--mid)}
+.info-tag strong{color:var(--ink);font-weight:600}
+
+/* ── AD ── */
+.ad{background:#FFF8E7;border:1px solid #E8C84A;border-left:4px solid #E8C84A;border-radius:var(--r);padding:10px 12px;display:flex;align-items:flex-start;gap:8px;margin-bottom:14px}
+.ad-badge{background:#E8C84A;color:#fff;font-size:8px;font-weight:700;letter-spacing:1px;padding:2px 5px;border-radius:4px;flex-shrink:0;margin-top:1px}
+.ad strong{display:block;font-size:12px;font-weight:500;color:#7A5C00;margin-bottom:1px}
+.ad span{font-size:11px;color:#A07B20;font-style:italic}
+
+/* ── CONTENIDO IA ── */
+.ai-content{font-size:14px;line-height:1.85;color:var(--ink)}
+.ai-content h1,.ai-content h2{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--ink);margin:20px 0 8px;padding-bottom:5px;border-bottom:2px solid var(--gold-l)}
+.ai-content h2:first-child{margin-top:0}
+.ai-content h3{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--sky);margin:14px 0 5px}
+.ai-content h3:first-child{margin-top:0}
+.ai-content p{margin-bottom:9px}
+.ai-content ul,.ai-content ol{padding-left:18px;margin-bottom:10px}
+.ai-content li{margin-bottom:4px}
+.ai-content strong{font-weight:600}
+.ai-content a{color:var(--sky);text-decoration:none;border-bottom:1px solid rgba(27,79,114,.25);font-weight:500;word-break:break-word}
+.ai-content a:hover{color:var(--gold);border-bottom-color:var(--gold)}
+
+/* ── BLOQUES DE DÍA ── */
+.day-block{background:#fff;border:1px solid var(--line);border-radius:var(--r);margin-bottom:16px;overflow:hidden}
+.day-block-header{background:var(--ink);color:var(--gold);padding:12px 16px;font-family:'Playfair Display',serif;font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:space-between;cursor:pointer}
+.day-block-header .day-toggle{font-size:14px;transition:transform .3s;flex-shrink:0}
+.day-block.open .day-toggle{transform:rotate(180deg)}
+.day-block-body{display:none;padding:14px 16px}
+.day-block.open .day-block-body{display:block}
+.day-block-body .ai-content h3{margin-top:10px}
+.day-block-body .ai-content h3:first-child{margin-top:0}
+/* Botón maps dentro del día */
+.day-map-btn{display:inline-flex;align-items:center;gap:6px;margin:12px 0 6px;background:var(--sky);color:#fff;padding:9px 18px;border-radius:50px;font-size:12px;font-weight:700;text-decoration:none;border:none;transition:all .2s}
+.day-map-btn:hover{background:var(--gold)}
+/* Campo de nota manual */
+.day-note-wrap{margin-top:12px;border-top:1px solid var(--line);padding-top:12px}
+.day-note-label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);margin-bottom:5px}
+.day-note{width:100%;min-height:70px;padding:9px 12px;border:1.5px solid var(--line);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink);outline:none;resize:vertical;background:var(--cream);transition:border-color .2s}
+.day-note:focus{border-color:var(--gold)}
+.day-note::placeholder{color:var(--mid)}
+
+/* ── HERRAMIENTAS ── */
+.tools-tabs{display:flex;gap:6px;margin-bottom:14px;overflow-x:auto;scrollbar-width:none}
+.tools-tabs::-webkit-scrollbar{display:none}
+.ttab{background:var(--sand);border:none;border-radius:50px;padding:7px 13px;font-size:12px;font-family:'DM Sans',sans-serif;color:var(--mid);cursor:pointer;white-space:nowrap;transition:all .2s}
+.ttab.active{background:var(--ink);color:var(--gold);font-weight:500}
+.tool-panel{display:none}
+.tool-panel.active{display:block}
+@media(min-width:700px){
+  .tools-tabs{display:none}
+  .tool-panel{display:block!important}
+  .tools-desktop{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .tool-section-title{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);margin-bottom:8px;padding-bottom:5px;border-bottom:1px solid var(--line)}
+}
+
+/* CONVERSOR */
+.conv-box{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px}
+.conv-row{display:flex;gap:8px;align-items:flex-end;margin-bottom:10px}
+.conv-iw{flex:1}
+.conv-iw label{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--mid);display:block;margin-bottom:3px}
+.conv-input{width:100%;padding:8px 10px;border:1.5px solid var(--line);border-radius:9px;font-size:16px;font-family:'Playfair Display',serif;font-weight:700;color:var(--ink);outline:none;background:var(--cream)}
+.conv-input:focus{border-color:var(--gold)}
+.conv-arrow{font-size:16px;color:var(--gold);padding-bottom:6px;flex-shrink:0}
+.conv-result{background:var(--gold-p);border:1px solid var(--gold-l);border-radius:9px;padding:10px;text-align:center;margin-bottom:6px}
+.conv-amount{font-family:'Playfair Display',serif;font-size:26px;font-weight:900;color:var(--gold)}
+.conv-rate{font-size:10px;color:var(--mid);margin-top:1px}
+.conv-select{width:100%;padding:7px 10px;border:1.5px solid var(--line);border-radius:9px;font-size:13px;font-family:'DM Sans',sans-serif;color:var(--ink);outline:none;background:#fff;margin-bottom:9px}
+.conv-note{font-size:10px;color:var(--mid);text-align:center}
+
+/* TRADUCTOR */
+.trans-wrap{border-radius:var(--r);overflow:hidden;border:1px solid var(--line)}
+.trans-lang{background:var(--ink);color:#fff;padding:9px 13px;font-size:11px;font-weight:500;display:flex;align-items:center;justify-content:space-between}
+.trans-lang select{background:transparent;border:none;color:var(--gold);font-family:'DM Sans',sans-serif;font-size:12px;outline:none;cursor:pointer}
+.trans-list{background:#fff;max-height:280px;overflow-y:auto}
+.trans-item{display:flex;align-items:center;padding:9px 13px;border-bottom:1px solid var(--line);gap:8px}
+.trans-item:last-child{border-bottom:none}
+.trans-texts{flex:1}
+.trans-es{font-size:13px;font-weight:500;color:var(--ink)}
+.trans-dest{font-size:12px;color:var(--sky);font-style:italic;margin-top:1px}
+.trans-audio{background:none;border:1.5px solid var(--gold);border-radius:50%;width:30px;height:30px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--gold);flex-shrink:0;font-size:11px;transition:all .2s}
+.trans-audio.playing,.trans-audio:active{background:var(--gold);color:#fff}
+
+/* CALCULADORA */
+.calc-box{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px}
+.calc-row{margin-bottom:9px}
+.calc-row label{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--mid);display:block;margin-bottom:3px}
+.calc-input{width:100%;padding:7px 10px;border:1.5px solid var(--line);border-radius:9px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--ink);outline:none;background:var(--cream)}
+.calc-input:focus{border-color:var(--gold)}
+.calc-result{background:var(--ink);border-radius:var(--r);padding:13px;margin-top:5px}
+.calc-result-title{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:7px}
+.calc-line{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.calc-line:last-child{border-bottom:none;padding-top:8px;margin-top:4px}
+.calc-line span{font-size:12px;color:rgba(255,255,255,.55)}
+.calc-line strong{font-family:'Playfair Display',serif;font-size:13px;color:var(--gold)}
+.calc-line.total span{color:#fff;font-weight:600;font-size:13px}
+.calc-line.total strong{font-size:17px}
+
+/* CHECKLIST */
+.check-cats{display:flex;gap:5px;margin-bottom:9px;overflow-x:auto;scrollbar-width:none}
+.check-cats::-webkit-scrollbar{display:none}
+.check-cat-btn{background:var(--sand);border:none;border-radius:50px;padding:5px 11px;font-size:11px;font-family:'DM Sans',sans-serif;color:var(--mid);cursor:pointer;white-space:nowrap;transition:all .2s}
+.check-cat-btn.active{background:var(--ink);color:var(--gold);font-weight:500}
+.checklist{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;max-height:280px;overflow-y:auto}
+.check-item{display:flex;align-items:center;gap:9px;padding:9px 12px;border-bottom:1px solid var(--line);cursor:pointer;transition:background .15s}
+.check-item:last-child{border-bottom:none}
+.check-item:hover{background:var(--sand)}
+.check-box{width:18px;height:18px;border:2px solid var(--line);border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px;color:transparent;transition:all .2s}
+.check-item.done .check-box{background:var(--sage);border-color:var(--sage);color:#fff}
+.check-item.done .check-label{text-decoration:line-through;color:var(--mid)}
+.check-label{font-size:13px;color:var(--ink)}
+.check-progress{background:var(--sand);border-radius:var(--r);padding:8px 12px;margin-bottom:9px;display:flex;align-items:center;gap:8px}
+.check-bar-wrap{flex:1;background:var(--line);border-radius:50px;height:5px;overflow:hidden}
+.check-bar{height:100%;background:linear-gradient(90deg,var(--sage),var(--gold));border-radius:50px;transition:width .4s}
+.check-pct{font-size:12px;font-weight:600;color:var(--sage);flex-shrink:0}
+
+/* ── DOCUMENTOS ── */
+.docs-upload-area{border:2px dashed var(--line);border-radius:var(--r);padding:20px;text-align:center;background:#fff;cursor:pointer;transition:all .2s;margin-bottom:16px}
+.docs-upload-area:hover{border-color:var(--gold);background:var(--gold-p)}
+.docs-upload-icon{font-size:28px;margin-bottom:6px}
+.docs-upload-text{font-size:13px;color:var(--mid)}
+.docs-upload-text strong{color:var(--ink);display:block;margin-bottom:2px}
+.docs-list{display:flex;flex-direction:column;gap:8px}
+.doc-item{background:#fff;border:1px solid var(--line);border-radius:10px;padding:11px 14px;display:flex;align-items:center;gap:10px}
+.doc-icon{font-size:22px;flex-shrink:0}
+.doc-info{flex:1;min-width:0}
+.doc-name{font-size:13px;font-weight:500;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.doc-size{font-size:11px;color:var(--mid)}
+.doc-open{background:var(--sky);color:#fff;border:none;border-radius:6px;padding:5px 10px;font-size:11px;font-weight:600;cursor:pointer;flex-shrink:0}
+.doc-del{background:none;border:none;color:var(--mid);cursor:pointer;font-size:16px;padding:0 4px;flex-shrink:0}
+#doc-input{display:none}
+
+/* ── MAPA GENERAL ── */
+.map-block{background:var(--ink);border-radius:var(--r);overflow:hidden;margin-bottom:16px}
+.map-prev{height:110px;background:repeating-linear-gradient(0deg,transparent,transparent 35px,rgba(201,146,42,.06) 36px),repeating-linear-gradient(90deg,transparent,transparent 35px,rgba(201,146,42,.06) 36px);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:5px}
+.map-icon{font-size:26px}
+.map-dest-label{font-size:11px;color:rgba(255,255,255,.35);letter-spacing:1px}
+.map-cta{padding:11px 14px;display:flex;align-items:center;justify-content:space-between}
+.map-cta-t strong{display:block;color:#fff;font-size:13px;margin-bottom:1px}
+.map-cta-t span{font-size:11px;color:rgba(255,255,255,.45)}
+.map-btn{background:var(--gold);color:var(--ink);font-size:11px;font-weight:700;padding:8px 15px;border-radius:50px;text-decoration:none}
+
+/* ── CTA FINAL ── */
+.cta-box{background:linear-gradient(135deg,var(--ink),#2A1F3D);border-radius:var(--r);padding:22px 18px;text-align:center;position:relative;overflow:hidden;margin-bottom:16px}
+.cta-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--terra),var(--sky))}
+.cta-box h3{font-family:'Playfair Display',serif;font-size:18px;color:#fff;margin-bottom:5px}
+.cta-box p{font-size:12px;color:rgba(255,255,255,.45);margin-bottom:14px}
+.cta-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-bottom:13px}
+.cta-pill{background:rgba(201,146,42,.15);border:1px solid rgba(201,146,42,.3);color:var(--gold);font-size:12px;padding:6px 12px;border-radius:50px;text-decoration:none}
+.share-bar{display:flex;gap:7px}
+.share-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:5px;padding:9px;border-radius:9px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;transition:all .2s}
+.share-wpp{background:#25D366;color:#fff}
+.share-copy{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:#fff}
+
+/* NOTAS */
+.note-area{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.note-line{padding:12px 14px;border-bottom:1px solid var(--line);min-height:44px;font-size:14px;color:var(--line);font-style:italic}
+.note-line:last-child{border-bottom:none}
+
+/* MODAL GUARDAR */
+.save-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:999;align-items:flex-end;justify-content:center}
+.save-modal.open{display:flex}
+.save-sheet{background:#fff;border-radius:var(--r) var(--r) 0 0;padding:24px 20px 32px;width:100%;max-width:480px}
+.save-sheet h3{font-family:'Playfair Display',serif;font-size:19px;color:var(--ink);margin-bottom:6px}
+.save-sheet p{font-size:13px;color:var(--mid);margin-bottom:18px;line-height:1.6}
+.save-option{display:flex;align-items:center;gap:12px;padding:13px 14px;border:1.5px solid var(--line);border-radius:var(--r);margin-bottom:9px;cursor:pointer;transition:all .2s}
+.save-option:hover{border-color:var(--gold);background:var(--gold-p)}
+.save-option-icon{font-size:24px;flex-shrink:0}
+.save-option-text strong{display:block;font-size:14px;color:var(--ink);margin-bottom:1px}
+.save-option-text span{font-size:12px;color:var(--mid)}
+.save-close{width:100%;padding:11px;background:var(--sand);border:none;border-radius:var(--r);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;color:var(--mid);cursor:pointer;margin-top:6px}
+
+/* TOAST */
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(10px);background:var(--ink);color:#fff;padding:9px 18px;border-radius:50px;font-size:13px;font-weight:500;opacity:0;transition:all .3s;pointer-events:none;z-index:9999;white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.fa{animation:fadeUp .45s ease both}
+</style>
+</head>
+<body>
+
+<!-- ══ PORTADA ══ -->
+<div class="cover">
+  <div class="cover-bg"></div>
+  <div class="cover-grid"></div>
+  <div class="cover-stripe"></div>
+  <div class="cover-content">
+    <div class="cover-eyebrow fa">GuiaMundi.es</div>
+    <div class="cover-title fa" style="animation-delay:.1s">Guía de PORTUGAL</div>
+    <div class="cover-subtitle fa" style="animation-delay:.2s">15 días · Cultural e histórico · 4viajero/s</div>
+    <div class="cover-actions fa" style="animation-delay:.3s">
+      <button class="cover-btn cover-btn-wpp" onclick="shareWpp()">
+        <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Compartir
+      </button>
+      <button class="cover-btn cover-btn-save" onclick="openSaveModal()">⬇ Guardar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TABS NAV ══ -->
+<div class="tabs-nav">
+  <div class="tabs-scroll" id="tabs-scroll">
+    <button class="tab-btn active" onclick="showTab('info',this)"><span class="tab-icon">📋</span>Viajero</button>
+    <button class="tab-btn" onclick="showTab('itinerario',this)"><span class="tab-icon">🗓</span>Ruta</button>
+    <button class="tab-btn" onclick="showTab('experiencias',this)"><span class="tab-icon">⭐</span>Experiencias</button>
+    <button class="tab-btn" onclick="showTab('tools',this)"><span class="tab-icon">⚙️</span>Tools</button>
+    <button class="tab-btn" onclick="showTab('destino',this)"><span class="tab-icon">💡</span>Destino</button>
+    <button class="tab-btn" onclick="showTab('transporte',this)"><span class="tab-icon">🚗</span>Transporte</button>
+    <button class="tab-btn" onclick="showTab('recursos',this)"><span class="tab-icon">🔗</span>Recursos</button>
+    <button class="tab-btn" onclick="showTab('cultura',this)"><span class="tab-icon">🎬</span>Cultura</button>
+    <button class="tab-btn" onclick="showTab('curiosidades',this)"><span class="tab-icon">🤔</span>Curiosidades</button>
+    <button class="tab-btn" onclick="showTab('docs',this)"><span class="tab-icon">📁</span>Documentos</button>
+    <button class="tab-btn" onclick="showTab('notas',this)"><span class="tab-icon">📝</span>Notas</button>
+  </div>
+  <div class="tabs-fade"><span>›</span></div>
+</div>
+
+<!-- ══ CONTENIDO ══ -->
+<div class="tabs-content" id="tabs-content">
+
+  <!-- TAB VIAJERO -->
+  <div class="tab-panel active" id="tab-info">
+    <div class="sec-eye">Tu viaje</div>
+    <div class="sec-title">Información del viajero</div>
+    <div class="info-mini">
+      <div class="info-tag"><strong>PACO</strong></div>
+      <div class="info-tag">📍 <strong>PORTUGAL</strong></div>
+      <div class="info-tag">🗓 <strong>15 días</strong></div>
+      <div class="info-tag">👥 <strong>4 viajero/s</strong></div>
+      <div class="info-tag">🧭 <strong>Cultural e histórico</strong></div>
+      <div class="info-tag">🚗 <strong>Coche de alquiler</strong></div>
+    </div>
+    <div class="ad"><div class="ad-badge">AD</div><div><strong>Vuelos · Seguro de viaje</strong><span>→ Insertar banner afiliado aquí</span></div></div>
+    <div class="ad"><div class="ad-badge">AD</div><div><strong>Hoteles · Alojamiento</strong><span>→ Booking / Airbnb</span></div></div>
+    <div style="margin-top:16px">
+      <div class="map-block">
+        <div class="map-prev"><div class="map-icon">🗺️</div><div class="map-dest-label">PORTUGAL</div></div>
+        <div class="map-cta">
+          <div class="map-cta-t"><strong>Ver en Google Maps</strong><span>Explorar PORTUGAL</span></div>
+          <a class="map-btn" href="https://www.google.com/maps/search/PORTUGAL" target="_blank">Abrir →</a>
+        </div>
+      </div>
+    </div>
+    <div class="cta-box">
+      <h3>¡Buen viaje, PACO!</h3>
+      <p>Tu aventura en PORTUGAL · GuiaMundi.es</p>
+      <div class="cta-pills">
+        <a class="cta-pill" href="#">✈ Vuelos</a>
+        <a class="cta-pill" href="#">🏨 Hoteles</a>
+        <a class="cta-pill" href="#">🎯 Experiencias</a>
+        <a class="cta-pill" href="#">🛡 Seguro</a>
+      </div>
+      <div class="share-bar">
+        <button class="share-btn share-wpp" onclick="shareWpp()">
+          <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Compartir WhatsApp
+        </button>
+        <button class="share-btn share-copy" onclick="copyLink()">⎘ Copiar enlace</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB ITINERARIO -->
+  <div class="tab-panel" id="tab-itinerario">
+    <div class="sec-eye">Día a día</div>
+    <div class="sec-title">Itinerario detallado</div>
+    <div class="ad"><div class="ad-badge">AD</div><div><strong>Tours · Actividades</strong><span>→ Experiencias locales recomendadas</span></div></div>
+    <div id="itinerario-content" class="ai-content" style="margin-top:14px"><h2>DÍA 1 — Lisboa: Introducción a la historia y cultura portuguesa</h2>
+<p>Comenzamos el viaje explorando la capital de Portugal, una ciudad vibrante, llena de monumentos históricos y barrios típicos que narran historias del pasado y presente del país.</p>
+<h3>Torre de Belém</h3>
+<p>Icono de la era de los descubrimientos portugueses, esta torre defensiva del siglo XVI ofrece una vista impresionante del río Tajo. Tiempo recomendado: 1 hora.</p>
+<p>
+<a href="https://www.google.com/search?q=Torre+de+Bel%C3%A9m+PORTUGAL" target="_blank">📖 Torre de Belém</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Torre+de+Bel%C3%A9m+PORTUGAL" target="_blank">📍 Maps</a>
+</p>
+<h3>Monasterio de los Jerónimos</h3>
+<p>Ejemplo sublime del estilo manuelino, declarado Patrimonio de la Humanidad. Se pueden visitar la iglesia y el claustro, esenciales para entender la historia de Portugal. Tiempo recomendado: 2 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Monasterio+de+los+Jer%C3%B3nimos+PORTUGAL" target="_blank">📖 Monasterio de los Jerónimos</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Monasterio+de+los+Jer%C3%B3nimos+PORTUGAL" target="_blank">📍 Maps</a>
+</p>
+<h3>MAAT (Museo de Arte, Arquitectura y Tecnología)</h3>
+<p>Edificio moderno junto al río que combina arte contemporáneo con tecnología. Perfecto para contraste con los monumentos históricos. Tiempo recomendado: 1 hora.</p>
+<p>
+<a href="https://www.google.com/search?q=MAAT+Portugal" target="_blank">📖 MAAT</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/MAAT+Portugal" target="_blank">📍 Maps</a>
+</p>
+<h3>Alfama</h3>
+<p>Barrio histórico con callejuelas estrechas, olor a azulejos y fado. Ideal para pasear, disfrutar de miradores y descubrir la esencia de Lisboa. Tiempo recomendado: 2 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Alfama+Lisboa+PORTUGAL" target="_blank">📖 Alfama</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Alfama+Lisboa+PORTUGAL" target="_blank">📍 Maps</a>
+</p>
+<h3>Castillo de San Jorge</h3>
+<p>Fortaleza en la cima de Lisboa con vistas panorámicas y gran valor histórico. Perfecto para entender la evolución de la ciudad. Tiempo recomendado: 1 hora y media.</p>
+<p>
+<a href="https://www.google.com/search?q=Castillo+de+San+Jorge+Lisboa+PORTUGAL" target="_blank">📖 Castillo de San Jorge</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Castillo+de+San+Jorge+Lisboa+PORTUGAL" target="_blank">📍 Maps</a>
+</p>
+<h3>Praça do Comércio</h3>
+<p>Una de las plazas más grandes y majestuosas de Lisboa, símbolo del comercio y la reconstrucción tras el terremoto. Lugar ideal para relajarse y tomar imágenes icónicas. Tiempo recomendado: 30 minutos.</p>
+<p>
+<a href="https://www.google.com/search?q=Pra%C3%A7a+do+Com%C3%A9rcio+Lisboa+PORTUGAL" target="_blank">📖 Praça do Comércio</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Pra%C3%A7a+do+Com%C3%A9rcio+Lisboa+PORTUGAL" target="_blank">📍 Maps</a>
+</p>
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=Restaurantes+en+Lisboa" target="_blank">📖 Restaurantes en Lisboa</a> &nbsp;·&nbsp; <a href="https://www.google.com/maps/search/Restaurantes+en+Lisboa" target="_blank">📍 Maps</a></p>
+<p><strong>Alojamiento sugerido:</strong> <a href="https://www.google.com/search?q=Hoteles+en+Lisboa" target="_blank">📖 Hoteles en Lisboa</a> &nbsp;·&nbsp; <a href="https://www.google.com/maps/search/Hoteles+en+Lisboa" target="_blank">📍 Maps</a></p>
+
+<h2>DÍA 2 — Sintra y alrededores: Palacios y paisajes románticos</h2>
+<p>Un día dedicado a los tesoros de Sintra, declarada Patrimonio de la Humanidad, con castillos y palacios que parecen sacados de un cuento de hadas.</p>
+<h3>Palacio Nacional de Sintra</h3>
+<p>Conocido por sus chimeneas cónicas y mezcla de estilos góticos y manuelinos, es un punto imprescindible para descubrir la historia medieval de Portugal. Tiempo recomendado: 1 hora.</p>
+<p>
+<a href="https://www.google.com/search?q=Palacio+Nacional+de+Sintra+PORTUGAL" target="_blank">📖 Palacio Nacional de Sintra</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Palacio+Nacional+de+Sintra+PORTUGAL" target="_blank">📍 Maps</a>
+</p>
+<h3>Palacio da Pena</h3>
+<p>Este palacio romántico de colores vivos sobre una colina es una obra maestra del eclecticismo del siglo XIX. Recorre sus jardines y contempla las vistas de la región. Tiempo recomendado: 2 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Palacio+da+Pena+PORTUGAL" target="_blank">📖 Palacio da Pena</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Palacio+da+Pena+PORTUGAL" target="_blank">📍 Maps</a>
+</p>
+<h3>Cabo da Roca</h3>
+<p>El punto más occidental de Europa continental. Los acantilados ofrecen vistas impactantes del Atlántico y el viento asegura una experiencia inolvidable. Tiempo recomendado: 1 hora.</p>
+<p>
+<a href="https://www.google.com/search?q=Cabo+da+Roca+PORTUGAL" target="_blank">📖 Cabo da Roca</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Cabo+da+Roca+PORTUGAL" target="_blank">📍 Maps</a>
+</p>
+<h3>Quinta da Regaleira</h3>
+<p>Un palacio con jardines laberínticos, fuentes y elementos místicos que representan simbolismo masónico y terrenos románticos. Tiempo recomendado: 1 hora y media.</p>
+<p>
+<a href="https://www.google.com/search?q=Quinta+da+Regaleira+PORTUGAL" target="_blank">📖 Quinta da Regaleira</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Quinta+da+Regaleira+PORTUGAL" target="_blank">📍 Maps</a>
+</p>
+<h3>Castelo dos Mouros</h3>
+<p>Fortaleza árabe del siglo VIII con impresionantes vistas panorámicas del área de Sintra y el Atlántico. Ideal para los amantes de la historia militar. Tiempo recomendado: 1 hora.</p>
+<p>
+<a href="https://www.google.com/search?q=Castelo+dos+Mouros+PORTUGAL" target="_blank">📖 Castelo dos Mouros</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Castelo+dos+Mouros+PORTUGAL" target="_blank">📍 Maps</a>
+</p>
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=Restaurantes+en+Sintra" target="_blank">📖 Restaurantes en Sintra</a> &nbsp;·&nbsp; <a href="https://www.google.com/maps/search/Restaurantes+en+Sintra" target="_blank">📍 Maps</a></p>
+<p><strong>Alojamiento sugerido:</strong> <a href="https://www.google.com/search?q=Hoteles+en+Sintra" target="_blank">📖 Hoteles en Sintra</a> &nbsp;·&nbsp; <a href="https://www.google.com/maps/search/Hoteles+en+Sintra" target="_blank">📍 Maps</a></p>
+
+<h2>DÍA 3 — Évora: Ciudad-museo del Alentejo</h2>
+<p>Viaje hacia el Alentejo para descubrir Évora, una ciudad rica en vestigios romanos, arquitectura medieval y renacentista, con un casco histórico perfectamente conservado.</p>
+<h3>Templo de Diana</h3>
+<p>Restos romanos bien preservados en pleno centro histórico, este templo honra la historia antigua y su importancia dentro de la ciudad. Tiempo recomendado: 45 minutos.</p>
+<p>
+<a href="https://www.google.com/search?q=Templo+de+Diana+Evora+PORTUGAL" target="_blank">📖 Templo de Diana</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Templo+de+Diana+Evora+PORTUGAL" target="_blank">📍 Maps</a>
+</p>
+<h3>Catedral de Évora</h3>
+<p>Una catedral gótica del siglo XIII con hermosos claustros y exageradas vistas desde las torres. Tiempo recomendado: 1 hora.</p>
+<p>
+<a href="https://www.google.com/search?q=Catedral+de+%C3%89vora+PORTUGAL" target="_blank">📖 Catedral de Évora</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Catedral+de+%C3%89vora+PORTUGAL" target="_blank">📍 Maps</a>
+</p>
+<h3>Capilla de los Huesos</h3>
+<p>Ícono macabro dentro de la iglesia de San Francisco, decorada con huesos y cráneos humanos, reflexionando sobre la vida y la muerte. Tiempo recomendado: 30 minutos.</p>
+<p>
+<a href="https://www.google.com/search?q=Capilla+de+los+Huesos+Evora+PORTUGAL" target="_blank">📖 Capilla de los Huesos</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Capilla+de+los+Huesos+Evora+PORTUGAL" target="_blank">📍 Maps</a>
+</p>
+<h3>Universidad de Évora</h3>
+<p>Una de las universidades más antiguas de Portugal, con claustros renacentistas y salas históricas. Tiempo recomendado: 45 minutos.</p>
+<p>
+<a href="https://www.google.com/search?q=Universidad+de+%C3%89vora+PORTUGAL" target="_blank">📖 Universidad de Évora</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Universidad+de+%C3%89vora+PORTUGAL" target="_blank">📍 Maps</a>
+</p>
+<h3>Praça do Giraldo</h3>
+<p>La plaza principal de Évora, punto de encuentro histórico y lugar ideal para sentir la atmósfera local. Tiempo recomendado: 30 minutos.</p>
+<p>
+<a href="https://www.google.com/search?q=Pra%C3%A7a+do+Giraldo+Evora+PORTUGAL" target="_blank">📖 Praça do Giraldo</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Pra%C3%A7a+do+Giraldo+Evora+PORTUGAL" target="_blank">📍 Maps</a>
+</p>
+<h3>Murallas de Évora</h3>
+<p>Paseo por las murallas medievales que rodean la ciudad, con vistas tanto al casco histórico como a los campos del Alentejo. Tiempo recomendado: 1 hora.</p>
+<p>
+<a href="https://www.google.com/search?q=Murallas+de+Evora+PORTUGAL" target="_blank">📖 Murallas de Évora</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Murallas+de+Evora+PORTUGAL" target="_blank">📍 Maps</a>
+</p>
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=Restaurantes+en+Evora" target="_blank">📖 Restaurantes en Évora</a> &nbsp;·&nbsp; <a href="https://www.google.com/maps/search/Restaurantes+en+Evora" target="_blank">📍 Maps</a></p>
+<p><strong>Alojamiento sugerido:</strong> <a href="https://www.google.com/search?q=Hoteles+en+Evora" target="_blank">📖 Hoteles en Évora</a> &nbsp;·&nbsp; <a href="https://www.google.com/maps/search/Hoteles+en+Evora" target="_blank">📍 Maps</a></p>
+
+<h2>DÍA 4 — Coimbra: Cuna del saber y patrimonio universitario</h2>
+<p>Exploramos esta histórica ciudad universitaria, famosa por su universidad centenaria y su vibrante atmósfera cultural.</p>
+<h3>Universidad de Coimbra</h3>
+<p>Fundada en 1290, es una de las más antiguas de Europa, con una impresionante biblioteca Joanina que hay que visitar para conocer su colección y arquitectura. Tiempo recomendado: 2 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Universidad+de+Coimbra+PORTUGAL" target="_blank">📖 Universidad de Coimbra</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Universidad+de+Coimbra+PORTUGAL" target="_blank">📍 Maps</a>
+</p>
+<h3>Biblioteca Joanina</h3>
+<p>Salón barroco de la universidad, un tesoro de libros antiguos con una decoración exquisita. Tiempo recomendado: 45 minutos.</p>
+<p>
+<a href="https://www.google.com/search?q=Biblioteca+Joanina+Coimbra+PORTUGAL" target="_blank">📖 Biblioteca Joanina</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Biblioteca+Joanina+Coimbra+PORTUGAL" target="_blank">📍 Maps</a>
+</p>
+<h3>Monasterio de Santa Clara-a-Velha</h3>
+<p>Ruinas que relatan la historia de los siglos XIV y XV, afectadas por las crecidas del río Mondego. Tiempo recomendado: 1 hora.</p>
+<p>
+<a href="https://www.google.com/search?q=Monasterio+de+Santa+Clara-a-Velha+PORTUGAL" target="_blank">📖 Monasterio de Santa Clara-a-Velha</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Monasterio+de+Santa+Clara-a-Velha+PORTUGAL" target="_blank">📍 Maps</a>
+</p>
+<h3>Convento de Santa Cruz</h3>
+<p>Importante monumento gótico y renacentista, donde descansa el primer rey de Portugal. Contiene uno de los mejores ejemplos de arte manuelino. Tiempo recomendado: 1 hora.</p>
+<p>
+<a href="https://www.google.com/search?q=Convento+de+Santa+Cruz+Coimbra+PORTUGAL" target="_blank">📖 Convento de Santa Cruz</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Convento+de+Santa+Cruz+Coimbra+PORTUGAL" target="_blank">📍 Maps</a>
+</p>
+<h3>Portugal dos Pequenitos</h3>
+<p>Parque temático dedicado a Portugal en miniatura, ideal para una pausa cultural divertida para todas las edades. Tiempo recomendado: 1 hora.</p>
+<p>
+<a href="https://www.google.com/search?q=Portugal+dos+Pequenitos+Coimbra+PORTUGAL" target="_blank">📖 Portugal dos Pequenitos</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Portugal+dos+Pequenitos+Coimbra+PORTUGAL" target="_blank">📍 Maps</a>
+</p>
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=Restaurantes+en+Coimbra" target="_blank">📖 Restaurantes en Coimbra</a> &nbsp;·&nbsp; <a href="https://www.google.com/maps/search/Restaurantes+en+Coimbra" target="_blank">📍 Maps</a></p>
+<p><strong>Alojamiento sugerido:</strong> <a href="https://www.google.com/search?q=Hoteles+en+Coimbra" target="_blank">📖 Hoteles en Coimbra</a> &nbsp;·&nbsp; <a href="https://www.google.com/maps/search/Hoteles+en+Coimbra" target="_blank">📍 Maps</a></p>
+
+<h2>DÍA 5 — Aveiro y Costa Nova: Historia, canales y color</h2>
+<p>Un día entre la ciudad de Aveiro conocida como la “Venecia portuguesa” y la colorida playa</div>
+  </div>
+
+  <!-- TAB EXPERIENCIAS -->
+  <div class="tab-panel" id="tab-experiencias">
+    <div class="sec-eye">Imprescindibles</div>
+    <div class="sec-title">Experiencias destacadas</div>
+    <div class="ai-content"><h3>🌟 Visita a la Torre de Belém</h3>
+<p>Este ícono de Lisboa es Patrimonio de la Humanidad y simboliza la Era de los Descubrimientos. La torre ofrece una vista espectacular del río Tajo y la ciudad. Dedica unas 2 horas para explorar sus pasillos y el entorno. Consejo: Visita temprano para evitar multitudes.</p>
+
+<h3>🌟 Degustación de Pastéis de Nata en Belém</h3>
+<p>Probar estos deliciosos pasteles en su lugar de origen es una experiencia obligada. La pastelería "Pastéis de Belém" es famosa por su receta secreta. Dedica aproximadamente 1 hora para disfrutar con tranquilidad. Consejo: Llega temprano para conseguir un buen asiento y disfrutar de ellos frescos.</p>
+
+<h3>🌟 Paseo por el Barrio Alto</h3>
+<p>Este barrio es famoso por su vibrante vida nocturna y sus estrechas calles empedradas que reflejan la historia de Lisboa. Un recorrido de 2-3 horas te permitirá explorar bares, boutiques y observar la arquitectura. Consejo: Lleva calzado cómodo y prepárate para el ascenso de sus colinas.</p>
+
+<h3>🌟 Exploración del Castillo de San Jorge</h3>
+<p>Este castillo medieval ofrece una perspectiva fascinante de la historia de Lisboa, junto con impresionantes vistas de la ciudad. Dedica al menos 2 horas para recorrer sus murallas y disfrutar de los jardines. Consejo: Lleva una cámara para capturar las vistas panorámicas.</p>
+
+<h3>🌟 Ruta del Vinho en el Valle del Duero</h3>
+<p>El Valle del Duero es famoso por sus viñedos y la producción de vino de Oporto. Realizar una cata de vinos en una de las bodegas locales es una experiencia cultural rica. Dedica una jornada completa para disfrutar del paisaje y la gastronomía. Consejo: Organiza el tour con antelación para asegurar la disponibilidad.</p>
+
+<h3>🌟 Visita al Mosteiro dos Jerónimos</h3>
+<p>Este monasterio es un ejemplo impresionante de la arquitectura manuelina y se encuentra en Belém. Es Patrimonio de la Humanidad y está lleno de historia relacionada con los exploradores portugueses. Reserva 1.5-2 horas para esta visita. Consejo: Comprueba si hay entrada gratuita el primer domingo de cada mes.</p>
+
+<h3>🌟 Paseo en tranvía por Lisboa</h3>
+<p>Subir al famoso tranvía 28 es una forma única de explorar la ciudad, pasando por barrios históricos. Un recorrido típicamente dura alrededor de una hora. Consejo: Intenta ir en horas menos concurridas para disfrutar del trayecto sin aglomeraciones.</p></div>
+  </div>
+
+  <!-- TAB TOOLS -->
+  <div class="tab-panel" id="tab-tools">
+    <div class="sec-eye">Herramientas interactivas</div>
+    <div class="sec-title">Para tu viaje</div>
+    <div class="tools-tabs">
+      <button class="ttab active" onclick="switchTool(this,'conv')">💱 Moneda</button>
+      <button class="ttab" onclick="switchTool(this,'trans')">🗣 Frases</button>
+      <button class="ttab" onclick="switchTool(this,'calc')">💶 Presupuesto</button>
+      <button class="ttab" onclick="switchTool(this,'check')">🧳 Equipaje</button>
+    </div>
+    <div class="tools-desktop">
+      <div>
+        <div class="tool-section-title">💱 Conversor de moneda en tiempo real</div>
+        <div class="tool-panel active" id="conv">
+          <div class="conv-box">
+            <select class="conv-select" id="conv-to" onchange="convertCurrency()">
+              <option value="USD">$ Dólar USD</option><option value="GBP">£ Libra</option>
+              <option value="JPY">¥ Yen</option><option value="MXN">$ Peso MX</option>
+              <option value="BRL">R$ Real</option><option value="MAD">MAD Dírham</option>
+              <option value="TRY">₺ Lira turca</option><option value="THB">฿ Baht</option>
+              <option value="IDR">Rp Rupia</option><option value="AED">AED Dírham</option>
+              <option value="SGD">S$ Dólar SG</option><option value="PLN">zł Esloti</option>
+              <option value="CZK">Kč Corona CZ</option><option value="HUF">Ft Forinto</option>
+              <option value="RON">RON Leu</option><option value="DKK">kr Danesa</option>
+              <option value="SEK">kr Sueca</option><option value="NOK">kr Noruega</option>
+            </select>
+            <div class="conv-row">
+              <div class="conv-iw"><label>Euros €</label><input class="conv-input" type="number" id="conv-eur" value="100" oninput="convertCurrency()"></div>
+              <div class="conv-arrow">⇄</div>
+              <div class="conv-iw"><label id="conv-to-label">Destino</label><input class="conv-input" type="number" id="conv-foreign" oninput="convertBack()"></div>
+            </div>
+            <div class="conv-result"><div class="conv-amount" id="conv-display">—</div><div class="conv-rate" id="conv-rate">Cargando…</div></div>
+            <div class="conv-note">Tiempo real · open.er-api.com</div>
+          </div>
+        </div>
+        <br>
+        <div class="tool-section-title">🗣 Frases útiles con audio</div>
+        <div class="tool-panel" id="trans">
+          <div class="trans-wrap">
+            <div class="trans-lang"><span>Idioma:</span>
+              <select id="trans-lang-sel" onchange="updatePhrases()">
+                <option value="it">🇮🇹 Italiano</option><option value="fr">🇫🇷 Francés</option>
+                <option value="de">🇩🇪 Alemán</option><option value="pt">🇵🇹 Portugués</option>
+                <option value="ja">🇯🇵 Japonés</option><option value="ar">🇲🇦 Árabe</option>
+                <option value="tr">🇹🇷 Turco</option><option value="th">🇹🇭 Tailandés</option>
+                <option value="zh">🇨🇳 Chino</option><option value="el">🇬🇷 Griego</option>
+                <option value="pl">🇵🇱 Polaco</option><option value="nl">🇳🇱 Neerlandés</option>
+                <option value="ru">🇷🇺 Ruso</option><option value="cs">🇨🇿 Checo</option>
+                <option value="ro">🇷🇴 Rumano</option><option value="hr">🇭🇷 Croata</option>
+              </select>
+            </div>
+            <div class="trans-list" id="phrases-list"></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="tool-section-title">💶 Calculadora de presupuesto</div>
+        <div class="tool-panel" id="calc">
+          <div class="calc-box">
+            <div class="calc-row"><label>Días</label><input class="calc-input" type="number" id="c-dias" value="15" oninput="calcBudget()"></div>
+            <div class="calc-row"><label>Viajeros</label><input class="calc-input" type="number" id="c-viaj" value="4" oninput="calcBudget()"></div>
+            <div class="calc-row"><label>Alojamiento / noche €</label><input class="calc-input" type="number" id="c-aloj" value="80" oninput="calcBudget()"></div>
+            <div class="calc-row"><label>Comida / persona / día €</label><input class="calc-input" type="number" id="c-com" value="35" oninput="calcBudget()"></div>
+            <div class="calc-row"><label>Transporte total €</label><input class="calc-input" type="number" id="c-transp" value="200" oninput="calcBudget()"></div>
+            <div class="calc-row"><label>Actividades total €</label><input class="calc-input" type="number" id="c-act" value="150" oninput="calcBudget()"></div>
+            <div class="calc-result">
+              <div class="calc-result-title">RESUMEN</div>
+              <div class="calc-line"><span>Alojamiento</span><strong id="r-aloj">—</strong></div>
+              <div class="calc-line"><span>Comida</span><strong id="r-com">—</strong></div>
+              <div class="calc-line"><span>Transporte</span><strong id="r-transp">—</strong></div>
+              <div class="calc-line"><span>Actividades</span><strong id="r-act">—</strong></div>
+              <div class="calc-line total"><span>TOTAL</span><strong id="r-total">—</strong></div>
+              <div class="calc-line"><span>Por persona</span><strong id="r-pp">—</strong></div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="tool-section-title">🧳 Checklist de equipaje</div>
+        <div class="tool-panel" id="check">
+          <div class="check-progress"><div class="check-bar-wrap"><div class="check-bar" id="check-bar" style="width:0%"></div></div><div class="check-pct" id="check-pct">0%</div></div>
+          <div class="check-cats">
+            <button class="check-cat-btn active" onclick="switchCat(this,'ropa')">👕 Ropa</button>
+            <button class="check-cat-btn" onclick="switchCat(this,'docs')">📄 Docs</button>
+            <button class="check-cat-btn" onclick="switchCat(this,'tech')">📱 Tech</button>
+            <button class="check-cat-btn" onclick="switchCat(this,'salud')">💊 Salud</button>
+            <button class="check-cat-btn" onclick="switchCat(this,'extras')">✨ Extras</button>
+          </div>
+          <div class="checklist" id="checklist-items"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB DESTINO -->
+  <div class="tab-panel" id="tab-destino">
+    <div class="sec-eye">Antes de partir</div>
+    <div class="sec-title">Guía del destino</div>
+    <div class="ai-content"><h2>Clima y mejor época</h2>
+<p>Portugal tiene un clima mediterráneo, con inviernos suaves y veranos calurosos. Las temperaturas medias aproximadas por mes son:</p>
+<ul>
+  <li><strong>Enero:</strong> 8-15°C</li>
+  <li><strong>Febrero:</strong> 9-16°C</li>
+  <li><strong>Marzo:</strong> 11-18°C</li>
+  <li><strong>Abril:</strong> 12-20°C</li>
+  <li><strong>Mayo:</strong> 15-23°C</li>
+  <li><strong>Junio:</strong> 18-27°C</li>
+  <li><strong>Julio:</strong> 20-29°C</li>
+  <li><strong>Agosto:</strong> 20-29°C</li>
+  <li><strong>Septiembre:</strong> 18-26°C</li>
+  <li><strong>Octubre:</strong> 15-22°C</li>
+  <li><strong>Noviembre:</strong> 12-18°C</li>
+  <li><strong>Diciembre:</strong> 9-15°C</li>
+</ul>
+<p>La mejor época para visitar es de mayo a octubre, con buen clima y pocas lluvias.</p>
+<p><strong>Qué ropa llevar:</strong> Prendas ligeras y cómodas para verano, algo de ropa de abrigo para la noche y primavera/otoño. Impermeable o paraguas para invierno.</p>
+
+<h2>Moneda y pagos</h2>
+<p>La moneda oficial de Portugal es el euro (€).</p>
+<p>El tipo de cambio suele estar a la par con el euro en España, pero puede cambiar según el mercado.</p>
+<p>Se aceptan tarjetas de crédito y débito ampliamente, especialmente Visa y Mastercard. Es recomendable llevar algo de efectivo para lugares pequeños o mercados.</p>
+
+<h2>Electricidad y adaptadores</h2>
+<p>El voltaje estándar es 230 V y la frecuencia es 50 Hz.</p>
+<p>Los enchufes usados son el tipo C y F, los mismos que en España y la mayoría de Europa continental.</p>
+<p>No es necesario llevar adaptador si tu equipo tiene enchufe europeo.</p>
+
+<h2>Idioma y comunicación</h2>
+<p>El idioma oficial es el portugués.</p>
+<p>En zonas turísticas y ciudades grandes, mucha gente habla inglés y en menor medida español y francés.</p>
+<p>Apps útiles para comunicación:</p>
+<ul>
+  <li><a href="https://play.google.com/store/apps/details?id=com.google.android.apps.translate" target="_blank">Google Translate</a></li>
+  <li><a href="https://www.duolingo.com" target="_blank">Duolingo</a> para aprender portugués básico</li>
+  <li><a href="https://whatsapp.com" target="_blank">WhatsApp</a> para mensajería local</li>
+</ul>
+
+<h2>Visado y entrada</h2>
+<p>Para ciudadanos españoles y de la Unión Europea no es necesario visado para estancias turísticas menores a 90 días.</p>
+<p>Es obligatorio presentar documento nacional de identidad o pasaporte válido.</p>
+<p>Se recomienda comprobar que la documentación está en vigor antes del viaje.</p>
+
+<h2>Vacunas y salud</h2>
+<p>No se requieren vacunas especiales para viajar a Portugal desde España o Europa.</p>
+<p>El agua del grifo es potable en todo el país.</p>
+<p>Se recomienda contratar un seguro médico de viaje que cubra asistencia sanitaria, emergencias y repatriación.</p>
+
+<h2>Seguridad</h2>
+<p>Portugal es un país seguro para turistas con bajo índice de delitos graves.</p>
+<p>Se aconseja cuidado con carteristas en zonas turísticas concurridas y transporte público.</p>
+<p>Evitar áreas poco concurridas de noche y respetar indicaciones locales.</p>
+<p>Consejos básicos:</p>
+<ul>
+  <li>No dejar objetos de valor a la vista</li>
+  <li>Usar bolsas o mochilas cerradas</li>
+  <li>Usar taxis oficiales o apps de transporte</li>
+</ul>
+
+<h2>Costumbres y etiqueta</h2>
+<p>En Portugal es habitual saludar con un apretón de manos o dos besos en la mejilla entre conocidos.</p>
+<p>Las propinas no son obligatorias pero se agradecen. Se suele dejar un 5-10% en restaurantes si el servicio ha sido bueno.</p>
+<p>En templos y lugares religiosos se recomienda vestir con ropa discreta y respetuosa, evitando hombros y piernas descubiertos.</p>
+
+<h2>Apps imprescindibles</h2>
+<ul>
+  <li><a href="https://www.cp.pt/passageiros/en" target="_blank">CP - Comboios de Portugal</a>: para trenes y transporte público</li>
+  <li><a href="https://maps.google.com" target="_blank">Google Maps</a>: mapas y navegación</li>
+  <li><a href="https://transitapp.com" target="_blank">Transit</a>: información de transporte público en tiempo real</li>
+  <li><a href="https://wise.com" target="_blank">Wise</a>: para pagos y cambio de moneda con mejor tasa</li>
+  <li><a href="https://www.google.com/intl/es_ALL/translate/" target="_blank">Google Translate</a>: traducción instantánea</li>
+</ul></div>
+  </div>
+
+  <!-- TAB TRANSPORTE -->
+  <div class="tab-panel" id="tab-transporte">
+    <div class="sec-eye">Moverse por PORTUGAL</div>
+    <div class="sec-title">Transporte</div>
+    <div class="ad"><div class="ad-badge">AD</div><div><strong>Alquiler de coche</strong><span>→ Rent a car · comparativa</span></div></div>
+    <div class="ai-content" style="margin-top:12px"><h2>Cómo llegar desde España</h2>
+<p>Portugal cuenta con conexiones directas con España a través de vuelos, trenes, autobuses y carretera. Para vuelos, las principales ciudades con conexiones directas son Lisboa, Oporto y Faro.</p>
+<ul>
+  <li><strong>Vuelos directos:</strong> Desde ciudades como Madrid, Barcelona, Sevilla y Málaga existen vuelos directos a Lisboa, Oporto y Faro.</li>
+  <li><strong>Tiempo de vuelo:</strong> Aproximadamente 1 a 1.5 horas dependiendo del punto de salida y destino en Portugal.</li>
+  <li><strong>Aeropuertos principales:</strong> <a href="https://www.ana.pt/en/lisboa-airport" target="_blank">Aeropuerto de Lisboa (LIS)</a>, <a href="https://www.ana.pt/en/oporto-airport" target="_blank">Aeropuerto de Oporto (OPO)</a>, <a href="https://www.ana.pt/en/faro-airport" target="_blank">Aeropuerto de Faro (FAO)</a>.</li>
+</ul>
+
+<h2>Transporte desde el aeropuerto</h2>
+<p>Al llegar a Portugal, el transporte desde los aeropuertos hacia los centros urbanos principales es variado y eficiente.</p>
+<ul>
+  <li><strong>Autobús:</strong> La opción más económica. Los autobuses conectan los aeropuertos con el centro de la ciudad. Precio aproximado: 3-6 EUR. Tiempo estimado: 30-45 minutos.</li>
+  <li><strong>Metro:</strong> En Lisboa y Oporto el metro conecta el aeropuerto con el centro. Tarifa: alrededor de 1.50 EUR para el billete sencillo, 15-20 minutos de viaje.</li>
+  <li><strong>Taxi:</strong> Precio aproximado: 15-25 EUR dependiendo del aeropuerto y la hora. Tiempo: 20-30 minutos.</li>
+  <li><strong>Traslados privados:</strong> Disponibles mediante reservas previas, más cómodos pero más caros.</li>
+</ul>
+
+<h2>Moverse por el destino</h2>
+<p>Una vez en Portugal, se puede optar por varias opciones de transporte público para desplazarse dentro de las ciudades.</p>
+<ul>
+  <li><strong>Metro:</strong> Disponibles principalmente en Lisboa, Oporto y algunas zonas metropolitanas. Billetes desde 1.50 EUR.</li>
+  <li><strong>Autobús:</strong> Amplia red urbana y suburbana. Precio medio: 1.50-2 EUR por trayecto.</li>
+  <li><strong>Tranvía:</strong> Clásico en Lisboa, ideal para turismo y desplazamientos en algunas zonas concretas.</li>
+  <li><strong>Tren urbano:</strong> Especialmente útil en la periferia de ciudades grandes como Lisboa o Oporto.</li>
+</ul>
+<p>Consulta la web oficial del transporte municipal para horarios y billetes: <a href="https://www.carris.pt/" target="_blank">Carris (Lisboa)</a>, <a href="https://www.stcp.pt/" target="_blank">STCP (Oporto)</a>.</p>
+
+<h2>Alquiler de coche</h2>
+<p>Alquilar un coche es recomendable si se planea visitar áreas rurales, el Algarve, o desplazarse entre ciudades sin depender del transporte público.</p>
+<ul>
+  <li><strong>Empresas recomendadas:</strong> Europcar, Hertz, Avis, Sixt, Enterprise, y compañías locales como Guerin.</li>
+  <li><strong>Precio medio:</strong> 25-50 EUR por día, dependiendo de la temporada y tipo de vehículo.</li>
+  <li><strong>Carnet internacional:</strong> Para ciudadanos españoles suele ser suficiente el carnet nacional, pero siempre es recomendable llevar el carnet internacional para evitar problemas. Verificar condiciones con la empresa de alquiler.</li>
+</ul>
+
+<h2>Taxis y apps de movilidad</h2>
+<p>En las ciudades portuguesas, existen diversas opciones para moverse cómodamente mediante taxis y aplicaciones de movilidad.</p>
+<ul>
+  <li><strong>Uber:</strong> Disponible en Lisboa, Oporto y algunas ciudades más. Tarifas similares a otros países europeos.</li>
+  <li><strong>Bolt:</strong> Operativo en varias ciudades, con precios competitivos.</li>
+  <li><strong>Apps locales:</strong> Free Now está presente en Portugal y permite solicitar taxis y VTC.</li>
+  <li><strong>Precios orientativos:</strong> Tarifa mínima entre 3-5 EUR y de 0.50-0.75 EUR por km.</li>
+</ul>
+
+<h2>Consejos de conducción</h2>
+<ul>
+  <li><strong>Normas de tráfico:</strong> En Portugal se conduce por la derecha. El límite de velocidad en zonas urbanas es de 50 km/h, en carreteras 90 km/h y en autopistas hasta 120 km/h.</li>
+  <li><strong>Peajes:</strong> Muchas autopistas son de peaje electrónico (sistema Via Verde). Algunas requieren registro o pago posterior. Infórmese en <a href="https://www.epcestradas.pt/en/" target="_blank">Estradas de Portugal</a>.</li>
+  <li><strong>Aparcamiento:</strong> En las ciudades grandes existen zonas de pago, señalizadas por colores. Usar parquímetros o apps para evitar multas.</li>
+  <li><strong>Alcohol:</strong> Límite de alcohol en sangre 0.5 g/l (0.2 g/l para conductores noveles y profesionales).</li>
+</ul>
+
+<h2>Transporte entre ciudades</h2>
+<p>Para moverse entre ciudades hay varias opciones viables y cómodas.</p>
+<ul>
+  <li><strong>Tren:</strong> La red ferroviaria conecta Lisboa, Oporto, Coimbra y Faro, entre otras. Los trenes Alfa Pendular ofrecen trayectos rápidos y cómodos. Precio: de 15 a 40 EUR según distancia y clase. Más info en <a href="https://www.cp.pt/passageiros/en" target="_blank">Comboios de Portugal</a>.</li>
+  <li><strong>Bus:</strong> Varias compañías ofrecen servicios interurbanos con precios económicos. Una de las principales es Rede Expressos: <a href="https://www.rede-expressos.pt/en" target="_blank">rede-expressos.pt</a>. Precio: desde 10 EUR según destino.</li>
+  <li><strong>Vuelos internos:</strong> Limitados y generalmente no necesarios por la cercanía entre ciudades, salvo para conexiones rápidas al Algarve o Azores/ Madeira desde Lisboa.</li>
+</ul></div>
+  </div>
+
+  <!-- TAB RECURSOS -->
+  <div class="tab-panel" id="tab-recursos">
+    <div class="sec-eye">Recursos online</div>
+    <div class="sec-title">Blogs y enlaces útiles</div>
+    <div class="ai-content"><h2>Web oficial de turismo</h2>
+<p><a href="https://www.visitportugal.com/es" target="_blank">Visit Portugal - Web Oficial de Turismo</a></p>
+
+<h2>Blogs de viaje recomendados</h2>
+<ul>
+  <li><a href="https://viajarcodeporte.com/" target="_blank">Viajar con Poché</a></li>
+  <li><a href="https://www.diariodeunmentiroso.com/categoria/viajes/portugal/" target="_blank">Diario de un Mentiroso - Portugal</a></li>
+  <li><a href="https://www.elviajedelorenzo.com/category/europa/portugal/" target="_blank">El Viaje de Lorenzo - Portugal</a></li>
+  <li><a href="https://www.lavejadita.com/portugal/" target="_blank">La Viajédíta - Portugal</a></li>
+</ul>
+
+<h2>Foros y comunidades</h2>
+<ul>
+  <li><a href="https://www.tripadvisor.es/ShowForum-g189158-i16-Portugal.html" target="_blank">TripAdvisor Foros - Portugal</a></li>
+  <li><a href="https://www.lonelyplanet.com/thorntree/forums/europe-western-europe/portugal" target="_blank">Lonely Planet Thorntree - Portugal</a></li>
+  <li><a href="https://www.reddit.com/r/Portugal/" target="_blank">Reddit r/Portugal</a></li>
+</ul>
+
+<h2>Canales de YouTube</h2>
+<ul>
+  <li><a href="https://www.youtube.com/c/LuisRBiz" target="_blank">Luis Rojas - Portugal</a></li>
+  <li><a href="https://www.youtube.com/c/ViajandoconLoli" target="_blank">Viajando con Loli</a></li>
+  <li><a href="https://www.youtube.com/c/MarkoExplora" target="_blank">Marko Explora</a></li>
+</ul>
+
+<h2>Recursos para rutas</h2>
+<ul>
+  <li><a href="https://es.wikiloc.com/rutas/de/portugal-225" target="_blank">Wikiloc - Rutas en Portugal</a></li>
+  <li><a href="https://www.alltrails.com/es/portugal" target="_blank">AllTrails - Portugal</a></li>
+  <li><a href="https://www.google.com/maps" target="_blank">Google Maps</a></li>
+</ul>
+
+<h2>Apps imprescindibles</h2>
+<ul>
+  <li><a href="https://play.google.com/store/apps/details?id=com.visitportugal.android" target="_blank">Visit Portugal App (Android)</a></li>
+  <li><a href="https://apps.apple.com/es/app/visit-portugal/id1314258042" target="_blank">Visit Portugal App (iOS)</a></li>
+  <li><a href="https://www.cp.pt/passageiros/en" target="_blank">CP - Comboios de Portugal (tren)</a></li>
+  <li><a href="https://portocompat.travel" target="_blank">Porto.Campat (Turismo local Porto)</a></li>
+</ul>
+
+<h2>Webs de reservas</h2>
+<ul>
+  <li><a href="https://www.booking.com" target="_blank">Booking</a></li>
+  <li><a href="https://www.airbnb.com" target="_blank">Airbnb</a></li>
+  <li><a href="https://www.getyourguide.com" target="_blank">GetYourGuide</a></li>
+  <li><a href="https://www.viator.com" target="_blank">Viator</a></li>
+</ul></div>
+  </div>
+
+  <!-- TAB CULTURA -->
+  <div class="tab-panel" id="tab-cultura">
+    <div class="sec-eye">Prepara el viaje</div>
+    <div class="sec-title">Cultura · Cine · Libros · Música</div>
+    <div class="ai-content"><h3>📚 Libro de Crónicas – José Saramago</h3>
+<p><strong>Por qué leerlo:</strong> Este libro reúne relatos y reflexiones del Nobel portugués que ofrecen una visión íntima y profunda de la cultura, la historia y la sociedad portuguesa desde la perspectiva de uno de sus escritores más emblemáticos.</p>
+
+<h3>📚 Lisboa. Memoria de un tiempo sin tiempo – António Lobo Antunes</h3>
+<p><strong>Por qué leerlo:</strong> A través de una prosa evocadora, esta novela retrata la ciudad de Lisboa con todos sus matices y vivencias, ideal para sumergirse en la atmósfera local antes de recorrer sus calles.</p>
+
+<h3>📚 Portugal. Guía de viaje – Lonely Planet</h3>
+<p><strong>Por qué leerlo:</strong> Una guía completa y actualizada que cubre desde los principales destinos hasta rincones menos conocidos, con información práctica indispensable para un viaje tranquilo y bien planificado.</p>
+
+<h3>📚 Los Cuadernos de Lisboa – Fernando Pessoa</h3>
+<p><strong>Por qué leerlo:</strong> La obra poética y ensayística de Pessoa permite entender el alma y la esencia del espíritu lisboeta, haciendo que los paseos por la ciudad tengan un trasfondo más profundo y emotivo.</p>
+
+<h3>📚 La Costa de Lisboeta – Dulce Maria Cardoso</h3>
+<p><strong>Por qué leerlo:</strong> Esta novela contemporánea explora la evolución de Portugal a través de las vivencias de una familia, ayudando a contextualizar la historia reciente y el espíritu del país durante la visita.</p></div>
+  </div>
+
+  <!-- TAB CURIOSIDADES -->
+  <div class="tab-panel" id="tab-curiosidades">
+    <div class="sec-eye">¿Sabías que…?</div>
+    <div class="sec-title">Curiosidades de PORTUGAL</div>
+    <div class="ai-content"><h3>💡 Planifica tu presupuesto con la tarjeta Viva Viagem</h3>
+<p>Compra la <strong>tarjeta recargable Viva Viagem</strong> nada más llegar a Lisboa u Oporto para usar en metro, tranvía, autobús y tren de cercanías. Esto te ahorrará hasta un 60% en cada trayecto y evitará tener que comprar billetes individuales, optimizando tu presupuesto diario.</p>
+
+<h3>💡 Reserva entradas con antelación</h3>
+<p>Para monumentos muy visitados como el Monasterio de los Jerónimos o la Torre de Belém, <strong>compra las entradas online</strong>. Así evitarás colas de hasta 2 horas y podrás aprovechar cada minuto explorando sin perder tiempo en taquillas.</p>
+
+<h3>💡 Aprovecha la “Golden Hour” para tus fotos</h3>
+<p>El mejor momento para fotografiar los azulejos de Alfama o la Torre de Belém es justo al amanecer o al atardecer. La luz cálida realza las texturas y colores, evitando la sobreexposición típica del mediodía.</p>
+
+<h3>💡 Prueba la gastronomía en horarios locales</h3>
+<p>Evita los restaurantes céntricos a la hora punta. Entre las <strong>13:00 y las 15:00</strong> suelen servir el “prato do dia” a buen precio, y a media mañana encontrarás pasteles de nata recién horneados sin cola.</p>
+
+<h3>💡 Evita el error de subestimar las cuestas</h3>
+<p>Lisboa y Oporto tienen calles empedradas y cuestas pronunciadas. Lleva <strong>calzado cómodo</strong> y planifica trayectos con tranvías o funiculares, alternando tramos a pie para disfrutar sin agotarte.</p>
+
+<h3>💡 Viaja en temporada baja o media</h3>
+<p>Los meses de <strong>abril-mayo y septiembre-octubre</strong> combinan buen clima, menos turistas y precios de alojamiento hasta un 30% más bajos que en verano, ideal para exprimir museos y miradores sin aglomeraciones.</p>
+
+<h3>💡 Ajusta la propina a la costumbre local</h3>
+<p>En Portugal no se espera más del <strong>5-10%</strong> de propina en restaurantes. Para tours y guías libres deja entre 2 y 5€ según tu satisfacción, mejor que un porcentaje elevado e innecesario.</p>
+
+<h3>💡 Negocia solo en mercados y ferias artesanales</h3>
+<p>En tiendas y restaurantes los precios son fijos. Si regateas, limítate a <strong>mercados municipales y puestos de artesanía</strong>, donde es aceptado suavemente un descuento del 5-10% si pagas en efectivo.</p>
+
+<h3>💡 Respeta la etiqueta del Fado</h3>
+<p>En las casas de Fado evita hablar o usar el móvil durante la actuación. <strong>Silencio y atención</strong> muestran respeto al artista, y la experiencia se vive con más intensidad, sin distracciones.</p></div>
+  </div>
+
+  <!-- TAB DOCUMENTOS -->
+  <div class="tab-panel" id="tab-docs">
+    <div class="sec-eye">Tus documentos</div>
+    <div class="sec-title">Documentos del viaje</div>
+    <p style="font-size:13px;color:var(--mid);margin-bottom:14px">Guarda aquí tu seguro, tarjetas de embarque, pasaporte o cualquier documento que necesites tener a mano durante el viaje.</p>
+    <div class="docs-upload-area" onclick="document.getElementById('doc-input').click()">
+      <div class="docs-upload-icon">📎</div>
+      <div class="docs-upload-text"><strong>Añadir documento</strong>PDF, imagen, tarjeta de embarque…</div>
+    </div>
+    <input type="file" id="doc-input" accept=".pdf,.jpg,.jpeg,.png,.gif,.webp" multiple onchange="handleDocUpload(event)">
+    <div class="docs-list" id="docs-list"></div>
+  </div>
+
+  <!-- TAB NOTAS -->
+  <div class="tab-panel" id="tab-notas">
+    <div class="sec-eye">Para ti</div>
+    <div class="sec-title">Notas del viajero</div>
+    <div class="note-area">
+      <div class="note-line" contenteditable="true" spellcheck="false">Escribe aquí tus notas…</div>
+      <div class="note-line" contenteditable="true" spellcheck="false"></div>
+      <div class="note-line" contenteditable="true" spellcheck="false"></div>
+      <div class="note-line" contenteditable="true" spellcheck="false"></div>
+      <div class="note-line" contenteditable="true" spellcheck="false"></div>
+      <div class="note-line" contenteditable="true" spellcheck="false"></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ MODAL GUARDAR ══ -->
+<div class="save-modal" id="save-modal" onclick="closeSaveModal(event)">
+  <div class="save-sheet">
+    <h3>Guardar guía</h3>
+    <p>Elige cómo quieres guardar tu guía de PORTUGAL.</p>
+
+    <!-- Opción Android: botón directo si hay prompt disponible -->
+    <div class="save-option" id="opt-android" style="display:none" onclick="installAndroid()">
+      <div class="save-option-icon">🤖</div>
+      <div class="save-option-text"><strong>Añadir a pantalla de inicio</strong><span>Android · Se abrirá el diálogo de instalación</span></div>
+    </div>
+
+    <!-- Opción iOS: instrucción visual animada -->
+    <div class="save-option" id="opt-ios" style="display:none" onclick="showIOSGuide()">
+      <div class="save-option-icon">🍎</div>
+      <div class="save-option-text"><strong>Añadir a pantalla de inicio</strong><span>iOS · Toca para ver cómo hacerlo en 2 pasos</span></div>
+    </div>
+
+    <div class="save-option" onclick="downloadGuide()">
+      <div class="save-option-icon">⬇️</div>
+      <div class="save-option-text"><strong>Descargar archivo HTML</strong><span>Guárdalo y ábrelo sin internet</span></div>
+    </div>
+    <div class="save-option" onclick="copyLink();closeSaveModal()">
+      <div class="save-option-icon">🔗</div>
+      <div class="save-option-text"><strong>Copiar enlace</strong><span>Comparte o guarda la URL de esta guía</span></div>
+    </div>
+    <button class="save-close" onclick="closeSaveModal()">Cerrar</button>
+  </div>
+</div>
+
+<!-- ══ GUÍA iOS ══ -->
+<div class="save-modal" id="ios-modal" onclick="document.getElementById('ios-modal').classList.remove('open')">
+  <div class="save-sheet">
+    <h3>Añadir a pantalla de inicio</h3>
+    <p style="margin-bottom:18px">Sigue estos 2 pasos en Safari:</p>
+    <div style="background:var(--sand);border-radius:var(--r);padding:16px;margin-bottom:12px;text-align:center">
+      <div style="font-size:32px;margin-bottom:8px">1️⃣</div>
+      <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px">Toca el botón Compartir</div>
+      <div style="font-size:13px;color:var(--mid)">El icono <strong>□↑</strong> de la barra inferior de Safari</div>
+      <div style="font-size:36px;margin-top:10px;animation:bounce .8s infinite alternate">□↑</div>
+    </div>
+    <div style="background:var(--sand);border-radius:var(--r);padding:16px;margin-bottom:16px;text-align:center">
+      <div style="font-size:32px;margin-bottom:8px">2️⃣</div>
+      <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px">Toca "Añadir a pantalla de inicio"</div>
+      <div style="font-size:13px;color:var(--mid)">Desplázate en el menú hasta encontrar esta opción</div>
+      <div style="background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 14px;margin-top:10px;display:inline-flex;align-items:center;gap:8px">
+        <span style="font-size:20px">➕</span>
+        <span style="font-size:13px;font-weight:500;color:var(--ink)">Añadir a pantalla de inicio</span>
+      </div>
+    </div>
+    <button class="save-close" onclick="document.getElementById('ios-modal').classList.remove('open')">Entendido</button>
+  </div>
+</div>
+<style>
+@keyframes bounce{from{transform:translateY(0)}to{transform:translateY(-6px)}}
+</style>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── TABS ──
+function showTab(id,btn){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  btn.classList.add('active');
+  document.getElementById('tabs-content').scrollTop=0;
+  // Scroll tab visible
+  btn.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+  // Ocultar flecha si llegamos al final
+  const scroll=document.getElementById('tabs-scroll');
+  const fade=document.querySelector('.tabs-fade');
+  if(fade)fade.style.display=scroll.scrollLeft+scroll.clientWidth>=scroll.scrollWidth-10?'none':'flex';
+}
+// Ocultar flecha al llegar al final del scroll
+document.getElementById('tabs-scroll').addEventListener('scroll',function(){
+  const fade=document.querySelector('.tabs-fade');
+  if(fade)fade.style.display=this.scrollLeft+this.clientWidth>=this.scrollWidth-10?'none':'flex';
+});
+
+// ── TOAST ──
+function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800)}
+
+// ── COMPARTIR ──
+function shareWpp(){
+  const t=encodeURIComponent('¡Mira mi guía de viaje para PORTUGAL! 🌍✈️\nGenerada por GuiaMundi.es\n\n'+window.location.href);
+  window.open('https://wa.me/?text='+t,'_blank');
+}
+function copyLink(){navigator.clipboard.writeText(window.location.href).then(()=>showToast('✓ Enlace copiado')).catch(()=>showToast('Copia la URL del navegador'))}
+
+// ── SERVICE WORKER (necesario para installPrompt en Android) ──
+if('serviceWorker' in navigator){
+  const swCode=`self.addEventListener('fetch',e=>{});`;
+  const blob=new Blob([swCode],{type:'application/javascript'});
+  const swUrl=URL.createObjectURL(blob);
+  navigator.serviceWorker.register(swUrl).catch(()=>{});
+}
+
+// ── MODAL GUARDAR ──
+let deferredPrompt=null;
+window.addEventListener('beforeinstallprompt',e=>{
+  e.preventDefault();
+  deferredPrompt=e;
+  document.getElementById('opt-android').style.display='flex';
+});
+
+function openSaveModal(){
+  // Detectar iOS
+  const isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
+  if(isIOS)document.getElementById('opt-ios').style.display='flex';
+  document.getElementById('save-modal').classList.add('open');
+}
+function closeSaveModal(e){
+  if(!e||e.target===document.getElementById('save-modal'))
+    document.getElementById('save-modal').classList.remove('open');
+}
+function installAndroid(){
+  if(deferredPrompt){
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(r=>{
+      if(r.outcome==='accepted')showToast('✓ Añadida a pantalla de inicio');
+      deferredPrompt=null;
+    });
+  }
+  document.getElementById('save-modal').classList.remove('open');
+}
+function showIOSGuide(){
+  document.getElementById('save-modal').classList.remove('open');
+  setTimeout(()=>document.getElementById('ios-modal').classList.add('open'),200);
+}
+function downloadGuide(){
+  try{
+    const blob=new Blob([document.documentElement.outerHTML],{type:'text/html;charset=utf-8'});
+    const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+    a.download='guia-PORTUGAL-15dias.html';a.click();
+    URL.revokeObjectURL(a.href);showToast('✓ Guía descargada');
+  }catch(e){showToast('Usa el menú del navegador para guardar')}
+  document.getElementById('save-modal').classList.remove('open');
+}
+
+// ── BLOQUES DE DÍA CON NOTAS Y MAPA ──
+function buildDayBlocks(){
+  const container=document.getElementById('itinerario-content');
+  if(!container)return;
+  const raw=container.innerHTML;
+  const parts=raw.split(/(?=<h2[\s>])/i);
+  let html='';
+  parts.forEach((part,i)=>{
+    if(!part.trim())return;
+    const isDay=/^<h2/i.test(part.trim());
+    if(!isDay){html+=part;return;}
+    const titleMatch=part.match(/<h2[^>]*>(.*?)<\/h2>/i);
+    const titleRaw=titleMatch?titleMatch[1]:'Día '+(i);
+    // Limpiar HTML del título para usarlo en la URL
+    const titleText=titleRaw.replace(/<[^>]+>/g,'').trim();
+    const body=part.replace(/<h2[^>]*>.*?<\/h2>/i,'').trim();
+    // Intentar extraer enlace maps que venga de OpenAI
+    const mapsMatch=body.match(/href="(https:\/\/www\.google\.com\/maps[^"]+)"/i);
+    let mapsUrl;
+    if(mapsMatch){
+      mapsUrl=mapsMatch[1];
+    } else {
+      // Generar URL a partir del título del día + destino
+      const query=encodeURIComponent(titleText+' PORTUGAL');
+      mapsUrl='https://www.google.com/maps/search/'+query;
+    }
+    const bodyClean=body.replace(/<a[^>]*google\.com\/maps[^>]*>.*?<\/a>/gi,'');
+    html+=`<div class="day-block">
+      <div class="day-block-header" onclick="toggleDay(this)">
+        <span>${titleRaw}</span><span class="day-toggle">⌄</span>
+      </div>
+      <div class="day-block-body">
+        <div class="ai-content">${bodyClean}</div>
+        <a class="day-map-btn" href="${mapsUrl}" target="_blank">🗺️ Ver lugares del día en Google Maps</a>
+        <div class="day-note-wrap">
+          <div class="day-note-label">📝 Mis notas para este día</div>
+          <textarea class="day-note" placeholder="Añade aquí reservas, horarios o cualquier detalle personal…"></textarea>
+        </div>
+      </div>
+    </div>`;
+  });
+  container.innerHTML=html;
+  const first=container.querySelector('.day-block');
+  if(first)first.classList.add('open');
+}
+function toggleDay(header){header.closest('.day-block').classList.toggle('open')}
+document.addEventListener('DOMContentLoaded',buildDayBlocks);
+
+// ── DOCUMENTOS ──
+const uploadedDocs=[];
+function handleDocUpload(e){
+  Array.from(e.target.files).forEach(file=>{
+    const reader=new FileReader();
+    reader.onload=ev=>{
+      const doc={name:file.name,size:formatSize(file.size),type:file.type,url:ev.target.result,id:Date.now()+Math.random()};
+      uploadedDocs.push(doc);renderDocs();
+    };
+    reader.readAsDataURL(file);
+  });
+  e.target.value='';
+}
+function formatSize(b){if(b<1024)return b+'B';if(b<1048576)return(b/1024).toFixed(1)+'KB';return(b/1048576).toFixed(1)+'MB'}
+function getDocIcon(type){if(type==='application/pdf')return '📄';if(type.startsWith('image/'))return '🖼️';return '📎'}
+function renderDocs(){
+  const list=document.getElementById('docs-list');
+  if(!uploadedDocs.length){list.innerHTML='';return;}
+  list.innerHTML=uploadedDocs.map(doc=>`
+    <div class="doc-item">
+      <div class="doc-icon">${getDocIcon(doc.type)}</div>
+      <div class="doc-info"><div class="doc-name">${doc.name}</div><div class="doc-size">${doc.size}</div></div>
+      <button class="doc-open" onclick="openDoc('${doc.id}')">Abrir</button>
+      <button class="doc-del" onclick="deleteDoc('${doc.id}')">✕</button>
+    </div>`).join('');
+}
+function openDoc(id){const d=uploadedDocs.find(d=>d.id==id);if(d)window.open(d.url,'_blank')}
+function deleteDoc(id){const i=uploadedDocs.findIndex(d=>d.id==id);if(i>-1){uploadedDocs.splice(i,1);renderDocs()}}
+
+// ── HERRAMIENTAS TABS ──
+function switchTool(btn,id){
+  document.querySelectorAll('.ttab').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.tool-panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');document.getElementById(id).classList.add('active');
+}
+
+// ── CONVERSOR ──
+const rates={};let ratesLoaded=false;
+const cNames={USD:'Dólar USD',GBP:'Libra',JPY:'Yen',MXN:'Peso MX',BRL:'Real',MAD:'Dírham',TRY:'Lira',THB:'Baht',IDR:'Rupia',AED:'Dírham AE',SGD:'Dólar SG',PLN:'Esloti',CZK:'Corona CZ',HUF:'Forinto',RON:'Leu',DKK:'Corona DK',SEK:'Corona SE',NOK:'Corona NO'};
+async function loadRates(){
+  try{const r=await fetch('https://open.er-api.com/v6/latest/EUR');const d=await r.json();if(d.rates){Object.assign(rates,d.rates);ratesLoaded=true;convertCurrency();document.getElementById('conv-rate').textContent='Actualizado · '+new Date().toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'})}}
+  catch(e){Object.assign(rates,{USD:1.08,GBP:0.86,JPY:162,MXN:18.5,BRL:5.4,MAD:10.8,TRY:35,THB:38,IDR:17000,AED:3.97,SGD:1.45,PLN:4.25,CZK:25,HUF:390,RON:4.97,DKK:7.46,SEK:11.5,NOK:11.8});ratesLoaded=true;convertCurrency();document.getElementById('conv-rate').textContent='Tasas aproximadas'}
+}
+function convertCurrency(){
+  if(!ratesLoaded)return;
+  const eur=parseFloat(document.getElementById('conv-eur').value)||0;
+  const to=document.getElementById('conv-to').value;
+  const res=eur*(rates[to]||1);
+  const fmt=res>=1000?res.toFixed(0):res>=10?res.toFixed(2):res.toFixed(4);
+  document.getElementById('conv-foreign').value=fmt;
+  document.getElementById('conv-display').textContent=fmt+' '+to;
+  document.getElementById('conv-to-label').textContent=cNames[to]||to;
+  document.getElementById('conv-rate').textContent='1 € = '+(rates[to]||1).toFixed(4)+' '+to;
+}
+function convertBack(){
+  if(!ratesLoaded)return;
+  const f=parseFloat(document.getElementById('conv-foreign').value)||0;
+  const to=document.getElementById('conv-to').value;
+  document.getElementById('conv-eur').value=(f/(rates[to]||1)).toFixed(2);convertCurrency();
+}
+loadRates();
+
+// ── TRADUCTOR ──
+const phraseDB={
+  es:['Hola / Buenos días','Por favor','Gracias','¿Cuánto cuesta?','¿Dónde está…?','La cuenta, por favor','No entiendo','¿Habla español?','Ayuda, por favor','Un taxi, por favor','¿Dónde está el baño?','Me llamo…','¿Habla inglés?'],
+  it:['Ciao / Buongiorno','Per favore','Grazie','Quanto costa?','Dov\'è…?','Il conto, per favore','Non capisco','Parla spagnolo?','Aiuto','Un taxi, per favore','Dov\'è il bagno?','Mi chiamo…','Parla inglese?'],
+  fr:['Bonjour','S\'il vous plaît','Merci','Combien ça coûte?','Où est…?','L\'addition, s\'il vous plaît','Je ne comprends pas','Parlez-vous espagnol?','Au secours','Un taxi, s\'il vous plaît','Où sont les toilettes?','Je m\'appelle…','Parlez-vous anglais?'],
+  de:['Hallo','Bitte','Danke','Wie viel kostet das?','Wo ist…?','Die Rechnung, bitte','Ich verstehe nicht','Sprechen Sie Spanisch?','Hilfe','Ein Taxi, bitte','Wo ist die Toilette?','Ich heiße…','Sprechen Sie Englisch?'],
+  pt:['Olá','Por favor','Obrigado/a','Quanto custa?','Onde fica…?','A conta, por favor','Não entendo','Fala espanhol?','Socorro','Um táxi','Onde é o banheiro?','Meu nome é…','Fala inglês?'],
+  ja:['こんにちは','お願いします','ありがとう','いくらですか？','…はどこですか？','お会計をお願いします','わかりません','スペイン語を話しますか？','助けて','タクシーをお願いします','トイレはどこですか？','私の名前は…','英語を話しますか？'],
+  ar:['مرحبا','من فضلك','شكرا','كم يكلف؟','أين…؟','الحساب من فضلك','لا أفهم','هل تتكلم الإسبانية؟','مساعدة','سيارة أجرة','أين الحمام؟','اسمي…','هل تتكلم الإنجليزية؟'],
+  tr:['Merhaba','Lütfen','Teşekkürler','Ne kadar?','Nerede…?','Hesabı lütfen','Anlamıyorum','İspanyolca biliyor musunuz?','Yardım','Taksi lütfen','Tuvalet nerede?','Benim adım…','İngilizce biliyor musunuz?'],
+  th:['สวัสดี','กรุณา','ขอบคุณ','ราคาเท่าไหร่?','…อยู่ที่ไหน?','เก็บเงินด้วย','ไม่เข้าใจ','พูดภาษาสเปนได้ไหม?','ช่วยด้วย','แท็กซี่','ห้องน้ำอยู่ที่ไหน?','ฉันชื่อ…','พูดภาษาอังกฤษได้ไหม?'],
+  zh:['你好','请','谢谢','多少钱？','…在哪里？','买单','我不明白','你会说西班牙语吗？','帮帮我','出租车','洗手间在哪里？','我叫…','你会说英语吗？'],
+  el:['Γεια σας','Παρακαλώ','Ευχαριστώ','Πόσο κοστίζει;','Πού είναι…;','Τον λογαριασμό','Δεν καταλαβαίνω','Μιλάτε ισπανικά;','Βοήθεια','Ένα ταξί','Πού είναι η τουαλέτα;','Με λένε…','Μιλάτε αγγλικά;'],
+  pl:['Dzień dobry','Proszę','Dziękuję','Ile to kosztuje?','Gdzie jest…?','Rachunek, proszę','Nie rozumiem','Czy mówi pan/pani po hiszpańsku?','Pomocy','Taksówkę','Gdzie jest toaleta?','Mam na imię…','Czy mówi pan/pani po angielsku?'],
+  nl:['Hallo','Alstublieft','Dank u','Hoeveel kost het?','Waar is…?','De rekening graag','Ik begrijp het niet','Spreekt u Spaans?','Help','Een taxi','Waar is het toilet?','Ik heet…','Spreekt u Engels?'],
+  ru:['Здравствуйте','Пожалуйста','Спасибо','Сколько стоит?','Где…?','Счёт, пожалуйста','Я не понимаю','Вы говорите по-испански?','Помогите','Такси','Где туалет?','Меня зовут…','Вы говорите по-английски?'],
+  cs:['Dobrý den','Prosím','Děkuji','Kolik to stojí?','Kde je…?','Účet prosím','Nerozumím','Mluvíte španělsky?','Pomozte','Taxi','Kde je toaleta?','Jmenuji se…','Mluvíte anglicky?'],
+  ro:['Bună ziua','Vă rog','Mulțumesc','Cât costă?','Unde este…?','Nota de plată','Nu înțeleg','Vorbiți spaniolă?','Ajutor','Un taxi','Unde este toaleta?','Mă numesc…','Vorbiți engleză?'],
+  hr:['Dobar dan','Molim','Hvala','Koliko košta?','Gdje je…?','Račun, molim','Ne razumijem','Govorite li španjolski?','Pomoć','Taksi','Gdje je zahod?','Zovem se…','Govorite li engleski?'],
+};
+const langMap={it:'it-IT',fr:'fr-FR',de:'de-DE',pt:'pt-PT',ja:'ja-JP',ar:'ar-SA',tr:'tr-TR',th:'th-TH',zh:'zh-CN',el:'el-GR',pl:'pl-PL',nl:'nl-NL',ru:'ru-RU',cs:'cs-CZ',ro:'ro-RO',hr:'hr-HR'};
+function updatePhrases(){
+  const lang=document.getElementById('trans-lang-sel').value;
+  const esp=phraseDB['es'],dest=phraseDB[lang]||phraseDB['it'];
+  document.getElementById('phrases-list').innerHTML=esp.map((es,i)=>`
+    <div class="trans-item">
+      <div class="trans-texts"><div class="trans-es">${es}</div><div class="trans-dest">${dest[i]||''}</div></div>
+      <button class="trans-audio" onclick="speak('${(dest[i]||'').replace(/'/g,"\\'").replace(/"/g,'&quot;')}','${lang}',this)">▶</button>
+    </div>`).join('');
+}
+function speak(text,lang,btn){
+  if(!window.speechSynthesis){showToast('Audio no disponible');return}
+  window.speechSynthesis.cancel();
+  document.querySelectorAll('.trans-audio').forEach(b=>b.classList.remove('playing'));
+  btn.classList.add('playing');
+  const u=new SpeechSynthesisUtterance(text);
+  u.lang=langMap[lang]||lang+'-'+lang.toUpperCase();u.rate=0.82;
+  u.onend=()=>btn.classList.remove('playing');
+  u.onerror=()=>{btn.classList.remove('playing');showToast('Audio no disponible para este idioma')};
+  window.speechSynthesis.speak(u);
+}
+updatePhrases();
+
+// ── CALCULADORA ──
+function calcBudget(){
+  const dias=parseFloat(document.getElementById('c-dias').value)||0;
+  const viaj=Math.max(1,parseFloat(document.getElementById('c-viaj').value)||1);
+  const aloj=parseFloat(document.getElementById('c-aloj').value)||0;
+  const com=parseFloat(document.getElementById('c-com').value)||0;
+  const transp=parseFloat(document.getElementById('c-transp').value)||0;
+  const act=parseFloat(document.getElementById('c-act').value)||0;
+  const tA=aloj*dias,tC=com*dias*viaj,tot=tA+tC+transp+act;
+  const f=n=>n.toLocaleString('es-ES',{maximumFractionDigits:0})+'€';
+  document.getElementById('r-aloj').textContent=f(tA);document.getElementById('r-com').textContent=f(tC);
+  document.getElementById('r-transp').textContent=f(transp);document.getElementById('r-act').textContent=f(act);
+  document.getElementById('r-total').textContent=f(tot);document.getElementById('r-pp').textContent=f(tot/viaj);
+}
+calcBudget();
+
+// ── CHECKLIST ──
+const checkData={
+  ropa:['Ropa ligera (5-7 días)','Chaqueta o jersey fino','Ropa interior extra','Calcetines varios','Calzado cómodo walking','Sandalias o chanclas','Ropa de baño','Pijama','Pañuelo o fular','Chubasquero ligero'],
+  docs:['DNI o Pasaporte vigente','Tarjeta Sanitaria Europea','Seguro de viaje','Reservas alojamiento','Confirmación de vuelo','2 tarjetas bancarias','Efectivo moneda local','Carné de conducir','Visado si aplica','Fotos de pasaporte'],
+  tech:['Móvil cargado','Cargador del móvil','Adaptador de enchufe','Power bank','Auriculares','Cámara de fotos','Tarjeta memoria extra','Cable USB extra','Mapas offline','Cargador laptop'],
+  salud:['Protector solar 50+','Repelente mosquitos','Medicación habitual x2','Botiquín básico','Antihistamínico','Ibuprofeno/paracetamol','Tiritas y venda','Pastillas estómago','Mascarillas','Termómetro'],
+  extras:['Botella reutilizable','Guía de conversación','Bolsa tela mercados','Candado equipaje','Funda impermeable móvil','Snacks viaje','Almohada viaje','Antifaz dormir','Tapones oídos','Colonia pequeña'],
+};
+const checkState={};let currentCat='ropa';
+function initCheck(){Object.keys(checkData).forEach(c=>checkState[c]=checkData[c].map(()=>false));renderCheck()}
+function switchCat(btn,cat){document.querySelectorAll('.check-cat-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');currentCat=cat;renderCheck()}
+function renderCheck(){
+  const items=checkData[currentCat],states=checkState[currentCat];
+  document.getElementById('checklist-items').innerHTML=items.map((item,i)=>`
+    <div class="check-item${states[i]?' done':''}" onclick="toggleCheck('${currentCat}',${i},this)">
+      <div class="check-box">${states[i]?'✓':''}</div>
+      <div class="check-label">${item}</div>
+    </div>`).join('');
+  updateProgress();
+}
+function toggleCheck(cat,idx,el){checkState[cat][idx]=!checkState[cat][idx];el.classList.toggle('done');el.querySelector('.check-box').textContent=checkState[cat][idx]?'✓':'';updateProgress()}
+function updateProgress(){let d=0,t=0;Object.values(checkState).forEach(a=>{t+=a.length;d+=a.filter(Boolean).length});const p=t?Math.round(d/t*100):0;document.getElementById('check-bar').style.width=p+'%';document.getElementById('check-pct').textContent=p+'%'}
+initCheck();
+</script>
+</body>
+</html>
