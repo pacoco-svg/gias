@@ -1,0 +1,1288 @@
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="GuiaMundi">
+<meta name="theme-color" content="#1A1A2E">
+<title>Guía de ALBANIA · 12días</title>
+<link rel="manifest" href="data:application/json;charset=utf-8,%7B%22name%22%3A%22Gu%C3%ADa%20de%20ALBANIA%22%2C%22short_name%22%3A%22ALBANIA%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%231A1A2E%22%2C%22theme_color%22%3A%22%231A1A2E%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%2C%253Csvg%2520xmlns%3D%2527http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%2527%2520viewBox%3D%25270%25200%2520100%2520100%2527%253E%253Ctext%2520y%3D%2527.9em%2527%2520font-size%3D%252790%2527%253E%25F0%259F%258C%258D%253C%2Ftext%253E%253C%2Fsvg%253E%22%2C%22sizes%22%3A%22192x192%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%7D%5D%7D">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1A1A2E;--gold:#C9922A;--gold-l:#F5E6C8;--gold-p:#FDF6E9;
+  --terra:#B84A2E;--sky:#1B4F72;--sage:#2D6A4F;--cream:#FAFAF6;
+  --sand:#F0EBE0;--mist:#EEF2F7;--line:#DDD8CF;--mid:#7B7369;--r:14px;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overflow:hidden}
+body{font-family:'DM Sans',sans-serif;background:var(--ink);color:var(--ink);font-size:15px;line-height:1.7;display:flex;flex-direction:column}
+
+/* ── PORTADA ── */
+.cover{flex-shrink:0;background:var(--ink);padding:24px 20px 16px;position:relative;overflow:hidden;text-align:center}
+.cover-bg{position:absolute;inset:0;background:radial-gradient(circle at 30% 50%,rgba(201,146,42,.15) 0,transparent 60%),radial-gradient(circle at 70% 50%,rgba(27,79,114,.18) 0,transparent 60%)}
+.cover-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,146,42,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,146,42,.04) 1px,transparent 1px);background-size:32px 32px}
+.cover-stripe{position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--terra),var(--sky))}
+.cover-content{position:relative;z-index:2}
+.cover-eyebrow{font-size:9px;font-weight:500;letter-spacing:3px;color:rgba(201,146,42,.7);text-transform:uppercase;margin-bottom:6px}
+.cover-title{font-family:'Playfair Display',serif;font-size:clamp(28px,8vw,44px);font-weight:900;line-height:1;color:#fff;letter-spacing:-1px;font-style:italic;margin-bottom:4px}
+.cover-subtitle{font-size:13px;color:rgba(255,255,255,.45);margin-bottom:14px;letter-spacing:.5px}
+.cover-actions{display:flex;gap:8px;justify-content:center;max-width:340px;margin:0 auto}
+.cover-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:5px;padding:9px 10px;border-radius:9px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;transition:all .2s}
+.cover-btn-wpp{background:#25D366;color:#fff}
+.cover-btn-save{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#fff}
+.cover-btn:active{transform:scale(.96)}
+
+/* ── TABS NAV ── */
+.tabs-nav{flex-shrink:0;background:rgba(8,8,20,.97);border-bottom:1px solid rgba(201,146,42,.15);position:relative}
+.tabs-scroll{display:flex;overflow-x:auto;scrollbar-width:none;padding:0 12px}
+.tabs-scroll::-webkit-scrollbar{display:none}
+.tab-btn{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:3px;padding:11px 14px;border:none;background:none;color:rgba(255,255,255,.38);font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;cursor:pointer;transition:all .2s;border-bottom:2px solid transparent;white-space:nowrap;min-width:72px}
+.tab-btn .tab-icon{font-size:18px;line-height:1}
+.tab-btn.active{color:var(--gold);border-bottom-color:var(--gold)}
+.tab-btn:hover{color:rgba(255,255,255,.7)}
+/* Flecha indicadora de más tabs */
+.tabs-fade{position:absolute;right:0;top:0;bottom:0;width:40px;background:linear-gradient(to right,transparent,rgba(8,8,20,.97));pointer-events:none;display:flex;align-items:center;justify-content:flex-end;padding-right:6px}
+.tabs-fade span{color:var(--gold);font-size:16px;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
+
+/* ── CONTENIDO ── */
+.tabs-content{flex:1;overflow-y:auto;background:var(--cream)}
+.tab-panel{display:none;padding:22px 18px 32px;min-height:100%}
+.tab-panel.active{display:block}
+@media(min-width:700px){.tab-panel{max-width:800px;margin:0 auto;padding:28px 36px 40px}}
+
+/* ── TIPOGRAFÍA ── */
+.sec-eye{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:4px;display:flex;align-items:center;gap:6px}
+.sec-eye::before{content:'';display:inline-block;width:10px;height:1px;background:var(--gold)}
+.sec-title{font-family:'Playfair Display',serif;font-size:21px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:16px}
+
+/* ── FICHA MINI ── */
+.info-mini{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.info-tag{background:var(--sand);border:1px solid var(--line);border-radius:50px;padding:5px 12px;font-size:12px;color:var(--mid)}
+.info-tag strong{color:var(--ink);font-weight:600}
+
+/* ── AD ── */
+.ad{background:#FFF8E7;border:1px solid #E8C84A;border-left:4px solid #E8C84A;border-radius:var(--r);padding:10px 12px;display:flex;align-items:flex-start;gap:8px;margin-bottom:14px}
+.ad-badge{background:#E8C84A;color:#fff;font-size:8px;font-weight:700;letter-spacing:1px;padding:2px 5px;border-radius:4px;flex-shrink:0;margin-top:1px}
+.ad strong{display:block;font-size:12px;font-weight:500;color:#7A5C00;margin-bottom:1px}
+.ad span{font-size:11px;color:#A07B20;font-style:italic}
+
+/* ── CONTENIDO IA ── */
+.ai-content{font-size:14px;line-height:1.85;color:var(--ink)}
+.ai-content h1,.ai-content h2{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--ink);margin:20px 0 8px;padding-bottom:5px;border-bottom:2px solid var(--gold-l)}
+.ai-content h2:first-child{margin-top:0}
+.ai-content h3{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--sky);margin:14px 0 5px}
+.ai-content h3:first-child{margin-top:0}
+.ai-content p{margin-bottom:9px}
+.ai-content ul,.ai-content ol{padding-left:18px;margin-bottom:10px}
+.ai-content li{margin-bottom:4px}
+.ai-content strong{font-weight:600}
+.ai-content a{color:var(--sky);text-decoration:none;border-bottom:1px solid rgba(27,79,114,.25);font-weight:500;word-break:break-word}
+.ai-content a:hover{color:var(--gold);border-bottom-color:var(--gold)}
+
+/* ── BLOQUES DE DÍA ── */
+.day-block{background:#fff;border:1px solid var(--line);border-radius:var(--r);margin-bottom:16px;overflow:hidden}
+.day-block-header{background:var(--ink);color:var(--gold);padding:12px 16px;font-family:'Playfair Display',serif;font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:space-between;cursor:pointer}
+.day-block-header .day-toggle{font-size:14px;transition:transform .3s;flex-shrink:0}
+.day-block.open .day-toggle{transform:rotate(180deg)}
+.day-block-body{display:none;padding:14px 16px}
+.day-block.open .day-block-body{display:block}
+.day-block-body .ai-content h3{margin-top:10px}
+.day-block-body .ai-content h3:first-child{margin-top:0}
+/* enlaces info y maps inline por lugar */
+.ai-content a[href*="google.com/maps"]{
+  display:inline-flex;align-items:center;gap:4px;
+  background:var(--sky);color:#fff!important;
+  padding:5px 12px;border-radius:50px;
+  font-size:11px;font-weight:600;
+  border:none!important;text-decoration:none!important;
+  margin:2px 4px 2px 0;transition:all .2s;
+}
+.ai-content a[href*="google.com/maps"]:hover{background:var(--gold)!important;color:#fff!important}
+.ai-content a[href*="google.com/search"]{
+  display:inline-flex;align-items:center;gap:4px;
+  background:var(--sand);color:var(--ink)!important;
+  border:1px solid var(--line)!important;
+  padding:5px 12px;border-radius:50px;
+  font-size:11px;font-weight:600;
+  text-decoration:none!important;
+  margin:2px 4px 2px 0;transition:all .2s;
+}
+.ai-content a[href*="google.com/search"]:hover{border-color:var(--gold)!important;color:var(--gold)!important}
+/* Campo de nota manual */
+.day-note-wrap{margin-top:12px;border-top:1px solid var(--line);padding-top:12px}
+.day-note-label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);margin-bottom:5px}
+.day-note{width:100%;min-height:70px;padding:9px 12px;border:1.5px solid var(--line);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink);outline:none;resize:vertical;background:var(--cream);transition:border-color .2s}
+.day-note:focus{border-color:var(--gold)}
+.day-note::placeholder{color:var(--mid)}
+
+/* ── HERRAMIENTAS ── */
+.tools-tabs{display:flex;gap:6px;margin-bottom:14px;overflow-x:auto;scrollbar-width:none}
+.tools-tabs::-webkit-scrollbar{display:none}
+.ttab{background:var(--sand);border:none;border-radius:50px;padding:7px 13px;font-size:12px;font-family:'DM Sans',sans-serif;color:var(--mid);cursor:pointer;white-space:nowrap;transition:all .2s}
+.ttab.active{background:var(--ink);color:var(--gold);font-weight:500}
+.tool-panel{display:none}
+.tool-panel.active{display:block}
+@media(min-width:700px){
+  .tools-tabs{display:none}
+  .tool-panel{display:block!important}
+  .tools-desktop{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .tool-section-title{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);margin-bottom:8px;padding-bottom:5px;border-bottom:1px solid var(--line)}
+}
+
+/* CONVERSOR */
+.conv-box{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px}
+.conv-row{display:flex;gap:8px;align-items:flex-end;margin-bottom:10px}
+.conv-iw{flex:1}
+.conv-iw label{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--mid);display:block;margin-bottom:3px}
+.conv-input{width:100%;padding:8px 10px;border:1.5px solid var(--line);border-radius:9px;font-size:16px;font-family:'Playfair Display',serif;font-weight:700;color:var(--ink);outline:none;background:var(--cream)}
+.conv-input:focus{border-color:var(--gold)}
+.conv-arrow{font-size:16px;color:var(--gold);padding-bottom:6px;flex-shrink:0}
+.conv-result{background:var(--gold-p);border:1px solid var(--gold-l);border-radius:9px;padding:10px;text-align:center;margin-bottom:6px}
+.conv-amount{font-family:'Playfair Display',serif;font-size:26px;font-weight:900;color:var(--gold)}
+.conv-rate{font-size:10px;color:var(--mid);margin-top:1px}
+.conv-select{width:100%;padding:7px 10px;border:1.5px solid var(--line);border-radius:9px;font-size:13px;font-family:'DM Sans',sans-serif;color:var(--ink);outline:none;background:#fff;margin-bottom:9px}
+.conv-note{font-size:10px;color:var(--mid);text-align:center}
+
+/* TRADUCTOR */
+.trans-wrap{border-radius:var(--r);overflow:hidden;border:1px solid var(--line)}
+.trans-lang{background:var(--ink);color:#fff;padding:9px 13px;font-size:11px;font-weight:500;display:flex;align-items:center;justify-content:space-between}
+.trans-lang select{background:transparent;border:none;color:var(--gold);font-family:'DM Sans',sans-serif;font-size:12px;outline:none;cursor:pointer}
+.trans-list{background:#fff;max-height:280px;overflow-y:auto}
+.trans-item{display:flex;align-items:center;padding:9px 13px;border-bottom:1px solid var(--line);gap:8px}
+.trans-item:last-child{border-bottom:none}
+.trans-texts{flex:1}
+.trans-es{font-size:13px;font-weight:500;color:var(--ink)}
+.trans-dest{font-size:12px;color:var(--sky);font-style:italic;margin-top:1px}
+.trans-audio{background:none;border:1.5px solid var(--gold);border-radius:50%;width:30px;height:30px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--gold);flex-shrink:0;font-size:11px;transition:all .2s}
+.trans-audio.playing,.trans-audio:active{background:var(--gold);color:#fff}
+
+/* CALCULADORA */
+.calc-box{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px}
+.calc-row{margin-bottom:9px}
+.calc-row label{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--mid);display:block;margin-bottom:3px}
+.calc-input{width:100%;padding:7px 10px;border:1.5px solid var(--line);border-radius:9px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--ink);outline:none;background:var(--cream)}
+.calc-input:focus{border-color:var(--gold)}
+.calc-result{background:var(--ink);border-radius:var(--r);padding:13px;margin-top:5px}
+.calc-result-title{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:7px}
+.calc-line{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.calc-line:last-child{border-bottom:none;padding-top:8px;margin-top:4px}
+.calc-line span{font-size:12px;color:rgba(255,255,255,.55)}
+.calc-line strong{font-family:'Playfair Display',serif;font-size:13px;color:var(--gold)}
+.calc-line.total span{color:#fff;font-weight:600;font-size:13px}
+.calc-line.total strong{font-size:17px}
+
+/* CHECKLIST */
+.check-cats{display:flex;gap:5px;margin-bottom:9px;overflow-x:auto;scrollbar-width:none}
+.check-cats::-webkit-scrollbar{display:none}
+.check-cat-btn{background:var(--sand);border:none;border-radius:50px;padding:5px 11px;font-size:11px;font-family:'DM Sans',sans-serif;color:var(--mid);cursor:pointer;white-space:nowrap;transition:all .2s}
+.check-cat-btn.active{background:var(--ink);color:var(--gold);font-weight:500}
+.checklist{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;max-height:280px;overflow-y:auto}
+.check-item{display:flex;align-items:center;gap:9px;padding:9px 12px;border-bottom:1px solid var(--line);cursor:pointer;transition:background .15s}
+.check-item:last-child{border-bottom:none}
+.check-item:hover{background:var(--sand)}
+.check-box{width:18px;height:18px;border:2px solid var(--line);border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px;color:transparent;transition:all .2s}
+.check-item.done .check-box{background:var(--sage);border-color:var(--sage);color:#fff}
+.check-item.done .check-label{text-decoration:line-through;color:var(--mid)}
+.check-label{font-size:13px;color:var(--ink)}
+.check-progress{background:var(--sand);border-radius:var(--r);padding:8px 12px;margin-bottom:9px;display:flex;align-items:center;gap:8px}
+.check-bar-wrap{flex:1;background:var(--line);border-radius:50px;height:5px;overflow:hidden}
+.check-bar{height:100%;background:linear-gradient(90deg,var(--sage),var(--gold));border-radius:50px;transition:width .4s}
+.check-pct{font-size:12px;font-weight:600;color:var(--sage);flex-shrink:0}
+
+/* ── DOCUMENTOS ── */
+.docs-upload-area{border:2px dashed var(--line);border-radius:var(--r);padding:20px;text-align:center;background:#fff;cursor:pointer;transition:all .2s;margin-bottom:16px}
+.docs-upload-area:hover{border-color:var(--gold);background:var(--gold-p)}
+.docs-upload-icon{font-size:28px;margin-bottom:6px}
+.docs-upload-text{font-size:13px;color:var(--mid)}
+.docs-upload-text strong{color:var(--ink);display:block;margin-bottom:2px}
+.docs-list{display:flex;flex-direction:column;gap:8px}
+.doc-item{background:#fff;border:1px solid var(--line);border-radius:10px;padding:11px 14px;display:flex;align-items:center;gap:10px}
+.doc-icon{font-size:22px;flex-shrink:0}
+.doc-info{flex:1;min-width:0}
+.doc-name{font-size:13px;font-weight:500;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.doc-size{font-size:11px;color:var(--mid)}
+.doc-open{background:var(--sky);color:#fff;border:none;border-radius:6px;padding:5px 10px;font-size:11px;font-weight:600;cursor:pointer;flex-shrink:0}
+.doc-del{background:none;border:none;color:var(--mid);cursor:pointer;font-size:16px;padding:0 4px;flex-shrink:0}
+#doc-input{display:none}
+
+/* ── MAPA GENERAL ── */
+.map-block{background:var(--ink);border-radius:var(--r);overflow:hidden;margin-bottom:16px}
+.map-prev{height:110px;background:repeating-linear-gradient(0deg,transparent,transparent 35px,rgba(201,146,42,.06) 36px),repeating-linear-gradient(90deg,transparent,transparent 35px,rgba(201,146,42,.06) 36px);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:5px}
+.map-icon{font-size:26px}
+.map-dest-label{font-size:11px;color:rgba(255,255,255,.35);letter-spacing:1px}
+.map-cta{padding:11px 14px;display:flex;align-items:center;justify-content:space-between}
+.map-cta-t strong{display:block;color:#fff;font-size:13px;margin-bottom:1px}
+.map-cta-t span{font-size:11px;color:rgba(255,255,255,.45)}
+.map-btn{background:var(--gold);color:var(--ink);font-size:11px;font-weight:700;padding:8px 15px;border-radius:50px;text-decoration:none}
+
+/* ── CTA FINAL ── */
+.cta-box{background:linear-gradient(135deg,var(--ink),#2A1F3D);border-radius:var(--r);padding:22px 18px;text-align:center;position:relative;overflow:hidden;margin-bottom:16px}
+.cta-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--terra),var(--sky))}
+.cta-box h3{font-family:'Playfair Display',serif;font-size:18px;color:#fff;margin-bottom:5px}
+.cta-box p{font-size:12px;color:rgba(255,255,255,.45);margin-bottom:14px}
+.cta-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-bottom:13px}
+.cta-pill{background:rgba(201,146,42,.15);border:1px solid rgba(201,146,42,.3);color:var(--gold);font-size:12px;padding:6px 12px;border-radius:50px;text-decoration:none}
+.share-bar{display:flex;gap:7px}
+.share-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:5px;padding:9px;border-radius:9px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;transition:all .2s}
+.share-wpp{background:#25D366;color:#fff}
+.share-copy{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:#fff}
+
+/* NOTAS */
+.note-area{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.note-line{padding:12px 14px;border-bottom:1px solid var(--line);min-height:44px;font-size:14px;color:var(--line);font-style:italic}
+.note-line:last-child{border-bottom:none}
+
+/* MODAL GUARDAR */
+.save-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:999;align-items:flex-end;justify-content:center}
+.save-modal.open{display:flex}
+.save-sheet{background:#fff;border-radius:var(--r) var(--r) 0 0;padding:24px 20px 32px;width:100%;max-width:480px}
+.save-sheet h3{font-family:'Playfair Display',serif;font-size:19px;color:var(--ink);margin-bottom:6px}
+.save-sheet p{font-size:13px;color:var(--mid);margin-bottom:18px;line-height:1.6}
+.save-option{display:flex;align-items:center;gap:12px;padding:13px 14px;border:1.5px solid var(--line);border-radius:var(--r);margin-bottom:9px;cursor:pointer;transition:all .2s}
+.save-option:hover{border-color:var(--gold);background:var(--gold-p)}
+.save-option-icon{font-size:24px;flex-shrink:0}
+.save-option-text strong{display:block;font-size:14px;color:var(--ink);margin-bottom:1px}
+.save-option-text span{font-size:12px;color:var(--mid)}
+.save-close{width:100%;padding:11px;background:var(--sand);border:none;border-radius:var(--r);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;color:var(--mid);cursor:pointer;margin-top:6px}
+
+/* TOAST */
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(10px);background:var(--ink);color:#fff;padding:9px 18px;border-radius:50px;font-size:13px;font-weight:500;opacity:0;transition:all .3s;pointer-events:none;z-index:9999;white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.fa{animation:fadeUp .45s ease both}
+</style>
+</head>
+<body>
+
+<!-- ══ PORTADA ══ -->
+<div class="cover">
+  <div class="cover-bg"></div>
+  <div class="cover-grid"></div>
+  <div class="cover-stripe"></div>
+  <div class="cover-content">
+    <div class="cover-eyebrow fa">GuiaMundi.es</div>
+    <div class="cover-title fa" style="animation-delay:.1s">Guía de ALBANIA</div>
+    <div class="cover-subtitle fa" style="animation-delay:.2s">12 días · Cultural e histórico · 4viajero/s</div>
+    <div class="cover-actions fa" style="animation-delay:.3s">
+      <button class="cover-btn cover-btn-wpp" onclick="shareWpp()">
+        <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Compartir
+      </button>
+      <button class="cover-btn cover-btn-save" onclick="openSaveModal()">⬇ Guardar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TABS NAV ══ -->
+<div class="tabs-nav">
+  <div class="tabs-scroll" id="tabs-scroll">
+    <button class="tab-btn active" onclick="showTab('info',this)"><span class="tab-icon">📋</span>Viajero</button>
+    <button class="tab-btn" onclick="showTab('itinerario',this)"><span class="tab-icon">🗓</span>Ruta</button>
+    <button class="tab-btn" onclick="showTab('experiencias',this)"><span class="tab-icon">⭐</span>Experiencias</button>
+    <button class="tab-btn" onclick="showTab('tools',this)"><span class="tab-icon">⚙️</span>Tools</button>
+    <button class="tab-btn" onclick="showTab('destino',this)"><span class="tab-icon">💡</span>Destino</button>
+    <button class="tab-btn" onclick="showTab('transporte',this)"><span class="tab-icon">🚗</span>Transporte</button>
+    <button class="tab-btn" onclick="showTab('recursos',this)"><span class="tab-icon">🔗</span>Recursos</button>
+    <button class="tab-btn" onclick="showTab('cultura',this)"><span class="tab-icon">🎬</span>Cultura</button>
+    <button class="tab-btn" onclick="showTab('curiosidades',this)"><span class="tab-icon">🤔</span>Curiosidades</button>
+    <button class="tab-btn" onclick="showTab('docs',this)"><span class="tab-icon">📁</span>Documentos</button>
+    <button class="tab-btn" onclick="showTab('notas',this)"><span class="tab-icon">📝</span>Notas</button>
+  </div>
+  <div class="tabs-fade"><span>›</span></div>
+</div>
+
+<!-- ══ CONTENIDO ══ -->
+<div class="tabs-content" id="tabs-content">
+
+  <!-- TAB VIAJERO -->
+  <div class="tab-panel active" id="tab-info">
+    <div class="sec-eye">Tu viaje</div>
+    <div class="sec-title">Información del viajero</div>
+    <div class="info-mini">
+      <div class="info-tag"><strong>ROMANA</strong></div>
+      <div class="info-tag">📍 <strong>ALBANIA</strong></div>
+      <div class="info-tag">🗓 <strong> días</strong></div>
+      <div class="info-tag">👥 <strong> viajero/s</strong></div>
+      <div class="info-tag">🧭 <strong>Cultural e histórico</strong></div>
+      <div class="info-tag">🚗 <strong>Transporte público</strong></div>
+    </div>
+    <div class="ad"><div class="ad-badge">AD</div><div><strong>Vuelos · Seguro de viaje</strong><span>→ Insertar banner afiliado aquí</span></div></div>
+    <div class="ad"><div class="ad-badge">AD</div><div><strong>Hoteles · Alojamiento</strong><span>→ Booking / Airbnb</span></div></div>
+    <div style="margin-top:16px">
+      <div class="map-block">
+        <div class="map-prev"><div class="map-icon">🗺️</div><div class="map-dest-label">ALBANIA</div></div>
+        <div class="map-cta">
+          <div class="map-cta-t"><strong>Ver en Google Maps</strong><span>Explorar ALBANIA</span></div>
+          <a class="map-btn" href="https://www.google.com/maps/search/ALBANIA" target="_blank">Abrir →</a>
+        </div>
+      </div>
+    </div>
+    <div class="cta-box">
+      <h3>¡Buen viaje, ROMANA!</h3>
+      <p>Tu aventura en ALBANIA · GuiaMundi.es</p>
+      <div class="cta-pills">
+        <a class="cta-pill" href="#">✈ Vuelos</a>
+        <a class="cta-pill" href="#">🏨 Hoteles</a>
+        <a class="cta-pill" href="#">🎯 Experiencias</a>
+        <a class="cta-pill" href="#">🛡 Seguro</a>
+      </div>
+      <div class="share-bar">
+        <button class="share-btn share-wpp" onclick="shareWpp()">
+          <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Compartir WhatsApp
+        </button>
+        <button class="share-btn share-copy" onclick="copyLink()">⎘ Copiar enlace</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB ITINERARIO -->
+  <div class="tab-panel" id="tab-itinerario">
+    <div class="sec-eye">Día a día</div>
+    <div class="sec-title">Itinerario detallado</div>
+    <div class="ad"><div class="ad-badge">AD</div><div><strong>Tours · Actividades</strong><span>→ Experiencias locales recomendadas</span></div></div>
+    <div id="itinerario-content" class="ai-content" style="margin-top:14px"><h2>DÍA 1 — Descubriendo Tirana, la capital vibrante</h2>
+<p>Iniciaremos nuestro viaje en la capital albanesa, Tirana, una ciudad que fusiona su historia otomana con la arquitectura comunista y la modernidad, ideal para empezar a sumergirse en la cultura y el pasado del país.</p>
+
+<h3>Plaza Skanderbeg</h3>
+<p>Centro neurálgico de Tirana, con la estatua de Skanderbeg, héroe nacional. Pasea por la plaza para admirar los principales edificios históricos y el ambiente local. Recomendado tiempo: 1-1.5 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Plaza+Skanderbeg+ALBANIA" target="_blank">📖 Plaza Skanderbeg</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Plaza+Skanderbeg+ALBANIA" target="_blank">📍 Maps</a>
+</p>
+
+<h3>Mezquita Et'hem Bey</h3>
+<p>Una joya otomana del siglo XVIII, famosa por sus frescos interiores que representan árboles y pájaros, fenómeno raro en el arte islámico. Entrada gratuita y recomendado visitar en 45 minutos.</p>
+<p>
+<a href="https://www.google.com/search?q=Mezquita+Et'hem+Bey+ALBANIA" target="_blank">📖 Mezquita Et'hem Bey</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Mezquita+Et'hem+Bey+ALBANIA" target="_blank">📍 Maps</a>
+</p>
+
+<h3>Museo Histórico Nacional</h3>
+<p>Visita imprescindible para entender la historia reciente y antigua de Albania, con exposiciones desde la prehistoria hasta la era comunista. Tiempo recomendado: 2 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Museo+Histórico+Nacional+ALBANIA" target="_blank">📖 Museo Histórico Nacional</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Museo+Histórico+Nacional+ALBANIA" target="_blank">📍 Maps</a>
+</p>
+
+<h3>Torre del Reloj de Tirana</h3>
+<p>Sube a esta torre del siglo XVIII para obtener una vista panorámica del centro de Tirana y sus montañas circundantes. La subida dura unos 20 minutos y vale la pena por las vistas.</p>
+<p>
+<a href="https://www.google.com/search?q=Torre+del+Reloj+de+Tirana+ALBANIA" target="_blank">📖 Torre del Reloj de Tirana</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Torre+del+Reloj+de+Tirana+ALBANIA" target="_blank">📍 Maps</a>
+</p>
+
+<h3>Bazar de Pazari i Ri</h3>
+<p>Animado mercado donde se venden productos frescos y artesanía local. Ideal para empaparse del ambiente cotidiano y probar comida típica. Recomendado 1 hora mínimo.</p>
+<p>
+<a href="https://www.google.com/search?q=Bazar+de+Pazari+i+Ri+ALBANIA" target="_blank">📖 Bazar de Pazari i Ri</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Bazar+de+Pazari+i+Ri+ALBANIA" target="_blank">📍 Maps</a>
+</p>
+
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=Era+Restaurant+Tirana+ALBANIA" target="_blank">Era Restaurant</a></p>
+<p><strong>Alojamiento sugerido:</strong> <a href="https://www.google.com/search?q=Hotel+Plaza+Tirana+ALBANIA" target="_blank">Hotel Plaza Tirana</a></p>
+
+<h2>DÍA 2 — Krujë y la herencia de Skanderbeg</h2>
+<p>Viaje en transporte público a la cercana ciudad histórica de Krujë, una parada esencial para comprender la resistencia al imperio otomano y disfrutar de bellas vistas y museos.</p>
+
+<h3>Castillo de Krujë</h3>
+<p>Fortaleza medieval desde donde Skanderbeg organizó la defensa contra los otomanos. Explora sus murallas y disfruta de vistas panorámicas. Tiempo estimado: 1.5 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Castillo+de+Krujë+ALBANIA" target="_blank">📖 Castillo de Krujë</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Castillo+de+Krujë+ALBANIA" target="_blank">📍 Maps</a>
+</p>
+
+<h3>Museo Skanderbeg</h3>
+<p>Dentro del castillo, este museo está dedicado al héroe nacional Skanderbeg, con artefactos históricos, armas y exposiciones educativas. Tiempo recomendado: 1 hora.</p>
+<p>
+<a href="https://www.google.com/search?q=Museo+Skanderbeg+Krujë+ALBANIA" target="_blank">📖 Museo Skanderbeg</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search=Museo+Skanderbeg+Krujë+ALBANIA" target="_blank">📍 Maps</a>
+</p>
+
+<h3>Antiguo Bazar de Krujë</h3>
+<p>Muy cerca del castillo, este bazar tradicional ofrece artesanía local, alfombras y recuerdos. Perfecto para probar la cultura del comercio tradicional. Tiempo: 1 hora.</p>
+<p>
+<a href="https://www.google.com/search?q=Antiguo+Bazar+de+Krujë+ALBANIA" target="_blank">📖 Antiguo Bazar de Krujë</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Antiguo+Bazar+de+Krujë+ALBANIA" target="_blank">📍 Maps</a>
+</p>
+
+<h3>Albanian National Ethnographic Museum</h3>
+<p>Localizado en una antigua casa otomana, este museo muestra la vida rural tradicional albanesa con trajes, utensilios y decoración original. Recomendado 1 hora.</p>
+<p>
+<a href="https://www.google.com/search?q=Albanian+National+Ethnographic+Museum+Krujë+ALBANIA" target="_blank">📖 Albanian National Ethnographic Museum</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Albanian+National+Ethnographic+Museum+Krujë+ALBANIA" target="_blank">📍 Maps</a>
+</p>
+
+<h3>Museo de Ali Pasha</h3>
+<p>Casa histórica del líder otomano, ofrece contexto sobre su papel en la historia balcánica. Visita recomendada para ampliar el conocimiento local; 45 minutos suficientes.</p>
+<p>
+<a href="https://www.google.com/search?q=Museo+de+Ali+Pasha+Krujë+ALBANIA" target="_blank">📖 Museo de Ali Pasha</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Museo+de+Ali+Pasha+Krujë+ALBANIA" target="_blank">📍 Maps</a>
+</p>
+
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=Restaurant+Panorama+Krujë+ALBANIA" target="_blank">Restaurant Panorama Krujë</a></p>
+<p><strong>Alojamiento sugerido:</strong> <a href="https://www.google.com/search?q=Hotel+Mangalemi+Krujë+ALBANIA" target="_blank">Hotel Mangalemi</a></p>
+
+<h2>DÍA 3 — Berat, la ciudad de las mil ventanas</h2>
+<p>Traslado en transporte público a Berat, ciudad Patrimonio de la Humanidad, famosa por su arquitectura otomana bien conservada y sus iglesias y mezquitas históricas.</p>
+
+<h3>Castillo de Berat</h3>
+<p>Su imponente fortaleza medieval se mantiene habitada y acoge varias iglesias bizantinas preservadas. Tiempo para recorrer: 2 horas para explorar iglesias y calles interiores.</p>
+<p>
+<a href="https://www.google.com/search?q=Castillo+de+Berat+ALBANIA" target="_blank">📖 Castillo de Berat</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Castillo+de+Berat+ALBANIA" target="_blank">📍 Maps</a>
+</p>
+
+<h3>Museo Onufri</h3>
+<p>Ubicado dentro del castillo, este museo alberga iconos religiosos y arte bizantino, nombrado en honor al famoso pintor Onufri. Planifica al menos 1 hora.</p>
+<p>
+<a href="https://www.google.com/search?q=Museo+Onufri+Berat+ALBANIA" target="_blank">📖 Museo Onufri</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Museo+Onufri+Berat+ALBANIA" target="_blank">📍 Maps</a>
+</p>
+
+<h3>Barrio Mangalem</h3>
+<p>Explora este pintoresco barrio otomano con casas blancas y ventanas alineadas que suben la colina. Ideal para pasear por sus calles estrechas y disfrutar vistas de la ciudad. 1.5 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Barrio+Mangalem+Berat+ALBANIA" target="_blank">📖 Barrio Mangalem</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Barrio+Mangalem+Berat+ALBANIA" target="_blank">📍 Maps</a>
+</p>
+
+<h3>Mezquita del Rey (Xhamia e Plumbit)</h3>
+<p>Construida en el siglo XV, renombrada por su minarete de plomo, la mezquita es un símbolo de la coexistencia religiosa. Visita recomendada 30 minutos.</p>
+<p>
+<a href="https://www.google.com/search?q=Mezquita+del+Rey+Berat+ALBANIA" target="_blank">📖 Mezquita del Rey</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Mezquita+del+Rey+Berat+ALBANIA" target="_blank">📍 Maps</a>
+</p>
+
+<h3>Iglesia de Santa María</h3>
+<p>Una de las iglesias más antiguas y respetadas dentro del castillo, con frescos bizantinos bien conservados. Visita tranquila, dedicando 30-45 minutos.</p>
+<p>
+<a href="https://www.google.com/search?q=Iglesia+de+Santa+María+Berat+ALBANIA" target="_blank">📖 Iglesia de Santa María</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Iglesia+de+Santa+María+Berat+ALBANIA" target="_blank">📍 Maps</a>
+</p>
+
+<h3>Museo de Artesanía</h3>
+<p>Presenta la historia de la artesanía local, ideal para comprender técnicas tradicionales y comprar souvenirs auténticos. Tiempo: 45 minutos.</p>
+<p>
+<a href="https://www.google.com/search?q=Museo+de+Artesanía+Berat+ALBANIA" target="_blank">📖 Museo de Artesanía</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Museo+de+Artesanía+Berat+ALBANIA" target="_blank">📍 Maps</a>
+</p>
+
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=Restaurant+Mangalemi+Berat+ALBANIA" target="_blank">Restaurant Mangalemi</a></p>
+<p><strong>Alojamiento sugerido:</strong> <a href="https://www.google.com/search?q=Hotel+Osumi+Berat+ALBANIA" target="_blank">Hotel Osumi</a></p>
+
+<h2>DÍA 4 — Gjirokastër, la ciudad de piedra</h2>
+<p>Viaje en transporte público a la ciudad patrimonio de Gjirokastër, conocida por sus casas de piedra y arquitectura única, es un lugar clave para entender la historia y cultura otomanas en Albania.</p>
+
+<h3>Castillo de Gjirokastër</h3>
+<p>Fortaleza impresionante con un museo que muestra armas y la prisión otomana. El castillo ofrece vistas espectaculares de la ciudad y alrededores. Tiempo recomendado: 2 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Castillo+de+Gjirokastër+ALBANIA" target="_blank">📖 Castillo de Gjirokastër</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Castillo+de+Gjirokastër+ALBANIA" target="_blank">📍 Maps</a>
+</p>
+
+<h3>Museo Etnográfico</h3>
+<p>La casa natal del dictador Enver Hoxha transformada en museo sobre la vida tradicional de la región. Vale la pena para conocer la cultura local. Tiempo: 1 hora.</p>
+<p>
+<a href="https://www.google.com/search?q=Museo+Etnográfico+Gjirokastër+ALBANIA" target="_blank">📖 Museo Etnográfico</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Museo+Etnográfico+Gjirokastër+ALBANIA" target="_blank">📍 Maps</a>
+</p>
+
+<h3>Casa Zekate</h3>
+<p>Ejemplo espectacular de la arquitectura otomana, con decoración interior barroca y panorámicas desde el techo. Recomendado dedicar una hora para recorrido y fotos.</p>
+<p>
+<a href="https://www.google.com/search?q=Casa+Zekate+Gjirokastër+ALBANIA" target="_blank">📖 Casa Zekate</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Casa+Zekate+Gjirokastër+ALBANIA" target="_blank">📍 Maps</a>
+</p>
+
+<h3>Mezquita de Gjirokastër</h3>
+<p>Representante del arte islámico local, construida en 1757, es interesante para observar el contraste con la arquitectura cristiana predominante. tiempo recomendado: 30 min.</p>
+<p>
+<a href="https://www.google.com/search?q=Mezquita+de+Gjirokastër+ALBANIA" target="_blank">📖 Mezquita de Gjirokastër</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Mezquita+de+Gjirokastër+ALBANIA" target="_blank">📍 Maps</a>
+</p>
+
+<h3>Teatro Antiguo</h3>
+<p>Donde se celebran eventos culturales y festivales, este pequeño pero histórico teatro merece una visita rápida y se encuentra en el centro histórico.</p>
+<p>
+<a href="https://www.google.com/search?q=Teatro+Antiguo+Gjirokastër+ALBANIA" target="_blank">📖 Teatro Antiguo</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Teatro+Antiguo+Gjirokastër+ALBANIA" target="_blank">📍 Maps</a>
+</p>
+
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=Kujtimi+Restaurant+Gjirokastër+ALBANIA" target="_blank">Kujtimi Restaurant</a></p>
+<p><strong>Alojamiento sugerido:</strong> <a href="https://www.google.com/search?q=Hotel+Gjirokastër+ALBANIA" target="_blank">Hotel Gjirokastër</a></p>
+
+<h2>DÍA 5 — Sarandë y Butrint, historia viva junto al mar</h2>
+<p>Desde Gjirokastër traslado en transporte público a Sarandë, ciudad costera, para conectar con la visita al yacimiento arqueológico de Butrint, sitio Patrimonio de la Humanidad.</p>
+
+<h3>Ruinas de Butrint</h3>
+<p>Importante sitio arqueológico con ruinas griegas, romanas y bizantinas, rodeado de parque natural. Ideal para un día de exploración histórica y natural. Estima 3-4 horas para la visita.</p>
+<p>
+<a href="https://www.google.com/search?q=Ruinas+de+Butrint+ALBANIA" target="_blank">📖 Ruinas de Butrint</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Ruinas+de+Butrint+ALBANIA" target="_blank">📍 Maps</a>
+</p>
+
+<h3>Castillo de Lekuresi</h3>
+<p>Este castillo ofrece vistas panorámicas impresionantes de Sarandë y la bahía, es un punto ideal para contemplar el entorno y tomar fotos. Recomendado 1 hora.</p>
+<p>
+<a href="https://www.google.com/search?q=Castillo+de+Lekuresi+Sarandë+ALBANIA" target="_blank">📖 Castillo de Lekuresi</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Castillo+de+Lekuresi+Sarandë+ALBANIA" target="_blank">📍 Maps</a>
+</</div>
+  </div>
+
+  <!-- TAB EXPERIENCIAS -->
+  <div class="tab-panel" id="tab-experiencias">
+    <div class="sec-eye">Imprescindibles</div>
+    <div class="sec-title">Experiencias destacadas</div>
+    <div class="ai-content"><h3>🌟 Exploración de las Ruinas de Butrint</h3>
+<p>Visitar el antiguo sitio arqueológico de Butrint, declarado Patrimonio de la Humanidad por la UNESCO, es imprescindible para entender la historia de Albania. Se pueden explorar ruinas griegas y romanas rodeadas de un hermoso paisaje natural. Dedica al menos 2-3 horas y lleva calzado cómodo para caminar.</p>
+
+<h3>🌟 Paseo por el Casco Antiguo de Gjirokastër</h3>
+<p>Este encantador pueblo otomano es famoso por su arquitectura bien conservada y su castillo. Pasear por sus calles empedradas es como retroceder en el tiempo. Reserva medio día para disfrutar de su cultura y su gastronomía local, especialmente el "qifqi".</p>
+
+<h3>🌟 Degustación de Vinos en la Región de Berat</h3>
+<p>Berat es conocida por su producción de vino, y realizar una cata es una excelente manera de sumergirse en la cultura local. Visita alguna de las bodegas locales y prueba vinos tradicionales. Dedica de 1 a 2 horas y asegúrate de preguntar por la historia de cada vino.</p>
+
+<h3>🌟 Visita a la Mezquita de Et'hem Bey en Tirana</h3>
+<p>Este emblemático lugar de culto es una muestra del legado otomano en Albania. Al entrar, se aprecia su arquitectura y hermosos frescos. Es recomendable visitarla en la mañana, dedicando alrededor de 30 minutos, y es gratis.</p>
+
+<h3>🌟 Exploración de la Fortaleza de Kalivo</h3>
+<p>Ubicada en la península de Ali Pasha, esta fortaleza ofrece vistas espectaculares y una rica historia relacionada con el líder local Ali Pasha. El recorrido puede llevar 1-2 horas, y es una experiencia tranquila para disfrutar de la naturaleza y la historia en conjunto.</p>
+
+<h3>🌟 Museo Nacional de Historia en Tirana</h3>
+<p>Con una vasta colección que narra la historia albanesa desde la prehistoria hasta la modernidad, es un lugar esencial para entender el contexto del país. Dedica al menos 2 horas para recorrer sus exposiciones y no olvides entrar al mural de mosaico en la entrada.</p>
+
+<h3>🌟 Experiencia en el Monasterio de Ardenica</h3>
+<p>Este monasterio, conocido por su impresionante arquitectura y su ubicación pintoresca, también es famoso por su conexión con la historia albanesa. La visita puede tomar entre 1 y 2 horas y proporciona un ambiente de paz y reflexión.</p>
+
+<h3>🌟 Recorrido por el Mercado de Pazari i Ri en Tirana</h3>
+<p>Descubre la vida local a través de este vibrante mercado. Aquí puedes probar productos frescos, quesos, y delicias locales. Dedica al menos una hora y disfruta del ambiente y la oportunidad de interactuar con los lugareños.</p></div>
+  </div>
+
+  <!-- TAB TOOLS -->
+  <div class="tab-panel" id="tab-tools">
+    <div class="sec-eye">Herramientas interactivas</div>
+    <div class="sec-title">Para tu viaje</div>
+    <div class="tools-tabs">
+      <button class="ttab active" onclick="switchTool(this,'conv')">💱 Moneda</button>
+      <button class="ttab" onclick="switchTool(this,'trans')">🗣 Frases</button>
+      <button class="ttab" onclick="switchTool(this,'calc')">💶 Presupuesto</button>
+      <button class="ttab" onclick="switchTool(this,'check')">🧳 Equipaje</button>
+    </div>
+    <div class="tools-desktop">
+      <div>
+        <div class="tool-section-title">💱 Conversor de moneda en tiempo real</div>
+        <div class="tool-panel active" id="conv">
+          <div class="conv-box">
+            <select class="conv-select" id="conv-to" onchange="convertCurrency()">
+              <option value="USD">$ Dólar USD</option><option value="GBP">£ Libra</option>
+              <option value="JPY">¥ Yen</option><option value="MXN">$ Peso MX</option>
+              <option value="BRL">R$ Real</option><option value="MAD">MAD Dírham</option>
+              <option value="TRY">₺ Lira turca</option><option value="THB">฿ Baht</option>
+              <option value="IDR">Rp Rupia</option><option value="AED">AED Dírham</option>
+              <option value="SGD">S$ Dólar SG</option><option value="PLN">zł Esloti</option>
+              <option value="CZK">Kč Corona CZ</option><option value="HUF">Ft Forinto</option>
+              <option value="RON">RON Leu</option><option value="DKK">kr Danesa</option>
+              <option value="SEK">kr Sueca</option><option value="NOK">kr Noruega</option>
+            </select>
+            <div class="conv-row">
+              <div class="conv-iw"><label>Euros €</label><input class="conv-input" type="number" id="conv-eur" value="100" oninput="convertCurrency()"></div>
+              <div class="conv-arrow">⇄</div>
+              <div class="conv-iw"><label id="conv-to-label">Destino</label><input class="conv-input" type="number" id="conv-foreign" oninput="convertBack()"></div>
+            </div>
+            <div class="conv-result"><div class="conv-amount" id="conv-display">—</div><div class="conv-rate" id="conv-rate">Cargando…</div></div>
+            <div class="conv-note">Tiempo real · open.er-api.com</div>
+          </div>
+        </div>
+        <br>
+        <div class="tool-section-title">🗣 Frases útiles con audio</div>
+        <div class="tool-panel" id="trans">
+          <div class="trans-wrap">
+            <div class="trans-lang"><span>Idioma:</span>
+              <select id="trans-lang-sel" onchange="updatePhrases()">
+                <option value="it">🇮🇹 Italiano</option><option value="fr">🇫🇷 Francés</option>
+                <option value="de">🇩🇪 Alemán</option><option value="pt">🇵🇹 Portugués</option>
+                <option value="ja">🇯🇵 Japonés</option><option value="ar">🇲🇦 Árabe</option>
+                <option value="tr">🇹🇷 Turco</option><option value="th">🇹🇭 Tailandés</option>
+                <option value="zh">🇨🇳 Chino</option><option value="el">🇬🇷 Griego</option>
+                <option value="pl">🇵🇱 Polaco</option><option value="nl">🇳🇱 Neerlandés</option>
+                <option value="ru">🇷🇺 Ruso</option><option value="cs">🇨🇿 Checo</option>
+                <option value="ro">🇷🇴 Rumano</option><option value="hr">🇭🇷 Croata</option>
+              </select>
+            </div>
+            <div class="trans-list" id="phrases-list"></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="tool-section-title">💶 Calculadora de presupuesto</div>
+        <div class="tool-panel" id="calc">
+          <div class="calc-box">
+            <div class="calc-row"><label>Días</label><input class="calc-input" type="number" id="c-dias" value="12" oninput="calcBudget()"></div>
+            <div class="calc-row"><label>Viajeros</label><input class="calc-input" type="number" id="c-viaj" value="" oninput="calcBudget()"></div>
+            <div class="calc-row"><label>Alojamiento / noche €</label><input class="calc-input" type="number" id="c-aloj" value="80" oninput="calcBudget()"></div>
+            <div class="calc-row"><label>Comida / persona / día €</label><input class="calc-input" type="number" id="c-com" value="35" oninput="calcBudget()"></div>
+            <div class="calc-row"><label>Transporte total €</label><input class="calc-input" type="number" id="c-transp" value="200" oninput="calcBudget()"></div>
+            <div class="calc-row"><label>Actividades total €</label><input class="calc-input" type="number" id="c-act" value="150" oninput="calcBudget()"></div>
+            <div class="calc-result">
+              <div class="calc-result-title">RESUMEN</div>
+              <div class="calc-line"><span>Alojamiento</span><strong id="r-aloj">—</strong></div>
+              <div class="calc-line"><span>Comida</span><strong id="r-com">—</strong></div>
+              <div class="calc-line"><span>Transporte</span><strong id="r-transp">—</strong></div>
+              <div class="calc-line"><span>Actividades</span><strong id="r-act">—</strong></div>
+              <div class="calc-line total"><span>TOTAL</span><strong id="r-total">—</strong></div>
+              <div class="calc-line"><span>Por persona</span><strong id="r-pp">—</strong></div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="tool-section-title">🧳 Checklist de equipaje</div>
+        <div class="tool-panel" id="check">
+          <div class="check-progress"><div class="check-bar-wrap"><div class="check-bar" id="check-bar" style="width:0%"></div></div><div class="check-pct" id="check-pct">0%</div></div>
+          <div class="check-cats">
+            <button class="check-cat-btn active" onclick="switchCat(this,'ropa')">👕 Ropa</button>
+            <button class="check-cat-btn" onclick="switchCat(this,'docs')">📄 Docs</button>
+            <button class="check-cat-btn" onclick="switchCat(this,'tech')">📱 Tech</button>
+            <button class="check-cat-btn" onclick="switchCat(this,'salud')">💊 Salud</button>
+            <button class="check-cat-btn" onclick="switchCat(this,'extras')">✨ Extras</button>
+          </div>
+          <div class="checklist" id="checklist-items"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB DESTINO -->
+  <div class="tab-panel" id="tab-destino">
+    <div class="sec-eye">Antes de partir</div>
+    <div class="sec-title">Guía del destino</div>
+    <div class="ai-content"><h2>Clima y mejor época</h2>
+<p>Albania tiene un clima mediterráneo con veranos calurosos e inviernos suaves. Las temperaturas aproximadas por meses son:</p>
+<ul>
+  <li><strong>Enero:</strong> 5°C - 12°C</li>
+  <li><strong>Febrero:</strong> 6°C - 13°C</li>
+  <li><strong>Marzo:</strong> 9°C - 16°C</li>
+  <li><strong>Abril:</strong> 12°C - 20°C</li>
+  <li><strong>Mayo:</strong> 16°C - 24°C</li>
+  <li><strong>Junio:</strong> 20°C - 29°C</li>
+  <li><strong>Julio:</strong> 23°C - 33°C</li>
+  <li><strong>Agosto:</strong> 23°C - 33°C</li>
+  <li><strong>Septiembre:</strong> 20°C - 29°C</li>
+  <li><strong>Octubre:</strong> 15°C - 23°C</li>
+  <li><strong>Noviembre:</strong> 10°C - 16°C</li>
+  <li><strong>Diciembre:</strong> 6°C - 12°C</li>
+</ul>
+<p>La mejor época para viajar es de mayo a septiembre. Lleva ropa ligera para el verano, una chaqueta ligera para las noches y algo más abrigado para primavera y otoño.</p>
+
+<h2>Moneda y pagos</h2>
+<p>La moneda oficial es el lek albanés (ALL). El tipo de cambio aproximado es 1 EUR = 120 ALL (puede variar).</p>
+<p>Las tarjetas de crédito y débito son aceptadas en grandes ciudades y establecimientos turísticos, pero en zonas rurales es recomendable llevar efectivo.</p>
+
+<h2>Electricidad y adaptadores</h2>
+<p>El voltaje en Albania es de 230 V y la frecuencia de 50 Hz.</p>
+<p>Los enchufes son del tipo C y F, los mismos que en España.</p>
+<p>No es necesario llevar adaptador si vienes de Europa continental.</p>
+
+<h2>Idioma y comunicación</h2>
+<p>El idioma oficial es el albanés.</p>
+<p>En zonas turísticas y hoteles el inglés es común, aunque fuera de estas áreas puede ser limitado.</p>
+<p>Apps útiles:</p>
+<ul>
+  <li><a href="https://translate.google.com" target="_blank">Google Translate</a> para traducción rápida</li>
+  <li><a href="https://maps.google.com" target="_blank">Google Maps</a> para navegación</li>
+  <li><a href="https://www.duolingo.com" target="_blank">Duolingo</a> para aprender frases básicas</li>
+</ul>
+
+<h2>Visado y entrada</h2>
+<p>Para ciudadanos españoles y de la Unión Europea no se requiere visado para estancias de hasta 90 días en un periodo de 180 días.</p>
+<p>Es necesario un pasaporte o DNI válido para la entrada.</p>
+<p>Revisa siempre la vigencia de tu documento antes de viajar.</p>
+
+<h2>Vacunas y salud</h2>
+<p>No hay vacunas obligatorias para viajar a Albania, pero son recomendables las vacunas habituales, como tétanos y hepatitis A.</p>
+<p>El agua del grifo no siempre es segura. Es mejor consumir agua embotellada.</p>
+<p>Se recomienda contratar un seguro médico de viaje que cubra emergencias.</p>
+
+<h2>Seguridad</h2>
+<p>Albania es un país relativamente seguro para los turistas, con bajos índices de criminalidad.</p>
+<p>Se recomienda evitar zonas poco transitadas de noche y cuidar objetos personales en lugares concurridos.</p>
+<p>Las zonas turísticas como Tirana, Berat o la Riviera Albanesa son generalmente seguras.</p>
+
+<h2>Costumbres y etiqueta</h2>
+<p>Los albaneses son conocidos por su hospitalidad y respeto.</p>
+<p>Es habitual saludar con un apretón de manos.</p>
+<p>Las propinas no son obligatorias pero se agradecen, lo común es dejar un 5-10% del total en bares y restaurantes.</p>
+<p>Al visitar templos o lugares religiosos, se recomienda vestir de forma modesta: cubrir hombros y rodillas.</p>
+
+<h2>Apps imprescindibles</h2>
+<ul>
+  <li><a href="https://moovitapp.com" target="_blank">Moovit</a> para transporte público</li>
+  <li><a href="https://maps.google.com" target="_blank">Google Maps</a> para orientación y mapas offline</li>
+  <li><a href="https://translate.google.com" target="_blank">Google Translate</a> para traducción instantánea</li>
+  <li><a href="https://wise.com" target="_blank">Wise</a> para pagos y cambio de divisas</li>
+</ul></div>
+  </div>
+
+  <!-- TAB TRANSPORTE -->
+  <div class="tab-panel" id="tab-transporte">
+    <div class="sec-eye">Moverse por ALBANIA</div>
+    <div class="sec-title">Transporte</div>
+    <div class="ad"><div class="ad-badge">AD</div><div><strong>Alquiler de coche</strong><span>→ Rent a car · comparativa</span></div></div>
+    <div class="ai-content" style="margin-top:12px"><h2>Cómo llegar desde España</h2>
+<p>Desde España, puedes llegar a Albania principalmente en avión. Hay vuelos directos desde Madrid y Barcelona al Aeropuerto Internacional Madre Teresa en Tirana.</p>
+<ul>
+  <li><strong>Vuelos directos:</strong> Madrid-Tirana, Barcelona-Tirana</li>
+  <li><strong>Tiempo de vuelo:</strong> Aproximadamente 2 horas y 30 minutos</li>
+  <li><strong>Aeropuertos principales en Albania:</strong> Aeropuerto Internacional Madre Teresa (Tirana)</li>
+</ul>
+
+<h2>Transporte desde el aeropuerto</h2>
+<p>Desde el Aeropuerto Internacional Madre Teresa tienes varias opciones para llegar al centro de Tirana:</p>
+<ul>
+  <li><strong>Taxi:</strong> Precio aproximado 15-20 €, tiempo 20-30 minutos</li>
+  <li><strong>Bus público:</strong> Línea Rinas Express conecta el aeropuerto con el centro de Tirana, precio 2-3 €, tiempo 30-40 minutos</li>
+  <li><strong>Servicio de traslado privado:</strong> Disponibles con reserva previa, precios desde 25 €</li>
+</ul>
+
+<h2>Moverse por el destino</h2>
+<p>En Albania, el transporte público se basa principalmente en:</p>
+<ul>
+  <li><strong>Bus urbano:</strong> Tirana cuenta con líneas de autobuses que cubren la ciudad. Precio aproximado: 40-50 Lek (0,30-0,40 €) por trayecto.</li>
+  <li><strong>Marshrutkas (minibuses):</strong> Son minibuses que cubren rutas urbanas e interurbanas, muy usados y económicos.</li>
+  <li><strong>Tren:</strong> El sistema ferroviario es limitado y poco fiable para turistas.</li>
+  <li><strong>Metro:</strong> Albania no dispone de servicio de metro.</li>
+</ul>
+
+<h2>Alquiler de coche</h2>
+<p>Alquilar un coche en Albania es recomendable si deseas explorar zonas rurales o tener flexibilidad:</p>
+<ul>
+  <li><strong>Empresas:</strong> Europcar, Sixt, Avis, y agencias locales disponibles en Tirana.</li>
+  <li><strong>Precio medio:</strong> Desde 25 € al día para coches básicos.</li>
+  <li><strong>Carnet internacional:</strong> Aunque el carnet español es válido, se recomienda obtener el permiso internacional para evitar problemas.</li>
+</ul>
+
+<h2>Taxis y apps de movilidad</h2>
+<p>Las opciones para taxis y movilidad son:</p>
+<ul>
+  <li><strong>Taxis:</strong> Disponibles en todas las ciudades, tarifa típica de 1 € base más 0.5 € por kilómetro.</li>
+  <li><strong>Apps de movilidad:</strong> No hay Uber en Albania. Sí está disponible <a href="https://bolt.eu" target="_blank">Bolt</a> en Tirana, muy popular y económico.</li>
+  <li><strong>Apps locales:</strong> Puedes usar Bolt para mayor comodidad y tarifas claras.</li>
+</ul>
+
+<h2>Consejos de conducción</h2>
+<p>Algunas normas y consejos al conducir en Albania:</p>
+<ul>
+  <li>Los límites de velocidad son 50 km/h en ciudad, 80-90 km/h en carreteras y 110 km/h en autopistas.</li>
+  <li>El uso del cinturón de seguridad es obligatorio para todos.</li>
+  <li>No hay muchos peajes, pero algunas autopistas pueden cobrar pequeñas tarifas.</li>
+  <li>El aparcamiento en Tirana puede ser complicado, opta por parkings oficiales para evitar multas.</li>
+  <li>La conducción puede ser imprevisible, presta atención a motos y peatones.</li>
+</ul>
+
+<h2>Transporte entre ciudades</h2>
+<p>Para viajar entre ciudades en Albania, las opciones son:</p>
+<ul>
+  <li><strong>Bus interurbano:</strong> Es el método más común y económico. Empresas locales ofrecen rutas frecuentes entre ciudades como Tirana, Durrës, Shkodër o Berat. Precio aproximado 5-10 € según distancia.</li>
+  <li><strong>Tren:</strong> Servicio muy limitado y no recomendable para turistas hasta nuevas mejoras.</li>
+  <li><strong>Vuelos internos:</strong> Albania no dispone de vuelos domésticos regulares.</li>
+</ul>
+<p>Puedes encontrar información y horarios en la web oficial de transporte <a href="https://www.autobusialbania.com" target="_blank">Autobus Albania</a>.</p></div>
+  </div>
+
+  <!-- TAB RECURSOS -->
+  <div class="tab-panel" id="tab-recursos">
+    <div class="sec-eye">Recursos online</div>
+    <div class="sec-title">Blogs y enlaces útiles</div>
+    <div class="ai-content"><h2>Web oficial de turismo</h2>
+<p><a href="https://albania.al/en/" target="_blank">Agencia Nacional de Turismo de Albania</a></p>
+
+<h2>Blogs de viaje recomendados</h2>
+<ul>
+  <li><a href="https://www.alpharocks.com/tag/albania/" target="_blank">AlphaRocks - Guías y artículos sobre Albania</a></li>
+  <li><a href="https://www.viajesyfotografia.com/category/destinos/europa/albania/" target="_blank">Viajes y Fotografía - Albania</a></li>
+  <li><a href="https://www.mochileandoporelmundo.com/tag/albania/" target="_blank">Mochileando por el Mundo - Blog de viaje</a></li>
+  <li><a href="https://elpaisjoven.com/tag/albania/" target="_blank">El País Joven - Artículos sobre Albania</a></li>
+</ul>
+
+<h2>Foros y comunidades</h2>
+<ul>
+  <li><a href="https://www.tripadvisor.com/ShowForum-g294443-i8114-Albania.html" target="_blank">TripAdvisor Foro de Albania</a></li>
+  <li><a href="https://www.lonelyplanet.com/thorntree/forums/europe-western-europe/albania" target="_blank">Lonely Planet Thorn Tree - Foro de Albania</a></li>
+  <li><a href="https://www.reddit.com/r/Albania/" target="_blank">Reddit r/Albania</a></li>
+</ul>
+
+<h2>Canales de YouTube</h2>
+<ul>
+  <li><a href="https://www.youtube.com/c/AmigosdelViajero" target="_blank">Amigos del Viajero - Viajes y turismo en Albania</a></li>
+  <li><a href="https://www.youtube.com/user/RutaMundial" target="_blank">Ruta Mundial - Viajes y aventuras</a></li>
+  <li><a href="https://www.youtube.com/c/Alanxelmundo" target="_blank">Alan x el Mundo - Videos de Albania</a></li>
+</ul>
+
+<h2>Recursos para rutas</h2>
+<ul>
+  <li><a href="https://es.wikiloc.com/rutas/albania-784" target="_blank">Wikiloc - Rutas de senderismo en Albania</a></li>
+  <li><a href="https://www.alltrails.com/albania" target="_blank">AllTrails - Senderismo en Albania</a></li>
+  <li><a href="https://www.google.com/maps" target="_blank">Google Maps - Mapas y rutas en Albania</a></li>
+</ul>
+
+<h2>Apps imprescindibles</h2>
+<ul>
+  <li><a href="https://play.google.com/store/apps/details?id=com.travelalbania.app&hl=es&gl=US" target="_blank">Travel Albania - Guía oficial de turismo (Android)</a></li>
+  <li><a href="https://apps.apple.com/us/app/travel-albania/id1481652548" target="_blank">Travel Albania - Guía oficial (iOS)</a></li>
+  <li><a href="https://play.google.com/store/apps/details?id=com.mapswithme.maps.pro" target="_blank">Maps.me - GPS offline con mapas de Albania</a></li>
+</ul>
+
+<h2>Webs de reservas</h2>
+<ul>
+  <li><a href="https://www.booking.com/country/al.html" target="_blank">Booking - Alojamientos en Albania</a></li>
+  <li><a href="https://www.airbnb.com/s/Albania/homes" target="_blank">Airbnb - Alojamientos en Albania</a></li>
+  <li><a href="https://www.getyourguide.com/albania-l93/" target="_blank">GetYourGuide - Excursiones y actividades en Albania</a></li>
+  <li><a href="https://www.viator.com/Albania/d953-ttd" target="_blank">Viator - Tours y experiencias en Albania</a></li>
+</ul></div>
+  </div>
+
+  <!-- TAB CULTURA -->
+  <div class="tab-panel" id="tab-cultura">
+    <div class="sec-eye">Prepara el viaje</div>
+    <div class="sec-title">Cultura · Cine · Libros · Música</div>
+    <div class="ai-content"><h3>📚 "Albanian Desire" – Charlotta Sejdini</h3>
+<p><strong>Por qué leerlo:</strong> Esta novela contemporánea ofrece una visión íntima de la sociedad albanesa desde la perspectiva de una joven que regresa a su país natal. Perfecta para entender las tensiones culturales y el alma de Albania antes de visitarla.</p>
+
+<h3>📚 "Lonely Planet Albania & Kosovo" – Lonely Planet</h3>
+<p><strong>Por qué leerlo:</strong> La guía definitiva para viajeros, con recomendaciones prácticas sobre lugares emblemáticos, cultura, gastronomía y consejos para moverse con seguridad en Albania y Kosovo.</p>
+
+<h3>📚 "Second World – First Person: Contemporary Albanian Poetry" – John Milisavljevic (Editor)</h3>
+<p><strong>Por qué leerlo:</strong> Un compendio de poesía contemporánea que ofrece una mirada profunda a la sensibilidad y el espíritu albanés, enriqueciendo la experiencia cultural mientras se explora el país.</p>
+
+<h3>📚 "The Hoxha Myth: The Albanian Dictatorship, 1944–1985" – Stevan K. Pavlowitch</h3>
+<p><strong>Por qué leerlo:</strong> Un ensayo histórico que profundiza en el controvertido régimen comunista de Enver Hoxha, clave para comprender la historia reciente de Albania y su repercusión en la identidad nacional.</p>
+
+<h3>📚 "A Short Walk in the Hindu Kush" – Eric Newby</h3>
+<p><strong>Por qué leerlo:</strong> Aunque no exclusivamente sobre Albania, esta obra de viajes clásica de un aventurero británico ayuda a captar el espíritu de exploración y descubrimiento, inspirando a viajeros interesados en destinos poco convencionales como Albania.</p></div>
+  </div>
+
+  <!-- TAB CURIOSIDADES -->
+  <div class="tab-panel" id="tab-curiosidades">
+    <div class="sec-eye">¿Sabías que…?</div>
+    <div class="sec-title">Curiosidades de ALBANIA</div>
+    <div class="ai-content"><h3>💡 Controla tu presupuesto diario</h3>
+<p>Calcula <strong>40-60 EUR al día</strong> si visitas museos y sitios arqueológicos, incluyendo transporte local y comidas. Lleva siempre algo de efectivo en lek (€↔ALL) para puestos callejeros y propinas.</p>
+
+<h3>💡 Aprovecha el transporte público y los minibuses</h3>
+<p>Los <strong>furgones</strong> (minibuses) entre ciudades son rápidos y económicos. Compra billetes en la estación al inicio del día y pregunta horarios locales para evitar esperas innecesarias.</p>
+
+<h3>💡 Fotografía con luz dorada en Berat y Gjirokastër</h3>
+<p>Visita la Ciudad de las Mil Ventanas al amanecer o al atardecer para capturar las fachadas blancas bañadas de oro. Lleva un trípode pequeño y filtro polarizador para realzar contrastes.</p>
+
+<h3>💡 Degusta la gastronomía tradicional</h3>
+<p>No te pierdas el <strong>byrek</strong> en panaderías locales y la <strong>fërgesë</strong> en restaurantes familiares. Pregunta por la receta casera y acompáñalo con un vaso de raki para una experiencia auténtica.</p>
+
+<h3>💡 Reserva entradas y tours con antelación</h3>
+<p>En sitios muy visitados como Butrinto o el Museo Etnográfico de Krujë compra online para evitar colas. Durante la temporada alta puede agotarse el cupo diario.</p>
+
+<h3>💡 Evita los errores de horarios y festivos</h3>
+<p>Comprueba que los museos cierran un día a la semana (normalmente lunes) y cierran al mediodía en invierno. Planea tus visitas para aprovechar las mañanas completas.</p>
+
+<h3>💡 Practica el regateo en bazares y mercados</h3>
+<p>En mercados tradicionales de Tirana o Saranda empieza ofreciendo un 30% menos del precio inicial y negocia con paciencia. Sonría y mantén el respeto para conseguir mejores precios.</p>
+
+<h3>💡 Propinas justas y bienvenidas</h3>
+<p>Deja entre <strong>5-10%</strong> en restaurantes o cafés si el servicio fue bueno. En taxis redondea al alza y en guías locales 2-3 EUR por persona es un gesto apreciado.</p>
+
+<h3>💡 Elige la mejor época para cultura e historia</h3>
+<p>La primavera (abril a junio) y el otoño (septiembre y octubre) ofrecen clima ideal y menos multitudes. Así podrás recorrer ruinas y centros históricos con tranquilidad.</p>
+
+<h3>💡 Combina efectivo y tarjetas</h3>
+<p>Lleva una tarjeta sin comisiones para hoteles y restaurantes grandes, pero reserva <strong>100-150 EUR</strong> en lek para taxis, entradas pequeñas y compras en pueblos donde no aceptan TPV.</p></div>
+  </div>
+
+  <!-- TAB DOCUMENTOS -->
+  <div class="tab-panel" id="tab-docs">
+    <div class="sec-eye">Tus documentos</div>
+    <div class="sec-title">Documentos del viaje</div>
+    <p style="font-size:13px;color:var(--mid);margin-bottom:14px">Guarda aquí tu seguro, tarjetas de embarque, pasaporte o cualquier documento que necesites tener a mano durante el viaje.</p>
+    <div class="docs-upload-area" onclick="document.getElementById('doc-input').click()">
+      <div class="docs-upload-icon">📎</div>
+      <div class="docs-upload-text"><strong>Añadir documento</strong>PDF, imagen, tarjeta de embarque…</div>
+    </div>
+    <input type="file" id="doc-input" accept=".pdf,.jpg,.jpeg,.png,.gif,.webp" multiple onchange="handleDocUpload(event)">
+    <div class="docs-list" id="docs-list"></div>
+  </div>
+
+  <!-- TAB NOTAS -->
+  <div class="tab-panel" id="tab-notas">
+    <div class="sec-eye">Para ti</div>
+    <div class="sec-title">Notas del viajero</div>
+    <div class="note-area">
+      <div class="note-line" contenteditable="true" spellcheck="false">Escribe aquí tus notas…</div>
+      <div class="note-line" contenteditable="true" spellcheck="false"></div>
+      <div class="note-line" contenteditable="true" spellcheck="false"></div>
+      <div class="note-line" contenteditable="true" spellcheck="false"></div>
+      <div class="note-line" contenteditable="true" spellcheck="false"></div>
+      <div class="note-line" contenteditable="true" spellcheck="false"></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ MODAL GUARDAR ══ -->
+<div class="save-modal" id="save-modal" onclick="closeSaveModal(event)">
+  <div class="save-sheet">
+    <h3>Guardar guía</h3>
+    <p>Elige cómo quieres guardar tu guía de ALBANIA.</p>
+
+    <!-- Opción Android: botón directo si hay prompt disponible -->
+    <div class="save-option" id="opt-android" style="display:none" onclick="installAndroid()">
+      <div class="save-option-icon">🤖</div>
+      <div class="save-option-text"><strong>Añadir a pantalla de inicio</strong><span>Android · Se abrirá el diálogo de instalación</span></div>
+    </div>
+
+    <!-- Opción iOS: instrucción visual animada -->
+    <div class="save-option" id="opt-ios" style="display:none" onclick="showIOSGuide()">
+      <div class="save-option-icon">🍎</div>
+      <div class="save-option-text"><strong>Añadir a pantalla de inicio</strong><span>iOS · Toca para ver cómo hacerlo en 2 pasos</span></div>
+    </div>
+
+    <div class="save-option" onclick="downloadGuide()">
+      <div class="save-option-icon">⬇️</div>
+      <div class="save-option-text"><strong>Descargar archivo HTML</strong><span>Guárdalo y ábrelo sin internet</span></div>
+    </div>
+    <div class="save-option" onclick="copyLink();closeSaveModal()">
+      <div class="save-option-icon">🔗</div>
+      <div class="save-option-text"><strong>Copiar enlace</strong><span>Comparte o guarda la URL de esta guía</span></div>
+    </div>
+    <button class="save-close" onclick="closeSaveModal()">Cerrar</button>
+  </div>
+</div>
+
+<!-- ══ GUÍA iOS ══ -->
+<div class="save-modal" id="ios-modal" onclick="document.getElementById('ios-modal').classList.remove('open')">
+  <div class="save-sheet">
+    <h3>Añadir a pantalla de inicio</h3>
+    <p style="margin-bottom:18px">Sigue estos 2 pasos en Safari:</p>
+    <div style="background:var(--sand);border-radius:var(--r);padding:16px;margin-bottom:12px;text-align:center">
+      <div style="font-size:32px;margin-bottom:8px">1️⃣</div>
+      <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px">Toca el botón Compartir</div>
+      <div style="font-size:13px;color:var(--mid)">El icono <strong>□↑</strong> de la barra inferior de Safari</div>
+      <div style="font-size:36px;margin-top:10px;animation:bounce .8s infinite alternate">□↑</div>
+    </div>
+    <div style="background:var(--sand);border-radius:var(--r);padding:16px;margin-bottom:16px;text-align:center">
+      <div style="font-size:32px;margin-bottom:8px">2️⃣</div>
+      <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px">Toca "Añadir a pantalla de inicio"</div>
+      <div style="font-size:13px;color:var(--mid)">Desplázate en el menú hasta encontrar esta opción</div>
+      <div style="background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 14px;margin-top:10px;display:inline-flex;align-items:center;gap:8px">
+        <span style="font-size:20px">➕</span>
+        <span style="font-size:13px;font-weight:500;color:var(--ink)">Añadir a pantalla de inicio</span>
+      </div>
+    </div>
+    <button class="save-close" onclick="document.getElementById('ios-modal').classList.remove('open')">Entendido</button>
+  </div>
+</div>
+<style>
+@keyframes bounce{from{transform:translateY(0)}to{transform:translateY(-6px)}}
+</style>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── TABS ──
+function showTab(id,btn){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  btn.classList.add('active');
+  document.getElementById('tabs-content').scrollTop=0;
+  // Scroll tab visible
+  btn.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+  // Ocultar flecha si llegamos al final
+  const scroll=document.getElementById('tabs-scroll');
+  const fade=document.querySelector('.tabs-fade');
+  if(fade)fade.style.display=scroll.scrollLeft+scroll.clientWidth>=scroll.scrollWidth-10?'none':'flex';
+}
+// Ocultar flecha al llegar al final del scroll
+document.getElementById('tabs-scroll').addEventListener('scroll',function(){
+  const fade=document.querySelector('.tabs-fade');
+  if(fade)fade.style.display=this.scrollLeft+this.clientWidth>=this.scrollWidth-10?'none':'flex';
+});
+
+// ── TOAST ──
+function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800)}
+
+// ── COMPARTIR ──
+function shareWpp(){
+  const t=encodeURIComponent('¡Mira mi guía de viaje para ALBANIA! 🌍✈️\nGenerada por GuiaMundi.es\n\n'+window.location.href);
+  window.open('https://wa.me/?text='+t,'_blank');
+}
+function copyLink(){navigator.clipboard.writeText(window.location.href).then(()=>showToast('✓ Enlace copiado')).catch(()=>showToast('Copia la URL del navegador'))}
+
+// ── SERVICE WORKER (necesario para installPrompt en Android) ──
+if('serviceWorker' in navigator){
+  const swCode=`self.addEventListener('fetch',e=>{});`;
+  const blob=new Blob([swCode],{type:'application/javascript'});
+  const swUrl=URL.createObjectURL(blob);
+  navigator.serviceWorker.register(swUrl).catch(()=>{});
+}
+
+// ── MODAL GUARDAR ──
+let deferredPrompt=null;
+window.addEventListener('beforeinstallprompt',e=>{
+  e.preventDefault();
+  deferredPrompt=e;
+  document.getElementById('opt-android').style.display='flex';
+});
+
+function openSaveModal(){
+  // Detectar iOS
+  const isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
+  if(isIOS)document.getElementById('opt-ios').style.display='flex';
+  document.getElementById('save-modal').classList.add('open');
+}
+function closeSaveModal(e){
+  if(!e||e.target===document.getElementById('save-modal'))
+    document.getElementById('save-modal').classList.remove('open');
+}
+function installAndroid(){
+  if(deferredPrompt){
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(r=>{
+      if(r.outcome==='accepted')showToast('✓ Añadida a pantalla de inicio');
+      deferredPrompt=null;
+    });
+  }
+  document.getElementById('save-modal').classList.remove('open');
+}
+function showIOSGuide(){
+  document.getElementById('save-modal').classList.remove('open');
+  setTimeout(()=>document.getElementById('ios-modal').classList.add('open'),200);
+}
+function downloadGuide(){
+  try{
+    const blob=new Blob([document.documentElement.outerHTML],{type:'text/html;charset=utf-8'});
+    const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+    a.download='guia-ALBANIA-12dias.html';a.click();
+    URL.revokeObjectURL(a.href);showToast('✓ Guía descargada');
+  }catch(e){showToast('Usa el menú del navegador para guardar')}
+  document.getElementById('save-modal').classList.remove('open');
+}
+
+// ── BLOQUES DE DÍA CON NOTAS Y MAPA ──
+function buildDayBlocks(){
+  const container=document.getElementById('itinerario-content');
+  if(!container)return;
+  const raw=container.innerHTML;
+  const parts=raw.split(/(?=<h2[\s>])/i);
+  let html='';
+  parts.forEach((part,i)=>{
+    if(!part.trim())return;
+    const isDay=/^<h2/i.test(part.trim());
+    if(!isDay){html+=part;return;}
+    const titleMatch=part.match(/<h2[^>]*>(.*?)<\/h2>/i);
+    const titleRaw=titleMatch?titleMatch[1]:'Día '+(i);
+    // Limpiar HTML del título para usarlo en la URL
+    const titleText=titleRaw.replace(/<[^>]+>/g,'').trim();
+    const body=part.replace(/<h2[^>]*>.*?<\/h2>/i,'').trim();
+    // Intentar extraer enlace maps que venga de OpenAI
+    const mapsMatch=body.match(/href="(https:\/\/www\.google\.com\/maps[^"]+)"/i);
+    let mapsUrl;
+    if(mapsMatch){
+      mapsUrl=mapsMatch[1];
+    } else {
+      // Generar URL a partir del título del día + destino
+      const query=encodeURIComponent(titleText+' ALBANIA');
+      mapsUrl='https://www.google.com/maps/search/'+query;
+    }
+    const bodyClean=body.replace(/<a[^>]*google\.com\/maps[^>]*>.*?<\/a>/gi,'');
+    html+=`<div class="day-block">
+      <div class="day-block-header" onclick="toggleDay(this)">
+        <span>${titleRaw}</span><span class="day-toggle">⌄</span>
+      </div>
+      <div class="day-block-body">
+        <div class="ai-content">${bodyClean}</div>
+        <div class="day-note-wrap">
+          <div class="day-note-label">📝 Mis notas para este día</div>
+          <textarea class="day-note" placeholder="Añade aquí reservas, horarios o cualquier detalle personal…"></textarea>
+        </div>
+      </div>
+    </div>`;
+  });
+  container.innerHTML=html;
+  const first=container.querySelector('.day-block');
+  if(first)first.classList.add('open');
+}
+function toggleDay(header){header.closest('.day-block').classList.toggle('open')}
+document.addEventListener('DOMContentLoaded',buildDayBlocks);
+
+// ── DOCUMENTOS ──
+const uploadedDocs=[];
+function handleDocUpload(e){
+  Array.from(e.target.files).forEach(file=>{
+    const reader=new FileReader();
+    reader.onload=ev=>{
+      const doc={name:file.name,size:formatSize(file.size),type:file.type,url:ev.target.result,id:Date.now()+Math.random()};
+      uploadedDocs.push(doc);renderDocs();
+    };
+    reader.readAsDataURL(file);
+  });
+  e.target.value='';
+}
+function formatSize(b){if(b<1024)return b+'B';if(b<1048576)return(b/1024).toFixed(1)+'KB';return(b/1048576).toFixed(1)+'MB'}
+function getDocIcon(type){if(type==='application/pdf')return '📄';if(type.startsWith('image/'))return '🖼️';return '📎'}
+function renderDocs(){
+  const list=document.getElementById('docs-list');
+  if(!uploadedDocs.length){list.innerHTML='';return;}
+  list.innerHTML=uploadedDocs.map(doc=>`
+    <div class="doc-item">
+      <div class="doc-icon">${getDocIcon(doc.type)}</div>
+      <div class="doc-info"><div class="doc-name">${doc.name}</div><div class="doc-size">${doc.size}</div></div>
+      <button class="doc-open" onclick="openDoc('${doc.id}')">Abrir</button>
+      <button class="doc-del" onclick="deleteDoc('${doc.id}')">✕</button>
+    </div>`).join('');
+}
+function openDoc(id){const d=uploadedDocs.find(d=>d.id==id);if(d)window.open(d.url,'_blank')}
+function deleteDoc(id){const i=uploadedDocs.findIndex(d=>d.id==id);if(i>-1){uploadedDocs.splice(i,1);renderDocs()}}
+
+// ── HERRAMIENTAS TABS ──
+function switchTool(btn,id){
+  document.querySelectorAll('.ttab').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.tool-panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');document.getElementById(id).classList.add('active');
+}
+
+// ── CONVERSOR ──
+const rates={};let ratesLoaded=false;
+const cNames={USD:'Dólar USD',GBP:'Libra',JPY:'Yen',MXN:'Peso MX',BRL:'Real',MAD:'Dírham',TRY:'Lira',THB:'Baht',IDR:'Rupia',AED:'Dírham AE',SGD:'Dólar SG',PLN:'Esloti',CZK:'Corona CZ',HUF:'Forinto',RON:'Leu',DKK:'Corona DK',SEK:'Corona SE',NOK:'Corona NO'};
+async function loadRates(){
+  try{const r=await fetch('https://open.er-api.com/v6/latest/EUR');const d=await r.json();if(d.rates){Object.assign(rates,d.rates);ratesLoaded=true;convertCurrency();document.getElementById('conv-rate').textContent='Actualizado · '+new Date().toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'})}}
+  catch(e){Object.assign(rates,{USD:1.08,GBP:0.86,JPY:162,MXN:18.5,BRL:5.4,MAD:10.8,TRY:35,THB:38,IDR:17000,AED:3.97,SGD:1.45,PLN:4.25,CZK:25,HUF:390,RON:4.97,DKK:7.46,SEK:11.5,NOK:11.8});ratesLoaded=true;convertCurrency();document.getElementById('conv-rate').textContent='Tasas aproximadas'}
+}
+function convertCurrency(){
+  if(!ratesLoaded)return;
+  const eur=parseFloat(document.getElementById('conv-eur').value)||0;
+  const to=document.getElementById('conv-to').value;
+  const res=eur*(rates[to]||1);
+  const fmt=res>=1000?res.toFixed(0):res>=10?res.toFixed(2):res.toFixed(4);
+  document.getElementById('conv-foreign').value=fmt;
+  document.getElementById('conv-display').textContent=fmt+' '+to;
+  document.getElementById('conv-to-label').textContent=cNames[to]||to;
+  document.getElementById('conv-rate').textContent='1 € = '+(rates[to]||1).toFixed(4)+' '+to;
+}
+function convertBack(){
+  if(!ratesLoaded)return;
+  const f=parseFloat(document.getElementById('conv-foreign').value)||0;
+  const to=document.getElementById('conv-to').value;
+  document.getElementById('conv-eur').value=(f/(rates[to]||1)).toFixed(2);convertCurrency();
+}
+loadRates();
+
+// ── TRADUCTOR ──
+const phraseDB={
+  es:['Hola / Buenos días','Por favor','Gracias','¿Cuánto cuesta?','¿Dónde está…?','La cuenta, por favor','No entiendo','¿Habla español?','Ayuda, por favor','Un taxi, por favor','¿Dónde está el baño?','Me llamo…','¿Habla inglés?'],
+  it:['Ciao / Buongiorno','Per favore','Grazie','Quanto costa?','Dov\'è…?','Il conto, per favore','Non capisco','Parla spagnolo?','Aiuto','Un taxi, per favore','Dov\'è il bagno?','Mi chiamo…','Parla inglese?'],
+  fr:['Bonjour','S\'il vous plaît','Merci','Combien ça coûte?','Où est…?','L\'addition, s\'il vous plaît','Je ne comprends pas','Parlez-vous espagnol?','Au secours','Un taxi, s\'il vous plaît','Où sont les toilettes?','Je m\'appelle…','Parlez-vous anglais?'],
+  de:['Hallo','Bitte','Danke','Wie viel kostet das?','Wo ist…?','Die Rechnung, bitte','Ich verstehe nicht','Sprechen Sie Spanisch?','Hilfe','Ein Taxi, bitte','Wo ist die Toilette?','Ich heiße…','Sprechen Sie Englisch?'],
+  pt:['Olá','Por favor','Obrigado/a','Quanto custa?','Onde fica…?','A conta, por favor','Não entendo','Fala espanhol?','Socorro','Um táxi','Onde é o banheiro?','Meu nome é…','Fala inglês?'],
+  ja:['こんにちは','お願いします','ありがとう','いくらですか？','…はどこですか？','お会計をお願いします','わかりません','スペイン語を話しますか？','助けて','タクシーをお願いします','トイレはどこですか？','私の名前は…','英語を話しますか？'],
+  ar:['مرحبا','من فضلك','شكرا','كم يكلف؟','أين…؟','الحساب من فضلك','لا أفهم','هل تتكلم الإسبانية؟','مساعدة','سيارة أجرة','أين الحمام؟','اسمي…','هل تتكلم الإنجليزية؟'],
+  tr:['Merhaba','Lütfen','Teşekkürler','Ne kadar?','Nerede…?','Hesabı lütfen','Anlamıyorum','İspanyolca biliyor musunuz?','Yardım','Taksi lütfen','Tuvalet nerede?','Benim adım…','İngilizce biliyor musunuz?'],
+  th:['สวัสดี','กรุณา','ขอบคุณ','ราคาเท่าไหร่?','…อยู่ที่ไหน?','เก็บเงินด้วย','ไม่เข้าใจ','พูดภาษาสเปนได้ไหม?','ช่วยด้วย','แท็กซี่','ห้องน้ำอยู่ที่ไหน?','ฉันชื่อ…','พูดภาษาอังกฤษได้ไหม?'],
+  zh:['你好','请','谢谢','多少钱？','…在哪里？','买单','我不明白','你会说西班牙语吗？','帮帮我','出租车','洗手间在哪里？','我叫…','你会说英语吗？'],
+  el:['Γεια σας','Παρακαλώ','Ευχαριστώ','Πόσο κοστίζει;','Πού είναι…;','Τον λογαριασμό','Δεν καταλαβαίνω','Μιλάτε ισπανικά;','Βοήθεια','Ένα ταξί','Πού είναι η τουαλέτα;','Με λένε…','Μιλάτε αγγλικά;'],
+  pl:['Dzień dobry','Proszę','Dziękuję','Ile to kosztuje?','Gdzie jest…?','Rachunek, proszę','Nie rozumiem','Czy mówi pan/pani po hiszpańsku?','Pomocy','Taksówkę','Gdzie jest toaleta?','Mam na imię…','Czy mówi pan/pani po angielsku?'],
+  nl:['Hallo','Alstublieft','Dank u','Hoeveel kost het?','Waar is…?','De rekening graag','Ik begrijp het niet','Spreekt u Spaans?','Help','Een taxi','Waar is het toilet?','Ik heet…','Spreekt u Engels?'],
+  ru:['Здравствуйте','Пожалуйста','Спасибо','Сколько стоит?','Где…?','Счёт, пожалуйста','Я не понимаю','Вы говорите по-испански?','Помогите','Такси','Где туалет?','Меня зовут…','Вы говорите по-английски?'],
+  cs:['Dobrý den','Prosím','Děkuji','Kolik to stojí?','Kde je…?','Účet prosím','Nerozumím','Mluvíte španělsky?','Pomozte','Taxi','Kde je toaleta?','Jmenuji se…','Mluvíte anglicky?'],
+  ro:['Bună ziua','Vă rog','Mulțumesc','Cât costă?','Unde este…?','Nota de plată','Nu înțeleg','Vorbiți spaniolă?','Ajutor','Un taxi','Unde este toaleta?','Mă numesc…','Vorbiți engleză?'],
+  hr:['Dobar dan','Molim','Hvala','Koliko košta?','Gdje je…?','Račun, molim','Ne razumijem','Govorite li španjolski?','Pomoć','Taksi','Gdje je zahod?','Zovem se…','Govorite li engleski?'],
+};
+const langMap={it:'it-IT',fr:'fr-FR',de:'de-DE',pt:'pt-PT',ja:'ja-JP',ar:'ar-SA',tr:'tr-TR',th:'th-TH',zh:'zh-CN',el:'el-GR',pl:'pl-PL',nl:'nl-NL',ru:'ru-RU',cs:'cs-CZ',ro:'ro-RO',hr:'hr-HR'};
+function updatePhrases(){
+  const lang=document.getElementById('trans-lang-sel').value;
+  const esp=phraseDB['es'],dest=phraseDB[lang]||phraseDB['it'];
+  document.getElementById('phrases-list').innerHTML=esp.map((es,i)=>`
+    <div class="trans-item">
+      <div class="trans-texts"><div class="trans-es">${es}</div><div class="trans-dest">${dest[i]||''}</div></div>
+      <button class="trans-audio" onclick="speak('${(dest[i]||'').replace(/'/g,"\\'").replace(/"/g,'&quot;')}','${lang}',this)">▶</button>
+    </div>`).join('');
+}
+function speak(text,lang,btn){
+  if(!window.speechSynthesis){showToast('Audio no disponible');return}
+  window.speechSynthesis.cancel();
+  document.querySelectorAll('.trans-audio').forEach(b=>b.classList.remove('playing'));
+  btn.classList.add('playing');
+  const u=new SpeechSynthesisUtterance(text);
+  u.lang=langMap[lang]||lang+'-'+lang.toUpperCase();u.rate=0.82;
+  u.onend=()=>btn.classList.remove('playing');
+  u.onerror=()=>{btn.classList.remove('playing');showToast('Audio no disponible para este idioma')};
+  window.speechSynthesis.speak(u);
+}
+updatePhrases();
+
+// ── CALCULADORA ──
+function calcBudget(){
+  const dias=parseFloat(document.getElementById('c-dias').value)||0;
+  const viaj=Math.max(1,parseFloat(document.getElementById('c-viaj').value)||1);
+  const aloj=parseFloat(document.getElementById('c-aloj').value)||0;
+  const com=parseFloat(document.getElementById('c-com').value)||0;
+  const transp=parseFloat(document.getElementById('c-transp').value)||0;
+  const act=parseFloat(document.getElementById('c-act').value)||0;
+  const tA=aloj*dias,tC=com*dias*viaj,tot=tA+tC+transp+act;
+  const f=n=>n.toLocaleString('es-ES',{maximumFractionDigits:0})+'€';
+  document.getElementById('r-aloj').textContent=f(tA);document.getElementById('r-com').textContent=f(tC);
+  document.getElementById('r-transp').textContent=f(transp);document.getElementById('r-act').textContent=f(act);
+  document.getElementById('r-total').textContent=f(tot);document.getElementById('r-pp').textContent=f(tot/viaj);
+}
+calcBudget();
+
+// ── CHECKLIST ──
+const checkData={
+  ropa:['Ropa ligera (5-7 días)','Chaqueta o jersey fino','Ropa interior extra','Calcetines varios','Calzado cómodo walking','Sandalias o chanclas','Ropa de baño','Pijama','Pañuelo o fular','Chubasquero ligero'],
+  docs:['DNI o Pasaporte vigente','Tarjeta Sanitaria Europea','Seguro de viaje','Reservas alojamiento','Confirmación de vuelo','2 tarjetas bancarias','Efectivo moneda local','Carné de conducir','Visado si aplica','Fotos de pasaporte'],
+  tech:['Móvil cargado','Cargador del móvil','Adaptador de enchufe','Power bank','Auriculares','Cámara de fotos','Tarjeta memoria extra','Cable USB extra','Mapas offline','Cargador laptop'],
+  salud:['Protector solar 50+','Repelente mosquitos','Medicación habitual x2','Botiquín básico','Antihistamínico','Ibuprofeno/paracetamol','Tiritas y venda','Pastillas estómago','Mascarillas','Termómetro'],
+  extras:['Botella reutilizable','Guía de conversación','Bolsa tela mercados','Candado equipaje','Funda impermeable móvil','Snacks viaje','Almohada viaje','Antifaz dormir','Tapones oídos','Colonia pequeña'],
+};
+const checkState={};let currentCat='ropa';
+function initCheck(){Object.keys(checkData).forEach(c=>checkState[c]=checkData[c].map(()=>false));renderCheck()}
+function switchCat(btn,cat){document.querySelectorAll('.check-cat-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');currentCat=cat;renderCheck()}
+function renderCheck(){
+  const items=checkData[currentCat],states=checkState[currentCat];
+  document.getElementById('checklist-items').innerHTML=items.map((item,i)=>`
+    <div class="check-item${states[i]?' done':''}" onclick="toggleCheck('${currentCat}',${i},this)">
+      <div class="check-box">${states[i]?'✓':''}</div>
+      <div class="check-label">${item}</div>
+    </div>`).join('');
+  updateProgress();
+}
+function toggleCheck(cat,idx,el){checkState[cat][idx]=!checkState[cat][idx];el.classList.toggle('done');el.querySelector('.check-box').textContent=checkState[cat][idx]?'✓':'';updateProgress()}
+function updateProgress(){let d=0,t=0;Object.values(checkState).forEach(a=>{t+=a.length;d+=a.filter(Boolean).length});const p=t?Math.round(d/t*100):0;document.getElementById('check-bar').style.width=p+'%';document.getElementById('check-pct').textContent=p+'%'}
+initCheck();
+</script>
+</body>
+</html>
