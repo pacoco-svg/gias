@@ -1,0 +1,1247 @@
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="GuiaMundi">
+<meta name="theme-color" content="#1A1A2E">
+<title>Guía de DE PEKIN A TIBET · 22días</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1A1A2E;--gold:#C9922A;--gold-l:#F5E6C8;--gold-p:#FDF6E9;
+  --terra:#B84A2E;--sky:#1B4F72;--sage:#2D6A4F;--cream:#FAFAF6;
+  --sand:#F0EBE0;--mist:#EEF2F7;--line:#DDD8CF;--mid:#7B7369;--r:14px;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overflow:hidden}
+body{font-family:'DM Sans',sans-serif;background:var(--ink);color:var(--ink);font-size:15px;line-height:1.7;display:flex;flex-direction:column}
+
+/* ── PORTADA ── */
+.cover{flex-shrink:0;background:var(--ink);padding:24px 20px 16px;position:relative;overflow:hidden;text-align:center}
+.cover-bg{position:absolute;inset:0;background:radial-gradient(circle at 30% 50%,rgba(201,146,42,.15) 0,transparent 60%),radial-gradient(circle at 70% 50%,rgba(27,79,114,.18) 0,transparent 60%)}
+.cover-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,146,42,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,146,42,.04) 1px,transparent 1px);background-size:32px 32px}
+.cover-stripe{position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--terra),var(--sky))}
+.cover-content{position:relative;z-index:2}
+.cover-eyebrow{font-size:9px;font-weight:500;letter-spacing:3px;color:rgba(201,146,42,.7);text-transform:uppercase;margin-bottom:6px}
+.cover-title{font-family:'Playfair Display',serif;font-size:clamp(28px,8vw,44px);font-weight:900;line-height:1;color:#fff;letter-spacing:-1px;font-style:italic;margin-bottom:4px}
+.cover-subtitle{font-size:13px;color:rgba(255,255,255,.45);margin-bottom:14px;letter-spacing:.5px}
+.cover-actions{display:flex;gap:8px;justify-content:center;max-width:340px;margin:0 auto}
+.cover-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:5px;padding:9px 10px;border-radius:9px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;transition:all .2s}
+.cover-btn-wpp{background:#25D366;color:#fff}
+.cover-btn-save{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#fff}
+.cover-btn:active{transform:scale(.96)}
+
+/* ── TABS NAV ── */
+.tabs-nav{flex-shrink:0;background:rgba(8,8,20,.97);border-bottom:1px solid rgba(201,146,42,.15);position:relative}
+.tabs-scroll{display:flex;overflow-x:auto;scrollbar-width:none;padding:0 12px}
+.tabs-scroll::-webkit-scrollbar{display:none}
+.tab-btn{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:3px;padding:11px 14px;border:none;background:none;color:rgba(255,255,255,.38);font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;cursor:pointer;transition:all .2s;border-bottom:2px solid transparent;white-space:nowrap;min-width:72px}
+.tab-btn .tab-icon{font-size:18px;line-height:1}
+.tab-btn.active{color:var(--gold);border-bottom-color:var(--gold)}
+.tab-btn:hover{color:rgba(255,255,255,.7)}
+/* Flecha indicadora de más tabs */
+.tabs-fade{position:absolute;right:0;top:0;bottom:0;width:40px;background:linear-gradient(to right,transparent,rgba(8,8,20,.97));pointer-events:none;display:flex;align-items:center;justify-content:flex-end;padding-right:6px}
+.tabs-fade span{color:var(--gold);font-size:16px;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
+
+/* ── CONTENIDO ── */
+.tabs-content{flex:1;overflow-y:auto;background:var(--cream)}
+.tab-panel{display:none;padding:22px 18px 32px;min-height:100%}
+.tab-panel.active{display:block}
+@media(min-width:700px){.tab-panel{max-width:800px;margin:0 auto;padding:28px 36px 40px}}
+
+/* ── TIPOGRAFÍA ── */
+.sec-eye{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:4px;display:flex;align-items:center;gap:6px}
+.sec-eye::before{content:'';display:inline-block;width:10px;height:1px;background:var(--gold)}
+.sec-title{font-family:'Playfair Display',serif;font-size:21px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:16px}
+
+/* ── FICHA MINI ── */
+.info-mini{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.info-tag{background:var(--sand);border:1px solid var(--line);border-radius:50px;padding:5px 12px;font-size:12px;color:var(--mid)}
+.info-tag strong{color:var(--ink);font-weight:600}
+
+/* ── AD ── */
+.ad{background:#FFF8E7;border:1px solid #E8C84A;border-left:4px solid #E8C84A;border-radius:var(--r);padding:10px 12px;display:flex;align-items:flex-start;gap:8px;margin-bottom:14px}
+.ad-badge{background:#E8C84A;color:#fff;font-size:8px;font-weight:700;letter-spacing:1px;padding:2px 5px;border-radius:4px;flex-shrink:0;margin-top:1px}
+.ad strong{display:block;font-size:12px;font-weight:500;color:#7A5C00;margin-bottom:1px}
+.ad span{font-size:11px;color:#A07B20;font-style:italic}
+
+/* ── CONTENIDO IA ── */
+.ai-content{font-size:14px;line-height:1.85;color:var(--ink)}
+.ai-content h1,.ai-content h2{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--ink);margin:20px 0 8px;padding-bottom:5px;border-bottom:2px solid var(--gold-l)}
+.ai-content h2:first-child{margin-top:0}
+.ai-content h3{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--sky);margin:14px 0 5px}
+.ai-content h3:first-child{margin-top:0}
+.ai-content p{margin-bottom:9px}
+.ai-content ul,.ai-content ol{padding-left:18px;margin-bottom:10px}
+.ai-content li{margin-bottom:4px}
+.ai-content strong{font-weight:600}
+.ai-content a{color:var(--sky);text-decoration:none;border-bottom:1px solid rgba(27,79,114,.25);font-weight:500;word-break:break-word}
+.ai-content a:hover{color:var(--gold);border-bottom-color:var(--gold)}
+
+/* ── BLOQUES DE DÍA ── */
+.day-block{background:#fff;border:1px solid var(--line);border-radius:var(--r);margin-bottom:16px;overflow:hidden}
+.day-block-header{background:var(--ink);color:var(--gold);padding:12px 16px;font-family:'Playfair Display',serif;font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:space-between;cursor:pointer}
+.day-block-header .day-toggle{font-size:14px;transition:transform .3s;flex-shrink:0}
+.day-block.open .day-toggle{transform:rotate(180deg)}
+.day-block-body{display:none;padding:14px 16px}
+.day-block.open .day-block-body{display:block}
+.day-block-body .ai-content h3{margin-top:10px}
+.day-block-body .ai-content h3:first-child{margin-top:0}
+/* Botón maps dentro del día */
+.day-map-btn{display:inline-flex;align-items:center;gap:6px;margin:12px 0 6px;background:var(--sky);color:#fff;padding:9px 18px;border-radius:50px;font-size:12px;font-weight:700;text-decoration:none;border:none;transition:all .2s}
+.day-map-btn:hover{background:var(--gold)}
+/* Campo de nota manual */
+.day-note-wrap{margin-top:12px;border-top:1px solid var(--line);padding-top:12px}
+.day-note-label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);margin-bottom:5px}
+.day-note{width:100%;min-height:70px;padding:9px 12px;border:1.5px solid var(--line);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink);outline:none;resize:vertical;background:var(--cream);transition:border-color .2s}
+.day-note:focus{border-color:var(--gold)}
+.day-note::placeholder{color:var(--mid)}
+
+/* ── HERRAMIENTAS ── */
+.tools-tabs{display:flex;gap:6px;margin-bottom:14px;overflow-x:auto;scrollbar-width:none}
+.tools-tabs::-webkit-scrollbar{display:none}
+.ttab{background:var(--sand);border:none;border-radius:50px;padding:7px 13px;font-size:12px;font-family:'DM Sans',sans-serif;color:var(--mid);cursor:pointer;white-space:nowrap;transition:all .2s}
+.ttab.active{background:var(--ink);color:var(--gold);font-weight:500}
+.tool-panel{display:none}
+.tool-panel.active{display:block}
+@media(min-width:700px){
+  .tools-tabs{display:none}
+  .tool-panel{display:block!important}
+  .tools-desktop{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .tool-section-title{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);margin-bottom:8px;padding-bottom:5px;border-bottom:1px solid var(--line)}
+}
+
+/* CONVERSOR */
+.conv-box{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px}
+.conv-row{display:flex;gap:8px;align-items:flex-end;margin-bottom:10px}
+.conv-iw{flex:1}
+.conv-iw label{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--mid);display:block;margin-bottom:3px}
+.conv-input{width:100%;padding:8px 10px;border:1.5px solid var(--line);border-radius:9px;font-size:16px;font-family:'Playfair Display',serif;font-weight:700;color:var(--ink);outline:none;background:var(--cream)}
+.conv-input:focus{border-color:var(--gold)}
+.conv-arrow{font-size:16px;color:var(--gold);padding-bottom:6px;flex-shrink:0}
+.conv-result{background:var(--gold-p);border:1px solid var(--gold-l);border-radius:9px;padding:10px;text-align:center;margin-bottom:6px}
+.conv-amount{font-family:'Playfair Display',serif;font-size:26px;font-weight:900;color:var(--gold)}
+.conv-rate{font-size:10px;color:var(--mid);margin-top:1px}
+.conv-select{width:100%;padding:7px 10px;border:1.5px solid var(--line);border-radius:9px;font-size:13px;font-family:'DM Sans',sans-serif;color:var(--ink);outline:none;background:#fff;margin-bottom:9px}
+.conv-note{font-size:10px;color:var(--mid);text-align:center}
+
+/* TRADUCTOR */
+.trans-wrap{border-radius:var(--r);overflow:hidden;border:1px solid var(--line)}
+.trans-lang{background:var(--ink);color:#fff;padding:9px 13px;font-size:11px;font-weight:500;display:flex;align-items:center;justify-content:space-between}
+.trans-lang select{background:transparent;border:none;color:var(--gold);font-family:'DM Sans',sans-serif;font-size:12px;outline:none;cursor:pointer}
+.trans-list{background:#fff;max-height:280px;overflow-y:auto}
+.trans-item{display:flex;align-items:center;padding:9px 13px;border-bottom:1px solid var(--line);gap:8px}
+.trans-item:last-child{border-bottom:none}
+.trans-texts{flex:1}
+.trans-es{font-size:13px;font-weight:500;color:var(--ink)}
+.trans-dest{font-size:12px;color:var(--sky);font-style:italic;margin-top:1px}
+.trans-audio{background:none;border:1.5px solid var(--gold);border-radius:50%;width:30px;height:30px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--gold);flex-shrink:0;font-size:11px;transition:all .2s}
+.trans-audio.playing,.trans-audio:active{background:var(--gold);color:#fff}
+
+/* CALCULADORA */
+.calc-box{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px}
+.calc-row{margin-bottom:9px}
+.calc-row label{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--mid);display:block;margin-bottom:3px}
+.calc-input{width:100%;padding:7px 10px;border:1.5px solid var(--line);border-radius:9px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--ink);outline:none;background:var(--cream)}
+.calc-input:focus{border-color:var(--gold)}
+.calc-result{background:var(--ink);border-radius:var(--r);padding:13px;margin-top:5px}
+.calc-result-title{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:7px}
+.calc-line{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.calc-line:last-child{border-bottom:none;padding-top:8px;margin-top:4px}
+.calc-line span{font-size:12px;color:rgba(255,255,255,.55)}
+.calc-line strong{font-family:'Playfair Display',serif;font-size:13px;color:var(--gold)}
+.calc-line.total span{color:#fff;font-weight:600;font-size:13px}
+.calc-line.total strong{font-size:17px}
+
+/* CHECKLIST */
+.check-cats{display:flex;gap:5px;margin-bottom:9px;overflow-x:auto;scrollbar-width:none}
+.check-cats::-webkit-scrollbar{display:none}
+.check-cat-btn{background:var(--sand);border:none;border-radius:50px;padding:5px 11px;font-size:11px;font-family:'DM Sans',sans-serif;color:var(--mid);cursor:pointer;white-space:nowrap;transition:all .2s}
+.check-cat-btn.active{background:var(--ink);color:var(--gold);font-weight:500}
+.checklist{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;max-height:280px;overflow-y:auto}
+.check-item{display:flex;align-items:center;gap:9px;padding:9px 12px;border-bottom:1px solid var(--line);cursor:pointer;transition:background .15s}
+.check-item:last-child{border-bottom:none}
+.check-item:hover{background:var(--sand)}
+.check-box{width:18px;height:18px;border:2px solid var(--line);border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px;color:transparent;transition:all .2s}
+.check-item.done .check-box{background:var(--sage);border-color:var(--sage);color:#fff}
+.check-item.done .check-label{text-decoration:line-through;color:var(--mid)}
+.check-label{font-size:13px;color:var(--ink)}
+.check-progress{background:var(--sand);border-radius:var(--r);padding:8px 12px;margin-bottom:9px;display:flex;align-items:center;gap:8px}
+.check-bar-wrap{flex:1;background:var(--line);border-radius:50px;height:5px;overflow:hidden}
+.check-bar{height:100%;background:linear-gradient(90deg,var(--sage),var(--gold));border-radius:50px;transition:width .4s}
+.check-pct{font-size:12px;font-weight:600;color:var(--sage);flex-shrink:0}
+
+/* ── DOCUMENTOS ── */
+.docs-upload-area{border:2px dashed var(--line);border-radius:var(--r);padding:20px;text-align:center;background:#fff;cursor:pointer;transition:all .2s;margin-bottom:16px}
+.docs-upload-area:hover{border-color:var(--gold);background:var(--gold-p)}
+.docs-upload-icon{font-size:28px;margin-bottom:6px}
+.docs-upload-text{font-size:13px;color:var(--mid)}
+.docs-upload-text strong{color:var(--ink);display:block;margin-bottom:2px}
+.docs-list{display:flex;flex-direction:column;gap:8px}
+.doc-item{background:#fff;border:1px solid var(--line);border-radius:10px;padding:11px 14px;display:flex;align-items:center;gap:10px}
+.doc-icon{font-size:22px;flex-shrink:0}
+.doc-info{flex:1;min-width:0}
+.doc-name{font-size:13px;font-weight:500;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.doc-size{font-size:11px;color:var(--mid)}
+.doc-open{background:var(--sky);color:#fff;border:none;border-radius:6px;padding:5px 10px;font-size:11px;font-weight:600;cursor:pointer;flex-shrink:0}
+.doc-del{background:none;border:none;color:var(--mid);cursor:pointer;font-size:16px;padding:0 4px;flex-shrink:0}
+#doc-input{display:none}
+
+/* ── MAPA GENERAL ── */
+.map-block{background:var(--ink);border-radius:var(--r);overflow:hidden;margin-bottom:16px}
+.map-prev{height:110px;background:repeating-linear-gradient(0deg,transparent,transparent 35px,rgba(201,146,42,.06) 36px),repeating-linear-gradient(90deg,transparent,transparent 35px,rgba(201,146,42,.06) 36px);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:5px}
+.map-icon{font-size:26px}
+.map-dest-label{font-size:11px;color:rgba(255,255,255,.35);letter-spacing:1px}
+.map-cta{padding:11px 14px;display:flex;align-items:center;justify-content:space-between}
+.map-cta-t strong{display:block;color:#fff;font-size:13px;margin-bottom:1px}
+.map-cta-t span{font-size:11px;color:rgba(255,255,255,.45)}
+.map-btn{background:var(--gold);color:var(--ink);font-size:11px;font-weight:700;padding:8px 15px;border-radius:50px;text-decoration:none}
+
+/* ── CTA FINAL ── */
+.cta-box{background:linear-gradient(135deg,var(--ink),#2A1F3D);border-radius:var(--r);padding:22px 18px;text-align:center;position:relative;overflow:hidden;margin-bottom:16px}
+.cta-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--terra),var(--sky))}
+.cta-box h3{font-family:'Playfair Display',serif;font-size:18px;color:#fff;margin-bottom:5px}
+.cta-box p{font-size:12px;color:rgba(255,255,255,.45);margin-bottom:14px}
+.cta-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-bottom:13px}
+.cta-pill{background:rgba(201,146,42,.15);border:1px solid rgba(201,146,42,.3);color:var(--gold);font-size:12px;padding:6px 12px;border-radius:50px;text-decoration:none}
+.share-bar{display:flex;gap:7px}
+.share-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:5px;padding:9px;border-radius:9px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;transition:all .2s}
+.share-wpp{background:#25D366;color:#fff}
+.share-copy{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:#fff}
+
+/* NOTAS */
+.note-area{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.note-line{padding:12px 14px;border-bottom:1px solid var(--line);min-height:44px;font-size:14px;color:var(--line);font-style:italic}
+.note-line:last-child{border-bottom:none}
+
+/* MODAL GUARDAR */
+.save-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:999;align-items:flex-end;justify-content:center}
+.save-modal.open{display:flex}
+.save-sheet{background:#fff;border-radius:var(--r) var(--r) 0 0;padding:24px 20px 32px;width:100%;max-width:480px}
+.save-sheet h3{font-family:'Playfair Display',serif;font-size:19px;color:var(--ink);margin-bottom:6px}
+.save-sheet p{font-size:13px;color:var(--mid);margin-bottom:18px;line-height:1.6}
+.save-option{display:flex;align-items:center;gap:12px;padding:13px 14px;border:1.5px solid var(--line);border-radius:var(--r);margin-bottom:9px;cursor:pointer;transition:all .2s}
+.save-option:hover{border-color:var(--gold);background:var(--gold-p)}
+.save-option-icon{font-size:24px;flex-shrink:0}
+.save-option-text strong{display:block;font-size:14px;color:var(--ink);margin-bottom:1px}
+.save-option-text span{font-size:12px;color:var(--mid)}
+.save-close{width:100%;padding:11px;background:var(--sand);border:none;border-radius:var(--r);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;color:var(--mid);cursor:pointer;margin-top:6px}
+
+/* TOAST */
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(10px);background:var(--ink);color:#fff;padding:9px 18px;border-radius:50px;font-size:13px;font-weight:500;opacity:0;transition:all .3s;pointer-events:none;z-index:9999;white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.fa{animation:fadeUp .45s ease both}
+</style>
+</head>
+<body>
+
+<!-- ══ PORTADA ══ -->
+<div class="cover">
+  <div class="cover-bg"></div>
+  <div class="cover-grid"></div>
+  <div class="cover-stripe"></div>
+  <div class="cover-content">
+    <div class="cover-eyebrow fa">GuiaMundi.es</div>
+    <div class="cover-title fa" style="animation-delay:.1s">Guía de DE PEKIN A TIBET</div>
+    <div class="cover-subtitle fa" style="animation-delay:.2s">22 días · Cultural e histórico · 3viajero/s</div>
+    <div class="cover-actions fa" style="animation-delay:.3s">
+      <button class="cover-btn cover-btn-wpp" onclick="shareWpp()">
+        <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Compartir
+      </button>
+      <button class="cover-btn cover-btn-save" onclick="openSaveModal()">⬇ Guardar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TABS NAV ══ -->
+<div class="tabs-nav">
+  <div class="tabs-scroll" id="tabs-scroll">
+    <button class="tab-btn active" onclick="showTab('info',this)"><span class="tab-icon">📋</span>Viajero</button>
+    <button class="tab-btn" onclick="showTab('itinerario',this)"><span class="tab-icon">🗓</span>Ruta</button>
+    <button class="tab-btn" onclick="showTab('experiencias',this)"><span class="tab-icon">⭐</span>Experiencias</button>
+    <button class="tab-btn" onclick="showTab('tools',this)"><span class="tab-icon">⚙️</span>Tools</button>
+    <button class="tab-btn" onclick="showTab('destino',this)"><span class="tab-icon">💡</span>Destino</button>
+    <button class="tab-btn" onclick="showTab('transporte',this)"><span class="tab-icon">🚗</span>Transporte</button>
+    <button class="tab-btn" onclick="showTab('recursos',this)"><span class="tab-icon">🔗</span>Recursos</button>
+    <button class="tab-btn" onclick="showTab('cultura',this)"><span class="tab-icon">🎬</span>Cultura</button>
+    <button class="tab-btn" onclick="showTab('curiosidades',this)"><span class="tab-icon">🤔</span>Curiosidades</button>
+    <button class="tab-btn" onclick="showTab('docs',this)"><span class="tab-icon">📁</span>Documentos</button>
+    <button class="tab-btn" onclick="showTab('notas',this)"><span class="tab-icon">📝</span>Notas</button>
+  </div>
+  <div class="tabs-fade"><span>›</span></div>
+</div>
+
+<!-- ══ CONTENIDO ══ -->
+<div class="tabs-content" id="tabs-content">
+
+  <!-- TAB VIAJERO -->
+  <div class="tab-panel active" id="tab-info">
+    <div class="sec-eye">Tu viaje</div>
+    <div class="sec-title">Información del viajero</div>
+    <div class="info-mini">
+      <div class="info-tag"><strong>PACO</strong></div>
+      <div class="info-tag">📍 <strong>DE PEKIN A TIBET</strong></div>
+      <div class="info-tag">🗓 <strong>22días</strong></div>
+      <div class="info-tag">👥 <strong>3 viajero/s</strong></div>
+      <div class="info-tag">🧭 <strong>Cultural e histórico</strong></div>
+      <div class="info-tag">🚗 <strong>Transporte público</strong></div>
+    </div>
+    <div class="ad"><div class="ad-badge">AD</div><div><strong>Vuelos · Seguro de viaje</strong><span>→ Insertar banner afiliado aquí</span></div></div>
+    <div class="ad"><div class="ad-badge">AD</div><div><strong>Hoteles · Alojamiento</strong><span>→ Booking / Airbnb</span></div></div>
+    <div style="margin-top:16px">
+      <div class="map-block">
+        <div class="map-prev"><div class="map-icon">🗺️</div><div class="map-dest-label">DE PEKIN A TIBET</div></div>
+        <div class="map-cta">
+          <div class="map-cta-t"><strong>Ver en Google Maps</strong><span>Explorar DE PEKIN A TIBET</span></div>
+          <a class="map-btn" href="https://www.google.com/maps/search/DE PEKIN A TIBET" target="_blank">Abrir →</a>
+        </div>
+      </div>
+    </div>
+    <div class="cta-box">
+      <h3>¡Buen viaje, PACO!</h3>
+      <p>Tu aventura en DE PEKIN A TIBET · GuiaMundi.es</p>
+      <div class="cta-pills">
+        <a class="cta-pill" href="#">✈ Vuelos</a>
+        <a class="cta-pill" href="#">🏨 Hoteles</a>
+        <a class="cta-pill" href="#">🎯 Experiencias</a>
+        <a class="cta-pill" href="#">🛡 Seguro</a>
+      </div>
+      <div class="share-bar">
+        <button class="share-btn share-wpp" onclick="shareWpp()">
+          <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Compartir WhatsApp
+        </button>
+        <button class="share-btn share-copy" onclick="copyLink()">⎘ Copiar enlace</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB ITINERARIO -->
+  <div class="tab-panel" id="tab-itinerario">
+    <div class="sec-eye">Día a día</div>
+    <div class="sec-title">Itinerario detallado</div>
+    <div class="ad"><div class="ad-badge">AD</div><div><strong>Tours · Actividades</strong><span>→ Experiencias locales recomendadas</span></div></div>
+    <div id="itinerario-content" class="ai-content" style="margin-top:14px"><h2>DÍA 1 – Llegada a Pekín y primer contacto</h2>
+<ul>
+  <li><strong>Mañana:</strong> Llegada al aeropuerto de Pekín, traslado en metro al hotel. Check-in y descanso breve.</li>
+  <li><strong>Tarde:</strong> Visita a la Plaza de Tiananmen y paseo por la Ciudad Prohibida para descubrir los palacios imperiales.</li>
+  <li><strong>Noche:</strong> Cena en <strong>Da Dong Roast Duck</strong>, famoso por su exquisito pato pekinés en un ambiente moderno.</li>
+</ul>
+<p><strong>Alojamiento:</strong> Hotel Novotel Beijing Peace, céntrico y cómodo para moverse en transporte público.</p>
+<a href="https://www.google.com/maps/search/Plaza+de+Tiananmen+OR+Ciudad+Prohibida" target="_blank">🗺️ Ver lugares del día en Google Maps</a>
+
+<h2>DÍA 2 – Historia antigua y cultura local en Pekín</h2>
+<ul>
+  <li><strong>Mañana:</strong> Visita al Templo del Cielo, donde los emperadores realizaban ceremonias.</li>
+  <li><strong>Tarde:</strong> Recorrido por el barrio de Hutongs en bicicleta pública, explorando la vida tradicional pekinesa.</li>
+  <li><strong>Noche:</strong> Cena en <strong>Jing Yaa Tang</strong>, para degustar platos tradicionales chinos en un espacio elegante.</li>
+</ul>
+<p><strong>Alojamiento:</strong> Hotel Novotel Beijing Peace.</p>
+<a href="https://www.google.com/maps/search/Templo+del+Cielo+OR+Hutongs" target="_blank">🗺️ Ver lugares del día en Google Maps</a>
+
+<h2>DÍA 3 – Gran Muralla: aventuras y paisajes</h2>
+<ul>
+  <li><strong>Mañana:</strong> Excursión en tren y autobús público a la sección de Mutianyu de la Gran Muralla China.</li>
+  <li><strong>Tarde:</strong> Caminata y exploración relajada por la muralla, disfrutando de vistas panorámicas.</li>
+  <li><strong>Noche:</strong> Cena en <strong>Element Fresh</strong>, opción saludable y moderna tras un día activo.</li>
+</ul>
+<p><strong>Alojamiento:</strong> Hotel Novotel Beijing Peace.</p>
+<a href="https://www.google.com/maps/search/Gran+Muralla+Mutianyu" target="_blank">🗺️ Ver lugares del día en Google Maps</a>
+
+<h2>DÍA 4 – Viaje a Xi’an en tren bala</h2>
+<ul>
+  <li><strong>Mañana:</strong> Desplazamiento en tren bala de Pekín a Xi’an, tiempo aproximado 5-6 horas.</li>
+  <li><strong>Tarde:</strong> Visita tranquila al Barrio Musulmán para conocer mercado y artesanía local.</li>
+  <li><strong>Noche:</strong> Cena en <strong>Defachang Dumpling Restaurant</strong>, famoso por sus variados dumplings tradicionales.</li>
+</ul>
+<p><strong>Alojamiento:</strong> Grand Noble Hotel, ubicado cerca del centro histórico.</p>
+<a href="https://www.google.com/maps/search/Barrio+Musulmán+Xi'an" target="_blank">🗺️ Ver lugares del día en Google Maps</a>
+
+<h2>DÍA 5 – Guerreros de terracota y patrimonio en Xi’an</h2>
+<ul>
+  <li><strong>Mañana:</strong> Uso de autobús público para visitar los Guerreros de Terracota, museo y exposición al aire libre.</li>
+  <li><strong>Tarde:</strong> Regreso y paseo por la antigua muralla de Xi’an, alquiler de bicicletas para recorrerla.</li>
+  <li><strong>Noche:</strong> Cena en <strong>Huangchuan Impression Restaurant</strong>, especialidad en cocina local Shaanxi.</li>
+</ul>
+<p><strong>Alojamiento:</strong> Grand Noble Hotel.</p>
+<a href="https://www.google.com/maps/search/Guerreros+de+Terracota+OR+Muralla+de+Xi'an" target="_blank">🗺️ Ver lugares del día en Google Maps</a>
+
+<h2>DÍA 6 – De Xi’an a Chengdu en tren nocturno</h2>
+<ul>
+  <li><strong>Mañana:</strong> Mañana libre para visitar el museo de historia o relajarse en un parque urbano.</li>
+  <li><strong>Tarde:</strong> Preparación y traslado a la estación para tomar tren nocturno a Chengdu.</li>
+  <li><strong>Noche:</strong> Viaje en tren, descanso pensado para aprovechar el tiempo en ruta.</li>
+</ul>
+<p><strong>Alojamiento:</strong> En tren nocturno, litera confortable para 3 viajeros.</p>
+<a href="https://www.google.com/maps/search/Museo+de+Historia+de+Xi'an" target="_blank">🗺️ Ver lugares del día en Google Maps</a>
+
+<h2>DÍA 7 – Bienvenida a Chengdu y sabor local</h2>
+<ul>
+  <li><strong>Mañana:</strong> Llegada a Chengdu, traslado en metro al hotel para descansar y desayunar.</li>
+  <li><strong>Tarde:</strong> Visita al Museo de Jinsha para conocer arte y cultura del suroeste chino.</li>
+  <li><strong>Noche:</strong> Cena en <strong>Chen Mapo Tofu</strong>, restaurante clásico para probar el picante mapo tofu.</li>
+</ul>
+<p><strong>Alojamiento:</strong> Tianfu Sunshine Hotel, con buena conexión de transporte público.</p>
+<a href="https://www.google.com/maps/search/Museo+de+Jinsha" target="_blank">🗺️ Ver lugares del día en Google Maps</a>
+
+<h2>DÍA 8 – Pandas gigantes y vida urbana en Chengdu</h2>
+<ul>
+  <li><strong>Mañana:</strong> Visita a la base de cría de pandas gigantes, utilizando bus público colectivo.</li>
+  <li><strong>Tarde:</strong> Recorrido por la Calle Jinli, zona tradicional para compras y cultura local.</li>
+  <li><strong>Noche:</strong> Cena en <strong>Yu’s Family Kitchen</strong>, cocina sichuanesa creativa en ambiente acogedor.</li>
+</ul>
+<p><strong>Alojamiento:</strong> Tianfu Sunshine Hotel.</p>
+<a href="https://www.google.com/maps/search/Base+de+Pandas+Gigantes+Chengdu+OR+Calle+Jinli" target="_blank">🗺️ Ver lugares del día en Google Maps</a>
+
+<h2>DÍA 9 – Camino a Lhasa, capital de Tíbet</h2>
+<ul>
+  <li><strong>Mañana:</strong> Vuelo temprano de Chengdu a Lhasa, capital del Tíbet.</li>
+  <li><strong>Tarde:</strong> Check-in, descanso para aclimatarse a la altitud. Paseo por la Barkhor Street, corazón de Lhasa.</li>
+  <li><strong>Noche:</strong> Cena tibetana tradicional en <strong>Yi Zilam Restaurant</strong>, platos auténticos y ambiente familiar.</li>
+</ul>
+<p><strong>Alojamiento:</strong> St. Regis Lhasa Resort, confortable y céntrico.</p>
+<a href="https://www.google.com/maps/search/Barkhor+Street+Lhasa" target="_blank">🗺️ Ver lugares del día en Google Maps</a>
+
+<h2>DÍA 10 – El Palacio Potala y el Templo Jokhang</h2>
+<ul>
+  <li><strong>Mañana:</strong> Visita guiada al Palacio Potala, emblemático símbolo espiritual y político.</li>
+  <li><strong>Tarde:</strong> Recorrido tranquilo al Templo Jokhang, centro religioso clave del budismo tibetano.</li>
+  <li><strong>Noche:</strong> Cena en <strong>Tibetan Family Kitchen</strong>, destacando sabores caseros tradicionales.</li>
+</ul>
+<p><strong>Alojamiento:</strong> St. Regis Lhasa Resort.</p>
+<a href="https://www.google.com/maps/search/Palacio+Potala+OR+Templo+Jokhang" target="_blank">🗺️ Ver lugares del día en Google Maps</a>
+
+<h2>DÍA 11 – Monasterio Sera y vida monástica</h2>
+<ul>
+  <li><strong>Mañana:</strong> Visita al Monasterio Sera, observando debates y la vida cotidiana de los monjes.</li>
+  <li><strong>Tarde:</strong> Paseo por la zona de Norbulingka, antiguo palacio de verano del Dalai Lama.</li>
+  <li><strong>Noche:</strong> Cena en <strong>Greenhouse Kitchen</strong>, fusión tibetana y occidental con menú creativo.</li>
+</ul>
+<p><strong>Alojamiento:</strong> St. Regis Lhasa Resort.</p>
+<a href="https://www.google.com/maps/search/Monasterio+Sera+OR+Norbulingka" target="_blank">🗺️ Ver lugares del día en Google Maps</a>
+
+<h2>DÍA 12 – Lago Namtso, conexión natural</h2>
+<ul>
+  <li><strong>Mañana:</strong> Excursión en autobús público hacia el Lago Namtso, uno de los lagos sagrados más importantes.</li>
+  <li><strong>Tarde:</strong> Tiempo para caminar alrededor del lago y meditar en medio de paisajes únicos.</li>
+  <li><strong>Noche:</strong> Regreso a Lhasa. Cena ligera en el hotel o en <strong>Yangzom Tibetan Restaurant</strong>, opción casera y sencilla.</li>
+</ul>
+<p><strong>Alojamiento:</strong> St. Regis Lhasa Resort.</p>
+<a href="https://www.google.com/maps/search/Lago+Namtso" target="_blank">🗺️ Ver lugares del día en Google Maps</a>
+
+<h2>DÍA 13 – Ruta hacia Gyantse, viaje cultural</h2>
+<ul>
+  <li><strong>Mañana:</strong> Viaje en autobús público de Lhasa a Gyantse, con paradas para disfrutar del paisaje tibetano.</li>
+  <li><strong>Tarde:</strong> Visita al Dzong de Gyantse y a la famosa estupa Kumbum, arquitectura única y arte sacro.</li>
+  <li><strong>Noche:</strong> Cena en <strong>Gyantse Guesthouse Restaurant</strong>, especialidad tibetana tradicional.</li>
+</ul>
+<p><strong>Alojamiento:</strong> Gyantse Hotel, sencilla y confortable.</p>
+<a href="https://www.google.com/maps/search/Dzong+de+Gyantse+OR+Estupa+Kumbum" target="_blank">🗺️ Ver lugares del día en Google Maps</a>
+
+<h2>DÍA 14 – Viaje a Shigatse y monasterios históricos</h2>
+<ul>
+  <li><strong>Mañana:</strong> Autobús público a Shigatse, segunda ciudad más grande del Tíbet.</li>
+  <li><strong>Tarde:</strong> Visita al Monasterio Tashilhunpo, fundado en 1447 y sede tradicional del Panchen Lama.</li>
+  <li><strong>Noche:</strong> Cena en el <strong>Tashilhunpo Guesthouse Restaurant</strong>, sabores locales en ambiente tradicional.</li>
+</ul>
+<p><strong>Alojamiento:</strong> Shigatse Hotel, situado cerca del monasterio.</p>
+<a href="https://www.google.com/maps/search/Monasterio+Tashilhunpo+Shigatse" target="_blank">🗺️ Ver lugares del día en Google Maps</a>
+
+<h2>DÍA 15 – Paisajes y vida tibetana en ruta de regreso</h2>
+<ul>
+  <li><strong>Mañana:</strong> Retorno en autobús público hacia Lhasa, disfrutando de vistas panorámicas y pausas en pueblos locales.</li>
+  <li><strong>Tarde:</strong> Llegada y descanso en el hotel.</li>
+  <li><strong>Noche:</strong> Cena en <strong>House of Shambhala</strong>, fusión creativa tibetana con toque moderno.</li>
+</ul>
+<p><strong>Alojamiento:</strong> St. Regis Lhasa Resort.</p>
+<a href="https://www.google.com/maps/search/Lhasa" target="_blank">🗺️ Ver lugares del día en Google Maps</a>
+
+<h2>DÍA 16 – Día de descanso y exploración suave en Lhasa</h2>
+<ul>
+  <li><strong>Mañana:</strong> Paseo tranquilo por el Parque Norbulingka y visita a pequeños talleres de artesanía local.</li>
+  <li><strong>Tarde:</strong> Tiempo libre para descubrir tiendas, cafés y mercados cercanos.</li>
+  <li><strong>Noche:</strong> Cena en <strong>Makye Ame Restaurant</strong>, reconocido por su atmosfera y comida auténtica.</li>
+</ul>
+<p><strong>Alojamiento:</strong> St. Regis Lhasa Resort.</p>
+<a href="https://www.google.com/maps/search/Parque+Norbulingka+Lhasa" target="_blank">🗺️ Ver lugares del día en Google Maps</a>
+
+<h2>DÍA 17 – Viaje a Nyingchi, la Suiza tibetana</h2>
+<ul>
+  <li><strong>Mañana:</strong> Traslado en autobús público a Nyingchi, conocida por sus bosques y ríos alpinos.</li>
+  <li><strong>Tarde:</strong> Visita al Bosque de Árboles de Sangre de Pino y paseo por el valle de Basum.</li>
+  <li><strong>Noche:</strong> Cena en <strong>Nyingchi Guesthouse</strong>, platos tibetanos frescos y confortables.</li>
+</ul>
+<p><strong>Alojamiento:</strong> Nyingchi Hotel, para descanso con buenas vistas naturales.</p>
+<a href="https://www.google.com/maps/search/Bosque+de+Árboles+de+Sangre+Nyingchi" target="_blank">🗺️ Ver lugares del día en Google Maps</a>
+
+<h2>DÍA 18 – Exploración natural de Nyingchi</h2>
+<ul>
+  <li><strong>Mañana:</strong> Excursión al lago Basum Tso, tiempo para meditación y fotos.</li>
+  <li><strong>Tarde:</strong> Visita al pequeño monasterio de Lulang para apreciar la arquitectura y espiritualidad tibetana.</li>
+  <li><strong>Noche:</strong> Cena en <strong>Nyingchi Old Town Restaurant</strong>, ambiente auténtico local.</li>
+</ul>
+<p><strong>Alojamiento:</strong> Nyingchi Hotel.</p>
+<a href="https://www.google.com/maps/search/Lago+Basum+Tso+OR+Monasterio+Lulang" target="_blank">🗺️ Ver lugares del día en Google Maps</a>
+
+<h2>DÍA 19 – Regreso a Lhasa y tiempo libre</h2>
+<ul>
+  <li><strong>Mañana:</strong> Autobús público de vuelta a Lhasa, acomodación y descanso.</li>
+  <li><strong>Tarde:</strong> Visita a la Biblioteca Tibetana para conocer manuscritos antiguos y cultura literaria.</li>
+  <li><strong>Noche:</strong> Cena en <strong>The Tibetan Kitchen</strong>, menú variado para cerrar la experiencia tibetana.</li>
+</ul>
+<p><strong>Alojamiento:</strong> St. Regis Lhasa Resort.</p>
+<a href="https://www.google.com/maps/search/Biblioteca+Tibetana+Lhasa" target="_blank">🗺️ Ver lugares del día en Google Maps</a>
+
+<h2>DÍA 20 – Día cultural en Lhasa: museos y templos</h2>
+<ul>
+  <li><strong>Mañana:</strong> Visita al Museo de Tibet para profundizar en la historia regional.</li>
+  <li><strong>Tarde:</strong> Explorar templos menos turísticos como el Ramoche Temple.</li>
+  <li><strong>Noche:</strong> Cena en <strong>Snowland Restaurant</strong>, especializado en cocina tibetana contemporánea.</li>
+</ul>
+<p><strong>Alojamiento:</strong> St. Regis Lhasa Resort.</p>
+<a href="https://www.google.com/maps/search/Museo+de+Tibet+OR+Templo+Ramoche" target="_blank">🗺️ Ver lugares del día en Google Maps</a>
+
+<h2>DÍA 21 – Últimas compras y preparativos para el regreso</h2>
+<ul>
+  <li><strong>Mañana:</strong> Visita a mercados locales para adquirir souvenirs y artesanía tibetana.</li>
+  <li><strong>Tarde:</strong> Tiempo libre para pasear o descansar en el hotel.</li>
+  <li><strong>Noche:</strong> Cena despedida en <strong>Chakpori Tibetan Restaurant</strong>, ambiente agradable y platos típicos.</li>
+</ul>
+<p><strong>Alojamiento:</strong> St. Regis Lhasa Resort.</p>
+<a href="https://www.google.com/maps/search/mercados+locales+Lhasa" target="_blank">🗺️ Ver lugares del día en Google Maps</a>
+
+<h2>DÍA 22 – Regreso a Pekín y final del viaje</h2>
+<ul>
+  <li><strong>Mañana:</strong> Vuelo de regreso de Lhasa a Pekín.</li>
+  <li><strong>Tarde:</strong> Llegada a Pekín, traslado al aeropuerto para conexión internacional o alojamiento temporal según horario.</li>
+  <li><strong>Noche:</strong> Cena libre y descanso para concluir esta experiencia cultural e histórica.</li>
+</ul>
+<p><strong>Alojamiento:</strong> Según vuelo final o disponibilidad.</p>
+<a href="https://www.google.com/maps/search/Aeropuerto+de+Lhasa+OR+Aeropuerto+de+Pek</div>
+  </div>
+
+  <!-- TAB EXPERIENCIAS -->
+  <div class="tab-panel" id="tab-experiencias">
+    <div class="sec-eye">Imprescindibles</div>
+    <div class="sec-title">Experiencias destacadas</div>
+    <div class="ai-content"><h3>🌟 Visita a la Ciudad Prohibida</h3>
+<p>Explorar la Ciudad Prohibida es sumergirse en la historia imperial de China. Este vasto complejo palaciego, con más de 900 edificios, te transporta a la época de los emperadores. Dedica al menos 2-3 horas para recorrer sus jardines y museos. Consejo: compra tus entradas con antelación para evitar largas colas.</p>
+
+<h3>🌟 Excursión a la Gran Muralla China</h3>
+<p>Una visita a la Gran Muralla es una experiencia histórica y natural inigualable. Caminar por sus antiguas piedras mientras disfrutas de vistas panorámicas es algo que no puedes perderte. Se recomienda dedicar un día entero para apreciar diferentes secciones, como Mutianyu o Badaling. Consejo: llega temprano para evitar las multitudes.</p>
+
+<h3>🌟 Viaje en tren a Lhasa</h3>
+<p>El tren a Lhasa es una experiencia única que conecta Pekín y Tíbet, ofreciendo vistas de paisajes de montaña impresionantes. Este trayecto, que dura cerca de 40 horas, te adentra en la cultura tibetana. Consejo: reserva tu billete con antelación y lleva snacks y agua para el trayecto.</p>
+
+<h3>🌟 Exploración del Palacio Potala</h3>
+<p>El Palacio Potala, antigua residencia del Dalai Lama, es un símbolo del budismo tibetano. Su arquitectura impresionante y obras de arte religiosas hacen que la visita sea esencial. Dedica al menos 1-2 horas para recorrer sus salones y santuarios. Consejo: vístete de manera respetuosa, ya que es un lugar sagrado.</p>
+
+<h3>🌟 Paseo por el mercado de Barkhor</h3>
+<p>Este mercado tradicional en Lhasa es el lugar perfecto para experimentar la cultura tibetana. Aquí podrás comprar artesanías locales, oraciones y alimentos típicos. Se recomienda pasar un par de horas explorando y disfrutando de la atmósfera. Consejo: no te olvides de regatear los precios.</p>
+
+<h3>🌟 Caminata en el Parque Norbulingka</h3>
+<p>El Parque Norbulingka, antiguo jardín de verano de los Dalai Lamas, ofrece un respiro de la agitación de la ciudad. Aquí podrás disfrutar de la naturaleza y la serenidad mientras aprendes sobre la historia tibetana. Dedica al menos 1-2 horas a pasear por sus hermosos jardines. Consejo: lleva una cámara, pues el lugar es muy fotogénico.</p>
+
+<h3>🌟 Visita a los Monasterios de Sera y Drepung</h3>
+<p>Estos monasterios son fundamentales para entender la vida monástica tibetana. La experiencia de asistir a las enseñanzas y debates de los monjes en Sera es inolvidable. Dedica un día para visitar ambos monasterios. Consejo: asiste a los debates de los monjes por la tarde para tener una experiencia auténtica.</p>
+
+<h3>🌟 Degustación de comida tibetana</h3>
+<p>No puedes dejar Tíbet sin probar su gastronomía. Platos como el momo (dumplings), el tsampa (harina de cebada) y el té tibetano son esenciales. Dedica tiempo para comer en un restaurante local y disfrutar del ambiente. Consejo: pregunta por platos típicos para disfrutar de una experiencia auténtica.</p></div>
+  </div>
+
+  <!-- TAB TOOLS -->
+  <div class="tab-panel" id="tab-tools">
+    <div class="sec-eye">Herramientas interactivas</div>
+    <div class="sec-title">Para tu viaje</div>
+    <div class="tools-tabs">
+      <button class="ttab active" onclick="switchTool(this,'conv')">💱 Moneda</button>
+      <button class="ttab" onclick="switchTool(this,'trans')">🗣 Frases</button>
+      <button class="ttab" onclick="switchTool(this,'calc')">💶 Presupuesto</button>
+      <button class="ttab" onclick="switchTool(this,'check')">🧳 Equipaje</button>
+    </div>
+    <div class="tools-desktop">
+      <div>
+        <div class="tool-section-title">💱 Conversor de moneda en tiempo real</div>
+        <div class="tool-panel active" id="conv">
+          <div class="conv-box">
+            <select class="conv-select" id="conv-to" onchange="convertCurrency()">
+              <option value="USD">$ Dólar USD</option><option value="GBP">£ Libra</option>
+              <option value="JPY">¥ Yen</option><option value="MXN">$ Peso MX</option>
+              <option value="BRL">R$ Real</option><option value="MAD">MAD Dírham</option>
+              <option value="TRY">₺ Lira turca</option><option value="THB">฿ Baht</option>
+              <option value="IDR">Rp Rupia</option><option value="AED">AED Dírham</option>
+              <option value="SGD">S$ Dólar SG</option><option value="PLN">zł Esloti</option>
+              <option value="CZK">Kč Corona CZ</option><option value="HUF">Ft Forinto</option>
+              <option value="RON">RON Leu</option><option value="DKK">kr Danesa</option>
+              <option value="SEK">kr Sueca</option><option value="NOK">kr Noruega</option>
+            </select>
+            <div class="conv-row">
+              <div class="conv-iw"><label>Euros €</label><input class="conv-input" type="number" id="conv-eur" value="100" oninput="convertCurrency()"></div>
+              <div class="conv-arrow">⇄</div>
+              <div class="conv-iw"><label id="conv-to-label">Destino</label><input class="conv-input" type="number" id="conv-foreign" oninput="convertBack()"></div>
+            </div>
+            <div class="conv-result"><div class="conv-amount" id="conv-display">—</div><div class="conv-rate" id="conv-rate">Cargando…</div></div>
+            <div class="conv-note">Tiempo real · open.er-api.com</div>
+          </div>
+        </div>
+        <br>
+        <div class="tool-section-title">🗣 Frases útiles con audio</div>
+        <div class="tool-panel" id="trans">
+          <div class="trans-wrap">
+            <div class="trans-lang"><span>Idioma:</span>
+              <select id="trans-lang-sel" onchange="updatePhrases()">
+                <option value="it">🇮🇹 Italiano</option><option value="fr">🇫🇷 Francés</option>
+                <option value="de">🇩🇪 Alemán</option><option value="pt">🇵🇹 Portugués</option>
+                <option value="ja">🇯🇵 Japonés</option><option value="ar">🇲🇦 Árabe</option>
+                <option value="tr">🇹🇷 Turco</option><option value="th">🇹🇭 Tailandés</option>
+                <option value="zh">🇨🇳 Chino</option><option value="el">🇬🇷 Griego</option>
+                <option value="pl">🇵🇱 Polaco</option><option value="nl">🇳🇱 Neerlandés</option>
+                <option value="ru">🇷🇺 Ruso</option><option value="cs">🇨🇿 Checo</option>
+                <option value="ro">🇷🇴 Rumano</option><option value="hr">🇭🇷 Croata</option>
+              </select>
+            </div>
+            <div class="trans-list" id="phrases-list"></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="tool-section-title">💶 Calculadora de presupuesto</div>
+        <div class="tool-panel" id="calc">
+          <div class="calc-box">
+            <div class="calc-row"><label>Días</label><input class="calc-input" type="number" id="c-dias" value="" oninput="calcBudget()"></div>
+            <div class="calc-row"><label>Viajeros</label><input class="calc-input" type="number" id="c-viaj" value="" oninput="calcBudget()"></div>
+            <div class="calc-row"><label>Alojamiento / noche €</label><input class="calc-input" type="number" id="c-aloj" value="80" oninput="calcBudget()"></div>
+            <div class="calc-row"><label>Comida / persona / día €</label><input class="calc-input" type="number" id="c-com" value="35" oninput="calcBudget()"></div>
+            <div class="calc-row"><label>Transporte total €</label><input class="calc-input" type="number" id="c-transp" value="200" oninput="calcBudget()"></div>
+            <div class="calc-row"><label>Actividades total €</label><input class="calc-input" type="number" id="c-act" value="150" oninput="calcBudget()"></div>
+            <div class="calc-result">
+              <div class="calc-result-title">RESUMEN</div>
+              <div class="calc-line"><span>Alojamiento</span><strong id="r-aloj">—</strong></div>
+              <div class="calc-line"><span>Comida</span><strong id="r-com">—</strong></div>
+              <div class="calc-line"><span>Transporte</span><strong id="r-transp">—</strong></div>
+              <div class="calc-line"><span>Actividades</span><strong id="r-act">—</strong></div>
+              <div class="calc-line total"><span>TOTAL</span><strong id="r-total">—</strong></div>
+              <div class="calc-line"><span>Por persona</span><strong id="r-pp">—</strong></div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="tool-section-title">🧳 Checklist de equipaje</div>
+        <div class="tool-panel" id="check">
+          <div class="check-progress"><div class="check-bar-wrap"><div class="check-bar" id="check-bar" style="width:0%"></div></div><div class="check-pct" id="check-pct">0%</div></div>
+          <div class="check-cats">
+            <button class="check-cat-btn active" onclick="switchCat(this,'ropa')">👕 Ropa</button>
+            <button class="check-cat-btn" onclick="switchCat(this,'docs')">📄 Docs</button>
+            <button class="check-cat-btn" onclick="switchCat(this,'tech')">📱 Tech</button>
+            <button class="check-cat-btn" onclick="switchCat(this,'salud')">💊 Salud</button>
+            <button class="check-cat-btn" onclick="switchCat(this,'extras')">✨ Extras</button>
+          </div>
+          <div class="checklist" id="checklist-items"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB DESTINO -->
+  <div class="tab-panel" id="tab-destino">
+    <div class="sec-eye">Antes de partir</div>
+    <div class="sec-title">Guía del destino</div>
+    <div class="ai-content"><h2>Clima y mejor época</h2>
+<p>El clima desde Pekín hasta el Tíbet varía considerablemente debido a la gran diferencia de altitud y latitud.</p>
+<ul>
+  <li><strong>Enero - Febrero:</strong> Muy frío en Pekín (entre -5°C y 5°C) y extremadamente frío en el Tíbet (hasta -20°C). Ropa de abrigo gruesa imprescindible.</li>
+  <li><strong>Marzo - Abril:</strong> Temperaturas templadas en Pekín, fría en el Tíbet. Llevar ropa de entretiempo y algo más abrigado para la noche.</li>
+  <li><strong>Mayo - Junio:</strong> Clima agradable en ambas zonas. Chaqueta ligera y ropa cómoda para caminatas.</li>
+  <li><strong>Julio - Agosto:</strong> Temporada de lluvias en Pekín, fresco y seco en el Tíbet por la altitud. Ropa impermeable para Pekín y capas para el Tíbet.</li>
+  <li><strong>Septiembre - Octubre:</strong> Mejor época para el Tíbet: fresco, soleado y seco. Ideal para excursiones. Ropa cálida para la noche.</li>
+  <li><strong>Noviembre - Diciembre:</strong> Frío creciente, especialmente en el Tíbet. Abrigo grueso necesario.</li>
+</ul>
+
+<h2>Moneda y pagos</h2>
+<p>La moneda oficial es el <strong>Yuan Renminbi (CNY)</strong>. El tipo de cambio aproximado es 1 EUR = 7.5 CNY (variable según el mercado y momento).</p>
+<p>En las grandes ciudades como Pekín se aceptan tarjetas internacionales VISA y Mastercard, pero en zonas rurales del Tíbet es mejor llevar efectivo. Los cajeros automáticos están disponibles en ciudades principales para retirar yuanes.</p>
+
+<h2>Electricidad y adaptadores</h2>
+<p>El voltaje en China es de 220V y la frecuencia es de 50Hz.</p>
+<p>Los enchufes más comunes son los del tipo <strong>A, C y I</strong>.</p>
+<p>Se recomienda llevar un adaptador universa con toma de tierra si se tiene equipo electrónico delicado.</p>
+
+<h2>Idioma y comunicación</h2>
+<p>El idioma oficial es el <strong>chino mandarín</strong>. En el Tíbet, también se habla tibetano.</p>
+<p>El inglés se habla en hoteles, aeropuertos y algunas atracciones turísticas de Pekín, pero es poco común en el Tíbet.</p>
+<p>Apps útiles para la comunicación son:</p>
+<ul>
+  <li><a href="https://translate.google.com" target="_blank">Google Translate</a> (con modo offline descargado para chino y tibetano)</li>
+  <li><a href="https://www.wechat.com" target="_blank">WeChat</a> para mensajería y pagos</li>
+</ul>
+
+<h2>Visado y entrada</h2>
+<p>Los ciudadanos españoles y europeos necesitan un <strong>visado chino</strong> para entrar en Pekín y cualquier parte de China continental.</p>
+<p>Además, para visitar el Tíbet se requiere un <strong>Permiso de Entrada al Tíbet</strong>, que debe gestionarse a través de agencias de viajes autorizadas con antelación.</p>
+<p>Se recomienda solicitar el visado chino en consulados y preparar toda la documentación con tiempo.</p>
+
+<h2>Vacunas y salud</h2>
+<ul>
+  <li>Se recomiendan vacunas de hepatitis A y B, tétanos-difteria y fiebre tifoidea.</li>
+  <li>El agua potable no es segura en ninguna de las zonas; es mejor consumir agua embotellada.</li>
+  <li>Es aconsejable contratar un seguro médico internacional que cubra enfermedades y evacuaciones, especialmente en el Tíbet donde la altitud puede afectar la salud.</li>
+</ul>
+
+<h2>Seguridad</h2>
+<p>China es un país relativamente seguro para turistas, incluyendo Pekín y el Tíbet.</p>
+<ul>
+  <li>Evitar manifestaciones políticas y zonas conflictivas del Tíbet.</li>
+  <li>En ciudades grandes vigilar carteristas en lugares concurridos.</li>
+  <li>Seguir las indicaciones oficiales y respetar las restricciones en zonas restringidas del Tíbet.</li>
+</ul>
+<p>Consejos básicos: llevar siempre identificación, mantener copias de documentos y no exhibir objetos de valor.</p>
+
+<h2>Costumbres y etiqueta</h2>
+<ul>
+  <li>En el Tíbet, mostrar respeto en templos y lugares sagrados: vestimenta conservadora y no usar flash ni tocar estatuas.</li>
+  <li>Saludar con una ligera inclinación de cabeza es bien visto.</li>
+  <li>Las propinas no son obligatorias pero se agradecen en tours y guías (5-10% suele ser adecuado).</li>
+  <li>Evitar gestos ofensivos o hablar de temas políticos sensibles.</li>
+</ul>
+
+<h2>Apps imprescindibles</h2>
+<ul>
+  <li><a href="https://www.mafengwo.cn" target="_blank">Mafengwo</a> - para guías turísticas y recomendaciones.</li>
+  <li><a href="https://www.baidu.com" target="_blank">Baidu Maps</a> - indispensable para mapas en China, ya que Google Maps no funciona.</li>
+  <li><a href="https://translate.google.com" target="_blank">Google Translate</a> - con paquetes offline para traducción.</li>
+  <li><a href="https://www.wechat.com" target="_blank">WeChat</a> - para comunicación y pagos.</li>
+  <li><a href="https://www.tripadvisor.com" target="_blank">Tripadvisor</a> - opiniones y reservas.</li>
+</ul></div>
+  </div>
+
+  <!-- TAB TRANSPORTE -->
+  <div class="tab-panel" id="tab-transporte">
+    <div class="sec-eye">Moverse por DE PEKIN A TIBET</div>
+    <div class="sec-title">Transporte</div>
+    <div class="ad"><div class="ad-badge">AD</div><div><strong>Alquiler de coche</strong><span>→ Rent a car · comparativa</span></div></div>
+    <div class="ai-content" style="margin-top:12px"><h2>Cómo llegar desde España</h2>
+<p>Desde España, no existen vuelos directos a Pekín, por lo que la mayoría de los viajeros realizan una o dos escalas en ciudades europeas o asiáticas. Las compañías aéreas más comunes para estas rutas incluyen Lufthansa, Air France, Turkish Airlines y Air China.</p>
+<ul>
+  <li><strong>Tiempo de vuelo:</strong> Aproximadamente 12 a 15 horas en total dependiendo de la escala.</li>
+  <li><strong>Aeropuertos principales en España:</strong> Madrid-Barajas (MAD), Barcelona-El Prat (BCN).</li>
+  <li><strong>Aeropuerto de llegada en Pekín:</strong> Beijing Capital International Airport (PEK) es el principal aeropuerto internacional.</li>
+</ul>
+
+<h2>Transporte desde el aeropuerto</h2>
+<p>Desde el Aeropuerto Internacional de Pekín (PEK), hay varias opciones para llegar al centro de la ciudad:</p>
+<ul>
+  <li><strong>Airport Express (Metro):</strong> Precio aproximado 25 CNY (~3.5 EUR), tiempo 30-40 minutos. Opera de 6:00 a 23:00.</li>
+  <li><strong>Autobús Airport Shuttle:</strong> Precio entre 20-30 CNY (~2.5-4 EUR), tiempo 40-60 minutos dependiendo del tráfico.</li>
+  <li><strong>Taxi:</strong> Precio aproximado 100-150 CNY (~13-20 EUR), tiempo 45 minutos en condiciones normales.</li>
+</ul>
+
+<h2>Moverse por el destino</h2>
+<p>En Pekín, moverse en transporte público es cómodo y económico:</p>
+<ul>
+  <li><strong>Metro:</strong> La red de metro es extensa y cubre prácticamente toda la ciudad. Precio entre 3-9 CNY (~0.4-1.2 EUR) según distancia.</li>
+  <li><strong>Autobús:</strong> Numerosas líneas a precios muy bajos (1-2 CNY, menos de 0.3 EUR). Es recomendable tener la tarjeta de transporte Yikatong para descuentos y facilidad.</li>
+  <li><strong>Tren a Tibet:</strong> El <a href="https://www.china-railway.com.cn/" target="_blank">Tren Qinghai-Tibet</a> conecta Pekín con Lhasa, capital del Tíbet, en un viaje de más de 40 horas.</li>
+</ul>
+<p>En el Tíbet, el transporte público es limitado fuera de Lhasa, donde hay autobuses urbanos a bajo coste.</p>
+
+<h2>Alquiler de coche</h2>
+<p>El alquiler de coche no es muy recomendable para turistas internacionales en Pekín ni para viajar hasta Tíbet debido a las regulaciones estrictas y permisos especiales requeridos para entrar en la Región Autónoma del Tíbet.</p>
+<ul>
+  <li><strong>Empresas populares:</strong> Hertz, Avis, y compañías locales como eHi.</li>
+  <li><strong>Precio medio:</strong> Desde 250 CNY/día (~33 EUR).</li>
+  <li><strong>Carnet:</strong> Se requiere carnet de conducir chino. El carnet internacional no es válido, es necesario convertirlo o contratar chófer con licencia local.</li>
+</ul>
+
+<h2>Taxis y apps de movilidad</h2>
+<p>En Pekín:</p>
+<ul>
+  <li><strong>Taxis:</strong> Precio de bajada alrededor de 13 CNY (~1.7 EUR) y unos 2 CNY por km adicionales.</li>
+  <li><strong>Apps locales:</strong> <a href="https://www.didiglobal.com/" target="_blank">Didi Chuxing</a> es la aplicación más popular, similar a Uber.</li>
+  <li><strong>Uber:</strong> No opera directamente en Pekín.</li>
+</ul>
+<p>En el Tíbet, el uso de taxis es común en Lhasa y se recomienda negociar el precio antes del viaje.</p>
+
+<h2>Consejos de conducción</h2>
+<ul>
+  <li>El tráfico circula por la derecha.</li>
+  <li>Es obligatorio el uso del cinturón de seguridad.</li>
+  <li>Los límites de velocidad son generalmente 60-80 km/h en ciudad y 100-120 km/h en autopistas.</li>
+  <li>Los peajes existen, especialmente en autopistas, y el coste puede variar según la ruta.</li>
+  <li>El aparcamiento en Pekín puede ser limitado y caro en el centro; es preferible usar transporte público.</li>
+</ul>
+
+<h2>Transporte entre ciudades</h2>
+<ul>
+  <li><strong>Tren:</strong> El <a href="https://www.china-railway.com.cn/" target="_blank">tren de alta velocidad</a> conecta Pekín con ciudades principales del país. El Tren Qinghai-Tibet es la opción más famosa para llegar a Tíbet, aunque es lento (40+ horas) y con asientos y camas de varios niveles.</li>
+  <li><strong>Bus:</strong> Existen autobuses largos desde Pekín hasta Lhasa, pero el viaje dura más de 48 horas y es menos cómodo.</li>
+  <li><strong>Vuelos internos:</strong> Desde Pekín hasta el Aeropuerto de Lhasa Gonggar (LXA) hay vuelos frecuentes. Precio medio 1500-2500 CNY (~200-330 EUR) y duración del vuelo 3-4 horas.</li>
+</ul></div>
+  </div>
+
+  <!-- TAB RECURSOS -->
+  <div class="tab-panel" id="tab-recursos">
+    <div class="sec-eye">Recursos online</div>
+    <div class="sec-title">Blogs y enlaces útiles</div>
+    <div class="ai-content"><h2>Web oficial de turismo</h2>
+<p><a href="http://www.cnta.gov.cn/" target="_blank">China National Tourism Administration</a></p>
+
+<h2>Blogs de viaje recomendados</h2>
+<ul>
+  <li><a href="https://www.losviajeros.com/" target="_blank">Los Viajeros</a> - Blog en español con experiencias de viaje a China y el Tíbet.</li>
+  <li><a href="https://viajandoporahi.com/" target="_blank">Viajando Por Ahí</a> - Blog que incluye relatos y consejos para viajar desde Pekín al Tíbet.</li>
+  <li><a href="https://www.elviajedemichelle.com/" target="_blank">El Viaje de Michelle</a> - Blog con artículos y guías sobre China y el Tíbet.</li>
+  <li><a href="https://www.mochileros.org/" target="_blank">Mochileros.org</a> - Comunidad y blog con guías y experiencias para viajes aventureros en Asia.</li>
+</ul>
+
+<h2>Foros y comunidades</h2>
+<ul>
+  <li><a href="https://www.tripadvisor.es/ShowTopic-g294211-i9245-k12141822-Viajar_a_Tibet-Pekin_Beijing.html" target="_blank">TripAdvisor - Foro de Viajar a Tíbet desde Pekín</a></li>
+  <li><a href="https://www.lonelyplanet.com/thorntree/forums/asia/china" target="_blank">Lonely Planet Thorntree - Foros de China</a></li>
+  <li><a href="https://www.reddit.com/r/ChinaTravel/" target="_blank">Reddit - r/ChinaTravel</a></li>
+  <li><a href="https://www.reddit.com/r/tibet/" target="_blank">Reddit - r/tibet</a></li>
+</ul>
+
+<h2>Canales de YouTube</h2>
+<ul>
+  <li><a href="https://www.youtube.com/c/Alanxelmundo" target="_blank">Alan x el Mundo</a> - Canal en español con vídeos de viajes por China y el Tíbet.</li>
+  <li><a href="https://www.youtube.com/c/JavierLinTravels" target="_blank">Javier Lin Travels</a> - Vlogs dedicados a viajes por Asia, incluyendo rutas por Pekín y Tíbet.</li>
+  <li><a href="https://www.youtube.com/c/TrotamundosTP" target="_blank">Trotamundos TP</a> - Vídeos en español mostrando experiencias de viaje en el Tíbet y China.</li>
+</ul>
+
+<h2>Recursos para rutas</h2>
+<ul>
+  <li><a href="https://www.wikiloc.com/rutas/montana/pekin-a-tibet-71137474" target="_blank">Wikiloc - Rutas de Pekín a Tíbet</a></li>
+  <li><a href="https://www.alltrails.com/es/cn/china" target="_blank">AllTrails - Senderismo en China y Tíbet</a></li>
+  <li><a href="https://www.google.com/maps" target="_blank">Google Maps - Planificador de rutas y navegación</a></li>
+</ul>
+
+<h2>Apps imprescindibles</h2>
+<ul>
+  <li><strong>WeChat</strong> - <a href="https://www.wechat.com/en/" target="_blank">https://www.wechat.com/en/</a> Aplicación esencial para comunicación y pagos en China y Tíbet.</li>
+  <li><strong>Maps.me</strong> - <a href="https://maps.me/" target="_blank">https://maps.me/</a> App offline para navegación en las zonas remotas de Pekín y Tíbet.</li>
+  <li><strong>Metasearch Ctrip (Trip.com)</strong> - <a href="https://www.trip.com/" target="_blank">https://www.trip.com/</a> Para reservar vuelos, trenes y hoteles en China y destino Tíbet.</li>
+  <li><strong>AirVisual</strong> - <a href="https://www.airvisual.com/" target="_blank">https://www.airvisual.com/</a> Control de la calidad del aire en Pekín y región tibetana.</li>
+</ul>
+
+<h2>Webs de reservas</h2>
+<ul>
+  <li><a href="https://www.booking.com" target="_blank">Booking.com</a> - Reserva de alojamiento en Pekín y el Tíbet.</li>
+  <li><a href="https://www.airbnb.es" target="_blank">Airbnb</a> - Alojamiento local y alternativo para viajar en la región.</li>
+  <li><a href="https://www.getyourguide.com/" target="_blank">GetYourGuide</a> - Excursiones, tours y actividades desde Pekín hasta el Tíbet.</li>
+  <li><a href="https://www.viator.com" target="_blank">Viator</a> - Tours guiados y experiencias en la ruta Pekín-Tíbet.</li>
+</ul></div>
+  </div>
+
+  <!-- TAB CULTURA -->
+  <div class="tab-panel" id="tab-cultura">
+    <div class="sec-eye">Prepara el viaje</div>
+    <div class="sec-title">Cultura · Cine · Libros · Música</div>
+    <div class="ai-content"><h3>📚 De Pekín al Tíbet – Peter Goullart</h3>
+<p><strong>Por qué leerlo:</strong> Este libro combina elementos de diario de viaje y ensayo cultural, narrando las experiencias del autor en China y el Tíbet durante los años 30. Es ideal para comprender la historia y las tradiciones locales antes de la aventura.</p>
+
+<h3>📚 La montaña y el valle – Evena Yaling</h3>
+<p><strong>Por qué leerlo:</strong> Una novela que describe la vida cotidiana en el Tíbet y la relación espiritual con su entorno natural. Permite sumergirse en la cultura tibetana desde una perspectiva íntima y humana.</p>
+
+<h3>📚 Lonely Planet China – Varios Autores</h3>
+<p><strong>Por qué leerlo:</strong> Esta guía práctica ofrece información actualizada sobre rutas, alojamientos y consejos específicos para viajar desde Pekín al Tíbet, facilitando una planificación segura y enriquecedora.</p>
+
+<h3>📚 Nómada – Jason Roberts</h3>
+<p><strong>Por qué leerlo:</strong> Un relato de viaje que recorre las rutas poco conocidas hacia el Tíbet, explorando aldeas remotas y tradiciones ancestrales. Inspirador para viajeros que buscan experiencias auténticas.</p>
+
+<h3>📚 El libro tibetano de la vida y de la muerte – Sogyal Rimpoché</h3>
+<p><strong>Por qué leerlo:</strong> Aunque no es un libro de viajes, ofrece una profunda introducción a la filosofía y espiritualidad tibetanas, fundamentales para entender la mentalidad y los valores de la región durante el viaje.</p></div>
+  </div>
+
+  <!-- TAB CURIOSIDADES -->
+  <div class="tab-panel" id="tab-curiosidades">
+    <div class="sec-eye">¿Sabías que…?</div>
+    <div class="sec-title">Curiosidades de DE PEKIN A TIBET</div>
+    <div class="ai-content"><h3>💡 Gestiona con antelación permisos de viaje</h3>
+<p>Antes de salir de Pekín solicita el Permiso de Entrada al Tíbet (Tibet Travel Permit) y, en caso de visitar zonas sensibles, el Alien’s Travel Permit. Sin este trámite no podrás cruzar los controles policiales en la autopista Qinghai-Tíbet. Encárgalo a través de agencias acreditadas al menos 2 semanas antes del viaje.</p>
+
+<h3>💡 Planifica la aclimatación a la altitud</h3>
+<p>Al ascender del nivel del mar en Pekín (50 m) a Lhasa (3 650 m) el riesgo de mal de altura es alto. Dedica 2 días en Shigatse o Gyantse para descansar, beber mucha agua y evitar esfuerzos físicos intensos. Lleva ibuprofeno y pastillas para el mal de altura como acetazolamida.</p>
+
+<h3>💡 Ajusta tu presupuesto y lleva efectivo</h3>
+<p>En el Tíbet no hay cajeros fiables fuera de Lhasa. Calcula unos 500–700 CNY diarios para alojamiento básico, comida local y transportes en minibús compartido. Lleva efectivo en yuanes y cambia extra en Pekín; en Lhasa quizás acepten tarjetas UnionPay, pero en pueblos remotos solo cash.</p>
+
+<h3>💡 Disfruta la gastronomía tibetana con moderación</h3>
+<p>Prueba el <strong>tsampa</strong>, momos y el té de mantequilla de yak en comedores locales. El sabor es fuerte y la grasa elevada, así que compagina con verduras y agua mineral en botella sellada. Evita consumir lácteos crudos para prevenir trastornos digestivos.</p>
+
+<h3>💡 Fotografía con respeto y equipo adecuado</h3>
+<p>El paisaje de la meseta y los monasterios budistas son espectaculares al amanecer. Usa un filtro polarizador para cielos intensos y cubre tu cámara del polvo con fundas. Solicita permiso antes de retratar a monjes o peregrinos, y respeta las zonas prohibidas de los altares.</p>
+
+<h3>💡 Regatea con criterio en los mercados locales</h3>
+<p>En bazares de Lhasa o Shigatse negocia un 10–20 % menos sobre el precio inicial. Empieza ofreciendo la mitad, sonríe y mantén la calma. Si el vendedor no cede, retírate y volverá a llamarte. No regatees objetos religiosos ni artesanías excepcionales.</p>
+
+<h3>💡 Respeta las costumbres y el protocolo religioso</h3>
+<p>En los monasterios gira las ruedas de oración en el sentido horario y mantén la mano derecha abierta. No apuntes con el pie a imágenes sagradas ni cruces brazos. Guarda silencio en las zonas de culto, apaga el móvil y viste con colores discretos.</p>
+
+<h3>💡 Elige la mejor época para tu recorrido</h3>
+<p>Los meses de mayo a septiembre ofrecen temperaturas suaves (5–15 °C) y carreteras abiertas. Octubre aún es viable con paisajes ocres, pero de noviembre a abril el frío extremo y la nieve cierran tramos de la autopista Qinghai-Tíbet.</p>
+
+<h3>💡 Propinas y hospitalidad local</h3>
+<p>En China la propina no es habitual, pero en el Tíbet un gesto de 10–20 CNY al guía local o al conductor se valora mucho. En alojamientos familiares (homestay) agradece con un pequeño obsequio de tu país y ayuda en tareas sencillas para estrechar lazos.</p>
+
+<h3>💡 Evita los errores más comunes al cruzar fronteras internas</h3>
+<p>No confíes en datos de conexión móvil en trayectos largos: descarga mapas offline y guarda las direcciones en pinyin. Comprueba cada mañana el estado de la carretera en la estación de policía local y lleva siempre tu pasaporte y permisos originales contigo.</p></div>
+  </div>
+
+  <!-- TAB DOCUMENTOS -->
+  <div class="tab-panel" id="tab-docs">
+    <div class="sec-eye">Tus documentos</div>
+    <div class="sec-title">Documentos del viaje</div>
+    <p style="font-size:13px;color:var(--mid);margin-bottom:14px">Guarda aquí tu seguro, tarjetas de embarque, pasaporte o cualquier documento que necesites tener a mano durante el viaje.</p>
+    <div class="docs-upload-area" onclick="document.getElementById('doc-input').click()">
+      <div class="docs-upload-icon">📎</div>
+      <div class="docs-upload-text"><strong>Añadir documento</strong>PDF, imagen, tarjeta de embarque…</div>
+    </div>
+    <input type="file" id="doc-input" accept=".pdf,.jpg,.jpeg,.png,.gif,.webp" multiple onchange="handleDocUpload(event)">
+    <div class="docs-list" id="docs-list"></div>
+  </div>
+
+  <!-- TAB NOTAS -->
+  <div class="tab-panel" id="tab-notas">
+    <div class="sec-eye">Para ti</div>
+    <div class="sec-title">Notas del viajero</div>
+    <div class="note-area">
+      <div class="note-line" contenteditable="true" spellcheck="false">Escribe aquí tus notas…</div>
+      <div class="note-line" contenteditable="true" spellcheck="false"></div>
+      <div class="note-line" contenteditable="true" spellcheck="false"></div>
+      <div class="note-line" contenteditable="true" spellcheck="false"></div>
+      <div class="note-line" contenteditable="true" spellcheck="false"></div>
+      <div class="note-line" contenteditable="true" spellcheck="false"></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ MODAL GUARDAR ══ -->
+<div class="save-modal" id="save-modal" onclick="closeSaveModal(event)">
+  <div class="save-sheet">
+    <h3>Guardar guía</h3>
+    <p>Elige cómo quieres guardar tu guía de DE PEKIN A TIBET.</p>
+
+    <!-- Opción Android: botón directo si hay prompt disponible -->
+    <div class="save-option" id="opt-android" style="display:none" onclick="installAndroid()">
+      <div class="save-option-icon">🤖</div>
+      <div class="save-option-text"><strong>Añadir a pantalla de inicio</strong><span>Android · Se abrirá el diálogo de instalación</span></div>
+    </div>
+
+    <!-- Opción iOS: instrucción visual animada -->
+    <div class="save-option" id="opt-ios" style="display:none" onclick="showIOSGuide()">
+      <div class="save-option-icon">🍎</div>
+      <div class="save-option-text"><strong>Añadir a pantalla de inicio</strong><span>iOS · Toca para ver cómo hacerlo en 2 pasos</span></div>
+    </div>
+
+    <div class="save-option" onclick="downloadGuide()">
+      <div class="save-option-icon">⬇️</div>
+      <div class="save-option-text"><strong>Descargar archivo HTML</strong><span>Guárdalo y ábrelo sin internet</span></div>
+    </div>
+    <div class="save-option" onclick="copyLink();closeSaveModal()">
+      <div class="save-option-icon">🔗</div>
+      <div class="save-option-text"><strong>Copiar enlace</strong><span>Comparte o guarda la URL de esta guía</span></div>
+    </div>
+    <button class="save-close" onclick="closeSaveModal()">Cerrar</button>
+  </div>
+</div>
+
+<!-- ══ GUÍA iOS ══ -->
+<div class="save-modal" id="ios-modal" onclick="document.getElementById('ios-modal').classList.remove('open')">
+  <div class="save-sheet">
+    <h3>Añadir a pantalla de inicio</h3>
+    <p style="margin-bottom:18px">Sigue estos 2 pasos en Safari:</p>
+    <div style="background:var(--sand);border-radius:var(--r);padding:16px;margin-bottom:12px;text-align:center">
+      <div style="font-size:32px;margin-bottom:8px">1️⃣</div>
+      <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px">Toca el botón Compartir</div>
+      <div style="font-size:13px;color:var(--mid)">El icono <strong>□↑</strong> de la barra inferior de Safari</div>
+      <div style="font-size:36px;margin-top:10px;animation:bounce .8s infinite alternate">□↑</div>
+    </div>
+    <div style="background:var(--sand);border-radius:var(--r);padding:16px;margin-bottom:16px;text-align:center">
+      <div style="font-size:32px;margin-bottom:8px">2️⃣</div>
+      <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px">Toca "Añadir a pantalla de inicio"</div>
+      <div style="font-size:13px;color:var(--mid)">Desplázate en el menú hasta encontrar esta opción</div>
+      <div style="background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 14px;margin-top:10px;display:inline-flex;align-items:center;gap:8px">
+        <span style="font-size:20px">➕</span>
+        <span style="font-size:13px;font-weight:500;color:var(--ink)">Añadir a pantalla de inicio</span>
+      </div>
+    </div>
+    <button class="save-close" onclick="document.getElementById('ios-modal').classList.remove('open')">Entendido</button>
+  </div>
+</div>
+<style>
+@keyframes bounce{from{transform:translateY(0)}to{transform:translateY(-6px)}}
+</style>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── TABS ──
+function showTab(id,btn){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  btn.classList.add('active');
+  document.getElementById('tabs-content').scrollTop=0;
+  // Scroll tab visible
+  btn.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+  // Ocultar flecha si llegamos al final
+  const scroll=document.getElementById('tabs-scroll');
+  const fade=document.querySelector('.tabs-fade');
+  if(fade)fade.style.display=scroll.scrollLeft+scroll.clientWidth>=scroll.scrollWidth-10?'none':'flex';
+}
+// Ocultar flecha al llegar al final del scroll
+document.getElementById('tabs-scroll').addEventListener('scroll',function(){
+  const fade=document.querySelector('.tabs-fade');
+  if(fade)fade.style.display=this.scrollLeft+this.clientWidth>=this.scrollWidth-10?'none':'flex';
+});
+
+// ── TOAST ──
+function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800)}
+
+// ── COMPARTIR ──
+function shareWpp(){
+  const t=encodeURIComponent('¡Mira mi guía de viaje para DE PEKIN A TIBET! 🌍✈️\nGenerada por GuiaMundi.es\n\n'+window.location.href);
+  window.open('https://wa.me/?text='+t,'_blank');
+}
+function copyLink(){navigator.clipboard.writeText(window.location.href).then(()=>showToast('✓ Enlace copiado')).catch(()=>showToast('Copia la URL del navegador'))}
+
+// ── MODAL GUARDAR ──
+// ── MODAL GUARDAR ──
+let deferredPrompt=null;
+window.addEventListener('beforeinstallprompt',e=>{
+  e.preventDefault();
+  deferredPrompt=e;
+  // Mostrar botón Android cuando esté disponible
+  document.getElementById('opt-android').style.display='flex';
+});
+
+function openSaveModal(){
+  // Detectar iOS
+  const isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
+  if(isIOS)document.getElementById('opt-ios').style.display='flex';
+  document.getElementById('save-modal').classList.add('open');
+}
+function closeSaveModal(e){
+  if(!e||e.target===document.getElementById('save-modal'))
+    document.getElementById('save-modal').classList.remove('open');
+}
+function installAndroid(){
+  if(deferredPrompt){
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(r=>{
+      if(r.outcome==='accepted')showToast('✓ Añadida a pantalla de inicio');
+      deferredPrompt=null;
+    });
+  }
+  document.getElementById('save-modal').classList.remove('open');
+}
+function showIOSGuide(){
+  document.getElementById('save-modal').classList.remove('open');
+  setTimeout(()=>document.getElementById('ios-modal').classList.add('open'),200);
+}
+function downloadGuide(){
+  try{
+    const blob=new Blob([document.documentElement.outerHTML],{type:'text/html;charset=utf-8'});
+    const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+    a.download='guia-DE PEKIN A TIBET-22dias.html';a.click();
+    URL.revokeObjectURL(a.href);showToast('✓ Guía descargada');
+  }catch(e){showToast('Usa el menú del navegador para guardar')}
+  document.getElementById('save-modal').classList.remove('open');
+}
+
+// ── BLOQUES DE DÍA CON NOTAS Y MAPA ──
+function buildDayBlocks(){
+  const container=document.getElementById('itinerario-content');
+  if(!container)return;
+  const raw=container.innerHTML;
+  // Dividir por h2
+  const parts=raw.split(/(?=<h2[\s>])/i);
+  let html='';
+  parts.forEach((part,i)=>{
+    if(!part.trim())return;
+    const isDay=/^<h2/i.test(part.trim());
+    if(!isDay){html+=part;return;}
+    // Extraer título h2
+    const titleMatch=part.match(/<h2[^>]*>(.*?)<\/h2>/i);
+    const title=titleMatch?titleMatch[1]:'Día '+(i);
+    const body=part.replace(/<h2[^>]*>.*?<\/h2>/i,'').trim();
+    // Extraer enlace maps si ya viene en el body
+    const mapsMatch=body.match(/href="(https:\/\/www\.google\.com\/maps[^"]+)"/i);
+    const mapsUrl=mapsMatch?mapsMatch[1]:'https://www.google.com/maps/search/DE PEKIN A TIBET';
+    const bodyClean=body.replace(/<a[^>]*google\.com\/maps[^>]*>.*?<\/a>/gi,'');
+    html+=`<div class="day-block">
+      <div class="day-block-header" onclick="toggleDay(this)">
+        <span>${title}</span><span class="day-toggle">⌄</span>
+      </div>
+      <div class="day-block-body">
+        <div class="ai-content">${bodyClean}</div>
+        <a class="day-map-btn" href="${mapsUrl}" target="_blank">🗺️ Ver lugares del día en Google Maps</a>
+        <div class="day-note-wrap">
+          <div class="day-note-label">📝 Mis notas para este día</div>
+          <textarea class="day-note" placeholder="Añade aquí reservas, horarios o cualquier detalle personal…"></textarea>
+        </div>
+      </div>
+    </div>`;
+  });
+  container.innerHTML=html;
+  // Abrir primer día
+  const first=container.querySelector('.day-block');
+  if(first)first.classList.add('open');
+}
+function toggleDay(header){header.closest('.day-block').classList.toggle('open')}
+document.addEventListener('DOMContentLoaded',buildDayBlocks);
+
+// ── DOCUMENTOS ──
+const uploadedDocs=[];
+function handleDocUpload(e){
+  Array.from(e.target.files).forEach(file=>{
+    const reader=new FileReader();
+    reader.onload=ev=>{
+      const doc={name:file.name,size:formatSize(file.size),type:file.type,url:ev.target.result,id:Date.now()+Math.random()};
+      uploadedDocs.push(doc);renderDocs();
+    };
+    reader.readAsDataURL(file);
+  });
+  e.target.value='';
+}
+function formatSize(b){if(b<1024)return b+'B';if(b<1048576)return(b/1024).toFixed(1)+'KB';return(b/1048576).toFixed(1)+'MB'}
+function getDocIcon(type){if(type==='application/pdf')return '📄';if(type.startsWith('image/'))return '🖼️';return '📎'}
+function renderDocs(){
+  const list=document.getElementById('docs-list');
+  if(!uploadedDocs.length){list.innerHTML='';return;}
+  list.innerHTML=uploadedDocs.map(doc=>`
+    <div class="doc-item">
+      <div class="doc-icon">${getDocIcon(doc.type)}</div>
+      <div class="doc-info"><div class="doc-name">${doc.name}</div><div class="doc-size">${doc.size}</div></div>
+      <button class="doc-open" onclick="openDoc('${doc.id}')">Abrir</button>
+      <button class="doc-del" onclick="deleteDoc('${doc.id}')">✕</button>
+    </div>`).join('');
+}
+function openDoc(id){const d=uploadedDocs.find(d=>d.id==id);if(d)window.open(d.url,'_blank')}
+function deleteDoc(id){const i=uploadedDocs.findIndex(d=>d.id==id);if(i>-1){uploadedDocs.splice(i,1);renderDocs()}}
+
+// ── HERRAMIENTAS TABS ──
+function switchTool(btn,id){
+  document.querySelectorAll('.ttab').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.tool-panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');document.getElementById(id).classList.add('active');
+}
+
+// ── CONVERSOR ──
+const rates={};let ratesLoaded=false;
+const cNames={USD:'Dólar USD',GBP:'Libra',JPY:'Yen',MXN:'Peso MX',BRL:'Real',MAD:'Dírham',TRY:'Lira',THB:'Baht',IDR:'Rupia',AED:'Dírham AE',SGD:'Dólar SG',PLN:'Esloti',CZK:'Corona CZ',HUF:'Forinto',RON:'Leu',DKK:'Corona DK',SEK:'Corona SE',NOK:'Corona NO'};
+async function loadRates(){
+  try{const r=await fetch('https://open.er-api.com/v6/latest/EUR');const d=await r.json();if(d.rates){Object.assign(rates,d.rates);ratesLoaded=true;convertCurrency();document.getElementById('conv-rate').textContent='Actualizado · '+new Date().toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'})}}
+  catch(e){Object.assign(rates,{USD:1.08,GBP:0.86,JPY:162,MXN:18.5,BRL:5.4,MAD:10.8,TRY:35,THB:38,IDR:17000,AED:3.97,SGD:1.45,PLN:4.25,CZK:25,HUF:390,RON:4.97,DKK:7.46,SEK:11.5,NOK:11.8});ratesLoaded=true;convertCurrency();document.getElementById('conv-rate').textContent='Tasas aproximadas'}
+}
+function convertCurrency(){
+  if(!ratesLoaded)return;
+  const eur=parseFloat(document.getElementById('conv-eur').value)||0;
+  const to=document.getElementById('conv-to').value;
+  const res=eur*(rates[to]||1);
+  const fmt=res>=1000?res.toFixed(0):res>=10?res.toFixed(2):res.toFixed(4);
+  document.getElementById('conv-foreign').value=fmt;
+  document.getElementById('conv-display').textContent=fmt+' '+to;
+  document.getElementById('conv-to-label').textContent=cNames[to]||to;
+  document.getElementById('conv-rate').textContent='1 € = '+(rates[to]||1).toFixed(4)+' '+to;
+}
+function convertBack(){
+  if(!ratesLoaded)return;
+  const f=parseFloat(document.getElementById('conv-foreign').value)||0;
+  const to=document.getElementById('conv-to').value;
+  document.getElementById('conv-eur').value=(f/(rates[to]||1)).toFixed(2);convertCurrency();
+}
+loadRates();
+
+// ── TRADUCTOR ──
+const phraseDB={
+  es:['Hola / Buenos días','Por favor','Gracias','¿Cuánto cuesta?','¿Dónde está…?','La cuenta, por favor','No entiendo','¿Habla español?','Ayuda, por favor','Un taxi, por favor','¿Dónde está el baño?','Me llamo…','¿Habla inglés?'],
+  it:['Ciao / Buongiorno','Per favore','Grazie','Quanto costa?','Dov\'è…?','Il conto, per favore','Non capisco','Parla spagnolo?','Aiuto','Un taxi, per favore','Dov\'è il bagno?','Mi chiamo…','Parla inglese?'],
+  fr:['Bonjour','S\'il vous plaît','Merci','Combien ça coûte?','Où est…?','L\'addition, s\'il vous plaît','Je ne comprends pas','Parlez-vous espagnol?','Au secours','Un taxi, s\'il vous plaît','Où sont les toilettes?','Je m\'appelle…','Parlez-vous anglais?'],
+  de:['Hallo','Bitte','Danke','Wie viel kostet das?','Wo ist…?','Die Rechnung, bitte','Ich verstehe nicht','Sprechen Sie Spanisch?','Hilfe','Ein Taxi, bitte','Wo ist die Toilette?','Ich heiße…','Sprechen Sie Englisch?'],
+  pt:['Olá','Por favor','Obrigado/a','Quanto custa?','Onde fica…?','A conta, por favor','Não entendo','Fala espanhol?','Socorro','Um táxi','Onde é o banheiro?','Meu nome é…','Fala inglês?'],
+  ja:['こんにちは','お願いします','ありがとう','いくらですか？','…はどこですか？','お会計をお願いします','わかりません','スペイン語を話しますか？','助けて','タクシーをお願いします','トイレはどこですか？','私の名前は…','英語を話しますか？'],
+  ar:['مرحبا','من فضلك','شكرا','كم يكلف؟','أين…؟','الحساب من فضلك','لا أفهم','هل تتكلم الإسبانية؟','مساعدة','سيارة أجرة','أين الحمام؟','اسمي…','هل تتكلم الإنجليزية؟'],
+  tr:['Merhaba','Lütfen','Teşekkürler','Ne kadar?','Nerede…?','Hesabı lütfen','Anlamıyorum','İspanyolca biliyor musunuz?','Yardım','Taksi lütfen','Tuvalet nerede?','Benim adım…','İngilizce biliyor musunuz?'],
+  th:['สวัสดี','กรุณา','ขอบคุณ','ราคาเท่าไหร่?','…อยู่ที่ไหน?','เก็บเงินด้วย','ไม่เข้าใจ','พูดภาษาสเปนได้ไหม?','ช่วยด้วย','แท็กซี่','ห้องน้ำอยู่ที่ไหน?','ฉันชื่อ…','พูดภาษาอังกฤษได้ไหม?'],
+  zh:['你好','请','谢谢','多少钱？','…在哪里？','买单','我不明白','你会说西班牙语吗？','帮帮我','出租车','洗手间在哪里？','我叫…','你会说英语吗？'],
+  el:['Γεια σας','Παρακαλώ','Ευχαριστώ','Πόσο κοστίζει;','Πού είναι…;','Τον λογαριασμό','Δεν καταλαβαίνω','Μιλάτε ισπανικά;','Βοήθεια','Ένα ταξί','Πού είναι η τουαλέτα;','Με λένε…','Μιλάτε αγγλικά;'],
+  pl:['Dzień dobry','Proszę','Dziękuję','Ile to kosztuje?','Gdzie jest…?','Rachunek, proszę','Nie rozumiem','Czy mówi pan/pani po hiszpańsku?','Pomocy','Taksówkę','Gdzie jest toaleta?','Mam na imię…','Czy mówi pan/pani po angielsku?'],
+  nl:['Hallo','Alstublieft','Dank u','Hoeveel kost het?','Waar is…?','De rekening graag','Ik begrijp het niet','Spreekt u Spaans?','Help','Een taxi','Waar is het toilet?','Ik heet…','Spreekt u Engels?'],
+  ru:['Здравствуйте','Пожалуйста','Спасибо','Сколько стоит?','Где…?','Счёт, пожалуйста','Я не понимаю','Вы говорите по-испански?','Помогите','Такси','Где туалет?','Меня зовут…','Вы говорите по-английски?'],
+  cs:['Dobrý den','Prosím','Děkuji','Kolik to stojí?','Kde je…?','Účet prosím','Nerozumím','Mluvíte španělsky?','Pomozte','Taxi','Kde je toaleta?','Jmenuji se…','Mluvíte anglicky?'],
+  ro:['Bună ziua','Vă rog','Mulțumesc','Cât costă?','Unde este…?','Nota de plată','Nu înțeleg','Vorbiți spaniolă?','Ajutor','Un taxi','Unde este toaleta?','Mă numesc…','Vorbiți engleză?'],
+  hr:['Dobar dan','Molim','Hvala','Koliko košta?','Gdje je…?','Račun, molim','Ne razumijem','Govorite li španjolski?','Pomoć','Taksi','Gdje je zahod?','Zovem se…','Govorite li engleski?'],
+};
+const langMap={it:'it-IT',fr:'fr-FR',de:'de-DE',pt:'pt-PT',ja:'ja-JP',ar:'ar-SA',tr:'tr-TR',th:'th-TH',zh:'zh-CN',el:'el-GR',pl:'pl-PL',nl:'nl-NL',ru:'ru-RU',cs:'cs-CZ',ro:'ro-RO',hr:'hr-HR'};
+function updatePhrases(){
+  const lang=document.getElementById('trans-lang-sel').value;
+  const esp=phraseDB['es'],dest=phraseDB[lang]||phraseDB['it'];
+  document.getElementById('phrases-list').innerHTML=esp.map((es,i)=>`
+    <div class="trans-item">
+      <div class="trans-texts"><div class="trans-es">${es}</div><div class="trans-dest">${dest[i]||''}</div></div>
+      <button class="trans-audio" onclick="speak('${(dest[i]||'').replace(/'/g,"\\'").replace(/"/g,'&quot;')}','${lang}',this)">▶</button>
+    </div>`).join('');
+}
+function speak(text,lang,btn){
+  if(!window.speechSynthesis){showToast('Audio no disponible');return}
+  window.speechSynthesis.cancel();
+  document.querySelectorAll('.trans-audio').forEach(b=>b.classList.remove('playing'));
+  btn.classList.add('playing');
+  const u=new SpeechSynthesisUtterance(text);
+  u.lang=langMap[lang]||lang+'-'+lang.toUpperCase();u.rate=0.82;
+  u.onend=()=>btn.classList.remove('playing');
+  u.onerror=()=>{btn.classList.remove('playing');showToast('Audio no disponible para este idioma')};
+  window.speechSynthesis.speak(u);
+}
+updatePhrases();
+
+// ── CALCULADORA ──
+function calcBudget(){
+  const dias=parseFloat(document.getElementById('c-dias').value)||0;
+  const viaj=Math.max(1,parseFloat(document.getElementById('c-viaj').value)||1);
+  const aloj=parseFloat(document.getElementById('c-aloj').value)||0;
+  const com=parseFloat(document.getElementById('c-com').value)||0;
+  const transp=parseFloat(document.getElementById('c-transp').value)||0;
+  const act=parseFloat(document.getElementById('c-act').value)||0;
+  const tA=aloj*dias,tC=com*dias*viaj,tot=tA+tC+transp+act;
+  const f=n=>n.toLocaleString('es-ES',{maximumFractionDigits:0})+'€';
+  document.getElementById('r-aloj').textContent=f(tA);document.getElementById('r-com').textContent=f(tC);
+  document.getElementById('r-transp').textContent=f(transp);document.getElementById('r-act').textContent=f(act);
+  document.getElementById('r-total').textContent=f(tot);document.getElementById('r-pp').textContent=f(tot/viaj);
+}
+calcBudget();
+
+// ── CHECKLIST ──
+const checkData={
+  ropa:['Ropa ligera (5-7 días)','Chaqueta o jersey fino','Ropa interior extra','Calcetines varios','Calzado cómodo walking','Sandalias o chanclas','Ropa de baño','Pijama','Pañuelo o fular','Chubasquero ligero'],
+  docs:['DNI o Pasaporte vigente','Tarjeta Sanitaria Europea','Seguro de viaje','Reservas alojamiento','Confirmación de vuelo','2 tarjetas bancarias','Efectivo moneda local','Carné de conducir','Visado si aplica','Fotos de pasaporte'],
+  tech:['Móvil cargado','Cargador del móvil','Adaptador de enchufe','Power bank','Auriculares','Cámara de fotos','Tarjeta memoria extra','Cable USB extra','Mapas offline','Cargador laptop'],
+  salud:['Protector solar 50+','Repelente mosquitos','Medicación habitual x2','Botiquín básico','Antihistamínico','Ibuprofeno/paracetamol','Tiritas y venda','Pastillas estómago','Mascarillas','Termómetro'],
+  extras:['Botella reutilizable','Guía de conversación','Bolsa tela mercados','Candado equipaje','Funda impermeable móvil','Snacks viaje','Almohada viaje','Antifaz dormir','Tapones oídos','Colonia pequeña'],
+};
+const checkState={};let currentCat='ropa';
+function initCheck(){Object.keys(checkData).forEach(c=>checkState[c]=checkData[c].map(()=>false));renderCheck()}
+function switchCat(btn,cat){document.querySelectorAll('.check-cat-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');currentCat=cat;renderCheck()}
+function renderCheck(){
+  const items=checkData[currentCat],states=checkState[currentCat];
+  document.getElementById('checklist-items').innerHTML=items.map((item,i)=>`
+    <div class="check-item${states[i]?' done':''}" onclick="toggleCheck('${currentCat}',${i},this)">
+      <div class="check-box">${states[i]?'✓':''}</div>
+      <div class="check-label">${item}</div>
+    </div>`).join('');
+  updateProgress();
+}
+function toggleCheck(cat,idx,el){checkState[cat][idx]=!checkState[cat][idx];el.classList.toggle('done');el.querySelector('.check-box').textContent=checkState[cat][idx]?'✓':'';updateProgress()}
+function updateProgress(){let d=0,t=0;Object.values(checkState).forEach(a=>{t+=a.length;d+=a.filter(Boolean).length});const p=t?Math.round(d/t*100):0;document.getElementById('check-bar').style.width=p+'%';document.getElementById('check-pct').textContent=p+'%'}
+initCheck();
+</script>
+</body>
+</html>
