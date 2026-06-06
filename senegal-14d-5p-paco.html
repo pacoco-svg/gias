@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="GuiaMundi">
+<meta name="theme-color" content="#1A1A2E">
+<title>Guía de SENEGAL · 14días</title>
+<link rel="manifest" href="data:application/json;charset=utf-8,%7B%22name%22%3A%22Gu%C3%ADa%20de%20SENEGAL%22%2C%22short_name%22%3A%22SENEGAL%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%231A1A2E%22%2C%22theme_color%22%3A%22%231A1A2E%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%2C%253Csvg%2520xmlns%3D%2527http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%2527%2520viewBox%3D%25270%25200%2520100%2520100%2527%253E%253Ctext%2520y%3D%2527.9em%2527%2520font-size%3D%252790%2527%253E%25F0%259F%258C%258D%253C%2Ftext%253E%253C%2Fsvg%253E%22%2C%22sizes%22%3A%22192x192%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%7D%5D%7D">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1A1A2E;--gold:#C9922A;--gold-l:#F5E6C8;--gold-p:#FDF6E9;
+  --terra:#B84A2E;--sky:#1B4F72;--sage:#2D6A4F;--cream:#FAFAF6;
+  --sand:#F0EBE0;--mist:#EEF2F7;--line:#DDD8CF;--mid:#7B7369;--r:14px;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overflow:hidden}
+body{font-family:'DM Sans',sans-serif;background:var(--ink);color:var(--ink);font-size:15px;line-height:1.7;display:flex;flex-direction:column}
+
+/* ── PORTADA ── */
+.cover{flex-shrink:0;background:var(--ink);padding:24px 20px 16px;position:relative;overflow:hidden;text-align:center}
+.cover-bg{position:absolute;inset:0;background:radial-gradient(circle at 30% 50%,rgba(201,146,42,.15) 0,transparent 60%),radial-gradient(circle at 70% 50%,rgba(27,79,114,.18) 0,transparent 60%)}
+.cover-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,146,42,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,146,42,.04) 1px,transparent 1px);background-size:32px 32px}
+.cover-stripe{position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--terra),var(--sky))}
+.cover-content{position:relative;z-index:2}
+.cover-eyebrow{font-size:9px;font-weight:500;letter-spacing:3px;color:rgba(201,146,42,.7);text-transform:uppercase;margin-bottom:6px}
+.cover-title{font-family:'Playfair Display',serif;font-size:clamp(28px,8vw,44px);font-weight:900;line-height:1;color:#fff;letter-spacing:-1px;font-style:italic;margin-bottom:4px}
+.cover-subtitle{font-size:13px;color:rgba(255,255,255,.45);margin-bottom:14px;letter-spacing:.5px}
+.cover-actions{display:flex;gap:8px;justify-content:center;max-width:340px;margin:0 auto}
+.cover-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:5px;padding:9px 10px;border-radius:9px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;transition:all .2s}
+.cover-btn-wpp{background:#25D366;color:#fff}
+.cover-btn-save{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#fff}
+.cover-btn:active{transform:scale(.96)}
+
+/* ── TABS NAV ── */
+.tabs-nav{flex-shrink:0;background:rgba(8,8,20,.97);border-bottom:1px solid rgba(201,146,42,.15);position:relative}
+.tabs-scroll{display:flex;overflow-x:auto;scrollbar-width:none;padding:0 12px}
+.tabs-scroll::-webkit-scrollbar{display:none}
+.tab-btn{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:3px;padding:11px 14px;border:none;background:none;color:rgba(255,255,255,.38);font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;cursor:pointer;transition:all .2s;border-bottom:2px solid transparent;white-space:nowrap;min-width:72px}
+.tab-btn .tab-icon{font-size:18px;line-height:1}
+.tab-btn.active{color:var(--gold);border-bottom-color:var(--gold)}
+.tab-btn:hover{color:rgba(255,255,255,.7)}
+/* Flecha indicadora de más tabs */
+.tabs-fade{position:absolute;right:0;top:0;bottom:0;width:40px;background:linear-gradient(to right,transparent,rgba(8,8,20,.97));pointer-events:none;display:flex;align-items:center;justify-content:flex-end;padding-right:6px}
+.tabs-fade span{color:var(--gold);font-size:16px;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
+
+/* ── CONTENIDO ── */
+.tabs-content{flex:1;overflow-y:auto;background:var(--cream)}
+.tab-panel{display:none;padding:22px 18px 32px;min-height:100%}
+.tab-panel.active{display:block}
+@media(min-width:700px){.tab-panel{max-width:800px;margin:0 auto;padding:28px 36px 40px}}
+
+/* ── TIPOGRAFÍA ── */
+.sec-eye{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:4px;display:flex;align-items:center;gap:6px}
+.sec-eye::before{content:'';display:inline-block;width:10px;height:1px;background:var(--gold)}
+.sec-title{font-family:'Playfair Display',serif;font-size:21px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:16px}
+
+/* ── FICHA MINI ── */
+.info-mini{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.info-tag{background:var(--sand);border:1px solid var(--line);border-radius:50px;padding:5px 12px;font-size:12px;color:var(--mid)}
+.info-tag strong{color:var(--ink);font-weight:600}
+
+/* ── AD ── */
+.ad{background:#FFF8E7;border:1px solid #E8C84A;border-left:4px solid #E8C84A;border-radius:var(--r);padding:10px 12px;display:flex;align-items:flex-start;gap:8px;margin-bottom:14px}
+.ad-badge{background:#E8C84A;color:#fff;font-size:8px;font-weight:700;letter-spacing:1px;padding:2px 5px;border-radius:4px;flex-shrink:0;margin-top:1px}
+.ad strong{display:block;font-size:12px;font-weight:500;color:#7A5C00;margin-bottom:1px}
+.ad span{font-size:11px;color:#A07B20;font-style:italic}
+
+/* ── CONTENIDO IA ── */
+.ai-content{font-size:14px;line-height:1.85;color:var(--ink)}
+.ai-content h1,.ai-content h2{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--ink);margin:20px 0 8px;padding-bottom:5px;border-bottom:2px solid var(--gold-l)}
+.ai-content h2:first-child{margin-top:0}
+.ai-content h3{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--sky);margin:14px 0 5px}
+.ai-content h3:first-child{margin-top:0}
+.ai-content p{margin-bottom:9px}
+.ai-content ul,.ai-content ol{padding-left:18px;margin-bottom:10px}
+.ai-content li{margin-bottom:4px}
+.ai-content strong{font-weight:600}
+.ai-content a{color:var(--sky);text-decoration:none;border-bottom:1px solid rgba(27,79,114,.25);font-weight:500;word-break:break-word}
+.ai-content a:hover{color:var(--gold);border-bottom-color:var(--gold)}
+
+/* ── BLOQUES DE DÍA ── */
+.day-block{background:#fff;border:1px solid var(--line);border-radius:var(--r);margin-bottom:16px;overflow:hidden}
+.day-block-header{background:var(--ink);color:var(--gold);padding:12px 16px;font-family:'Playfair Display',serif;font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:space-between;cursor:pointer}
+.day-block-header .day-toggle{font-size:14px;transition:transform .3s;flex-shrink:0}
+.day-block.open .day-toggle{transform:rotate(180deg)}
+.day-block-body{display:none;padding:14px 16px}
+.day-block.open .day-block-body{display:block}
+.day-block-body .ai-content h3{margin-top:10px}
+.day-block-body .ai-content h3:first-child{margin-top:0}
+/* Botón maps dentro del día */
+.day-map-btn{display:inline-flex;align-items:center;gap:6px;margin:12px 0 6px;background:var(--sky);color:#fff;padding:9px 18px;border-radius:50px;font-size:12px;font-weight:700;text-decoration:none;border:none;transition:all .2s}
+.day-map-btn:hover{background:var(--gold)}
+/* Campo de nota manual */
+.day-note-wrap{margin-top:12px;border-top:1px solid var(--line);padding-top:12px}
+.day-note-label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);margin-bottom:5px}
+.day-note{width:100%;min-height:70px;padding:9px 12px;border:1.5px solid var(--line);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink);outline:none;resize:vertical;background:var(--cream);transition:border-color .2s}
+.day-note:focus{border-color:var(--gold)}
+.day-note::placeholder{color:var(--mid)}
+
+/* ── HERRAMIENTAS ── */
+.tools-tabs{display:flex;gap:6px;margin-bottom:14px;overflow-x:auto;scrollbar-width:none}
+.tools-tabs::-webkit-scrollbar{display:none}
+.ttab{background:var(--sand);border:none;border-radius:50px;padding:7px 13px;font-size:12px;font-family:'DM Sans',sans-serif;color:var(--mid);cursor:pointer;white-space:nowrap;transition:all .2s}
+.ttab.active{background:var(--ink);color:var(--gold);font-weight:500}
+.tool-panel{display:none}
+.tool-panel.active{display:block}
+@media(min-width:700px){
+  .tools-tabs{display:none}
+  .tool-panel{display:block!important}
+  .tools-desktop{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .tool-section-title{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);margin-bottom:8px;padding-bottom:5px;border-bottom:1px solid var(--line)}
+}
+
+/* CONVERSOR */
+.conv-box{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px}
+.conv-row{display:flex;gap:8px;align-items:flex-end;margin-bottom:10px}
+.conv-iw{flex:1}
+.conv-iw label{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--mid);display:block;margin-bottom:3px}
+.conv-input{width:100%;padding:8px 10px;border:1.5px solid var(--line);border-radius:9px;font-size:16px;font-family:'Playfair Display',serif;font-weight:700;color:var(--ink);outline:none;background:var(--cream)}
+.conv-input:focus{border-color:var(--gold)}
+.conv-arrow{font-size:16px;color:var(--gold);padding-bottom:6px;flex-shrink:0}
+.conv-result{background:var(--gold-p);border:1px solid var(--gold-l);border-radius:9px;padding:10px;text-align:center;margin-bottom:6px}
+.conv-amount{font-family:'Playfair Display',serif;font-size:26px;font-weight:900;color:var(--gold)}
+.conv-rate{font-size:10px;color:var(--mid);margin-top:1px}
+.conv-select{width:100%;padding:7px 10px;border:1.5px solid var(--line);border-radius:9px;font-size:13px;font-family:'DM Sans',sans-serif;color:var(--ink);outline:none;background:#fff;margin-bottom:9px}
+.conv-note{font-size:10px;color:var(--mid);text-align:center}
+
+/* TRADUCTOR */
+.trans-wrap{border-radius:var(--r);overflow:hidden;border:1px solid var(--line)}
+.trans-lang{background:var(--ink);color:#fff;padding:9px 13px;font-size:11px;font-weight:500;display:flex;align-items:center;justify-content:space-between}
+.trans-lang select{background:transparent;border:none;color:var(--gold);font-family:'DM Sans',sans-serif;font-size:12px;outline:none;cursor:pointer}
+.trans-list{background:#fff;max-height:280px;overflow-y:auto}
+.trans-item{display:flex;align-items:center;padding:9px 13px;border-bottom:1px solid var(--line);gap:8px}
+.trans-item:last-child{border-bottom:none}
+.trans-texts{flex:1}
+.trans-es{font-size:13px;font-weight:500;color:var(--ink)}
+.trans-dest{font-size:12px;color:var(--sky);font-style:italic;margin-top:1px}
+.trans-audio{background:none;border:1.5px solid var(--gold);border-radius:50%;width:30px;height:30px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--gold);flex-shrink:0;font-size:11px;transition:all .2s}
+.trans-audio.playing,.trans-audio:active{background:var(--gold);color:#fff}
+
+/* CALCULADORA */
+.calc-box{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px}
+.calc-row{margin-bottom:9px}
+.calc-row label{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--mid);display:block;margin-bottom:3px}
+.calc-input{width:100%;padding:7px 10px;border:1.5px solid var(--line);border-radius:9px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--ink);outline:none;background:var(--cream)}
+.calc-input:focus{border-color:var(--gold)}
+.calc-result{background:var(--ink);border-radius:var(--r);padding:13px;margin-top:5px}
+.calc-result-title{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:7px}
+.calc-line{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.calc-line:last-child{border-bottom:none;padding-top:8px;margin-top:4px}
+.calc-line span{font-size:12px;color:rgba(255,255,255,.55)}
+.calc-line strong{font-family:'Playfair Display',serif;font-size:13px;color:var(--gold)}
+.calc-line.total span{color:#fff;font-weight:600;font-size:13px}
+.calc-line.total strong{font-size:17px}
+
+/* CHECKLIST */
+.check-cats{display:flex;gap:5px;margin-bottom:9px;overflow-x:auto;scrollbar-width:none}
+.check-cats::-webkit-scrollbar{display:none}
+.check-cat-btn{background:var(--sand);border:none;border-radius:50px;padding:5px 11px;font-size:11px;font-family:'DM Sans',sans-serif;color:var(--mid);cursor:pointer;white-space:nowrap;transition:all .2s}
+.check-cat-btn.active{background:var(--ink);color:var(--gold);font-weight:500}
+.checklist{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;max-height:280px;overflow-y:auto}
+.check-item{display:flex;align-items:center;gap:9px;padding:9px 12px;border-bottom:1px solid var(--line);cursor:pointer;transition:background .15s}
+.check-item:last-child{border-bottom:none}
+.check-item:hover{background:var(--sand)}
+.check-box{width:18px;height:18px;border:2px solid var(--line);border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px;color:transparent;transition:all .2s}
+.check-item.done .check-box{background:var(--sage);border-color:var(--sage);color:#fff}
+.check-item.done .check-label{text-decoration:line-through;color:var(--mid)}
+.check-label{font-size:13px;color:var(--ink)}
+.check-progress{background:var(--sand);border-radius:var(--r);padding:8px 12px;margin-bottom:9px;display:flex;align-items:center;gap:8px}
+.check-bar-wrap{flex:1;background:var(--line);border-radius:50px;height:5px;overflow:hidden}
+.check-bar{height:100%;background:linear-gradient(90deg,var(--sage),var(--gold));border-radius:50px;transition:width .4s}
+.check-pct{font-size:12px;font-weight:600;color:var(--sage);flex-shrink:0}
+
+/* ── DOCUMENTOS ── */
+.docs-upload-area{border:2px dashed var(--line);border-radius:var(--r);padding:20px;text-align:center;background:#fff;cursor:pointer;transition:all .2s;margin-bottom:16px}
+.docs-upload-area:hover{border-color:var(--gold);background:var(--gold-p)}
+.docs-upload-icon{font-size:28px;margin-bottom:6px}
+.docs-upload-text{font-size:13px;color:var(--mid)}
+.docs-upload-text strong{color:var(--ink);display:block;margin-bottom:2px}
+.docs-list{display:flex;flex-direction:column;gap:8px}
+.doc-item{background:#fff;border:1px solid var(--line);border-radius:10px;padding:11px 14px;display:flex;align-items:center;gap:10px}
+.doc-icon{font-size:22px;flex-shrink:0}
+.doc-info{flex:1;min-width:0}
+.doc-name{font-size:13px;font-weight:500;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.doc-size{font-size:11px;color:var(--mid)}
+.doc-open{background:var(--sky);color:#fff;border:none;border-radius:6px;padding:5px 10px;font-size:11px;font-weight:600;cursor:pointer;flex-shrink:0}
+.doc-del{background:none;border:none;color:var(--mid);cursor:pointer;font-size:16px;padding:0 4px;flex-shrink:0}
+#doc-input{display:none}
+
+/* ── MAPA GENERAL ── */
+.map-block{background:var(--ink);border-radius:var(--r);overflow:hidden;margin-bottom:16px}
+.map-prev{height:110px;background:repeating-linear-gradient(0deg,transparent,transparent 35px,rgba(201,146,42,.06) 36px),repeating-linear-gradient(90deg,transparent,transparent 35px,rgba(201,146,42,.06) 36px);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:5px}
+.map-icon{font-size:26px}
+.map-dest-label{font-size:11px;color:rgba(255,255,255,.35);letter-spacing:1px}
+.map-cta{padding:11px 14px;display:flex;align-items:center;justify-content:space-between}
+.map-cta-t strong{display:block;color:#fff;font-size:13px;margin-bottom:1px}
+.map-cta-t span{font-size:11px;color:rgba(255,255,255,.45)}
+.map-btn{background:var(--gold);color:var(--ink);font-size:11px;font-weight:700;padding:8px 15px;border-radius:50px;text-decoration:none}
+
+/* ── CTA FINAL ── */
+.cta-box{background:linear-gradient(135deg,var(--ink),#2A1F3D);border-radius:var(--r);padding:22px 18px;text-align:center;position:relative;overflow:hidden;margin-bottom:16px}
+.cta-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--terra),var(--sky))}
+.cta-box h3{font-family:'Playfair Display',serif;font-size:18px;color:#fff;margin-bottom:5px}
+.cta-box p{font-size:12px;color:rgba(255,255,255,.45);margin-bottom:14px}
+.cta-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-bottom:13px}
+.cta-pill{background:rgba(201,146,42,.15);border:1px solid rgba(201,146,42,.3);color:var(--gold);font-size:12px;padding:6px 12px;border-radius:50px;text-decoration:none}
+.share-bar{display:flex;gap:7px}
+.share-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:5px;padding:9px;border-radius:9px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;transition:all .2s}
+.share-wpp{background:#25D366;color:#fff}
+.share-copy{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:#fff}
+
+/* NOTAS */
+.note-area{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.note-line{padding:12px 14px;border-bottom:1px solid var(--line);min-height:44px;font-size:14px;color:var(--line);font-style:italic}
+.note-line:last-child{border-bottom:none}
+
+/* MODAL GUARDAR */
+.save-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:999;align-items:flex-end;justify-content:center}
+.save-modal.open{display:flex}
+.save-sheet{background:#fff;border-radius:var(--r) var(--r) 0 0;padding:24px 20px 32px;width:100%;max-width:480px}
+.save-sheet h3{font-family:'Playfair Display',serif;font-size:19px;color:var(--ink);margin-bottom:6px}
+.save-sheet p{font-size:13px;color:var(--mid);margin-bottom:18px;line-height:1.6}
+.save-option{display:flex;align-items:center;gap:12px;padding:13px 14px;border:1.5px solid var(--line);border-radius:var(--r);margin-bottom:9px;cursor:pointer;transition:all .2s}
+.save-option:hover{border-color:var(--gold);background:var(--gold-p)}
+.save-option-icon{font-size:24px;flex-shrink:0}
+.save-option-text strong{display:block;font-size:14px;color:var(--ink);margin-bottom:1px}
+.save-option-text span{font-size:12px;color:var(--mid)}
+.save-close{width:100%;padding:11px;background:var(--sand);border:none;border-radius:var(--r);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;color:var(--mid);cursor:pointer;margin-top:6px}
+
+/* TOAST */
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(10px);background:var(--ink);color:#fff;padding:9px 18px;border-radius:50px;font-size:13px;font-weight:500;opacity:0;transition:all .3s;pointer-events:none;z-index:9999;white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.fa{animation:fadeUp .45s ease both}
+</style>
+</head>
+<body>
+
+<!-- ══ PORTADA ══ -->
+<div class="cover">
+  <div class="cover-bg"></div>
+  <div class="cover-grid"></div>
+  <div class="cover-stripe"></div>
+  <div class="cover-content">
+    <div class="cover-eyebrow fa">GuiaMundi.es</div>
+    <div class="cover-title fa" style="animation-delay:.1s">Guía de SENEGAL</div>
+    <div class="cover-subtitle fa" style="animation-delay:.2s">14 días · Aventura y naturaleza · 5viajero/s</div>
+    <div class="cover-actions fa" style="animation-delay:.3s">
+      <button class="cover-btn cover-btn-wpp" onclick="shareWpp()">
+        <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Compartir
+      </button>
+      <button class="cover-btn cover-btn-save" onclick="openSaveModal()">⬇ Guardar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TABS NAV ══ -->
+<div class="tabs-nav">
+  <div class="tabs-scroll" id="tabs-scroll">
+    <button class="tab-btn active" onclick="showTab('info',this)"><span class="tab-icon">📋</span>Viajero</button>
+    <button class="tab-btn" onclick="showTab('itinerario',this)"><span class="tab-icon">🗓</span>Ruta</button>
+    <button class="tab-btn" onclick="showTab('experiencias',this)"><span class="tab-icon">⭐</span>Experiencias</button>
+    <button class="tab-btn" onclick="showTab('tools',this)"><span class="tab-icon">⚙️</span>Tools</button>
+    <button class="tab-btn" onclick="showTab('destino',this)"><span class="tab-icon">💡</span>Destino</button>
+    <button class="tab-btn" onclick="showTab('transporte',this)"><span class="tab-icon">🚗</span>Transporte</button>
+    <button class="tab-btn" onclick="showTab('recursos',this)"><span class="tab-icon">🔗</span>Recursos</button>
+    <button class="tab-btn" onclick="showTab('cultura',this)"><span class="tab-icon">🎬</span>Cultura</button>
+    <button class="tab-btn" onclick="showTab('curiosidades',this)"><span class="tab-icon">🤔</span>Curiosidades</button>
+    <button class="tab-btn" onclick="showTab('docs',this)"><span class="tab-icon">📁</span>Documentos</button>
+    <button class="tab-btn" onclick="showTab('notas',this)"><span class="tab-icon">📝</span>Notas</button>
+  </div>
+  <div class="tabs-fade"><span>›</span></div>
+</div>
+
+<!-- ══ CONTENIDO ══ -->
+<div class="tabs-content" id="tabs-content">
+
+  <!-- TAB VIAJERO -->
+  <div class="tab-panel active" id="tab-info">
+    <div class="sec-eye">Tu viaje</div>
+    <div class="sec-title">Información del viajero</div>
+    <div class="info-mini">
+      <div class="info-tag"><strong>PACO</strong></div>
+      <div class="info-tag">📍 <strong>SENEGAL</strong></div>
+      <div class="info-tag">🗓 <strong>14 días</strong></div>
+      <div class="info-tag">👥 <strong>5 viajero/s</strong></div>
+      <div class="info-tag">🧭 <strong>Aventura y naturaleza</strong></div>
+      <div class="info-tag">🚗 <strong>Transporte público</strong></div>
+    </div>
+    <div class="ad"><div class="ad-badge">AD</div><div><strong>Vuelos · Seguro de viaje</strong><span>→ Insertar banner afiliado aquí</span></div></div>
+    <div class="ad"><div class="ad-badge">AD</div><div><strong>Hoteles · Alojamiento</strong><span>→ Booking / Airbnb</span></div></div>
+    <div style="margin-top:16px">
+      <div class="map-block">
+        <div class="map-prev"><div class="map-icon">🗺️</div><div class="map-dest-label">SENEGAL</div></div>
+        <div class="map-cta">
+          <div class="map-cta-t"><strong>Ver en Google Maps</strong><span>Explorar SENEGAL</span></div>
+          <a class="map-btn" href="https://www.google.com/maps/search/SENEGAL" target="_blank">Abrir →</a>
+        </div>
+      </div>
+    </div>
+    <div class="cta-box">
+      <h3>¡Buen viaje, PACO!</h3>
+      <p>Tu aventura en SENEGAL · GuiaMundi.es</p>
+      <div class="cta-pills">
+        <a class="cta-pill" href="#">✈ Vuelos</a>
+        <a class="cta-pill" href="#">🏨 Hoteles</a>
+        <a class="cta-pill" href="#">🎯 Experiencias</a>
+        <a class="cta-pill" href="#">🛡 Seguro</a>
+      </div>
+      <div class="share-bar">
+        <button class="share-btn share-wpp" onclick="shareWpp()">
+          <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Compartir WhatsApp
+        </button>
+        <button class="share-btn share-copy" onclick="copyLink()">⎘ Copiar enlace</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB ITINERARIO -->
+  <div class="tab-panel" id="tab-itinerario">
+    <div class="sec-eye">Día a día</div>
+    <div class="sec-title">Itinerario detallado</div>
+    <div class="ad"><div class="ad-badge">AD</div><div><strong>Tours · Actividades</strong><span>→ Experiencias locales recomendadas</span></div></div>
+    <div id="itinerario-content" class="ai-content" style="margin-top:14px"><h2>DÍA 1 – Llegada a Dakar y exploración inicial</h2>
+<ul>
+  <li><strong>Mañana:</strong> Llegada al Aeropuerto Internacional Blaise Diagne. Traslado en autobús local a Dakar centro.</li>
+  <li><strong>Tarde:</strong> Visita al Mercado de Sandaga para sumergirse en los colores y sabores locales. Paseo por la plaza de la Independencia.</li>
+  <li><strong>Noche:</strong> Cena en <strong>La Calebasse</strong>, restaurante tradicional con música en vivo y platos típicos senegaleses.</li>
+</ul>
+<p><strong>Alojamiento:</strong> <a href="https://www.booking.com/hotel/sn/terrou-bi-dakar.en-gb.html" target="_blank">Hotel Terrou-Bi</a>, hotel frente al mar con buenas conexiones en transporte público y ambiente cómodo.</p>
+<a href="https://www.google.com/maps/search/Aeropuerto+Blaise+Diagne+OR+Mercado+Sandaga+OR+Plaza+de+la+Independencia+OR+Hotel+Terrou-Bi" target="_blank">🗺️ Ver lugares del día en Google Maps</a>
+
+<h2>DÍA 2 – Isla de Gorée y memoria histórica</h2>
+<ul>
+  <li><strong>Mañana:</strong> Transporte público hasta el puerto y ferry a la Isla de Gorée. Visita a la Casa de los Esclavos y museos locales.</li>
+  <li><strong>Tarde:</strong> Paseo por las coloridas calles y talleres de artesanía. Relax y café en <strong>Chez Nounette</strong>, conocido por su ambiente tradicional.</li>
+  <li><strong>Noche:</strong> Regreso en ferry y cena ligera en <strong>Le Lagon 1</strong>, especializado en mariscos frescos.</li>
+</ul>
+<p><strong>Alojamiento:</strong> Hotel Terrou-Bi, para mantener comodidad y ubicación céntrica.</p>
+<a href="https://www.google.com/maps/search/Isla+de+Gorée+OR+Casa+de+los+Esclavos+OR+Chez+Nounette+OR+Le+Lagon+1" target="_blank">🗺️ Ver lugares del día en Google Maps</a>
+
+<h2>DÍA 3 – Parque Nacional de Mbao y naturaleza urbana</h2>
+<ul>
+  <li><strong>Mañana:</strong> Autobús público hacia el Parque Nacional de Mbao. Caminata guiada para observar aves y flora local.</li>
+  <li><strong>Tarde:</strong> Picnic en zonas habilitadas y visita a un mercado cercano para degustar frutas típicas.</li>
+  <li><strong>Noche:</strong> Cena en <strong>Le Djoloff</strong>, ofreciendo cocina senegalesa moderna.</li>
+</ul>
+<p><strong>Alojamiento:</strong> Hotel Terrou-Bi para conservar transporte sencillo y confort.</p>
+<a href="https://www.google.com/maps/search/Parque+Nacional+de+Mbao+OR+Mercado+Cercano+OR+Le+Djoloff" target="_blank">🗺️ Ver lugares del día en Google Maps</a>
+
+<h2>DÍA 4 – Saint-Louis, patrimonio colonial</h2>
+<ul>
+  <li><strong>Mañana:</strong> Viaje en autobús a Saint-Louis (aproximadamente 3-4 horas). Paseo por la ciudad vieja y sus calles coloniales.</li>
+  <li><strong>Tarde:</strong> Visita a la reserva de aves Djoudj, importante santuario para migratorias.</li>
+  <li><strong>Noche:</strong> Cena en <strong>Le Patio</strong>, restaurante con especialidades locales e internacionales.</li>
+</ul>
+<p><strong>Alojamiento:</strong> <a href="https://www.booking.com/hotel/sn/ndar.en-gb.html" target="_blank">Hotel Ndar</a>, ubicado en el corazón de Saint-Louis con buen acceso a transporte público.</p>
+<a href="https://www.google.com/maps/search/Saint-Louis+OR+Reserva+Djoudj+OR+Le+Patio+OR+Hotel+Ndar" target="_blank">🗺️ Ver lugares del día en Google Maps</a>
+
+<h2>DÍA 5 – Explorando la impresionante naturaleza de Djoudj</h2>
+<ul>
+  <li><strong>Mañana:</strong> Tour en barco por el Parque Nacional de Djoudj para observar aves acuáticas y fauna africana en su hábitat.</li>
+  <li><strong>Tarde:</strong> Visita al museo local y talleres de artesanía tradicional de la región.</li>
+  <li><strong>Noche:</strong> Cena en <strong>La Résidence</strong>, que ofrece platos a base de pescado fresco.</li>
+</ul>
+<p><strong>Alojamiento:</strong> Hotel Ndar para mantener la cercanía al parque y comodidad.</p>
+<a href="https://www.google.com/maps/search/Parque+Nacional+Djoudj+OR+Museo+Local+OR+La+Résidence+OR+Hotel+Ndar" target="_blank">🗺️ Ver lugares del día en Google Maps</a>
+
+<h2>DÍA 6 – Aldeas tradicionales y cultura en Saint-Louis</h2>
+<ul>
+  <li><strong>Mañana:</strong> Transporte público a las aldeas cercanas para conocer la vida rural y costumbres tradicionales.</li>
+  <li><strong>Tarde:</strong> Participación en talleres de música y danza local.</li>
+  <li><strong>Noche:</strong> Cena en <strong>Le Vieux Pont</strong>, con ambiente relajado y gastronomía regional.</li>
+</ul>
+<p><strong>Alojamiento:</strong> Hotel Ndar para seguir relajados y en el centro de la ciudad.</p>
+<a href="https://www.google.com/maps/search/Aldeas+Tradicionales+OR+Talleres+de+Danza+OR+Le+Vieux+Pont+OR+Hotel+Ndar" target="_blank">🗺️ Ver lugares del día en Google Maps</a>
+
+<h2>DÍA 7 – Viaje a la región del Lóss Magnífico</h2>
+<ul>
+  <li><strong>Mañana:</strong> Autobús hacia la región de Louga para iniciar contacto con áreas menos turísticas y naturaleza auténtica.</li>
+  <li><strong>Tarde:</strong> Excursión a ríos y zonas boscosas cercanas para senderismo y observación de fauna.</li>
+  <li><strong>Noche:</strong> Cena en un comedor local con platos caseros tradicionales.</li>
+</ul>
+<p><strong>Alojamiento:</strong> Hospedaje rural recomendado <a href="https://www.booking.com/hotel/sn/ndeye-khady.en-gb.html" target="_blank">Ndeye Khady Lodge</a>, sencillo y acogedor.</p>
+<a href="https://www.google.com/maps/search/Louga+OR+Zonas+Boscosas+OR+Hospedaje+Ndeye+Khady" target="_blank">🗺️ Ver lugares del día en Google Maps</a>
+
+<h2>DÍA 8 – Parque de la Langue de Barbarie, naturaleza y playas</h2>
+<ul>
+  <li><strong>Mañana:</strong> Transporte público a Saint-Louis y traslado local hacia el Parque Natural de la Langue de Barbarie.</li>
+  <li><strong>Tarde:</strong> Caminata para observar aves, manglares y relación con la vida de pesca artesanal.</li>
+  <li><strong>Noche:</strong> Cena frente al mar en <strong>Chez Seye</strong>, con mariscos frescos y ambiente marítimo.</li>
+</ul>
+<p><strong>Alojamiento:</strong> Retorno y pernocta en Hotel Ndar.</p>
+<a href="https://www.google.com/maps/search/Parque+Langue+de+Barbarie+OR+Manglares+OR+Chez+Seye+OR+Hotel+Ndar" target="_blank">🗺️ Ver lugares del día en Google Maps</a>
+
+<h2>DÍA 9 – Viaje hacia el sur: a Tambacounda</h2>
+<ul>
+  <li><strong>Mañana:</strong> Autobús largo recorrido hacia Tambacounda, puerta de entrada a la región de Casamance.</li>
+  <li><strong>Tarde:</strong> Visita ligera a la ciudad y sus mercados para empezar a descubrir su esencia rural y cultural.</li>
+  <li><strong>Noche:</strong> Cena en <strong>La Case de Papy</strong>, recomendada por su cocina casera y ambiente agradable.</li>
+</ul>
+<p><strong>Alojamiento:</strong> <a href="https://www.booking.com/hotel/sn/yaay-jaboot.en-gb.html" target="_blank">Yaay Jaboot</a>, hospedaje con encanto auténtico y buen acceso local.</p>
+<a href="https://www.google.com/maps/search/Tambacounda+OR+Mercado+Local+OR+La+Case+de+Papy+OR+Yaay+Jaboot" target="_blank">🗺️ Ver lugares del día en Google Maps</a>
+
+<h2>DÍA 10 – Reserva de Niokolo-Koba, aventura en la naturaleza</h2>
+<ul>
+  <li><strong>Mañana:</strong> Transporte público y traslado hacia la entrada del Parque Nacional Niokolo-Koba. Inicio de safari guiado para ver elefantes, leones y otros grandes mamíferos.</li>
+  <li><strong>Tarde:</strong> Continuación del safari y exploración de la flora y fauna únicas. Almuerzo picnic.</li>
+  <li><strong>Noche:</strong> Cena y descanso en campamento ecológico dentro del parque.</li>
+</ul>
+<p><strong>Alojamiento:</strong> Campamento ecológico oficial del Parque Niokolo-Koba, para vivir la naturaleza intensamente.</p>
+<a href="https://www.google.com/maps/search/Parque+Nacional+Niokolo-Koba+OR+Campamento+Ecológico" target="_blank">🗺️ Ver lugares del día en Google Maps</a>
+
+<h2>DÍA 11 – Continuación de la aventura en Niokolo-Koba</h2>
+<ul>
+  <li><strong>Mañana:</strong> Safari matutino para observar la actividad de los animales al amanecer o visita a cascadas y senderos naturales.</li>
+  <li><strong>Tarde:</strong> Tiempo libre para relajarse o participar en actividades culturales con comunidades locales cercanas.</li>
+  <li><strong>Noche:</strong> Cena en el campamento con gastronomía local y fogata.</li>
+</ul>
+<p><strong>Alojamiento:</strong> Mismo campamento ecológico dentro de Niokolo-Koba.</p>
+<a href="https://www.google.com/maps/search/Cascadas+Niokolo-Koba+OR+Cultural+Comunidad+OR+Campamento+Ecológico" target="_blank">🗺️ Ver lugares del día en Google Maps</a>
+
+<h2>DÍA 12 – Camino a Ziguinchor, corazón de la Casamance</h2>
+<ul>
+  <li><strong>Mañana:</strong> Transporte público desde Niokolo-Koba hacia Ziguinchor, atravesando paisajes exuberantes.</li>
+  <li><strong>Tarde:</strong> Recorrido por la ciudad y visita al mercado artesanal para comprar textiles y recuerdos.</li>
+  <li><strong>Noche:</strong> Cena en <strong>Le Bissap</strong>, restaurante popular por su ambiente acogedor y cocina casamanza tradicional.</li>
+</ul>
+<p><strong>Alojamiento:</strong> <a href="https://www.booking.com/hotel/sn/la-lanterne-rouge.en-gb.html" target="_blank">La Lanterne Rouge</a>, alojamiento céntrico y confortable en Ziguinchor.</p>
+<a href="https://www.google.com/maps/search/Ziguinchor+OR+Mercado+Artesanal+OR+Le+Bissap+OR+La+Lanterne+Rouge" target="_blank">🗺️ Ver lugares del día en Google Maps</a>
+
+<h2>DÍA 13 – Descubriendo pueblos y manglares de la Casamance</h2>
+<ul>
+  <li><strong>Mañana:</strong> Excursión en transporte local hacia pueblos de pescadores y manglares para apreciar la biodiversidad y cultura local.</li>
+  <li><strong>Tarde:</strong> Visita a talleres de artesanía y degustación de platos típicos en casas familiares.</li>
+  <li><strong>Noche:</strong> Cena en <strong>La Savane Africaine</strong>, famoso por su música y ambiente festivo.</li>
+</ul>
+<p><strong>Alojamiento:</strong> La Lanterne Rouge para comodidad en la última noche en la región.</p>
+<a href="https://www.google.com/maps/search/Pueblos+de+Pescadores+OR+Manglares+Casamance+OR+La+Savane+Africaine+OR+La+Lanterne+Rouge" target="_blank">🗺️ Ver lugares del día en Google Maps</a>
+
+<h2>DÍA 14 – Regreso a Dakar y despedida</h2>
+<ul>
+  <li><strong>Mañana:</strong> Transporte en autobús de regreso a Dakar. Tiempo para descansar o compras de último momento.</li>
+  <li><strong>Tarde:</strong> Visita al Museo IFAN para cerrar el viaje con arte e historia.</li>
+  <li><strong>Noche:</strong> Cena final en <strong>Le Luma</strong>, restaurante contemporáneo con inspiración africana.</li>
+</ul>
+<p><strong>Alojamiento:</strong> Hotel Terrou-Bi, ideal para última noche cerca del aeropuerto y centro urbano.</p>
+<a href="https://www.google.com/maps/search/Museo+IFAN+OR+Le+Luma+OR+Hotel+Terrou-Bi" target="_blank">🗺️ Ver lugares del día en Google Maps</a></div>
+  </div>
+
+  <!-- TAB EXPERIENCIAS -->
+  <div class="tab-panel" id="tab-experiencias">
+    <div class="sec-eye">Imprescindibles</div>
+    <div class="sec-title">Experiencias destacadas</div>
+    <div class="ai-content"><h3>🌟 Safari en el Parque Nacional de Niokolo-Koba</h3>
+<p>Este parque, declarado Patrimonio de la Humanidad por la UNESCO, ofrece la oportunidad de avistar una gran variedad de faunas salvajes, incluidos elefantes y leones. Dedica al menos dos días para recorrer sus senderos y disfrutar de safaris en coche y a pie. Recuerda llevar binoculares y una cámara con buen zoom.</p>
+
+<h3>🌟 Nadar en las Piscinas Naturales de Saloum</h3>
+<p>Las piscinas naturales de Saloum son un tesoro escondido donde puedes nadar en aguas cristalinas rodeadas de un paisaje impresionante. Dedica un día a explorarlas y disfrutar de un pícnic frente al mar. Lleva tu traje de baño y protección solar, ya que hay poco sombra.</p>
+
+<h3>🌟 Visitar la Isla de Gorée</h3>
+<p>Este sitio histórico es un recordatorio de la trata de esclavos. Pasear por sus calles empedradas y visitar la Casa de los Esclavos te conecta con la historia del país. Se recomienda una visita de medio día. Toma un ferry desde Dakar y asegúrate de llevar agua y calzado cómodo.</p>
+
+<h3>🌟 Explorar el Desierto de Lompoul</h3>
+<p>Este desierto es famoso por sus dunas de arena dorada y paisajes surrealistas. Puedes realizar paseos en camello o quads. Dedica un día y una noche para acampar bajo las estrellas. No olvides llevar suficiente agua y abrigo para la noche, ya que las temperaturas bajan.</p>
+
+<h3>🌟 Degustar la Yassa de Pollo</h3>
+<p>Este plato típico combina sabores de la gastronomía senegalesa con pollo marinado en cebolla y limón. Es una experiencia obligatoria para los amantes de la buena comida. Busca restaurantes locales para disfrutarlo fresco. Pregunta siempre por la preparación del día.</p>
+
+<h3>🌟 Avistamiento de Aves en el Parque de los Aves de Djoudj</h3>
+<p>Este parque alberga miles de aves migratorias y es el segundo humedal más grande del mundo. Ideal para ornitólogos y amantes de la naturaleza. Dedica un día completo para realizar un tour en barco y llevar unos binoculares para observar mejor.</p>
+
+<h3>🌟 Experimentar la Cultura del Baobab</h3>
+<p>Los árboles Baobab son icónicos en Senegal. Visitar pueblos donde se celebra la cultura alrededor de ellos te permitirá conocer tradiciones locales. Un par de horas es suficiente para conectar con la comunidad. Lleva consigo un donativo pequeño para apoyar a los habitantes locales.</p>
+
+<h3>🌟 Relajarse en la Playa de Saly</h3>
+<p>Saly es uno de los destinos de playa más hermosos, ideal para relajarse y disfrutar del sol. Dedica un día a simplemente descansar en sus arenas suaves y disfrutar de actividades acuáticas. Lleva tu toalla, protector solar y disfruta de un cóctel en la orilla.</p></div>
+  </div>
+
+  <!-- TAB TOOLS -->
+  <div class="tab-panel" id="tab-tools">
+    <div class="sec-eye">Herramientas interactivas</div>
+    <div class="sec-title">Para tu viaje</div>
+    <div class="tools-tabs">
+      <button class="ttab active" onclick="switchTool(this,'conv')">💱 Moneda</button>
+      <button class="ttab" onclick="switchTool(this,'trans')">🗣 Frases</button>
+      <button class="ttab" onclick="switchTool(this,'calc')">💶 Presupuesto</button>
+      <button class="ttab" onclick="switchTool(this,'check')">🧳 Equipaje</button>
+    </div>
+    <div class="tools-desktop">
+      <div>
+        <div class="tool-section-title">💱 Conversor de moneda en tiempo real</div>
+        <div class="tool-panel active" id="conv">
+          <div class="conv-box">
+            <select class="conv-select" id="conv-to" onchange="convertCurrency()">
+              <option value="USD">$ Dólar USD</option><option value="GBP">£ Libra</option>
+              <option value="JPY">¥ Yen</option><option value="MXN">$ Peso MX</option>
+              <option value="BRL">R$ Real</option><option value="MAD">MAD Dírham</option>
+              <option value="TRY">₺ Lira turca</option><option value="THB">฿ Baht</option>
+              <option value="IDR">Rp Rupia</option><option value="AED">AED Dírham</option>
+              <option value="SGD">S$ Dólar SG</option><option value="PLN">zł Esloti</option>
+              <option value="CZK">Kč Corona CZ</option><option value="HUF">Ft Forinto</option>
+              <option value="RON">RON Leu</option><option value="DKK">kr Danesa</option>
+              <option value="SEK">kr Sueca</option><option value="NOK">kr Noruega</option>
+            </select>
+            <div class="conv-row">
+              <div class="conv-iw"><label>Euros €</label><input class="conv-input" type="number" id="conv-eur" value="100" oninput="convertCurrency()"></div>
+              <div class="conv-arrow">⇄</div>
+              <div class="conv-iw"><label id="conv-to-label">Destino</label><input class="conv-input" type="number" id="conv-foreign" oninput="convertBack()"></div>
+            </div>
+            <div class="conv-result"><div class="conv-amount" id="conv-display">—</div><div class="conv-rate" id="conv-rate">Cargando…</div></div>
+            <div class="conv-note">Tiempo real · open.er-api.com</div>
+          </div>
+        </div>
+        <br>
+        <div class="tool-section-title">🗣 Frases útiles con audio</div>
+        <div class="tool-panel" id="trans">
+          <div class="trans-wrap">
+            <div class="trans-lang"><span>Idioma:</span>
+              <select id="trans-lang-sel" onchange="updatePhrases()">
+                <option value="it">🇮🇹 Italiano</option><option value="fr">🇫🇷 Francés</option>
+                <option value="de">🇩🇪 Alemán</option><option value="pt">🇵🇹 Portugués</option>
+                <option value="ja">🇯🇵 Japonés</option><option value="ar">🇲🇦 Árabe</option>
+                <option value="tr">🇹🇷 Turco</option><option value="th">🇹🇭 Tailandés</option>
+                <option value="zh">🇨🇳 Chino</option><option value="el">🇬🇷 Griego</option>
+                <option value="pl">🇵🇱 Polaco</option><option value="nl">🇳🇱 Neerlandés</option>
+                <option value="ru">🇷🇺 Ruso</option><option value="cs">🇨🇿 Checo</option>
+                <option value="ro">🇷🇴 Rumano</option><option value="hr">🇭🇷 Croata</option>
+              </select>
+            </div>
+            <div class="trans-list" id="phrases-list"></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="tool-section-title">💶 Calculadora de presupuesto</div>
+        <div class="tool-panel" id="calc">
+          <div class="calc-box">
+            <div class="calc-row"><label>Días</label><input class="calc-input" type="number" id="c-dias" value="14" oninput="calcBudget()"></div>
+            <div class="calc-row"><label>Viajeros</label><input class="calc-input" type="number" id="c-viaj" value="5" oninput="calcBudget()"></div>
+            <div class="calc-row"><label>Alojamiento / noche €</label><input class="calc-input" type="number" id="c-aloj" value="80" oninput="calcBudget()"></div>
+            <div class="calc-row"><label>Comida / persona / día €</label><input class="calc-input" type="number" id="c-com" value="35" oninput="calcBudget()"></div>
+            <div class="calc-row"><label>Transporte total €</label><input class="calc-input" type="number" id="c-transp" value="200" oninput="calcBudget()"></div>
+            <div class="calc-row"><label>Actividades total €</label><input class="calc-input" type="number" id="c-act" value="150" oninput="calcBudget()"></div>
+            <div class="calc-result">
+              <div class="calc-result-title">RESUMEN</div>
+              <div class="calc-line"><span>Alojamiento</span><strong id="r-aloj">—</strong></div>
+              <div class="calc-line"><span>Comida</span><strong id="r-com">—</strong></div>
+              <div class="calc-line"><span>Transporte</span><strong id="r-transp">—</strong></div>
+              <div class="calc-line"><span>Actividades</span><strong id="r-act">—</strong></div>
+              <div class="calc-line total"><span>TOTAL</span><strong id="r-total">—</strong></div>
+              <div class="calc-line"><span>Por persona</span><strong id="r-pp">—</strong></div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="tool-section-title">🧳 Checklist de equipaje</div>
+        <div class="tool-panel" id="check">
+          <div class="check-progress"><div class="check-bar-wrap"><div class="check-bar" id="check-bar" style="width:0%"></div></div><div class="check-pct" id="check-pct">0%</div></div>
+          <div class="check-cats">
+            <button class="check-cat-btn active" onclick="switchCat(this,'ropa')">👕 Ropa</button>
+            <button class="check-cat-btn" onclick="switchCat(this,'docs')">📄 Docs</button>
+            <button class="check-cat-btn" onclick="switchCat(this,'tech')">📱 Tech</button>
+            <button class="check-cat-btn" onclick="switchCat(this,'salud')">💊 Salud</button>
+            <button class="check-cat-btn" onclick="switchCat(this,'extras')">✨ Extras</button>
+          </div>
+          <div class="checklist" id="checklist-items"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB DESTINO -->
+  <div class="tab-panel" id="tab-destino">
+    <div class="sec-eye">Antes de partir</div>
+    <div class="sec-title">Guía del destino</div>
+    <div class="ai-content"><h2>Clima y mejor época</h2>
+<p>Senegal tiene un clima tropical con dos estaciones principales: la estación seca (de noviembre a mayo) y la estación de lluvias (de junio a octubre). Las temperaturas oscilan entre 20°C y 35°C durante el año.</p>
+<ul>
+  <li><strong>Enero - Marzo:</strong> Temperaturas entre 20°C y 30°C, clima seco y muy agradable.</li>
+  <li><strong>Abril - Mayo:</strong> Aumento de las temperaturas hasta 35°C, comienzo de la estación caliente.</li>
+  <li><strong>Junio - Octubre:</strong> Temporada de lluvias, altas temperaturas y humedad. Llevar ropa impermeable.</li>
+  <li><strong>Noviembre - Diciembre:</strong> Descenso de temperaturas, clima más fresco y seco.</li>
+</ul>
+<p><strong>Qué ropa llevar:</strong> ropa ligera y transpirable para el día, un suéter ligero para las noches, impermeable si viaja en temporada de lluvias, y prendas que cubran hombros y rodillas para respetar la cultura local.</p>
+
+<h2>Moneda y pagos</h2>
+<p>La moneda oficial es el Franco CFA de África Occidental (XOF).</p>
+<p>El tipo de cambio aproximado es 1 EUR = 655 XOF (puede variar).</p>
+<p>Las tarjetas de crédito son aceptadas en grandes hoteles y restaurantes, pero en mercados y zonas rurales es recomendable llevar efectivo.</p>
+
+<h2>Electricidad y adaptadores</h2>
+<p>El voltaje en Senegal es de 220 V y la frecuencia de 50 Hz.</p>
+<p>Los enchufes son del tipo C y E (dos clavijas redondas).</p>
+<p>Se recomienda llevar un adaptador europeo tipo C o E para dispositivos eléctricos.</p>
+
+<h2>Idioma y comunicación</h2>
+<p>El idioma oficial es el francés.</p>
+<p>En zonas turísticas y hoteles, se habla algo de inglés, pero no es muy común fuera de esos lugares.</p>
+<p>Apps útiles:</p>
+<ul>
+  <li><a href="https://play.google.com/store/apps/details?id=com.google.android.apps.translate" target="_blank">Google Translate</a> para traducción instantánea.</li>
+  <li><a href="https://maps.google.com" target="_blank">Google Maps</a> para navegación y mapas offline.</li>
+  <li><a href="https://www.whatsapp.com" target="_blank">WhatsApp</a> para comunicación local e internacional.</li>
+</ul>
+
+<h2>Visado y entrada</h2>
+<p>Para ciudadanos españoles y de la Unión Europea, Senegal no requiere visado para estancias turísticas de hasta 90 días.</p>
+<p>Es necesario presentar un pasaporte con al menos 6 meses de validez desde la fecha de entrada.</p>
+<p>Se recomienda llevar billete de salida y prueba de alojamiento.</p>
+
+<h2>Vacunas y salud</h2>
+<p>Vacunas recomendadas:</p>
+<ul>
+  <li>Fiebre amarilla (obligatoria, se requiere certificado de vacunación).</li>
+  <li>Hepatitis A y B.</li>
+  <li>Tifoidea.</li>
+  <li>Tétanos y difteria al día.</li>
+</ul>
+<p>El agua del grifo no es potable; se recomienda consumir agua embotellada.</p>
+<p>Contratar un seguro médico que incluya repatriación es muy aconsejado.</p>
+
+<h2>Seguridad</h2>
+<p>Senegal es considerado uno de los países más seguros de África Occidental, pero siempre es necesario tomar precauciones básicas.</p>
+<ul>
+  <li>Evitar zonas poco iluminadas y desiertas por la noche.</li>
+  <li>No mostrar objetos de valor en público.</li>
+  <li>En Dakar, evitar barrios periféricos y mal conocidos para turistas.</li>
+  <li>Informarse sobre la situación local antes de desplazarse a zonas remotas.</li>
+</ul>
+
+<h2>Costumbres y etiqueta</h2>
+<p>La sociedad senegalesa es respetuosa y conservadora. Se debe mostrar cortesía y humildad.</p>
+<ul>
+  <li>Saludar siempre con un "Bonjour" o "As-salamu alaykum".</li>
+  <li>En templos y lugares religiosos, usar ropa que cubra hombros y rodillas.</li>
+  <li>Las propinas del 5-10% son bien vistas en restaurantes y para guías turísticos.</li>
+  <li>Evitar manifestaciones públicas afectivas, especialmente en zonas rurales.</li>
+</ul>
+
+<h2>Apps imprescindibles</h2>
+<ul>
+  <li><a href="https://maps.google.com" target="_blank">Google Maps</a> – mapas y direcciones.</li>
+  <li><a href="https://play.google.com/store/apps/details?id=com.ubercab" target="_blank">Uber</a> – transporte en ciudades como Dakar.</li>
+  <li><a href="https://play.google.com/store/apps/details?id=com.google.android.apps.translate" target="_blank">Google Translate</a> – para traducción.</li>
+  <li><a href="https://play.google.com/store/apps/details?id=com.paypal.android.p2pmobile" target="_blank">PayPal</a> – para pagos digitales donde esté disponible.</li>
+  <li><a href="https://www.whatsapp.com" target="_blank">WhatsApp</a> – comunicación local e internacional.</li>
+</ul></div>
+  </div>
+
+  <!-- TAB TRANSPORTE -->
+  <div class="tab-panel" id="tab-transporte">
+    <div class="sec-eye">Moverse por SENEGAL</div>
+    <div class="sec-title">Transporte</div>
+    <div class="ad"><div class="ad-badge">AD</div><div><strong>Alquiler de coche</strong><span>→ Rent a car · comparativa</span></div></div>
+    <div class="ai-content" style="margin-top:12px"><h2>Cómo llegar desde España</h2>
+<p>Desde España, hay vuelos directos a Senegal principalmente desde Madrid y Barcelona. Las aerolíneas que operan estas rutas incluyen Iberia y Air Senegal.</p>
+<ul>
+  <li><strong>Tiempo de vuelo:</strong> Aproximadamente 4 horas y 30 minutos.</li>
+  <li><strong>Aeropuertos principales en Senegal:</strong> Aeropuerto Internacional Blaise Diagne (DSS), ubicado cerca de Dakar, es el principal punto de llegada.</li>
+</ul>
+
+<h2>Transporte desde el aeropuerto</h2>
+<p>Desde el Aeropuerto Internacional Blaise Diagne se puede acceder a la ciudad de Dakar mediante varias opciones:</p>
+<ul>
+  <li><strong>Taxi:</strong> Servicio disponible 24 horas, precio aproximado 20-30 EUR, tiempo estimado 40-50 minutos según el tráfico.</li>
+  <li><strong>Transporte público:</strong> Minibuses locales (car rapides) a la entrada del aeropuerto, más económico (1-2 EUR), pero con trayectos y horarios variables.</li>
+  <li><strong>Traslados privados:</strong> Reservas anticipadas mediante agencias o el propio hotel, precios variables.</li>
+</ul>
+
+<h2>Moverse por el destino</h2>
+<p>El transporte público en Senegal, especialmente en Dakar, está compuesto por varias modalidades:</p>
+<ul>
+  <li><strong>Car rapides:</strong> Minibuses coloridos y económicos, frecuentemente usados para trayectos urbanos cortos. Precio aproximado: 0,30-0,50 EUR.</li>
+  <li><strong>Autobuses urbanos:</strong> Menos comunes, pero disponibles en algunas rutas. Precio: alrededor de 0,50-1 EUR.</li>
+  <li><strong>Tren:</strong> Senegal cuenta con un servicio limitado de trenes para distancias interurbanas, especialmente entre Dakar y otras ciudades, pero no sirve para desplazamientos urbanos dentro de Dakar.</li>
+  <li><strong>Metro:</strong> Actualmente no existe sistema de metro en Senegal.</li>
+</ul>
+
+<h2>Alquiler de coche</h2>
+<p>Alquilar un coche puede ser útil para explorar zonas rurales o viajar fuera de Dakar, pero no es generalmente recomendable para dentro de la ciudad debido al tráfico y condiciones viales.</p>
+<ul>
+  <li><strong>Empresas recomendadas:</strong> Europcar, Avis, Sixt y agencias locales.</li>
+  <li><strong>Precio medio:</strong> Entre 35 y 60 EUR por día, dependiendo del vehículo y temporada.</li>
+  <li><strong>Carnet internacional:</strong> Recomendado llevar el permiso de conducir internacional junto con el nacional.</li>
+</ul>
+
+<h2>Taxis y apps de movilidad</h2>
+<p>El taxi tradicional es muy común en Dakar y otras ciudades. También están proliferando apps de movilidad:</p>
+<ul>
+  <li><strong>Taxis convencionales:</strong> Negociar el precio antes de subir, tarifas entre 2 y 6 EUR para recorridos urbanos.</li>
+  <li><strong>Apps de movilidad:</strong> <a href="https://bolt.eu/es/cities/dakar/" target="_blank">Bolt</a> opera en Dakar con precios competitivos. Uber no está presente.</li>
+  <li><strong>Apps locales:</strong> Plataformas como Yoboko ofrecen servicios similares para desplazamientos seguros en la ciudad.</li>
+</ul>
+
+<h2>Consejos de conducción</h2>
+<ul>
+  <li>Conducir por la derecha.</li>
+  <li>Normas de tráfico, aunque similares a Europa, pueden ser difíciles de cumplir en zonas con mucho tráfico y menor señalización.</li>
+  <li>Peajes: no existen peajes en la mayoría de carreteras, excepto en alguna circunvalación cercana a Dakar.</li>
+  <li>Aparcamiento: limitado en las áreas urbanas, es frecuente el estacionamiento en la calle o parkings vigilados a bajo costo.</li>
+  <li>Precaución con peatones y motos que circulan a menudo sin respetar señales.</li>
+</ul>
+
+<h2>Transporte entre ciudades</h2>
+<p>Para desplazarse entre ciudades en Senegal se puede utilizar:</p>
+<ul>
+  <li><strong>Tren:</strong> El servicio ferroviario Sénégalaise des Chemins de Fer conecta Dakar con Tambacounda. Más información en <a href="https://www.sdfer.sn" target="_blank">Sénégalaise des Chemins de Fer</a>. Precio aproximado: 5-15 EUR según trayecto.</li>
+  <li><strong>Bus interurbano:</strong> Compañías privadas y públicas ofrecen rutas frecuentes con precios entre 3 y 10 EUR, dependiendo del destino.</li>
+  <li><strong>Vuelos internos:</strong> Limitados, aunque existen vuelos domésticos hacia zonas remotas o islas como Ziguinchor operados por Air Senegal. Consultar en <a href="https://www.airsenegal.com" target="_blank">Air Senegal</a>.</li>
+</ul></div>
+  </div>
+
+  <!-- TAB RECURSOS -->
+  <div class="tab-panel" id="tab-recursos">
+    <div class="sec-eye">Recursos online</div>
+    <div class="sec-title">Blogs y enlaces útiles</div>
+    <div class="ai-content"><h2>Web oficial de turismo</h2>
+<p><a href="https://www.visitsenegal.com" target="_blank">Visite Senegal - Turismo Oficial</a></p>
+
+<h2>Blogs de viaje recomendados</h2>
+<ul>
+  <li><a href="https://www.vuelapluma.com/africa/senegal/" target="_blank">Vuela Pluma - Viajar a Senegal</a></li>
+  <li><a href="https://www.diariodeunmentiroso.com/senegal/" target="_blank">Diario de un Mentiroso - Senegal</a></li>
+  <li><a href="https://www.elviajelento.com/tag/senegal/" target="_blank">El Viajelento - Posts sobre Senegal</a></li>
+  <li><a href="https://magnet.xataka.com/tag/senegal" target="_blank">Magnet - Relatos y curiosidades de Senegal</a></li>
+</ul>
+
+<h2>Foros y comunidades</h2>
+<ul>
+  <li><a href="https://www.tripadvisor.es/ShowForum-g293514-i9254-Senegal.html" target="_blank">TripAdvisor Foro Senegal</a></li>
+  <li><a href="https://www.lonelyplanet.com/thorntree/forums/africa/west-africa/senegal" target="_blank">Lonely Planet Thorntree - Senegal</a></li>
+  <li><a href="https://www.reddit.com/r/Senegal/" target="_blank">Reddit - r/Senegal</a></li>
+</ul>
+
+<h2>Canales de YouTube</h2>
+<ul>
+  <li><a href="https://www.youtube.com/c/Alanxelmundo" target="_blank">Alan por el Mundo - Videos de Senegal</a></li>
+  <li><a href="https://www.youtube.com/c/LaPerreraViajes" target="_blank">La Perrera Viajes - Viajar a Senegal</a></li>
+  <li><a href="https://www.youtube.com/c/AnikoVillalba" target="_blank">Aniko Villalba - Experiencias en Senegal</a></li>
+</ul>
+
+<h2>Recursos para rutas</h2>
+<ul>
+  <li><a href="https://es.wikiloc.com/rutas/africa/senegal" target="_blank">Wikiloc Rutas Senegal</a></li>
+  <li><a href="https://www.alltrails.com/es/africa/senegal" target="_blank">AllTrails Senegal</a></li>
+  <li><a href="https://www.google.com/maps" target="_blank">Google Maps</a></li>
+</ul>
+
+<h2>Apps imprescindibles</h2>
+<ul>
+  <li><strong>Orange Sénégal</strong> - App oficial para gestión de telefonía móvil y recargas: <a href="https://play.google.com/store/apps/details?id=com.orange.sn" target="_blank">Google Play</a> | <a href="https://apps.apple.com/sn/app/orange-s%C3%A9n%C3%A9gal/id1091955401" target="_blank">App Store</a></li>
+  <li><strong>SunuTaxi</strong> - Popular app senegalesa para taxis y transporte local (Android): <a href="https://play.google.com/store/apps/details?id=com.sunutaxi" target="_blank">Google Play</a></li>
+  <li><strong>Météo Senegal</strong> - App meteorológica local para consultar el clima: <a href="https://play.google.com/store/apps/details?id=com.torrecilla.weather.senegal" target="_blank">Google Play</a></li>
+</ul>
+
+<h2>Webs de reservas</h2>
+<ul>
+  <li><a href="https://www.booking.com/country/sn.html" target="_blank">Booking - Senegal</a></li>
+  <li><a href="https://www.airbnb.com/s/Senegal/homes" target="_blank">Airbnb - Senegal</a></li>
+  <li><a href="https://www.getyourguide.com/s/?dest_id=941&dest_type=country" target="_blank">GetYourGuide - Excursiones y tours Senegal</a></li>
+  <li><a href="https://www.viator.com/Senegal/d11-ttd" target="_blank">Viator - Actividades en Senegal</a></li>
+</ul></div>
+  </div>
+
+  <!-- TAB CULTURA -->
+  <div class="tab-panel" id="tab-cultura">
+    <div class="sec-eye">Prepara el viaje</div>
+    <div class="sec-title">Cultura · Cine · Libros · Música</div>
+    <div class="ai-content"><h3>📚 Senegal: The Bradt Travel Guide – Ross Velton</h3>
+<p><strong>Por qué leerlo:</strong> Esta guía práctica ofrece información detallada sobre lugares de interés, cultura local y consejos para viajeros. Es ideal para planificar rutas y conocer aspectos culturales útiles antes de llegar a Senegal.</p>
+
+<h3>📚 Soñaron con tigres – Patrice Nganang</h3>
+<p><strong>Por qué leerlo:</strong> Aunque el autor es camerunés, esta novela ofrece una perspectiva africana profunda y temas de identidad que resuenan en Senegal. Es perfecta para comprender las complejidades sociales y culturales de la región.</p>
+
+<h3>📚 Las aventuras de Salim – Ousmane Sembène</h3>
+<p><strong>Por qué leerlo:</strong> Esta novela del “padre del cine africano” retrata la vida y desafíos cotidianos en Senegal. Ofrece una mirada íntima y realista que ayuda a empatizar con la gente y el contexto local.</p>
+
+<h3>📚 Sweetwater: A Memoir of Murder and Survival in Kenya – Michael Stanley</h3>
+<p><strong>Por qué leerlo:</strong> Aunque se centra en Kenya, las descripciones culturales y los paisajes del África Occidental tienen conexiones que enriquecen la comprensión regional, útil para quienes quieran situar Senegal en un contexto más amplio.</p>
+
+<h3>📚 Senegalese Cuisine: In My Belly – Pierre Thiam</h3>
+<p><strong>Por qué leerlo:</strong> Introduce al lector en los sabores y tradiciones culinarias de Senegal, creando una experiencia sensorial y cultural anticipada que complementa el viaje físico con un enfoque gastronómico.</p></div>
+  </div>
+
+  <!-- TAB CURIOSIDADES -->
+  <div class="tab-panel" id="tab-curiosidades">
+    <div class="sec-eye">¿Sabías que…?</div>
+    <div class="sec-title">Curiosidades de SENEGAL</div>
+    <div class="ai-content"><h3>💡 Presupuesta en francos CFA y efectivo</h3>
+<p>Aunque en zonas turísticas aceptan tarjeta, gran parte del país funciona con efectivo. Abre una cuenta previsora para cambiar euros a <strong>francos CFA</strong> en el banco o casas de cambio de Dakar y lleva siempre billetes pequeños (500–5 000 XOF) para compras y transporte local.</p>
+
+<h3>💡 Captura la luz dorada en el Lago Retba</h3>
+<p>Para fotografiar el famoso Lago Rosa, ve al amanecer o al atardecer cuando la luz realza el rosa del agua. Usa un <strong>filtro polarizador</strong> y ajusta la exposición para evitar reflejos, y lleva baterías extra si pasas horas buscando la toma perfecta.</p>
+
+<h3>💡 Saborea el auténtico thieboudienne</h3>
+<p>Busca “maquis” locales en el mercado Sandaga de Dakar o en Saint-Louis para probar el plato nacional: arroz con pescado en salsa de tomate y verduras. Pregunta siempre si utilizan aceite de palma rojo para un sabor más auténtico.</p>
+
+<h3>💡 No subestimes las distancias ni el estado de las carreteras</h3>
+<p>En un viaje de aventura, moverse entre regiones puede llevar el doble de tiempo del esperado. Planifica con márgenes amplios, especialmente al visitar el Parque Nacional de Niokolo-Koba, donde las pistas pueden estar en mal estado tras lluvias.</p>
+
+<h3>💡 Viaja en temporada seca: noviembre a febrero</h3>
+<p>Evitarás lluvias torrenciales y mosquitos en la costa y en el Delta del Saloum. Además, las temperaturas son más agradables para safaris y caminatas. Reserva alojamiento con antelación, pues es la temporada alta.</p>
+
+<h3>💡 Practica el regateo en mercados de artesanía</h3>
+<p>En Ker Karane o el mercado de artesanía de la Gare Dakar, comienza ofreciendo un 40% menos del precio inicial y avanza en incrementos del 10%. Mantén siempre una actitud amable y sonriente, regatear es parte de la experiencia.</p>
+
+<h3>💡 Propinas justas para guías y chóferes</h3>
+<p>Aunque no obligatorias, en tours de aventura es costumbre dejar entre <strong>5 000 y 10 000 XOF</strong> por día al guía y al conductor si el servicio fue excelente. Entrégalas al final del recorrido para reforzar un buen trato.</p>
+
+<h3>💡 Cuida tu salud: mosquitos y agua segura</h3>
+<p>Vacúnate contra la fiebre amarilla y lleva repelente de alto espectro. En zonas rurales y del delta, bebe siempre <strong>agua embotellada</strong> y usa pastillas purificadoras si vas a acampar o recorrer áreas remotas.</p>
+
+<h3>💡 Conecta con una SIM local de Orange o Tigo</h3>
+<p>Compra una tarjeta SIM en el aeropuerto o en tiendas autorizadas para tener datos y GPS fiables. Los planes prepago de Orange ofrecen buena cobertura en áreas turísticas y rurales por menos de 5 000 XOF al mes.</p></div>
+  </div>
+
+  <!-- TAB DOCUMENTOS -->
+  <div class="tab-panel" id="tab-docs">
+    <div class="sec-eye">Tus documentos</div>
+    <div class="sec-title">Documentos del viaje</div>
+    <p style="font-size:13px;color:var(--mid);margin-bottom:14px">Guarda aquí tu seguro, tarjetas de embarque, pasaporte o cualquier documento que necesites tener a mano durante el viaje.</p>
+    <div class="docs-upload-area" onclick="document.getElementById('doc-input').click()">
+      <div class="docs-upload-icon">📎</div>
+      <div class="docs-upload-text"><strong>Añadir documento</strong>PDF, imagen, tarjeta de embarque…</div>
+    </div>
+    <input type="file" id="doc-input" accept=".pdf,.jpg,.jpeg,.png,.gif,.webp" multiple onchange="handleDocUpload(event)">
+    <div class="docs-list" id="docs-list"></div>
+  </div>
+
+  <!-- TAB NOTAS -->
+  <div class="tab-panel" id="tab-notas">
+    <div class="sec-eye">Para ti</div>
+    <div class="sec-title">Notas del viajero</div>
+    <div class="note-area">
+      <div class="note-line" contenteditable="true" spellcheck="false">Escribe aquí tus notas…</div>
+      <div class="note-line" contenteditable="true" spellcheck="false"></div>
+      <div class="note-line" contenteditable="true" spellcheck="false"></div>
+      <div class="note-line" contenteditable="true" spellcheck="false"></div>
+      <div class="note-line" contenteditable="true" spellcheck="false"></div>
+      <div class="note-line" contenteditable="true" spellcheck="false"></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ MODAL GUARDAR ══ -->
+<div class="save-modal" id="save-modal" onclick="closeSaveModal(event)">
+  <div class="save-sheet">
+    <h3>Guardar guía</h3>
+    <p>Elige cómo quieres guardar tu guía de SENEGAL.</p>
+
+    <!-- Opción Android: botón directo si hay prompt disponible -->
+    <div class="save-option" id="opt-android" style="display:none" onclick="installAndroid()">
+      <div class="save-option-icon">🤖</div>
+      <div class="save-option-text"><strong>Añadir a pantalla de inicio</strong><span>Android · Se abrirá el diálogo de instalación</span></div>
+    </div>
+
+    <!-- Opción iOS: instrucción visual animada -->
+    <div class="save-option" id="opt-ios" style="display:none" onclick="showIOSGuide()">
+      <div class="save-option-icon">🍎</div>
+      <div class="save-option-text"><strong>Añadir a pantalla de inicio</strong><span>iOS · Toca para ver cómo hacerlo en 2 pasos</span></div>
+    </div>
+
+    <div class="save-option" onclick="downloadGuide()">
+      <div class="save-option-icon">⬇️</div>
+      <div class="save-option-text"><strong>Descargar archivo HTML</strong><span>Guárdalo y ábrelo sin internet</span></div>
+    </div>
+    <div class="save-option" onclick="copyLink();closeSaveModal()">
+      <div class="save-option-icon">🔗</div>
+      <div class="save-option-text"><strong>Copiar enlace</strong><span>Comparte o guarda la URL de esta guía</span></div>
+    </div>
+    <button class="save-close" onclick="closeSaveModal()">Cerrar</button>
+  </div>
+</div>
+
+<!-- ══ GUÍA iOS ══ -->
+<div class="save-modal" id="ios-modal" onclick="document.getElementById('ios-modal').classList.remove('open')">
+  <div class="save-sheet">
+    <h3>Añadir a pantalla de inicio</h3>
+    <p style="margin-bottom:18px">Sigue estos 2 pasos en Safari:</p>
+    <div style="background:var(--sand);border-radius:var(--r);padding:16px;margin-bottom:12px;text-align:center">
+      <div style="font-size:32px;margin-bottom:8px">1️⃣</div>
+      <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px">Toca el botón Compartir</div>
+      <div style="font-size:13px;color:var(--mid)">El icono <strong>□↑</strong> de la barra inferior de Safari</div>
+      <div style="font-size:36px;margin-top:10px;animation:bounce .8s infinite alternate">□↑</div>
+    </div>
+    <div style="background:var(--sand);border-radius:var(--r);padding:16px;margin-bottom:16px;text-align:center">
+      <div style="font-size:32px;margin-bottom:8px">2️⃣</div>
+      <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px">Toca "Añadir a pantalla de inicio"</div>
+      <div style="font-size:13px;color:var(--mid)">Desplázate en el menú hasta encontrar esta opción</div>
+      <div style="background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 14px;margin-top:10px;display:inline-flex;align-items:center;gap:8px">
+        <span style="font-size:20px">➕</span>
+        <span style="font-size:13px;font-weight:500;color:var(--ink)">Añadir a pantalla de inicio</span>
+      </div>
+    </div>
+    <button class="save-close" onclick="document.getElementById('ios-modal').classList.remove('open')">Entendido</button>
+  </div>
+</div>
+<style>
+@keyframes bounce{from{transform:translateY(0)}to{transform:translateY(-6px)}}
+</style>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── TABS ──
+function showTab(id,btn){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  btn.classList.add('active');
+  document.getElementById('tabs-content').scrollTop=0;
+  // Scroll tab visible
+  btn.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+  // Ocultar flecha si llegamos al final
+  const scroll=document.getElementById('tabs-scroll');
+  const fade=document.querySelector('.tabs-fade');
+  if(fade)fade.style.display=scroll.scrollLeft+scroll.clientWidth>=scroll.scrollWidth-10?'none':'flex';
+}
+// Ocultar flecha al llegar al final del scroll
+document.getElementById('tabs-scroll').addEventListener('scroll',function(){
+  const fade=document.querySelector('.tabs-fade');
+  if(fade)fade.style.display=this.scrollLeft+this.clientWidth>=this.scrollWidth-10?'none':'flex';
+});
+
+// ── TOAST ──
+function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800)}
+
+// ── COMPARTIR ──
+function shareWpp(){
+  const t=encodeURIComponent('¡Mira mi guía de viaje para SENEGAL! 🌍✈️\nGenerada por GuiaMundi.es\n\n'+window.location.href);
+  window.open('https://wa.me/?text='+t,'_blank');
+}
+function copyLink(){navigator.clipboard.writeText(window.location.href).then(()=>showToast('✓ Enlace copiado')).catch(()=>showToast('Copia la URL del navegador'))}
+
+// ── SERVICE WORKER (necesario para installPrompt en Android) ──
+if('serviceWorker' in navigator){
+  const swCode=`self.addEventListener('fetch',e=>{});`;
+  const blob=new Blob([swCode],{type:'application/javascript'});
+  const swUrl=URL.createObjectURL(blob);
+  navigator.serviceWorker.register(swUrl).catch(()=>{});
+}
+
+// ── MODAL GUARDAR ──
+let deferredPrompt=null;
+window.addEventListener('beforeinstallprompt',e=>{
+  e.preventDefault();
+  deferredPrompt=e;
+  document.getElementById('opt-android').style.display='flex';
+});
+
+function openSaveModal(){
+  // Detectar iOS
+  const isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
+  if(isIOS)document.getElementById('opt-ios').style.display='flex';
+  document.getElementById('save-modal').classList.add('open');
+}
+function closeSaveModal(e){
+  if(!e||e.target===document.getElementById('save-modal'))
+    document.getElementById('save-modal').classList.remove('open');
+}
+function installAndroid(){
+  if(deferredPrompt){
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(r=>{
+      if(r.outcome==='accepted')showToast('✓ Añadida a pantalla de inicio');
+      deferredPrompt=null;
+    });
+  }
+  document.getElementById('save-modal').classList.remove('open');
+}
+function showIOSGuide(){
+  document.getElementById('save-modal').classList.remove('open');
+  setTimeout(()=>document.getElementById('ios-modal').classList.add('open'),200);
+}
+function downloadGuide(){
+  try{
+    const blob=new Blob([document.documentElement.outerHTML],{type:'text/html;charset=utf-8'});
+    const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+    a.download='guia-SENEGAL-14dias.html';a.click();
+    URL.revokeObjectURL(a.href);showToast('✓ Guía descargada');
+  }catch(e){showToast('Usa el menú del navegador para guardar')}
+  document.getElementById('save-modal').classList.remove('open');
+}
+
+// ── BLOQUES DE DÍA CON NOTAS Y MAPA ──
+function buildDayBlocks(){
+  const container=document.getElementById('itinerario-content');
+  if(!container)return;
+  const raw=container.innerHTML;
+  const parts=raw.split(/(?=<h2[\s>])/i);
+  let html='';
+  parts.forEach((part,i)=>{
+    if(!part.trim())return;
+    const isDay=/^<h2/i.test(part.trim());
+    if(!isDay){html+=part;return;}
+    const titleMatch=part.match(/<h2[^>]*>(.*?)<\/h2>/i);
+    const titleRaw=titleMatch?titleMatch[1]:'Día '+(i);
+    // Limpiar HTML del título para usarlo en la URL
+    const titleText=titleRaw.replace(/<[^>]+>/g,'').trim();
+    const body=part.replace(/<h2[^>]*>.*?<\/h2>/i,'').trim();
+    // Intentar extraer enlace maps que venga de OpenAI
+    const mapsMatch=body.match(/href="(https:\/\/www\.google\.com\/maps[^"]+)"/i);
+    let mapsUrl;
+    if(mapsMatch){
+      mapsUrl=mapsMatch[1];
+    } else {
+      // Generar URL a partir del título del día + destino
+      const query=encodeURIComponent(titleText+' SENEGAL');
+      mapsUrl='https://www.google.com/maps/search/'+query;
+    }
+    const bodyClean=body.replace(/<a[^>]*google\.com\/maps[^>]*>.*?<\/a>/gi,'');
+    html+=`<div class="day-block">
+      <div class="day-block-header" onclick="toggleDay(this)">
+        <span>${titleRaw}</span><span class="day-toggle">⌄</span>
+      </div>
+      <div class="day-block-body">
+        <div class="ai-content">${bodyClean}</div>
+        <a class="day-map-btn" href="${mapsUrl}" target="_blank">🗺️ Ver lugares del día en Google Maps</a>
+        <div class="day-note-wrap">
+          <div class="day-note-label">📝 Mis notas para este día</div>
+          <textarea class="day-note" placeholder="Añade aquí reservas, horarios o cualquier detalle personal…"></textarea>
+        </div>
+      </div>
+    </div>`;
+  });
+  container.innerHTML=html;
+  const first=container.querySelector('.day-block');
+  if(first)first.classList.add('open');
+}
+function toggleDay(header){header.closest('.day-block').classList.toggle('open')}
+document.addEventListener('DOMContentLoaded',buildDayBlocks);
+
+// ── DOCUMENTOS ──
+const uploadedDocs=[];
+function handleDocUpload(e){
+  Array.from(e.target.files).forEach(file=>{
+    const reader=new FileReader();
+    reader.onload=ev=>{
+      const doc={name:file.name,size:formatSize(file.size),type:file.type,url:ev.target.result,id:Date.now()+Math.random()};
+      uploadedDocs.push(doc);renderDocs();
+    };
+    reader.readAsDataURL(file);
+  });
+  e.target.value='';
+}
+function formatSize(b){if(b<1024)return b+'B';if(b<1048576)return(b/1024).toFixed(1)+'KB';return(b/1048576).toFixed(1)+'MB'}
+function getDocIcon(type){if(type==='application/pdf')return '📄';if(type.startsWith('image/'))return '🖼️';return '📎'}
+function renderDocs(){
+  const list=document.getElementById('docs-list');
+  if(!uploadedDocs.length){list.innerHTML='';return;}
+  list.innerHTML=uploadedDocs.map(doc=>`
+    <div class="doc-item">
+      <div class="doc-icon">${getDocIcon(doc.type)}</div>
+      <div class="doc-info"><div class="doc-name">${doc.name}</div><div class="doc-size">${doc.size}</div></div>
+      <button class="doc-open" onclick="openDoc('${doc.id}')">Abrir</button>
+      <button class="doc-del" onclick="deleteDoc('${doc.id}')">✕</button>
+    </div>`).join('');
+}
+function openDoc(id){const d=uploadedDocs.find(d=>d.id==id);if(d)window.open(d.url,'_blank')}
+function deleteDoc(id){const i=uploadedDocs.findIndex(d=>d.id==id);if(i>-1){uploadedDocs.splice(i,1);renderDocs()}}
+
+// ── HERRAMIENTAS TABS ──
+function switchTool(btn,id){
+  document.querySelectorAll('.ttab').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.tool-panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');document.getElementById(id).classList.add('active');
+}
+
+// ── CONVERSOR ──
+const rates={};let ratesLoaded=false;
+const cNames={USD:'Dólar USD',GBP:'Libra',JPY:'Yen',MXN:'Peso MX',BRL:'Real',MAD:'Dírham',TRY:'Lira',THB:'Baht',IDR:'Rupia',AED:'Dírham AE',SGD:'Dólar SG',PLN:'Esloti',CZK:'Corona CZ',HUF:'Forinto',RON:'Leu',DKK:'Corona DK',SEK:'Corona SE',NOK:'Corona NO'};
+async function loadRates(){
+  try{const r=await fetch('https://open.er-api.com/v6/latest/EUR');const d=await r.json();if(d.rates){Object.assign(rates,d.rates);ratesLoaded=true;convertCurrency();document.getElementById('conv-rate').textContent='Actualizado · '+new Date().toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'})}}
+  catch(e){Object.assign(rates,{USD:1.08,GBP:0.86,JPY:162,MXN:18.5,BRL:5.4,MAD:10.8,TRY:35,THB:38,IDR:17000,AED:3.97,SGD:1.45,PLN:4.25,CZK:25,HUF:390,RON:4.97,DKK:7.46,SEK:11.5,NOK:11.8});ratesLoaded=true;convertCurrency();document.getElementById('conv-rate').textContent='Tasas aproximadas'}
+}
+function convertCurrency(){
+  if(!ratesLoaded)return;
+  const eur=parseFloat(document.getElementById('conv-eur').value)||0;
+  const to=document.getElementById('conv-to').value;
+  const res=eur*(rates[to]||1);
+  const fmt=res>=1000?res.toFixed(0):res>=10?res.toFixed(2):res.toFixed(4);
+  document.getElementById('conv-foreign').value=fmt;
+  document.getElementById('conv-display').textContent=fmt+' '+to;
+  document.getElementById('conv-to-label').textContent=cNames[to]||to;
+  document.getElementById('conv-rate').textContent='1 € = '+(rates[to]||1).toFixed(4)+' '+to;
+}
+function convertBack(){
+  if(!ratesLoaded)return;
+  const f=parseFloat(document.getElementById('conv-foreign').value)||0;
+  const to=document.getElementById('conv-to').value;
+  document.getElementById('conv-eur').value=(f/(rates[to]||1)).toFixed(2);convertCurrency();
+}
+loadRates();
+
+// ── TRADUCTOR ──
+const phraseDB={
+  es:['Hola / Buenos días','Por favor','Gracias','¿Cuánto cuesta?','¿Dónde está…?','La cuenta, por favor','No entiendo','¿Habla español?','Ayuda, por favor','Un taxi, por favor','¿Dónde está el baño?','Me llamo…','¿Habla inglés?'],
+  it:['Ciao / Buongiorno','Per favore','Grazie','Quanto costa?','Dov\'è…?','Il conto, per favore','Non capisco','Parla spagnolo?','Aiuto','Un taxi, per favore','Dov\'è il bagno?','Mi chiamo…','Parla inglese?'],
+  fr:['Bonjour','S\'il vous plaît','Merci','Combien ça coûte?','Où est…?','L\'addition, s\'il vous plaît','Je ne comprends pas','Parlez-vous espagnol?','Au secours','Un taxi, s\'il vous plaît','Où sont les toilettes?','Je m\'appelle…','Parlez-vous anglais?'],
+  de:['Hallo','Bitte','Danke','Wie viel kostet das?','Wo ist…?','Die Rechnung, bitte','Ich verstehe nicht','Sprechen Sie Spanisch?','Hilfe','Ein Taxi, bitte','Wo ist die Toilette?','Ich heiße…','Sprechen Sie Englisch?'],
+  pt:['Olá','Por favor','Obrigado/a','Quanto custa?','Onde fica…?','A conta, por favor','Não entendo','Fala espanhol?','Socorro','Um táxi','Onde é o banheiro?','Meu nome é…','Fala inglês?'],
+  ja:['こんにちは','お願いします','ありがとう','いくらですか？','…はどこですか？','お会計をお願いします','わかりません','スペイン語を話しますか？','助けて','タクシーをお願いします','トイレはどこですか？','私の名前は…','英語を話しますか？'],
+  ar:['مرحبا','من فضلك','شكرا','كم يكلف؟','أين…؟','الحساب من فضلك','لا أفهم','هل تتكلم الإسبانية؟','مساعدة','سيارة أجرة','أين الحمام؟','اسمي…','هل تتكلم الإنجليزية؟'],
+  tr:['Merhaba','Lütfen','Teşekkürler','Ne kadar?','Nerede…?','Hesabı lütfen','Anlamıyorum','İspanyolca biliyor musunuz?','Yardım','Taksi lütfen','Tuvalet nerede?','Benim adım…','İngilizce biliyor musunuz?'],
+  th:['สวัสดี','กรุณา','ขอบคุณ','ราคาเท่าไหร่?','…อยู่ที่ไหน?','เก็บเงินด้วย','ไม่เข้าใจ','พูดภาษาสเปนได้ไหม?','ช่วยด้วย','แท็กซี่','ห้องน้ำอยู่ที่ไหน?','ฉันชื่อ…','พูดภาษาอังกฤษได้ไหม?'],
+  zh:['你好','请','谢谢','多少钱？','…在哪里？','买单','我不明白','你会说西班牙语吗？','帮帮我','出租车','洗手间在哪里？','我叫…','你会说英语吗？'],
+  el:['Γεια σας','Παρακαλώ','Ευχαριστώ','Πόσο κοστίζει;','Πού είναι…;','Τον λογαριασμό','Δεν καταλαβαίνω','Μιλάτε ισπανικά;','Βοήθεια','Ένα ταξί','Πού είναι η τουαλέτα;','Με λένε…','Μιλάτε αγγλικά;'],
+  pl:['Dzień dobry','Proszę','Dziękuję','Ile to kosztuje?','Gdzie jest…?','Rachunek, proszę','Nie rozumiem','Czy mówi pan/pani po hiszpańsku?','Pomocy','Taksówkę','Gdzie jest toaleta?','Mam na imię…','Czy mówi pan/pani po angielsku?'],
+  nl:['Hallo','Alstublieft','Dank u','Hoeveel kost het?','Waar is…?','De rekening graag','Ik begrijp het niet','Spreekt u Spaans?','Help','Een taxi','Waar is het toilet?','Ik heet…','Spreekt u Engels?'],
+  ru:['Здравствуйте','Пожалуйста','Спасибо','Сколько стоит?','Где…?','Счёт, пожалуйста','Я не понимаю','Вы говорите по-испански?','Помогите','Такси','Где туалет?','Меня зовут…','Вы говорите по-английски?'],
+  cs:['Dobrý den','Prosím','Děkuji','Kolik to stojí?','Kde je…?','Účet prosím','Nerozumím','Mluvíte španělsky?','Pomozte','Taxi','Kde je toaleta?','Jmenuji se…','Mluvíte anglicky?'],
+  ro:['Bună ziua','Vă rog','Mulțumesc','Cât costă?','Unde este…?','Nota de plată','Nu înțeleg','Vorbiți spaniolă?','Ajutor','Un taxi','Unde este toaleta?','Mă numesc…','Vorbiți engleză?'],
+  hr:['Dobar dan','Molim','Hvala','Koliko košta?','Gdje je…?','Račun, molim','Ne razumijem','Govorite li španjolski?','Pomoć','Taksi','Gdje je zahod?','Zovem se…','Govorite li engleski?'],
+};
+const langMap={it:'it-IT',fr:'fr-FR',de:'de-DE',pt:'pt-PT',ja:'ja-JP',ar:'ar-SA',tr:'tr-TR',th:'th-TH',zh:'zh-CN',el:'el-GR',pl:'pl-PL',nl:'nl-NL',ru:'ru-RU',cs:'cs-CZ',ro:'ro-RO',hr:'hr-HR'};
+function updatePhrases(){
+  const lang=document.getElementById('trans-lang-sel').value;
+  const esp=phraseDB['es'],dest=phraseDB[lang]||phraseDB['it'];
+  document.getElementById('phrases-list').innerHTML=esp.map((es,i)=>`
+    <div class="trans-item">
+      <div class="trans-texts"><div class="trans-es">${es}</div><div class="trans-dest">${dest[i]||''}</div></div>
+      <button class="trans-audio" onclick="speak('${(dest[i]||'').replace(/'/g,"\\'").replace(/"/g,'&quot;')}','${lang}',this)">▶</button>
+    </div>`).join('');
+}
+function speak(text,lang,btn){
+  if(!window.speechSynthesis){showToast('Audio no disponible');return}
+  window.speechSynthesis.cancel();
+  document.querySelectorAll('.trans-audio').forEach(b=>b.classList.remove('playing'));
+  btn.classList.add('playing');
+  const u=new SpeechSynthesisUtterance(text);
+  u.lang=langMap[lang]||lang+'-'+lang.toUpperCase();u.rate=0.82;
+  u.onend=()=>btn.classList.remove('playing');
+  u.onerror=()=>{btn.classList.remove('playing');showToast('Audio no disponible para este idioma')};
+  window.speechSynthesis.speak(u);
+}
+updatePhrases();
+
+// ── CALCULADORA ──
+function calcBudget(){
+  const dias=parseFloat(document.getElementById('c-dias').value)||0;
+  const viaj=Math.max(1,parseFloat(document.getElementById('c-viaj').value)||1);
+  const aloj=parseFloat(document.getElementById('c-aloj').value)||0;
+  const com=parseFloat(document.getElementById('c-com').value)||0;
+  const transp=parseFloat(document.getElementById('c-transp').value)||0;
+  const act=parseFloat(document.getElementById('c-act').value)||0;
+  const tA=aloj*dias,tC=com*dias*viaj,tot=tA+tC+transp+act;
+  const f=n=>n.toLocaleString('es-ES',{maximumFractionDigits:0})+'€';
+  document.getElementById('r-aloj').textContent=f(tA);document.getElementById('r-com').textContent=f(tC);
+  document.getElementById('r-transp').textContent=f(transp);document.getElementById('r-act').textContent=f(act);
+  document.getElementById('r-total').textContent=f(tot);document.getElementById('r-pp').textContent=f(tot/viaj);
+}
+calcBudget();
+
+// ── CHECKLIST ──
+const checkData={
+  ropa:['Ropa ligera (5-7 días)','Chaqueta o jersey fino','Ropa interior extra','Calcetines varios','Calzado cómodo walking','Sandalias o chanclas','Ropa de baño','Pijama','Pañuelo o fular','Chubasquero ligero'],
+  docs:['DNI o Pasaporte vigente','Tarjeta Sanitaria Europea','Seguro de viaje','Reservas alojamiento','Confirmación de vuelo','2 tarjetas bancarias','Efectivo moneda local','Carné de conducir','Visado si aplica','Fotos de pasaporte'],
+  tech:['Móvil cargado','Cargador del móvil','Adaptador de enchufe','Power bank','Auriculares','Cámara de fotos','Tarjeta memoria extra','Cable USB extra','Mapas offline','Cargador laptop'],
+  salud:['Protector solar 50+','Repelente mosquitos','Medicación habitual x2','Botiquín básico','Antihistamínico','Ibuprofeno/paracetamol','Tiritas y venda','Pastillas estómago','Mascarillas','Termómetro'],
+  extras:['Botella reutilizable','Guía de conversación','Bolsa tela mercados','Candado equipaje','Funda impermeable móvil','Snacks viaje','Almohada viaje','Antifaz dormir','Tapones oídos','Colonia pequeña'],
+};
+const checkState={};let currentCat='ropa';
+function initCheck(){Object.keys(checkData).forEach(c=>checkState[c]=checkData[c].map(()=>false));renderCheck()}
+function switchCat(btn,cat){document.querySelectorAll('.check-cat-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');currentCat=cat;renderCheck()}
+function renderCheck(){
+  const items=checkData[currentCat],states=checkState[currentCat];
+  document.getElementById('checklist-items').innerHTML=items.map((item,i)=>`
+    <div class="check-item${states[i]?' done':''}" onclick="toggleCheck('${currentCat}',${i},this)">
+      <div class="check-box">${states[i]?'✓':''}</div>
+      <div class="check-label">${item}</div>
+    </div>`).join('');
+  updateProgress();
+}
+function toggleCheck(cat,idx,el){checkState[cat][idx]=!checkState[cat][idx];el.classList.toggle('done');el.querySelector('.check-box').textContent=checkState[cat][idx]?'✓':'';updateProgress()}
+function updateProgress(){let d=0,t=0;Object.values(checkState).forEach(a=>{t+=a.length;d+=a.filter(Boolean).length});const p=t?Math.round(d/t*100):0;document.getElementById('check-bar').style.width=p+'%';document.getElementById('check-pct').textContent=p+'%'}
+initCheck();
+</script>
+</body>
+</html>
