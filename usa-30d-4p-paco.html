@@ -1,0 +1,1711 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="GuiaMundi">
+<meta name="theme-color" content="#1A1A2E">
+<title>Guía de USA · 30 días</title>
+<link rel="manifest" href="data:application/json;charset=utf-8,%7B%22name%22%3A%22Gu%C3%ADa%20de%20USA%22%2C%22short_name%22%3A%22USA%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%231A1A2E%22%2C%22theme_color%22%3A%22%231A1A2E%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%2C%253Csvg%2520xmlns%3D%2527http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%2527%2520viewBox%3D%25270%25200%2520100%2520100%2527%253E%253Ctext%2520y%3D%2527.9em%2527%2520font-size%3D%252790%2527%253E%25F0%259F%258C%258D%253C%2Ftext%253E%253C%2Fsvg%253E%22%2C%22sizes%22%3A%22192x192%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%7D%5D%7D">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1A1A2E;--gold:#C9922A;--gold-l:#F5E6C8;--gold-p:#FDF6E9;
+  --terra:#B84A2E;--sky:#1B4F72;--sage:#2D6A4F;--cream:#FAFAF6;
+  --sand:#F0EBE0;--mist:#EEF2F7;--line:#DDD8CF;--mid:#7B7369;--r:14px;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overflow:hidden}
+body{font-family:'DM Sans',sans-serif;background:var(--ink);color:var(--ink);font-size:15px;line-height:1.7;display:flex;flex-direction:column}
+
+/* ── PORTADA ── */
+.cover{flex-shrink:0;background:var(--ink);padding:24px 20px 16px;position:relative;overflow:hidden;text-align:center}
+.cover-bg{position:absolute;inset:0;background:radial-gradient(circle at 30% 50%,rgba(201,146,42,.15) 0,transparent 60%),radial-gradient(circle at 70% 50%,rgba(27,79,114,.18) 0,transparent 60%)}
+.cover-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,146,42,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,146,42,.04) 1px,transparent 1px);background-size:32px 32px}
+.cover-stripe{position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--terra),var(--sky))}
+.cover-content{position:relative;z-index:2}
+.cover-eyebrow{font-size:9px;font-weight:500;letter-spacing:3px;color:rgba(201,146,42,.7);text-transform:uppercase;margin-bottom:6px}
+.cover-title{font-family:'Playfair Display',serif;font-size:clamp(28px,8vw,44px);font-weight:900;line-height:1;color:#fff;letter-spacing:-1px;font-style:italic;margin-bottom:4px}
+.cover-subtitle{font-size:13px;color:rgba(255,255,255,.45);margin-bottom:14px;letter-spacing:.5px}
+.cover-actions{display:flex;gap:8px;justify-content:center;max-width:340px;margin:0 auto}
+.cover-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:5px;padding:9px 10px;border-radius:9px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;transition:all .2s}
+.cover-btn-wpp{background:#25D366;color:#fff}
+.cover-btn-save{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#fff}
+.cover-btn:active{transform:scale(.96)}
+
+/* ── TABS NAV ── */
+.tabs-nav{flex-shrink:0;background:rgba(8,8,20,.97);border-bottom:1px solid rgba(201,146,42,.15);position:relative}
+.tabs-scroll{display:flex;overflow-x:auto;scrollbar-width:none;padding:0 12px}
+.tabs-scroll::-webkit-scrollbar{display:none}
+.tab-btn{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:3px;padding:11px 14px;border:none;background:none;color:rgba(255,255,255,.38);font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;cursor:pointer;transition:all .2s;border-bottom:2px solid transparent;white-space:nowrap;min-width:72px}
+.tab-btn .tab-icon{font-size:18px;line-height:1}
+.tab-btn.active{color:var(--gold);border-bottom-color:var(--gold)}
+.tab-btn:hover{color:rgba(255,255,255,.7)}
+/* Flecha indicadora de más tabs */
+.tabs-fade{position:absolute;right:0;top:0;bottom:0;width:40px;background:linear-gradient(to right,transparent,rgba(8,8,20,.97));pointer-events:none;display:flex;align-items:center;justify-content:flex-end;padding-right:6px}
+.tabs-fade span{color:var(--gold);font-size:16px;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
+
+/* ── CONTENIDO ── */
+.tabs-content{flex:1;overflow-y:auto;background:var(--cream)}
+.tab-panel{display:none;padding:22px 18px 32px;min-height:100%}
+.tab-panel.active{display:block}
+@media(min-width:700px){.tab-panel{max-width:800px;margin:0 auto;padding:28px 36px 40px}}
+
+/* ── TIPOGRAFÍA ── */
+.sec-eye{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:4px;display:flex;align-items:center;gap:6px}
+.sec-eye::before{content:'';display:inline-block;width:10px;height:1px;background:var(--gold)}
+.sec-title{font-family:'Playfair Display',serif;font-size:21px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:16px}
+
+/* ── FICHA MINI ── */
+.info-mini{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.info-tag{background:var(--sand);border:1px solid var(--line);border-radius:50px;padding:5px 12px;font-size:12px;color:var(--mid)}
+.info-tag strong{color:var(--ink);font-weight:600}
+
+/* ── AD ── */
+.ad{background:#FFF8E7;border:1px solid #E8C84A;border-left:4px solid #E8C84A;border-radius:var(--r);padding:10px 12px;display:flex;align-items:flex-start;gap:8px;margin-bottom:14px}
+.ad-badge{background:#E8C84A;color:#fff;font-size:8px;font-weight:700;letter-spacing:1px;padding:2px 5px;border-radius:4px;flex-shrink:0;margin-top:1px}
+.ad strong{display:block;font-size:12px;font-weight:500;color:#7A5C00;margin-bottom:1px}
+.ad span{font-size:11px;color:#A07B20;font-style:italic}
+
+/* ── CONTENIDO IA ── */
+.ai-content{font-size:14px;line-height:1.85;color:var(--ink)}
+.ai-content h1,.ai-content h2{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--ink);margin:20px 0 8px;padding-bottom:5px;border-bottom:2px solid var(--gold-l)}
+.ai-content h2:first-child{margin-top:0}
+.ai-content h3{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--sky);margin:14px 0 5px}
+.ai-content h3:first-child{margin-top:0}
+.ai-content p{margin-bottom:9px}
+.ai-content ul,.ai-content ol{padding-left:18px;margin-bottom:10px}
+.ai-content li{margin-bottom:4px}
+.ai-content strong{font-weight:600}
+.ai-content a{color:var(--sky);text-decoration:none;border-bottom:1px solid rgba(27,79,114,.25);font-weight:500;word-break:break-word}
+.ai-content a:hover{color:var(--gold);border-bottom-color:var(--gold)}
+
+/* ── BLOQUES DE DÍA ── */
+.day-block{background:#fff;border:1px solid var(--line);border-radius:var(--r);margin-bottom:16px;overflow:hidden}
+.day-block-header{background:var(--ink);color:var(--gold);padding:12px 16px;font-family:'Playfair Display',serif;font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:space-between;cursor:pointer}
+.day-block-header .day-toggle{font-size:14px;transition:transform .3s;flex-shrink:0}
+.day-block.open .day-toggle{transform:rotate(180deg)}
+.day-block-body{display:none;padding:14px 16px}
+.day-block.open .day-block-body{display:block}
+.day-block-body .ai-content h3{margin-top:10px}
+.day-block-body .ai-content h3:first-child{margin-top:0}
+.day-block-body a[href*="google.com/maps"]{display:inline-flex;align-items:center;gap:4px;background:#1B4F72;color:#fff !important;padding:5px 12px;border-radius:50px;font-size:11px;font-weight:700;text-decoration:none !important;margin:2px 4px 2px 0;border:none !important}
+.day-block-body a[href*="google.com/maps"]:hover{background:#C9922A !important}
+.day-block-body a[href*="google.com/search"]{display:inline-flex;align-items:center;gap:4px;background:#F0EBE0;color:#1A1A2E !important;padding:5px 12px;border-radius:50px;font-size:11px;font-weight:600;text-decoration:none !important;margin:2px 4px 2px 0;border:1px solid #DDD8CF !important}
+.day-block-body a[href*="google.com/search"]:hover{border-color:#C9922A !important;color:#C9922A !important}
+/* Campo de nota manual */
+.day-note-wrap{margin-top:12px;border-top:1px solid var(--line);padding-top:12px}
+.day-note-label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);margin-bottom:5px}
+.day-note{width:100%;min-height:70px;padding:9px 12px;border:1.5px solid var(--line);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink);outline:none;resize:vertical;background:var(--cream);transition:border-color .2s}
+.day-note:focus{border-color:var(--gold)}
+.day-note::placeholder{color:var(--mid)}
+
+/* ── HERRAMIENTAS ── */
+.tools-tabs{display:flex;gap:6px;margin-bottom:14px;overflow-x:auto;scrollbar-width:none}
+.tools-tabs::-webkit-scrollbar{display:none}
+.ttab{background:var(--sand);border:none;border-radius:50px;padding:7px 13px;font-size:12px;font-family:'DM Sans',sans-serif;color:var(--mid);cursor:pointer;white-space:nowrap;transition:all .2s}
+.ttab.active{background:var(--ink);color:var(--gold);font-weight:500}
+.tool-panel{display:none}
+.tool-panel.active{display:block}
+@media(min-width:700px){
+  .tools-tabs{display:none}
+  .tool-panel{display:block!important}
+  .tools-desktop{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .tool-section-title{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);margin-bottom:8px;padding-bottom:5px;border-bottom:1px solid var(--line)}
+}
+
+/* CONVERSOR */
+.conv-box{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px}
+.conv-row{display:flex;gap:8px;align-items:flex-end;margin-bottom:10px}
+.conv-iw{flex:1}
+.conv-iw label{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--mid);display:block;margin-bottom:3px}
+.conv-input{width:100%;padding:8px 10px;border:1.5px solid var(--line);border-radius:9px;font-size:16px;font-family:'Playfair Display',serif;font-weight:700;color:var(--ink);outline:none;background:var(--cream)}
+.conv-input:focus{border-color:var(--gold)}
+.conv-arrow{font-size:16px;color:var(--gold);padding-bottom:6px;flex-shrink:0}
+.conv-result{background:var(--gold-p);border:1px solid var(--gold-l);border-radius:9px;padding:10px;text-align:center;margin-bottom:6px}
+.conv-amount{font-family:'Playfair Display',serif;font-size:26px;font-weight:900;color:var(--gold)}
+.conv-rate{font-size:10px;color:var(--mid);margin-top:1px}
+.conv-select{width:100%;padding:7px 10px;border:1.5px solid var(--line);border-radius:9px;font-size:13px;font-family:'DM Sans',sans-serif;color:var(--ink);outline:none;background:#fff;margin-bottom:9px}
+.conv-note{font-size:10px;color:var(--mid);text-align:center}
+
+/* TRADUCTOR */
+.trans-wrap{border-radius:var(--r);overflow:hidden;border:1px solid var(--line)}
+.trans-lang{background:var(--ink);color:#fff;padding:9px 13px;font-size:11px;font-weight:500;display:flex;align-items:center;justify-content:space-between}
+.trans-lang select{background:transparent;border:none;color:var(--gold);font-family:'DM Sans',sans-serif;font-size:12px;outline:none;cursor:pointer}
+.trans-list{background:#fff;max-height:280px;overflow-y:auto}
+.trans-item{display:flex;align-items:center;padding:9px 13px;border-bottom:1px solid var(--line);gap:8px}
+.trans-item:last-child{border-bottom:none}
+.trans-texts{flex:1}
+.trans-es{font-size:13px;font-weight:500;color:var(--ink)}
+.trans-dest{font-size:12px;color:var(--sky);font-style:italic;margin-top:1px}
+.trans-audio{background:none;border:1.5px solid var(--gold);border-radius:50%;width:30px;height:30px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--gold);flex-shrink:0;font-size:11px;transition:all .2s}
+.trans-audio.playing,.trans-audio:active{background:var(--gold);color:#fff}
+
+/* CALCULADORA */
+.calc-box{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px}
+.calc-row{margin-bottom:9px}
+.calc-row label{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--mid);display:block;margin-bottom:3px}
+.calc-input{width:100%;padding:7px 10px;border:1.5px solid var(--line);border-radius:9px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--ink);outline:none;background:var(--cream)}
+.calc-input:focus{border-color:var(--gold)}
+.calc-result{background:var(--ink);border-radius:var(--r);padding:13px;margin-top:5px}
+.calc-result-title{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:7px}
+.calc-line{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.calc-line:last-child{border-bottom:none;padding-top:8px;margin-top:4px}
+.calc-line span{font-size:12px;color:rgba(255,255,255,.55)}
+.calc-line strong{font-family:'Playfair Display',serif;font-size:13px;color:var(--gold)}
+.calc-line.total span{color:#fff;font-weight:600;font-size:13px}
+.calc-line.total strong{font-size:17px}
+
+/* CHECKLIST */
+.check-cats{display:flex;gap:5px;margin-bottom:9px;overflow-x:auto;scrollbar-width:none}
+.check-cats::-webkit-scrollbar{display:none}
+.check-cat-btn{background:var(--sand);border:none;border-radius:50px;padding:5px 11px;font-size:11px;font-family:'DM Sans',sans-serif;color:var(--mid);cursor:pointer;white-space:nowrap;transition:all .2s}
+.check-cat-btn.active{background:var(--ink);color:var(--gold);font-weight:500}
+.checklist{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;max-height:280px;overflow-y:auto}
+.check-item{display:flex;align-items:center;gap:9px;padding:9px 12px;border-bottom:1px solid var(--line);cursor:pointer;transition:background .15s}
+.check-item:last-child{border-bottom:none}
+.check-item:hover{background:var(--sand)}
+.check-box{width:18px;height:18px;border:2px solid var(--line);border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px;color:transparent;transition:all .2s}
+.check-item.done .check-box{background:var(--sage);border-color:var(--sage);color:#fff}
+.check-item.done .check-label{text-decoration:line-through;color:var(--mid)}
+.check-label{font-size:13px;color:var(--ink)}
+.check-progress{background:var(--sand);border-radius:var(--r);padding:8px 12px;margin-bottom:9px;display:flex;align-items:center;gap:8px}
+.check-bar-wrap{flex:1;background:var(--line);border-radius:50px;height:5px;overflow:hidden}
+.check-bar{height:100%;background:linear-gradient(90deg,var(--sage),var(--gold));border-radius:50px;transition:width .4s}
+.check-pct{font-size:12px;font-weight:600;color:var(--sage);flex-shrink:0}
+
+/* ── DOCUMENTOS ── */
+.docs-upload-area{border:2px dashed var(--line);border-radius:var(--r);padding:20px;text-align:center;background:#fff;cursor:pointer;transition:all .2s;margin-bottom:16px}
+.docs-upload-area:hover{border-color:var(--gold);background:var(--gold-p)}
+.docs-upload-icon{font-size:28px;margin-bottom:6px}
+.docs-upload-text{font-size:13px;color:var(--mid)}
+.docs-upload-text strong{color:var(--ink);display:block;margin-bottom:2px}
+.docs-list{display:flex;flex-direction:column;gap:8px}
+.doc-item{background:#fff;border:1px solid var(--line);border-radius:10px;padding:11px 14px;display:flex;align-items:center;gap:10px}
+.doc-icon{font-size:22px;flex-shrink:0}
+.doc-info{flex:1;min-width:0}
+.doc-name{font-size:13px;font-weight:500;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.doc-size{font-size:11px;color:var(--mid)}
+.doc-open{background:var(--sky);color:#fff;border:none;border-radius:6px;padding:5px 10px;font-size:11px;font-weight:600;cursor:pointer;flex-shrink:0}
+.doc-del{background:none;border:none;color:var(--mid);cursor:pointer;font-size:16px;padding:0 4px;flex-shrink:0}
+#doc-input{display:none}
+
+/* ── MAPA GENERAL ── */
+.map-block{background:var(--ink);border-radius:var(--r);overflow:hidden;margin-bottom:16px}
+.map-prev{height:110px;background:repeating-linear-gradient(0deg,transparent,transparent 35px,rgba(201,146,42,.06) 36px),repeating-linear-gradient(90deg,transparent,transparent 35px,rgba(201,146,42,.06) 36px);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:5px}
+.map-icon{font-size:26px}
+.map-dest-label{font-size:11px;color:rgba(255,255,255,.35);letter-spacing:1px}
+.map-cta{padding:11px 14px;display:flex;align-items:center;justify-content:space-between}
+.map-cta-t strong{display:block;color:#fff;font-size:13px;margin-bottom:1px}
+.map-cta-t span{font-size:11px;color:rgba(255,255,255,.45)}
+.map-btn{background:var(--gold);color:var(--ink);font-size:11px;font-weight:700;padding:8px 15px;border-radius:50px;text-decoration:none}
+
+/* ── CTA FINAL ── */
+.cta-box{background:linear-gradient(135deg,var(--ink),#2A1F3D);border-radius:var(--r);padding:22px 18px;text-align:center;position:relative;overflow:hidden;margin-bottom:16px}
+.cta-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--terra),var(--sky))}
+.cta-box h3{font-family:'Playfair Display',serif;font-size:18px;color:#fff;margin-bottom:5px}
+.cta-box p{font-size:12px;color:rgba(255,255,255,.45);margin-bottom:14px}
+.cta-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-bottom:13px}
+.cta-pill{background:rgba(201,146,42,.15);border:1px solid rgba(201,146,42,.3);color:var(--gold);font-size:12px;padding:6px 12px;border-radius:50px;text-decoration:none}
+.share-bar{display:flex;gap:7px}
+.share-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:5px;padding:9px;border-radius:9px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;transition:all .2s}
+.share-wpp{background:#25D366;color:#fff}
+.share-copy{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:#fff}
+
+/* NOTAS */
+.note-area{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.note-line{padding:12px 14px;border-bottom:1px solid var(--line);min-height:44px;font-size:14px;color:var(--line);font-style:italic}
+.note-line:last-child{border-bottom:none}
+
+/* MODAL GUARDAR */
+.save-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:999;align-items:flex-end;justify-content:center}
+.save-modal.open{display:flex}
+.save-sheet{background:#fff;border-radius:var(--r) var(--r) 0 0;padding:24px 20px 32px;width:100%;max-width:480px}
+.save-sheet h3{font-family:'Playfair Display',serif;font-size:19px;color:var(--ink);margin-bottom:6px}
+.save-sheet p{font-size:13px;color:var(--mid);margin-bottom:18px;line-height:1.6}
+.save-option{display:flex;align-items:center;gap:12px;padding:13px 14px;border:1.5px solid var(--line);border-radius:var(--r);margin-bottom:9px;cursor:pointer;transition:all .2s}
+.save-option:hover{border-color:var(--gold);background:var(--gold-p)}
+.save-option-icon{font-size:24px;flex-shrink:0}
+.save-option-text strong{display:block;font-size:14px;color:var(--ink);margin-bottom:1px}
+.save-option-text span{font-size:12px;color:var(--mid)}
+.save-close{width:100%;padding:11px;background:var(--sand);border:none;border-radius:var(--r);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;color:var(--mid);cursor:pointer;margin-top:6px}
+
+/* TOAST */
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(10px);background:var(--ink);color:#fff;padding:9px 18px;border-radius:50px;font-size:13px;font-weight:500;opacity:0;transition:all .3s;pointer-events:none;z-index:9999;white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.fa{animation:fadeUp .45s ease both}
+</style>
+</head>
+<body>
+
+<!-- ══ PORTADA ══ -->
+<div class="cover">
+  <div class="cover-bg"></div>
+  <div class="cover-grid"></div>
+  <div class="cover-stripe"></div>
+  <div class="cover-content">
+    <div class="cover-eyebrow fa">GuiaMundi.es</div>
+    <div class="cover-title fa" style="animation-delay:.1s">Guía de USA</div>
+    <div class="cover-subtitle fa" style="animation-delay:.2s">30 días · Cultural e histórico · 4viajero/s</div>
+    <div class="cover-actions fa" style="animation-delay:.3s">
+      <button class="cover-btn cover-btn-wpp" onclick="shareWpp()">
+        <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Compartir
+      </button>
+      <button class="cover-btn cover-btn-save" onclick="openSaveModal()">⬇ Guardar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TABS NAV ══ -->
+<div class="tabs-nav">
+  <div class="tabs-scroll" id="tabs-scroll">
+    <button class="tab-btn active" onclick="showTab('info',this)"><span class="tab-icon">📋</span>Viajero</button>
+    <button class="tab-btn" onclick="showTab('itinerario',this)"><span class="tab-icon">🗓</span>Ruta</button>
+    <button class="tab-btn" onclick="showTab('experiencias',this)"><span class="tab-icon">⭐</span>Experiencias</button>
+    <button class="tab-btn" onclick="showTab('tools',this)"><span class="tab-icon">⚙️</span>Tools</button>
+    <button class="tab-btn" onclick="showTab('destino',this)"><span class="tab-icon">💡</span>Destino</button>
+    <button class="tab-btn" onclick="showTab('transporte',this)"><span class="tab-icon">🚗</span>Transporte</button>
+    <button class="tab-btn" onclick="showTab('recursos',this)"><span class="tab-icon">🔗</span>Recursos</button>
+    <button class="tab-btn" onclick="showTab('cultura',this)"><span class="tab-icon">🎬</span>Cultura</button>
+    <button class="tab-btn" onclick="showTab('curiosidades',this)"><span class="tab-icon">🤔</span>Curiosidades</button>
+    <button class="tab-btn" onclick="showTab('docs',this)"><span class="tab-icon">📁</span>Documentos</button>
+    <button class="tab-btn" onclick="showTab('notas',this)"><span class="tab-icon">📝</span>Notas</button>
+  </div>
+  <div class="tabs-fade"><span>›</span></div>
+</div>
+
+<!-- ══ CONTENIDO ══ -->
+<div class="tabs-content" id="tabs-content">
+
+  <!-- TAB VIAJERO -->
+  <div class="tab-panel active" id="tab-info">
+    <div class="sec-eye">Tu viaje</div>
+    <div class="sec-title">Información del viajero</div>
+    <div class="info-mini">
+      <div class="info-tag"><strong>PACO</strong></div>
+      <div class="info-tag">📍 <strong>USA</strong></div>
+      <div class="info-tag">🗓 <strong>30 días</strong></div>
+      <div class="info-tag">👥 <strong>4 viajero/s</strong></div>
+      <div class="info-tag">🧭 <strong>Cultural e histórico</strong></div>
+      <div class="info-tag">🚗 <strong>Coche de alquiler</strong></div>
+    </div>
+    <div class="ad"><div class="ad-badge">AD</div><div><strong>Vuelos · Seguro de viaje</strong><span>→ Insertar banner afiliado aquí</span></div></div>
+    <div class="ad"><div class="ad-badge">AD</div><div><strong>Hoteles · Alojamiento</strong><span>→ Booking / Airbnb</span></div></div>
+    <div style="margin-top:16px">
+      <div class="map-block">
+        <div class="map-prev"><div class="map-icon">🗺️</div><div class="map-dest-label">USA</div></div>
+        <div class="map-cta">
+          <div class="map-cta-t"><strong>Ver en Google Maps</strong><span>Explorar USA</span></div>
+          <a class="map-btn" href="https://www.google.com/maps/search/USA" target="_blank">Abrir →</a>
+        </div>
+      </div>
+    </div>
+    <div class="cta-box">
+      <h3>¡Buen viaje, PACO!</h3>
+      <p>Tu aventura en USA · GuiaMundi.es</p>
+      <div class="cta-pills">
+        <a class="cta-pill" href="#">✈ Vuelos</a>
+        <a class="cta-pill" href="#">🏨 Hoteles</a>
+        <a class="cta-pill" href="#">🎯 Experiencias</a>
+        <a class="cta-pill" href="#">🛡 Seguro</a>
+      </div>
+      <div class="share-bar">
+        <button class="share-btn share-wpp" onclick="shareWpp()">
+          <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Compartir WhatsApp
+        </button>
+        <button class="share-btn share-copy" onclick="copyLink()">⎘ Copiar enlace</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB ITINERARIO -->
+  <div class="tab-panel" id="tab-itinerario">
+    <div class="sec-eye">Día a día</div>
+    <div class="sec-title">Itinerario detallado</div>
+    <div class="ad"><div class="ad-badge">AD</div><div><strong>Tours · Actividades</strong><span>→ Experiencias locales recomendadas</span></div></div>
+    <div id="itinerario-content" class="ai-content" style="margin-top:14px"><h2>DÍA 1 — Llegada a Nueva York y Exploración Inicial</h2>
+<p>Comienza el viaje en la ciudad que nunca duerme, un epicentro cultural e histórico de Estados Unidos, con atractivos emblemáticos y una arquitectura icónica.</p>
+<h3>Estatua de la Libertad y Ellis Island</h3>
+<p>Visita el símbolo de la libertad estadounidense, aprende sobre la historia de la inmigración en Ellis Island. Recomendado dedicar unas 3 a 4 horas para ambas.</p>
+<p>
+<a href="https://www.google.com/search?q=Estatua+de+la+Libertad+USA" target="_blank">📖 Estatua de la Libertad</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Estatua+de+la+Libertad+USA" target="_blank">📍 Maps</a>
+</p>
+<h3>Battery Park</h3>
+<p>Pasea por este histórico parque en el extremo sur de Manhattan, con vistas del puerto y el skyline. Tiempo recomendado: 1 hora.</p>
+<p>
+<a href="https://www.google.com/search?q=Battery+Park+USA" target="_blank">📖 Battery Park</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Battery+Park+USA" target="_blank">📍 Maps</a>
+</p>
+<h3>Wall Street y el Distrito Financiero</h3>
+<p>Explora el centro financiero histórico de EE.UU., incluyendo la Bolsa de Nueva York y la estatua del Toro de Wall Street. Tiempo aproximado: 2 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Wall+Street+USA" target="_blank">📖 Wall Street</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Wall+Street+USA" target="_blank">📍 Maps</a>
+</p>
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=Fraunces+tavern+NYC" target="_blank">Fraunces Tavern</a>, histórico y clásico del distrito financiero.</p>
+<p><strong>Alojamiento:</strong> <a href="https://www.google.com/search?q=Hoteles+en+Lower+Manhattan" target="_blank">Hoteles en Lower Manhattan</a>, para fácil acceso a la zona.</p>
+
+<h2>DÍA 2 — Museos y Cultura en Midtown Manhattan</h2>
+<p>Dedica el día a museos y a la riqueza cultural e histórica que Midtown Manhattan ofrece con algunas de las mejores colecciones del país.</p>
+<h3>Museo Americano de Historia Natural</h3>
+<p>Un recurso increíble para aprender sobre la historia natural y cultural, incluidos fósiles y culturas indígenas. Tiempo recomendado: 3 a 4 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Museo+Americano+de+Historia+Natural+USA" target="_blank">📖 Museo Americano de Historia Natural</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Museo+Americano+de+Historia+Natural+USA" target="_blank">📍 Maps</a>
+</p>
+<h3>Lincoln Center for the Performing Arts</h3>
+<p>Visita el famoso centro cultural que alberga ópera, ballet, y conciertos, un icono del arte clásico en Nueva York. Tiempo recomendado: 1 a 2 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Lincoln+Center+for+the+Performing+Arts+USA" target="_blank">📖 Lincoln Center</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Lincoln+Center+for+the+Performing+Arts+USA" target="_blank">📍 Maps</a>
+</p>
+<h3>Grand Central Terminal</h3>
+<p>Admira esta icónica estación, su arquitectura y su historia como punto clave en el desarrollo de transporte. Tiempo para visitar: 1 hora.</p>
+<p>
+<a href="https://www.google.com/search?q=Grand+Central+Terminal+USA" target="_blank">📖 Grand Central Terminal</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Grand+Central+Terminal+USA" target="_blank">📍 Maps</a>
+</p>
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=The+Smith+NYC" target="_blank">The Smith</a>, cocina americana moderna cerca de Midtown.</p>
+<p><strong>Alojamiento:</strong> <a href="https://www.google.com/search?q=Hoteles+en+Midtown+Manhattan" target="_blank">Hoteles en Midtown Manhattan</a>.</p>
+
+<h2>DÍA 3 — Greenwich Village y SoHo: Tradición e Innovación</h2>
+<p>Un día para vivir la atmósfera bohemia y artística, explorar barrios históricos con mucha cultura y arquitectura significativa.</p>
+<h3>Washington Square Park</h3>
+<p>Centro de la vida cultural del Village, rodeado de edificios históricos, con un arco emblemático. Ideal para pasear y observar artistas. Tiempo: 1 hora.</p>
+<p>
+<a href="https://www.google.com/search?q=Washington+Square+Park+USA" target="_blank">📖 Washington Square Park</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Washington+Square+Park+USA" target="_blank">📍 Maps</a>
+</p>
+<h3>SoHo Historic District</h3>
+<p>Zona famosa por sus edificios en hierro fundido y galerías de arte. Recomendado caminar y visitar tiendas locales y galerías. Tiempo: 2 a 3 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=SoHo+Historic+District+USA" target="_blank">📖 SoHo Historic District</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/SoHo+Historic+District+USA" target="_blank">📍 Maps</a>
+</p>
+<h3>The Stonewall Inn</h3>
+<p>Visita el lugar emblemático para la historia de los derechos LGBTQ+, con relevancia cultural e histórica moderna. Tiempo: 30-45 minutos.</p>
+<p>
+<a href="https://www.google.com/search?q=The+Stonewall+Inn+USA" target="_blank">📖 The Stonewall Inn</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/The+Stonewall+Inn+USA" target="_blank">📍 Maps</a>
+</p>
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=Carbone+NYC" target="_blank">Carbone</a>, para un clásico italiano en el corazón de Greenwich Village.</p>
+<p><strong>Alojamiento:</strong> <a href="https://www.google.com/search?q=Hoteles+en+Greenwich+Village" target="_blank">Hoteles en Greenwich Village</a>.</p>
+
+<h2>DÍA 4 — Washington D.C.: Capital y Monumentos Históricos</h2>
+<p>Viaje por carretera hacia la capital de EE.UU., explorando monumentos y museos que relatan la historia política y cultural del país.</p>
+<h3>National Mall</h3>
+<p>Área icónica donde se concentran monumentos, incluyendo el Lincoln Memorial y el Washington Monument, con amplio espacio para caminar y aprender. Dedicar al menos 3 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=National+Mall+Washington+DC" target="_blank">📖 National Mall</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/National+Mall+Washington+DC" target="_blank">📍 Maps</a>
+</p>
+<h3>Smithsonian National Museum of American History</h3>
+<p>Explora la historia estadounidense a través de objetos y exposiciones únicas. Tiempo recomendado: 2 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=National+Museum+of+American+History" target="_blank">📖 Smithsonian Museum of American History</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/National+Museum+of+American+History" target="_blank">📍 Maps</a>
+</p>
+<h3>United States Capitol</h3>
+<p>Visita guiada por el edificio del Congreso, epicentro político del país, para entender el sistema de gobierno americano. Tiempo: 1-1.5 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=United+States+Capitol" target="_blank">📖 United States Capitol</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/United+States+Capitol" target="_blank">📍 Maps</a>
+</p>
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=Old+Ebbitt+Grill+Washington+DC" target="_blank">Old Ebbitt Grill</a>, tradición y ambiente clásico cerca del National Mall.</p>
+<p><strong>Alojamiento:</strong> <a href="https://www.google.com/search?q=Hoteles+en+Washington+DC" target="_blank">Hoteles en Washington DC</a>.</p>
+
+<h2>DÍA 5 — Más Historia en Washington D.C.</h2>
+<p>Continúa descubriendo los museos y monumentos que configuran la rica historia de la nación en la capital estadounidense.</p>
+<h3>National Air and Space Museum</h3>
+<p>Un museo fascinante que describe la historia de la aviación y exploración espacial, con exposiciones interactivas. Tiempo: 2-3 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=National+Air+and+Space+Museum" target="_blank">📖 National Air and Space Museum</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/National+Air+and+Space+Museum" target="_blank">📍 Maps</a>
+</p>
+<h3>Holocaust Memorial Museum</h3>
+<p>Un recorrido conmovedor y educativo sobre el Holocausto, fundamental para entender la historia del siglo XX. Tiempo: 2 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Holocaust+Memorial+Museum+Washington+DC" target="_blank">📖 Holocaust Memorial Museum</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Holocaust+Memorial+Museum+Washington+DC" target="_blank">📍 Maps</a>
+</p>
+<h3>Georgetown Historic District</h3>
+<p>Recorre este barrio histórico con arquitectura colonial, tiendas y calles con encanto. Tiempo recomendado: 2 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Georgetown+Historic+District+Washington+DC" target="_blank">📖 Georgetown Historic District</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Georgetown+Historic+District+Washington+DC" target="_blank">📍 Maps</a>
+</p>
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=Fiola+Mare+Washington+DC" target="_blank">Fiola Mare</a>, excelente cocina italiana frente al río Potomac.</p>
+<p><strong>Alojamiento:</strong> <a href="https://www.google.com/search?q=Hoteles+en+Washington+DC" target="_blank">Hoteles en Washington DC</a>.</p>
+
+<h2>DÍA 6 — Philadelphia: Cuna de la Independencia</h2>
+<p>Salida hacia Philadelphia para sumergirse en la historia colonial y el nacimiento de Estados Unidos.</p>
+<h3>Independence Hall</h3>
+<p>Donde se firmó la Declaración de Independencia y la Constitución. Excelentes visitas guiadas. Tiempo: 1.5 a 2 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Independence+Hall+Philadelphia" target="_blank">📖 Independence Hall</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Independence+Hall+Philadelphia" target="_blank">📍 Maps</a>
+</p>
+<h3>Liberty Bell</h3>
+<p>Icono de la independencia con una historia cargada de simbolismo. Tiempo: 30-45 minutos.</p>
+<p>
+<a href="https://www.google.com/search?q=Liberty+Bell+Philadelphia" target="_blank">📖 Liberty Bell</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Liberty+Bell+Philadelphia" target="_blank">📍 Maps</a>
+</p>
+<h3>Elfreth's Alley</h3>
+<p>La calle residencial más antigua de América, con casas del siglo XVIII, una joya para los amantes de la historia. Tiempo: 1 hora.</p>
+<p>
+<a href="https://www.google.com/search?q=Elfreth's+Alley+Philadelphia" target="_blank">📖 Elfreth's Alley</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Elfreth's+Alley+Philadelphia" target="_blank">📍 Maps</a>
+</p>
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=Reading+Terminal+Market+Philadelphia" target="_blank">Reading Terminal Market</a>, excelente para degustar la gastronomía local.</p>
+<p><strong>Alojamiento:</strong> <a href="https://www.google.com/search?q=Hoteles+en+Philadelphia" target="_blank">Hoteles en Philadelphia</a>.</p>
+
+<h2>DÍA 7 — Más Historia en Philadelphia y Viaje a Baltimore</h2>
+<p>Termina la exploración histórica en Philadelphia y luego conduce hacia Baltimore con su propio patrimonio cultural.</p>
+<h3>Philadelphia Museum of Art</h3>
+<p>Famoso por su colección de arte y por la escalinata de "Rocky". Tiempo recomendado: 2 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Philadelphia+Museum+of+Art" target="_blank">📖 Philadelphia Museum of Art</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Philadelphia+Museum+of+Art" target="_blank">📍 Maps</a>
+</p>
+<h3>Fort McHenry National Monument and Historic Shrine</h3>
+<p>Crucial en la defensa durante la Guerra de 1812 y origen del himno nacional. Tiempo: 2 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Fort+McHenry+Baltimore" target="_blank">📖 Fort McHenry</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Fort+McHenry+Baltimore" target="_blank">📍 Maps</a>
+</p>
+<h3>Inner Harbor</h3>
+<p>Hermoso puerto con museos, restaurantes y tiendas, perfecto para pasear al atardecer. Tiempo: 1.5 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Inner+Harbor+Baltimore" target="_blank">📖 Inner Harbor</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Inner+Harbor+Baltimore" target="_blank">📍 Maps</a>
+</p>
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=LP+Steamers+Baltimore" target="_blank">LP Steamers</a>, especialidad en mariscos frescos.</p>
+<p><strong>Alojamiento:</strong> <a href="https://www.google.com/search?q=Hoteles+en+Baltimore" target="_blank">Hoteles en Baltimore</a>.</p>
+
+<h2>DÍA 8 — Charleston: Encanto Sureño e Historia Colonial</h2>
+<p>Viaje largo hacia el sur hasta Charleston, una joya histórica con una arquitectura y cultura colonial únicas.</p>
+<h3>Historic District de Charleston</h3>
+<p>Pasea por sus calles empedradas y casas históricas, descubriendo la historia colonial sureña. Tiempo: 3 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Historic+District+Charleston" target="_blank">📖 Historic District Charleston</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Historic+District+Charleston" target="_blank">📍 Maps</a>
+</p>
+<h3>Fort Sumter National Monument</h3>
+<p>El lugar donde comenzó la Guerra Civil, accesible en ferry. Imprescindible para amantes de la historia. Tiempo recomendado: 2 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Fort+Sumter+National+Monument" target="_blank">📖 Fort Sumter</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Fort+Sumter+National+Monument" target="_blank">📍 Maps</a>
+</p>
+<h3>Rainbow Row</h3>
+<p>Famosas casas pintadas de colores pastel, perfectas para fotografías y para apreciar la arquitectura tradicional. Tiempo: 30 minutos.</p>
+<p>
+<a href="https://www.google.com/search?q=Rainbow+Row+Charleston" target="_blank">📖 Rainbow Row</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Rainbow+Row+Charleston" target="_blank">📍 Maps</a>
+</p>
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=HUSK+Charleston" target="_blank">HUSK</a>, cocina sureña contemporánea con ingredientes locales.</p>
+<p><strong>Alojamiento:</strong> <a href="https://www.google.com/search?q=Hoteles+en+Charleston" target="_blank">Hoteles en Charleston</a>.</p>
+
+<h2>DÍA 9 — Charleston y Destilería Local</h2>
+<p>Explora más de Charleston y su industria histórica con visitas a destilerías y museos locales.</p>
+<h3>Charles Pinckney National Historic Site</h3>
+<p>Explora la plantación y aprende sobre los primeros años de la Constitución estadounidense. Tiempo: 2 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Charles+Pinckney+National+Historic+Site" target="_blank">📖 Charles Pinckney National Historic Site</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Charles+Pinckney+National+Historic+Site" target="_blank">📍 Maps</a>
+</p>
+<h3>Kentucky Derby-esque Distillery Tour - Charleston Distilling Co.</h3>
+<p>Visita guiada para conocer la tradición de destilados en Charleston, aprendizaje y degustación. Tiempo: 1.5 a 2 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Charleston+Distilling+Co" target="_blank">📖 Charleston Distilling Co</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Charleston+Distilling+Co" target="_blank">📍 Maps</a>
+</p>
+<h3>Sullivan's Island</h3>
+<p>Relájate en esta playa histórica, lugar estratégico de guerras coloniales. Tiempo para pasear: 2 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Sullivan's+Island+Charleston" target="_blank">📖 Sullivan's Island</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Sullivan's+Island+Charleston" target="_blank">📍 Maps</a>
+</p>
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=FIG+Charleston" target="_blank">FIG</a>, cocina local con filosofía de temporada y sostenibilidad.</p>
+<p><strong>Alojamiento:</strong> <a href="https://www.google.com/search?q=Hoteles+en+Charleston" target="_blank">Hoteles en Charleston</a>.</p>
+
+<h2>DÍA 10 — Savannah, Georgia: Belleza y Patrimonio Histórico</h2>
+<p>Conduce hasta Savannah, llenando el día con sus plazas históricas y arquitectura sureña cargada de historia.</p>
+<h3>Savannah Historic District</h3>
+<p>Explora sus calles llenas de casas antiguas, plazas arboladas y estatuas históricas. Tiempo: 3 a 4 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Savannah+Historic+District" target="_blank">📖 Savannah Historic District</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Savannah+Historic+District" target="_blank">📍 Maps</a>
+</p>
+<h3>Juliette Gordon Low Birthplace</h3>
+<p>Casa natal de la fundadora de las Girl Scouts. Aprende sobre su vida e impacto social. Tiempo: 1.5 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Juliette+Gordon+Low+Birthplace" target="_blank">📖 Juliette Gordon Low Birthplace</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Juliette+Gordon+Low+Birthplace" target="_blank">📍 Maps</a>
+</p>
+<h3>Oakland Cemetery</h3>
+<p>Cementerio histórico con esculturas, monumentos y tumbas de personajes importantes. Tiempo: 1.5 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Oakland+Cemetery+Savannah" target="_blank">📖 Oakland Cemetery</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Oakland+Cemetery+Savannah" target="_blank">📍 Maps</a>
+</p>
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=Mrs.+Wilkes%27s+Dining+Room+Savannah" target="_blank">Mrs. Wilkes's Dining Room</a>, cocina sureña tradicional en un ambiente familiar.</p>
+<p><strong>Alojamiento:</strong> <a href="https://www.google.com/search?q=Hoteles+en+Savannah" target="_blank">Hoteles en Savannah</a>.</p>
+
+<h2>DÍA 11 — Charleston a Nashville, Tennessee: De la Cultura Sureña a la Música</h2>
+<p>Viaje largo hacia Nashville, cuna de la música country y rica en historia cultural.</p>
+<h3>Country Music Hall of Fame and Museum</h3>
+<p>Aprende la historia de la música country y su impacto en la cultura americana. Tiempo: 2 a 3 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Country+Music+Hall+of+Fame+and+Museum" target="_blank">📖 Country Music Hall of Fame</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Country+Music+Hall+of+Fame+and+Museum" target="_blank">📍 Maps</a>
+</p>
+<h3>Ryman Auditorium</h3>
+<p>Visita este histórico teatro, considerado la "Madre Iglesia de la Música Country". Tiempo recomendado: 1-1.5 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Ryman+Auditorium" target="_blank">📖 Ryman Auditorium</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Ryman+Auditorium" target="_blank">📍 Maps</a>
+</p>
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=Hattie+B%27s+Hot+Chicken+Nashville" target="_blank">Hattie B's Hot Chicken</a>, icono culinario local.</p>
+<p><strong>Alojamiento:</strong> <a href="https://www.google.com/search?q=Hoteles+en+Nashville" target="_blank">Hoteles en Nashville</a>.</p>
+
+<h2>DÍA 12 — Nashville: Historia Musical y Cultura del Sur</h2>
+<p>Más exploración en Nashville en lugares fundamentales para la música y la cultura local.</p>
+<h3>Musicians Hall of Fame and Museum</h3>
+<p>Reconoce la contribución de músicos de todos los géneros y estilos. Tiempo: 1.5 a 2 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Musicians+Hall+of+Fame+and+Museum" target="_blank">📖 Musicians Hall of Fame</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Musicians+Hall+of+Fame+and+Museum" target="_blank">📍 Maps</a>
+</p>
+<h3>The Parthenon</h3>
+<p>Rélica del Partenón en Atenas, símbolo de la cultura y arte clásico en el corazón de Nashville. Tiempo: 1 hora.</p>
+<p>
+<a href="https://www.google.com/search?q=The+Parthenon+Nashville" target="_blank">📖 The Parthenon Nashville</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/The+Parthenon+Nashville" target="_blank">📍 Maps</a>
+</p>
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=Loveless+Cafe+Nashville" target="_blank">Loveless Cafe</a>, especialidad en comida sureña casera.</p>
+<p><strong>Alojamiento:</strong> <a href="https://www.google.com/search?q=Hoteles+en+Nashville" target="_blank">Hoteles en Nashville</a>.</p>
+
+<h2>DÍA 13 — Memphis: Blues, Rock y Civil Rights</h2>
+<p>Desplázate a Memphis para visitar lugares emblemáticos del blues, rock and roll y la historia de los derechos civiles.</p>
+<h3>Graceland</h3>
+<p>Mansión de Elvis Presley, museo de la leyenda del rock and roll. Tiempo recomendado: 2 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Graceland+Memphis" target="_blank">📖 Graceland</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Graceland+Memphis" target="_blank">📍 Maps</a>
+</p>
+<h3>National Civil Rights Museum</h3>
+<p>Sede del antiguo Motel Lorraine, donde fue asesinado Martin Luther King Jr., complejo que documenta la lucha por los derechos civiles. Dedicar 2 a 3 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=National+Civil+Rights+Museum+Memphis" target="_blank">📖 National Civil Rights Museum</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/National+Civil+Rights+Museum+Memphis" target="_blank">📍 Maps</a>
+</p>
+<h3>Beale Street</h3>
+<p>Calle histórica del blues con música en vivo, tiendas y ambiente cultural. Recomendado pasear y disfrutar la atmósfera. Tiempo: 1.5 a 2 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Beale+Street+Memphis" target="_blank">📖 Beale Street</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Beale+Street+Memphis" target="_blank">📍 Maps</a>
+</p>
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=Gus%27s+World+Famous+Fried+Chicken+Memphis" target="_blank">Gus's Fried Chicken</a>, emblemático del sur de Estados Unidos.</p>
+<p><strong>Alojamiento:</strong> <a href="https://www.google.com/search?q=Hoteles+en+Memphis" target="_blank">Hoteles en Memphis</a>.</p>
+
+<h2>DÍA 14 — Nueva Orleans: Ritmo, Historia y Arquitectura</h2>
+<p>Viaje hacia Nueva Orleans para disfrutar de su mezcla única de historia, cultura criolla y vibrante música.</p>
+<h3>French Quarter</h3>
+<p>Corazón histórico de la ciudad con arquitectura colonial francesa, tiendas, restaurantes y música callejera. Tiempo: 3 a 4 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=French+Quarter+New+Orleans" target="_blank">📖 French Quarter</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/French+Quarter+New+Orleans" target="_blank">📍 Maps</a>
+</p>
+<h3>St. Louis Cathedral</h3>
+<p>La catedral más antigua del país en operación, un icono arquitectónico y religioso de Nueva Orleans. Tiempo: 30 minutos.</p>
+<p>
+<a href="https://www.google.com/search?q=St.+Louis+Cathedral+New+Orleans" target="_blank">📖 St. Louis Cathedral</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/St.+Louis+Cathedral+New+Orleans" target="_blank">📍 Maps</a>
+</p>
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=Commander%27s+Palace+New+Orleans" target="_blank">Commander’s Palace</a>, alta cocina criolla.</p>
+<p><strong>Alojamiento:</strong> <a href="https://www.google.com/search?q=Hoteles+en+New+Orleans" target="_blank">Hoteles en Nueva Orleans</a>.</p>
+
+<h2>DÍA 15 — Nueva Orleans: Historia Afroamericana y Jazz</h2>
+<p>Profundiza en la cultura y la historia afroamericana que ha moldeado la ciudad y el nacimiento del jazz.</p>
+<h3>National WWII Museum</h3>
+<p>Exhibiciones interactivas y emocionantes sobre la Segunda Guerra Mundial, importante para la historia estadounidense y mundial. Tiempo: 3 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=National+WWII+Museum+New+Orleans" target="_blank">📖 National WWII Museum</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/National+WWII+Museum+New+Orleans" target="_blank">📍 Maps</a>
+</p>
+<h3>Louis Armstrong Park</h3>
+<p>Monumento a uno de los grandes músicos de jazz, ubicado en un barrio con historia afroamericana importante. Tiempo: 1 hora.</p>
+<p>
+<a href="https://www.google.com/search?q=Louis+Armstrong+Park+New+Orleans" target="_blank">📖 Louis Armstrong Park</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Louis+Armstrong+Park+New+Orleans" target="_blank">📍 Maps</a>
+</p>
+<h3>Preservation Hall</h3>
+<p>Un lugar histórico de jazz donde disfrutar conciertos íntimos y auténticos. Tiempo para visita y concierto: 2 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Preservation+Hall+New+Orleans" target="_blank">📖 Preservation Hall</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Preservation+Hall+New+Orleans" target="_blank">📍 Maps</a>
+</p>
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=Dooky+Chase%27s+Restaurant" target="_blank">Dooky Chase's Restaurant</a>, emblemático de la cocina afroamericana.</p>
+<p><strong>Alojamiento:</strong> <a href="https://www.google.com/search?q=Hoteles+en+New+Orleans" target="_blank">Hoteles en Nueva Orleans</a>.</p>
+
+<h2>DÍA 16 — Austin, Texas: Capital Cultural y Musical</h2>
+<p>Viaje hacia Austin, conocida por su vibrante escena musical y su rica cultura texana.</p>
+<h3>Texas State Capitol</h3>
+<p>Visita guiada por uno de los capitolios más grandes y hermosos del país, con historia y arquitectura impresionante. Tiempo: 1 a 1.5 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Texas+State+Capitol+Austin" target="_blank">📖 Texas State Capitol</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Texas+State+Capitol+Austin" target="_blank">📍 Maps</a>
+</p>
+<h3>LBJ Presidential Library</h3>
+<p>Museo dedicado a Lyndon B. Johnson, 36º presidente de EE.UU., con exposiciones sobre la historia política del siglo XX. Tiempo: 2 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=LBJ+Presidential+Library" target="_blank">📖 LBJ Presidential Library</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/LBJ+Presidential+Library" target="_blank">📍 Maps</a>
+</p>
+<h3>Sixth Street Historic District</h3>
+<p>Famosa calle de música en vivo, restaurantes y ambiente cultural único de Austin. Tiempo recomendado: 2 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Sixth+Street+Historic+District+Austin" target="_blank">📖 Sixth Street Historic District</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Sixth+Street+Historic+District+Austin" target="_blank">📍 Maps</a>
+</p>
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=Franklin+Barbecue" target="_blank">Franklin Barbecue</a>, BBQ texano famoso.</p>
+<p><strong>Alojamiento:</strong> <a href="https://www.google.com/search?q=Hoteles+en+Austin" target="_blank">Hoteles en Austin</a>.</p>
+
+<h2>DÍA 17 — San Antonio, Texas: Historia Colonial y el Álamo</h2>
+<p>Un corto viaje a San Antonio para explorar el famoso Álamo y la historia colonial española en Texas.</p>
+<h3>El Álamo</h3>
+<p>Sitio histórico fundamental en la independencia de Texas, visita imperdible para conocer el pasado colonial y revolucionario. Tiempo: 1.5 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=El+Álamo+San+Antonio" target="_blank">📖 El Álamo</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/El+Álamo+San+Antonio" target="_blank">📍 Maps</a>
+</p>
+<h3>River Walk</h3>
+<p>Paseo junto al río con restaurantes, tiendas y ambiente cultural vibrante; ideal para caminar y relajarse. Tiempo: 2 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=San+Antonio+River+Walk" target="_blank">📖 San Antonio River Walk</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/San+Antonio+River+Walk" target="_blank">📍 Maps</a>
+</p>
+<h3>Spanish Governor's Palace</h3>
+<p>Antigua residencia del gobernador español, muestra la arquitectura colonial española y la historia regional. Tiempo: 1 hora.</p>
+<p>
+<a href="https://www.google.com/search?q=Spanish+Governor's+Palace" target="_blank">📖 Spanish Governor's Palace</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Spanish+Governor's+Palace" target="_blank">📍 Maps</a>
+</p>
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=Boudro's+on+the+Riverwalk" target="_blank">Boudro's on the Riverwalk</a>, cocina tex-mex junto al río.</p>
+<p><strong>Alojamiento:</strong> <a href="https://www.google.com/search?q=Hoteles+en+San+Antonio" target="_blank">Hoteles en San Antonio</a>.</p>
+
+<h2>DÍA 18 — Santa Fe, Nuevo México: Arte y Cultura Indígena</h2>
+<p>Viaje a Santa Fe, una ciudad rica en cultura indígena, arte y arquitectura adobe tradicional.</p>
+<h3>Santa Fe Plaza</h3>
+<p>Centro histórico con mercados, tiendas de arte y edificios históricos. Tiempo: 2 a 3 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Santa+Fe+Plaza" target="_blank">📖 Santa Fe Plaza</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Santa+Fe+Plaza" target="_blank">📍 Maps</a>
+</p>
+<h3>Palace of the Governors</h3>
+<p>Edificio histórico colonial español que ahora alberga un museo destacado con arte y exposiciones culturales. Tiempo: 1.5 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Palace+of+the+Governors+Santa+Fe" target="_blank">📖 Palace of the Governors</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Palace+of+the+Governors+Santa+Fe" target="_blank">📍 Maps</a>
+</p>
+<h3>Georgia O'Keeffe Museum</h3>
+<p>Descubre la vida y obra de la artista icónica que inmortalizó el paisaje de Nuevo México. Tiempo: 2 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Georgia+O%27Keeffe+Museum" target="_blank">📖 Georgia O'Keeffe Museum</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Georgia+O%27Keeffe+Museum" target="_blank">📍 Maps</a>
+</p>
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=Café+Pasqual's+Santa+Fe" target="_blank">Café Pasqual's</a>, comida local con toque artesanal.</p>
+<p><strong>Alojamiento:</strong> <a href="https://www.google.com/search?q=Hoteles+en+Santa+Fe" target="_blank">Hoteles en Santa Fe</a>.</p>
+
+<h2>DÍA 19 — Albuquerque, Nuevo México: Historia y Tradición</h2>
+<p>Viaje corto a Albuquerque para conocer su centro histórico y tradiciones nativas americanas.</p>
+<h3>Old Town Albuquerque</h3>
+<p>Centro histórico fundado en 1706, con arquitectura española, tiendas de artesanía y museos. Tiempo: 3 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Old+Town+Albuquerque" target="_blank">📖 Old Town Albuquerque</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Old+Town+Albuquerque" target="_blank">📍 Maps</a>
+</p>
+<h3>Indian Pueblo Cultural Center</h3>
+<p>Museo y centro cultural dedicado a las culturas indígenas de Nuevo México. Tiempo recomendado: 2 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Indian+Pueblo+Cultural+Center" target="_blank">📖 Indian Pueblo Cultural Center</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Indian+Pueblo+Cultural+Center" target="_blank">📍 Maps</a>
+</p>
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=The+Range+Cafe+Albuquerque" target="_blank">The Range Cafe</a>, cocina local y auténtica.</p>
+<p><strong>Alojamiento:</strong> <a href="https://www.google.com/search?q=Hoteles+en+Albuquerque" target="_blank">Hoteles en Albuquerque</a>.</p>
+
+<h2>DÍA 20 — Monument Valley: Paisajes y Cultura Navajo</h2>
+<p>Viaje a Monument Valley para conocer sus paisajes legendarios y la cultura Navajo.</p>
+<h3>Monument Valley Navajo Tribal Park</h3>
+<p>Exuberantes formaciones rocosas y oportunidad de tours guiados que explican la cultura Navajo. Tiempo: 3 a 4 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Monument+Valley+Navajo+Tribal+Park" target="_blank">📖 Monument Valley Navajo Tribal Park</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Monument+Valley+Navajo+Tribal+Park" target="_blank">📍 Maps</a>
+</p>
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=Merrick+Lodge+Monument+Valley" target="_blank">Merrick Lodge</a>, cocina local en la reserva Navajo.</p>
+<p><strong>Alojamiento:</strong> <a href="https://www.google.com/search?q=Alojamientos+en+Monument+Valley" target="_blank">Alojamientos en Monument Valley</a>.</p>
+
+<h2>DÍA 21 — Grand Canyon South Rim: Maravilla Natural e Historia</h2>
+<p>Visita uno de los iconos naturales más famosos del mundo junto a información sobre la historia de nativos americanos.</p>
+<h3>Grand Canyon National Park – South Rim</h3>
+<p>Explora los miradores, senderos y centro de visitantes para aprender sobre la geología y la cultura ancestral. Tiempo mínimo: 4 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Grand+Canyon+South+Rim" target="_blank">📖 Grand Canyon South Rim</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Grand+Canyon+South+Rim" target="_blank">📍 Maps</a>
+</p>
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=El+Tovar+Dining+Room" target="_blank">El Tovar Dining Room</a>, con vistas al cañón y cocina histórica.</p>
+<p><strong>Alojamiento:</strong> <a href="https://www.google.com/search?q=Hoteles+en+Grand+Canyon+South+Rim" target="_blank">Hoteles en Grand Canyon South Rim</a>.</p>
+
+<h2>DÍA 22 — Page, Arizona: Historia y Bellezas Naturales</h2>
+<p>Visita el torno del lago Powell y formaciones naturales para combinar cultura y naturaleza.</p>
+<h3>Antelope Canyon</h3>
+<p>Cañón de arena con increíbles formaciones de luz y sombra. Tour guiado obligatorio. Tiempo: 2 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Antelope+Canyon" target="_blank">📖 Antelope Canyon</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Antelope+Canyon" target="_blank">📍 Maps</a>
+</p>
+<h3>Glen Canyon Dam</h3>
+<p>Gran presa que forma el lago Powell, centro de ingeniería y arquitectura moderna. Tiempo: 1 hora.</p>
+<p>
+<a href="https://www.google.com/search?q=Glen+Canyon+Dam" target="_blank">📖 Glen Canyon Dam</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Glen+Canyon+Dam" target="_blank">📍 Maps</a>
+</p>
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=Big+John's+Texas+BBQ+Page" target="_blank">Big John's Texas BBQ</a>, cocina clásica del suroeste.</p>
+<p><strong>Alojamiento:</strong> <a href="https://www.google.com/search?q=Hoteles+en+Page" target="_blank">Hoteles en Page</a>.</p>
+
+<h2>DÍA 23 — Las Vegas, Nevada: Cultura, Historia y Entretenimiento</h2>
+<p>Viaje hacia Las Vegas para experimentar su historia temprana y vibrante cultura actual.</p>
+<h3>The Mob Museum</h3>
+<p>Museo que narra la historia del crimen organizado en EE.UU. y su impacto social. Tiempo: 2 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Mob+Museum+Las+Vegas" target="_blank">📖 Mob Museum</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Mob+Museum+Las+Vegas" target="_blank">📍 Maps</a>
+</p>
+<h3>Neon Museum</h3>
+<p>Exhibición al aire libre de antiguos letreros de neón, reflejo de la evolución cultural de la ciudad. Tiempo: 1.5 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Neon+Museum+Las+Vegas" target="_blank">📖 Neon Museum</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Neon+Museum+Las+Vegas" target="_blank">📍 Maps</a>
+</p>
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=Joël+Robuchon+Las+Vegas" target="_blank">Joël Robuchon</a>, alta cocina francesa.</p>
+<p><strong>Alojamiento:</strong> <a href="https://www.google.com/search?q=Hoteles+en+Las+Vegas" target="_blank">Hoteles en Las Vegas</a>.</p>
+
+<h2>DÍA 24 — Los Ángeles: Historia del Cine y Cultura Pop</h2>
+<p>Navega la zona que dio origen a Hollywood, combinando historia y entretenimiento.</p>
+<h3>Hollywood Walk of Fame</h3>
+<p>Paseo con las estrellas de los artistas más importantes del cine y la música. Tiempo: 1.5 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Hollywood+Walk+of+Fame" target="_blank">📖 Hollywood Walk of Fame</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Hollywood+Walk+of+Fame" target="_blank">📍 Maps</a>
+</p>
+<h3>Hollywood Museum</h3>
+<p>Exhibiciones sobre la historia del cine y la televisión, con objetos originales de películas clásicas. Tiempo: 1.5 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Hollywood+Museum" target="_blank">📖 Hollywood Museum</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Hollywood+Museum" target="_blank">📍 Maps</a>
+</p>
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=Musso+and+Frank+Grill+LA" target="_blank">Musso and Frank Grill</a>, histórico restaurante de Hollywood.</p>
+<p><strong>Alojamiento:</strong> <a href="https://www.google.com/search?q=Hoteles+en+Los+Ángeles" target="_blank">Hoteles en Los Ángeles</a>.</p>
+
+<h2>DÍA 25 — Los Ángeles y el Getty Center</h2>
+<p>Explora uno de los museos más importantes de arte y arquitectura, además de recorrer barrios emblemáticos.</p>
+<h3>Getty Center</h3>
+<p>Centro cultural que alberga arte europeo, jardines y una arquitectura deslumbrante. Tiempo: 3 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Getty+Center" target="_blank">📖 Getty Center</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Getty+Center" target="_blank">📍 Maps</a>
+</p>
+<h3>Venice Beach</h3>
+<p>Famosa por su estilo bohemio, murales y paseo junto al océano. Tiempo: 2 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Venice+Beach+LA" target="_blank">📖 Venice Beach</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Venice+Beach+LA" target="_blank">📍 Maps</a>
+</p>
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=The+Tasting+Kitchen+Venice" target="_blank">The Tasting Kitchen</a>, popular entre locales y visitantes.</p>
+<p><strong>Alojamiento:</strong> <a href="https://www.google.com/search?q=Hoteles+en+Los+Ángeles" target="_blank">Hoteles en Los Ángeles</a>.</p>
+
+<h2>DÍA 26 — San Francisco: Origen y Evolución</h2>
+<p>Vuelo o viaje por carretera a San Francisco para conocer la historia de esta ciudad icónica, desde la fiebre del oro hasta la tecnología.</p>
+<h3>Alcatraz Island</h3>
+<p>Visita la cárcel federal más famosa del mundo con tours históricos imperdibles. Tiempo: 3 horas incluyendo traslado en ferry.</p>
+<p>
+<a href="https://www.google.com/search?q=Alcatraz+Island" target="_blank">📖 Alcatraz Island</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Alcatraz+Island" target="_blank">📍 Maps</a>
+</p>
+<h3>Fisherman’s Wharf</h3>
+<p>Zona turística con historia pesquera, tiendas, museos y vistas al mar. Tiempo: 2 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Fisherman%27s+Wharf+San+Francisco" target="_blank">📖 Fisherman’s Wharf</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Fisherman%27s+Wharf+San+Francisco" target="_blank">📍 Maps</a>
+</p>
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=Boudin+Bakery+San+Francisco" target="_blank">Boudin Bakery</a>, famoso por su clam chowder en pan de masa fermentada.</p>
+<p><strong>Alojamiento:</strong> <a href="https://www.google.com/search?q=Hoteles+en+San+Francisco" target="_blank">Hoteles en San Francisco</a>.</p>
+
+<h2>DÍA 27 — San Francisco: Puente y Barrio Histórico</h2>
+<p>Continúa explorando los símbolos e historia de San Francisco con su famoso puente y barrios históricos.</p>
+<h3>Golden Gate Bridge</h3>
+<p>Icono mundial de ingeniería, con áreas para caminar y vistas insuperables. Tiempo: 1 a 2 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Golden+Gate+Bridge" target="_blank">📖 Golden Gate Bridge</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Golden+Gate+Bridge" target="_blank">📍 Maps</a>
+</p>
+<h3>Chinatown San Francisco</h3>
+<p>Uno de los barrios chinos más grandes y antiguos fuera de Asia, con tiendas, templos y cultura viva. Tiempo: 2 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Chinatown+San+Francisco" target="_blank">📖 Chinatown San Francisco</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Chinatown+San+Francisco" target="_blank">📍 Maps</a>
+</p>
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=Z&Y+Chinese+Restaurant+San+Francisco" target="_blank">Z&Y Chinese Restaurant</a>, reconocido por su auténtica comida china.</p>
+<p><strong>Alojamiento:</strong> <a href="https://www.google.com/search?q=Hoteles+en+San+Francisco" target="_blank">Hoteles en San Francisco</a>.</p>
+
+<h2>DÍA 28 — Seattle, Washington: Cultura Moderna y Espacios Naturales</h2>
+<p>Viaje a Seattle para combinar historia nativa, cultural y la importancia contemporánea de esta ciudad.</p>
+<h3>Pike Place Market</h3>
+<p>Mercado histórico con artesanías, pescadería y cultura local. Tiempo: 2 a 3 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Pike+Place+Market" target="_blank">📖 Pike Place Market</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Pike+Place+Market" target="_blank">📍 Maps</a>
+</p>
+<h3>Space Needle</h3>
+<p>Icono futurista de Seattle con mirador panorámico de la ciudad y alrededores. Tiempo: 1.5 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Space+Needle+Seattle" target="_blank">📖 Space Needle</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Space+Needle+Seattle" target="_blank">📍 Maps</a>
+</p>
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=Canlis+Seattle" target="_blank">Canlis</a>, gastronomía de alta calidad con vista al lago.</p>
+<p><strong>Alojamiento:</strong> <a href="https://www.google.com/search?q=Hoteles+en+Seattle" target="_blank">Hoteles en Seattle</a>.</p>
+
+<h2>DÍA 29 — Seattle y Museo de Historia y Industria</h2>
+<p>Dedica un día a profundizar en la historia tecnológica y cultural a través de un recorrido museístico emblemático.</p>
+<h3>Museum of History and Industry (MOHAI)</h3>
+<p>Exposiciones sobre la historia local, la innovación y los habitantes originarios. Tiempo: 2 a 3 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Museum+of+History+and+Industry+Seattle" target="_blank">📖 Museum of History and Industry</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Museum+of+History+and+Industry+Seattle" target="_blank">📍 Maps</a>
+</p>
+<h3>Freemont Troll</h3>
+<p>Escultura icónica bajo el puente de Freemont, ejemplo del arte comunitario y cultura local. Tiempo: 30 minutos.</p>
+<p>
+<a href="https://www.google.com/search?q=Freemont+Troll+Seattle" target="_blank">📖 Freemont Troll</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Freemont+Troll+Seattle" target="_blank">📍 Maps</a>
+</p>
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=The+Pink+Door+Seattle" target="_blank">The Pink Door</a>, excelente cocina italiana con ambiente único.</p>
+<p><strong>Alojamiento:</strong> <a href="https://www.google.com/search?q=Hoteles+en+Seattle" target="_blank">Hoteles en Seattle</a>.</p>
+
+<h2>DÍA 30 — Día de despedida en Seattle y vuelo de regreso</h2>
+<p>Disfruta tu último día con visitas relajadas y compra de recuerdos antes de partir.</p>
+<h3>Kerry Park</h3>
+<p>Vista panorámica inolvidable de Seattle con el skyline y el Monte Rainier en el fondo, ideal para fotografías. Tiempo: 1 hora.</p>
+<p>
+<a href="https://www.google.com/search?q=Kerry+Park+Seattle" target="_blank">📖 Kerry Park</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Kerry+Park+Seattle" target="_blank">📍 Maps</a>
+</p>
+<h3>Seattle Art Museum</h3>
+<p>Museo con exposiciones diversas que incluyen arte nativo americano y contemporáneo. Tiempo: 2 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Seattle+Art+Museum" target="_blank">📖 Seattle Art Museum</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Seattle+Art+Museum" target="_blank">📍 Maps</a>
+</p>
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=Elliott's+Seafood+Seattle" target="_blank">Elliott's Seafood</a>, despedida con mariscos frescos frente al mar.</p>
+<p><strong>Alojamiento:</strong> <a href="https://www.google.com/search?q=Hoteles+en+Seattle" target="_blank">Hoteles en Seattle</a>.</p></div>
+  </div>
+
+  <!-- TAB EXPERIENCIAS -->
+  <div class="tab-panel" id="tab-experiencias">
+    <div class="sec-eye">Imprescindibles</div>
+    <div class="sec-title">Experiencias destacadas</div>
+    <div class="ai-content"><h3>🌟 Visita al Museo Metropolitano de Arte en Nueva York</h3>
+<p>Este icónico museo alberga una de las colecciones de arte más completas del mundo, desde la antigüedad hasta el arte contemporáneo. Dedica al menos medio día para explorar sus diversas exposiciones. Consejo: Compra las entradas en línea para evitar largas filas.</p>
+
+<h3>🌟 Tour por el Parque Nacional de Yellowstone</h3>
+<p>Yellowstone es el primer parque nacional del mundo, famoso por sus géiseres y paisajes naturales impresionantes. Pasar un par de días aquí te permite disfrutar de la vida silvestre y las aguas termales. Consejo: Visita a primera hora para evitar las multitudes.</p>
+
+<h3>🌟 Recorrido por el National Mall en Washington D.C.</h3>
+<p>Este emblemático parque alberga monumentos y memoriales que conmemoran momentos clave de la historia americana. Se recomienda dedicar un día para explorar. Consejo: Lleva calzado cómodo y planifica las paradas principales.</p>
+
+<h3>🌟 Degustación de BBQ en Texas</h3>
+<p>La barbacoa de Texas es una experiencia culinaria única que refleja la historia y cultura del estado. Puedes disfrutar de una comida típica en un restaurante local en un par de horas. Consejo: Prueba diferentes tipos de carne y acompáñalo con una cerveza artesanal local.</p>
+
+<h3>🌟 Explorar el Centro Histórico de Nueva Orleans</h3>
+<p>Nueva Orleans es famosa por su mezcla cultural y su historia fascinante. Dedica un día a recorrer el Barrio Francés y disfrutar de la música en vivo. Consejo: Visita durante el festival de jazz para una experiencia cultural aún más rica.</p>
+
+<h3>🌟 Ruta 66: Un viaje por la carretera histórica</h3>
+<p>Conocida como "la carretera madre", recorrer la Ruta 66 te sumerge en la historia y la cultura americana. Planea un recorrido de varios días para disfrutar de sus paradas icónicas. Consejo: Lleva una cámara para capturar los paisajes y los vintage diners.</p>
+
+<h3>🌟 Visita a la Alhambra en Granada, California</h3>
+<p>Este castillo de estilo andaluz es una joya arquitectónica y cultural que refleja la influencia española en el sur de California. Una visita de medio día es ideal. Consejo: Reserva un tour guiado para conocer a fondo su historia.</p>
+
+<h3>🌟 Asistir a un espectáculo de Broadway en Nueva York</h3>
+<p>La experiencia de ver un musical o una obra en Broadway es un must en Nueva York. Dedica una noche para disfrutar de la vibrante escena teatral. Consejo: Compra las entradas con anticipación para obtener mejores asientos.</p></div>
+  </div>
+
+  <!-- TAB TOOLS -->
+  <div class="tab-panel" id="tab-tools">
+    <div class="sec-eye">Herramientas interactivas</div>
+    <div class="sec-title">Para tu viaje</div>
+    <div class="tools-tabs">
+      <button class="ttab active" onclick="switchTool(this,'conv')">💱 Moneda</button>
+      <button class="ttab" onclick="switchTool(this,'trans')">🗣 Frases</button>
+      <button class="ttab" onclick="switchTool(this,'calc')">💶 Presupuesto</button>
+      <button class="ttab" onclick="switchTool(this,'check')">🧳 Equipaje</button>
+    </div>
+    <div class="tools-desktop">
+      <div>
+        <div class="tool-section-title">💱 Conversor de moneda en tiempo real</div>
+        <div class="tool-panel active" id="conv">
+          <div class="conv-box">
+            <select class="conv-select" id="conv-to" onchange="convertCurrency()">
+              <option value="USD">$ Dólar USD</option><option value="GBP">£ Libra</option>
+              <option value="JPY">¥ Yen</option><option value="MXN">$ Peso MX</option>
+              <option value="BRL">R$ Real</option><option value="MAD">MAD Dírham</option>
+              <option value="TRY">₺ Lira turca</option><option value="THB">฿ Baht</option>
+              <option value="IDR">Rp Rupia</option><option value="AED">AED Dírham</option>
+              <option value="SGD">S$ Dólar SG</option><option value="PLN">zł Esloti</option>
+              <option value="CZK">Kč Corona CZ</option><option value="HUF">Ft Forinto</option>
+              <option value="RON">RON Leu</option><option value="DKK">kr Danesa</option>
+              <option value="SEK">kr Sueca</option><option value="NOK">kr Noruega</option>
+            </select>
+            <div class="conv-row">
+              <div class="conv-iw"><label>Euros €</label><input class="conv-input" type="number" id="conv-eur" value="100" oninput="convertCurrency()"></div>
+              <div class="conv-arrow">⇄</div>
+              <div class="conv-iw"><label id="conv-to-label">Destino</label><input class="conv-input" type="number" id="conv-foreign" oninput="convertBack()"></div>
+            </div>
+            <div class="conv-result"><div class="conv-amount" id="conv-display">—</div><div class="conv-rate" id="conv-rate">Cargando…</div></div>
+            <div class="conv-note">Tiempo real · open.er-api.com</div>
+          </div>
+        </div>
+        <br>
+        <div class="tool-section-title">🗣 Frases útiles con audio</div>
+        <div class="tool-panel" id="trans">
+          <div class="trans-wrap">
+            <div class="trans-lang"><span>Idioma:</span>
+              <select id="trans-lang-sel" onchange="updatePhrases()">
+                <option value="it">🇮🇹 Italiano</option><option value="fr">🇫🇷 Francés</option>
+                <option value="de">🇩🇪 Alemán</option><option value="pt">🇵🇹 Portugués</option>
+                <option value="ja">🇯🇵 Japonés</option><option value="ar">🇲🇦 Árabe</option>
+                <option value="tr">🇹🇷 Turco</option><option value="th">🇹🇭 Tailandés</option>
+                <option value="zh">🇨🇳 Chino</option><option value="el">🇬🇷 Griego</option>
+                <option value="pl">🇵🇱 Polaco</option><option value="nl">🇳🇱 Neerlandés</option>
+                <option value="ru">🇷🇺 Ruso</option><option value="cs">🇨🇿 Checo</option>
+                <option value="ro">🇷🇴 Rumano</option><option value="hr">🇭🇷 Croata</option>
+              </select>
+            </div>
+            <div class="trans-list" id="phrases-list"></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="tool-section-title">💶 Calculadora de presupuesto</div>
+        <div class="tool-panel" id="calc">
+          <div class="calc-box">
+            <div class="calc-row"><label>Días</label><input class="calc-input" type="number" id="c-dias" value="30" oninput="calcBudget()"></div>
+            <div class="calc-row"><label>Viajeros</label><input class="calc-input" type="number" id="c-viaj" value="4" oninput="calcBudget()"></div>
+            <div class="calc-row"><label>Alojamiento / noche €</label><input class="calc-input" type="number" id="c-aloj" value="80" oninput="calcBudget()"></div>
+            <div class="calc-row"><label>Comida / persona / día €</label><input class="calc-input" type="number" id="c-com" value="35" oninput="calcBudget()"></div>
+            <div class="calc-row"><label>Transporte total €</label><input class="calc-input" type="number" id="c-transp" value="200" oninput="calcBudget()"></div>
+            <div class="calc-row"><label>Actividades total €</label><input class="calc-input" type="number" id="c-act" value="150" oninput="calcBudget()"></div>
+            <div class="calc-result">
+              <div class="calc-result-title">RESUMEN</div>
+              <div class="calc-line"><span>Alojamiento</span><strong id="r-aloj">—</strong></div>
+              <div class="calc-line"><span>Comida</span><strong id="r-com">—</strong></div>
+              <div class="calc-line"><span>Transporte</span><strong id="r-transp">—</strong></div>
+              <div class="calc-line"><span>Actividades</span><strong id="r-act">—</strong></div>
+              <div class="calc-line total"><span>TOTAL</span><strong id="r-total">—</strong></div>
+              <div class="calc-line"><span>Por persona</span><strong id="r-pp">—</strong></div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="tool-section-title">🧳 Checklist de equipaje</div>
+        <div class="tool-panel" id="check">
+          <div class="check-progress"><div class="check-bar-wrap"><div class="check-bar" id="check-bar" style="width:0%"></div></div><div class="check-pct" id="check-pct">0%</div></div>
+          <div class="check-cats">
+            <button class="check-cat-btn active" onclick="switchCat(this,'ropa')">👕 Ropa</button>
+            <button class="check-cat-btn" onclick="switchCat(this,'docs')">📄 Docs</button>
+            <button class="check-cat-btn" onclick="switchCat(this,'tech')">📱 Tech</button>
+            <button class="check-cat-btn" onclick="switchCat(this,'salud')">💊 Salud</button>
+            <button class="check-cat-btn" onclick="switchCat(this,'extras')">✨ Extras</button>
+          </div>
+          <div class="checklist" id="checklist-items"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB DESTINO -->
+  <div class="tab-panel" id="tab-destino">
+    <div class="sec-eye">Antes de partir</div>
+    <div class="sec-title">Guía del destino</div>
+    <div class="ai-content"><h2>Clima y mejor época</h2>
+<p>Estados Unidos tiene una gran variedad climática debido a su extensión. En general, los meses más agradables para visitar son primavera (abril-junio) y otoño (septiembre-noviembre) por temperaturas suaves y clima estable.</p>
+<ul>
+  <li><strong>Invierno (dic-feb):</strong> frío en norte y este, nieve en zonas montañosas, templado en sur y Florida.</li>
+  <li><strong>Primavera (mar-may):</strong> clima templado, ideal para actividades al aire libre.</li>
+  <li><strong>Verano (jun-ago):</strong> caluroso y húmedo, especialmente en sur y sureste. Protección solar imprescindible.</li>
+  <li><strong>Otoño (sep-nov):</strong> temperaturas agradables, menos turistas.</li>
+</ul>
+<p>Ropa recomendada: ropa ligera y cómoda para verano, chaqueta o abrigo para invierno y capas para primavera y otoño.</p>
+
+<h2>Moneda y pagos</h2>
+<p>La moneda oficial es el dólar estadounidense (USD). El tipo de cambio varía, pero 1 euro suele equivaler aproximadamente a 1.05-1.15 USD.</p>
+<p>La mayoría de establecimientos aceptan tarjetas de crédito y débito internacionales, especialmente Visa y Mastercard. Es aconsejable llevar algo de efectivo para pequeños pagos o lugares remotos.</p>
+
+<h2>Electricidad y adaptadores</h2>
+<p>El voltaje estándar es 120 V y la frecuencia 60 Hz.</p>
+<p>Los enchufes son tipo A y B, con clavijas planas.</p>
+<p>Es necesario un adaptador para enchufes europeos y, en algunos casos, un convertidor de voltaje si tus aparatos no soportan 120 V.</p>
+
+<h2>Idioma y comunicación</h2>
+<p>El idioma oficial es el inglés.</p>
+<p>En grandes ciudades y zonas turísticas el idioma es el predominante, aunque en algunas regiones hay presencia significativa de español.</p>
+<p>Apps útiles para comunicarte incluyen:</p>
+<ul>
+  <li><a href="https://www.google.com/intl/es_es/translate/" target="_blank">Google Translate</a> - traducción en tiempo real.</li>
+  <li><a href="https://www.duolingo.com/" target="_blank">Duolingo</a> - para aprender frases básicas antes del viaje.</li>
+  <li><a href="https://www.whatsapp.com/" target="_blank">WhatsApp</a> - para comunicarte con familiares y amigos usando WiFi o datos.</li>
+</ul>
+
+<h2>Visado y entrada</h2>
+<p>Ciudadanos españoles y europeos pueden entrar a EE.UU. con el programa de exención de visa (ESTA) para estancias de hasta 90 días por turismo o negocios.</p>
+<ul>
+  <li>Es obligatorio tramitar el ESTA online antes del viaje.</li>
+  <li>Pasaporte biométrico en vigor y válido durante toda la estancia.</li>
+  <li>No se permite prórroga ni cambio de estatus sin salir del país.</li>
+</ul>
+<p>Para estancias mayores o diferentes motivos, es necesario solicitar visado correspondiente en la embajada o consulado.</p>
+
+<h2>Vacunas y salud</h2>
+<p>No hay vacunas obligatorias para entrar desde Europa, pero se recomienda estar al día con las vacunas rutinarias.</p>
+<p>Se aconseja vacunarse contra la gripe y en caso de viajes a zonas rurales consultar vacunas adicionales.</p>
+<p>El agua del grifo es potable en la mayoría de las zonas urbanas.</p>
+<p>Es muy recomendable contratar un seguro médico de viaje que cubra emergencias y gastos médicos, pues la sanidad privada en EE.UU. es muy costosa.</p>
+
+<h2>Seguridad</h2>
+<p>Estados Unidos es generalmente seguro para turistas, pero hay que tomar precauciones habituales.</p>
+<ul>
+  <li>Evitar zonas marginales o con alta criminalidad, especialmente de noche.</li>
+  <li>Prestar atención a pertenencias en lugares concurridos para evitar robos o carteristas.</li>
+  <li>Seguir indicaciones de autoridades locales y mantener contactos de emergencia.</li>
+</ul>
+<p>Consulta mapas y recomendaciones actualizadas para cada ciudad que visites.</p>
+
+<h2>Costumbres y etiqueta</h2>
+<p>En EE.UU. la cortesía y puntualidad son muy valoradas. El trato es generalmente informal pero respetuoso.</p>
+<ul>
+  <li>Las propinas son habituales y esperadas: 15-20% en restaurantes, 1-2 USD por servicio de maleteros, taxis o camareros.</li>
+  <li>Vestimenta: casual en la mayoría de lugares, formal solo en eventos especiales.</li>
+  <li>En templos religiosos es recomendable vestir de manera conservadora, cubrir hombros y evitar prendas muy cortas.</li>
+</ul>
+
+<h2>Apps imprescindibles</h2>
+<ul>
+  <li><a href="https://www.uber.com/" target="_blank">Uber</a> - transporte privado en ciudades.</li>
+  <li><a href="https://www.google.com/maps" target="_blank">Google Maps</a> - mapas y navegación.</li>
+  <li><a href="https://www.transitapp.com/" target="_blank">Transit</a> - información transporte público.</li>
+  <li><a href="https://www.google.com/intl/es_es/finance/" target="_blank">Currency Converter</a> - conversor de moneda.</li>
+  <li><a href="https://www.google.com/intl/es_es/translate/" target="_blank">Google Translate</a> - traducción instantánea.</li>
+  <li><a href="https://paypal.com" target="_blank">PayPal</a> - para pagos y transferencias.</li>
+</ul></div>
+  </div>
+
+  <!-- TAB TRANSPORTE -->
+  <div class="tab-panel" id="tab-transporte">
+    <div class="sec-eye">Moverse por USA</div>
+    <div class="sec-title">Transporte</div>
+    <div class="ad"><div class="ad-badge">AD</div><div><strong>Alquiler de coche</strong><span>→ Rent a car · comparativa</span></div></div>
+    <div class="ai-content" style="margin-top:12px"><h2>Cómo llegar desde España</h2>
+<p>Desde España, existen varios vuelos directos a los principales aeropuertos de Estados Unidos. Los vuelos directos más comunes salen desde Madrid-Barajas (MAD) y Barcelona-El Prat (BCN).</p>
+<ul>
+  <li><strong>Vuelos directos:</strong> Madrid a Nueva York (JFK, EWR), Los Ángeles (LAX), Miami (MIA), Chicago (ORD)</li>
+  <li><strong>Tiempo aproximado de vuelo:</strong> Entre 7 y 10 horas dependiendo del destino</li>
+  <li><strong>Aeropuertos principales USA:</strong> John F. Kennedy (JFK), Newark Liberty (EWR), Los Ángeles (LAX), Miami (MIA), Chicago O'Hare (ORD), San Francisco (SFO)</li>
+</ul>
+
+<h2>Transporte desde el aeropuerto</h2>
+<p>Al llegar a los principales aeropuertos, existen varias opciones para trasladarse al centro o a su destino final:</p>
+<ul>
+  <li><strong>Shuttle buses:</strong> Disponibles en casi todos los aeropuertos, precio aproximado entre 15-30 USD, tiempo variable según distancia (20-60 minutos)</li>
+  <li><strong>Metro o tren:</strong> Por ejemplo, desde JFK el AirTrain conecta con el metro de Nueva York (precio aprox. 7,75 USD, 45 minutos)</li>
+  <li><strong>Taxi:</strong> Taxi oficial del aeropuerto, tarifa fija o medidor, suelen costar entre 40-70 USD hasta centros urbanos</li>
+  <li><strong>Coche de alquiler:</strong> Mostradores en el aeropuerto con recogida inmediata</li>
+</ul>
+
+<h2>Moverse por el destino</h2>
+<p>El transporte público varía según la ciudad, siendo en general una opción económica y rápida:</p>
+<ul>
+  <li><strong>Metro:</strong> Presente en ciudades como Nueva York, Washington D.C., San Francisco y Chicago. Precio medio por viaje: 2.50-3 USD.</li>
+  <li><strong>Bus:</strong> Red extensa en prácticamente todas las ciudades con tarifas entre 1.50-3 USD por viaje.</li>
+  <li><strong>Tren urbano:</strong> Ciudades como Boston y Filadelfia cuentan con trenes de cercanías, precios variables según distancia.</li>
+</ul>
+<p>Consulte la web oficial del transporte local para detalles específicos, por ejemplo <a href="https://new.mta.info/" target="_blank">MTA Nueva York</a> o <a href="https://www.transitchicago.com/" target="_blank">Chicago Transit Authority</a>.</p>
+
+<h2>Alquiler de coche</h2>
+<p>Alquilar un coche es recomendable especialmente si se planea visitar áreas suburbanas, parques naturales o desplazarse entre ciudades con menor cobertura de transporte público.</p>
+<ul>
+  <li><strong>Empresas principales:</strong> Enterprise, Hertz, Avis, Budget, Alamo.</li>
+  <li><strong>Precio medio:</strong> Entre 30 y 70 USD por día, dependiendo del tipo de vehículo y la temporada.</li>
+  <li><strong>Carnet internacional:</strong> Recomendado llevar el permiso de conducir internacional junto al español.</li>
+</ul>
+<p>Puede reservar y obtener más información en la web oficial de <a href="https://www.enterprise.com/" target="_blank">Enterprise</a> o <a href="https://www.hertz.com/" target="_blank">Hertz</a>.</p>
+
+<h2>Taxis y apps de movilidad</h2>
+<p>Los taxis tradicionales están disponibles en todas las ciudades, pero las apps de movilidad predominan por su comodidad y precios competitivos:</p>
+<ul>
+  <li><strong>Uber:</strong> Muy extendido en todo el país, precio orientativo de viaje urbano corto: 8-15 USD.</li>
+  <li><strong>Bolt:</strong> Presente en algunas ciudades grandes, precios similares a Uber.</li>
+  <li><strong>Apps locales:</strong> En Nueva York también existe Lyft, en Miami y Los Ángeles varias apps locales adicionales.</li>
+</ul>
+
+<h2>Consejos de conducción</h2>
+<ul>
+  <li><strong>Normas de tráfico:</strong> Se conduce por la derecha. Respete límites de velocidad (usualmente 25-70 mph). Uso obligatorio del cinturón de seguridad.</li>
+  <li><strong>Peajes:</strong> Muchas autopistas y puentes son de pago. Lleve efectivo o utilice sistema electrónico (EZ-Pass).</li>
+  <li><strong>Aparcamiento:</strong> En zonas urbanas suele ser regulado y de pago. Consulte señales y evite zonas prohibidas para evitar multas.</li>
+  <li><strong>Alcohol y conducción:</strong> Límite muy bajo, no conducir si ha consumido alcohol.</li>
+</ul>
+
+<h2>Transporte entre ciudades</h2>
+<p>Para desplazarse entre ciudades, las opciones incluyen:</p>
+<ul>
+  <li><strong>Tren:</strong> Amtrak conecta muchas ciudades, tarifas desde 30 USD (Nueva York a Washington D.C.) con duración desde 3 horas.</li>
+  <li><strong>Bus:</strong> Empresas como Greyhound, Megabus ofrecen rutas económicas, precios desde 10 USD, aunque tiempos de viaje más largos.</li>
+  <li><strong>Vuelos internos:</strong> Muy frecuentes y competitivos con aerolíneas como Southwest, American Airlines, precios desde 50 USD para rutas populares.</li>
+</ul>
+<p>Para horarios y reservas, visite la web oficial de <a href="https://www.amtrak.com/" target="_blank">Amtrak</a> o <a href="https://www.greyhound.com/" target="_blank">Greyhound</a>.</p></div>
+  </div>
+
+  <!-- TAB RECURSOS -->
+  <div class="tab-panel" id="tab-recursos">
+    <div class="sec-eye">Recursos online</div>
+    <div class="sec-title">Blogs y enlaces útiles</div>
+    <div class="ai-content"><h2>Web oficial de turismo</h2>
+<p><a href="https://www.visittheusa.com/es" target="_blank">Visit The USA - Web oficial de turismo</a></p>
+
+<h2>Blogs de viaje recomendados</h2>
+<ul>
+  <li><a href="https://www.viajarporusa.com" target="_blank">Viajar por USA</a></li>
+  <li><a href="https://www.tipsparaviajeros.com/usa" target="_blank">Tips para viajeros - Sección USA</a></li>
+  <li><a href="https://miviaje.com/category/norteamerica/estados-unidos" target="_blank">Mi Viaje - Estados Unidos</a></li>
+  <li><a href="https://www.travelrocketeers.com/category/destination/usa" target="_blank">Travel Rocketeers - USA</a></li>
+</ul>
+
+<h2>Foros y comunidades</h2>
+<ul>
+  <li><a href="https://www.tripadvisor.es/ShowForum-g191" target="_blank">Foros TripAdvisor USA</a></li>
+  <li><a href="https://www.lonelyplanet.com/thorntree/forums/north-america-north" target="_blank">Foros Lonely Planet - Norteamérica</a></li>
+  <li><a href="https://www.reddit.com/r/solotravel/" target="_blank">Reddit r/solotravel</a></li>
+  <li><a href="https://www.reddit.com/r/TravelUSA/" target="_blank">Reddit r/TravelUSA</a></li>
+</ul>
+
+<h2>Canales de YouTube</h2>
+<ul>
+  <li><a href="https://www.youtube.com/c/Alanxelmundo" target="_blank">Alan x el Mundo</a></li>
+  <li><a href="https://www.youtube.com/c/MochilerosTV" target="_blank">Mochileros TV</a></li>
+  <li><a href="https://www.youtube.com/c/LosViajeros" target="_blank">Los Viajeros</a></li>
+</ul>
+
+<h2>Recursos para rutas</h2>
+<ul>
+  <li><a href="https://es.wikiloc.com/rutas/estados-unidos" target="_blank">Wikiloc - Rutas en Estados Unidos</a></li>
+  <li><a href="https://www.alltrails.com/us/united-states" target="_blank">AllTrails - Estados Unidos</a></li>
+  <li><a href="https://www.google.com/maps" target="_blank">Google Maps</a></li>
+</ul>
+
+<h2>Apps imprescindibles</h2>
+<ul>
+  <li><a href="https://www.itsmarta.com/marta-on-the-go.aspx" target="_blank">MARTA On The Go (transporte Atlanta)</a></li>
+  <li><a href="https://www.nps.gov/planyourvisit/maps.htm" target="_blank">App National Park Service</a></li>
+  <li><a href="https://www.waze.com/es-ES/" target="_blank">Waze - Navegación en tiempo real</a></li>
+  <li><a href="https://www.airnow.gov/" target="_blank">AirNow (calidad del aire en USA)</a></li>
+</ul>
+
+<h2>Webs de reservas</h2>
+<ul>
+  <li><a href="https://www.booking.com" target="_blank">Booking.com</a></li>
+  <li><a href="https://www.airbnb.com" target="_blank">Airbnb</a></li>
+  <li><a href="https://www.getyourguide.com" target="_blank">GetYourGuide</a></li>
+  <li><a href="https://www.viator.com" target="_blank">Viator</a></li>
+</ul></div>
+  </div>
+
+  <!-- TAB CULTURA -->
+  <div class="tab-panel" id="tab-cultura">
+    <div class="sec-eye">Prepara el viaje</div>
+    <div class="sec-title">Cultura · Cine · Libros · Música</div>
+    <div class="ai-content"><h3>📚 "On the Road" – Jack Kerouac</h3>
+<p><strong>Por qué leerlo:</strong> Esta novela clásica captura el espíritu del viaje y la búsqueda de libertad a través de los Estados Unidos en la década de 1950, ideal para entender la cultura contracultural y los paisajes americanos.</p>
+
+<h3>📚 "Lonely Planet USA" – Lonely Planet</h3>
+<p><strong>Por qué leerlo:</strong> Una guía completa que cubre lo esencial para planificar tu viaje, desde las grandes ciudades hasta parques nacionales, con consejos prácticos y rutas recomendadas.</p>
+
+<h3>📚 "Americanah" – Chimamanda Ngozi Adichie</h3>
+<p><strong>Por qué leerlo:</strong> Aunque es una novela contemporánea, ofrece una mirada profunda sobre la experiencia de inmigrantes y la diversidad cultural en Estados Unidos, abriendo una perspectiva social relevante para viajeros conscientes.</p>
+
+<h3>📚 "Travels with Charley" – John Steinbeck</h3>
+<p><strong>Por qué leerlo:</strong> Un relato personal del viaje en carretera del autor por Estados Unidos, proporcionando una reflexión íntima sobre el país y su gente a comienzos de los años 60.</p>
+
+<h3>📚 "The Geography of Bliss" – Eric Weiner</h3>
+<p><strong>Por qué leerlo:</strong> Este ensayo de viajes explora la búsqueda de la felicidad en diferentes lugares, incluyendo varias ciudades americanas, ayudando a conocer el lado emocional y cultural de los destinos en USA.</p></div>
+  </div>
+
+  <!-- TAB CURIOSIDADES -->
+  <div class="tab-panel" id="tab-curiosidades">
+    <div class="sec-eye">¿Sabías que…?</div>
+    <div class="sec-title">Curiosidades de USA</div>
+    <div class="ai-content"><h3>💡 Reserva con antelación vuelos y alojamientos</h3>
+<p>En ciudades clave como Nueva York, Washington D.C. o San Francisco, reserva al menos 3 meses antes para conseguir mejores tarifas aéreas y alojamiento céntrico. Los precios suben drásticamente en temporada alta (primavera y otoño), así que planificar con antelación te ayudará a ceñirte al presupuesto.</p>
+
+<h3>💡 Invierte en el National Park Pass</h3>
+<p>Si tu viaje incluye parques nacionales históricos como Yellowstone, Grand Canyon o Yosemite, compra el pase anual por 80 USD que cubre la entrada de todos los pasajeros del vehículo. Ahorra hasta un 50 % si visitas más de cuatro parques y evita colas al entrar.</p>
+
+<h3>💡 Aprovecha los CityPASS y los descuentos por paquete</h3>
+<p>En ciudades con gran oferta cultural (Chicago, Boston, la Costa Oeste) adquiere el CityPASS o los paquetes de museos y recorridos a pie para ahorrar hasta un 40 % en atracciones emblemáticas como el Museo de Historia Natural o la Torre Willis.</p>
+
+<h3>💡 Fotografía en golden hour y usa filtros polarizadores</h3>
+<p>Para capturar monumentos históricos como el Monumento a Lincoln o el Alamo con luz espectacular, planifica tus visitas justo al amanecer o al atardecer. Lleva un filtro polarizador para reducir reflejos en fachadas de cristal y embalses, y obtén colores más saturados.</p>
+
+<h3>💡 Entiende y practica la cultura de las propinas</h3>
+<p>En restaurantes, bares y taxis es habitual dejar entre el 15 % y el 20 % del total de la cuenta. Lleva siempre billetes de baja denominación (1, 5 y 10 USD) y paga la propina en efectivo incluso si abonas con tarjeta, para asegurarte de que llega directamente al personal.</p>
+
+<h3>💡 Degusta la gastronomía regional sin prisa</h3>
+<p>Cada región tiene su especialidad histórica: prueba la deep-dish pizza en Chicago, la barbacoa de carbón en Texas, los clam chowder en Boston y el gumbo en Nueva Orleans. Reserva mesas con antelación en restaurantes muy populares para evitar largas colas.</p>
+
+<h3>💡 Planifica el transporte entre ciudades y distancias</h3>
+<p>Las distancias en EE. UU. son grandes: usar vuelos domésticos en rutas como Nueva York–Chicago o Los Ángeles–Seattle puede ahorrarte días en carretera. Si prefieres rail o bus, compra billetes con anticipación en Amtrak o Greyhound para tarifas reducidas.</p>
+
+<h3>💡 Evita los errores comunes de horarios y apertura</h3>
+<p>Muchos museos y sitios históricos cierran uno o dos días a la semana (generalmente lunes o martes). Consulta siempre los horarios oficiales y considera reservar entradas online para franjas horarias específicas y no perder tiempo en taquilla.</p></div>
+  </div>
+
+  <!-- TAB DOCUMENTOS -->
+  <div class="tab-panel" id="tab-docs">
+    <div class="sec-eye">Tus documentos</div>
+    <div class="sec-title">Documentos del viaje</div>
+    <p style="font-size:13px;color:var(--mid);margin-bottom:14px">Guarda aquí tu seguro, tarjetas de embarque, pasaporte o cualquier documento que necesites tener a mano durante el viaje.</p>
+    <div class="docs-upload-area" onclick="document.getElementById('doc-input').click()">
+      <div class="docs-upload-icon">📎</div>
+      <div class="docs-upload-text"><strong>Añadir documento</strong>PDF, imagen, tarjeta de embarque…</div>
+    </div>
+    <input type="file" id="doc-input" accept=".pdf,.jpg,.jpeg,.png,.gif,.webp" multiple onchange="handleDocUpload(event)">
+    <div class="docs-list" id="docs-list"></div>
+  </div>
+
+  <!-- TAB NOTAS -->
+  <div class="tab-panel" id="tab-notas">
+    <div class="sec-eye">Para ti</div>
+    <div class="sec-title">Notas del viajero</div>
+    <div class="note-area">
+      <div class="note-line" contenteditable="true" spellcheck="false">Escribe aquí tus notas…</div>
+      <div class="note-line" contenteditable="true" spellcheck="false"></div>
+      <div class="note-line" contenteditable="true" spellcheck="false"></div>
+      <div class="note-line" contenteditable="true" spellcheck="false"></div>
+      <div class="note-line" contenteditable="true" spellcheck="false"></div>
+      <div class="note-line" contenteditable="true" spellcheck="false"></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ MODAL GUARDAR ══ -->
+<div class="save-modal" id="save-modal" onclick="closeSaveModal(event)">
+  <div class="save-sheet">
+    <h3>Guardar guía</h3>
+    <p>Elige cómo quieres guardar tu guía de USA.</p>
+
+    <!-- Opción Android: botón directo si hay prompt disponible -->
+    <div class="save-option" id="opt-android" style="display:none" onclick="installAndroid()">
+      <div class="save-option-icon">🤖</div>
+      <div class="save-option-text"><strong>Añadir a pantalla de inicio</strong><span>Android · Se abrirá el diálogo de instalación</span></div>
+    </div>
+
+    <!-- Opción iOS: instrucción visual animada -->
+    <div class="save-option" id="opt-ios" style="display:none" onclick="showIOSGuide()">
+      <div class="save-option-icon">🍎</div>
+      <div class="save-option-text"><strong>Añadir a pantalla de inicio</strong><span>iOS · Toca para ver cómo hacerlo en 2 pasos</span></div>
+    </div>
+
+    <div class="save-option" onclick="downloadGuide()">
+      <div class="save-option-icon">⬇️</div>
+      <div class="save-option-text"><strong>Descargar archivo HTML</strong><span>Guárdalo y ábrelo sin internet</span></div>
+    </div>
+    <div class="save-option" onclick="copyLink();closeSaveModal()">
+      <div class="save-option-icon">🔗</div>
+      <div class="save-option-text"><strong>Copiar enlace</strong><span>Comparte o guarda la URL de esta guía</span></div>
+    </div>
+    <button class="save-close" onclick="closeSaveModal()">Cerrar</button>
+  </div>
+</div>
+
+<!-- ══ GUÍA iOS ══ -->
+<div class="save-modal" id="ios-modal" onclick="document.getElementById('ios-modal').classList.remove('open')">
+  <div class="save-sheet">
+    <h3>Añadir a pantalla de inicio</h3>
+    <p style="margin-bottom:18px">Sigue estos 2 pasos en Safari:</p>
+    <div style="background:var(--sand);border-radius:var(--r);padding:16px;margin-bottom:12px;text-align:center">
+      <div style="font-size:32px;margin-bottom:8px">1️⃣</div>
+      <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px">Toca el botón Compartir</div>
+      <div style="font-size:13px;color:var(--mid)">El icono <strong>□↑</strong> de la barra inferior de Safari</div>
+      <div style="font-size:36px;margin-top:10px;animation:bounce .8s infinite alternate">□↑</div>
+    </div>
+    <div style="background:var(--sand);border-radius:var(--r);padding:16px;margin-bottom:16px;text-align:center">
+      <div style="font-size:32px;margin-bottom:8px">2️⃣</div>
+      <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px">Toca "Añadir a pantalla de inicio"</div>
+      <div style="font-size:13px;color:var(--mid)">Desplázate en el menú hasta encontrar esta opción</div>
+      <div style="background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 14px;margin-top:10px;display:inline-flex;align-items:center;gap:8px">
+        <span style="font-size:20px">➕</span>
+        <span style="font-size:13px;font-weight:500;color:var(--ink)">Añadir a pantalla de inicio</span>
+      </div>
+    </div>
+    <button class="save-close" onclick="document.getElementById('ios-modal').classList.remove('open')">Entendido</button>
+  </div>
+</div>
+<style>
+@keyframes bounce{from{transform:translateY(0)}to{transform:translateY(-6px)}}
+</style>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── TABS ──
+function showTab(id,btn){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  btn.classList.add('active');
+  document.getElementById('tabs-content').scrollTop=0;
+  // Scroll tab visible
+  btn.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+  // Ocultar flecha si llegamos al final
+  const scroll=document.getElementById('tabs-scroll');
+  const fade=document.querySelector('.tabs-fade');
+  if(fade)fade.style.display=scroll.scrollLeft+scroll.clientWidth>=scroll.scrollWidth-10?'none':'flex';
+}
+// Ocultar flecha al llegar al final del scroll
+document.getElementById('tabs-scroll').addEventListener('scroll',function(){
+  const fade=document.querySelector('.tabs-fade');
+  if(fade)fade.style.display=this.scrollLeft+this.clientWidth>=this.scrollWidth-10?'none':'flex';
+});
+
+// ── TOAST ──
+function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800)}
+
+// ── COMPARTIR ──
+function shareWpp(){
+  const t=encodeURIComponent('¡Mira mi guía de viaje para USA! 🌍✈️\nGenerada por GuiaMundi.es\n\n'+window.location.href);
+  window.open('https://wa.me/?text='+t,'_blank');
+}
+function copyLink(){navigator.clipboard.writeText(window.location.href).then(()=>showToast('✓ Enlace copiado')).catch(()=>showToast('Copia la URL del navegador'))}
+
+// ── SERVICE WORKER (necesario para installPrompt en Android) ──
+if('serviceWorker' in navigator){
+  const swCode=`self.addEventListener('fetch',e=>{});`;
+  const blob=new Blob([swCode],{type:'application/javascript'});
+  const swUrl=URL.createObjectURL(blob);
+  navigator.serviceWorker.register(swUrl).catch(()=>{});
+}
+
+// ── MODAL GUARDAR ──
+let deferredPrompt=null;
+window.addEventListener('beforeinstallprompt',e=>{
+  e.preventDefault();
+  deferredPrompt=e;
+  document.getElementById('opt-android').style.display='flex';
+});
+
+function openSaveModal(){
+  // Detectar iOS
+  const isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
+  if(isIOS)document.getElementById('opt-ios').style.display='flex';
+  document.getElementById('save-modal').classList.add('open');
+}
+function closeSaveModal(e){
+  if(!e||e.target===document.getElementById('save-modal'))
+    document.getElementById('save-modal').classList.remove('open');
+}
+function installAndroid(){
+  if(deferredPrompt){
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(r=>{
+      if(r.outcome==='accepted')showToast('✓ Añadida a pantalla de inicio');
+      deferredPrompt=null;
+    });
+  }
+  document.getElementById('save-modal').classList.remove('open');
+}
+function showIOSGuide(){
+  document.getElementById('save-modal').classList.remove('open');
+  setTimeout(()=>document.getElementById('ios-modal').classList.add('open'),200);
+}
+function downloadGuide(){
+  try{
+    const blob=new Blob([document.documentElement.outerHTML],{type:'text/html;charset=utf-8'});
+    const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+    a.download='guia-USA-30dias.html';a.click();
+    URL.revokeObjectURL(a.href);showToast('✓ Guía descargada');
+  }catch(e){showToast('Usa el menú del navegador para guardar')}
+  document.getElementById('save-modal').classList.remove('open');
+}
+
+// ── BLOQUES DE DÍA CON NOTAS Y MAPA ──
+function buildDayBlocks(){
+  const container=document.getElementById('itinerario-content');
+  if(!container)return;
+  const raw=container.innerHTML;
+  const parts=raw.split(/(?=<h2[\s>])/i);
+  let html='';
+  parts.forEach((part,i)=>{
+    if(!part.trim())return;
+    const isDay=/^<h2/i.test(part.trim());
+    if(!isDay){html+=part;return;}
+    const titleMatch=part.match(/<h2[^>]*>(.*?)<\/h2>/i);
+    const titleRaw=titleMatch?titleMatch[1]:'Día '+(i);
+    const body=part.replace(/<h2[^>]*>.*?<\/h2>/i,'').trim();
+    html+=`<div class="day-block">
+      <div class="day-block-header" onclick="toggleDay(this)">
+        <span>${titleRaw}</span><span class="day-toggle">⌄</span>
+      </div>
+      <div class="day-block-body">
+        <div class="ai-content">${body}</div>
+        <div class="day-note-wrap">
+          <div class="day-note-label">📝 Mis notas para este día</div>
+          <textarea class="day-note" placeholder="Añade aquí reservas, horarios o cualquier detalle personal…"></textarea>
+        </div>
+      </div>
+    </div>`;
+  });
+  container.innerHTML=html;
+  const first=container.querySelector('.day-block');
+  if(first)first.classList.add('open');
+}
+function toggleDay(header){header.closest('.day-block').classList.toggle('open')}
+document.addEventListener('DOMContentLoaded',buildDayBlocks);
+
+// ── DOCUMENTOS ──
+const uploadedDocs=[];
+function handleDocUpload(e){
+  Array.from(e.target.files).forEach(file=>{
+    const reader=new FileReader();
+    reader.onload=ev=>{
+      const doc={name:file.name,size:formatSize(file.size),type:file.type,url:ev.target.result,id:Date.now()+Math.random()};
+      uploadedDocs.push(doc);renderDocs();
+    };
+    reader.readAsDataURL(file);
+  });
+  e.target.value='';
+}
+function formatSize(b){if(b<1024)return b+'B';if(b<1048576)return(b/1024).toFixed(1)+'KB';return(b/1048576).toFixed(1)+'MB'}
+function getDocIcon(type){if(type==='application/pdf')return '📄';if(type.startsWith('image/'))return '🖼️';return '📎'}
+function renderDocs(){
+  const list=document.getElementById('docs-list');
+  if(!uploadedDocs.length){list.innerHTML='';return;}
+  list.innerHTML=uploadedDocs.map(doc=>`
+    <div class="doc-item">
+      <div class="doc-icon">${getDocIcon(doc.type)}</div>
+      <div class="doc-info"><div class="doc-name">${doc.name}</div><div class="doc-size">${doc.size}</div></div>
+      <button class="doc-open" onclick="openDoc('${doc.id}')">Abrir</button>
+      <button class="doc-del" onclick="deleteDoc('${doc.id}')">✕</button>
+    </div>`).join('');
+}
+function openDoc(id){const d=uploadedDocs.find(d=>d.id==id);if(d)window.open(d.url,'_blank')}
+function deleteDoc(id){const i=uploadedDocs.findIndex(d=>d.id==id);if(i>-1){uploadedDocs.splice(i,1);renderDocs()}}
+
+// ── HERRAMIENTAS TABS ──
+function switchTool(btn,id){
+  document.querySelectorAll('.ttab').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.tool-panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');document.getElementById(id).classList.add('active');
+}
+
+// ── CONVERSOR ──
+const rates={};let ratesLoaded=false;
+const cNames={USD:'Dólar USD',GBP:'Libra',JPY:'Yen',MXN:'Peso MX',BRL:'Real',MAD:'Dírham',TRY:'Lira',THB:'Baht',IDR:'Rupia',AED:'Dírham AE',SGD:'Dólar SG',PLN:'Esloti',CZK:'Corona CZ',HUF:'Forinto',RON:'Leu',DKK:'Corona DK',SEK:'Corona SE',NOK:'Corona NO'};
+async function loadRates(){
+  try{const r=await fetch('https://open.er-api.com/v6/latest/EUR');const d=await r.json();if(d.rates){Object.assign(rates,d.rates);ratesLoaded=true;convertCurrency();document.getElementById('conv-rate').textContent='Actualizado · '+new Date().toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'})}}
+  catch(e){Object.assign(rates,{USD:1.08,GBP:0.86,JPY:162,MXN:18.5,BRL:5.4,MAD:10.8,TRY:35,THB:38,IDR:17000,AED:3.97,SGD:1.45,PLN:4.25,CZK:25,HUF:390,RON:4.97,DKK:7.46,SEK:11.5,NOK:11.8});ratesLoaded=true;convertCurrency();document.getElementById('conv-rate').textContent='Tasas aproximadas'}
+}
+function convertCurrency(){
+  if(!ratesLoaded)return;
+  const eur=parseFloat(document.getElementById('conv-eur').value)||0;
+  const to=document.getElementById('conv-to').value;
+  const res=eur*(rates[to]||1);
+  const fmt=res>=1000?res.toFixed(0):res>=10?res.toFixed(2):res.toFixed(4);
+  document.getElementById('conv-foreign').value=fmt;
+  document.getElementById('conv-display').textContent=fmt+' '+to;
+  document.getElementById('conv-to-label').textContent=cNames[to]||to;
+  document.getElementById('conv-rate').textContent='1 € = '+(rates[to]||1).toFixed(4)+' '+to;
+}
+function convertBack(){
+  if(!ratesLoaded)return;
+  const f=parseFloat(document.getElementById('conv-foreign').value)||0;
+  const to=document.getElementById('conv-to').value;
+  document.getElementById('conv-eur').value=(f/(rates[to]||1)).toFixed(2);convertCurrency();
+}
+loadRates();
+
+// ── TRADUCTOR ──
+const phraseDB={
+  es:['Hola / Buenos días','Por favor','Gracias','¿Cuánto cuesta?','¿Dónde está…?','La cuenta, por favor','No entiendo','¿Habla español?','Ayuda, por favor','Un taxi, por favor','¿Dónde está el baño?','Me llamo…','¿Habla inglés?'],
+  it:['Ciao / Buongiorno','Per favore','Grazie','Quanto costa?','Dov\'è…?','Il conto, per favore','Non capisco','Parla spagnolo?','Aiuto','Un taxi, per favore','Dov\'è il bagno?','Mi chiamo…','Parla inglese?'],
+  fr:['Bonjour','S\'il vous plaît','Merci','Combien ça coûte?','Où est…?','L\'addition, s\'il vous plaît','Je ne comprends pas','Parlez-vous espagnol?','Au secours','Un taxi, s\'il vous plaît','Où sont les toilettes?','Je m\'appelle…','Parlez-vous anglais?'],
+  de:['Hallo','Bitte','Danke','Wie viel kostet das?','Wo ist…?','Die Rechnung, bitte','Ich verstehe nicht','Sprechen Sie Spanisch?','Hilfe','Ein Taxi, bitte','Wo ist die Toilette?','Ich heiße…','Sprechen Sie Englisch?'],
+  pt:['Olá','Por favor','Obrigado/a','Quanto custa?','Onde fica…?','A conta, por favor','Não entendo','Fala espanhol?','Socorro','Um táxi','Onde é o banheiro?','Meu nome é…','Fala inglês?'],
+  ja:['こんにちは','お願いします','ありがとう','いくらですか？','…はどこですか？','お会計をお願いします','わかりません','スペイン語を話しますか？','助けて','タクシーをお願いします','トイレはどこですか？','私の名前は…','英語を話しますか？'],
+  ar:['مرحبا','من فضلك','شكرا','كم يكلف؟','أين…؟','الحساب من فضلك','لا أفهم','هل تتكلم الإسبانية؟','مساعدة','سيارة أجرة','أين الحمام؟','اسمي…','هل تتكلم الإنجليزية؟'],
+  tr:['Merhaba','Lütfen','Teşekkürler','Ne kadar?','Nerede…?','Hesabı lütfen','Anlamıyorum','İspanyolca biliyor musunuz?','Yardım','Taksi lütfen','Tuvalet nerede?','Benim adım…','İngilizce biliyor musunuz?'],
+  th:['สวัสดี','กรุณา','ขอบคุณ','ราคาเท่าไหร่?','…อยู่ที่ไหน?','เก็บเงินด้วย','ไม่เข้าใจ','พูดภาษาสเปนได้ไหม?','ช่วยด้วย','แท็กซี่','ห้องน้ำอยู่ที่ไหน?','ฉันชื่อ…','พูดภาษาอังกฤษได้ไหม?'],
+  zh:['你好','请','谢谢','多少钱？','…在哪里？','买单','我不明白','你会说西班牙语吗？','帮帮我','出租车','洗手间在哪里？','我叫…','你会说英语吗？'],
+  el:['Γεια σας','Παρακαλώ','Ευχαριστώ','Πόσο κοστίζει;','Πού είναι…;','Τον λογαριασμό','Δεν καταλαβαίνω','Μιλάτε ισπανικά;','Βοήθεια','Ένα ταξί','Πού είναι η τουαλέτα;','Με λένε…','Μιλάτε αγγλικά;'],
+  pl:['Dzień dobry','Proszę','Dziękuję','Ile to kosztuje?','Gdzie jest…?','Rachunek, proszę','Nie rozumiem','Czy mówi pan/pani po hiszpańsku?','Pomocy','Taksówkę','Gdzie jest toaleta?','Mam na imię…','Czy mówi pan/pani po angielsku?'],
+  nl:['Hallo','Alstublieft','Dank u','Hoeveel kost het?','Waar is…?','De rekening graag','Ik begrijp het niet','Spreekt u Spaans?','Help','Een taxi','Waar is het toilet?','Ik heet…','Spreekt u Engels?'],
+  ru:['Здравствуйте','Пожалуйста','Спасибо','Сколько стоит?','Где…?','Счёт, пожалуйста','Я не понимаю','Вы говорите по-испански?','Помогите','Такси','Где туалет?','Меня зовут…','Вы говорите по-английски?'],
+  cs:['Dobrý den','Prosím','Děkuji','Kolik to stojí?','Kde je…?','Účet prosím','Nerozumím','Mluvíte španělsky?','Pomozte','Taxi','Kde je toaleta?','Jmenuji se…','Mluvíte anglicky?'],
+  ro:['Bună ziua','Vă rog','Mulțumesc','Cât costă?','Unde este…?','Nota de plată','Nu înțeleg','Vorbiți spaniolă?','Ajutor','Un taxi','Unde este toaleta?','Mă numesc…','Vorbiți engleză?'],
+  hr:['Dobar dan','Molim','Hvala','Koliko košta?','Gdje je…?','Račun, molim','Ne razumijem','Govorite li španjolski?','Pomoć','Taksi','Gdje je zahod?','Zovem se…','Govorite li engleski?'],
+};
+const langMap={it:'it-IT',fr:'fr-FR',de:'de-DE',pt:'pt-PT',ja:'ja-JP',ar:'ar-SA',tr:'tr-TR',th:'th-TH',zh:'zh-CN',el:'el-GR',pl:'pl-PL',nl:'nl-NL',ru:'ru-RU',cs:'cs-CZ',ro:'ro-RO',hr:'hr-HR'};
+function updatePhrases(){
+  const lang=document.getElementById('trans-lang-sel').value;
+  const esp=phraseDB['es'],dest=phraseDB[lang]||phraseDB['it'];
+  document.getElementById('phrases-list').innerHTML=esp.map((es,i)=>`
+    <div class="trans-item">
+      <div class="trans-texts"><div class="trans-es">${es}</div><div class="trans-dest">${dest[i]||''}</div></div>
+      <button class="trans-audio" onclick="speak('${(dest[i]||'').replace(/'/g,"\\'").replace(/"/g,'&quot;')}','${lang}',this)">▶</button>
+    </div>`).join('');
+}
+function speak(text,lang,btn){
+  if(!window.speechSynthesis){showToast('Audio no disponible');return}
+  window.speechSynthesis.cancel();
+  document.querySelectorAll('.trans-audio').forEach(b=>b.classList.remove('playing'));
+  btn.classList.add('playing');
+  const u=new SpeechSynthesisUtterance(text);
+  u.lang=langMap[lang]||lang+'-'+lang.toUpperCase();u.rate=0.82;
+  u.onend=()=>btn.classList.remove('playing');
+  u.onerror=()=>{btn.classList.remove('playing');showToast('Audio no disponible para este idioma')};
+  window.speechSynthesis.speak(u);
+}
+updatePhrases();
+
+// ── CALCULADORA ──
+function calcBudget(){
+  const dias=parseFloat(document.getElementById('c-dias').value)||0;
+  const viaj=Math.max(1,parseFloat(document.getElementById('c-viaj').value)||1);
+  const aloj=parseFloat(document.getElementById('c-aloj').value)||0;
+  const com=parseFloat(document.getElementById('c-com').value)||0;
+  const transp=parseFloat(document.getElementById('c-transp').value)||0;
+  const act=parseFloat(document.getElementById('c-act').value)||0;
+  const tA=aloj*dias,tC=com*dias*viaj,tot=tA+tC+transp+act;
+  const f=n=>n.toLocaleString('es-ES',{maximumFractionDigits:0})+'€';
+  document.getElementById('r-aloj').textContent=f(tA);document.getElementById('r-com').textContent=f(tC);
+  document.getElementById('r-transp').textContent=f(transp);document.getElementById('r-act').textContent=f(act);
+  document.getElementById('r-total').textContent=f(tot);document.getElementById('r-pp').textContent=f(tot/viaj);
+}
+calcBudget();
+
+// ── CHECKLIST ──
+const checkData={
+  ropa:['Ropa ligera (5-7 días)','Chaqueta o jersey fino','Ropa interior extra','Calcetines varios','Calzado cómodo walking','Sandalias o chanclas','Ropa de baño','Pijama','Pañuelo o fular','Chubasquero ligero'],
+  docs:['DNI o Pasaporte vigente','Tarjeta Sanitaria Europea','Seguro de viaje','Reservas alojamiento','Confirmación de vuelo','2 tarjetas bancarias','Efectivo moneda local','Carné de conducir','Visado si aplica','Fotos de pasaporte'],
+  tech:['Móvil cargado','Cargador del móvil','Adaptador de enchufe','Power bank','Auriculares','Cámara de fotos','Tarjeta memoria extra','Cable USB extra','Mapas offline','Cargador laptop'],
+  salud:['Protector solar 50+','Repelente mosquitos','Medicación habitual x2','Botiquín básico','Antihistamínico','Ibuprofeno/paracetamol','Tiritas y venda','Pastillas estómago','Mascarillas','Termómetro'],
+  extras:['Botella reutilizable','Guía de conversación','Bolsa tela mercados','Candado equipaje','Funda impermeable móvil','Snacks viaje','Almohada viaje','Antifaz dormir','Tapones oídos','Colonia pequeña'],
+};
+const checkState={};let currentCat='ropa';
+function initCheck(){Object.keys(checkData).forEach(c=>checkState[c]=checkData[c].map(()=>false));renderCheck()}
+function switchCat(btn,cat){document.querySelectorAll('.check-cat-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');currentCat=cat;renderCheck()}
+function renderCheck(){
+  const items=checkData[currentCat],states=checkState[currentCat];
+  document.getElementById('checklist-items').innerHTML=items.map((item,i)=>`
+    <div class="check-item${states[i]?' done':''}" onclick="toggleCheck('${currentCat}',${i},this)">
+      <div class="check-box">${states[i]?'✓':''}</div>
+      <div class="check-label">${item}</div>
+    </div>`).join('');
+  updateProgress();
+}
+function toggleCheck(cat,idx,el){checkState[cat][idx]=!checkState[cat][idx];el.classList.toggle('done');el.querySelector('.check-box').textContent=checkState[cat][idx]?'✓':'';updateProgress()}
+function updateProgress(){let d=0,t=0;Object.values(checkState).forEach(a=>{t+=a.length;d+=a.filter(Boolean).length});const p=t?Math.round(d/t*100):0;document.getElementById('check-bar').style.width=p+'%';document.getElementById('check-pct').textContent=p+'%'}
+initCheck();
+</script>
+</body>
+</html>
