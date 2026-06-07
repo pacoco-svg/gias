@@ -1,0 +1,1471 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="GuiaMundi">
+<meta name="theme-color" content="#1A1A2E">
+<title>Guía de BRASIL · 25 días</title>
+<link rel="manifest" href="data:application/json;charset=utf-8,%7B%22name%22%3A%22Gu%C3%ADa%20de%20BRASIL%22%2C%22short_name%22%3A%22BRASIL%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%231A1A2E%22%2C%22theme_color%22%3A%22%231A1A2E%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%2C%253Csvg%2520xmlns%3D%2527http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%2527%2520viewBox%3D%25270%25200%2520100%2520100%2527%253E%253Ctext%2520y%3D%2527.9em%2527%2520font-size%3D%252790%2527%253E%25F0%259F%258C%258D%253C%2Ftext%253E%253C%2Fsvg%253E%22%2C%22sizes%22%3A%22192x192%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%7D%5D%7D">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1A1A2E;--gold:#C9922A;--gold-l:#F5E6C8;--gold-p:#FDF6E9;
+  --terra:#B84A2E;--sky:#1B4F72;--sage:#2D6A4F;--cream:#FAFAF6;
+  --sand:#F0EBE0;--mist:#EEF2F7;--line:#DDD8CF;--mid:#7B7369;--r:14px;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overflow:hidden}
+body{font-family:'DM Sans',sans-serif;background:var(--ink);color:var(--ink);font-size:15px;line-height:1.7;display:flex;flex-direction:column}
+
+/* ── PORTADA ── */
+.cover{flex-shrink:0;background:var(--ink);padding:24px 20px 16px;position:relative;overflow:hidden;text-align:center}
+.cover-bg{position:absolute;inset:0;background:radial-gradient(circle at 30% 50%,rgba(201,146,42,.15) 0,transparent 60%),radial-gradient(circle at 70% 50%,rgba(27,79,114,.18) 0,transparent 60%)}
+.cover-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,146,42,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,146,42,.04) 1px,transparent 1px);background-size:32px 32px}
+.cover-stripe{position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--terra),var(--sky))}
+.cover-content{position:relative;z-index:2}
+.cover-eyebrow{font-size:9px;font-weight:500;letter-spacing:3px;color:rgba(201,146,42,.7);text-transform:uppercase;margin-bottom:6px}
+.cover-title{font-family:'Playfair Display',serif;font-size:clamp(28px,8vw,44px);font-weight:900;line-height:1;color:#fff;letter-spacing:-1px;font-style:italic;margin-bottom:4px}
+.cover-subtitle{font-size:13px;color:rgba(255,255,255,.45);margin-bottom:14px;letter-spacing:.5px}
+.cover-actions{display:flex;gap:8px;justify-content:center;max-width:340px;margin:0 auto}
+.cover-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:5px;padding:9px 10px;border-radius:9px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;transition:all .2s}
+.cover-btn-wpp{background:#25D366;color:#fff}
+.cover-btn-save{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#fff}
+.cover-btn:active{transform:scale(.96)}
+
+/* ── TABS NAV ── */
+.tabs-nav{flex-shrink:0;background:rgba(8,8,20,.97);border-bottom:1px solid rgba(201,146,42,.15);position:relative}
+.tabs-scroll{display:flex;overflow-x:auto;scrollbar-width:none;padding:0 12px}
+.tabs-scroll::-webkit-scrollbar{display:none}
+.tab-btn{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:3px;padding:11px 14px;border:none;background:none;color:rgba(255,255,255,.38);font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;cursor:pointer;transition:all .2s;border-bottom:2px solid transparent;white-space:nowrap;min-width:72px}
+.tab-btn .tab-icon{font-size:18px;line-height:1}
+.tab-btn.active{color:var(--gold);border-bottom-color:var(--gold)}
+.tab-btn:hover{color:rgba(255,255,255,.7)}
+/* Flecha indicadora de más tabs */
+.tabs-fade{position:absolute;right:0;top:0;bottom:0;width:40px;background:linear-gradient(to right,transparent,rgba(8,8,20,.97));pointer-events:none;display:flex;align-items:center;justify-content:flex-end;padding-right:6px}
+.tabs-fade span{color:var(--gold);font-size:16px;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
+
+/* ── CONTENIDO ── */
+.tabs-content{flex:1;overflow-y:auto;background:var(--cream)}
+.tab-panel{display:none;padding:22px 18px 32px;min-height:100%}
+.tab-panel.active{display:block}
+@media(min-width:700px){.tab-panel{max-width:800px;margin:0 auto;padding:28px 36px 40px}}
+
+/* ── TIPOGRAFÍA ── */
+.sec-eye{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:4px;display:flex;align-items:center;gap:6px}
+.sec-eye::before{content:'';display:inline-block;width:10px;height:1px;background:var(--gold)}
+.sec-title{font-family:'Playfair Display',serif;font-size:21px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:16px}
+
+/* ── FICHA MINI ── */
+.info-mini{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.info-tag{background:var(--sand);border:1px solid var(--line);border-radius:50px;padding:5px 12px;font-size:12px;color:var(--mid)}
+.info-tag strong{color:var(--ink);font-weight:600}
+
+/* ── AD ── */
+.ad{background:#FFF8E7;border:1px solid #E8C84A;border-left:4px solid #E8C84A;border-radius:var(--r);padding:10px 12px;display:flex;align-items:flex-start;gap:8px;margin-bottom:14px}
+.ad-badge{background:#E8C84A;color:#fff;font-size:8px;font-weight:700;letter-spacing:1px;padding:2px 5px;border-radius:4px;flex-shrink:0;margin-top:1px}
+.ad strong{display:block;font-size:12px;font-weight:500;color:#7A5C00;margin-bottom:1px}
+.ad span{font-size:11px;color:#A07B20;font-style:italic}
+
+/* ── CONTENIDO IA ── */
+.ai-content{font-size:14px;line-height:1.85;color:var(--ink)}
+.ai-content h1,.ai-content h2{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--ink);margin:20px 0 8px;padding-bottom:5px;border-bottom:2px solid var(--gold-l)}
+.ai-content h2:first-child{margin-top:0}
+.ai-content h3{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--sky);margin:14px 0 5px}
+.ai-content h3:first-child{margin-top:0}
+.ai-content p{margin-bottom:9px}
+.ai-content ul,.ai-content ol{padding-left:18px;margin-bottom:10px}
+.ai-content li{margin-bottom:4px}
+.ai-content strong{font-weight:600}
+.ai-content a{color:var(--sky);text-decoration:none;border-bottom:1px solid rgba(27,79,114,.25);font-weight:500;word-break:break-word}
+.ai-content a:hover{color:var(--gold);border-bottom-color:var(--gold)}
+
+/* ── BLOQUES DE DÍA ── */
+.day-block{background:#fff;border:1px solid var(--line);border-radius:var(--r);margin-bottom:16px;overflow:hidden}
+.day-block-header{background:var(--ink);color:var(--gold);padding:12px 16px;font-family:'Playfair Display',serif;font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:space-between;cursor:pointer}
+.day-block-header .day-toggle{font-size:14px;transition:transform .3s;flex-shrink:0}
+.day-block.open .day-toggle{transform:rotate(180deg)}
+.day-block-body{display:none;padding:14px 16px}
+.day-block.open .day-block-body{display:block}
+.day-block-body .ai-content h3{margin-top:10px}
+.day-block-body .ai-content h3:first-child{margin-top:0}
+.day-block-body a[href*="google.com/maps"]{display:inline-flex;align-items:center;gap:4px;background:#1B4F72;color:#fff !important;padding:5px 12px;border-radius:50px;font-size:11px;font-weight:700;text-decoration:none !important;margin:2px 4px 2px 0;border:none !important}
+.day-block-body a[href*="google.com/maps"]:hover{background:#C9922A !important}
+.day-block-body a[href*="google.com/search"]{display:inline-flex;align-items:center;gap:4px;background:#F0EBE0;color:#1A1A2E !important;padding:5px 12px;border-radius:50px;font-size:11px;font-weight:600;text-decoration:none !important;margin:2px 4px 2px 0;border:1px solid #DDD8CF !important}
+.day-block-body a[href*="google.com/search"]:hover{border-color:#C9922A !important;color:#C9922A !important}
+/* Campo de nota manual */
+.day-note-wrap{margin-top:12px;border-top:1px solid var(--line);padding-top:12px}
+.day-note-label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);margin-bottom:5px}
+.day-note{width:100%;min-height:70px;padding:9px 12px;border:1.5px solid var(--line);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink);outline:none;resize:vertical;background:var(--cream);transition:border-color .2s}
+.day-note:focus{border-color:var(--gold)}
+.day-note::placeholder{color:var(--mid)}
+
+/* ── HERRAMIENTAS ── */
+.tools-tabs{display:flex;gap:6px;margin-bottom:14px;overflow-x:auto;scrollbar-width:none}
+.tools-tabs::-webkit-scrollbar{display:none}
+.ttab{background:var(--sand);border:none;border-radius:50px;padding:7px 13px;font-size:12px;font-family:'DM Sans',sans-serif;color:var(--mid);cursor:pointer;white-space:nowrap;transition:all .2s}
+.ttab.active{background:var(--ink);color:var(--gold);font-weight:500}
+.tool-panel{display:none}
+.tool-panel.active{display:block}
+@media(min-width:700px){
+  .tools-tabs{display:none}
+  .tool-panel{display:block!important}
+  .tools-desktop{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .tool-section-title{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);margin-bottom:8px;padding-bottom:5px;border-bottom:1px solid var(--line)}
+}
+
+/* CONVERSOR */
+.conv-box{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px}
+.conv-row{display:flex;gap:8px;align-items:flex-end;margin-bottom:10px}
+.conv-iw{flex:1}
+.conv-iw label{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--mid);display:block;margin-bottom:3px}
+.conv-input{width:100%;padding:8px 10px;border:1.5px solid var(--line);border-radius:9px;font-size:16px;font-family:'Playfair Display',serif;font-weight:700;color:var(--ink);outline:none;background:var(--cream)}
+.conv-input:focus{border-color:var(--gold)}
+.conv-arrow{font-size:16px;color:var(--gold);padding-bottom:6px;flex-shrink:0}
+.conv-result{background:var(--gold-p);border:1px solid var(--gold-l);border-radius:9px;padding:10px;text-align:center;margin-bottom:6px}
+.conv-amount{font-family:'Playfair Display',serif;font-size:26px;font-weight:900;color:var(--gold)}
+.conv-rate{font-size:10px;color:var(--mid);margin-top:1px}
+.conv-select{width:100%;padding:7px 10px;border:1.5px solid var(--line);border-radius:9px;font-size:13px;font-family:'DM Sans',sans-serif;color:var(--ink);outline:none;background:#fff;margin-bottom:9px}
+.conv-note{font-size:10px;color:var(--mid);text-align:center}
+
+/* TRADUCTOR */
+.trans-wrap{border-radius:var(--r);overflow:hidden;border:1px solid var(--line)}
+.trans-lang{background:var(--ink);color:#fff;padding:9px 13px;font-size:11px;font-weight:500;display:flex;align-items:center;justify-content:space-between}
+.trans-lang select{background:transparent;border:none;color:var(--gold);font-family:'DM Sans',sans-serif;font-size:12px;outline:none;cursor:pointer}
+.trans-list{background:#fff;max-height:280px;overflow-y:auto}
+.trans-item{display:flex;align-items:center;padding:9px 13px;border-bottom:1px solid var(--line);gap:8px}
+.trans-item:last-child{border-bottom:none}
+.trans-texts{flex:1}
+.trans-es{font-size:13px;font-weight:500;color:var(--ink)}
+.trans-dest{font-size:12px;color:var(--sky);font-style:italic;margin-top:1px}
+.trans-audio{background:none;border:1.5px solid var(--gold);border-radius:50%;width:30px;height:30px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--gold);flex-shrink:0;font-size:11px;transition:all .2s}
+.trans-audio.playing,.trans-audio:active{background:var(--gold);color:#fff}
+
+/* CALCULADORA */
+.calc-box{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px}
+.calc-row{margin-bottom:9px}
+.calc-row label{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--mid);display:block;margin-bottom:3px}
+.calc-input{width:100%;padding:7px 10px;border:1.5px solid var(--line);border-radius:9px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--ink);outline:none;background:var(--cream)}
+.calc-input:focus{border-color:var(--gold)}
+.calc-result{background:var(--ink);border-radius:var(--r);padding:13px;margin-top:5px}
+.calc-result-title{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:7px}
+.calc-line{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.calc-line:last-child{border-bottom:none;padding-top:8px;margin-top:4px}
+.calc-line span{font-size:12px;color:rgba(255,255,255,.55)}
+.calc-line strong{font-family:'Playfair Display',serif;font-size:13px;color:var(--gold)}
+.calc-line.total span{color:#fff;font-weight:600;font-size:13px}
+.calc-line.total strong{font-size:17px}
+
+/* CHECKLIST */
+.check-cats{display:flex;gap:5px;margin-bottom:9px;overflow-x:auto;scrollbar-width:none}
+.check-cats::-webkit-scrollbar{display:none}
+.check-cat-btn{background:var(--sand);border:none;border-radius:50px;padding:5px 11px;font-size:11px;font-family:'DM Sans',sans-serif;color:var(--mid);cursor:pointer;white-space:nowrap;transition:all .2s}
+.check-cat-btn.active{background:var(--ink);color:var(--gold);font-weight:500}
+.checklist{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;max-height:280px;overflow-y:auto}
+.check-item{display:flex;align-items:center;gap:9px;padding:9px 12px;border-bottom:1px solid var(--line);cursor:pointer;transition:background .15s}
+.check-item:last-child{border-bottom:none}
+.check-item:hover{background:var(--sand)}
+.check-box{width:18px;height:18px;border:2px solid var(--line);border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px;color:transparent;transition:all .2s}
+.check-item.done .check-box{background:var(--sage);border-color:var(--sage);color:#fff}
+.check-item.done .check-label{text-decoration:line-through;color:var(--mid)}
+.check-label{font-size:13px;color:var(--ink)}
+.check-progress{background:var(--sand);border-radius:var(--r);padding:8px 12px;margin-bottom:9px;display:flex;align-items:center;gap:8px}
+.check-bar-wrap{flex:1;background:var(--line);border-radius:50px;height:5px;overflow:hidden}
+.check-bar{height:100%;background:linear-gradient(90deg,var(--sage),var(--gold));border-radius:50px;transition:width .4s}
+.check-pct{font-size:12px;font-weight:600;color:var(--sage);flex-shrink:0}
+
+/* ── DOCUMENTOS ── */
+.docs-upload-area{border:2px dashed var(--line);border-radius:var(--r);padding:20px;text-align:center;background:#fff;cursor:pointer;transition:all .2s;margin-bottom:16px}
+.docs-upload-area:hover{border-color:var(--gold);background:var(--gold-p)}
+.docs-upload-icon{font-size:28px;margin-bottom:6px}
+.docs-upload-text{font-size:13px;color:var(--mid)}
+.docs-upload-text strong{color:var(--ink);display:block;margin-bottom:2px}
+.docs-list{display:flex;flex-direction:column;gap:8px}
+.doc-item{background:#fff;border:1px solid var(--line);border-radius:10px;padding:11px 14px;display:flex;align-items:center;gap:10px}
+.doc-icon{font-size:22px;flex-shrink:0}
+.doc-info{flex:1;min-width:0}
+.doc-name{font-size:13px;font-weight:500;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.doc-size{font-size:11px;color:var(--mid)}
+.doc-open{background:var(--sky);color:#fff;border:none;border-radius:6px;padding:5px 10px;font-size:11px;font-weight:600;cursor:pointer;flex-shrink:0}
+.doc-del{background:none;border:none;color:var(--mid);cursor:pointer;font-size:16px;padding:0 4px;flex-shrink:0}
+#doc-input{display:none}
+
+/* ── MAPA GENERAL ── */
+.map-block{background:var(--ink);border-radius:var(--r);overflow:hidden;margin-bottom:16px}
+.map-prev{height:110px;background:repeating-linear-gradient(0deg,transparent,transparent 35px,rgba(201,146,42,.06) 36px),repeating-linear-gradient(90deg,transparent,transparent 35px,rgba(201,146,42,.06) 36px);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:5px}
+.map-icon{font-size:26px}
+.map-dest-label{font-size:11px;color:rgba(255,255,255,.35);letter-spacing:1px}
+.map-cta{padding:11px 14px;display:flex;align-items:center;justify-content:space-between}
+.map-cta-t strong{display:block;color:#fff;font-size:13px;margin-bottom:1px}
+.map-cta-t span{font-size:11px;color:rgba(255,255,255,.45)}
+.map-btn{background:var(--gold);color:var(--ink);font-size:11px;font-weight:700;padding:8px 15px;border-radius:50px;text-decoration:none}
+
+/* ── CTA FINAL ── */
+.cta-box{background:linear-gradient(135deg,var(--ink),#2A1F3D);border-radius:var(--r);padding:22px 18px;text-align:center;position:relative;overflow:hidden;margin-bottom:16px}
+.cta-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--terra),var(--sky))}
+.cta-box h3{font-family:'Playfair Display',serif;font-size:18px;color:#fff;margin-bottom:5px}
+.cta-box p{font-size:12px;color:rgba(255,255,255,.45);margin-bottom:14px}
+.cta-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-bottom:13px}
+.cta-pill{background:rgba(201,146,42,.15);border:1px solid rgba(201,146,42,.3);color:var(--gold);font-size:12px;padding:6px 12px;border-radius:50px;text-decoration:none}
+.share-bar{display:flex;gap:7px}
+.share-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:5px;padding:9px;border-radius:9px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;transition:all .2s}
+.share-wpp{background:#25D366;color:#fff}
+.share-copy{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:#fff}
+
+/* NOTAS */
+.note-area{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.note-line{padding:12px 14px;border-bottom:1px solid var(--line);min-height:44px;font-size:14px;color:var(--line);font-style:italic}
+.note-line:last-child{border-bottom:none}
+
+/* MODAL GUARDAR */
+.save-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:999;align-items:flex-end;justify-content:center}
+.save-modal.open{display:flex}
+.save-sheet{background:#fff;border-radius:var(--r) var(--r) 0 0;padding:24px 20px 32px;width:100%;max-width:480px}
+.save-sheet h3{font-family:'Playfair Display',serif;font-size:19px;color:var(--ink);margin-bottom:6px}
+.save-sheet p{font-size:13px;color:var(--mid);margin-bottom:18px;line-height:1.6}
+.save-option{display:flex;align-items:center;gap:12px;padding:13px 14px;border:1.5px solid var(--line);border-radius:var(--r);margin-bottom:9px;cursor:pointer;transition:all .2s}
+.save-option:hover{border-color:var(--gold);background:var(--gold-p)}
+.save-option-icon{font-size:24px;flex-shrink:0}
+.save-option-text strong{display:block;font-size:14px;color:var(--ink);margin-bottom:1px}
+.save-option-text span{font-size:12px;color:var(--mid)}
+.save-close{width:100%;padding:11px;background:var(--sand);border:none;border-radius:var(--r);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;color:var(--mid);cursor:pointer;margin-top:6px}
+
+/* TOAST */
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(10px);background:var(--ink);color:#fff;padding:9px 18px;border-radius:50px;font-size:13px;font-weight:500;opacity:0;transition:all .3s;pointer-events:none;z-index:9999;white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.fa{animation:fadeUp .45s ease both}
+</style>
+</head>
+<body>
+
+<!-- ══ PORTADA ══ -->
+<div class="cover">
+  <div class="cover-bg"></div>
+  <div class="cover-grid"></div>
+  <div class="cover-stripe"></div>
+  <div class="cover-content">
+    <div class="cover-eyebrow fa">GuiaMundi.es</div>
+    <div class="cover-title fa" style="animation-delay:.1s">Guía de BRASIL</div>
+    <div class="cover-subtitle fa" style="animation-delay:.2s">25 días · Aventura y naturaleza · 4viajero/s</div>
+    <div class="cover-actions fa" style="animation-delay:.3s">
+      <button class="cover-btn cover-btn-wpp" onclick="shareWpp()">
+        <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Compartir
+      </button>
+      <button class="cover-btn cover-btn-save" onclick="openSaveModal()">⬇ Guardar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TABS NAV ══ -->
+<div class="tabs-nav">
+  <div class="tabs-scroll" id="tabs-scroll">
+    <button class="tab-btn active" onclick="showTab('info',this)"><span class="tab-icon">📋</span>Viajero</button>
+    <button class="tab-btn" onclick="showTab('itinerario',this)"><span class="tab-icon">🗓</span>Ruta</button>
+    <button class="tab-btn" onclick="showTab('experiencias',this)"><span class="tab-icon">⭐</span>Experiencias</button>
+    <button class="tab-btn" onclick="showTab('tools',this)"><span class="tab-icon">⚙️</span>Tools</button>
+    <button class="tab-btn" onclick="showTab('destino',this)"><span class="tab-icon">💡</span>Destino</button>
+    <button class="tab-btn" onclick="showTab('transporte',this)"><span class="tab-icon">🚗</span>Transporte</button>
+    <button class="tab-btn" onclick="showTab('recursos',this)"><span class="tab-icon">🔗</span>Recursos</button>
+    <button class="tab-btn" onclick="showTab('cultura',this)"><span class="tab-icon">🎬</span>Cultura</button>
+    <button class="tab-btn" onclick="showTab('curiosidades',this)"><span class="tab-icon">🤔</span>Curiosidades</button>
+    <button class="tab-btn" onclick="showTab('docs',this)"><span class="tab-icon">📁</span>Documentos</button>
+    <button class="tab-btn" onclick="showTab('notas',this)"><span class="tab-icon">📝</span>Notas</button>
+  </div>
+  <div class="tabs-fade"><span>›</span></div>
+</div>
+
+<!-- ══ CONTENIDO ══ -->
+<div class="tabs-content" id="tabs-content">
+
+  <!-- TAB VIAJERO -->
+  <div class="tab-panel active" id="tab-info">
+    <div class="sec-eye">Tu viaje</div>
+    <div class="sec-title">Información del viajero</div>
+    <div class="info-mini">
+      <div class="info-tag"><strong>PACO</strong></div>
+      <div class="info-tag">📍 <strong>BRASIL</strong></div>
+      <div class="info-tag">🗓 <strong>25 días</strong></div>
+      <div class="info-tag">👥 <strong>4 viajero/s</strong></div>
+      <div class="info-tag">🧭 <strong>Aventura y naturaleza</strong></div>
+      <div class="info-tag">🚗 <strong>Transporte público</strong></div>
+    </div>
+    <div class="ad"><div class="ad-badge">AD</div><div><strong>Vuelos · Seguro de viaje</strong><span>→ Insertar banner afiliado aquí</span></div></div>
+    <div class="ad"><div class="ad-badge">AD</div><div><strong>Hoteles · Alojamiento</strong><span>→ Booking / Airbnb</span></div></div>
+    <div style="margin-top:16px">
+      <div class="map-block">
+        <div class="map-prev"><div class="map-icon">🗺️</div><div class="map-dest-label">BRASIL</div></div>
+        <div class="map-cta">
+          <div class="map-cta-t"><strong>Ver en Google Maps</strong><span>Explorar BRASIL</span></div>
+          <a class="map-btn" href="https://www.google.com/maps/search/BRASIL" target="_blank">Abrir →</a>
+        </div>
+      </div>
+    </div>
+    <div class="cta-box">
+      <h3>¡Buen viaje, PACO!</h3>
+      <p>Tu aventura en BRASIL · GuiaMundi.es</p>
+      <div class="cta-pills">
+        <a class="cta-pill" href="#">✈ Vuelos</a>
+        <a class="cta-pill" href="#">🏨 Hoteles</a>
+        <a class="cta-pill" href="#">🎯 Experiencias</a>
+        <a class="cta-pill" href="#">🛡 Seguro</a>
+      </div>
+      <div class="share-bar">
+        <button class="share-btn share-wpp" onclick="shareWpp()">
+          <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Compartir WhatsApp
+        </button>
+        <button class="share-btn share-copy" onclick="copyLink()">⎘ Copiar enlace</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB ITINERARIO -->
+  <div class="tab-panel" id="tab-itinerario">
+    <div class="sec-eye">Día a día</div>
+    <div class="sec-title">Itinerario detallado</div>
+    <div class="ad"><div class="ad-badge">AD</div><div><strong>Tours · Actividades</strong><span>→ Experiencias locales recomendadas</span></div></div>
+    <div id="itinerario-content" class="ai-content" style="margin-top:14px"><h2>DÍA 1 — Llegada a Río de Janeiro y exploración inicial</h2>
+<p>Comiencen la aventura en Brasil explorando los icónicos paisajes urbanos y naturales de Río de Janeiro, enamorándose de su vibrante cultura y ambiente.</p>
+
+<h3>Cristo Redentor</h3>
+<p>Visiten la emblemática estatua del Cristo Redentor, uno de los símbolos más reconocidos de Brasil. Desde aquí se obtiene una vista panorámica increíble de la ciudad y la bahía. Tiempo recomendado: 2-3 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Cristo+Redentor+BRASIL" target="_blank">📖 Cristo Redentor</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Cristo+Redentor+BRASIL" target="_blank">📍 Maps</a>
+</p>
+
+<h3>Parque Nacional de Tijuca</h3>
+<p>Exploren este bosque tropical urbano, hogar de cascadas y senderos naturales. Ideal para caminatas y conexión con la naturaleza. Tiempo recomendado: 3-4 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Parque+Nacional+de+Tijuca+BRASIL" target="_blank">📖 Parque Nacional de Tijuca</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Parque+Nacional+de+Tijuca+BRASIL" target="_blank">📍 Maps</a>
+</p>
+
+<h3>Playa de Copacabana</h3>
+<p>Disfruten de la famosa playa de arena blanca ideal para relajarse tras la caminata. Además, se puede ver la vida local y vendedores ambulantes. Tiempo recomendado: 2 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Playa+de+Copacabana+BRASIL" target="_blank">📖 Playa de Copacabana</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Playa+de+Copacabana+BRASIL" target="_blank">📍 Maps</a>
+</p>
+
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=Restaurante+Aprazivel+Rio+de+Janeiro+BRASIL" target="_blank">📖 Aprazível Restaurante</a> &nbsp;·&nbsp; <a href="https://www.google.com/maps/search/Restaurante+Aprazivel+Rio+de+Janeiro+BRASIL" target="_blank">📍 Maps</a></p>
+<p><strong>Alojamiento recomendado:</strong> <a href="https://www.google.com/search?q=Hostel+Rio+Copacabana+BRASIL" target="_blank">📖 Hostel Rio Copacabana</a> &nbsp;·&nbsp; <a href="https://www.google.com/maps/search/Hostel+Rio+Copacabana+BRASIL" target="_blank">📍 Maps</a></p>
+
+<h2>DÍA 2 — Senderismo en el Parque Lage y playas más naturales</h2>
+<p>Un día dedicado a la exploración del Parque Lage y entornos costeros menos turísticos para sentir la naturaleza más pura de Río y sus alrededores.</p>
+
+<h3>Parque Lage</h3>
+<p>Recorran este parque con su pintoresca arquitectura y senderos naturales rodeados de vegetación autóctona y lagunas. Tiempo recomendado: 2-3 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Parque+Lage+BRASIL" target="_blank">📖 Parque Lage</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Parque+Lage+BRASIL" target="_blank">📍 Maps</a>
+</p>
+
+<h3>Playa de Prainha</h3>
+<p>Accedan a esta playa virgen y protegida, ideal para surfistas y amantes de la naturaleza, fuera del circuito comercial. Tiempo recomendado: 3 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Playa+de+Prainha+BRASIL" target="_blank">📖 Playa de Prainha</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Playa+de+Prainha+BRASIL" target="_blank">📍 Maps</a>
+</p>
+
+<h3>Reserva Ecológica de Guaratiba</h3>
+<p>Exploren esta reserva natural con senderos y observación de fauna, perfecta para la aventura ecoturística cercana a Río. Tiempo recomendado: 2-3 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Reserva+Ecol%C3%B3gica+de+Guaratiba+BRASIL" target="_blank">📖 Reserva Ecológica de Guaratiba</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Reserva+Ecol%C3%B3gica+de+Guaratiba+BRASIL" target="_blank">📍 Maps</a>
+</p>
+
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=Bar+Da+Prainha+Rio+de+Janeiro+BRASIL" target="_blank">📖 Bar Da Prainha</a> &nbsp;·&nbsp; <a href="https://www.google.com/maps/search/Bar+Da+Prainha+Rio+de+Janeiro+BRASIL" target="_blank">📍 Maps</a></p>
+<p><strong>Alojamiento recomendado:</strong> <a href="https://www.google.com/search?q=Pousada+Prainha+Brasil" target="_blank">📖 Pousada Prainha</a> &nbsp;·&nbsp; <a href="https://www.google.com/maps/search/Pousada+Prainha+Brasil" target="_blank">📍 Maps</a></p>
+
+<h2>DÍA 3 — Viaje a Ilha Grande y aventuras en la selva costera</h2>
+<p>Traslado en transporte público y barco hacia Ilha Grande, un lugar paradisíaco para disfrutar senderismo, playas vírgenes y biodiversidad.</p>
+
+<h3>Puerto de Angra dos Reis</h3>
+<p>Desde aquí partirán en barco hacia Ilha Grande. Paseo por el puerto con mercados y oportunidades para preparar su excursión. Tiempo recomendado: 1-2 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Puerto+de+Angra+dos+Reis+BRASIL" target="_blank">📖 Puerto de Angra dos Reis</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Puerto+de+Angra+dos+Reis+BRASIL" target="_blank">📍 Maps</a>
+</p>
+
+<h3>Praia do Aventureiro</h3>
+<p>Una de las playas más hermosas y aisladas de Ilha Grande, ideal para admirar el paisaje y realizar snorkel. Tiempo recomendado: 3 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Praia+do+Aventureiro+Ilha+Grande+BRASIL" target="_blank">📖 Praia do Aventureiro</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Praia+do+Aventureiro+Ilha+Grande+BRASIL" target="_blank">📍 Maps</a>
+</p>
+
+<h3>Sendero hasta la Playa de Lopes Mendes</h3>
+<p>Caminen por uno de los senderos más conocidos para llegar a Lopes Mendes, una playa famosa por su belleza y serenidad. Tiempo recomendado: 4 horas ida y vuelta.</p>
+<p>
+<a href="https://www.google.com/search?q=Playa+de+Lopes+Mendes+Ilha+Grande+BRASIL" target="_blank">📖 Playa de Lopes Mendes</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Playa+de+Lopes+Mendes+Ilha+Grande+BRASIL" target="_blank">📍 Maps</a>
+</p>
+
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=Restaurante+Lua+e+Mar+Ilha+Grande+BRASIL" target="_blank">📖 Restaurante Lua e Mar</a> &nbsp;·&nbsp; <a href="https://www.google.com/maps/search/Restaurante+Lua+e+Mar+Ilha+Grande+BRASIL" target="_blank">📍 Maps</a></p>
+<p><strong>Alojamiento recomendado:</strong> <a href="https://www.google.com/search?q=Pousada+Ilha+Grande+Brasil" target="_blank">📖 Pousada Ilha Grande</a> &nbsp;·&nbsp; <a href="https://www.google.com/maps/search/Pousada+Ilha+Grande+Brasil" target="_blank">📍 Maps</a></p>
+
+<h2>DÍA 4 — Explorando la selva y playas escondidas de Ilha Grande</h2>
+<p>Sumérjanse en senderos verdes y descubran playas y lagunas ocultas dentro de Ilha Grande, disfrutando la tranquilidad y naturaleza virgen.</p>
+
+<h3>Trilha do Pico do Papagaio</h3>
+<p>Aventúrense en este desafiante sendero hasta el pico Papagaio donde las vistas son invaluables. Ideal para caminantes experimentados. Tiempo recomendado: 5-6 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Pico+do+Papagaio+Ilha+Grande+BRASIL" target="_blank">📖 Pico do Papagaio</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Pico+do+Papagaio+Ilha+Grande+BRASIL" target="_blank">📍 Maps</a>
+</p>
+
+<h3>Praia do Caxadaço</h3>
+<p>Playa de acceso por sendero, famosa por su belleza y olas perfectas para surf, rodeada de morros y selva. Tiempo recomendado: 2 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Praia+do+Caxada%C3%A7o+Ilha+Grande+BRASIL" target="_blank">📖 Praia do Caxadaço</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Praia+do+Caxada%C3%A7o+Ilha+Grande+BRASIL" target="_blank">📍 Maps</a>
+</p>
+
+<h3>Lagoa Azul</h3>
+<p>Una laguna de aguas cristalinas popular para snorkel, donde se puede descubrir la vida marina de la región. Tiempo recomendado: 2-3 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Lagoa+Azul+Ilha+Grande+BRASIL" target="_blank">📖 Lagoa Azul</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Lagoa+Azul+Ilha+Grande+BRASIL" target="_blank">📍 Maps</a>
+</p>
+
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=Restaurante+Palho%C3%A7a+Ilha+Grande+BRASIL" target="_blank">📖 Restaurante Palhoça</a> &nbsp;·&nbsp; <a href="https://www.google.com/maps/search/Restaurante+Palho%C3%A7a+Ilha+Grande+BRASIL" target="_blank">📍 Maps</a></p>
+<p><strong>Alojamiento recomendado:</strong> <a href="https://www.google.com/search?q=Pousada+Lua+e+Mar+Ilha+Grande+Brasil" target="_blank">📖 Pousada Lua e Mar</a> &nbsp;·&nbsp; <a href="https://www.google.com/maps/search/Pousada+Lua+e+Mar+Ilha+Grande+Brasil" target="_blank">📍 Maps</a></p>
+
+<h2>DÍA 5 — Navegación y exploración de bahías e islas cercanas</h2>
+<p>Contraten un tour público para navegar en barco y descubrir bahías vírgenes y playas accesibles sólo por mar, disfrutando la biodiversidad marina y paisajes encantadores.</p>
+
+<h3>Lagoa Verde</h3>
+<p>Hermosa bahía para nadar y hacer snorkel entre peces tropicales y corales. Tiempo recomendado: 2 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Lagoa+Verde+Ilha+Grande+BRASIL" target="_blank">📖 Lagoa Verde</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Lagoa+Verde+Ilha+Grande+BRASIL" target="_blank">📍 Maps</a>
+</p>
+
+<h3>Praia do Aventureiro</h3>
+<p>Regreso a esta famosa playa para disfrutar del entorno y tranquilidad. Tiempo recomendado: 2 horas adicional para relajarse.</p>
+<p>
+<a href="https://www.google.com/search?q=Praia+do+Aventureiro+Ilha+Grande+BRASIL" target="_blank">📖 Praia do Aventureiro</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Praia+do+Aventureiro+Ilha+Grande+BRASIL" target="_blank">📍 Maps</a>
+</p>
+
+<h3>Ilha de Jorge Grego</h3>
+<p>Excelente para snorkel y observar la naturaleza marina, isla rodeada de aguas cristalinas y formaciones rocosas. Tiempo recomendado: 1-2 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Ilha+de+Jorge+Grego+Ilha+Grande+BRASIL" target="_blank">📖 Ilha de Jorge Grego</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Ilha+de+Jorge+Grego+Ilha+Grande+BRASIL" target="_blank">📍 Maps</a>
+</p>
+
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=Restaurante+Dom+Mario+Ilha+Grande+BRASIL" target="_blank">📖 Restaurante Dom Mario</a> &nbsp;·&nbsp; <a href="https://www.google.com/maps/search/Restaurante+Dom+Mario+Ilha+Grande+BRASIL" target="_blank">📍 Maps</a></p>
+<p><strong>Alojamiento recomendado:</strong> <a href="https://www.google.com/search?q=Pousada+Do+Capriccio+Ilha+Grande+Brasil" target="_blank">📖 Pousada Do Capriccio</a> &nbsp;·&nbsp; <a href="https://www.google.com/maps/search/Pousada+Do+Capriccio+Ilha+Grande+Brasil" target="_blank">📍 Maps</a></p>
+
+<h2>DÍA 6 — Viaje a Paraty y recorrido histórico-natural</h2>
+<p>Viajen en ferry y bus a Paraty, una hermosa ciudad colonial junto a la costa, ideal para combinar historia, cultura y naturaleza en un solo lugar.</p>
+
+<h3>Centro Histórico de Paraty</h3>
+<p>Descubran las calles empedradas y arquitectura colonial portuguesas, visitando museos y sitios culturales. Tiempo recomendado: 2-3 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Centro+Hist%C3%B3rico+de+Paraty+BRASIL" target="_blank">📖 Centro Histórico de Paraty</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Centro+Hist%C3%B3rico+de+Paraty+BRASIL" target="_blank">📍 Maps</a>
+</p>
+
+<h3>Cachoeira do Tobogã</h3>
+<p>Una catarata natural donde se puede deslizar por las rocas, actividad ideal para la aventura y refrescar cuerpo y mente. Tiempo recomendado: 2 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Cachoeira+do+Tobog%C3%A3+Paraty+BRASIL" target="_blank">📖 Cachoeira do Tobogã</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Cachoeira+do+Tobog%C3%A3+Paraty+BRASIL" target="_blank">📍 Maps</a>
+</p>
+
+<h3>Praia do Sono</h3>
+<p>Accesible por senderos desde Paraty, esta playa es ideal para finalizar el día con naturaleza pura, arena blanca y mar tranquilo. Tiempo recomendado: 3 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Praia+do+Sono+Paraty+BRASIL" target="_blank">📖 Praia do Sono</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Praia+do+Sono+Paraty+BRASIL" target="_blank">📍 Maps</a>
+</p>
+
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=Restaurante+Casa+Couro+Paraty+BRASIL" target="_blank">📖 Restaurante Casa Couro</a> &nbsp;·&nbsp; <a href="https://www.google.com/maps/search/Restaurante+Casa+Couro+Paraty+BRASIL" target="_blank">📍 Maps</a></p>
+<p><strong>Alojamiento recomendado:</strong> <a href="https://www.google.com/search?q=Pousada+do+Solex+Paraty+BRASIL" target="_blank">📖 Pousada do Solex</a> &nbsp;·&nbsp; <a href="https://www.google.com/maps/search/Pousada+do+Solex+Paraty+BRASIL" target="_blank">📍 Maps</a></p>
+
+<h2>DÍA 7 — Recorrido por cascadas y senderos de la Mata Atlántica</h2>
+<p>Profundicen en la exuberante selva atlántica con caminatas a cascadas y zonas naturales protegidas cercanas a Paraty, para vivir la aventura y tranquilidad al mismo tiempo.</p>
+
+<h3>Cachoeira da Pedra Branca</h3>
+<p>Cascada impresionante con pozas para nadar rodeada de vegetación densa, accesible por senderos moderados. Tiempo recomendado: 3 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Cachoeira+da+Pedra+Branca+Paraty+BRASIL" target="_blank">📖 Cachoeira da Pedra Branca</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Cachoeira+da+Pedra+Branca+Paraty+BRASIL" target="_blank">📍 Maps</a>
+</p>
+
+<h3>Trilha do Ouro</h3>
+<p>Ruta histórica usada para transportar oro en la colonia con paisajes naturales y pequeños riachuelos, ideal para trekking y aventura cultural. Tiempo recomendado: 4 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Trilha+do+Ouro+Paraty+BRASIL" target="_blank">📖 Trilha do Ouro</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Trilha+do+Ouro+Paraty+BRASIL" target="_blank">📍 Maps</a>
+</p>
+
+<h3>Cachaça Artesanal</h3>
+<p>Visiten una destilería artesanal local para aprender sobre la producción de la bebida típica brasileña y degustarla. Tiempo recomendado: 1-2 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Cacha%C3%A7a+Artesanal+Paraty+BRASIL" target="_blank">📖 Cachaça Artesanal</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Cacha%C3%A7a+Artesanal+Paraty+BRASIL" target="_blank">📍 Maps</a>
+</p>
+
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=Restaurante+Taberna+do+Favero+Paraty+BRASIL" target="_blank">📖 Restaurante Taberna do Favero</a> &nbsp;·&nbsp; <a href="https://www.google.com/maps/search/Restaurante+Taberna+do+Favero+Paraty+BRASIL" target="_blank">📍 Maps</a></p>
+<p><strong>Alojamiento recomendado:</strong> <a href="https://www.google.com/search?q=Pousada+do+Cais+Paraty+BRASIL" target="_blank">📖 Pousada do Cais</a> &nbsp;·&nbsp; <a href="https://www.google.com/maps/search/Pousada+do+Cais+Paraty+BRASIL" target="_blank">📍 Maps</a></p>
+
+<h2>DÍA 8 — Vuelo a Manaos y acercamiento a la Amazonia</h2>
+<p>Traslado en avión a Manaos, punto de entrada a la selva amazónica, con paseos iniciales por la ciudad y mercado para conectarse con la cultura amazónica.</p>
+
+<h3>Teatro Amazonas</h3>
+<p>Visiten este emblemático teatro de la época del caucho, notable por su arquitectura y relevancia cultural. Tiempo recomendado: 1-2 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Teatro+Amazonas+Manaos+BRASIL" target="_blank">📖 Teatro Amazonas</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Teatro+Amazonas+Manaos+BRASIL" target="_blank">📍 Maps</a>
+</p>
+
+<h3>Mercado Municipal Adolpho Lisboa</h3>
+<p>El mercado central donde se aprecia gastronomía y artesanías regionales, ideal para compras y conocer productos amazónicos. Tiempo recomendado: 2 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Mercado+Municipal+Adolpho+Lisboa+Manaos+BRASIL" target="_blank">📖 Mercado Municipal Adolpho Lisboa</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Mercado+Municipal+Adolpho+Lisboa+Manaos+BRASIL" target="_blank">📍 Maps</a>
+</p>
+
+<h3>Parque Municipal do Mindu</h3>
+<p>Parque urbano con senderos y fauna local, excelente para introducción al ecosistema amazónico dentro de la ciudad. Tiempo recomendado: 2 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Parque+Municipal+do+Mindu+Manaos+BRASIL" target="_blank">📖 Parque Municipal do Mindu</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Parque+Municipal+do+Mindu+Manaos+BRASIL" target="_blank">📍 Maps</a>
+</p>
+
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=Restaurante+Tambaqui+de+Bandera+Manaos+BRASIL" target="_blank">📖 Restaurante Tambaqui de Bandeira</a> &nbsp;·&nbsp; <a href="https://www.google.com/maps/search/Restaurante+Tambaqui+de+Bandera+Manaos+BRASIL" target="_blank">📍 Maps</a></p>
+<p><strong>Alojamiento recomendado:</strong> <a href="https://www.google.com/search?q=Hotel+Villa+Amazonia+Manaos+BRASIL" target="_blank">📖 Hotel Villa Amazonia</a> &nbsp;·&nbsp; <a href="https://www.google.com/maps/search/Hotel+Villa+Amazonia+Manaos+BRASIL" target="_blank">📍 Maps</a></p>
+
+<h2>DÍA 9 — Excursión en barco por el Río Negro y comunidades ribereñas</h2>
+<p>Salgan en barco público hacia comunidades tradicionales y exploren la biodiversidad del Río Negro, con paradas para caminatas y conocer la cultura local.</p>
+
+<h3>Comunidad Ribereña de Paricatuba</h3>
+<p>Visiten esta comunidad donde aprenderán sobre modos de vida tradicionales y artesanía amazónica. Tiempo recomendado: 2 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Comunidad+Ribere%C3%B1a+Paricatuba+Manaos+BRASIL" target="_blank">📖 Comunidad Ribereña Paricatuba</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Comunidad+Ribere%C3%B1a+Paricatuba+Manaos+BRASIL" target="_blank">📍 Maps</a>
+</p>
+
+<h3>Playa de Ponta Negra</h3>
+<p>Disfruten de esta playa fluvial en Manaos, ideal para nadar o relajarse. Tiempo recomendado: 2 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Playa+de+Ponta+Negra+Manaos+BRASIL" target="_blank">📖 Playa de Ponta Negra</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Playa+de+Ponta+Negra+Manaos+BRASIL" target="_blank">📍 Maps</a>
+</p>
+
+<h3>Parque Nacional de Anavilhanas</h3>
+<p>Exploren el archipiélago de Anavilhanas, uno de los mayores del mundo, con gran riqueza natural y fauna embarcada. Tiempo recomendado: 3-4 horas en excursión.</p>
+<p>
+<a href="https://www.google.com/search?q=Parque+Nacional+de+Anavilhanas+BRASIL" target="_blank">📖 Parque Nacional de Anavilhanas</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Parque+Nacional+de+Anavilhanas+BRASIL" target="_blank">📍 Maps</a>
+</p>
+
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=Restaurante+Amazonico+Manaos+BRASIL" target="_blank">📖 Restaurante Amazonico</a> &nbsp;·&nbsp; <a href="https://www.google.com/maps/search/Restaurante+Amazonico+Manaos+BRASIL" target="_blank">📍 Maps</a></p>
+<p><strong>Alojamiento recomendado:</strong> <a href="https://www.google.com/search?q=Hotel+Villa+Amazonia+Manaos+BRASIL" target="_blank">📖 Hotel Villa Amazonia</a> &nbsp;·&nbsp; <a href="https://www.google.com/maps/search/Hotel+Villa+Amazonia+Manaos+BRASIL" target="_blank">📍 Maps</a></p>
+
+<h2>DÍA 10 — Trekking en la Reserva Florestal Adolpho Ducke y fauna amazónica</h2>
+<p>Experimenten un día completo de trekking en esta reserva protegida para observar la flora y fauna típica, incluyendo aves y mamíferos en su hábitat natural.</p>
+
+<h3>Reserva Florestal Adolpho Ducke</h3>
+<p>Realicen caminatas por los senderos bien señalizados con enfoque en flora amazónica, avistamiento de monos, aves y otros animales. Tiempo recomendado: 6-7 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Reserva+Florestal+Adolpho+Ducke+Manaos+BRASIL" target="_blank">📖 Reserva Florestal Adolpho Ducke</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Reserva+Florestal+Adolpho+Ducke+Manaos+BRASIL" target="_blank">📍 Maps</a>
+</p>
+
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=Restaurante+Tambaqui+de+Bandera+Manaos+BRASIL" target="_blank">📖 Restaurante Tambaqui de Bandeira</a> &nbsp;·&nbsp; <a href="https://www.google.com/maps/search/Restaurante+Tambaqui+de+Bandera+Manaos+BRASIL" target="_blank">📍 Maps</a></p>
+<p><strong>Alojamiento recomendado:</strong> <a href="https://www.google.com/search?q=Hotel+Villa+Amazonia+Manaos+BRASIL" target="_blank">📖 Hotel Villa Amazonia</a> &nbsp;·&nbsp; <a href="https://www.google.com/maps/search/Hotel+Villa+Amazonia+Manaos+BRASIL" target="_blank">📍 Maps</a></p>
+
+<h2>DÍA 11 — Navegación al encuentro de aguas y excursión nocturna en la selva</h2>
+<p>Vivan la experiencia única del encuentro de dos ríos y disfruten un paseo nocturno para descubrir sonidos y animales nocturnos de la selva amazónica.</p>
+
+<h3>Encuentro de Aguas: Río Negro y Río Solimões</h3>
+<p>Observen cómo las aguas de dos ríos de diferente color no se mezclan inmediatamente, un fenómeno natural único. Tiempo recomendado: 2 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Encuentro+de+Aguas+Manaos+BRASIL" target="_blank">📖 Encuentro de Aguas</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Encuentro+de+Aguas+Manaos+BRASIL" target="_blank">📍 Maps</a>
+</p>
+
+<h3>Excursión Nocturna en la Selva</h3>
+<p>Con guías locales, exploren la selva en la noche para avistar animales y vivir la atmósfera única de la Amazonia nocturna. Tiempo recomendado: 3 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Excursi%C3%B3n+Nocturna+Selva+Amazonia+BRASIL" target="_blank">📖 Excursión Nocturna en la Selva</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Excursi%C3%B3n+Nocturna+Selva+Amazonia+BRASIL" target="_blank">📍 Maps</a>
+</p>
+
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=Restaurante+Caxiri+Manaos+BRASIL" target="_blank">📖 Restaurante Caxiri</a> &nbsp;·&nbsp; <a href="https://www.google.com/maps/search/Restaurante+Caxiri+Manaos+BRASIL" target="_blank">📍 Maps</a></p>
+<p><strong>Alojamiento recomendado:</strong> <a href="https://www.google.com/search?q=Lodge+Selva+Amazonas+Manaos+BRASIL" target="_blank">📖 Lodge Selva Amazonas</a> &nbsp;·&nbsp; <a href="https://www.google.com/maps/search/Lodge+Selva+Amazonas+Manaos+BRASIL" target="_blank">📍 Maps</a></p>
+
+<h2>DÍA 12 — Excursión a la Reserva Mamirauá y observación de fauna</h2>
+<p>Exploren en bote esta reserva remota donde podrán observar delfines rosados, tucanes y especies únicas de la Amazonia utilizando transporte público y tours compartidos.</p>
+
+<h3>Reserva de Desarrollo Sostenible Mamirauá</h3>
+<p>Maravíllense con la biodiversidad y ecosistemas únicos, con visitas guiadas por selvas inundadas y comunidades tradicionales. Tiempo recomendado: jornada completa.</p>
+<p>
+<a href="https://www.google.com/search?q=Reserva+Mamirau%C3%A1+BRASIL" target="_blank">📖 Reserva Mamirauá</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Reserva+Mamirau%C3%A1+BRASIL" target="_blank">📍 Maps</a>
+</p>
+
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=Restaurante+Local+Mamiraua+BRASIL" target="_blank">📖 Restaurante Local Mamirauá</a> &nbsp;·&nbsp; <a href="https://www.google.com/maps/search/Restaurante+Local+Mamiraua+BRASIL" target="_blank">📍 Maps</a></p>
+<p><strong>Alojamiento recomendado:</strong> <a href="https://www.google.com/search?q=Lodge+Mamiraua+BRASIL" target="_blank">📖 Lodge Mamirauá</a> &nbsp;·&nbsp; <a href="https://www.google.com/maps/search/Lodge+Mamiraua+BRASIL" target="_blank">📍 Maps</a></p>
+
+<h2>DÍA 13 — Traslado a Santarém y primera visita al Río Tapajós</h2>
+<p>Desplácense en transporte público desde Manaos a Santarém para descubrir paisajes amazónicos de ríos de aguas claras y playas fluviales únicas.</p>
+
+<h3>Praia do Alter do Chão</h3>
+<p>Conocida como la “Caribe Amazónico”, esta playa de arena blanca a orillas del Río Tapajós es perfecta para relajarse y nadar. Tiempo recomendado: 3 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Praia+do+Alter+do+Ch%C3%A3o+BRASIL" target="_blank">📖 Praia do Alter do Chão</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Praia+do+Alter+do+Ch%C3%A3o+BRASIL" target="_blank">📍 Maps</a>
+</p>
+
+<h3>Mercado Municipal de Santarém</h3>
+<p>Descubran productos regionales y artesanías amazónicas con un ambiente local y acogedor. Tiempo recomendado: 1 hora.</p>
+<p>
+<a href="https://www.google.com/search?q=Mercado+Municipal+Santar%C3%A9m+BRASIL" target="_blank">📖 Mercado Municipal Santarém</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Mercado+Municipal+Santar%C3%A9m+BRASIL" target="_blank">📍 Maps</a>
+</p>
+
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=Restaurante+Lampir%C3%A3o+Santar%C3%A9m+BRASIL" target="_blank">📖 Restaurante Lampirã</a> &nbsp;·&nbsp; <a href="https://www.google.com/maps/search/Restaurante+Lampir%C3%A3o+Santar%C3%A9m+BRASIL" target="_blank">📍 Maps</a></p>
+<p><strong>Alojamiento recomendado:</strong> <a href="https://www.google.com/search?q=Hotel+Amazonas+Santar%C3%A9m+BRASIL" target="_blank">📖 Hotel Amazonas</a> &nbsp;·&nbsp; <a href="https://www.google.com/maps/search/Hotel+Amazonas+Santar%C3%A9m+BRASIL" target="_blank">📍 Maps</a></p>
+
+<h2>DÍA 14 — Descubriendo playas fluviales y ríos de agua cristalina</h2>
+<p>Aventúrense por playas escondidas y recorred ríos de aguas transparentes para bañarse y disfrutar de la selva y sus sonidos.</p>
+
+<h3>Praia do Pindobal</h3>
+<p>Una playa fluvial hermosa con aguas claras, ideal para descansar y nadar, rodeada de paisajes naturales. Tiempo recomendado: 3 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Praia+do+Pindobal+Santar%C3%A9m+BRASIL" target="_blank">📖 Praia do Pindobal</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Praia+do+Pindobal+Santar%C3%A9m+BRASIL" target="_blank">📍 Maps</a>
+</p>
+
+<h3>Río Tapajós</h3>
+<p>Realicen paseos en canoa y exploren la flora y fauna ribereña, una experiencia amazónica auténtica. Tiempo recomendado: 4 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=R%C3%ADo+Tapaj%C3%B3s+BRASIL" target="_blank">📖 Río Tapajós</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/R%C3%ADo+Tapaj%C3%B3s+BRASIL" target="_blank">📍 Maps</a>
+</p>
+
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=Restaurante+Armaz%C3%A9m+do+Tapaj%C3%B3s+Santar%C3%A9m+BRASIL" target="_blank">📖 Restaurante Armazém do Tapajós</a> &nbsp;·&nbsp; <a href="https://www.google.com/maps/search/Restaurante+Armaz%C3%A9m+do+Tapaj%C3%B3s+Santar%C3%A9m+BRASIL" target="_blank">📍 Maps</a></p>
+<p><strong>Alojamiento recomendado:</strong> <a href="https://www.google.com/search?q=Pousada+Villa+Boa+Vista+Santar%C3%A9m+BRASIL" target="_blank">📖 Pousada Villa Boa Vista</a> &nbsp;·&nbsp; <a href="https://www.google.com/maps/search/Pousada+Villa+Boa+Vista+Santar%C3%A9m+BRASIL" target="_blank">📍 Maps</a></p>
+
+<h2>DÍA 15 — Ruta de senderismo en la floresta nacional de Tapajós</h2>
+<p>Exploren bosques, senderos y miradores en esta floresta protegida para una experiencia natural profunda con abundante fauna y flora.</p>
+
+<h3>Floresta Nacional de Tapajós</h3>
+<p>Recorran caminos selváticos con guías locales, aprendiendo sobre biodiversidad y observando animales en su entorno natural. Tiempo recomendado: día completo.</p>
+<p>
+<a href="https://www.google.com/search?q=Floresta+Nacional+de+Tapaj%C3%B3s+BRASIL" target="_blank">📖 Floresta Nacional de Tapajós</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Floresta+Nacional+de+Tapaj%C3%B3s+BRASIL" target="_blank">📍 Maps</a>
+</p>
+
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=Restaurante+Valle+Verde+Santar%C3%A9m+BRASIL" target="_blank">📖 Restaurante Valle Verde</a> &nbsp;·&nbsp; <a href="https://www.google.com/maps/search/Restaurante+Valle+Verde+Santar%C3%A9m+BRASIL" target="_blank">📍 Maps</a></p>
+<p><strong>Alojamiento recomendado:</strong> <a href="https://www.google.com/search?q=Hotel+Amazonas+Santar%C3%A9m+BRASIL" target="_blank">📖 Hotel Amazonas</a> &nbsp;·&nbsp; <a href="https://www.google.com/maps/search/Hotel+Amazonas+Santar%C3%A9m+BRASIL" target="_blank">📍 Maps</a></p>
+
+<h2>DÍA 16 — Viaje en bus y vuelo hacia Foz do Iguaçu</h2>
+<p>Traslado hacia Foz do Iguaçu, puerta de entrada para descubrir las impresionantes cataratas y ecosistemas subtropicales del sur de Brasil.</p>
+
+<h3>Lago de Itaipu</h3>
+<p>Visiten el lago artificial más grande del mundo y disfruten de excursiones en barco o la vista cercana a la represa. Tiempo recomendado: 2 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Lago+de+Itaipu+Foz+do+Igua%C3%A7u+BRASIL" target="_blank">📖 Lago de Itaipu</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Lago+de+Itaipu+Foz+do+Igua%C3%A7u+BRASIL" target="_blank">📍 Maps</a>
+</p>
+
+<h3>Parque das Aves</h3>
+<p>Un refugio dedicado a aves tropicales y exóticas, donde podrán ver tucanes, guacamayos y muchas otras especies. Tiempo recomendado: 3 horas.</p>
+<p>
+<a href="https://www.google.com/search?q=Parque+das+Aves+Foz+do+Igua%C3%A7u+BRASIL" target="_blank">📖 Parque das Aves</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Parque+das+Aves+Foz+do+Igua%C3%A7u+BRASIL" target="_blank">📍 Maps</a>
+</p>
+
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=Restaurante+Fazenda+Do+Chocolate+Foz+do+Igua%C3%A7u+BRASIL" target="_blank">📖 Restaurante Fazenda Do Chocolate</a> &nbsp;·&nbsp; <a href="https://www.google.com/maps/search/Restaurante+Fazenda+Do+Chocolate+Foz+do+Igua%C3%A7u+BRASIL" target="_blank">📍 Maps</a></p>
+<p><strong>Alojamiento recomendado:</strong> <a href="https://www.google.com/search?q=Hotel+Bourbon+Foz+do+Igua%C3%A7u+BRASIL" target="_blank">📖 Hotel Bourbon Foz do Iguaçu</a> &nbsp;·&nbsp; <a href="https://www.google.com/maps/search/Hotel+Bourbon+Foz+do+Igua%C3%A7u+BRASIL" target="_blank">📍 Maps</a></p>
+
+<h2>DÍA 17 — Aventura en las Cataratas del Iguazú, lado brasileño</h2>
+<p>Recorran el parque del lado brasileño de las cataratas, con vistas panorámicas y senderos para admirar la fuerza de la naturaleza en toda su majestuosidad.</p>
+
+<h3>Parque Nacional do Iguaçu (lado brasileño)</h3>
+<p>Exploren senderos y pasarelas que ofrecen vistas espectaculares de las cataratas y la selva circundante desde varios ángulos. Tiempo recomendado: día completo.</p>
+<p>
+<a href="https://www.google.com/search?q=Parque+Nacional+do+Igua%C3%A7u+lado+brasile%C3%B1o" target="_blank">📖 Parque Nacional do Iguaçu</a>
+&nbsp;·&nbsp;
+<a href="https://www.google.com/maps/search/Parque+Nacional+do+Igua%C3%A7u+lado+brasile%C3%B1o" target="_blank">📍 Maps</a>
+</p>
+
+<p><strong>Restaurante recomendado:</strong> <a href="https://www.google.com/search?q=Restaurante+Porto+Cauim+Foz+do+Igua%C3%A7u+BRASIL" target="_blank">📖 Restaurante Porto Cauim</a> &nbsp;·&nbsp; <a href="https://www.google.com/maps/search/Restaurante+Porto+Cauim+Foz+do+Igua%C3%A7u+BRASIL" target="_blank">📍 Maps</a></p>
+<p><strong>Alojamiento recomendado:</strong> <a href="https://www.google.com/search?q=Hotel+Bourbon+Foz+do+Igua%C3%A7u+BRASIL" target="_blank">📖 Hotel Bourbon Foz do Iguaçu</a> &nbsp;·&nbsp; <a href="https://www.google.com/maps/search/Hotel+Bourbon+Foz+do+Igua%C3%A7u+BRASIL" target="_blank">📍 Maps</a></p>
+
+<h2>DÍA 18 — Cataratas del Iguazú, lado argentino y aventura en barco</h2>
+<p>Vis</div>
+  </div>
+
+  <!-- TAB EXPERIENCIAS -->
+  <div class="tab-panel" id="tab-experiencias">
+    <div class="sec-eye">Imprescindibles</div>
+    <div class="sec-title">Experiencias destacadas</div>
+    <div class="ai-content"><h3>🌟 Senderismo en el Parque Nacional de Chapada Diamantina</h3>
+<p>Este parque es un paraíso para los amantes de la naturaleza. Ofrece rutas de senderismo que llevan a impresionantes paisajes de cañones, cascadas y cavernas. Dedica al menos 3 días para explorar sus senderos y disfruta de la flora y fauna únicas de la región. Asegúrate de llevar suficiente agua y protector solar.</p>
+
+<h3>🌟 Tour de Aventura por el Amazonas</h3>
+<p>Recorrer la selva amazónica es una experiencia inolvidable. Puedes hacer kayak, avistar fauna salvaje y visitar comunidades indígenas. Se recomienda dedicar de 4 a 7 días para una experiencia completa. Opta por guías locales que conozcan bien la selva para asegurar un recorrido seguro y enriquecedor.</p>
+
+<h3>🌟 Buceo en los arrecifes de Abrolhos</h3>
+<p>Los arrecifes de Abrolhos son una joya submarina y hogar de una rica biodiversidad. El buceo aquí te permite ver corales vibrantes y una variedad de especies marinas. Planifica al menos un día completo para bucear y recuerda que la mejor época para visitar es entre julio y noviembre, durante la temporada de ballenas.</p>
+
+<h3>🌟 Caminatas en el Parque Nacional de Tijuca</h3>
+<p>Ubicado en Río de Janeiro, este parque es uno de los bosques urbanos más grandes del mundo. Las caminatas te llevarán a ver impresionantes vistas de la ciudad y cascadas escondidas. Dedica medio día para explorar sus senderos y no olvides llevar una buena cámara para capturar las vistas.</p>
+
+<h3>🌟 Safari Fotográfico en Pantanal</h3>
+<p>El Pantanal es uno de los mayores humedales del mundo y un lugar ideal para el avistamiento de vida silvestre. Realiza un safari fotográfico para observar jaguares, caimanes y aves exóticas. Se sugiere un recorrido de al menos 3 días para disfrutar plenamente de la biodiversidad. Lleva un buen equipo de fotografía y binoculares.</p>
+
+<h3>🌟 Descenso en canoa por el río São Francisco</h3>
+<p>Explora el histórico río São Francisco en canoa, disfrutando de su belleza natural y paisajes rurales. Esta actividad te permite conocer la cultura local y disfrutar de un día tranquilo en la naturaleza. Un recorrido de 1 a 2 días es ideal para disfrutar del entorno. Recuerda aplicar repelente de insectos.</p>
+
+<h3>🌟 Caminatas a las Cataratas de Iguazú</h3>
+<p>Las Cataratas de Iguazú son una de las maravillas naturales del mundo. Puedes realizar varias caminatas alrededor y sobre las cataratas para disfrutar de vistas espectaculares. Dedica al menos un día a explorar, y considera una visita a la garganta del Diablo, donde el sonido del agua es abrumador. Lleva ropa impermeable para mojarte mientras disfrutas de la vista.</p></div>
+  </div>
+
+  <!-- TAB TOOLS -->
+  <div class="tab-panel" id="tab-tools">
+    <div class="sec-eye">Herramientas interactivas</div>
+    <div class="sec-title">Para tu viaje</div>
+    <div class="tools-tabs">
+      <button class="ttab active" onclick="switchTool(this,'conv')">💱 Moneda</button>
+      <button class="ttab" onclick="switchTool(this,'trans')">🗣 Frases</button>
+      <button class="ttab" onclick="switchTool(this,'calc')">💶 Presupuesto</button>
+      <button class="ttab" onclick="switchTool(this,'check')">🧳 Equipaje</button>
+    </div>
+    <div class="tools-desktop">
+      <div>
+        <div class="tool-section-title">💱 Conversor de moneda en tiempo real</div>
+        <div class="tool-panel active" id="conv">
+          <div class="conv-box">
+            <select class="conv-select" id="conv-to" onchange="convertCurrency()">
+              <option value="USD">$ Dólar USD</option><option value="GBP">£ Libra</option>
+              <option value="JPY">¥ Yen</option><option value="MXN">$ Peso MX</option>
+              <option value="BRL">R$ Real</option><option value="MAD">MAD Dírham</option>
+              <option value="TRY">₺ Lira turca</option><option value="THB">฿ Baht</option>
+              <option value="IDR">Rp Rupia</option><option value="AED">AED Dírham</option>
+              <option value="SGD">S$ Dólar SG</option><option value="PLN">zł Esloti</option>
+              <option value="CZK">Kč Corona CZ</option><option value="HUF">Ft Forinto</option>
+              <option value="RON">RON Leu</option><option value="DKK">kr Danesa</option>
+              <option value="SEK">kr Sueca</option><option value="NOK">kr Noruega</option>
+            </select>
+            <div class="conv-row">
+              <div class="conv-iw"><label>Euros €</label><input class="conv-input" type="number" id="conv-eur" value="100" oninput="convertCurrency()"></div>
+              <div class="conv-arrow">⇄</div>
+              <div class="conv-iw"><label id="conv-to-label">Destino</label><input class="conv-input" type="number" id="conv-foreign" oninput="convertBack()"></div>
+            </div>
+            <div class="conv-result"><div class="conv-amount" id="conv-display">—</div><div class="conv-rate" id="conv-rate">Cargando…</div></div>
+            <div class="conv-note">Tiempo real · open.er-api.com</div>
+          </div>
+        </div>
+        <br>
+        <div class="tool-section-title">🗣 Frases útiles con audio</div>
+        <div class="tool-panel" id="trans">
+          <div class="trans-wrap">
+            <div class="trans-lang"><span>Idioma:</span>
+              <select id="trans-lang-sel" onchange="updatePhrases()">
+                <option value="it">🇮🇹 Italiano</option><option value="fr">🇫🇷 Francés</option>
+                <option value="de">🇩🇪 Alemán</option><option value="pt">🇵🇹 Portugués</option>
+                <option value="ja">🇯🇵 Japonés</option><option value="ar">🇲🇦 Árabe</option>
+                <option value="tr">🇹🇷 Turco</option><option value="th">🇹🇭 Tailandés</option>
+                <option value="zh">🇨🇳 Chino</option><option value="el">🇬🇷 Griego</option>
+                <option value="pl">🇵🇱 Polaco</option><option value="nl">🇳🇱 Neerlandés</option>
+                <option value="ru">🇷🇺 Ruso</option><option value="cs">🇨🇿 Checo</option>
+                <option value="ro">🇷🇴 Rumano</option><option value="hr">🇭🇷 Croata</option>
+              </select>
+            </div>
+            <div class="trans-list" id="phrases-list"></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="tool-section-title">💶 Calculadora de presupuesto</div>
+        <div class="tool-panel" id="calc">
+          <div class="calc-box">
+            <div class="calc-row"><label>Días</label><input class="calc-input" type="number" id="c-dias" value="25" oninput="calcBudget()"></div>
+            <div class="calc-row"><label>Viajeros</label><input class="calc-input" type="number" id="c-viaj" value="4" oninput="calcBudget()"></div>
+            <div class="calc-row"><label>Alojamiento / noche €</label><input class="calc-input" type="number" id="c-aloj" value="80" oninput="calcBudget()"></div>
+            <div class="calc-row"><label>Comida / persona / día €</label><input class="calc-input" type="number" id="c-com" value="35" oninput="calcBudget()"></div>
+            <div class="calc-row"><label>Transporte total €</label><input class="calc-input" type="number" id="c-transp" value="200" oninput="calcBudget()"></div>
+            <div class="calc-row"><label>Actividades total €</label><input class="calc-input" type="number" id="c-act" value="150" oninput="calcBudget()"></div>
+            <div class="calc-result">
+              <div class="calc-result-title">RESUMEN</div>
+              <div class="calc-line"><span>Alojamiento</span><strong id="r-aloj">—</strong></div>
+              <div class="calc-line"><span>Comida</span><strong id="r-com">—</strong></div>
+              <div class="calc-line"><span>Transporte</span><strong id="r-transp">—</strong></div>
+              <div class="calc-line"><span>Actividades</span><strong id="r-act">—</strong></div>
+              <div class="calc-line total"><span>TOTAL</span><strong id="r-total">—</strong></div>
+              <div class="calc-line"><span>Por persona</span><strong id="r-pp">—</strong></div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="tool-section-title">🧳 Checklist de equipaje</div>
+        <div class="tool-panel" id="check">
+          <div class="check-progress"><div class="check-bar-wrap"><div class="check-bar" id="check-bar" style="width:0%"></div></div><div class="check-pct" id="check-pct">0%</div></div>
+          <div class="check-cats">
+            <button class="check-cat-btn active" onclick="switchCat(this,'ropa')">👕 Ropa</button>
+            <button class="check-cat-btn" onclick="switchCat(this,'docs')">📄 Docs</button>
+            <button class="check-cat-btn" onclick="switchCat(this,'tech')">📱 Tech</button>
+            <button class="check-cat-btn" onclick="switchCat(this,'salud')">💊 Salud</button>
+            <button class="check-cat-btn" onclick="switchCat(this,'extras')">✨ Extras</button>
+          </div>
+          <div class="checklist" id="checklist-items"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB DESTINO -->
+  <div class="tab-panel" id="tab-destino">
+    <div class="sec-eye">Antes de partir</div>
+    <div class="sec-title">Guía del destino</div>
+    <div class="ai-content"><h2>Clima y mejor época</h2>
+<p>Brasil tiene un clima tropical con variaciones regionales. De diciembre a marzo es verano, con temperaturas que oscilan entre 25°C y 35°C. De junio a agosto hace invierno en el sur, con temperaturas entre 15°C y 25°C. La mejor época para viajar es de mayo a septiembre, cuando hay menos lluvias.</p>
+<p><strong>Temperatura por meses:</strong></p>
+<ul>
+  <li>Enero: 25-30°C</li>
+  <li>Febrero: 25-30°C</li>
+  <li>Marzo: 24-29°C</li>
+  <li>Abril: 22-28°C</li>
+  <li>Mayo: 20-26°C</li>
+  <li>Junio: 18-24°C</li>
+  <li>Julio: 17-24°C</li>
+  <li>Agosto: 18-25°C</li>
+  <li>Septiembre: 20-27°C</li>
+  <li>Octubre: 22-29°C</li>
+  <li>Noviembre: 23-30°C</li>
+  <li>Diciembre: 24-31°C</li>
+</ul>
+<p><strong>Qué ropa llevar:</strong> ropa ligera, prendas de algodón, protector solar, gafas de sol, gorra o sombrero, y un impermeable para la temporada de lluvias.</p>
+
+<h2>Moneda y pagos</h2>
+<p><strong>Moneda oficial:</strong> Real brasileño (BRL).</p>
+<p><strong>Tipo de cambio aproximado:</strong> 1 EUR ≈ 5.5 BRL (puede variar).</p>
+<p>La mayoría de los establecimientos aceptan tarjetas de crédito y débito internacionales, pero es recomendable llevar algo de efectivo para mercados, transporte público y zonas rurales.</p>
+
+<h2>Electricidad y adaptadores</h2>
+<p><strong>Tipo de enchufe:</strong> Enchufes tipo N y tipo C son comunes.</p>
+<p><strong>Voltaje:</strong> 127 V o 220 V según la región, frecuencia 60 Hz.</p>
+<p>Es aconsejable llevar un adaptador universal y verificar el voltaje de tus dispositivos para evitar daños.</p>
+
+<h2>Idioma y comunicación</h2>
+<p><strong>Idioma oficial:</strong> Portugués.</p>
+<p>En áreas turísticas y grandes ciudades, el inglés es hablado de forma limitada, pero no generalizada. Aprender algunas frases básicas en portugués será útil.</p>
+<p><strong>Apps útiles:</strong></p>
+<ul>
+  <li><a href="https://play.google.com/store/apps/details?id=air.com.google.android.apps.translate" target="_blank">Google Translate</a></li>
+  <li><a href="https://www.whatsapp.com/" target="_blank">WhatsApp</a> (muy popular para comunicación local)</li>
+  <li><a href="https://moovitapp.com/" target="_blank">Moovit</a> (transporte público)</li>
+  <li><a href="https://www.utran.travel/en" target="_blank">UTRAN Maps</a></li>
+</ul>
+
+<h2>Visado y entrada</h2>
+<p>Los ciudadanos españoles y de la Unión Europea no necesitan visado para estancias turísticas de hasta 90 días en Brasil.</p>
+<p>Se requiere pasaporte válido durante toda la estancia, un billete de salida, y demostrar medios económicos suficientes.</p>
+<p>Revisa siempre la normativa más reciente antes de viajar.</p>
+
+<h2>Vacunas y salud</h2>
+<p><strong>Vacunas recomendadas:</strong> Fiebre amarilla, hepatitis A, tétanos-difteria, y fiebre tifoidea.Consulta con un centro de salud especializado antes del viaje.</p>
+<p>En algunas regiones amazónicas, la vacuna contra la fiebre amarilla es obligatoria.</p>
+<p>El agua del grifo no es potable en la mayoría de las zonas; se recomienda consumir agua embotellada.</p>
+<p>Contratar un seguro médico internacional con cobertura en Brasil es muy recomendable.</p>
+
+<h2>Seguridad</h2>
+<p>Brasil tiene áreas con altos índices de delincuencia, especialmente en grandes ciudades.</p>
+<p>Zonas a evitar incluyen favelas y barrios periféricos después del anochecer.</p>
+<p><strong>Consejos básicos:</strong></p>
+<ul>
+  <li>No mostrar objetos de valor ni grandes sumas de dinero.</li>
+  <li>Utilizar taxis autorizados o apps para transporte.</li>
+  <li>Estar alerta en lugares concurridos para evitar robos o carteristas.</li>
+  <li>Guardar los documentos importantes en un lugar seguro.</li>
+</ul>
+
+<h2>Costumbres y etiqueta</h2>
+<p>Los brasileños son muy sociables y cálidos. Saluda con un apretón de manos o un beso en la mejilla (dependiendo de la región).</p>
+<p><strong>Propinas:</strong> Se suele dejar un 10% en restaurantes, aunque a veces está incluido en la cuenta.</p>
+<p>En templos o lugares religiosos, es recomendable vestir de manera respetuosa: ropa que cubra los hombros y rodillas.</p>
+<p>Evita hablar de temas polémicos como política o religión en público con desconocidos.</p>
+
+<h2>Apps imprescindibles</h2>
+<ul>
+  <li><a href="https://moovitapp.com/" target="_blank">Moovit</a> - para transporte público.</li>
+  <li><a href="https://maps.google.com/" target="_blank">Google Maps</a> - mapas y navegación.</li>
+  <li><a href="https://play.google.com/store/apps/details?id=air.com.google.android.apps.translate" target="_blank">Google Translate</a> - traducción rápida.</li>
+  <li><a href="https://www.uber.com/" target="_blank">Uber</a> - para transporte privado seguro.</li>
+  <li><a href="https://www.picpay.com/site/app" target="_blank">PicPay</a> - pagos móviles populares en Brasil.</li>
+</ul></div>
+  </div>
+
+  <!-- TAB TRANSPORTE -->
+  <div class="tab-panel" id="tab-transporte">
+    <div class="sec-eye">Moverse por BRASIL</div>
+    <div class="sec-title">Transporte</div>
+    <div class="ad"><div class="ad-badge">AD</div><div><strong>Alquiler de coche</strong><span>→ Rent a car · comparativa</span></div></div>
+    <div class="ai-content" style="margin-top:12px"><h2>Cómo llegar desde España</h2>
+<p>Desde España existen vuelos directos a Brasil desde ciudades como Madrid y Barcelona. Las principales rutas vuelan hacia Sao Paulo (Aeropuerto Internacional de Guarulhos - GRU) y Río de Janeiro (Aeropuerto Internacional Galeão - GIG).</p>
+<ul>
+  <li><strong>Tiempo de vuelo:</strong> Aproximadamente 10 a 11 horas.</li>
+  <li><strong>Aeropuertos principales en Brasil:</strong> Aeropuerto Internacional de Guarulhos (GRU), Aeropuerto Internacional Galeão (GIG), Aeropuerto de Brasilia (BSB), Aeropuerto de Belo Horizonte (CNF).</li>
+</ul>
+
+<h2>Transporte desde el aeropuerto</h2>
+<p>Los principales aeropuertos cuentan con varias opciones para llegar al centro de la ciudad o alojamientos:</p>
+<ul>
+  <li><strong>Autobús oficial:</strong> Existen líneas de autobuses expresos aeroportuarios con precios desde R$30 (aprox. 5-6 EUR), tiempo estimado 40-60 minutos.</li>
+  <li><strong>Taxi:</strong> Precio aproximado R$80-120 (13-20 EUR), 40-50 minutos según tráfico.</li>
+  <li><strong>Traslados privados y apps de movilidad:</strong> Uber y otras apps están disponibles desde aproximadamente R$60 (10 EUR).</li>
+</ul>
+
+<h2>Moverse por el destino</h2>
+<p>Brasil cuenta con una extensa red de transporte público especialmente en grandes ciudades:</p>
+<ul>
+  <li><strong>Metro:</strong> Presente en ciudades como Sao Paulo, Río de Janeiro, Belo Horizonte y Brasilia. Precio estimado por viaje: R$4-5 (0,80-1 EUR).</li>
+  <li><strong>Bus:</strong> Red amplia que conecta barrios y ciudades cercanas. Precio promedio urbano: R$4 (0,80 EUR).</li>
+  <li><strong>Tren:</strong> Limitado principalmente a servicios suburbanos en regiones de São Paulo y Río de Janeiro.</li>
+</ul>
+
+<h2>Alquiler de coche</h2>
+<p>El alquiler de coche puede ser útil para explorar zonas rurales o regiones fuera de las grandes ciudades. En metrópolis se recomienda usar transporte público debido al tráfico y aparcamiento limitado.</p>
+<ul>
+  <li><strong>Empresas recomendadas:</strong> Localiza, Movida, Unidas, Hertz, Avis.</li>
+  <li><strong>Precio medio:</strong> Desde R$100 (20 EUR) por día, dependiendo del tipo de vehículo y temporada.</li>
+  <li><strong>Carnet internacional:</strong> Es recomendable portar el carnet de conducir internacional junto con el español para evitar problemas.</li>
+</ul>
+
+<h2>Taxis y apps de movilidad</h2>
+<p>Además de taxis tradicionales, las aplicaciones móviles son una forma cómoda y segura para moverse:</p>
+<ul>
+  <li><strong>Uber:</strong> Ampliamente utilizado con tarifas accesibles, precio base aproximado R$5 + R$1,5 por km.</li>
+  <li><strong>Bolt:</strong> Similar a Uber, disponible en grandes ciudades con precios competitivos.</li>
+  <li><strong>99 Táxi:</strong> App local muy popular para solicitar taxis y motos por zonas urbanas.</li>
+</ul>
+
+<h2>Consejos de conducción</h2>
+<ul>
+  <li>El tráfico suele ser denso en horas punta en las grandes ciudades.</li>
+  <li>El límite de velocidad en zonas urbanas es generalmente 50 km/h y de 80 km/h en vías rápidas, pero puede variar.</li>
+  <li>Existen peajes en autopistas, es recomendable llevar efectivo o usar sistemas de pago electrónico.</li>
+  <li>El aparcamiento puede ser difícil y caro en el centro de las grandes ciudades.</li>
+  <li>Conducir con precaución y evitar zonas poco seguras es fundamental.</li>
+</ul>
+
+<h2>Transporte entre ciudades</h2>
+<p>Para desplazarse entre ciudades, Brasil ofrece varias opciones:</p>
+<ul>
+  <li><strong>Tren:</strong> El servicio interurbano es muy limitado y poco frecuente.</li>
+  <li><strong>Bus:</strong> Principal medio para trayectos entre ciudades. Compañías como <a href="https://www.viajaonibus.com.br/" target="_blank">Viaja onibus</a> ofrecen rutas con precios desde R$50 (10 EUR) para distancias medias.</li>
+  <li><strong>Vuelos internos:</strong> Conectan rápidamente grandes distancias. Aerolíneas principales: <a href="https://www.latam.com/" target="_blank">LATAM</a>, <a href="https://www.voegol.com.br/" target="_blank">GOL</a>, <a href="https://www.azuul.com.br/" target="_blank">Azul</a>. Precios variables desde 100 reales en adelante.</li>
+</ul></div>
+  </div>
+
+  <!-- TAB RECURSOS -->
+  <div class="tab-panel" id="tab-recursos">
+    <div class="sec-eye">Recursos online</div>
+    <div class="sec-title">Blogs y enlaces útiles</div>
+    <div class="ai-content"><h2>Web oficial de turismo</h2>
+<p><a href="https://www.visitbrasil.com/" target="_blank">Visit Brasil - Turismo Oficial</a></p>
+
+<h2>Blogs de viaje recomendados</h2>
+<ul>
+  <li><a href="https://elmundoeva.com/tag/brasil/" target="_blank">El Mundo Eva - Brasil</a></li>
+  <li><a href="https://www.mochileros.org/tag/brasil/" target="_blank">Mochileros.org - Brasil</a></li>
+  <li><a href="https://viajeros4x4.com/category/sudamerica/brasil/" target="_blank">Viajeros 4x4 - Brasil</a></li>
+  <li><a href="https://www.conmochila.com/destinos/sudamerica/brasil/" target="_blank">Con Mochila - Brasil</a></li>
+</ul>
+
+<h2>Foros y comunidades</h2>
+<ul>
+  <li><a href="https://www.tripadvisor.es/ShowForum-g303506-i226-Brazil.html" target="_blank">TripAdvisor - Foro de Brasil</a></li>
+  <li><a href="https://www.lonelyplanet.com/thorntree/forums/south-america/brazil" target="_blank">Lonely Planet Thorntree - Brasil</a></li>
+  <li><a href="https://www.reddit.com/r/BrazilTravel/" target="_blank">Reddit - r/BrazilTravel</a></li>
+</ul>
+
+<h2>Canales de YouTube</h2>
+<ul>
+  <li><a href="https://www.youtube.com/c/AlanXelmundo" target="_blank">Alan x el Mundo</a></li>
+  <li><a href="https://www.youtube.com/c/Marcandoelmundo" target="_blank">Marcando el Mundo</a></li>
+  <li><a href="https://www.youtube.com/c/BackpackingLatam" target="_blank">Backpacking Latam</a></li>
+</ul>
+
+<h2>Recursos para rutas</h2>
+<ul>
+  <li><a href="https://es.wikiloc.com/rutas/bicicleta-brasil" target="_blank">Wikiloc - Rutas en Brasil</a></li>
+  <li><a href="https://www.alltrails.com/es/brasil" target="_blank">AllTrails - Brasil</a></li>
+  <li><a href="https://www.google.com/maps" target="_blank">Google Maps</a></li>
+</ul>
+
+<h2>Apps imprescindibles</h2>
+<ul>
+  <li><a href="https://play.google.com/store/apps/details?id=br.gov.turismo.app" target="_blank">Brasil Turismo Oficial (App)</a></li>
+  <li><a href="https://play.google.com/store/apps/details?id=com.melhoresdestinos.app" target="_blank">Melhores Destinos (Ofertas vuelos y hoteles)</a></li>
+  <li><a href="https://play.google.com/store/apps/details?id=com.99app" target="_blank">99 Taxi Brasil</a></li>
+  <li><a href="https://play.google.com/store/apps/details?id=br.com.ifood" target="_blank">iFood (Comida a domicilio Brasil)</a></li>
+</ul>
+
+<h2>Webs de reservas</h2>
+<ul>
+  <li><a href="https://www.booking.com/country/br.html" target="_blank">Booking.com - Brasil</a></li>
+  <li><a href="https://www.airbnb.com/s/Brazil" target="_blank">Airbnb - Brasil</a></li>
+  <li><a href="https://www.getyourguide.com/s/?q=brazil" target="_blank">GetYourGuide - Tours Brasil</a></li>
+  <li><a href="https://www.viator.com/Brazil/d31-ttd" target="_blank">Viator - Actividades y Tours Brasil</a></li>
+</ul></div>
+  </div>
+
+  <!-- TAB CULTURA -->
+  <div class="tab-panel" id="tab-cultura">
+    <div class="sec-eye">Prepara el viaje</div>
+    <div class="sec-title">Cultura · Cine · Libros · Música</div>
+    <div class="ai-content"><h3>📚 "Doña Flor y sus dos maridos" – Jorge Amado</h3>
+<p><strong>Por qué leerlo:</strong> Esta novela emblemática de Brasil explora la cultura bahiana, sus tradiciones y el sincretismo religioso, ofreciendo una vivida imagen del país que enriquece cualquier visita a Salvador y el noreste brasileño.</p>
+
+<h3>📚 "Brasil: Una biografía" – Lilia M. Schwarcz y Heloisa Starling</h3>
+<p><strong>Por qué leerlo:</strong> Este libro proporciona una profunda visión histórica y cultural de Brasil, ayudando a entender las complejidades sociales, políticas y culturales antes de viajar.</p>
+
+<h3>📚 "Lonely Planet Brasil" – Lonely Planet</h3>
+<p><strong>Por qué leerlo:</strong> Guía práctica y actualizada que cubre desde las principales atracciones hasta consejos locales, ideal para planificar itinerarios y descubrir rincones poco conocidos.</p>
+
+<h3>📚 "El tiempo y el viento" – Érico Veríssimo</h3>
+<p><strong>Por qué leerlo:</strong> Esta saga literaria retrata la historia y la evolución social del sur de Brasil, permitiendo comprender la diversidad cultural y geográfica del país desde una perspectiva literaria.</p>
+
+<h3>📚 "Carnaval" – Adriana Lisboa</h3>
+<p><strong>Por qué leerlo:</strong> Novela que captura el espíritu festivo y la complejidad emocional del Carnaval de Río, ideal para sumergirse en una de las expresiones culturales más emblemáticas de Brasil.</p></div>
+  </div>
+
+  <!-- TAB CURIOSIDADES -->
+  <div class="tab-panel" id="tab-curiosidades">
+    <div class="sec-eye">¿Sabías que…?</div>
+    <div class="sec-title">Curiosidades de BRASIL</div>
+    <div class="ai-content"><h3>💡 Empaca ligero pero preparado</h3>
+<p>Lleva ropa de secado rápido, capa impermeable y un repelente de mosquitos de alta concentración (DEET ≥30%). En selvas como el Amazonas o la Chapada Diamantina el clima es impredecible y el equipaje ligero te facilitará moverme entre barcos, lanchas y senderos empapados.</p>
+
+<h3>💡 Optimiza tu presupuesto con vuelos internos y transporte local</h3>
+<p>Reserva con antelación vuelos de ciudades grandes (São Paulo–Manaos, Río–Foz do Iguaçu) para ahorrar hasta un 40%. En distancias cortas usa Viação Nordeste o Brasil Sul en buses cama nocturnos: el ahorro en alojamiento y la experiencia vale la pena.</p>
+
+<h3>💡 Fotografía en la “hora mágica” regional</h3>
+<p>Para capturar la niebla en el Pantanal o el reflejo en los Lençóis Maranhenses, madruga y aprovecha el amanecer (5:30–7:30). El atardecer (17:30–19:00) en las cataratas de Iguazú realza los arcoíris con menor turismo. Activa la cuadrícula y el RAW si tu cámara lo permite.</p>
+
+<h3>💡 Prueba la gastronomía local más allá de la feijoada</h3>
+<p>En Belém, saborea tacacá y maniçoba; en el Nordeste el caranguejo al coco y en Mato Grosso el arroz carreteiro. Compra fruta fresca (açaí puro, cupuaçu) en mercados municipales para economizar y vivir la experiencia regional.</p>
+
+<h3>💡 Conoce las temporadas de lluvia y sequía</h3>
+<p>Visita el Amazonas de julio a octubre para ríos bajos y caminatas por la selva. Para avistamiento de fauna en el Pantanal elige julio–septiembre cuando la sabana se seca y los animales se concentran en pozas.</p>
+
+<h3>💡 Regatea con respeto en mercados de artesanías</h3>
+<p>En Manaos y Jericoacoara negocia un 10–20% en piezas de madera o cerámica, pero ofrécele al artesano un precio justo: pregunta siempre “Qual o melhor preço?” antes de descartar su primera oferta.</p>
+
+<h3>💡 Maneja propinas según protocolos locales</h3>
+<p>En restaurantes suele incluirse el 10% en la cuenta (“serviço”). Para guías de excursión, rema o paseos en bote, deja un extra de R$20–R$50 según la duración y calidad del servicio.</p>
+
+<h3>💡 Evita errores comunes de seguridad</h3>
+<p>No muestres equipo caro en zonas urbanas ni joyas en barrios populares. Guarda tu pasaporte en la caja fuerte del hotel y lleva fotocopia. En senderos aislados avisa a tu guía de cualquier problema y no te alejes solo.</p>
+
+<h3>💡 Descarga apps y mapas offline</h3>
+<p>Usa Maps.me u OpenStreetMap con mapas descargados para rutas de trekking. Instala BlaBlaCar para compartir coche en trayectos rurales y iFood o Rappi para emergencias culinarias donde los puestos callejeros no operen.</p>
+
+<h3>💡 Controla tu presupuesto con cajeros y cambio local</h3>
+<p>Retira R$500–R$1000 por vez en caixas eletrônicos del Banco do Brasil o Bradesco (comisión menor). Cambia solo un 20% en casas de cambio oficiales; usa tarjetas sin comisión internacional para el resto.</p></div>
+  </div>
+
+  <!-- TAB DOCUMENTOS -->
+  <div class="tab-panel" id="tab-docs">
+    <div class="sec-eye">Tus documentos</div>
+    <div class="sec-title">Documentos del viaje</div>
+    <p style="font-size:13px;color:var(--mid);margin-bottom:14px">Guarda aquí tu seguro, tarjetas de embarque, pasaporte o cualquier documento que necesites tener a mano durante el viaje.</p>
+    <div class="docs-upload-area" onclick="document.getElementById('doc-input').click()">
+      <div class="docs-upload-icon">📎</div>
+      <div class="docs-upload-text"><strong>Añadir documento</strong>PDF, imagen, tarjeta de embarque…</div>
+    </div>
+    <input type="file" id="doc-input" accept=".pdf,.jpg,.jpeg,.png,.gif,.webp" multiple onchange="handleDocUpload(event)">
+    <div class="docs-list" id="docs-list"></div>
+  </div>
+
+  <!-- TAB NOTAS -->
+  <div class="tab-panel" id="tab-notas">
+    <div class="sec-eye">Para ti</div>
+    <div class="sec-title">Notas del viajero</div>
+    <div class="note-area">
+      <div class="note-line" contenteditable="true" spellcheck="false">Escribe aquí tus notas…</div>
+      <div class="note-line" contenteditable="true" spellcheck="false"></div>
+      <div class="note-line" contenteditable="true" spellcheck="false"></div>
+      <div class="note-line" contenteditable="true" spellcheck="false"></div>
+      <div class="note-line" contenteditable="true" spellcheck="false"></div>
+      <div class="note-line" contenteditable="true" spellcheck="false"></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ MODAL GUARDAR ══ -->
+<div class="save-modal" id="save-modal" onclick="closeSaveModal(event)">
+  <div class="save-sheet">
+    <h3>Guardar guía</h3>
+    <p>Elige cómo quieres guardar tu guía de BRASIL.</p>
+
+    <!-- Opción Android: botón directo si hay prompt disponible -->
+    <div class="save-option" id="opt-android" style="display:none" onclick="installAndroid()">
+      <div class="save-option-icon">🤖</div>
+      <div class="save-option-text"><strong>Añadir a pantalla de inicio</strong><span>Android · Se abrirá el diálogo de instalación</span></div>
+    </div>
+
+    <!-- Opción iOS: instrucción visual animada -->
+    <div class="save-option" id="opt-ios" style="display:none" onclick="showIOSGuide()">
+      <div class="save-option-icon">🍎</div>
+      <div class="save-option-text"><strong>Añadir a pantalla de inicio</strong><span>iOS · Toca para ver cómo hacerlo en 2 pasos</span></div>
+    </div>
+
+    <div class="save-option" onclick="downloadGuide()">
+      <div class="save-option-icon">⬇️</div>
+      <div class="save-option-text"><strong>Descargar archivo HTML</strong><span>Guárdalo y ábrelo sin internet</span></div>
+    </div>
+    <div class="save-option" onclick="copyLink();closeSaveModal()">
+      <div class="save-option-icon">🔗</div>
+      <div class="save-option-text"><strong>Copiar enlace</strong><span>Comparte o guarda la URL de esta guía</span></div>
+    </div>
+    <button class="save-close" onclick="closeSaveModal()">Cerrar</button>
+  </div>
+</div>
+
+<!-- ══ GUÍA iOS ══ -->
+<div class="save-modal" id="ios-modal" onclick="document.getElementById('ios-modal').classList.remove('open')">
+  <div class="save-sheet">
+    <h3>Añadir a pantalla de inicio</h3>
+    <p style="margin-bottom:18px">Sigue estos 2 pasos en Safari:</p>
+    <div style="background:var(--sand);border-radius:var(--r);padding:16px;margin-bottom:12px;text-align:center">
+      <div style="font-size:32px;margin-bottom:8px">1️⃣</div>
+      <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px">Toca el botón Compartir</div>
+      <div style="font-size:13px;color:var(--mid)">El icono <strong>□↑</strong> de la barra inferior de Safari</div>
+      <div style="font-size:36px;margin-top:10px;animation:bounce .8s infinite alternate">□↑</div>
+    </div>
+    <div style="background:var(--sand);border-radius:var(--r);padding:16px;margin-bottom:16px;text-align:center">
+      <div style="font-size:32px;margin-bottom:8px">2️⃣</div>
+      <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px">Toca "Añadir a pantalla de inicio"</div>
+      <div style="font-size:13px;color:var(--mid)">Desplázate en el menú hasta encontrar esta opción</div>
+      <div style="background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 14px;margin-top:10px;display:inline-flex;align-items:center;gap:8px">
+        <span style="font-size:20px">➕</span>
+        <span style="font-size:13px;font-weight:500;color:var(--ink)">Añadir a pantalla de inicio</span>
+      </div>
+    </div>
+    <button class="save-close" onclick="document.getElementById('ios-modal').classList.remove('open')">Entendido</button>
+  </div>
+</div>
+<style>
+@keyframes bounce{from{transform:translateY(0)}to{transform:translateY(-6px)}}
+</style>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── TABS ──
+function showTab(id,btn){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  btn.classList.add('active');
+  document.getElementById('tabs-content').scrollTop=0;
+  // Scroll tab visible
+  btn.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+  // Ocultar flecha si llegamos al final
+  const scroll=document.getElementById('tabs-scroll');
+  const fade=document.querySelector('.tabs-fade');
+  if(fade)fade.style.display=scroll.scrollLeft+scroll.clientWidth>=scroll.scrollWidth-10?'none':'flex';
+}
+// Ocultar flecha al llegar al final del scroll
+document.getElementById('tabs-scroll').addEventListener('scroll',function(){
+  const fade=document.querySelector('.tabs-fade');
+  if(fade)fade.style.display=this.scrollLeft+this.clientWidth>=this.scrollWidth-10?'none':'flex';
+});
+
+// ── TOAST ──
+function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800)}
+
+// ── COMPARTIR ──
+function shareWpp(){
+  const t=encodeURIComponent('¡Mira mi guía de viaje para BRASIL! 🌍✈️\nGenerada por GuiaMundi.es\n\n'+window.location.href);
+  window.open('https://wa.me/?text='+t,'_blank');
+}
+function copyLink(){navigator.clipboard.writeText(window.location.href).then(()=>showToast('✓ Enlace copiado')).catch(()=>showToast('Copia la URL del navegador'))}
+
+// ── SERVICE WORKER (necesario para installPrompt en Android) ──
+if('serviceWorker' in navigator){
+  const swCode=`self.addEventListener('fetch',e=>{});`;
+  const blob=new Blob([swCode],{type:'application/javascript'});
+  const swUrl=URL.createObjectURL(blob);
+  navigator.serviceWorker.register(swUrl).catch(()=>{});
+}
+
+// ── MODAL GUARDAR ──
+let deferredPrompt=null;
+window.addEventListener('beforeinstallprompt',e=>{
+  e.preventDefault();
+  deferredPrompt=e;
+  document.getElementById('opt-android').style.display='flex';
+});
+
+function openSaveModal(){
+  // Detectar iOS
+  const isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
+  if(isIOS)document.getElementById('opt-ios').style.display='flex';
+  document.getElementById('save-modal').classList.add('open');
+}
+function closeSaveModal(e){
+  if(!e||e.target===document.getElementById('save-modal'))
+    document.getElementById('save-modal').classList.remove('open');
+}
+function installAndroid(){
+  if(deferredPrompt){
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(r=>{
+      if(r.outcome==='accepted')showToast('✓ Añadida a pantalla de inicio');
+      deferredPrompt=null;
+    });
+  }
+  document.getElementById('save-modal').classList.remove('open');
+}
+function showIOSGuide(){
+  document.getElementById('save-modal').classList.remove('open');
+  setTimeout(()=>document.getElementById('ios-modal').classList.add('open'),200);
+}
+function downloadGuide(){
+  try{
+    const blob=new Blob([document.documentElement.outerHTML],{type:'text/html;charset=utf-8'});
+    const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+    a.download='guia-BRASIL-25dias.html';a.click();
+    URL.revokeObjectURL(a.href);showToast('✓ Guía descargada');
+  }catch(e){showToast('Usa el menú del navegador para guardar')}
+  document.getElementById('save-modal').classList.remove('open');
+}
+
+// ── BLOQUES DE DÍA CON NOTAS Y MAPA ──
+function buildDayBlocks(){
+  const container=document.getElementById('itinerario-content');
+  if(!container)return;
+  const raw=container.innerHTML;
+  const parts=raw.split(/(?=<h2[\s>])/i);
+  let html='';
+  parts.forEach((part,i)=>{
+    if(!part.trim())return;
+    const isDay=/^<h2/i.test(part.trim());
+    if(!isDay){html+=part;return;}
+    const titleMatch=part.match(/<h2[^>]*>(.*?)<\/h2>/i);
+    const titleRaw=titleMatch?titleMatch[1]:'Día '+(i);
+    const body=part.replace(/<h2[^>]*>.*?<\/h2>/i,'').trim();
+    html+=`<div class="day-block">
+      <div class="day-block-header" onclick="toggleDay(this)">
+        <span>${titleRaw}</span><span class="day-toggle">⌄</span>
+      </div>
+      <div class="day-block-body">
+        <div class="ai-content">${body}</div>
+        <div class="day-note-wrap">
+          <div class="day-note-label">📝 Mis notas para este día</div>
+          <textarea class="day-note" placeholder="Añade aquí reservas, horarios o cualquier detalle personal…"></textarea>
+        </div>
+      </div>
+    </div>`;
+  });
+  container.innerHTML=html;
+  const first=container.querySelector('.day-block');
+  if(first)first.classList.add('open');
+}
+function toggleDay(header){header.closest('.day-block').classList.toggle('open')}
+document.addEventListener('DOMContentLoaded',buildDayBlocks);
+
+// ── DOCUMENTOS ──
+const uploadedDocs=[];
+function handleDocUpload(e){
+  Array.from(e.target.files).forEach(file=>{
+    const reader=new FileReader();
+    reader.onload=ev=>{
+      const doc={name:file.name,size:formatSize(file.size),type:file.type,url:ev.target.result,id:Date.now()+Math.random()};
+      uploadedDocs.push(doc);renderDocs();
+    };
+    reader.readAsDataURL(file);
+  });
+  e.target.value='';
+}
+function formatSize(b){if(b<1024)return b+'B';if(b<1048576)return(b/1024).toFixed(1)+'KB';return(b/1048576).toFixed(1)+'MB'}
+function getDocIcon(type){if(type==='application/pdf')return '📄';if(type.startsWith('image/'))return '🖼️';return '📎'}
+function renderDocs(){
+  const list=document.getElementById('docs-list');
+  if(!uploadedDocs.length){list.innerHTML='';return;}
+  list.innerHTML=uploadedDocs.map(doc=>`
+    <div class="doc-item">
+      <div class="doc-icon">${getDocIcon(doc.type)}</div>
+      <div class="doc-info"><div class="doc-name">${doc.name}</div><div class="doc-size">${doc.size}</div></div>
+      <button class="doc-open" onclick="openDoc('${doc.id}')">Abrir</button>
+      <button class="doc-del" onclick="deleteDoc('${doc.id}')">✕</button>
+    </div>`).join('');
+}
+function openDoc(id){const d=uploadedDocs.find(d=>d.id==id);if(d)window.open(d.url,'_blank')}
+function deleteDoc(id){const i=uploadedDocs.findIndex(d=>d.id==id);if(i>-1){uploadedDocs.splice(i,1);renderDocs()}}
+
+// ── HERRAMIENTAS TABS ──
+function switchTool(btn,id){
+  document.querySelectorAll('.ttab').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.tool-panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');document.getElementById(id).classList.add('active');
+}
+
+// ── CONVERSOR ──
+const rates={};let ratesLoaded=false;
+const cNames={USD:'Dólar USD',GBP:'Libra',JPY:'Yen',MXN:'Peso MX',BRL:'Real',MAD:'Dírham',TRY:'Lira',THB:'Baht',IDR:'Rupia',AED:'Dírham AE',SGD:'Dólar SG',PLN:'Esloti',CZK:'Corona CZ',HUF:'Forinto',RON:'Leu',DKK:'Corona DK',SEK:'Corona SE',NOK:'Corona NO'};
+async function loadRates(){
+  try{const r=await fetch('https://open.er-api.com/v6/latest/EUR');const d=await r.json();if(d.rates){Object.assign(rates,d.rates);ratesLoaded=true;convertCurrency();document.getElementById('conv-rate').textContent='Actualizado · '+new Date().toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'})}}
+  catch(e){Object.assign(rates,{USD:1.08,GBP:0.86,JPY:162,MXN:18.5,BRL:5.4,MAD:10.8,TRY:35,THB:38,IDR:17000,AED:3.97,SGD:1.45,PLN:4.25,CZK:25,HUF:390,RON:4.97,DKK:7.46,SEK:11.5,NOK:11.8});ratesLoaded=true;convertCurrency();document.getElementById('conv-rate').textContent='Tasas aproximadas'}
+}
+function convertCurrency(){
+  if(!ratesLoaded)return;
+  const eur=parseFloat(document.getElementById('conv-eur').value)||0;
+  const to=document.getElementById('conv-to').value;
+  const res=eur*(rates[to]||1);
+  const fmt=res>=1000?res.toFixed(0):res>=10?res.toFixed(2):res.toFixed(4);
+  document.getElementById('conv-foreign').value=fmt;
+  document.getElementById('conv-display').textContent=fmt+' '+to;
+  document.getElementById('conv-to-label').textContent=cNames[to]||to;
+  document.getElementById('conv-rate').textContent='1 € = '+(rates[to]||1).toFixed(4)+' '+to;
+}
+function convertBack(){
+  if(!ratesLoaded)return;
+  const f=parseFloat(document.getElementById('conv-foreign').value)||0;
+  const to=document.getElementById('conv-to').value;
+  document.getElementById('conv-eur').value=(f/(rates[to]||1)).toFixed(2);convertCurrency();
+}
+loadRates();
+
+// ── TRADUCTOR ──
+const phraseDB={
+  es:['Hola / Buenos días','Por favor','Gracias','¿Cuánto cuesta?','¿Dónde está…?','La cuenta, por favor','No entiendo','¿Habla español?','Ayuda, por favor','Un taxi, por favor','¿Dónde está el baño?','Me llamo…','¿Habla inglés?'],
+  it:['Ciao / Buongiorno','Per favore','Grazie','Quanto costa?','Dov\'è…?','Il conto, per favore','Non capisco','Parla spagnolo?','Aiuto','Un taxi, per favore','Dov\'è il bagno?','Mi chiamo…','Parla inglese?'],
+  fr:['Bonjour','S\'il vous plaît','Merci','Combien ça coûte?','Où est…?','L\'addition, s\'il vous plaît','Je ne comprends pas','Parlez-vous espagnol?','Au secours','Un taxi, s\'il vous plaît','Où sont les toilettes?','Je m\'appelle…','Parlez-vous anglais?'],
+  de:['Hallo','Bitte','Danke','Wie viel kostet das?','Wo ist…?','Die Rechnung, bitte','Ich verstehe nicht','Sprechen Sie Spanisch?','Hilfe','Ein Taxi, bitte','Wo ist die Toilette?','Ich heiße…','Sprechen Sie Englisch?'],
+  pt:['Olá','Por favor','Obrigado/a','Quanto custa?','Onde fica…?','A conta, por favor','Não entendo','Fala espanhol?','Socorro','Um táxi','Onde é o banheiro?','Meu nome é…','Fala inglês?'],
+  ja:['こんにちは','お願いします','ありがとう','いくらですか？','…はどこですか？','お会計をお願いします','わかりません','スペイン語を話しますか？','助けて','タクシーをお願いします','トイレはどこですか？','私の名前は…','英語を話しますか？'],
+  ar:['مرحبا','من فضلك','شكرا','كم يكلف؟','أين…؟','الحساب من فضلك','لا أفهم','هل تتكلم الإسبانية؟','مساعدة','سيارة أجرة','أين الحمام؟','اسمي…','هل تتكلم الإنجليزية؟'],
+  tr:['Merhaba','Lütfen','Teşekkürler','Ne kadar?','Nerede…?','Hesabı lütfen','Anlamıyorum','İspanyolca biliyor musunuz?','Yardım','Taksi lütfen','Tuvalet nerede?','Benim adım…','İngilizce biliyor musunuz?'],
+  th:['สวัสดี','กรุณา','ขอบคุณ','ราคาเท่าไหร่?','…อยู่ที่ไหน?','เก็บเงินด้วย','ไม่เข้าใจ','พูดภาษาสเปนได้ไหม?','ช่วยด้วย','แท็กซี่','ห้องน้ำอยู่ที่ไหน?','ฉันชื่อ…','พูดภาษาอังกฤษได้ไหม?'],
+  zh:['你好','请','谢谢','多少钱？','…在哪里？','买单','我不明白','你会说西班牙语吗？','帮帮我','出租车','洗手间在哪里？','我叫…','你会说英语吗？'],
+  el:['Γεια σας','Παρακαλώ','Ευχαριστώ','Πόσο κοστίζει;','Πού είναι…;','Τον λογαριασμό','Δεν καταλαβαίνω','Μιλάτε ισπανικά;','Βοήθεια','Ένα ταξί','Πού είναι η τουαλέτα;','Με λένε…','Μιλάτε αγγλικά;'],
+  pl:['Dzień dobry','Proszę','Dziękuję','Ile to kosztuje?','Gdzie jest…?','Rachunek, proszę','Nie rozumiem','Czy mówi pan/pani po hiszpańsku?','Pomocy','Taksówkę','Gdzie jest toaleta?','Mam na imię…','Czy mówi pan/pani po angielsku?'],
+  nl:['Hallo','Alstublieft','Dank u','Hoeveel kost het?','Waar is…?','De rekening graag','Ik begrijp het niet','Spreekt u Spaans?','Help','Een taxi','Waar is het toilet?','Ik heet…','Spreekt u Engels?'],
+  ru:['Здравствуйте','Пожалуйста','Спасибо','Сколько стоит?','Где…?','Счёт, пожалуйста','Я не понимаю','Вы говорите по-испански?','Помогите','Такси','Где туалет?','Меня зовут…','Вы говорите по-английски?'],
+  cs:['Dobrý den','Prosím','Děkuji','Kolik to stojí?','Kde je…?','Účet prosím','Nerozumím','Mluvíte španělsky?','Pomozte','Taxi','Kde je toaleta?','Jmenuji se…','Mluvíte anglicky?'],
+  ro:['Bună ziua','Vă rog','Mulțumesc','Cât costă?','Unde este…?','Nota de plată','Nu înțeleg','Vorbiți spaniolă?','Ajutor','Un taxi','Unde este toaleta?','Mă numesc…','Vorbiți engleză?'],
+  hr:['Dobar dan','Molim','Hvala','Koliko košta?','Gdje je…?','Račun, molim','Ne razumijem','Govorite li španjolski?','Pomoć','Taksi','Gdje je zahod?','Zovem se…','Govorite li engleski?'],
+};
+const langMap={it:'it-IT',fr:'fr-FR',de:'de-DE',pt:'pt-PT',ja:'ja-JP',ar:'ar-SA',tr:'tr-TR',th:'th-TH',zh:'zh-CN',el:'el-GR',pl:'pl-PL',nl:'nl-NL',ru:'ru-RU',cs:'cs-CZ',ro:'ro-RO',hr:'hr-HR'};
+function updatePhrases(){
+  const lang=document.getElementById('trans-lang-sel').value;
+  const esp=phraseDB['es'],dest=phraseDB[lang]||phraseDB['it'];
+  document.getElementById('phrases-list').innerHTML=esp.map((es,i)=>`
+    <div class="trans-item">
+      <div class="trans-texts"><div class="trans-es">${es}</div><div class="trans-dest">${dest[i]||''}</div></div>
+      <button class="trans-audio" onclick="speak('${(dest[i]||'').replace(/'/g,"\\'").replace(/"/g,'&quot;')}','${lang}',this)">▶</button>
+    </div>`).join('');
+}
+function speak(text,lang,btn){
+  if(!window.speechSynthesis){showToast('Audio no disponible');return}
+  window.speechSynthesis.cancel();
+  document.querySelectorAll('.trans-audio').forEach(b=>b.classList.remove('playing'));
+  btn.classList.add('playing');
+  const u=new SpeechSynthesisUtterance(text);
+  u.lang=langMap[lang]||lang+'-'+lang.toUpperCase();u.rate=0.82;
+  u.onend=()=>btn.classList.remove('playing');
+  u.onerror=()=>{btn.classList.remove('playing');showToast('Audio no disponible para este idioma')};
+  window.speechSynthesis.speak(u);
+}
+updatePhrases();
+
+// ── CALCULADORA ──
+function calcBudget(){
+  const dias=parseFloat(document.getElementById('c-dias').value)||0;
+  const viaj=Math.max(1,parseFloat(document.getElementById('c-viaj').value)||1);
+  const aloj=parseFloat(document.getElementById('c-aloj').value)||0;
+  const com=parseFloat(document.getElementById('c-com').value)||0;
+  const transp=parseFloat(document.getElementById('c-transp').value)||0;
+  const act=parseFloat(document.getElementById('c-act').value)||0;
+  const tA=aloj*dias,tC=com*dias*viaj,tot=tA+tC+transp+act;
+  const f=n=>n.toLocaleString('es-ES',{maximumFractionDigits:0})+'€';
+  document.getElementById('r-aloj').textContent=f(tA);document.getElementById('r-com').textContent=f(tC);
+  document.getElementById('r-transp').textContent=f(transp);document.getElementById('r-act').textContent=f(act);
+  document.getElementById('r-total').textContent=f(tot);document.getElementById('r-pp').textContent=f(tot/viaj);
+}
+calcBudget();
+
+// ── CHECKLIST ──
+const checkData={
+  ropa:['Ropa ligera (5-7 días)','Chaqueta o jersey fino','Ropa interior extra','Calcetines varios','Calzado cómodo walking','Sandalias o chanclas','Ropa de baño','Pijama','Pañuelo o fular','Chubasquero ligero'],
+  docs:['DNI o Pasaporte vigente','Tarjeta Sanitaria Europea','Seguro de viaje','Reservas alojamiento','Confirmación de vuelo','2 tarjetas bancarias','Efectivo moneda local','Carné de conducir','Visado si aplica','Fotos de pasaporte'],
+  tech:['Móvil cargado','Cargador del móvil','Adaptador de enchufe','Power bank','Auriculares','Cámara de fotos','Tarjeta memoria extra','Cable USB extra','Mapas offline','Cargador laptop'],
+  salud:['Protector solar 50+','Repelente mosquitos','Medicación habitual x2','Botiquín básico','Antihistamínico','Ibuprofeno/paracetamol','Tiritas y venda','Pastillas estómago','Mascarillas','Termómetro'],
+  extras:['Botella reutilizable','Guía de conversación','Bolsa tela mercados','Candado equipaje','Funda impermeable móvil','Snacks viaje','Almohada viaje','Antifaz dormir','Tapones oídos','Colonia pequeña'],
+};
+const checkState={};let currentCat='ropa';
+function initCheck(){Object.keys(checkData).forEach(c=>checkState[c]=checkData[c].map(()=>false));renderCheck()}
+function switchCat(btn,cat){document.querySelectorAll('.check-cat-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');currentCat=cat;renderCheck()}
+function renderCheck(){
+  const items=checkData[currentCat],states=checkState[currentCat];
+  document.getElementById('checklist-items').innerHTML=items.map((item,i)=>`
+    <div class="check-item${states[i]?' done':''}" onclick="toggleCheck('${currentCat}',${i},this)">
+      <div class="check-box">${states[i]?'✓':''}</div>
+      <div class="check-label">${item}</div>
+    </div>`).join('');
+  updateProgress();
+}
+function toggleCheck(cat,idx,el){checkState[cat][idx]=!checkState[cat][idx];el.classList.toggle('done');el.querySelector('.check-box').textContent=checkState[cat][idx]?'✓':'';updateProgress()}
+function updateProgress(){let d=0,t=0;Object.values(checkState).forEach(a=>{t+=a.length;d+=a.filter(Boolean).length});const p=t?Math.round(d/t*100):0;document.getElementById('check-bar').style.width=p+'%';document.getElementById('check-pct').textContent=p+'%'}
+initCheck();
+</script>
+</body>
+</html>
