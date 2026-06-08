@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="GuiaMundi">
+<meta name="theme-color" content="#1A1A2E">
+<title>Guía de ALEMANIA · 21 días</title>
+<link rel="manifest" href="data:application/json;charset=utf-8,%7B%22name%22%3A%22Gu%C3%ADa%20de%20ALEMANIA%22%2C%22short_name%22%3A%22ALEMANIA%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%231A1A2E%22%2C%22theme_color%22%3A%22%231A1A2E%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%2C%253Csvg%2520xmlns%3D%2527http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%2527%2520viewBox%3D%25270%25200%2520100%2520100%2527%253E%253Ctext%2520y%3D%2527.9em%2527%2520font-size%3D%252790%2527%253E%25F0%259F%258C%258D%253C%2Ftext%253E%253C%2Fsvg%253E%22%2C%22sizes%22%3A%22192x192%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%7D%5D%7D">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1A1A2E;--gold:#C9922A;--gold-l:#F5E6C8;--gold-p:#FDF6E9;
+  --terra:#B84A2E;--sky:#1B4F72;--sage:#2D6A4F;--cream:#FAFAF6;
+  --sand:#F0EBE0;--mist:#EEF2F7;--line:#DDD8CF;--mid:#7B7369;--r:14px;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overflow:hidden}
+body{font-family:'DM Sans',sans-serif;background:var(--ink);color:var(--ink);font-size:15px;line-height:1.7;display:flex;flex-direction:column}
+
+/* ── PORTADA ── */
+.cover{flex-shrink:0;background:var(--ink);padding:24px 20px 16px;position:relative;overflow:hidden;text-align:center}
+.cover-bg{position:absolute;inset:0;background:radial-gradient(circle at 30% 50%,rgba(201,146,42,.15) 0,transparent 60%),radial-gradient(circle at 70% 50%,rgba(27,79,114,.18) 0,transparent 60%)}
+.cover-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,146,42,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,146,42,.04) 1px,transparent 1px);background-size:32px 32px}
+.cover-stripe{position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--terra),var(--sky))}
+.cover-content{position:relative;z-index:2}
+.cover-eyebrow{font-size:9px;font-weight:500;letter-spacing:3px;color:rgba(201,146,42,.7);text-transform:uppercase;margin-bottom:6px}
+.cover-title{font-family:'Playfair Display',serif;font-size:clamp(28px,8vw,44px);font-weight:900;line-height:1;color:#fff;letter-spacing:-1px;font-style:italic;margin-bottom:4px}
+.cover-subtitle{font-size:13px;color:rgba(255,255,255,.45);margin-bottom:14px;letter-spacing:.5px}
+.cover-actions{display:flex;gap:8px;justify-content:center;max-width:340px;margin:0 auto}
+.cover-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:5px;padding:9px 10px;border-radius:9px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;transition:all .2s}
+.cover-btn-wpp{background:#25D366;color:#fff}
+.cover-btn-save{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#fff}
+.cover-btn:active{transform:scale(.96)}
+
+/* ── TABS NAV ── */
+.tabs-nav{flex-shrink:0;background:rgba(8,8,20,.97);border-bottom:1px solid rgba(201,146,42,.15);position:relative}
+.tabs-scroll{display:flex;overflow-x:auto;scrollbar-width:none;padding:0 12px}
+.tabs-scroll::-webkit-scrollbar{display:none}
+.tab-btn{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:3px;padding:11px 14px;border:none;background:none;color:rgba(255,255,255,.38);font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;cursor:pointer;transition:all .2s;border-bottom:2px solid transparent;white-space:nowrap;min-width:72px}
+.tab-btn .tab-icon{font-size:18px;line-height:1}
+.tab-btn.active{color:var(--gold);border-bottom-color:var(--gold)}
+.tab-btn:hover{color:rgba(255,255,255,.7)}
+/* Flecha indicadora de más tabs */
+.tabs-fade{position:absolute;right:0;top:0;bottom:0;width:40px;background:linear-gradient(to right,transparent,rgba(8,8,20,.97));pointer-events:none;display:flex;align-items:center;justify-content:flex-end;padding-right:6px}
+.tabs-fade span{color:var(--gold);font-size:16px;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
+
+/* ── CONTENIDO ── */
+.tabs-content{flex:1;overflow-y:auto;background:var(--cream)}
+.tab-panel{display:none;padding:22px 18px 32px;min-height:100%}
+.tab-panel.active{display:block}
+@media(min-width:700px){.tab-panel{max-width:800px;margin:0 auto;padding:28px 36px 40px}}
+
+/* ── TIPOGRAFÍA ── */
+.sec-eye{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:4px;display:flex;align-items:center;gap:6px}
+.sec-eye::before{content:'';display:inline-block;width:10px;height:1px;background:var(--gold)}
+.sec-title{font-family:'Playfair Display',serif;font-size:21px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:16px}
+
+/* ── FICHA MINI ── */
+.info-mini{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.info-tag{background:var(--sand);border:1px solid var(--line);border-radius:50px;padding:5px 12px;font-size:12px;color:var(--mid)}
+.info-tag strong{color:var(--ink);font-weight:600}
+
+/* ── AD ── */
+.ad{background:#FFF8E7;border:1px solid #E8C84A;border-left:4px solid #E8C84A;border-radius:var(--r);padding:10px 12px;display:flex;align-items:flex-start;gap:8px;margin-bottom:14px}
+.ad-badge{background:#E8C84A;color:#fff;font-size:8px;font-weight:700;letter-spacing:1px;padding:2px 5px;border-radius:4px;flex-shrink:0;margin-top:1px}
+.ad strong{display:block;font-size:12px;font-weight:500;color:#7A5C00;margin-bottom:1px}
+.ad span{font-size:11px;color:#A07B20;font-style:italic}
+
+/* ── CONTENIDO IA ── */
+.ai-content{font-size:14px;line-height:1.85;color:var(--ink)}
+.ai-content h1,.ai-content h2{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--ink);margin:20px 0 8px;padding-bottom:5px;border-bottom:2px solid var(--gold-l)}
+.ai-content h2:first-child{margin-top:0}
+.ai-content h3{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--sky);margin:14px 0 5px}
+.ai-content h3:first-child{margin-top:0}
+.ai-content p{margin-bottom:9px}
+.ai-content ul,.ai-content ol{padding-left:18px;margin-bottom:10px}
+.ai-content li{margin-bottom:4px}
+.ai-content strong{font-weight:600}
+.ai-content a{color:var(--sky);text-decoration:none;border-bottom:1px solid rgba(27,79,114,.25);font-weight:500;word-break:break-word}
+.ai-content a:hover{color:var(--gold);border-bottom-color:var(--gold)}
+
+/* ── BLOQUES DE DÍA ── */
+.day-block{background:#fff;border:1px solid var(--line);border-radius:var(--r);margin-bottom:16px;overflow:hidden}
+.day-block-header{background:var(--ink);color:var(--gold);padding:12px 16px;font-family:'Playfair Display',serif;font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:space-between;cursor:pointer}
+.day-block-header .day-toggle{font-size:14px;transition:transform .3s;flex-shrink:0}
+.day-block.open .day-toggle{transform:rotate(180deg)}
+.day-block-body{display:none;padding:14px 16px}
+.day-block.open .day-block-body{display:block}
+.day-block-body .ai-content h3{margin-top:10px}
+.day-block-body .ai-content h3:first-child{margin-top:0}
+.day-block-body a[href*="google.com/maps"]{display:inline-flex;align-items:center;gap:4px;background:#1B4F72;color:#fff !important;padding:5px 12px;border-radius:50px;font-size:11px;font-weight:700;text-decoration:none !important;margin:2px 4px 2px 0;border:none !important}
+.day-block-body a[href*="google.com/maps"]:hover{background:#C9922A !important}
+.day-block-body a[href*="google.com/search"]{display:inline-flex;align-items:center;gap:4px;background:#F0EBE0;color:#1A1A2E !important;padding:5px 12px;border-radius:50px;font-size:11px;font-weight:600;text-decoration:none !important;margin:2px 4px 2px 0;border:1px solid #DDD8CF !important}
+.day-block-body a[href*="google.com/search"]:hover{border-color:#C9922A !important;color:#C9922A !important}
+/* Campo de nota manual */
+.day-note-wrap{margin-top:12px;border-top:1px solid var(--line);padding-top:12px}
+.day-note-label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);margin-bottom:5px}
+.day-note{width:100%;min-height:70px;padding:9px 12px;border:1.5px solid var(--line);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink);outline:none;resize:vertical;background:var(--cream);transition:border-color .2s}
+.day-note:focus{border-color:var(--gold)}
+.day-note::placeholder{color:var(--mid)}
+
+/* ── HERRAMIENTAS ── */
+.tools-tabs{display:flex;gap:6px;margin-bottom:14px;overflow-x:auto;scrollbar-width:none}
+.tools-tabs::-webkit-scrollbar{display:none}
+.ttab{background:var(--sand);border:none;border-radius:50px;padding:7px 13px;font-size:12px;font-family:'DM Sans',sans-serif;color:var(--mid);cursor:pointer;white-space:nowrap;transition:all .2s}
+.ttab.active{background:var(--ink);color:var(--gold);font-weight:500}
+.tool-panel{display:none}
+.tool-panel.active{display:block}
+@media(min-width:700px){
+  .tools-tabs{display:none}
+  .tool-panel{display:block!important}
+  .tools-desktop{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .tool-section-title{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);margin-bottom:8px;padding-bottom:5px;border-bottom:1px solid var(--line)}
+}
+
+/* CONVERSOR */
+.conv-box{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px}
+.conv-row{display:flex;gap:8px;align-items:flex-end;margin-bottom:10px}
+.conv-iw{flex:1}
+.conv-iw label{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--mid);display:block;margin-bottom:3px}
+.conv-input{width:100%;padding:8px 10px;border:1.5px solid var(--line);border-radius:9px;font-size:16px;font-family:'Playfair Display',serif;font-weight:700;color:var(--ink);outline:none;background:var(--cream)}
+.conv-input:focus{border-color:var(--gold)}
+.conv-arrow{font-size:16px;color:var(--gold);padding-bottom:6px;flex-shrink:0}
+.conv-result{background:var(--gold-p);border:1px solid var(--gold-l);border-radius:9px;padding:10px;text-align:center;margin-bottom:6px}
+.conv-amount{font-family:'Playfair Display',serif;font-size:26px;font-weight:900;color:var(--gold)}
+.conv-rate{font-size:10px;color:var(--mid);margin-top:1px}
+.conv-select{width:100%;padding:7px 10px;border:1.5px solid var(--line);border-radius:9px;font-size:13px;font-family:'DM Sans',sans-serif;color:var(--ink);outline:none;background:#fff;margin-bottom:9px}
+.conv-note{font-size:10px;color:var(--mid);text-align:center}
+
+/* TRADUCTOR */
+.trans-wrap{border-radius:var(--r);overflow:hidden;border:1px solid var(--line)}
+.trans-lang{background:var(--ink);color:#fff;padding:9px 13px;font-size:11px;font-weight:500;display:flex;align-items:center;justify-content:space-between}
+.trans-lang select{background:transparent;border:none;color:var(--gold);font-family:'DM Sans',sans-serif;font-size:12px;outline:none;cursor:pointer}
+.trans-list{background:#fff;max-height:280px;overflow-y:auto}
+.trans-item{display:flex;align-items:center;padding:9px 13px;border-bottom:1px solid var(--line);gap:8px}
+.trans-item:last-child{border-bottom:none}
+.trans-texts{flex:1}
+.trans-es{font-size:13px;font-weight:500;color:var(--ink)}
+.trans-dest{font-size:12px;color:var(--sky);font-style:italic;margin-top:1px}
+.trans-audio{background:none;border:1.5px solid var(--gold);border-radius:50%;width:30px;height:30px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--gold);flex-shrink:0;font-size:11px;transition:all .2s}
+.trans-audio.playing,.trans-audio:active{background:var(--gold);color:#fff}
+
+/* CALCULADORA */
+.calc-box{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px}
+.calc-row{margin-bottom:9px}
+.calc-row label{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--mid);display:block;margin-bottom:3px}
+.calc-input{width:100%;padding:7px 10px;border:1.5px solid var(--line);border-radius:9px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--ink);outline:none;background:var(--cream)}
+.calc-input:focus{border-color:var(--gold)}
+.calc-result{background:var(--ink);border-radius:var(--r);padding:13px;margin-top:5px}
+.calc-result-title{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:7px}
+.calc-line{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.calc-line:last-child{border-bottom:none;padding-top:8px;margin-top:4px}
+.calc-line span{font-size:12px;color:rgba(255,255,255,.55)}
+.calc-line strong{font-family:'Playfair Display',serif;font-size:13px;color:var(--gold)}
+.calc-line.total span{color:#fff;font-weight:600;font-size:13px}
+.calc-line.total strong{font-size:17px}
+
+/* CHECKLIST */
+.check-cats{display:flex;gap:5px;margin-bottom:9px;overflow-x:auto;scrollbar-width:none}
+.check-cats::-webkit-scrollbar{display:none}
+.check-cat-btn{background:var(--sand);border:none;border-radius:50px;padding:5px 11px;font-size:11px;font-family:'DM Sans',sans-serif;color:var(--mid);cursor:pointer;white-space:nowrap;transition:all .2s}
+.check-cat-btn.active{background:var(--ink);color:var(--gold);font-weight:500}
+.checklist{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;max-height:280px;overflow-y:auto}
+.check-item{display:flex;align-items:center;gap:9px;padding:9px 12px;border-bottom:1px solid var(--line);cursor:pointer;transition:background .15s}
+.check-item:last-child{border-bottom:none}
+.check-item:hover{background:var(--sand)}
+.check-box{width:18px;height:18px;border:2px solid var(--line);border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px;color:transparent;transition:all .2s}
+.check-item.done .check-box{background:var(--sage);border-color:var(--sage);color:#fff}
+.check-item.done .check-label{text-decoration:line-through;color:var(--mid)}
+.check-label{font-size:13px;color:var(--ink)}
+.check-progress{background:var(--sand);border-radius:var(--r);padding:8px 12px;margin-bottom:9px;display:flex;align-items:center;gap:8px}
+.check-bar-wrap{flex:1;background:var(--line);border-radius:50px;height:5px;overflow:hidden}
+.check-bar{height:100%;background:linear-gradient(90deg,var(--sage),var(--gold));border-radius:50px;transition:width .4s}
+.check-pct{font-size:12px;font-weight:600;color:var(--sage);flex-shrink:0}
+
+/* ── DOCUMENTOS ── */
+.docs-upload-area{border:2px dashed var(--line);border-radius:var(--r);padding:20px;text-align:center;background:#fff;cursor:pointer;transition:all .2s;margin-bottom:16px}
+.docs-upload-area:hover{border-color:var(--gold);background:var(--gold-p)}
+.docs-upload-icon{font-size:28px;margin-bottom:6px}
+.docs-upload-text{font-size:13px;color:var(--mid)}
+.docs-upload-text strong{color:var(--ink);display:block;margin-bottom:2px}
+.docs-list{display:flex;flex-direction:column;gap:8px}
+.doc-item{background:#fff;border:1px solid var(--line);border-radius:10px;padding:11px 14px;display:flex;align-items:center;gap:10px}
+.doc-icon{font-size:22px;flex-shrink:0}
+.doc-info{flex:1;min-width:0}
+.doc-name{font-size:13px;font-weight:500;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.doc-size{font-size:11px;color:var(--mid)}
+.doc-open{background:var(--sky);color:#fff;border:none;border-radius:6px;padding:5px 10px;font-size:11px;font-weight:600;cursor:pointer;flex-shrink:0}
+.doc-del{background:none;border:none;color:var(--mid);cursor:pointer;font-size:16px;padding:0 4px;flex-shrink:0}
+#doc-input{display:none}
+
+/* ── MAPA GENERAL ── */
+.map-block{background:var(--ink);border-radius:var(--r);overflow:hidden;margin-bottom:16px}
+.map-prev{height:110px;background:repeating-linear-gradient(0deg,transparent,transparent 35px,rgba(201,146,42,.06) 36px),repeating-linear-gradient(90deg,transparent,transparent 35px,rgba(201,146,42,.06) 36px);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:5px}
+.map-icon{font-size:26px}
+.map-dest-label{font-size:11px;color:rgba(255,255,255,.35);letter-spacing:1px}
+.map-cta{padding:11px 14px;display:flex;align-items:center;justify-content:space-between}
+.map-cta-t strong{display:block;color:#fff;font-size:13px;margin-bottom:1px}
+.map-cta-t span{font-size:11px;color:rgba(255,255,255,.45)}
+.map-btn{background:var(--gold);color:var(--ink);font-size:11px;font-weight:700;padding:8px 15px;border-radius:50px;text-decoration:none}
+
+/* ── CTA FINAL ── */
+.cta-box{background:linear-gradient(135deg,var(--ink),#2A1F3D);border-radius:var(--r);padding:22px 18px;text-align:center;position:relative;overflow:hidden;margin-bottom:16px}
+.cta-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--terra),var(--sky))}
+.cta-box h3{font-family:'Playfair Display',serif;font-size:18px;color:#fff;margin-bottom:5px}
+.cta-box p{font-size:12px;color:rgba(255,255,255,.45);margin-bottom:14px}
+.cta-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-bottom:13px}
+.cta-pill{background:rgba(201,146,42,.15);border:1px solid rgba(201,146,42,.3);color:var(--gold);font-size:12px;padding:6px 12px;border-radius:50px;text-decoration:none}
+.share-bar{display:flex;gap:7px}
+.share-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:5px;padding:9px;border-radius:9px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;transition:all .2s}
+.share-wpp{background:#25D366;color:#fff}
+.share-copy{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:#fff}
+
+/* NOTAS */
+.note-area{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.note-line{padding:12px 14px;border-bottom:1px solid var(--line);min-height:44px;font-size:14px;color:var(--line);font-style:italic}
+.note-line:last-child{border-bottom:none}
+
+/* MODAL GUARDAR */
+.save-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:999;align-items:flex-end;justify-content:center}
+.save-modal.open{display:flex}
+.save-sheet{background:#fff;border-radius:var(--r) var(--r) 0 0;padding:24px 20px 32px;width:100%;max-width:480px}
+.save-sheet h3{font-family:'Playfair Display',serif;font-size:19px;color:var(--ink);margin-bottom:6px}
+.save-sheet p{font-size:13px;color:var(--mid);margin-bottom:18px;line-height:1.6}
+.save-option{display:flex;align-items:center;gap:12px;padding:13px 14px;border:1.5px solid var(--line);border-radius:var(--r);margin-bottom:9px;cursor:pointer;transition:all .2s}
+.save-option:hover{border-color:var(--gold);background:var(--gold-p)}
+.save-option-icon{font-size:24px;flex-shrink:0}
+.save-option-text strong{display:block;font-size:14px;color:var(--ink);margin-bottom:1px}
+.save-option-text span{font-size:12px;color:var(--mid)}
+.save-close{width:100%;padding:11px;background:var(--sand);border:none;border-radius:var(--r);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;color:var(--mid);cursor:pointer;margin-top:6px}
+
+/* TOAST */
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(10px);background:var(--ink);color:#fff;padding:9px 18px;border-radius:50px;font-size:13px;font-weight:500;opacity:0;transition:all .3s;pointer-events:none;z-index:9999;white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.fa{animation:fadeUp .45s ease both}
+</style>
+</head>
+<body>
+
+<!-- ══ PORTADA ══ -->
+<div class="cover">
+  <div class="cover-bg"></div>
+  <div class="cover-grid"></div>
+  <div class="cover-stripe"></div>
+  <div class="cover-content">
+    <div class="cover-eyebrow fa">GuiaMundi.es</div>
+    <div class="cover-title fa" style="animation-delay:.1s">Guía de ALEMANIA</div>
+    <div class="cover-subtitle fa" style="animation-delay:.2s">21 días ·  · 2viajero/s</div>
+    <div class="cover-actions fa" style="animation-delay:.3s">
+      <button class="cover-btn cover-btn-wpp" onclick="shareWpp()">
+        <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Compartir
+      </button>
+      <button class="cover-btn cover-btn-save" onclick="openSaveModal()">⬇ Guardar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TABS NAV ══ -->
+<div class="tabs-nav">
+  <div class="tabs-scroll" id="tabs-scroll">
+    <button class="tab-btn active" onclick="showTab('info',this)"><span class="tab-icon">📋</span>Viajero</button>
+    <button class="tab-btn" onclick="showTab('itinerario',this)"><span class="tab-icon">🗓</span>Ruta</button>
+    <button class="tab-btn" onclick="showTab('experiencias',this)"><span class="tab-icon">⭐</span>Experiencias</button>
+    <button class="tab-btn" onclick="showTab('tools',this)"><span class="tab-icon">⚙️</span>Tools</button>
+    <button class="tab-btn" onclick="showTab('destino',this)"><span class="tab-icon">💡</span>Destino</button>
+    <button class="tab-btn" onclick="showTab('transporte',this)"><span class="tab-icon">🚗</span>Transporte</button>
+    <button class="tab-btn" onclick="showTab('recursos',this)"><span class="tab-icon">🔗</span>Recursos</button>
+    <button class="tab-btn" onclick="showTab('cultura',this)"><span class="tab-icon">🎬</span>Cultura</button>
+    <button class="tab-btn" onclick="showTab('curiosidades',this)"><span class="tab-icon">🤔</span>Curiosidades</button>
+    <button class="tab-btn" onclick="showTab('docs',this)"><span class="tab-icon">📁</span>Documentos</button>
+    <button class="tab-btn" onclick="showTab('notas',this)"><span class="tab-icon">📝</span>Notas</button>
+  </div>
+  <div class="tabs-fade"><span>›</span></div>
+</div>
+
+<!-- ══ CONTENIDO ══ -->
+<div class="tabs-content" id="tabs-content">
+
+  <!-- TAB VIAJERO -->
+  <div class="tab-panel active" id="tab-info">
+    <div class="sec-eye">Tu viaje</div>
+    <div class="sec-title">Información del viajero</div>
+    <div class="info-mini">
+      <div class="info-tag"><strong>PACO</strong></div>
+      <div class="info-tag">📍 <strong>ALEMANIA</strong></div>
+      <div class="info-tag">🗓 <strong>21 días</strong></div>
+      <div class="info-tag">👥 <strong>2 viajero/s</strong></div>
+      <div class="info-tag">🧭 <strong></strong></div>
+      <div class="info-tag">🚗 <strong>Coche de alquiler</strong></div>
+    </div>
+    <div class="ad"><div class="ad-badge">AD</div><div><strong>Vuelos · Seguro de viaje</strong><span>→ Insertar banner afiliado aquí</span></div></div>
+    <div class="ad"><div class="ad-badge">AD</div><div><strong>Hoteles · Alojamiento</strong><span>→ Booking / Airbnb</span></div></div>
+    <div style="margin-top:16px">
+      <div class="map-block">
+        <div class="map-prev"><div class="map-icon">🗺️</div><div class="map-dest-label">ALEMANIA</div></div>
+        <div class="map-cta">
+          <div class="map-cta-t"><strong>Ver en Google Maps</strong><span>Explorar ALEMANIA</span></div>
+          <a class="map-btn" href="https://www.google.com/maps/search/ALEMANIA" target="_blank">Abrir →</a>
+        </div>
+      </div>
+    </div>
+    <div class="cta-box">
+      <h3>¡Buen viaje, PACO!</h3>
+      <p>Tu aventura en ALEMANIA · GuiaMundi.es</p>
+      <div class="cta-pills">
+        <a class="cta-pill" href="#">✈ Vuelos</a>
+        <a class="cta-pill" href="#">🏨 Hoteles</a>
+        <a class="cta-pill" href="#">🎯 Experiencias</a>
+        <a class="cta-pill" href="#">🛡 Seguro</a>
+      </div>
+      <div class="share-bar">
+        <button class="share-btn share-wpp" onclick="shareWpp()">
+          <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Compartir WhatsApp
+        </button>
+        <button class="share-btn share-copy" onclick="copyLink()">⎘ Copiar enlace</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB ITINERARIO -->
+  <div class="tab-panel" id="tab-itinerario">
+    <div class="sec-eye">Día a día</div>
+    <div class="sec-title">Itinerario detallado</div>
+    <div class="ad"><div class="ad-badge">AD</div><div><strong>Tours · Actividades</strong><span>→ Experiencias locales recomendadas</span></div></div>
+    <div id="itinerario-content" class="ai-content" style="margin-top:14px"><h2>DÍA 1 — Berlín: Introducción a la capital histórica</h2>
+<ul>
+<li><strong>Puerta de Brandeburgo</strong> — Icono berlinés, ideal para fotos y breve historia, 1 hora. <a href="https://www.google.com/search?q=Puerta+de+Brandeburgo+ALEMANIA" target="_blank">📖</a> <a href="https://www.google.com/maps/search/Puerta+de+Brandeburgo+ALEMANIA" target="_blank">📍</a></li>
+<li><strong>Reichstag</strong> — Visita su cúpula de cristal con vistas panorámicas, reserva previa recomendada, 1.5 horas. <a href="https://www.google.com/search?q=Reichstag+ALEMANIA" target="_blank">📖</a> <a href="https://www.google.com/maps/search/Reichstag+ALEMANIA" target="_blank">📍</a></li>
+<li><strong>Memorial del Holocausto</strong> — Recorrido emotivo por el monumento cercano, 45 minutos. <a href="https://www.google.com/search?q=Memorial+del+Holocausto+BERLÍN" target="_blank">📖</a> <a href="https://www.google.com/maps/search/Memorial+del+Holocausto+BERLÍN" target="_blank">📍</a></li>
+<li><strong>Avenida Unter den Linden</strong> — Recorrido a pie por esta emblemática avenida, tiendas y cafés, 1 hora. <a href="https://www.google.com/search?q=Unter+den+Linden+BERLÍN" target="_blank">📖</a> <a href="https://www.google.com/maps/search/Unter+den+Linden+BERLÍN" target="_blank">📍</a></li>
+<li><strong>Museo de Pérgamo</strong> — Para amantes del arte y la antigüedad, reserva unas 2 horas. <a href="https://www.google.com/search?q=Museo+de+Pérgamo+BERLÍN" target="_blank">📖</a> <a href="https://www.google.com/maps/search/Museo+de+Pérgamo+BERLÍN" target="_blank">📍</a></li>
+</ul>
+<p>🍽️ <strong>Restaurante:</strong> Zur Letzten Instanz — cocina tradicional alemana.</p>
+<p>🏨 <strong>Hotel:</strong> Hotel Adlon Kempinski — cerca de la Puerta de Brandeburgo.</p>
+
+<h2>DÍA 2 — Berlín: Arte moderno y cultura alternativa</h2>
+<ul>
+<li><strong>East Side Gallery</strong> — Galería al aire libre sobre el Muro de Berlín, imprescindible para fotos, 1.5 horas. <a href="https://www.google.com/search?q=East+Side+Gallery+BERLÍN" target="_blank">📖</a> <a href="https://www.google.com/maps/search/East+Side+Gallery+BERLÍN" target="_blank">📍</a></li>
+<li><strong>Oberbaum Bridge</strong> — Puente icónico junto a la East Side Gallery, ideal para vistas y paseo rápido, 30 minutos. <a href="https://www.google.com/search?q=Oberbaum+Bridge+BERLÍN" target="_blank">📖</a> <a href="https://www.google.com/maps/search/Oberbaum+Bridge+BERLÍN" target="_blank">📍</a></li>
+<li><strong>Kreuzberg</strong> — Barrio con ambiente bohemio, cafés y arte urbano, perfecto para pasear, 2 horas. <a href="https://www.google.com/search?q=Kreuzberg+BERLÍN" target="_blank">📖</a> <a href="https://www.google.com/maps/search/Kreuzberg+BERLÍN" target="_blank">📍</a></li>
+<li><strong>Mercado de Markthalle Neun</strong> — Prueba especialidades locales y street food, ideal para almorzar, 1 hora. <a href="https://www.google.com/search?q=Markthalle+Neun+BERLÍN" target="_blank">📖</a> <a href="https://www.google.com/maps/search/Markthalle+Neun+BERLÍN" target="_blank">📍</a></li>
+<li><strong>Galería Sammlung Boros</strong> — Arte contemporáneo en un búnker convertido, cita previa necesaria, 1.5 horas. <a href="https://www.google.com/search?q=Sammlung+Boros+BERLÍN" target="_blank">📖</a> <a href="https://www.google.com/maps/search/Sammlung+Boros+BERLÍN" target="_blank">📍</a></li>
+</ul>
+<p>🍽️ <strong>Restaurante:</strong> Markthalle Neun Street Food — variedad gourmet.</p>
+<p>🏨 <strong>Hotel:</strong> Motel One Berlin-Kreuzberg — en el corazón bohemio.</p>
+
+<h2>DÍA 3 — Potsdam y alrededores</h2>
+<ul>
+<li><strong>Palacio de Sanssouci</strong> — Obra maestra rococó con jardines impresionantes, mínimo 2 horas. <a href="https://www.google.com/search?q=Palacio+de+Sanssouci+Potsdam" target="_blank">📖</a> <a href="https://www.google.com/maps/search/Palacio+de+Sanssouci+Potsdam" target="_blank">📍</a></li>
+<li><strong>Parque de Sanssouci</strong> — Extensos jardines y fuentes, planifica una caminata relajada, 1.5 horas. <a href="https://www.google.com/search?q=Parque+de+Sanssouci+Potsdam" target="_blank">📖</a> <a href="https://www.google.com/maps/search/Parque+de+Sanssouci+Potsdam" target="_blank">📍</a></li>
+<li><strong>Caminata por Barrio Holandés</strong> — Calles pintorescas con tiendas y cafés, 1 hora. <a href="https://www.google.com/search?q=Barrio+Holandés+Potsdam" target="_blank">📖</a> <a href="https://www.google.com/maps/search/Barrio+Holandés+Potsdam" target="_blank">📍</a></li>
+<li><strong>Puente de Glienicke</strong> — Lugar histórico conocido como el puente de espías, 30 minutos. <a href="https://www.google.com/search?q=Puente+de+Glienicke+Potsdam" target="_blank">📖</a> <a href="https://www.google.com/maps/search/Puente+de+Glienicke+Potsdam" target="_blank">📍</a></li>
+</ul>
+<p>🍽️ <strong>Restaurante:</strong> Juliette — cocina franco-alemana fina.</p>
+<p>🏨 <strong>Hotel:</strong> Hotel Brandenburger Tor Potsdam — centro histórico.</p>
+
+<h2>DÍA 4 — Leipzig, ciudad de la música y la historia</h2>
+<ul>
+<li><strong>Monumento a la Batalla de las Naciones</strong> — Impresionante estructura con vistas panorámicas, 1.5 horas para subir y museo. <a href="https://www.google.com/search?q=Monumento+a+la+Batalla+de+las+Naciones+Leipzig" target="_blank">📖</a> <a href="https://www.google.com/maps/search/Monumento+a+la+Batalla+de+las+Naciones+Leipzig" target="_blank">📍</a></li>
+<li><strong>Casa de Bach</strong> — Museo dedicado al compositor con exhibiciones multimedia, 1 hora. <a href="https://www.google.com/search?q=Casa+de+Bach+Leipzig" target="_blank">📖</a> <a href="https://www.google.com/maps/search/Casa+de+Bach+Leipzig" target="_blank">📍</a></li>
+<li><strong>Plaza del Mercado</strong> — Centro de la ciudad con arquitectura histórica, perfecta para paseo relajado, 1 hora. <a href="https://www.google.com/search?q=Plaza+del+Mercado+Leipzig" target="_blank">📖</a> <a href="https://www.google.com/maps/search/Plaza+del+Mercado+Leipzig" target="_blank">📍</a></li>
+<li><strong>Iglesia de Santo Tomás</strong> — Lugar donde Bach fue cantor, música en vivo si hay conciertos, 45 minutos. <a href="https://www.google.com/search?q=Iglesia+de+Santo+Tomás+Leipzig" target="_blank">📖</a> <a href="https://www.google.com/maps/search/Iglesia+de+Santo+Tomás+Leipzig" target="_blank">📍</a></li>
+<li><strong>Mendebrunnen</strong> — La fuente barroca más grande de Leipzig, ideal para fotos y descanso breve. <a href="https://www.google.com/search?q=Mendebrunnen+Leipzig" target="_blank">📖</a> <a href="https://www.google.com/maps/search/Mendebrunnen+Leipzig" target="_blank">📍</a></li>
+</ul>
+<p>🍽️ <strong>Restaurante:</strong> Auerbachs Keller — cocina sajona tradicional.</p>
+<p>🏨 <strong>Hotel:</strong> Steigenberger Grandhotel Handelshof Leipzig — céntrico y elegante.</p>
+
+<h2>DÍA 5 — Dresde, barroco y encanto sobre el Elba</h2>
+<ul>
+<li><strong>Frauenkirche</strong> — Icono de Dresde reconstruido, atención a su interior y cúpula, 1.5 horas. <a href="https://www.google.com/search?q=Frauenkirche+Dresde" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Frauenkirche+Dresde" target="_blank">📍</a></li>
+<li><strong>Palacio Zwinger</strong> — Museo y jardines barrocos, planifica 2 horas para recorrerlo todo. <a href="https://www.google.com/search?q=Palacio+Zwinger+Dresde" target="_blank">📖</a> <a href="https://www.google.com/maps/search/Palacio+Zwinger+Dresde" target="_blank">📍</a></li>
+<li><strong>Brühlsche Terrasse</strong> — Paseo panorámico junto al río Elba, perfecto para atardecer, 1 hora. <a href="https://www.google.com/search?q=Brühlsche+Terrasse+Dresde" target="_blank">📖</a> <a href="https://www.google.com/maps/search/Brühlsche+Terrasse+Dresde" target="_blank">📍</a></li>
+<li><strong>Residenzschloss</strong> — Antiguo palacio con varios museos, visita detallada de 2 horas. <a href="https://www.google.com/search?q=Residenzschloss+Dresde" target="_blank">📖</a> <a href="https://www.google.com/maps/search/Residenzschloss+Dresde" target="_blank">📍</a></li>
+<li><strong>Teatro Semperoper</strong> — Contempla su arquitectura exterior y reserva para ópera o ballet, 1 hora. <a href="https://www.google.com/search?q=Semperoper+Dresde" target="_blank">📖</a> <a href="https://www.google.com/maps/search/Semperoper+Dresde" target="_blank">📍</a></li>
+</ul>
+<p>🍽️ <strong>Restaurante:</strong> Sophienkeller — tradicional sajón en ambiente medieval.</p>
+<p>🏨 <strong>Hotel:</strong> Hotel Taschenbergpalais Kempinski — lujo clásico en el centro.</p>
+
+<h2>DÍA 6 — Núremberg, historia y murallas medievales</h2>
+<ul>
+<li><strong>Castillo de Núremberg</strong> — Visita al castillo imperial con vistas y museo, 2 horas. <a href="https://www.google.com/search?q=Castillo+de+Núremberg" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Castillo+de+Núremberg" target="_blank">📍</a></li>
+<li><strong>Centro histórico</strong> — Recorrido por calles y plazas medievales, 1.5 horas. <a href="https://www.google.com/search?q=Centro+histórico+Núremberg" target="_blank">📖</a> <a href="https://www.google.com/maps/search/Centro+histórico+Núremberg" target="_blank">📍</a></li>
+<li><strong>Casa de Alberto Durero</strong> — Museo dedicado al artista renacentista, 1 hora. <a href="https://www.google.com/search?q=Casa+de+Alberto+Durero+Núremberg" target="_blank">📖</a> <a href="https://www.google.com/maps/search/Casa+de+Alberto+Durero+Núremberg" target="_blank">📍</a></li>
+<li><strong>Mercado Hauptmarkt</strong> — Plaza central con mercado diario y ambiente local, 1 hora. <a href="https://www.google.com/search?q=Hauptmarkt+Núremberg" target="_blank">📖</a> <a href="https://www.google.com/maps/search/Hauptmarkt+Núremberg" target="_blank">📍</a></li>
+<li><strong>Memorial a los Juicios de Núremberg</strong> — Museo conmemorativo en la antigua prisión, visita de 1.5 horas. <a href="https://www.google.com/search?q=Memorial+Juicios+Núremberg" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Memorial+Juicios+Núremberg" target="_blank">📍</a></li>
+</ul>
+<p>🍽️ <strong>Restaurante:</strong> Bratwurst Röslein — famosas salchichas de Núremberg.</p>
+<p>🏨 <strong>Hotel:</strong> Hotel Victoria Nürnberg — céntrico y acogedor.</p>
+
+<h2>DÍA 7 — Ruta por la Selva Negra: Baden-Baden</h2>
+<ul>
+<li><strong>Termas de Caracalla</strong> — Disfruta de aguas termales y spa, mínimo 2 horas para relajarse. <a href="https://www.google.com/search?q=Termas+de+Caracalla+Baden-Baden" target="_blank">📖</a> <a href="https://www.google.com/maps/search/Termas+de+Caracalla+Baden-Baden" target="_blank">📍</a></li>
+<li><strong>Casino de Baden-Baden</strong> — Edificio histórico con visitas guiadas y juegos, 1 hora. <a href="https://www.google.com/search?q=Casino+de+Baden-Baden" target="_blank">📖</a> <a href="https://www.google.com/maps/search/Casino+de+Baden-Baden" target="_blank">📍</a></li>
+<li><strong>Parque Lichtentaler Allee</strong> — Paseo entre jardines y esculturas, 1.5 horas. <a href="https://www.google.com/search?q=Lichtentaler+Allee+Baden-Baden" target="_blank">📖</a> <a href="https://www.google.com/maps/search/Lichtentaler+Allee+Baden-Baden" target="_blank">📍</a></li>
+<li><strong>Monte Merkur</strong> — Ascensor funicular y vistas panorámicas, 2 horas incluyendo subida y bajada. <a href="https://www.google.com/search?q=Monte+Merkur+Baden-Baden" target="_blank">📖</a> <a href="https://www.google.com/maps/search/Monte+Merkur+Baden-Baden" target="_blank">📍</a></li>
+</ul>
+<p>🍽️ <strong>Restaurante:</strong> RIZZI WineBistro & Restaurant — cocina internacional con vista al parque.</p>
+<p>🏨 <strong>Hotel:</strong> Brenners Park-Hotel & Spa — lujo en el centro de la ciudad.</p>
+
+<h2>DÍA 8 — Friburgo y la Selva Negra profunda</h2>
+<ul>
+<li><strong>Catedral de Friburgo</strong> — Ejemplo gótico con torre visitable, 1 hora. <a href="https://www.google.com/search?q=Catedral+de+Friburgo" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Catedral+de+Friburgo" target="_blank">📍</a></li>
+<li><strong>Casco antiguo de Friburgo</strong> — Calles peatonales con ambiente animado, 1.5 horas. <a href="https://www.google.com/search?q=Casco+antiguo+Friburgo" target="_blank">📖</a> <a href="https://www.google.com/maps/search/Casco+antiguo+Friburgo" target="_blank">📍</a></li>
+<li><strong>Schauinsland</strong> — Montaña con senderos y teleférico, 3 horas para explorar y vistas. <a href="https://</div>
+  </div>
+
+  <!-- TAB EXPERIENCIAS -->
+  <div class="tab-panel" id="tab-experiencias">
+    <div class="sec-eye">Imprescindibles</div>
+    <div class="sec-title">Experiencias destacadas</div>
+    <div class="ai-content"><h3>🌟 Visita al Castillo de Neuschwanstein</h3>
+<p>Este icónico castillo, ubicado en Baviera, es un símbolo de cuento de hadas. Sus impresionantes torres y vistas panorámicas del paisaje alpino lo convierten en un destino único. Dedica al menos medio día para explorar el castillo y sus jardines. Consejo práctico: compra las entradas con anticipación para evitar largas colas.</p>
+
+<h3>🌟 Oktoberfest en Múnich</h3>
+<p>La fiesta de la cerveza más grande del mundo es una experiencia cultural única. Disfruta de las cervezas locales, comidas tradicionales y la música en vivo. Dedica uno o varios días durante el evento, que se celebra de septiembre a octubre. Consejo práctico: llega temprano para conseguir un asiento en las carpas.</p>
+
+<h3>🌟 Recorrido por el Muro de Berlín</h3>
+<p>Explorar el legado del Muro de Berlín es esencial para comprender la historia reciente de Alemania. Podrás ver secciones del muro, arte urbano y memoriales. Dedica un día a recorrer las diferentes ubicaciones. Consejo práctico: únete a una visita guiada para obtener una perspectiva más profunda.</p>
+
+<h3>🌟 Paseo en barco por el río Rin</h3>
+<p>Un crucero por el río Rin te ofrece vistas espectaculares de viñedos, pintorescos castillos y pueblos encantadores. Reserva un recorrido de 2 a 3 horas para disfrutar del paisaje. Consejo práctico: elige un viaje durante el atardecer para una experiencia mágica.</p>
+
+<h3>🌟 Degustación de currywurst en Berlín</h3>
+<p>Este plato típico consiste en salchicha frita servida con salsa de curry y es una joya gastronómica de Berlín. Visita un puesto de currywurst y pruébalo en una excursión de un día. Consejo práctico: acompáñalo con una cerveza local para una experiencia auténtica.</p>
+
+<h3>🌟 Visita a la Selva Negra</h3>
+<p>Esta región montañosa es ideal para los amantes de la naturaleza. Ofrece rutas de senderismo impresionantes y hermosos lagos. Dedica un par de días para explorar sus paisajes diversos. Consejo práctico: visita una de las fábricas de relojes de cuco para llevarte un recuerdo único.</p>
+
+<h3>🌟 Festival de Navidad en Núremberg</h3>
+<p>Si viajas en diciembre, no te pierdas el famoso Christkindlesmarkt, un mercado navideño que ofrece artesanías, comida local y un ambiente festivo. Dedica un día a disfrutar de la arquitectura y las delicias navideñas. Consejo práctico: prueba el lebkuchen (pan de jengibre) que es típico de la región.</p></div>
+  </div>
+
+  <!-- TAB TOOLS -->
+  <div class="tab-panel" id="tab-tools">
+    <div class="sec-eye">Herramientas interactivas</div>
+    <div class="sec-title">Para tu viaje</div>
+    <div class="tools-tabs">
+      <button class="ttab active" onclick="switchTool(this,'conv')">💱 Moneda</button>
+      <button class="ttab" onclick="switchTool(this,'trans')">🗣 Frases</button>
+      <button class="ttab" onclick="switchTool(this,'calc')">💶 Presupuesto</button>
+      <button class="ttab" onclick="switchTool(this,'check')">🧳 Equipaje</button>
+    </div>
+    <div class="tools-desktop">
+      <div>
+        <div class="tool-section-title">💱 Conversor de moneda en tiempo real</div>
+        <div class="tool-panel active" id="conv">
+          <div class="conv-box">
+            <select class="conv-select" id="conv-to" onchange="convertCurrency()">
+              <option value="USD">$ Dólar USD</option><option value="GBP">£ Libra</option>
+              <option value="JPY">¥ Yen</option><option value="MXN">$ Peso MX</option>
+              <option value="BRL">R$ Real</option><option value="MAD">MAD Dírham</option>
+              <option value="TRY">₺ Lira turca</option><option value="THB">฿ Baht</option>
+              <option value="IDR">Rp Rupia</option><option value="AED">AED Dírham</option>
+              <option value="SGD">S$ Dólar SG</option><option value="PLN">zł Esloti</option>
+              <option value="CZK">Kč Corona CZ</option><option value="HUF">Ft Forinto</option>
+              <option value="RON">RON Leu</option><option value="DKK">kr Danesa</option>
+              <option value="SEK">kr Sueca</option><option value="NOK">kr Noruega</option>
+            </select>
+            <div class="conv-row">
+              <div class="conv-iw"><label>Euros €</label><input class="conv-input" type="number" id="conv-eur" value="100" oninput="convertCurrency()"></div>
+              <div class="conv-arrow">⇄</div>
+              <div class="conv-iw"><label id="conv-to-label">Destino</label><input class="conv-input" type="number" id="conv-foreign" oninput="convertBack()"></div>
+            </div>
+            <div class="conv-result"><div class="conv-amount" id="conv-display">—</div><div class="conv-rate" id="conv-rate">Cargando…</div></div>
+            <div class="conv-note">Tiempo real · open.er-api.com</div>
+          </div>
+        </div>
+        <br>
+        <div class="tool-section-title">🗣 Frases útiles con audio</div>
+        <div class="tool-panel" id="trans">
+          <div class="trans-wrap">
+            <div class="trans-lang"><span>Idioma:</span>
+              <select id="trans-lang-sel" onchange="updatePhrases()">
+                <option value="it">🇮🇹 Italiano</option><option value="fr">🇫🇷 Francés</option>
+                <option value="de">🇩🇪 Alemán</option><option value="pt">🇵🇹 Portugués</option>
+                <option value="ja">🇯🇵 Japonés</option><option value="ar">🇲🇦 Árabe</option>
+                <option value="tr">🇹🇷 Turco</option><option value="th">🇹🇭 Tailandés</option>
+                <option value="zh">🇨🇳 Chino</option><option value="el">🇬🇷 Griego</option>
+                <option value="pl">🇵🇱 Polaco</option><option value="nl">🇳🇱 Neerlandés</option>
+                <option value="ru">🇷🇺 Ruso</option><option value="cs">🇨🇿 Checo</option>
+                <option value="ro">🇷🇴 Rumano</option><option value="hr">🇭🇷 Croata</option>
+              </select>
+            </div>
+            <div class="trans-list" id="phrases-list"></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="tool-section-title">💶 Calculadora de presupuesto</div>
+        <div class="tool-panel" id="calc">
+          <div class="calc-box">
+            <div class="calc-row"><label>Días</label><input class="calc-input" type="number" id="c-dias" value="21" oninput="calcBudget()"></div>
+            <div class="calc-row"><label>Viajeros</label><input class="calc-input" type="number" id="c-viaj" value="2" oninput="calcBudget()"></div>
+            <div class="calc-row"><label>Alojamiento / noche €</label><input class="calc-input" type="number" id="c-aloj" value="80" oninput="calcBudget()"></div>
+            <div class="calc-row"><label>Comida / persona / día €</label><input class="calc-input" type="number" id="c-com" value="35" oninput="calcBudget()"></div>
+            <div class="calc-row"><label>Transporte total €</label><input class="calc-input" type="number" id="c-transp" value="200" oninput="calcBudget()"></div>
+            <div class="calc-row"><label>Actividades total €</label><input class="calc-input" type="number" id="c-act" value="150" oninput="calcBudget()"></div>
+            <div class="calc-result">
+              <div class="calc-result-title">RESUMEN</div>
+              <div class="calc-line"><span>Alojamiento</span><strong id="r-aloj">—</strong></div>
+              <div class="calc-line"><span>Comida</span><strong id="r-com">—</strong></div>
+              <div class="calc-line"><span>Transporte</span><strong id="r-transp">—</strong></div>
+              <div class="calc-line"><span>Actividades</span><strong id="r-act">—</strong></div>
+              <div class="calc-line total"><span>TOTAL</span><strong id="r-total">—</strong></div>
+              <div class="calc-line"><span>Por persona</span><strong id="r-pp">—</strong></div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="tool-section-title">🧳 Checklist de equipaje</div>
+        <div class="tool-panel" id="check">
+          <div class="check-progress"><div class="check-bar-wrap"><div class="check-bar" id="check-bar" style="width:0%"></div></div><div class="check-pct" id="check-pct">0%</div></div>
+          <div class="check-cats">
+            <button class="check-cat-btn active" onclick="switchCat(this,'ropa')">👕 Ropa</button>
+            <button class="check-cat-btn" onclick="switchCat(this,'docs')">📄 Docs</button>
+            <button class="check-cat-btn" onclick="switchCat(this,'tech')">📱 Tech</button>
+            <button class="check-cat-btn" onclick="switchCat(this,'salud')">💊 Salud</button>
+            <button class="check-cat-btn" onclick="switchCat(this,'extras')">✨ Extras</button>
+          </div>
+          <div class="checklist" id="checklist-items"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB DESTINO -->
+  <div class="tab-panel" id="tab-destino">
+    <div class="sec-eye">Antes de partir</div>
+    <div class="sec-title">Guía del destino</div>
+    <div class="ai-content"><h2>Clima y mejor época</h2>
+<p>Alemania tiene un clima templado con inviernos fríos y veranos suaves. La temperatura media varía según el mes:</p>
+<ul>
+  <li><strong>Enero:</strong> -1°C a 3°C – Ropa de abrigo, guantes y bufanda.</li>
+  <li><strong>Febrero:</strong> 0°C a 4°C – Prendas cálidas y chaqueta impermeable.</li>
+  <li><strong>Marzo:</strong> 3°C a 9°C – Ropa de entretiempo y algo más abrigado.</li>
+  <li><strong>Abril:</strong> 6°C a 13°C – Chaqueta ligera y capas varias.</li>
+  <li><strong>Mayo:</strong> 11°C a 19°C – Ropa cómoda, suéteres y ropa ligera.</li>
+  <li><strong>Junio:</strong> 14°C a 23°C – Ropa de verano, pero alguna prenda para fresco.</li>
+  <li><strong>Julio:</strong> 16°C a 25°C – Ropa ligera y protección solar.</li>
+  <li><strong>Agosto:</strong> 16°C a 25°C – Igual que julio, ropa cómoda y transpirable.</li>
+  <li><strong>Septiembre:</strong> 13°C a 20°C – Chaquetas ligeras y ropa en capas.</li>
+  <li><strong>Octubre:</strong> 8°C a 14°C – Ropa de otoño, abrigo ligero.</li>
+  <li><strong>Noviembre:</strong> 4°C a 8°C – Chaqueta más abrigada y accesorios.</li>
+  <li><strong>Diciembre:</strong> 0°C a 4°C – Abrigo grueso, gorro y guantes.</li>
+</ul>
+<p>La mejor época para visitar Alemania es de mayo a septiembre, cuando las temperaturas son agradables y los días más largos.</p>
+
+<h2>Moneda y pagos</h2>
+<p>La moneda oficial de Alemania es el <strong>euro (€)</strong>.</p>
+<p>El tipo de cambio aproximado es 1 EUR = 1,00 EUR (moneda local).</p>
+<p>Las tarjetas de crédito y débito como <strong>Visa</strong>, <strong>Mastercard</strong> y en menor medida <strong>American Express</strong> son ampliamente aceptadas. Sin embargo, es recomendable llevar algo de efectivo para pequeños comercios o mercados.</p>
+
+<h2>Electricidad y adaptadores</h2>
+<p>El tipo de enchufe utilizado es el <strong>tipo C y tipo F</strong>, ambos con dos clavijas redondas.</p>
+<p>El voltaje estándar es de <strong>230 V</strong> a <strong>50 Hz</strong>.</p>
+<p>Si vienes de países con diferentes enchufes, necesitarás un adaptador.</p>
+
+<h2>Idioma y comunicación</h2>
+<p>El idioma oficial es el <strong>alemán</strong>.</p>
+<p>En zonas turísticas y entre la gente joven, el inglés es bastante común.</p>
+<p>Apps útiles para comunicarte incluyen:</p>
+<ul>
+  <li><strong>Google Translate</strong> (<a href="https://translate.google.com" target="_blank">translate.google.com</a>)</li>
+  <li><strong>DuoLingo</strong> para aprender frases básicas</li>
+  <li><strong>DeepL</strong> para traducciones más precisas (<a href="https://www.deepl.com" target="_blank">deepl.com</a>)</li>
+</ul>
+
+<h2>Visado y entrada</h2>
+<p>Ciudadanos españoles y de otros países de la Unión Europea no necesitan visado para entrar en Alemania.</p>
+<p>Solo es necesario un pasaporte o DNI válido para estadías de hasta 90 días por turismo.</p>
+<p>Para estancias largas o trabajar, consulta las condiciones específicas en la embajada o consulado alemán.</p>
+
+<h2>Vacunas y salud</h2>
+<p>No hay vacunas obligatorias para entrar en Alemania.</p>
+<p>Se recomienda tener al día las vacunas estándar: tétanos, difteria, tosferina, sarampión.</p>
+<p>El agua del grifo es potable y segura para beber.</p>
+<p>Es muy recomendable contar con un seguro médico de viaje, ya que la atención sanitaria puede ser costosa sin cobertura.</p>
+
+<h2>Seguridad</h2>
+<p>Alemania es generalmente un país seguro para turistas.</p>
+<p>Las principales recomendaciones son:</p>
+<ul>
+  <li>Evitar zonas poco iluminadas o solitarias por la noche.</li>
+  <li>Poner atención a tus pertenencias en lugares turísticos para evitar carteristas.</li>
+  <li>Consultar con locales o alojamientos si hay zonas específicas a evitar.</li>
+</ul>
+<p>En caso de emergencia, el número a marcar es <strong>112</strong>.</p>
+
+<h2>Costumbres y etiqueta</h2>
+<p>Algunas normas sociales importantes:</p>
+<ul>
+  <li>Saludar siempre con un apretón de manos firme.</li>
+  <li>Ser puntual es muy valorado.</li>
+  <li>En restaurantes y taxis, es habitual dejar un <strong>5-10%</strong> de propina.</li>
+  <li>En templos y iglesias, se recomienda vestir de forma respetuosa, evitando ropa provocativa o muy informal.</li>
+</ul>
+
+<h2>Apps imprescindibles</h2>
+<ul>
+  <li><strong>DB Navigator</strong> — para transporte ferroviario (<a href="https://www.bahn.com/en/view/index.shtml" target="_blank">bahn.com</a>)</li>
+  <li><strong>Google Maps</strong> — mapas y navegación.</li>
+  <li><strong>Citymapper</strong> — transporte público en ciudades grandes.</li>
+  <li><strong>Google Translate</strong> — traducción instantánea.</li>
+  <li><strong>PayPal</strong> o <strong>Apple Pay</strong> / <strong>Google Pay</strong> — para pagos móviles.</li>
+</ul></div>
+  </div>
+
+  <!-- TAB TRANSPORTE -->
+  <div class="tab-panel" id="tab-transporte">
+    <div class="sec-eye">Moverse por ALEMANIA</div>
+    <div class="sec-title">Transporte</div>
+    <div class="ad"><div class="ad-badge">AD</div><div><strong>Alquiler de coche</strong><span>→ Rent a car · comparativa</span></div></div>
+    <div class="ai-content" style="margin-top:12px"><h2>Cómo llegar desde España</h2>
+<p>Existen vuelos directos desde varias ciudades de España hacia Alemania. Las rutas más comunes incluyen Madrid, Barcelona, y Málaga hacia ciudades como Berlín, Múnich y Fráncfort.</p>
+<ul>
+  <li><strong>Tiempo de vuelo:</strong> Aproximadamente 2 a 3 horas.</li>
+  <li><strong>Aeropuertos principales en Alemania:</strong> Aeropuerto de Fráncfort (FRA), Aeropuerto de Múnich (MUC), y Aeropuerto de Berlín Brandenburg (BER).</li>
+</ul>
+
+<h2>Transporte desde el aeropuerto</h2>
+<p>Las opciones de transporte desde los aeropuertos en Alemania suelen ser variadas:</p>
+<ul>
+  <li><strong>Tren:</strong> Conexiones rápidas y frecuentes desde aeropuertos como Fráncfort y Múnich. Precio aproximado: 5-10 euros. Duración: 20-40 minutos.</li>
+  <li><strong>Autobús:</strong> Servicios de shuttle y autobús público disponibles. Precio aproximado: 3-8 euros. Tiempo variable según destino.</li>
+  <li><strong>Taxi:</strong> Precio aproximado: 30-50 euros hacia el centro de la ciudad, tiempo 20-45 minutos según aeropuerto y tráfico.</li>
+</ul>
+
+<h2>Moverse por el destino</h2>
+<p>Alemania dispone de un eficiente sistema de transporte público en sus ciudades:</p>
+<ul>
+  <li><strong>Metro (U-Bahn):</strong> Disponible en ciudades grandes, con frecuencias frecuentes. Precio medio: 2.5-3 euros por trayecto.</li>
+  <li><strong>Tren suburbano (S-Bahn):</strong> Conecta zonas periféricas y cercanas. Precio similar al metro.</li>
+  <li><strong>Autobuses y tranvías:</strong> Amplia cobertura urbana. Precio aproximado: 2-3 euros.</li>
+  <li><strong>Billetes combinados:</strong> Existen tickets diarios o semanales que abaratan el costo. Información detallada en <a href="https://www.bvg.de/en" target="_blank">BVG - Berlín</a> o en sitios oficiales locales.</li>
+</ul>
+
+<h2>Alquiler de coche</h2>
+<p>Alquilar un coche es recomendable si planeas visitar zonas rurales, pequeñas ciudades o explorar la región a tu ritmo.</p>
+<ul>
+  <li><strong>Empresas principales:</strong> Sixt, Europcar, Hertz, Avis.</li>
+  <li><strong>Precio medio:</strong> 30-60 euros por día, dependiendo del tipo de vehículo y temporada.</li>
+  <li><strong>Carnet de conducir:</strong> El carnet español es válido en Alemania. No es necesario carnet internacional para estancias cortas.</li>
+</ul>
+
+<h2>Taxis y apps de movilidad</h2>
+<p>Las opciones para moverse en taxi y mediante apps son variadas:</p>
+<ul>
+  <li><strong>Uber:</strong> Disponible en algunas ciudades principales como Berlín y Múnich.</li>
+  <li><strong>Bolt:</strong> Operativo en Berlín con tarifas competitivas.</li>
+  <li><strong>Apps locales:</strong> Free Now es muy popular en Alemania.</li>
+  <li><strong>Precios orientativos:</strong> Tarifa base de taxi: 3-4 euros, más 2-3 euros por km.</li>
+</ul>
+
+<h2>Consejos de conducción</h2>
+<ul>
+  <li><strong>Normas de tráfico:</strong> Se conduce por la derecha. El límite general en ciudad es 50 km/h, en carreteras 100 km/h y en autopistas (Autobahn) no siempre hay límite, pero se recomienda no exceder 130 km/h.</li>
+  <li><strong>Peajes:</strong> No hay peajes para turismos en autopistas.</li>
+  <li><strong>Aparcamiento:</strong> Es regulado y de pago en la mayoría de las ciudades. Usar parquímetros o apps como <a href="https://www.parclick.com/" target="_blank">Parclick</a>.</li>
+</ul>
+
+<h2>Transporte entre ciudades</h2>
+<ul>
+  <li><strong>Tren:</strong> Deutsche Bahn ofrece conexiones rápidas y frecuentes entre ciudades. Precio: desde 20 euros si se reserva con antelación. Más info en <a href="https://www.bahn.com/en/view/index.shtml" target="_blank">Deutsche Bahn</a>.</li>
+  <li><strong>Autobús:</strong> FlixBus y otras compañías operan rutas económicas entre ciudades. Precio: desde 5 euros. Más info en <a href="https://global.flixbus.com/" target="_blank">FlixBus</a>.</li>
+  <li><strong>Vuelos internos:</strong> Opcionales en rutas largas como Berlín-Múnich. Precio medio: 50-100 euros.</li>
+</ul></div>
+  </div>
+
+  <!-- TAB RECURSOS -->
+  <div class="tab-panel" id="tab-recursos">
+    <div class="sec-eye">Recursos online</div>
+    <div class="sec-title">Blogs y enlaces útiles</div>
+    <div class="ai-content"><h2>Web oficial de turismo</h2>
+<p><a href="https://www.germany.travel/en/index.html" target="_blank">Germany Travel - Web oficial de turismo</a></p>
+
+<h2>Blogs de viaje recomendados</h2>
+<ul>
+  <li><a href="https://www.lavidaenrouge.com/category/alemania/" target="_blank">La Vida en Rouge - Blog de viajes en español (sección Alemania)</a></li>
+  <li><a href="https://www.viajarporquereino.com/aleamania-itinerarios-y-consejos/" target="_blank">Viajar porque Reino - Itinerarios y consejos para Alemania</a></li>
+  <li><a href="https://www.elviajeroacompasmagicos.com/2020/01/guia-de-viaje-por-alemania.html" target="_blank">El Viajero a Compás Mágicos - Guía de viaje por Alemania</a></li>
+  <li><a href="https://www.sabdelturista.com/guia-para-viajar-a-alemania/" target="_blank">Sab del Turista - Guía para viajar a Alemania</a></li>
+</ul>
+
+<h2>Foros y comunidades</h2>
+<ul>
+  <li><a href="https://www.tripadvisor.com/ShowForum-g187275-i40-Germany.html" target="_blank">TripAdvisor Foro Alemania</a></li>
+  <li><a href="https://www.lonelyplanet.com/thorntree/forums/europe-western-europe/germany" target="_blank">Lonely Planet Thorn Tree Foro Alemania</a></li>
+  <li><a href="https://www.reddit.com/r/germany/" target="_blank">Reddit r/germany</a></li>
+</ul>
+
+<h2>Canales de YouTube</h2>
+<ul>
+  <li><a href="https://www.youtube.com/c/MuradOsmann" target="_blank">Murad Osmann - Vlogs y viajes, con vídeos de Alemania</a></li>
+  <li><a href="https://www.youtube.com/c/Alanxelmundo" target="_blank">Alan por el Mundo - Videos en español, episodios sobre Alemania</a></li>
+  <li><a href="https://www.youtube.com/c/MyLittleBigIdea" target="_blank">My Little Big Idea - Canal de viajes con experiencia en Alemania</a></li>
+</ul>
+
+<h2>Recursos para rutas</h2>
+<ul>
+  <li><a href="https://es.wikiloc.com/rutas/ciclismo/alemania" target="_blank">Wikiloc - Rutas en Alemania</a></li>
+  <li><a href="https://www.alltrails.com/es/alemania" target="_blank">AllTrails - Senderos y rutas en Alemania</a></li>
+  <li><a href="https://www.google.com/maps" target="_blank">Google Maps - Mapas y planificación de rutas en Alemania</a></li>
+</ul>
+
+<h2>Apps imprescindibles</h2>
+<ul>
+  <li><a href="https://www.bahn.com/en/view/index.shtml" target="_blank">DB Navigator - App oficial del ferrocarril alemán</a></li>
+  <li><a href="https://www.appreise.de/" target="_blank">App Reise - Guía y transporte para Alemania</a></li>
+  <li><a href="https://www.seatfrog.com/" target="_blank">Seatfrog - Reserva y upgrades en trenes alemanes</a></li>
+</ul>
+
+<h2>Webs de reservas</h2>
+<ul>
+  <li><a href="https://www.booking.com/country/de.html" target="_blank">Booking.com - Reservas en Alemania</a></li>
+  <li><a href="https://www.airbnb.es/s/Germany/homes" target="_blank">Airbnb - Alojamientos en Alemania</a></li>
+  <li><a href="https://www.getyourguide.com/germany-l17/" target="_blank">GetYourGuide - Tours y actividades en Alemania</a></li>
+  <li><a href="https://www.viator.com/Germany/d51-ttd" target="_blank">Viator - Excursiones y experiencias en Alemania</a></li>
+</ul></div>
+  </div>
+
+  <!-- TAB CULTURA -->
+  <div class="tab-panel" id="tab-cultura">
+    <div class="sec-eye">Prepara el viaje</div>
+    <div class="sec-title">Cultura · Cine · Libros · Música</div>
+    <div class="ai-content"><h3>📚 Berlín – Navid Kermani</h3>
+<p><strong>Por qué leerlo:</strong> Este libro ofrece una mirada profunda y personal a la ciudad de Berlín, combinando historia, arte y vida cotidiana. Ideal para entender la complejidad y riqueza cultural de la capital alemana antes de visitarla.</p>
+
+<h3>📚 La montaña mágica – Thomas Mann</h3>
+<p><strong>Por qué leerlo:</strong> Aunque no es un libro de viajes, esta novela emblemática del autor alemán captura el contexto social y filosófico de Alemania en el siglo XX, ayudando a comprender el trasfondo cultural del país.</p>
+
+<h3>📚 Alemania. Guía de viaje – Lonely Planet</h3>
+<p><strong>Por qué leerlo:</strong> Una guía práctica y actualizada con información detallada sobre destinos, transporte, gastronomía y cultura, perfecta para planificar rutas y aprovechar al máximo el viaje.</p>
+
+<h3>📚 El tambor de hojalata – Günter Grass</h3>
+<p><strong>Por qué leerlo:</strong> Esta novela icónica ambientada en la ciudad portuaria de Danzig (actual Gdansk, Polonia, pero con una gran historia germana) ofrece una perspectiva crítica y literaria de la historia alemana del siglo XX.</p>
+
+<h3>📚 Alemania. Memorias de un viaje – Wolfgang Welsch</h3>
+<p><strong>Por qué leerlo:</strong> Este ensayo cultural reflexiona sobre la identidad alemana y sus transformaciones, permitiendo un acercamiento intelectual y sensible a las raíces y desafíos del país contemporáneo.</p></div>
+  </div>
+
+  <!-- TAB CURIOSIDADES -->
+  <div class="tab-panel" id="tab-curiosidades">
+    <div class="sec-eye">¿Sabías que…?</div>
+    <div class="sec-title">Curiosidades de ALEMANIA</div>
+    <div class="ai-content"><h3>💡 Planifica tu presupuesto con tarjetas de fidelidad</h3>
+<p>Compra la DeutschlandCard para acumular puntos en supermercados como Rewe y Penny, y solicita la BahnCard si vas a tomar varios trenes de DB. Así obtienes descuentos directos y mantienes controlado el gasto diario.</p>
+
+<h3>💡 Viaja en transporte público validando siempre tu billete</h3>
+<p>En ciudades como Berlín o Múnich es imprescindible validar tu ticket antes de subir al autobús o tren. Evita multas de hasta 60 € y aprovecha pases diarios o semanales para ahorrar.</p>
+
+<h3>💡 Aprovecha los mejores momentos para fotografía</h3>
+<p>Para fotos sin multitudes en Neuschwanstein madruga o quédate en Hohenschwangau la tarde anterior. En la East Side Gallery de Berlín llega al amanecer y captura la luz dorada reflejada en el Spree.</p>
+
+<h3>💡 Degusta la gastronomía local con criterio</h3>
+<p>Prueba el currywurst en Imbiss junto a expertos locales y busca la auténtica tabla de embutidos bávaros en tabernas familiares. En cada región hay especialidades: Münster Westfälischer Knochenschinken o codillo en Franconia.</p>
+
+<h3>💡 Aprende lo básico del idioma para evitar malentendidos</h3>
+<p>Frases como “Ein Bier, bitte” o “Rechnung, bitte” agilizan pedidos y pagos. La cortesía alemana valora el esfuerzo por hablar su idioma, y mejorarás tu experiencia en restaurantes y mercados.</p>
+
+<h3>💡 Evita errores comunes en propinas</h3>
+<p>Lo habitual es dar entre el 5% y el 10% del total en bares y restaurantes, entregándolo directamente al camarero al devolverle la tarjeta de pago. No se espera dejar cambio en la mesa.</p>
+
+<h3>💡 No intentes regatear en tiendas tradicionales</h3>
+<p>El precio en comercios minoristas está fijado por ley. Solo en algunos mercadillos de pulgas o mercados navideños podrás negociar un descuento informal con vendedores que busquen liquidar stock.</p>
+
+<h3>💡 Visita mercados navideños o cerveceros según la temporada</h3>
+<p>En invierno, no te pierdas los Christkindlmarkt de Núremberg y Dresde. En septiembre-octubre, reserva con anticipación entradas para el Oktoberfest y hoteles en Múnich, ya que se agotan rápido.</p>
+
+<h3>💡 Lleva métodos de pago variados y contactless</h3>
+<p>Aunque las tarjetas Visa/Mastercard funcionan, lo más común es usar EC-Karte (Girocard). Activa Apple Pay o Google Pay para pagos rápidos en tiendas y máquinas expendedoras de billetes.</p>
+
+<h3>💡 Explora destinos fuera de las grandes ciudades</h3>
+<p>No te quedes solo en Berlín o Múnich: visita Rothenburg ob der Tauber, la ruta romántica del Danubio o la Selva Negra. Podrás ahorrar en alojamiento y vivir la auténtica Alemania rural.</p></div>
+  </div>
+
+  <!-- TAB DOCUMENTOS -->
+  <div class="tab-panel" id="tab-docs">
+    <div class="sec-eye">Tus documentos</div>
+    <div class="sec-title">Documentos del viaje</div>
+    <p style="font-size:13px;color:var(--mid);margin-bottom:14px">Guarda aquí tu seguro, tarjetas de embarque, pasaporte o cualquier documento que necesites tener a mano durante el viaje.</p>
+    <div class="docs-upload-area" onclick="document.getElementById('doc-input').click()">
+      <div class="docs-upload-icon">📎</div>
+      <div class="docs-upload-text"><strong>Añadir documento</strong>PDF, imagen, tarjeta de embarque…</div>
+    </div>
+    <input type="file" id="doc-input" accept=".pdf,.jpg,.jpeg,.png,.gif,.webp" multiple onchange="handleDocUpload(event)">
+    <div class="docs-list" id="docs-list"></div>
+  </div>
+
+  <!-- TAB NOTAS -->
+  <div class="tab-panel" id="tab-notas">
+    <div class="sec-eye">Para ti</div>
+    <div class="sec-title">Notas del viajero</div>
+    <div class="note-area">
+      <div class="note-line" contenteditable="true" spellcheck="false">Escribe aquí tus notas…</div>
+      <div class="note-line" contenteditable="true" spellcheck="false"></div>
+      <div class="note-line" contenteditable="true" spellcheck="false"></div>
+      <div class="note-line" contenteditable="true" spellcheck="false"></div>
+      <div class="note-line" contenteditable="true" spellcheck="false"></div>
+      <div class="note-line" contenteditable="true" spellcheck="false"></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ MODAL GUARDAR ══ -->
+<div class="save-modal" id="save-modal" onclick="closeSaveModal(event)">
+  <div class="save-sheet">
+    <h3>Guardar guía</h3>
+    <p>Elige cómo quieres guardar tu guía de ALEMANIA.</p>
+
+    <!-- Opción Android: botón directo si hay prompt disponible -->
+    <div class="save-option" id="opt-android" style="display:none" onclick="installAndroid()">
+      <div class="save-option-icon">🤖</div>
+      <div class="save-option-text"><strong>Añadir a pantalla de inicio</strong><span>Android · Se abrirá el diálogo de instalación</span></div>
+    </div>
+
+    <!-- Opción iOS: instrucción visual animada -->
+    <div class="save-option" id="opt-ios" style="display:none" onclick="showIOSGuide()">
+      <div class="save-option-icon">🍎</div>
+      <div class="save-option-text"><strong>Añadir a pantalla de inicio</strong><span>iOS · Toca para ver cómo hacerlo en 2 pasos</span></div>
+    </div>
+
+    <div class="save-option" onclick="downloadGuide()">
+      <div class="save-option-icon">⬇️</div>
+      <div class="save-option-text"><strong>Descargar archivo HTML</strong><span>Guárdalo y ábrelo sin internet</span></div>
+    </div>
+    <div class="save-option" onclick="copyLink();closeSaveModal()">
+      <div class="save-option-icon">🔗</div>
+      <div class="save-option-text"><strong>Copiar enlace</strong><span>Comparte o guarda la URL de esta guía</span></div>
+    </div>
+    <button class="save-close" onclick="closeSaveModal()">Cerrar</button>
+  </div>
+</div>
+
+<!-- ══ GUÍA iOS ══ -->
+<div class="save-modal" id="ios-modal" onclick="document.getElementById('ios-modal').classList.remove('open')">
+  <div class="save-sheet">
+    <h3>Añadir a pantalla de inicio</h3>
+    <p style="margin-bottom:18px">Sigue estos 2 pasos en Safari:</p>
+    <div style="background:var(--sand);border-radius:var(--r);padding:16px;margin-bottom:12px;text-align:center">
+      <div style="font-size:32px;margin-bottom:8px">1️⃣</div>
+      <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px">Toca el botón Compartir</div>
+      <div style="font-size:13px;color:var(--mid)">El icono <strong>□↑</strong> de la barra inferior de Safari</div>
+      <div style="font-size:36px;margin-top:10px;animation:bounce .8s infinite alternate">□↑</div>
+    </div>
+    <div style="background:var(--sand);border-radius:var(--r);padding:16px;margin-bottom:16px;text-align:center">
+      <div style="font-size:32px;margin-bottom:8px">2️⃣</div>
+      <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px">Toca "Añadir a pantalla de inicio"</div>
+      <div style="font-size:13px;color:var(--mid)">Desplázate en el menú hasta encontrar esta opción</div>
+      <div style="background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 14px;margin-top:10px;display:inline-flex;align-items:center;gap:8px">
+        <span style="font-size:20px">➕</span>
+        <span style="font-size:13px;font-weight:500;color:var(--ink)">Añadir a pantalla de inicio</span>
+      </div>
+    </div>
+    <button class="save-close" onclick="document.getElementById('ios-modal').classList.remove('open')">Entendido</button>
+  </div>
+</div>
+<style>
+@keyframes bounce{from{transform:translateY(0)}to{transform:translateY(-6px)}}
+</style>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── TABS ──
+function showTab(id,btn){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  btn.classList.add('active');
+  document.getElementById('tabs-content').scrollTop=0;
+  // Scroll tab visible
+  btn.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+  // Ocultar flecha si llegamos al final
+  const scroll=document.getElementById('tabs-scroll');
+  const fade=document.querySelector('.tabs-fade');
+  if(fade)fade.style.display=scroll.scrollLeft+scroll.clientWidth>=scroll.scrollWidth-10?'none':'flex';
+}
+// Ocultar flecha al llegar al final del scroll
+document.getElementById('tabs-scroll').addEventListener('scroll',function(){
+  const fade=document.querySelector('.tabs-fade');
+  if(fade)fade.style.display=this.scrollLeft+this.clientWidth>=this.scrollWidth-10?'none':'flex';
+});
+
+// ── TOAST ──
+function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800)}
+
+// ── COMPARTIR ──
+function shareWpp(){
+  const t=encodeURIComponent('¡Mira mi guía de viaje para ALEMANIA! 🌍✈️\nGenerada por GuiaMundi.es\n\n'+window.location.href);
+  window.open('https://wa.me/?text='+t,'_blank');
+}
+function copyLink(){navigator.clipboard.writeText(window.location.href).then(()=>showToast('✓ Enlace copiado')).catch(()=>showToast('Copia la URL del navegador'))}
+
+// ── SERVICE WORKER (necesario para installPrompt en Android) ──
+if('serviceWorker' in navigator){
+  const swCode=`self.addEventListener('fetch',e=>{});`;
+  const blob=new Blob([swCode],{type:'application/javascript'});
+  const swUrl=URL.createObjectURL(blob);
+  navigator.serviceWorker.register(swUrl).catch(()=>{});
+}
+
+// ── MODAL GUARDAR ──
+let deferredPrompt=null;
+window.addEventListener('beforeinstallprompt',e=>{
+  e.preventDefault();
+  deferredPrompt=e;
+  document.getElementById('opt-android').style.display='flex';
+});
+
+function openSaveModal(){
+  // Detectar iOS
+  const isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
+  if(isIOS)document.getElementById('opt-ios').style.display='flex';
+  document.getElementById('save-modal').classList.add('open');
+}
+function closeSaveModal(e){
+  if(!e||e.target===document.getElementById('save-modal'))
+    document.getElementById('save-modal').classList.remove('open');
+}
+function installAndroid(){
+  if(deferredPrompt){
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(r=>{
+      if(r.outcome==='accepted')showToast('✓ Añadida a pantalla de inicio');
+      deferredPrompt=null;
+    });
+  }
+  document.getElementById('save-modal').classList.remove('open');
+}
+function showIOSGuide(){
+  document.getElementById('save-modal').classList.remove('open');
+  setTimeout(()=>document.getElementById('ios-modal').classList.add('open'),200);
+}
+function downloadGuide(){
+  try{
+    const blob=new Blob([document.documentElement.outerHTML],{type:'text/html;charset=utf-8'});
+    const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+    a.download='guia-ALEMANIA-21dias.html';a.click();
+    URL.revokeObjectURL(a.href);showToast('✓ Guía descargada');
+  }catch(e){showToast('Usa el menú del navegador para guardar')}
+  document.getElementById('save-modal').classList.remove('open');
+}
+
+// ── BLOQUES DE DÍA CON NOTAS Y MAPA ──
+function buildDayBlocks(){
+  const container=document.getElementById('itinerario-content');
+  if(!container)return;
+  const raw=container.innerHTML;
+  const parts=raw.split(/(?=<h2[\s>])/i);
+  let html='';
+  parts.forEach((part,i)=>{
+    if(!part.trim())return;
+    const isDay=/^<h2/i.test(part.trim());
+    if(!isDay){html+=part;return;}
+    const titleMatch=part.match(/<h2[^>]*>(.*?)<\/h2>/i);
+    const titleRaw=titleMatch?titleMatch[1]:'Día '+(i);
+    const body=part.replace(/<h2[^>]*>.*?<\/h2>/i,'').trim();
+    html+=`<div class="day-block">
+      <div class="day-block-header" onclick="toggleDay(this)">
+        <span>${titleRaw}</span><span class="day-toggle">⌄</span>
+      </div>
+      <div class="day-block-body">
+        <div class="ai-content">${body}</div>
+        <div class="day-note-wrap">
+          <div class="day-note-label">📝 Mis notas para este día</div>
+          <textarea class="day-note" placeholder="Añade aquí reservas, horarios o cualquier detalle personal…"></textarea>
+        </div>
+      </div>
+    </div>`;
+  });
+  container.innerHTML=html;
+  const first=container.querySelector('.day-block');
+  if(first)first.classList.add('open');
+}
+function toggleDay(header){header.closest('.day-block').classList.toggle('open')}
+document.addEventListener('DOMContentLoaded',buildDayBlocks);
+
+// ── DOCUMENTOS ──
+const uploadedDocs=[];
+function handleDocUpload(e){
+  Array.from(e.target.files).forEach(file=>{
+    const reader=new FileReader();
+    reader.onload=ev=>{
+      const doc={name:file.name,size:formatSize(file.size),type:file.type,url:ev.target.result,id:Date.now()+Math.random()};
+      uploadedDocs.push(doc);renderDocs();
+    };
+    reader.readAsDataURL(file);
+  });
+  e.target.value='';
+}
+function formatSize(b){if(b<1024)return b+'B';if(b<1048576)return(b/1024).toFixed(1)+'KB';return(b/1048576).toFixed(1)+'MB'}
+function getDocIcon(type){if(type==='application/pdf')return '📄';if(type.startsWith('image/'))return '🖼️';return '📎'}
+function renderDocs(){
+  const list=document.getElementById('docs-list');
+  if(!uploadedDocs.length){list.innerHTML='';return;}
+  list.innerHTML=uploadedDocs.map(doc=>`
+    <div class="doc-item">
+      <div class="doc-icon">${getDocIcon(doc.type)}</div>
+      <div class="doc-info"><div class="doc-name">${doc.name}</div><div class="doc-size">${doc.size}</div></div>
+      <button class="doc-open" onclick="openDoc('${doc.id}')">Abrir</button>
+      <button class="doc-del" onclick="deleteDoc('${doc.id}')">✕</button>
+    </div>`).join('');
+}
+function openDoc(id){const d=uploadedDocs.find(d=>d.id==id);if(d)window.open(d.url,'_blank')}
+function deleteDoc(id){const i=uploadedDocs.findIndex(d=>d.id==id);if(i>-1){uploadedDocs.splice(i,1);renderDocs()}}
+
+// ── HERRAMIENTAS TABS ──
+function switchTool(btn,id){
+  document.querySelectorAll('.ttab').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.tool-panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');document.getElementById(id).classList.add('active');
+}
+
+// ── CONVERSOR ──
+const rates={};let ratesLoaded=false;
+const cNames={USD:'Dólar USD',GBP:'Libra',JPY:'Yen',MXN:'Peso MX',BRL:'Real',MAD:'Dírham',TRY:'Lira',THB:'Baht',IDR:'Rupia',AED:'Dírham AE',SGD:'Dólar SG',PLN:'Esloti',CZK:'Corona CZ',HUF:'Forinto',RON:'Leu',DKK:'Corona DK',SEK:'Corona SE',NOK:'Corona NO'};
+async function loadRates(){
+  try{const r=await fetch('https://open.er-api.com/v6/latest/EUR');const d=await r.json();if(d.rates){Object.assign(rates,d.rates);ratesLoaded=true;convertCurrency();document.getElementById('conv-rate').textContent='Actualizado · '+new Date().toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'})}}
+  catch(e){Object.assign(rates,{USD:1.08,GBP:0.86,JPY:162,MXN:18.5,BRL:5.4,MAD:10.8,TRY:35,THB:38,IDR:17000,AED:3.97,SGD:1.45,PLN:4.25,CZK:25,HUF:390,RON:4.97,DKK:7.46,SEK:11.5,NOK:11.8});ratesLoaded=true;convertCurrency();document.getElementById('conv-rate').textContent='Tasas aproximadas'}
+}
+function convertCurrency(){
+  if(!ratesLoaded)return;
+  const eur=parseFloat(document.getElementById('conv-eur').value)||0;
+  const to=document.getElementById('conv-to').value;
+  const res=eur*(rates[to]||1);
+  const fmt=res>=1000?res.toFixed(0):res>=10?res.toFixed(2):res.toFixed(4);
+  document.getElementById('conv-foreign').value=fmt;
+  document.getElementById('conv-display').textContent=fmt+' '+to;
+  document.getElementById('conv-to-label').textContent=cNames[to]||to;
+  document.getElementById('conv-rate').textContent='1 € = '+(rates[to]||1).toFixed(4)+' '+to;
+}
+function convertBack(){
+  if(!ratesLoaded)return;
+  const f=parseFloat(document.getElementById('conv-foreign').value)||0;
+  const to=document.getElementById('conv-to').value;
+  document.getElementById('conv-eur').value=(f/(rates[to]||1)).toFixed(2);convertCurrency();
+}
+loadRates();
+
+// ── TRADUCTOR ──
+const phraseDB={
+  es:['Hola / Buenos días','Por favor','Gracias','¿Cuánto cuesta?','¿Dónde está…?','La cuenta, por favor','No entiendo','¿Habla español?','Ayuda, por favor','Un taxi, por favor','¿Dónde está el baño?','Me llamo…','¿Habla inglés?'],
+  it:['Ciao / Buongiorno','Per favore','Grazie','Quanto costa?','Dov\'è…?','Il conto, per favore','Non capisco','Parla spagnolo?','Aiuto','Un taxi, per favore','Dov\'è il bagno?','Mi chiamo…','Parla inglese?'],
+  fr:['Bonjour','S\'il vous plaît','Merci','Combien ça coûte?','Où est…?','L\'addition, s\'il vous plaît','Je ne comprends pas','Parlez-vous espagnol?','Au secours','Un taxi, s\'il vous plaît','Où sont les toilettes?','Je m\'appelle…','Parlez-vous anglais?'],
+  de:['Hallo','Bitte','Danke','Wie viel kostet das?','Wo ist…?','Die Rechnung, bitte','Ich verstehe nicht','Sprechen Sie Spanisch?','Hilfe','Ein Taxi, bitte','Wo ist die Toilette?','Ich heiße…','Sprechen Sie Englisch?'],
+  pt:['Olá','Por favor','Obrigado/a','Quanto custa?','Onde fica…?','A conta, por favor','Não entendo','Fala espanhol?','Socorro','Um táxi','Onde é o banheiro?','Meu nome é…','Fala inglês?'],
+  ja:['こんにちは','お願いします','ありがとう','いくらですか？','…はどこですか？','お会計をお願いします','わかりません','スペイン語を話しますか？','助けて','タクシーをお願いします','トイレはどこですか？','私の名前は…','英語を話しますか？'],
+  ar:['مرحبا','من فضلك','شكرا','كم يكلف؟','أين…؟','الحساب من فضلك','لا أفهم','هل تتكلم الإسبانية؟','مساعدة','سيارة أجرة','أين الحمام؟','اسمي…','هل تتكلم الإنجليزية؟'],
+  tr:['Merhaba','Lütfen','Teşekkürler','Ne kadar?','Nerede…?','Hesabı lütfen','Anlamıyorum','İspanyolca biliyor musunuz?','Yardım','Taksi lütfen','Tuvalet nerede?','Benim adım…','İngilizce biliyor musunuz?'],
+  th:['สวัสดี','กรุณา','ขอบคุณ','ราคาเท่าไหร่?','…อยู่ที่ไหน?','เก็บเงินด้วย','ไม่เข้าใจ','พูดภาษาสเปนได้ไหม?','ช่วยด้วย','แท็กซี่','ห้องน้ำอยู่ที่ไหน?','ฉันชื่อ…','พูดภาษาอังกฤษได้ไหม?'],
+  zh:['你好','请','谢谢','多少钱？','…在哪里？','买单','我不明白','你会说西班牙语吗？','帮帮我','出租车','洗手间在哪里？','我叫…','你会说英语吗？'],
+  el:['Γεια σας','Παρακαλώ','Ευχαριστώ','Πόσο κοστίζει;','Πού είναι…;','Τον λογαριασμό','Δεν καταλαβαίνω','Μιλάτε ισπανικά;','Βοήθεια','Ένα ταξί','Πού είναι η τουαλέτα;','Με λένε…','Μιλάτε αγγλικά;'],
+  pl:['Dzień dobry','Proszę','Dziękuję','Ile to kosztuje?','Gdzie jest…?','Rachunek, proszę','Nie rozumiem','Czy mówi pan/pani po hiszpańsku?','Pomocy','Taksówkę','Gdzie jest toaleta?','Mam na imię…','Czy mówi pan/pani po angielsku?'],
+  nl:['Hallo','Alstublieft','Dank u','Hoeveel kost het?','Waar is…?','De rekening graag','Ik begrijp het niet','Spreekt u Spaans?','Help','Een taxi','Waar is het toilet?','Ik heet…','Spreekt u Engels?'],
+  ru:['Здравствуйте','Пожалуйста','Спасибо','Сколько стоит?','Где…?','Счёт, пожалуйста','Я не понимаю','Вы говорите по-испански?','Помогите','Такси','Где туалет?','Меня зовут…','Вы говорите по-английски?'],
+  cs:['Dobrý den','Prosím','Děkuji','Kolik to stojí?','Kde je…?','Účet prosím','Nerozumím','Mluvíte španělsky?','Pomozte','Taxi','Kde je toaleta?','Jmenuji se…','Mluvíte anglicky?'],
+  ro:['Bună ziua','Vă rog','Mulțumesc','Cât costă?','Unde este…?','Nota de plată','Nu înțeleg','Vorbiți spaniolă?','Ajutor','Un taxi','Unde este toaleta?','Mă numesc…','Vorbiți engleză?'],
+  hr:['Dobar dan','Molim','Hvala','Koliko košta?','Gdje je…?','Račun, molim','Ne razumijem','Govorite li španjolski?','Pomoć','Taksi','Gdje je zahod?','Zovem se…','Govorite li engleski?'],
+};
+const langMap={it:'it-IT',fr:'fr-FR',de:'de-DE',pt:'pt-PT',ja:'ja-JP',ar:'ar-SA',tr:'tr-TR',th:'th-TH',zh:'zh-CN',el:'el-GR',pl:'pl-PL',nl:'nl-NL',ru:'ru-RU',cs:'cs-CZ',ro:'ro-RO',hr:'hr-HR'};
+function updatePhrases(){
+  const lang=document.getElementById('trans-lang-sel').value;
+  const esp=phraseDB['es'],dest=phraseDB[lang]||phraseDB['it'];
+  document.getElementById('phrases-list').innerHTML=esp.map((es,i)=>`
+    <div class="trans-item">
+      <div class="trans-texts"><div class="trans-es">${es}</div><div class="trans-dest">${dest[i]||''}</div></div>
+      <button class="trans-audio" onclick="speak('${(dest[i]||'').replace(/'/g,"\\'").replace(/"/g,'&quot;')}','${lang}',this)">▶</button>
+    </div>`).join('');
+}
+function speak(text,lang,btn){
+  if(!window.speechSynthesis){showToast('Audio no disponible');return}
+  window.speechSynthesis.cancel();
+  document.querySelectorAll('.trans-audio').forEach(b=>b.classList.remove('playing'));
+  btn.classList.add('playing');
+  const u=new SpeechSynthesisUtterance(text);
+  u.lang=langMap[lang]||lang+'-'+lang.toUpperCase();u.rate=0.82;
+  u.onend=()=>btn.classList.remove('playing');
+  u.onerror=()=>{btn.classList.remove('playing');showToast('Audio no disponible para este idioma')};
+  window.speechSynthesis.speak(u);
+}
+updatePhrases();
+
+// ── CALCULADORA ──
+function calcBudget(){
+  const dias=parseFloat(document.getElementById('c-dias').value)||0;
+  const viaj=Math.max(1,parseFloat(document.getElementById('c-viaj').value)||1);
+  const aloj=parseFloat(document.getElementById('c-aloj').value)||0;
+  const com=parseFloat(document.getElementById('c-com').value)||0;
+  const transp=parseFloat(document.getElementById('c-transp').value)||0;
+  const act=parseFloat(document.getElementById('c-act').value)||0;
+  const tA=aloj*dias,tC=com*dias*viaj,tot=tA+tC+transp+act;
+  const f=n=>n.toLocaleString('es-ES',{maximumFractionDigits:0})+'€';
+  document.getElementById('r-aloj').textContent=f(tA);document.getElementById('r-com').textContent=f(tC);
+  document.getElementById('r-transp').textContent=f(transp);document.getElementById('r-act').textContent=f(act);
+  document.getElementById('r-total').textContent=f(tot);document.getElementById('r-pp').textContent=f(tot/viaj);
+}
+calcBudget();
+
+// ── CHECKLIST ──
+const checkData={
+  ropa:['Ropa ligera (5-7 días)','Chaqueta o jersey fino','Ropa interior extra','Calcetines varios','Calzado cómodo walking','Sandalias o chanclas','Ropa de baño','Pijama','Pañuelo o fular','Chubasquero ligero'],
+  docs:['DNI o Pasaporte vigente','Tarjeta Sanitaria Europea','Seguro de viaje','Reservas alojamiento','Confirmación de vuelo','2 tarjetas bancarias','Efectivo moneda local','Carné de conducir','Visado si aplica','Fotos de pasaporte'],
+  tech:['Móvil cargado','Cargador del móvil','Adaptador de enchufe','Power bank','Auriculares','Cámara de fotos','Tarjeta memoria extra','Cable USB extra','Mapas offline','Cargador laptop'],
+  salud:['Protector solar 50+','Repelente mosquitos','Medicación habitual x2','Botiquín básico','Antihistamínico','Ibuprofeno/paracetamol','Tiritas y venda','Pastillas estómago','Mascarillas','Termómetro'],
+  extras:['Botella reutilizable','Guía de conversación','Bolsa tela mercados','Candado equipaje','Funda impermeable móvil','Snacks viaje','Almohada viaje','Antifaz dormir','Tapones oídos','Colonia pequeña'],
+};
+const checkState={};let currentCat='ropa';
+function initCheck(){Object.keys(checkData).forEach(c=>checkState[c]=checkData[c].map(()=>false));renderCheck()}
+function switchCat(btn,cat){document.querySelectorAll('.check-cat-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');currentCat=cat;renderCheck()}
+function renderCheck(){
+  const items=checkData[currentCat],states=checkState[currentCat];
+  document.getElementById('checklist-items').innerHTML=items.map((item,i)=>`
+    <div class="check-item${states[i]?' done':''}" onclick="toggleCheck('${currentCat}',${i},this)">
+      <div class="check-box">${states[i]?'✓':''}</div>
+      <div class="check-label">${item}</div>
+    </div>`).join('');
+  updateProgress();
+}
+function toggleCheck(cat,idx,el){checkState[cat][idx]=!checkState[cat][idx];el.classList.toggle('done');el.querySelector('.check-box').textContent=checkState[cat][idx]?'✓':'';updateProgress()}
+function updateProgress(){let d=0,t=0;Object.values(checkState).forEach(a=>{t+=a.length;d+=a.filter(Boolean).length});const p=t?Math.round(d/t*100):0;document.getElementById('check-bar').style.width=p+'%';document.getElementById('check-pct').textContent=p+'%'}
+initCheck();
+</script>
+</body>
+</html>
