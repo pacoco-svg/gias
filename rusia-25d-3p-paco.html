@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="GuiaMundi">
+<meta name="theme-color" content="#1A1A2E">
+<title>Guía de RUSIA · 25 días</title>
+<link rel="manifest" href="data:application/json;charset=utf-8,%7B%22name%22%3A%22Gu%C3%ADa%20de%20RUSIA%22%2C%22short_name%22%3A%22RUSIA%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%231A1A2E%22%2C%22theme_color%22%3A%22%231A1A2E%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%2C%253Csvg%2520xmlns%3D%2527http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%2527%2520viewBox%3D%25270%25200%2520100%2520100%2527%253E%253Ctext%2520y%3D%2527.9em%2527%2520font-size%3D%252790%2527%253E%25F0%259F%258C%258D%253C%2Ftext%253E%253C%2Fsvg%253E%22%2C%22sizes%22%3A%22192x192%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%7D%5D%7D">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1A1A2E;--gold:#C9922A;--gold-l:#F5E6C8;--gold-p:#FDF6E9;
+  --terra:#B84A2E;--sky:#1B4F72;--sage:#2D6A4F;--cream:#FAFAF6;
+  --sand:#F0EBE0;--mist:#EEF2F7;--line:#DDD8CF;--mid:#7B7369;--r:14px;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overflow:hidden}
+body{font-family:'DM Sans',sans-serif;background:var(--ink);color:var(--ink);font-size:15px;line-height:1.7;display:flex;flex-direction:column}
+
+/* ── PORTADA ── */
+.cover{flex-shrink:0;background:var(--ink);padding:24px 20px 16px;position:relative;overflow:hidden;text-align:center}
+.cover-bg{position:absolute;inset:0;background:radial-gradient(circle at 30% 50%,rgba(201,146,42,.15) 0,transparent 60%),radial-gradient(circle at 70% 50%,rgba(27,79,114,.18) 0,transparent 60%)}
+.cover-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,146,42,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,146,42,.04) 1px,transparent 1px);background-size:32px 32px}
+.cover-stripe{position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--terra),var(--sky))}
+.cover-content{position:relative;z-index:2}
+.cover-eyebrow{font-size:9px;font-weight:500;letter-spacing:3px;color:rgba(201,146,42,.7);text-transform:uppercase;margin-bottom:6px}
+.cover-title{font-family:'Playfair Display',serif;font-size:clamp(28px,8vw,44px);font-weight:900;line-height:1;color:#fff;letter-spacing:-1px;font-style:italic;margin-bottom:4px}
+.cover-subtitle{font-size:13px;color:rgba(255,255,255,.45);margin-bottom:14px;letter-spacing:.5px}
+.cover-actions{display:flex;gap:8px;justify-content:center;max-width:340px;margin:0 auto}
+.cover-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:5px;padding:9px 10px;border-radius:9px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;transition:all .2s}
+.cover-btn-wpp{background:#25D366;color:#fff}
+.cover-btn-save{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#fff}
+.cover-btn:active{transform:scale(.96)}
+
+/* ── TABS NAV ── */
+.tabs-nav{flex-shrink:0;background:rgba(8,8,20,.97);border-bottom:1px solid rgba(201,146,42,.15);position:relative}
+.tabs-scroll{display:flex;overflow-x:auto;scrollbar-width:none;padding:0 12px}
+.tabs-scroll::-webkit-scrollbar{display:none}
+.tab-btn{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:3px;padding:11px 14px;border:none;background:none;color:rgba(255,255,255,.38);font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;cursor:pointer;transition:all .2s;border-bottom:2px solid transparent;white-space:nowrap;min-width:72px}
+.tab-btn .tab-icon{font-size:18px;line-height:1}
+.tab-btn.active{color:var(--gold);border-bottom-color:var(--gold)}
+.tab-btn:hover{color:rgba(255,255,255,.7)}
+/* Flecha indicadora de más tabs */
+.tabs-fade{position:absolute;right:0;top:0;bottom:0;width:40px;background:linear-gradient(to right,transparent,rgba(8,8,20,.97));pointer-events:none;display:flex;align-items:center;justify-content:flex-end;padding-right:6px}
+.tabs-fade span{color:var(--gold);font-size:16px;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
+
+/* ── CONTENIDO ── */
+.tabs-content{flex:1;overflow-y:auto;background:var(--cream)}
+.tab-panel{display:none;padding:22px 18px 32px;min-height:100%}
+.tab-panel.active{display:block}
+@media(min-width:700px){.tab-panel{max-width:800px;margin:0 auto;padding:28px 36px 40px}}
+
+/* ── TIPOGRAFÍA ── */
+.sec-eye{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:4px;display:flex;align-items:center;gap:6px}
+.sec-eye::before{content:'';display:inline-block;width:10px;height:1px;background:var(--gold)}
+.sec-title{font-family:'Playfair Display',serif;font-size:21px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:16px}
+
+/* ── FICHA MINI ── */
+.info-mini{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.info-tag{background:var(--sand);border:1px solid var(--line);border-radius:50px;padding:5px 12px;font-size:12px;color:var(--mid)}
+.info-tag strong{color:var(--ink);font-weight:600}
+
+/* ── AD ── */
+.ad{background:#FFF8E7;border:1px solid #E8C84A;border-left:4px solid #E8C84A;border-radius:var(--r);padding:10px 12px;display:flex;align-items:flex-start;gap:8px;margin-bottom:14px}
+.ad-badge{background:#E8C84A;color:#fff;font-size:8px;font-weight:700;letter-spacing:1px;padding:2px 5px;border-radius:4px;flex-shrink:0;margin-top:1px}
+.ad strong{display:block;font-size:12px;font-weight:500;color:#7A5C00;margin-bottom:1px}
+.ad span{font-size:11px;color:#A07B20;font-style:italic}
+
+/* ── CONTENIDO IA ── */
+.ai-content{font-size:14px;line-height:1.85;color:var(--ink)}
+.ai-content h1,.ai-content h2{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--ink);margin:20px 0 8px;padding-bottom:5px;border-bottom:2px solid var(--gold-l)}
+.ai-content h2:first-child{margin-top:0}
+.ai-content h3{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--sky);margin:14px 0 5px}
+.ai-content h3:first-child{margin-top:0}
+.ai-content p{margin-bottom:9px}
+.ai-content ul,.ai-content ol{padding-left:18px;margin-bottom:10px}
+.ai-content li{margin-bottom:4px}
+.ai-content strong{font-weight:600}
+.ai-content a{color:var(--sky);text-decoration:none;border-bottom:1px solid rgba(27,79,114,.25);font-weight:500;word-break:break-word}
+.ai-content a:hover{color:var(--gold);border-bottom-color:var(--gold)}
+
+/* ── BLOQUES DE DÍA ── */
+.day-block{background:#fff;border:1px solid var(--line);border-radius:var(--r);margin-bottom:16px;overflow:hidden}
+.day-block-header{background:var(--ink);color:var(--gold);padding:12px 16px;font-family:'Playfair Display',serif;font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:space-between;cursor:pointer}
+.day-block-header .day-toggle{font-size:14px;transition:transform .3s;flex-shrink:0}
+.day-block.open .day-toggle{transform:rotate(180deg)}
+.day-block-body{display:none;padding:14px 16px}
+.day-block.open .day-block-body{display:block}
+.day-block-body .ai-content h3{margin-top:10px}
+.day-block-body .ai-content h3:first-child{margin-top:0}
+.day-block-body a[href*="google.com/maps"]{display:inline-flex;align-items:center;gap:4px;background:#1B4F72;color:#fff !important;padding:5px 12px;border-radius:50px;font-size:11px;font-weight:700;text-decoration:none !important;margin:2px 4px 2px 0;border:none !important}
+.day-block-body a[href*="google.com/maps"]:hover{background:#C9922A !important}
+.day-block-body a[href*="google.com/search"]{display:inline-flex;align-items:center;gap:4px;background:#F0EBE0;color:#1A1A2E !important;padding:5px 12px;border-radius:50px;font-size:11px;font-weight:600;text-decoration:none !important;margin:2px 4px 2px 0;border:1px solid #DDD8CF !important}
+.day-block-body a[href*="google.com/search"]:hover{border-color:#C9922A !important;color:#C9922A !important}
+/* Campo de nota manual */
+.day-note-wrap{margin-top:12px;border-top:1px solid var(--line);padding-top:12px}
+.day-note-label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);margin-bottom:5px}
+.day-note{width:100%;min-height:70px;padding:9px 12px;border:1.5px solid var(--line);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink);outline:none;resize:vertical;background:var(--cream);transition:border-color .2s}
+.day-note:focus{border-color:var(--gold)}
+.day-note::placeholder{color:var(--mid)}
+
+/* ── HERRAMIENTAS ── */
+.tools-tabs{display:flex;gap:6px;margin-bottom:14px;overflow-x:auto;scrollbar-width:none}
+.tools-tabs::-webkit-scrollbar{display:none}
+.ttab{background:var(--sand);border:none;border-radius:50px;padding:7px 13px;font-size:12px;font-family:'DM Sans',sans-serif;color:var(--mid);cursor:pointer;white-space:nowrap;transition:all .2s}
+.ttab.active{background:var(--ink);color:var(--gold);font-weight:500}
+.tool-panel{display:none}
+.tool-panel.active{display:block}
+@media(min-width:700px){
+  .tools-tabs{display:none}
+  .tool-panel{display:block!important}
+  .tools-desktop{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .tool-section-title{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);margin-bottom:8px;padding-bottom:5px;border-bottom:1px solid var(--line)}
+}
+
+/* CONVERSOR */
+.conv-box{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px}
+.conv-row{display:flex;gap:8px;align-items:flex-end;margin-bottom:10px}
+.conv-iw{flex:1}
+.conv-iw label{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--mid);display:block;margin-bottom:3px}
+.conv-input{width:100%;padding:8px 10px;border:1.5px solid var(--line);border-radius:9px;font-size:16px;font-family:'Playfair Display',serif;font-weight:700;color:var(--ink);outline:none;background:var(--cream)}
+.conv-input:focus{border-color:var(--gold)}
+.conv-arrow{font-size:16px;color:var(--gold);padding-bottom:6px;flex-shrink:0}
+.conv-result{background:var(--gold-p);border:1px solid var(--gold-l);border-radius:9px;padding:10px;text-align:center;margin-bottom:6px}
+.conv-amount{font-family:'Playfair Display',serif;font-size:26px;font-weight:900;color:var(--gold)}
+.conv-rate{font-size:10px;color:var(--mid);margin-top:1px}
+.conv-select{width:100%;padding:7px 10px;border:1.5px solid var(--line);border-radius:9px;font-size:13px;font-family:'DM Sans',sans-serif;color:var(--ink);outline:none;background:#fff;margin-bottom:9px}
+.conv-note{font-size:10px;color:var(--mid);text-align:center}
+
+/* TRADUCTOR */
+.trans-wrap{border-radius:var(--r);overflow:hidden;border:1px solid var(--line)}
+.trans-lang{background:var(--ink);color:#fff;padding:9px 13px;font-size:11px;font-weight:500;display:flex;align-items:center;justify-content:space-between}
+.trans-lang select{background:transparent;border:none;color:var(--gold);font-family:'DM Sans',sans-serif;font-size:12px;outline:none;cursor:pointer}
+.trans-list{background:#fff;max-height:280px;overflow-y:auto}
+.trans-item{display:flex;align-items:center;padding:9px 13px;border-bottom:1px solid var(--line);gap:8px}
+.trans-item:last-child{border-bottom:none}
+.trans-texts{flex:1}
+.trans-es{font-size:13px;font-weight:500;color:var(--ink)}
+.trans-dest{font-size:12px;color:var(--sky);font-style:italic;margin-top:1px}
+.trans-audio{background:none;border:1.5px solid var(--gold);border-radius:50%;width:30px;height:30px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--gold);flex-shrink:0;font-size:11px;transition:all .2s}
+.trans-audio.playing,.trans-audio:active{background:var(--gold);color:#fff}
+
+/* CALCULADORA */
+.calc-box{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px}
+.calc-row{margin-bottom:9px}
+.calc-row label{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--mid);display:block;margin-bottom:3px}
+.calc-input{width:100%;padding:7px 10px;border:1.5px solid var(--line);border-radius:9px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--ink);outline:none;background:var(--cream)}
+.calc-input:focus{border-color:var(--gold)}
+.calc-result{background:var(--ink);border-radius:var(--r);padding:13px;margin-top:5px}
+.calc-result-title{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:7px}
+.calc-line{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.calc-line:last-child{border-bottom:none;padding-top:8px;margin-top:4px}
+.calc-line span{font-size:12px;color:rgba(255,255,255,.55)}
+.calc-line strong{font-family:'Playfair Display',serif;font-size:13px;color:var(--gold)}
+.calc-line.total span{color:#fff;font-weight:600;font-size:13px}
+.calc-line.total strong{font-size:17px}
+
+/* CHECKLIST */
+.check-cats{display:flex;gap:5px;margin-bottom:9px;overflow-x:auto;scrollbar-width:none}
+.check-cats::-webkit-scrollbar{display:none}
+.check-cat-btn{background:var(--sand);border:none;border-radius:50px;padding:5px 11px;font-size:11px;font-family:'DM Sans',sans-serif;color:var(--mid);cursor:pointer;white-space:nowrap;transition:all .2s}
+.check-cat-btn.active{background:var(--ink);color:var(--gold);font-weight:500}
+.checklist{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;max-height:280px;overflow-y:auto}
+.check-item{display:flex;align-items:center;gap:9px;padding:9px 12px;border-bottom:1px solid var(--line);cursor:pointer;transition:background .15s}
+.check-item:last-child{border-bottom:none}
+.check-item:hover{background:var(--sand)}
+.check-box{width:18px;height:18px;border:2px solid var(--line);border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px;color:transparent;transition:all .2s}
+.check-item.done .check-box{background:var(--sage);border-color:var(--sage);color:#fff}
+.check-item.done .check-label{text-decoration:line-through;color:var(--mid)}
+.check-label{font-size:13px;color:var(--ink)}
+.check-progress{background:var(--sand);border-radius:var(--r);padding:8px 12px;margin-bottom:9px;display:flex;align-items:center;gap:8px}
+.check-bar-wrap{flex:1;background:var(--line);border-radius:50px;height:5px;overflow:hidden}
+.check-bar{height:100%;background:linear-gradient(90deg,var(--sage),var(--gold));border-radius:50px;transition:width .4s}
+.check-pct{font-size:12px;font-weight:600;color:var(--sage);flex-shrink:0}
+
+/* ── DOCUMENTOS ── */
+.docs-upload-area{border:2px dashed var(--line);border-radius:var(--r);padding:20px;text-align:center;background:#fff;cursor:pointer;transition:all .2s;margin-bottom:16px}
+.docs-upload-area:hover{border-color:var(--gold);background:var(--gold-p)}
+.docs-upload-icon{font-size:28px;margin-bottom:6px}
+.docs-upload-text{font-size:13px;color:var(--mid)}
+.docs-upload-text strong{color:var(--ink);display:block;margin-bottom:2px}
+.docs-list{display:flex;flex-direction:column;gap:8px}
+.doc-item{background:#fff;border:1px solid var(--line);border-radius:10px;padding:11px 14px;display:flex;align-items:center;gap:10px}
+.doc-icon{font-size:22px;flex-shrink:0}
+.doc-info{flex:1;min-width:0}
+.doc-name{font-size:13px;font-weight:500;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.doc-size{font-size:11px;color:var(--mid)}
+.doc-open{background:var(--sky);color:#fff;border:none;border-radius:6px;padding:5px 10px;font-size:11px;font-weight:600;cursor:pointer;flex-shrink:0}
+.doc-del{background:none;border:none;color:var(--mid);cursor:pointer;font-size:16px;padding:0 4px;flex-shrink:0}
+#doc-input{display:none}
+
+/* ── MAPA GENERAL ── */
+.map-block{background:var(--ink);border-radius:var(--r);overflow:hidden;margin-bottom:16px}
+.map-prev{height:110px;background:repeating-linear-gradient(0deg,transparent,transparent 35px,rgba(201,146,42,.06) 36px),repeating-linear-gradient(90deg,transparent,transparent 35px,rgba(201,146,42,.06) 36px);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:5px}
+.map-icon{font-size:26px}
+.map-dest-label{font-size:11px;color:rgba(255,255,255,.35);letter-spacing:1px}
+.map-cta{padding:11px 14px;display:flex;align-items:center;justify-content:space-between}
+.map-cta-t strong{display:block;color:#fff;font-size:13px;margin-bottom:1px}
+.map-cta-t span{font-size:11px;color:rgba(255,255,255,.45)}
+.map-btn{background:var(--gold);color:var(--ink);font-size:11px;font-weight:700;padding:8px 15px;border-radius:50px;text-decoration:none}
+
+/* ── CTA FINAL ── */
+.cta-box{background:linear-gradient(135deg,var(--ink),#2A1F3D);border-radius:var(--r);padding:22px 18px;text-align:center;position:relative;overflow:hidden;margin-bottom:16px}
+.cta-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--terra),var(--sky))}
+.cta-box h3{font-family:'Playfair Display',serif;font-size:18px;color:#fff;margin-bottom:5px}
+.cta-box p{font-size:12px;color:rgba(255,255,255,.45);margin-bottom:14px}
+.cta-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-bottom:13px}
+.cta-pill{background:rgba(201,146,42,.15);border:1px solid rgba(201,146,42,.3);color:var(--gold);font-size:12px;padding:6px 12px;border-radius:50px;text-decoration:none}
+.share-bar{display:flex;gap:7px}
+.share-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:5px;padding:9px;border-radius:9px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;transition:all .2s}
+.share-wpp{background:#25D366;color:#fff}
+.share-copy{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:#fff}
+
+/* NOTAS */
+.note-area{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.note-line{padding:12px 14px;border-bottom:1px solid var(--line);min-height:44px;font-size:14px;color:var(--line);font-style:italic}
+.note-line:last-child{border-bottom:none}
+
+/* MODAL GUARDAR */
+.save-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:999;align-items:flex-end;justify-content:center}
+.save-modal.open{display:flex}
+.save-sheet{background:#fff;border-radius:var(--r) var(--r) 0 0;padding:24px 20px 32px;width:100%;max-width:480px}
+.save-sheet h3{font-family:'Playfair Display',serif;font-size:19px;color:var(--ink);margin-bottom:6px}
+.save-sheet p{font-size:13px;color:var(--mid);margin-bottom:18px;line-height:1.6}
+.save-option{display:flex;align-items:center;gap:12px;padding:13px 14px;border:1.5px solid var(--line);border-radius:var(--r);margin-bottom:9px;cursor:pointer;transition:all .2s}
+.save-option:hover{border-color:var(--gold);background:var(--gold-p)}
+.save-option-icon{font-size:24px;flex-shrink:0}
+.save-option-text strong{display:block;font-size:14px;color:var(--ink);margin-bottom:1px}
+.save-option-text span{font-size:12px;color:var(--mid)}
+.save-close{width:100%;padding:11px;background:var(--sand);border:none;border-radius:var(--r);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;color:var(--mid);cursor:pointer;margin-top:6px}
+
+/* TOAST */
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(10px);background:var(--ink);color:#fff;padding:9px 18px;border-radius:50px;font-size:13px;font-weight:500;opacity:0;transition:all .3s;pointer-events:none;z-index:9999;white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.fa{animation:fadeUp .45s ease both}
+</style>
+</head>
+<body>
+
+<!-- ══ PORTADA ══ -->
+<div class="cover">
+  <div class="cover-bg"></div>
+  <div class="cover-grid"></div>
+  <div class="cover-stripe"></div>
+  <div class="cover-content">
+    <div class="cover-eyebrow fa">GuiaMundi.es</div>
+    <div class="cover-title fa" style="animation-delay:.1s">Guía de RUSIA</div>
+    <div class="cover-subtitle fa" style="animation-delay:.2s">25 días · Cultural e histórico · 3viajero/s</div>
+    <div class="cover-actions fa" style="animation-delay:.3s">
+      <button class="cover-btn cover-btn-wpp" onclick="shareWpp()">
+        <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Compartir
+      </button>
+      <button class="cover-btn cover-btn-save" onclick="openSaveModal()">⬇ Guardar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TABS NAV ══ -->
+<div class="tabs-nav">
+  <div class="tabs-scroll" id="tabs-scroll">
+    <button class="tab-btn active" onclick="showTab('info',this)"><span class="tab-icon">📋</span>Viajero</button>
+    <button class="tab-btn" onclick="showTab('itinerario',this)"><span class="tab-icon">🗓</span>Ruta</button>
+    <button class="tab-btn" onclick="showTab('experiencias',this)"><span class="tab-icon">⭐</span>Experiencias</button>
+    <button class="tab-btn" onclick="showTab('tools',this)"><span class="tab-icon">⚙️</span>Tools</button>
+    <button class="tab-btn" onclick="showTab('destino',this)"><span class="tab-icon">💡</span>Destino</button>
+    <button class="tab-btn" onclick="showTab('transporte',this)"><span class="tab-icon">🚗</span>Transporte</button>
+    <button class="tab-btn" onclick="showTab('recursos',this)"><span class="tab-icon">🔗</span>Recursos</button>
+    <button class="tab-btn" onclick="showTab('cultura',this)"><span class="tab-icon">🎬</span>Cultura</button>
+    <button class="tab-btn" onclick="showTab('curiosidades',this)"><span class="tab-icon">🤔</span>Curiosidades</button>
+    <button class="tab-btn" onclick="showTab('docs',this)"><span class="tab-icon">📁</span>Documentos</button>
+    <button class="tab-btn" onclick="showTab('notas',this)"><span class="tab-icon">📝</span>Notas</button>
+  </div>
+  <div class="tabs-fade"><span>›</span></div>
+</div>
+
+<!-- ══ CONTENIDO ══ -->
+<div class="tabs-content" id="tabs-content">
+
+  <!-- TAB VIAJERO -->
+  <div class="tab-panel active" id="tab-info">
+    <div class="sec-eye">Tu viaje</div>
+    <div class="sec-title">Información del viajero</div>
+    <div class="info-mini">
+      <div class="info-tag"><strong>PACO</strong></div>
+      <div class="info-tag">📍 <strong>RUSIA</strong></div>
+      <div class="info-tag">🗓 <strong>25 días</strong></div>
+      <div class="info-tag">👥 <strong>3 viajero/s</strong></div>
+      <div class="info-tag">🧭 <strong>Cultural e histórico</strong></div>
+      <div class="info-tag">🚗 <strong>Transporte público</strong></div>
+    </div>
+    <div class="ad"><div class="ad-badge">AD</div><div><strong>Vuelos · Seguro de viaje</strong><span>→ Insertar banner afiliado aquí</span></div></div>
+    <div class="ad"><div class="ad-badge">AD</div><div><strong>Hoteles · Alojamiento</strong><span>→ Booking / Airbnb</span></div></div>
+    <div style="margin-top:16px">
+      <div class="map-block">
+        <div class="map-prev"><div class="map-icon">🗺️</div><div class="map-dest-label">RUSIA</div></div>
+        <div class="map-cta">
+          <div class="map-cta-t"><strong>Ver en Google Maps</strong><span>Explorar RUSIA</span></div>
+          <a class="map-btn" href="https://www.google.com/maps/search/RUSIA" target="_blank">Abrir →</a>
+        </div>
+      </div>
+    </div>
+    <div class="cta-box">
+      <h3>¡Buen viaje, PACO!</h3>
+      <p>Tu aventura en RUSIA · GuiaMundi.es</p>
+      <div class="cta-pills">
+        <a class="cta-pill" href="#">✈ Vuelos</a>
+        <a class="cta-pill" href="#">🏨 Hoteles</a>
+        <a class="cta-pill" href="#">🎯 Experiencias</a>
+        <a class="cta-pill" href="#">🛡 Seguro</a>
+      </div>
+      <div class="share-bar">
+        <button class="share-btn share-wpp" onclick="shareWpp()">
+          <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Compartir WhatsApp
+        </button>
+        <button class="share-btn share-copy" onclick="copyLink()">⎘ Copiar enlace</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB ITINERARIO -->
+  <div class="tab-panel" id="tab-itinerario">
+    <div class="sec-eye">Día a día</div>
+    <div class="sec-title">Itinerario detallado</div>
+    <div class="ad"><div class="ad-badge">AD</div><div><strong>Tours · Actividades</strong><span>→ Experiencias locales recomendadas</span></div></div>
+    <div id="itinerario-content" class="ai-content" style="margin-top:14px"><h2>DÍA 1 — Moscú, Centro Histórico</h2>
+<ul>
+<li><strong>Plaza Roja</strong> — Icono de Moscú y punto de partida cultural. 2 horas. <a href="https://www.google.com/search?q=Plaza+Roja+RUSIA" target="_blank">📖</a> <a href="https://www.google.com/maps/search/Plaza+Roja+RUSIA" target="_blank">📍</a></li>
+<li><strong>Kremlin de Moscú</strong> — Fortaleza histórica con museos y catedrales. 3 horas. <a href="https://www.google.com/search?q=Kremlin+de+Moscú" target="_blank">📖</a> <a href="https://www.google.com/maps/search/Kremlin+de+Moscú" target="_blank">📍</a></li>
+<li><strong>Catedral de San Basilio</strong> — Arquitectura colorida y emblemática. 1 hora. <a href="https://www.google.com/search?q=Catedral+de+San+Basilio" target="_blank">📖</a> <a href="https://www.google.com/maps/search/Catedral+de+San+Basilio" target="_blank">📍</a></li>
+<li><strong>GUM</strong> — Centro comercial histórico con arquitectura elegante. 1 hora. <a href="https://www.google.com/search?q=GUM+Moscú" target="_blank">📖</a> <a href="https://www.google.com/maps/search/GUM+Moscú" target="_blank">📍</a></li>
+<li><strong>Biblioteca Lenin</strong> — Mayor biblioteca rusa con patrimonio histórico. 1 hora. <a href="https://www.google.com/search?q=Biblioteca+Lenin+Moscú" target="_blank">📖</a> <a href="https://www.google.com/maps/search/Biblioteca+Lenin+Moscú" target="_blank">📍</a></li>
+</ul>
+<p>🍽️ <strong>Restaurante:</strong> Café Pushkin — cocina tradicional rusa.</p>
+<p>🏨 <strong>Hotel:</strong> Hotel Metropol — zona centro, cerca de la Plaza Roja.</p>
+
+<h2>DÍA 2 — Museos y arte en Moscú</h2>
+<ul>
+<li><strong>Museo Estatal de Historia</strong> — Amplia colección de artefactos rusos. 2 horas. <a href="https://www.google.com/search?q=Museo+Estatal+de+Historia+Moscú" target="_blank">📖</a> <a href="https://www.google.com/maps/search/Museo+Estatal+de+Historia+Moscú" target="_blank">📍</a></li>
+<li><strong>Galería Tretiakov</strong> — Imprescindible para pintura rusa clásica y moderna. 3 horas. <a href="https://www.google.com/search?q=Galería+Tretiakov" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Galería+Tretiakov" target="_blank">📍</a></li>
+<li><strong>Parque Gorki</strong> — Espacio cultural y recreativo al aire libre. 1 hora. <a href="https://www.google.com/search?q=Parque+Gorki+Moscú" target="_blank">📖</a> <a href="https://www.google.com/maps/search/Parque+Gorki+Moscú" target="_blank">📍</a></li>
+<li><strong>Galería de Arte Multimedia</strong> — Exhibiciones contemporáneas e innovadoras. 1 hora. <a href="https://www.google.com/search?q=Galería+de+Arte+Multimedia+Moscú" target="_blank">📖</a> <a href="https://www.google.com/maps/search/Galería+de+Arte+Multimedia+Moscú" target="_blank">📍</a></li>
+</ul>
+<p>🍽️ <strong>Restaurante:</strong> White Rabbit — cocina moderna con vistas panorámicas.</p>
+<p>🏨 <strong>Hotel:</strong> Ararat Park Hyatt — céntrico y lujoso.</p>
+
+<h2>DÍA 3 — Cultura soviética y arquitectura en Moscú</h2>
+<ul>
+<li><strong>Museo de la Cosmonáutica</strong> — Exhibiciones sobre la carrera espacial soviética. 2 horas. <a href="https://www.google.com/search?q=Museo+de+la+Cosmonáutica" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Museo+de+la+Cosmonáutica" target="_blank">📍</a></li>
+<li><strong>Estación de metro Komsomolskaya</strong> — Arte y opulencia en cada detalle. 1 hora. <a href="https://www.google.com/search?q=Estación+de+metro+Komsomolskaya" target="_blank">📖</a> <a href="https://www.google.com/maps/search/Estación+de+metro+Komsomolskaya" target="_blank">📍</a></li>
+<li><strong>Calle Arbat</strong> — Zona peatonal histórica con tiendas y artistas callejeros. 2 horas. <a href="https://www.google.com/search?q=Calle+Arbat+Moscú" target="_blank">📖</a> <a href="https://www.google.com/maps/search/Calle+Arbat+Moscú" target="_blank">📍</a></li>
+<li><strong>Centro de Arte Garage</strong> — Arte contemporáneo y cultura pop. 1 hora. <a href="https://www.google.com/search?q=Centro+de+Arte+Garage" target="_blank">📖</a> <a href="https://www.google.com/maps/search/Centro+de+Arte+Garage" target="_blank">📍</a></li>
+</ul>
+<p>🍽️ <strong>Restaurante:</strong> Dr. Zhivago — platos rusos con toque moderno.</p>
+<p>🏨 <strong>Hotel:</strong> Novotel Moscow City — cerca del distrito financiero, buen acceso al metro.</p>
+
+<h2>DÍA 4 — Viaje a San Petersburgo en tren</h2>
+<ul>
+<li><strong>Tren Sapsan Moscú-San Petersburgo</strong> — Viaje cultural en tren rápido. 4 horas. <a href="https://www.google.com/search?q=Tren+Sapsan+Moscú+San+Petersburgo" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Estación+de+tren+Moscú" target="_blank">📍</a></li>
+<li><strong>Paseo por Nevsky Prospekt</strong> — Calle principal con historia y tiendas. 2 horas. <a href="https://www.google.com/search?q=Nevsky+Prospekt" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Nevsky+Prospekt" target="_blank">📍</a></li>
+</ul>
+<p>🍽️ <strong>Restaurante:</strong> Stroganoff Steak House — cocina rusa elegante.</p>
+<p>🏨 <strong>Hotel:</strong> Hotel Astoria — centro histórico.</p>
+
+<h2>DÍA 5 — San Petersburgo, Palacios imperiales</h2>
+<ul>
+<li><strong>Palacio de Invierno / Museo del Hermitage</strong> — Colección artística incomparable. 4 horas. <a href="https://www.google.com/search?q=Museo+del+Hermitage" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Museo+del+Hermitage" target="_blank">📍</a></li>
+<li><strong>Palacio de Catalina</strong> — Residencia real famosa por su Salón Ámbar. 3 horas. <a href="https://www.google.com/search?q=Palacio+de+Catalina" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Palacio+de+Catalina" target="_blank">📍</a></li>
+</ul>
+<p>🍽️ <strong>Restaurante:</strong> Palkin — alta cocina rusa clásica.</p>
+<p>🏨 <strong>Hotel:</strong> Sokos Hotel Palace Bridge — cerca del río Neva.</p>
+
+<h2>DÍA 6 — Iglesias y arte en San Petersburgo</h2>
+<ul>
+<li><strong>Iglesia del Salvador sobre la Sangre Derramada</strong> — Arquitectura colorida y mosaicos. 2 horas. <a href="https://www.google.com/search?q=Iglesia+del+Salvador+sangre+San+Petersburgo" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Iglesia+del+Salvador+sangre+San+Petersburgo" target="_blank">📍</a></li>
+<li><strong>Catedral de San Isaac</strong> — Vistas panorámicas desde la cúpula. 2 horas. <a href="https://www.google.com/search?q=Catedral+de+San+Isaac" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Catedral+de+San+Isaac" target="_blank">📍</a></li>
+<li><strong>Museo Ruso</strong> — Arte ruso desde el siglo XII hasta contemporáneo. 3 horas. <a href="https://www.google.com/search?q=Museo+Ruso+San+Petersburgo" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Museo+Ruso+San+Petersburgo" target="_blank">📍</a></li>
+</ul>
+<p>🍽️ <strong>Restaurante:</strong> Teplo — platos tradicionales en ambiente acogedor.</p>
+<p>🏨 <strong>Hotel:</strong> Angleterre Hotel — céntrico y con historia.</p>
+
+<h2>DÍA 7 — Excursión a Peterhof</h2>
+<ul>
+<li><strong>Palacio Peterhof</strong> — "Versalles ruso" con fuentes y jardines magníficos. 4 horas. <a href="https://www.google.com/search?q=Palacio+Peterhof" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Palacio+Peterhof" target="_blank">📍</a></li>
+<li><strong>Jardines Inferiores</strong> — Paseo entre fuentes y esculturas. 2 horas. <a href="https://www.google.com/search?q=Jardines+Inferiores+Peterhof" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Jardines+Inferiores+Peterhof" target="_blank">📍</a></li>
+</ul>
+<p>🍽️ <strong>Restaurante:</strong> Samson — cerca del palacio, especialidad rusa.</p>
+<p>🏨 <strong>Hotel:</strong> Regreso a San Petersburgo, mismo hotel.</p>
+
+<h2>DÍA 8 — Fortaleza de Pedro y Pablo y museos</h2>
+<ul>
+<li><strong>Fortaleza de Pedro y Pablo</strong> — Lugar fundacional de San Petersburgo con catedral principal. 3 horas. <a href="https://www.google.com/search?q=Fortaleza+de+Pedro+y+Pablo" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Fortaleza+de+Pedro+y+Pablo" target="_blank">📍</a></li>
+<li><strong>Museo de la República</strong> — Historia local en la isla de la fortaleza. 1 hora. <a href="https://www.google.com/search?q=Museo+en+Fortaleza+de+Pedro+y+Pablo" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Museo+en+Fortaleza+de+Pedro+y+Pablo" target="_blank">📍</a></li>
+<li><strong>Isla Zayachy</strong> — Recorrido espacial y naturaleza urbana. 1 hora. <a href="https://www.google.com/search?q=Isla+Zayachy+San+Petersburgo" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Isla+Zayachy+San+Petersburgo" target="_blank">📍</a></li>
+</ul>
+<p>🍽️ <strong>Restaurante:</strong> Koryushka — pescados rusos frescos.</p>
+<p>🏨 <strong>Hotel:</strong> Same hotel centro.</p>
+
+<h2>DÍA 9 — Recorrido por museos y teatros de San Petersburgo</h2>
+<ul>
+<li><strong>Museum of Political History of Russia</strong> — Documentos y artefactos revolucionarios. 2 horas. <a href="https://www.google.com/search?q=Museum+of+Political+History+Russia" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Museum+of+Political+History+Russia" target="_blank">📍</a></li>
+<li><strong>Teatro Mariinsky</strong> — Reconocido por ballet y ópera mundial. Tour por teatros 1 hora. <a href="https://www.google.com/search?q=Teatro+Mariinsky" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Teatro+Mariinsky" target="_blank">📍</a></li>
+<li><strong>Museo Fabergé</strong> — Joyería imperial y arte decorativo. 2 horas. <a href="https://www.google.com/search?q=Museo+Fabergé" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Museo+Fabergé" target="_blank">📍</a></li>
+</ul>
+<p>🍽️ <strong>Restaurante:</strong> Mansarda — comida rusa con vista a la ciudad.</p>
+<p>🏨 <strong>Hotel:</strong> Same hotel centro.</p>
+
+<h2>DÍA 10 — Viaje a Kazán</h2>
+<ul>
+<li><strong>Tren nocturno a Kazán</strong> — Trayecto cultural en tren. 11 horas aprox. <a href="https://www.google.com/search?q=Tren+Moscú+Kazán" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Kazán" target="_blank">📍</a></li>
+<li><strong>Paseo ligero por la ciudad</strong> — Exploración inicial de la ciudad. 2 horas. <a href="https://www.google.com/search?q=Turismo+Kazán" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Kazán" target="_blank">📍</a></li>
+</ul>
+<p>🍽️ <strong>Restaurante:</strong> Tatarskaya Usadba — cocina tártara tradicional.</p>
+<p>🏨 <strong>Hotel:</strong> Kazan Palace Kempinski — ciudad vieja.</p>
+
+<h2>DÍA 11 — Fortaleza y cultura tártara en Kazán</h2>
+<ul>
+<li><strong>Kremlin de Kazán</strong> — Fortaleza con mezquita y catedral ortodoxa. 3 horas. <a href="https://www.google.com/search?q=Kremlin+de+Kazán" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Kremlin+de+Kazán" target="_blank">📍</a></li>
+<li><strong>Mezquita Qolşärif</strong> — Monumento islámico de gran belleza. 1 hora. <a href="https://www.google.com/search?q=Mezquita+Qolşärif" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Mezquita+Qolşärif" target="_blank">📍</a></li>
+<li><strong>Museo de Historia de Kazán</strong> — Raíces históricas y desarrollo cultural. 2 horas. <a href="https://www.google.com/search?q=Museo+de+Historia+de+Kazán" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Museo+de+Historia+de+Kazán" target="_blank">📍</a></li>
+<li><strong>Paseo por el río Volga</strong> — Relax con vistas panorámicas. 1 hora. <a href="https://www.google.com/search?q=Río+Volga+Kazán" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Río+Volga+Kazán" target="_blank">📍</a></li>
+</ul>
+<p>🍽️ <strong>Restaurante:</strong> Chak-Chak — especialidades tártaras dulces y saladas.</p>
+<p>🏨 <strong>Hotel:</strong> Mismo hotel.</p>
+
+<h2>DÍA 12 — Museos y arquitectura de Kazán</h2>
+<ul>
+<li><strong>Museo Nacional de la República de Tatarstán</strong> — Cultura tártara y rusa fusionadas. 3 horas. <a href="https://www.google.com/search?q=Museo+Nacional+de+Tatarstán" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Museo+Nacional+de+Tatarstán" target="_blank">📍</a></li>
+<li><strong>Calle Bauman</strong> — Principal vía peatonal con historia y tiendas. 2 horas. <a href="https://www.google.com/search?q=Calle+Bauman+Kazán" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Calle+Bauman+Kazán" target="_blank">📍</a></li>
+<li><strong>Teatro Tugan Avylym</strong> — Espacio cultural para teatro local y folclore. 1 hora. <a href="https://www.google.com/search?q=Teatro+Tugan+Avylym" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Teatro+Tugan+Avylym" target="_blank">📍</a></li>
+</ul>
+<p>🍽️ <strong>Restaurante:</strong> Dom Tatarskoy Kukhni — comida tártara auténtica.</p>
+<p>🏨 <strong>Hotel:</strong> Mismo hotel.</p>
+
+<h2>DÍA 13 — Viaje en tren a Nizhni Nóvgorod</h2>
+<ul>
+<li><strong>Tren Kazán-Nizhni Nóvgorod</strong> — 4 horas en transporte público. <a href="https://www.google.com/search?q=Tren+Kazán+Nizhni+Nóvgorod" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Nizhni+Nóvgorod" target="_blank">📍</a></li>
+<li><strong>Paseo por el Kremlin de Nizhni Nóvgorod</strong> — Fortaleza con historia militar y panorámicas. 2 horas. <a href="https://www.google.com/search?q=Kremlin+de+Nizhni+Nóvgorod" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Kremlin+de+Nizhni+Nóvgorod" target="_blank">📍</a></li>
+<li><strong>Calles Varvarskaya y Bolshaya Pokrovskaya</strong> — Áreas comerciales e históricas. 2 horas. <a href="https://www.google.com/search?q=Varvarskaya+calle+Nizhni+Nóvgorod" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Varvarskaya+calle+Nizhni+Nóvgorod" target="_blank">📍</a></li>
+</ul>
+<p>🍽️ <strong>Restaurante:</strong> Baturin — cocina rusa moderna.</p>
+<p>🏨 <strong>Hotel:</strong> Park Inn by Radisson — zona céntrica.</p>
+
+<h2>DÍA 14 — Museos y arquitectura en Nizhni Nóvgorod</h2>
+<ul>
+<li><strong>Museo de Historia</strong> — Colección sobre la región y sus tradiciones. 2 horas. <a href="https://www.google.com/search?q=Museo+de+Historia+Nizhni+Nóvgorod" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Museo+de+Historia+Nizhni+Nóvgorod" target="_blank">📍</a></li>
+<li><strong>Reserva de arte de Chkalov</strong> — Esculturas monumentales y miradores. 1 hora. <a href="https://www.google.com/search?q=Reserva+de+arte+de+Chkalov" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Reserva+de+arte+de+Chkalov" target="_blank">📍</a></li>
+<li><strong>Basílica de la Asunción</strong> — Ejemplo arquitectónico religioso clásico. 1 hora. <a href="https://www.google.com/search?q=Basílica+de+la+Asunción+Nizhni+Nóvgorod" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Basílica+de+la+Asunción+Nizhni+Nóvgorod" target="_blank">📍</a></li>
+</ul>
+<p>🍽️ <strong>Restaurante:</strong> Club Estate — interpretaciones modernas de platos rusos.</p>
+<p>🏨 <strong>Hotel:</strong> Same hotel centro.</p>
+
+<h2>DÍA 15 — Viaje a Yaroslavl</h2>
+<ul>
+<li><strong>Tren Nizhni Nóvgorod-Yaroslavl</strong> — 4 horas de viaje cultural. <a href="https://www.google.com/search?q=Tren+Nizhni+Nóvgorod+Yaroslavl" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Yaroslavl" target="_blank">📍</a></li>
+<li><strong>Recorrido peatonal por el centro histórico</strong> — Calle principales como Sovetskaya. 2 horas. <a href="https://www.google.com/search?q=Centro+histórico+Yaroslavl" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Centro+histórico+Yaroslavl" target="_blank">📍</a></li>
+</ul>
+<p>🍽️ <strong>Restaurante:</strong> Volga-Volga — especialidades locales y mariscos.</p>
+<p>🏨 <strong>Hotel:</strong> Bulgakov Hotel — céntrico y confortable.</p>
+
+<h2>DÍA 16 — Iglesias y cultura en Yaroslavl</h2>
+<ul>
+<li><strong>Iglesia del Profeta Elías</strong> — Destaca por sus frescos del siglo XVII. 2 horas. <a href="https://www.google.com/search?q=Iglesia+del+Profeta+Elías+Yaroslavl" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Iglesia+del+Profeta+Elías+Yaroslavl" target="_blank">📍</a></li>
+<li><strong>Monasterio Spaso-Preobrazhensky</strong> — Fundacional para la ciudad y museo. 2 horas. <a href="https://www.google.com/search?q=Monasterio+Spaso-Preobrazhensky+Yaroslavl" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Monasterio+Spaso-Preobrazhensky+Yaroslavl" target="_blank">📍</a></li>
+<li><strong>Museo de Arte de Yaroslavl</strong> — Arte ruso regional y contemporáneo. 2 horas. <a href="https://www.google.com/search?q=Museo+de+Arte+Yaroslavl" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Museo+de+Arte+Yaroslavl" target="_blank">📍</a></li>
+</ul>
+<p>🍽️ <strong>Restaurante:</strong> Chasy — comida rusa con ambiente local.</p>
+<p>🏨 <strong>Hotel:</strong> Mismo hotel centro.</p>
+
+<h2>DÍA 17 — Viaje a Serguiev Posad</h2>
+<ul>
+<li><strong>Tren Yaroslavl-Serguiev Posad</strong> — Viaje breve, 2 horas. <a href="https://www.google.com/search?q=Tren+Yaroslavl+Serguiev+Posad" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Serguiev+Posad" target="_blank">📍</a></li>
+<li><strong>Monasterio de la Trinidad y San Sergio</strong> — Centro espiritual clave de Rusia. 3 horas. <a href="https://www.google.com/search?q=Monasterio+de+la+Trinidad+y+San+Sergio" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Monasterio+de+la+Trinidad+y+San+Sergio" target="_blank">📍</a></li>
+<li><strong>Galería de Arte Local</strong> — Arte religioso y cultura tradicional. 1 hora. <a href="https://www.google.com/search?q=Galería+de+Arte+Serguiev+Posad" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Galería+de+Arte+Serguiev+Posad" target="_blank">📍</a></li>
+</ul>
+<p>🍽️ <strong>Restaurante:</strong> LavkaLavka — cocina rústica y casera rusa.</p>
+<p>🏨 <strong>Hotel:</strong> Hotel Sergievsky — cerca del monasterio.</p>
+
+<h2>DÍA 18 — Regreso a Moscú, excursión cultural</h2>
+<ul>
+<li><strong>Tren Serguiev Posad-Moscú</strong> — Trayecto de 1,5 horas. <a href="https://www.google.com/search?q=Tren+Serguiev+Posad+Moscú" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Moscú" target="_blank">📍</a></li>
+<li><strong>Museo Pushkin de Bellas Artes</strong> — Colección internacional destacada. 3 horas. <a href="https://www.google.com/search?q=Museo+Pushkin+Moscú" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Museo+Pushkin+Moscú" target="_blank">📍</a></li>
+<li><strong>Teatro Bolshói (tour externo)</strong> — Icono cultural teatral. 1 hora. <a href="https://www.google.com/search?q=Teatro+Bolshói" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Teatro+Bolshói" target="_blank">📍</a></li>
+</ul>
+<p>🍽️ <strong>Restaurante:</strong> Mari Vanna — comida casera rusa tradicional.</p>
+<p>🏨 <strong>Hotel:</strong> Same hotel centro Moscú.</p>
+
+<h2>DÍA 19 — Moscú: Museos y parques</h2>
+<ul>
+<li><strong>Galería Tretiakov en la nueva ubicación</strong> — Arte contemporáneo ruso. 2 horas. <a href="https://www.google.com/search?q=Galería+Tretiakov+nueva+sede" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Galería+Tretiakov+nueva+sede" target="_blank">📍</a></li>
+<li><strong>Parque Zaryadye</strong> — Paisajes modernos y vistas al Kremlin. 2 horas. <a href="https://www.google.com/search?q=Parque+Zaryadye" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Parque+Zaryadye" target="_blank">📍</a></li>
+<li><strong>Centro Estatal de Cultura VDNKh</strong> — Historia soviética y exposiciones fascinantes. 3 horas. <a href="https://www.google.com/search?q=VDNKh+Moscú" target="_blank">📖</a> <a href="https://www.google.com/maps/search=VDNKh+Moscú" target="_blank">📍</a></li>
+</ul>
+<p>🍽️ <strong>Restaurante:</strong> Dr. Zhivago — platos rusos con innovación.</p>
+<p>🏨 <strong>Hotel:</strong> Same hotel centro Moscú.</p>
+
+<h2>DÍA 20 — Museo y arquitectura en Moscú</h2>
+<ul>
+<li><strong>Galería Estatal de Arte Tretiakov</strong> — Pintura rusa clásica con joyas del arte. 3 horas. <a href="https://www.google.com/search?q=Galería+Tretiakov" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Galería+Tretiakov" target="_blank">📍</a></li>
+<li><strong>Casa Museo de Chernyshevsky</strong> — Literatura y vida cultural del siglo XIX. 1 hora. <a href="https://www.google.com/search?q=Casa+Museo+de+Chernyshevsky" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Casa+Museo+de+Chernyshevsky" target="_blank">📍</a></li>
+<li><strong>Monasterio Novodevichy</strong> — Complejo histórico y religioso con jardines. 2 horas. <a href="https://www.google.com/search?q=Monasterio+Novodevichy" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Monasterio+Novodevichy" target="_blank">📍</a></li>
+</ul>
+<p>🍽️ <strong>Restaurante:</strong> Varenichnaya №1 — especialidad en platos tradicionales rusos.</p>
+<p>🏨 <strong>Hotel:</strong> Same hotel centro Moscú.</p>
+
+<h2>DÍA 21 — Visita a Serguiev Posad y alrededores</h2>
+<ul>
+<li><strong>Reservas naturales de la región</strong> — Pampering en la naturaleza con contextos históricos. 3 horas. <a href="https://www.google.com/search?q=Reservas+naturales+Serguiev+Posad" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Reservas+naturales+Serguiev+Posad" target="_blank">📍</a></li>
+<li><strong>Exposición de iconos rusos</strong> — Arte religioso visual. 2 horas. <a href="https://www.google.com/search?q=Exposición+de+iconos+rusos+Serguiev+Posad" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Exposición+de+iconos+rusos+Serguiev+Posad" target="_blank">📍</a></li>
+</ul>
+<p>🍽️ <strong>Restaurante:</strong> Green Cafe — variedad rusa y europea.</p>
+<p>🏨 <strong>Hotel:</strong> Same hotel Serguiev Posad.</p>
+
+<h2>DÍA 22 — Viaje a Vladimir y Suzdal</h2>
+<ul>
+<li><strong>Tren temprano a Vladimir</strong> — 2 horas. <a href="https://www.google.com/search?q=Tren+Moscú+Vladimir" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Vladimir" target="_blank">📍</a></li>
+<li><strong>Catedral de San Demetrio en Vladimir</strong> — Arte medieval y frescos antiguos. 2 horas. <a href="https://www.google.com/search?q=Catedral+de+San+Demetrio" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Catedral+de+San+Demetrio" target="_blank">📍</a></li>
+<li><strong>Viaje a Suzdal (autobús o taxi público)</strong> — Pueblo museo al aire libre. 1 hora. <a href="https://www.google.com/search?q=Suzdal" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Suzdal" target="_blank">📍</a></li>
+<li><strong>Monasterio de Suzdal</strong> — Complejo religioso con arquitectura rural. 2 horas. <a href="https://www.google.com/search?q=Monasterio+de+Suzdal" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Monasterio+de+Suzdal" target="_blank">📍</a></li>
+</ul>
+<p>🍽️ <strong>Restaurante:</strong> Gostiny Dvor — comida tradicional rusa.</p>
+<p>🏨 <strong>Hotel:</strong> Suzdal Hotel — en el centro del pueblo histórico.</p>
+
+<h2>DÍA 23 — Paseo por Suzdal y regreso a Moscú</h2>
+<ul>
+<li><strong>Museo Histórico y Etnográfico de Suzdal</strong> — Vida rural rusa en exhibiciones. 2 horas. <a href="https://www.google.com/search?q=Museo+Histórico+y+Etnográfico+de+Suzdal" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Museo+Histórico+y+Etnográfico+de+Suzdal" target="_blank">📍</a></li>
+<li><strong>Iglesia de la Natividad en Suzdal</strong> — Arquitectura medieval y frescos. 2 horas. <a href="https://www.google.com/search?q=Iglesia+de+la+Natividad+Suzdal" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Iglesia+de+la+Natividad+Suzdal" target="_blank">📍</a></li>
+<li><strong>Autobús a Vladimir y tren a Moscú</strong> — Regreso al centro de Rusia. 4-5 horas. <a href="https://www.google.com/search?q=Tren+Vladimir+Moscú" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Moscú" target="_blank">📍</a></li>
+</ul>
+<p>🍽️ <strong>Restaurante:</strong> En viaje o llegada, Taiga Café en Moscú — platos rusos variados.</p>
+<p>🏨 <strong>Hotel:</strong> Same hotel centro Moscú.</p>
+
+<h2>DÍA 24 — Últimos días en Moscú, museos y cultura</h2>
+<ul>
+<li><strong>Galería Multimedia MMOMA</strong> — Arte contemporáneo ruso. 2 horas. <a href="https://www.google.com/search?q=Galería+MMOMA" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Galería+MMOMA" target="_blank">📍</a></li>
+<li><strong>Museo de Historia Militar</strong> — Exhibiciones impresionantes sobre conflictos y tecnología. 3 horas. <a href="https://www.google.com/search?q=Museo+de+Historia+Militar+Moscú" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Museo+de+Historia+Militar+Moscú" target="_blank">📍</a></li>
+<li><strong>Recorrido por el antiguo barrio Kitay-gorod</strong> — Historia urbana y arquitectura clásica. 2 horas. <a href="https://www.google.com/search?q=Kitay-gorod+Moscú" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Kitay-gorod+Moscú" target="_blank">📍</a></li>
+</ul>
+<p>🍽️ <strong>Restaurante:</strong> Grand Cafe Dr. Zhivago — platos rusos con ambiente histórico.</p>
+<p>🏨 <strong>Hotel:</strong> Same hotel centro Moscú.</p>
+
+<h2>DÍA 25 — Mercado y despedida en Moscú</h2>
+<ul>
+<li><strong>Mercado Izmailovo</strong> — Artesanía, souvenirs y cultura local. 3 horas. <a href="https://www.google.com/search?q=Mercado+Izmailovo" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Mercado+Izmailovo" target="_blank">📍</a></li>
+<li><strong>Galería Tretyakov (opcional última visita)</strong> — Recorrido final por el arte ruso clásico. 2 horas. <a href="https://www.google.com/search?q=Galería+Tretyakov" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Galería+Tretyakov" target="_blank">📍</a></li>
+<li><strong>Parque Kolomenskoye</strong> — Último paseo en jardín histórico con iglesias antiguas. 2 horas. <a href="https://www.google.com/search?q=Parque+Kolomenskoye" target="_blank">📖</a> <a href="https://www.google.com/maps/search=Parque+Kolomenskoye" target="_blank">📍</a></li>
+</ul>
+<p>🍽️ <strong>Restaurante:</strong> LavkaLavka — ideal para probar últimos sabores rusos.</p>
+<p>🏨 <strong>Hotel:</strong> Mismo hotel centro para la despedida.</p></div>
+  </div>
+
+  <!-- TAB EXPERIENCIAS -->
+  <div class="tab-panel" id="tab-experiencias">
+    <div class="sec-eye">Imprescindibles</div>
+    <div class="sec-title">Experiencias destacadas</div>
+    <div class="ai-content"><h3>🌟 Visita al Kremlin de Moscú</h3>
+<p>El Kremlin es el corazón político e histórico de Rusia, y su impresionante arquitectura ofrece una visión fascinante de la historia del país. Se recomienda dedicar al menos medio día para explorar sus catedrales y museos. Consejo: compra las entradas en línea para evitar largas colas.</p>
+
+<h3>🌟 Paseo por la Avenida Nevsky de San Petersburgo</h3>
+<p>Esta icónica avenida representa la vitalidad cultural de la ciudad, repleta de tiendas, cafés y monumentos históricos. Un paseo aquí te sumergirá en la vida cotidiana de los rusos. Dedica varias horas para disfrutar plenamente. Consejo: no te pierdas la oportunidad de probar un café en una de las muchas cafeterías locales.</p>
+
+<h3>🌟 Visita al Hermitage</h3>
+<p>Uno de los museos más grandes y prestigiosos del mundo, el Hermitage alberga una vasta colección de arte, desde la antigüedad hasta el arte moderno. Es recomendable dedicar al menos un día entero. Consejo: únete a un tour guiado para aprovechar al máximo tu visita.</p>
+
+<h3>🌟 Experiencia de una cena típica en una “Izba”</h3>
+<p>Sumérgete en la cultura rusa a través de una cena en una casa tradicional, conocida como “izba”. Aquí podrás degustar platillos auténticos mientras disfrutas de música folclórica. Planifica una noche para esta experiencia única. Consejo: pregunta por el menú antes para asegurarte de que pruebas los mejores platos locales.</p>
+
+<h3>🌟 Exploración de la isla de Kizhi</h3>
+<p>Este patrimonio de la humanidad es famoso por sus iglesias de madera únicas y su rica historia. Se recomienda una visita de un día completo, especialmente en verano. Consejo: verifica los horarios de los barcos, ya que son limitados según la temporada.</p>
+
+<h3>🌟 Tour en el tren Transiberiano</h3>
+<p>Una experiencia única que conecta Moscú con Vladivostok, el tren Transiberiano es la forma perfecta de explorar vastas y variadas regiones de Rusia. Dedica una semana o más para vivir esta experiencia. Consejo: reserva tu billete con antelación y elige un compartimento con vistas.</p>
+
+<h3>🌟 Visita al Campo de concentración de Sandarmoj</h3>
+<p>Este sitio histórico es un lugar de memoria que te hará reflexionar sobre los horrores del pasado. Se recomienda dedicar medio día para entender su significado histórico. Consejo: considera un guía que pueda ofrecerte contexto sobre los eventos que ocurrieron aquí.</p>
+
+<h3>🌟 Experiencia en un ballet en el Teatro Bolshoi</h3>
+<p>Asistir a un ballet en este famoso teatro es una experiencia cultural de primer nivel. Prepárate para una noche mágica llena de arte y talento. Asegúrate de reservar tus entradas con tiempo. Consejo: opta por un vestuario elegante para vivir la experiencia al máximo.</p></div>
+  </div>
+
+  <!-- TAB TOOLS -->
+  <div class="tab-panel" id="tab-tools">
+    <div class="sec-eye">Herramientas interactivas</div>
+    <div class="sec-title">Para tu viaje</div>
+    <div class="tools-tabs">
+      <button class="ttab active" onclick="switchTool(this,'conv')">💱 Moneda</button>
+      <button class="ttab" onclick="switchTool(this,'trans')">🗣 Frases</button>
+      <button class="ttab" onclick="switchTool(this,'calc')">💶 Presupuesto</button>
+      <button class="ttab" onclick="switchTool(this,'check')">🧳 Equipaje</button>
+    </div>
+    <div class="tools-desktop">
+      <div>
+        <div class="tool-section-title">💱 Conversor de moneda en tiempo real</div>
+        <div class="tool-panel active" id="conv">
+          <div class="conv-box">
+            <select class="conv-select" id="conv-to" onchange="convertCurrency()">
+              <option value="USD">$ Dólar USD</option><option value="GBP">£ Libra</option>
+              <option value="JPY">¥ Yen</option><option value="MXN">$ Peso MX</option>
+              <option value="BRL">R$ Real</option><option value="MAD">MAD Dírham</option>
+              <option value="TRY">₺ Lira turca</option><option value="THB">฿ Baht</option>
+              <option value="IDR">Rp Rupia</option><option value="AED">AED Dírham</option>
+              <option value="SGD">S$ Dólar SG</option><option value="PLN">zł Esloti</option>
+              <option value="CZK">Kč Corona CZ</option><option value="HUF">Ft Forinto</option>
+              <option value="RON">RON Leu</option><option value="DKK">kr Danesa</option>
+              <option value="SEK">kr Sueca</option><option value="NOK">kr Noruega</option>
+            </select>
+            <div class="conv-row">
+              <div class="conv-iw"><label>Euros €</label><input class="conv-input" type="number" id="conv-eur" value="100" oninput="convertCurrency()"></div>
+              <div class="conv-arrow">⇄</div>
+              <div class="conv-iw"><label id="conv-to-label">Destino</label><input class="conv-input" type="number" id="conv-foreign" oninput="convertBack()"></div>
+            </div>
+            <div class="conv-result"><div class="conv-amount" id="conv-display">—</div><div class="conv-rate" id="conv-rate">Cargando…</div></div>
+            <div class="conv-note">Tiempo real · open.er-api.com</div>
+          </div>
+        </div>
+        <br>
+        <div class="tool-section-title">🗣 Frases útiles con audio</div>
+        <div class="tool-panel" id="trans">
+          <div class="trans-wrap">
+            <div class="trans-lang"><span>Idioma:</span>
+              <select id="trans-lang-sel" onchange="updatePhrases()">
+                <option value="it">🇮🇹 Italiano</option><option value="fr">🇫🇷 Francés</option>
+                <option value="de">🇩🇪 Alemán</option><option value="pt">🇵🇹 Portugués</option>
+                <option value="ja">🇯🇵 Japonés</option><option value="ar">🇲🇦 Árabe</option>
+                <option value="tr">🇹🇷 Turco</option><option value="th">🇹🇭 Tailandés</option>
+                <option value="zh">🇨🇳 Chino</option><option value="el">🇬🇷 Griego</option>
+                <option value="pl">🇵🇱 Polaco</option><option value="nl">🇳🇱 Neerlandés</option>
+                <option value="ru">🇷🇺 Ruso</option><option value="cs">🇨🇿 Checo</option>
+                <option value="ro">🇷🇴 Rumano</option><option value="hr">🇭🇷 Croata</option>
+              </select>
+            </div>
+            <div class="trans-list" id="phrases-list"></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="tool-section-title">💶 Calculadora de presupuesto</div>
+        <div class="tool-panel" id="calc">
+          <div class="calc-box">
+            <div class="calc-row"><label>Días</label><input class="calc-input" type="number" id="c-dias" value="25" oninput="calcBudget()"></div>
+            <div class="calc-row"><label>Viajeros</label><input class="calc-input" type="number" id="c-viaj" value="3" oninput="calcBudget()"></div>
+            <div class="calc-row"><label>Alojamiento / noche €</label><input class="calc-input" type="number" id="c-aloj" value="80" oninput="calcBudget()"></div>
+            <div class="calc-row"><label>Comida / persona / día €</label><input class="calc-input" type="number" id="c-com" value="35" oninput="calcBudget()"></div>
+            <div class="calc-row"><label>Transporte total €</label><input class="calc-input" type="number" id="c-transp" value="200" oninput="calcBudget()"></div>
+            <div class="calc-row"><label>Actividades total €</label><input class="calc-input" type="number" id="c-act" value="150" oninput="calcBudget()"></div>
+            <div class="calc-result">
+              <div class="calc-result-title">RESUMEN</div>
+              <div class="calc-line"><span>Alojamiento</span><strong id="r-aloj">—</strong></div>
+              <div class="calc-line"><span>Comida</span><strong id="r-com">—</strong></div>
+              <div class="calc-line"><span>Transporte</span><strong id="r-transp">—</strong></div>
+              <div class="calc-line"><span>Actividades</span><strong id="r-act">—</strong></div>
+              <div class="calc-line total"><span>TOTAL</span><strong id="r-total">—</strong></div>
+              <div class="calc-line"><span>Por persona</span><strong id="r-pp">—</strong></div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="tool-section-title">🧳 Checklist de equipaje</div>
+        <div class="tool-panel" id="check">
+          <div class="check-progress"><div class="check-bar-wrap"><div class="check-bar" id="check-bar" style="width:0%"></div></div><div class="check-pct" id="check-pct">0%</div></div>
+          <div class="check-cats">
+            <button class="check-cat-btn active" onclick="switchCat(this,'ropa')">👕 Ropa</button>
+            <button class="check-cat-btn" onclick="switchCat(this,'docs')">📄 Docs</button>
+            <button class="check-cat-btn" onclick="switchCat(this,'tech')">📱 Tech</button>
+            <button class="check-cat-btn" onclick="switchCat(this,'salud')">💊 Salud</button>
+            <button class="check-cat-btn" onclick="switchCat(this,'extras')">✨ Extras</button>
+          </div>
+          <div class="checklist" id="checklist-items"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB DESTINO -->
+  <div class="tab-panel" id="tab-destino">
+    <div class="sec-eye">Antes de partir</div>
+    <div class="sec-title">Guía del destino</div>
+    <div class="ai-content"><h2>Clima y mejor época</h2>
+<p>Rusia tiene un clima continental con inviernos muy fríos y veranos cálidos. Las temperaturas por meses son aproximadamente:</p>
+<ul>
+  <li><strong>Enero:</strong> -10°C a -20°C</li>
+  <li><strong>Febrero:</strong> -8°C a -18°C</li>
+  <li><strong>Marzo:</strong> -2°C a -10°C</li>
+  <li><strong>Abril:</strong> 5°C a 12°C</li>
+  <li><strong>Mayo:</strong> 12°C a 20°C</li>
+  <li><strong>Junio:</strong> 16°C a 24°C</li>
+  <li><strong>Julio:</strong> 18°C a 26°C</li>
+  <li><strong>Agosto:</strong> 17°C a 25°C</li>
+  <li><strong>Septiembre:</strong> 10°C a 18°C</li>
+  <li><strong>Octubre:</strong> 4°C a 10°C</li>
+  <li><strong>Noviembre:</strong> -3°C a 2°C</li>
+  <li><strong>Diciembre:</strong> -8°C a -15°C</li>
+</ul>
+<p>La mejor época para viajar es de mayo a septiembre. Se recomienda llevar ropa abrigada en invierno (chaqueta gruesa, gorro, guantes) y prendas ligeras y de media estación en verano junto con un impermeable.</p>
+
+<h2>Moneda y pagos</h2>
+<p>La moneda oficial es el rublo ruso (RUB). El tipo de cambio aproximado suele estar alrededor de 1 EUR = 90-100 RUB, aunque varía con el mercado.</p>
+<p>Las tarjetas de crédito y débito Visa y MasterCard son ampliamente aceptadas en ciudades y zonas turísticas. En áreas rurales es mejor llevar efectivo. También hay muchos cajeros automáticos disponibles.</p>
+
+<h2>Electricidad y adaptadores</h2>
+<p>En Rusia se utiliza el enchufe tipo C y tipo F (dos clavijas redondas). El voltaje estándar es de 220 V y la frecuencia de 50 Hz.</p>
+<p>Si vienes de países con diferente enchufe o voltaje, es recomendable llevar un adaptador y verificar que tus dispositivos sean compatibles o usar un conversor.</p>
+
+<h2>Idioma y comunicación</h2>
+<p>El idioma oficial es el ruso. En las grandes ciudades y zonas turísticas, especialmente en hoteles, restaurantes y transporte, muchos hablan inglés básico, pero fuera de esas áreas el inglés es menos común.</p>
+<p>Apps útiles para comunicarte:</p>
+<ul>
+  <li><strong>Google Translate</strong> para traducción instantánea (<a href="https://translate.google.com" target="_blank">https://translate.google.com</a>)</li>
+  <li><strong>Duolingo</strong> para aprender frases básicas (<a href="https://www.duolingo.com" target="_blank">https://www.duolingo.com</a>)</li>
+  <li><strong>Yandex.Translate</strong> popular en Rusia (<a href="https://translate.yandex.com" target="_blank">https://translate.yandex.com</a>)</li>
+</ul>
+
+<h2>Visado y entrada</h2>
+<p>Los ciudadanos españoles y la mayoría de europeos necesitan visado para entrar en Rusia. El procedimiento es:</p>
+<ul>
+  <li>Obtener una carta de invitación o voucher turístico</li>
+  <li>Solicitar el visado en una embajada o consulado ruso o a través de agencias autorizadas</li>
+  <li>Presentar pasaporte con vigencia mínima de 6 meses</li>
+</ul>
+<p>Se recomienda consultar fuentes oficiales como <a href="https://russia.visahq.com" target="_blank">VisaHQ Rusia</a> para requisitos actualizados.</p>
+
+<h2>Vacunas y salud</h2>
+<p>No hay vacunas obligatorias para entrar en Rusia. Se recomienda estar al día con vacunas comunes como tétanos, difteria y hepatitis A.</p>
+<p>El agua potable no se recomienda beber directamente del grifo; es preferible comprar agua embotellada.</p>
+<p>Se recomienda contratar un seguro médico internacional que cubra enfermedades y accidentes durante la estancia.</p>
+
+<h2>Seguridad</h2>
+<p>Rusia es en general segura para turistas, especialmente en zonas turísticas y ciudades grandes. Sin embargo, se recomienda evitar zonas aisladas o poco transitadas por la noche.</p>
+<p>Evita participar en manifestaciones o reuniones políticas.</p>
+<p>Consejos básicos:</p>
+<ul>
+  <li>Cuida tus pertenencias en sitios concurridos para evitar robos</li>
+  <li>Usa taxis oficiales o apps y evita aceptar viajes de desconocidos</li>
+  <li>Respeta las normas locales y guarda documentos importantes en lugar seguro</li>
+</ul>
+
+<h2>Costumbres y etiqueta</h2>
+<p>En Rusia las normas sociales valoran la cortesía y respeto. Algunos consejos:</p>
+<ul>
+  <li>Para saludar se suele dar apretón de manos firmes</li>
+  <li>En restaurantes se acostumbra dejar propina del 10% si no está ya incluida</li>
+  <li>En templos ortodoxos viste ropa modesta: mujeres con hombros cubiertos y pañuelo en la cabeza, hombres preferiblemente sin gorras dentro</li>
+  <li>Se evita mostrar zapatos en casas; a veces es costumbre quitarse el calzado al entrar</li>
+</ul>
+
+<h2>Apps imprescindibles</h2>
+<ul>
+  <li><strong>Yandex.Maps</strong> — mapas y guía local (<a href="https://yandex.com/maps/" target="_blank">https://yandex.com/maps/</a>)</li>
+  <li><strong>Yandex.Taxi</strong> — para pedir taxis seguros y oficiales (<a href="https://taxi.yandex.com/" target="_blank">https://taxi.yandex.com/</a>)</li>
+  <li><strong>Google Translate</strong> — traducción instantánea (<a href="https://translate.google.com" target="_blank">https://translate.google.com</a>)</li>
+  <li><strong>SberPay</strong> — para pagos móviles, muy usado en Rusia (<a href="https://www.sberbank.ru/en/person/paymentstransfers/mobile/payment" target="_blank">https://www.sberbank.ru/en/person/paymentstransfers/mobile/payment</a>)</li>
+  <li><strong>Moovit</strong> — información de transporte público (<a href="https://moovitapp.com" target="_blank">https://moovitapp.com</a>)</li>
+</ul></div>
+  </div>
+
+  <!-- TAB TRANSPORTE -->
+  <div class="tab-panel" id="tab-transporte">
+    <div class="sec-eye">Moverse por RUSIA</div>
+    <div class="sec-title">Transporte</div>
+    <div class="ad"><div class="ad-badge">AD</div><div><strong>Alquiler de coche</strong><span>→ Rent a car · comparativa</span></div></div>
+    <div class="ai-content" style="margin-top:12px"><h2>Cómo llegar desde España</h2>
+<p>Desde España, existen vuelos directos a Rusia principalmente desde Madrid y Barcelona. Las principales aerolíneas que ofrecen conexiones directas son Aeroflot y Iberia.</p>
+<ul>
+  <li><strong>Vuelos directos:</strong> Madrid (MAD) – Moscú (SVO/ DME), Barcelona (BCN) – Moscú (SVO/ DME).</li>
+  <li><strong>Tiempo de vuelo:</strong> Aproximadamente 4 a 5 horas.</li>
+  <li><strong>Aeropuertos principales en Rusia:</strong> Aeropuerto Internacional Sheremétievo (SVO), Aeropuerto Internacional Domodédovo (DME) y Aeropuerto Internacional Vnúkovo (VKO), todos en Moscú.</li>
+</ul>
+
+<h2>Transporte desde el aeropuerto</h2>
+<p>Una vez en Moscú, las opciones para llegar al centro incluyen metro, tren, autobús y taxi.</p>
+<ul>
+  <li><strong>Tren Aeroexpress:</strong> conecta Sheremétievo, Domodédovo y Vnúkovo con la estación de tren de Leningrado o Paveletsky respectivamente. Precio: alrededor de 500-600 RUB (6-7 €). Tiempo: 35-45 minutos.</li>
+  <li><strong>Metro:</strong> varios aeropuertos están conectados vía autobús o tren con estaciones de metro cercanas. Precio: 55 RUB (menos de 1 €).</li>
+  <li><strong>Autobús:</strong> varias líneas express y buses regulares a ciudades y estaciones cercanas. Precio: 50-100 RUB.</li>
+  <li><strong>Taxi:</strong> opciones oficiales en aeropuertos con precio aproximado de 1000-1500 RUB (12-18 €), dependiendo del tráfico.</li>
+</ul>
+
+<h2>Moverse por el destino</h2>
+<p>El transporte público en las principales ciudades rusas es eficiente y económico.</p>
+<ul>
+  <li><strong>Metro:</strong> Moscú y San Petersburgo cuentan con amplias redes de metro, conocidas por su puntualidad y belleza. Precio: alrededor de 55 RUB por viaje sencillo.</li>
+  <li><strong>Autobuses, tranvías y trolebuses:</strong> cobertura amplia en las ciudades. Precio: 40-60 RUB por viaje.</li>
+  <li><strong>Trenes urbanos (elektrichka):</strong> conectan suburbios con el centro en las grandes ciudades. Precio variable, desde 50 RUB.</li>
+  <li>Consulta horarios y mapas oficiales en <a href="https://transport.mos.ru/en" target="_blank">Transport Moscow</a>.</li>
+</ul>
+
+<h2>Alquiler de coche</h2>
+<p>Alquilar coche en Rusia no es recomendable para turistas poco familiarizados con la conducción local.</p>
+<ul>
+  <li><strong>Empresas recomendadas:</strong> Avis, Hertz, Europcar, Rentmotors.</li>
+  <li><strong>Precio medio:</strong> desde 2000 RUB (25 €) por día para vehículos económicos.</li>
+  <li><strong>Carnet internacional:</strong> Es obligatorio portar el permiso de conducir internacional además del nacional.</li>
+  <li>Considerar el tráfico intenso, distintos códigos de circulación y condiciones del camino.</li>
+</ul>
+
+<h2>Taxis y apps de movilidad</h2>
+<p>Las apps de movilidad son la forma más cómoda y segura para moverse en las ciudades.</p>
+<ul>
+  <li><strong>Uber:</strong> disponible en Moscú y San Petersburgo, con precios competitivos.</li>
+  <li><strong>Bolt:</strong> similar a Uber, muy popular en Rusia.</li>
+  <li><strong>Yandex.Taxi:</strong> la app local más usada <a href="https://taxi.yandex.com/" target="_blank">Yandex.Taxi</a>, con opción en inglés.</li>
+  <li>Precios orientativos: 150-300 RUB (2-4 €) para viajes dentro del centro de la ciudad.</li>
+</ul>
+
+<h2>Consejos de conducción</h2>
+<ul>
+  <li>El límite de velocidad suele ser de 60-90 km/h en ciudad y hasta 110 km/h en autopistas.</li>
+  <li>Es obligatorio el uso del cinturón de seguridad para todos los pasajeros.</li>
+  <li>No se permite beber y conducir, con estrictas multas.</li>
+  <li>Existen peajes en algunas autopistas federales; el pago puede ser en efectivo o electrónico.</li>
+  <li>El aparcamiento en zonas céntricas suele ser regulado y muchas veces de pago, observe señales y marque tickets o use apps localizadas.</li>
+</ul>
+
+<h2>Transporte entre ciudades</h2>
+<p>Para viajar entre ciudades rusas, las mejores opciones son tren, autobús y vuelos domésticos.</p>
+<ul>
+  <li><strong>Tren:</strong> La red férrea es extensa. El tren de alta velocidad Sapsan conecta Moscú con San Petersburgo en unas 4 horas. Precios desde 1000 RUB (12 €).</li>
+  <li><strong>Autobús:</strong> cubren rutas más pequeñas o menos populares, con precios económicos pero tiempos largos.</li>
+  <li><strong>Vuelos internos:</strong> la aerolínea Aeroflot y otras regionales cubren todo el país. Ideal para distancias muy largas. Precio desde 1500 RUB (20 €) dependiendo del destino.</li>
+  <li>Para información oficial y reservas de trenes: <a href="https://www.rzd.ru/en" target="_blank">Russian Railways</a>.</li>
+</ul></div>
+  </div>
+
+  <!-- TAB RECURSOS -->
+  <div class="tab-panel" id="tab-recursos">
+    <div class="sec-eye">Recursos online</div>
+    <div class="sec-title">Blogs y enlaces útiles</div>
+    <div class="ai-content"><h2>Web oficial de turismo</h2>
+<p><a href="https://www.visitrussia.org.uk/" target="_blank">Visit Russia - Official Tourism Portal</a></p>
+
+<h2>Blogs de viaje recomendados</h2>
+<ul>
+  <li><a href="https://www.elviajedemiblog.com/categoria/rusia/" target="_blank">El Viaje de Mi Blog - Rusia</a></li>
+  <li><a href="https://www.viajandoporahi.com/destinos/rusia/" target="_blank">Viajando por ahí - Rusia</a></li>
+  <li><a href="https://www.mochileros.org/foro/17-rusia/" target="_blank">Mochileros.org - Foro y blogs sobre Rusia</a></li>
+  <li><a href="https://www.losviajesdedavid.com/categoria/destinos/rusia/" target="_blank">Los Viajes de David - Rusia</a></li>
+</ul>
+
+<h2>Foros y comunidades</h2>
+<ul>
+  <li><a href="https://www.tripadvisor.es/ShowForum-g294459-i6786-Russia.html" target="_blank">TripAdvisor - Foro de Rusia</a></li>
+  <li><a href="https://www.lonelyplanet.com/thorntree/forums/europe-east-europe/russia" target="_blank">Lonely Planet Thorntree - Rusia</a></li>
+  <li><a href="https://www.reddit.com/r/russia/" target="_blank">Reddit - r/russia</a></li>
+</ul>
+
+<h2>Canales de YouTube</h2>
+<ul>
+  <li><a href="https://www.youtube.com/user/javiervelilla" target="_blank">Javier Velilla - Viajes a Rusia</a></li>
+  <li><a href="https://www.youtube.com/c/MaríaViajes" target="_blank">María en el Mundo - Videos de Rusia</a></li>
+  <li><a href="https://www.youtube.com/channel/UCkEt5P6oYiHkEc2HDDnmm6g" target="_blank">Rusia Viajes y Cultura</a></li>
+</ul>
+
+<h2>Recursos para rutas</h2>
+<ul>
+  <li><a href="https://es.wikiloc.com/rutas/rusia" target="_blank">Wikiloc - Rutas en Rusia</a></li>
+  <li><a href="https://www.alltrails.com/es/russia" target="_blank">AllTrails - Rutas en Rusia</a></li>
+  <li><a href="https://www.google.com/maps" target="_blank">Google Maps</a></li>
+</ul>
+
+<h2>Apps imprescindibles</h2>
+<ul>
+  <li><strong>Yandex.Navigator:</strong> <a href="https://play.google.com/store/apps/details?id=ru.yandex.yandexnavi" target="_blank">Android</a> | <a href="https://apps.apple.com/ru/app/yandex-navigator/id474500851" target="_blank">iOS</a></li>
+  <li><strong>Metro de Moscú:</strong> <a href="https://play.google.com/store/apps/details?id=com.metroapp.metro" target="_blank">Android</a> | <a href="https://apps.apple.com/us/app/moscow-metro/id412611664" target="_blank">iOS</a></li>
+  <li><strong>TripAdvisor:</strong> <a href="https://play.google.com/store/apps/details?id=com.tripadvisor.tripadvisor" target="_blank">Android</a> | <a href="https://apps.apple.com/app/tripadvisor/id284876795" target="_blank">iOS</a></li>
+</ul>
+
+<h2>Webs de reservas</h2>
+<ul>
+  <li><a href="https://www.booking.com/country/ru.html" target="_blank">Booking.com - Rusia</a></li>
+  <li><a href="https://www.airbnb.com/s/Russia/homes" target="_blank">Airbnb - Rusia</a></li>
+  <li><a href="https://www.getyourguide.com/russia-l59/" target="_blank">GetYourGuide - Actividades en Rusia</a></li>
+  <li><a href="https://www.viator.com/Russia/d23-ttd" target="_blank">Viator - Tours y excursiones en Rusia</a></li>
+</ul></div>
+  </div>
+
+  <!-- TAB CULTURA -->
+  <div class="tab-panel" id="tab-cultura">
+    <div class="sec-eye">Prepara el viaje</div>
+    <div class="sec-title">Cultura · Cine · Libros · Música</div>
+    <div class="ai-content"><h3>📚 El maestro y Margarita – Mijaíl Bulgákov</h3>
+<p><strong>Por qué leerlo:</strong> Esta novela clásica ofrece una mirada profunda y surrealista a la sociedad soviética, combinando humor, crítica política y elementos fantásticos. Ideal para comprender la complejidad de la cultura rusa y su historia antes de visitar Moscú.</p>
+
+<h3>📚 Rusia. Guía visual – Lonely Planet</h3>
+<p><strong>Por qué leerlo:</strong> Una guía práctica y bien ilustrada que cubre desde destinos imprescindibles hasta consejos culturales y gastronómicos. Perfecta para organizar el itinerario y entender los aspectos clave para moverse por el país.</p>
+
+<h3>📚 Un ruso en Marte: Crónicas de viaje – Serguéi Lebedev</h3>
+<p><strong>Por qué leerlo:</strong> Un libro de viajes que combina la historia reciente y anécdotas actuales de Rusia, revelando las transformaciones sociales y su impacto en la vida cotidiana. Ideal para viajeros curiosos que desean un enfoque auténtico y personal.</p>
+
+<h3>📚 Anna Karénina – León Tolstói</h3>
+<p><strong>Por qué leerlo:</strong> Esta gran novela no solo es un relato apasionante sobre amor y sociedad en la Rusia del siglo XIX, sino que también presenta una detallada descripción de la vida en la aristocracia y el ambiente urbano y rural, enriqueciendo la comprensión del país.</p>
+
+<h3>📚 Rusia en el corazón: Viajes literarios – Simon Sebag Montefiore</h3>
+<p><strong>Por qué leerlo:</strong> Un ensayo que combina historia, literatura y vida cotidiana para ofrecer una visión completa y profunda de Rusia. Ideal para aquellos que quieren adentrarse en la cultura rusa más allá de lo superficial durante su viaje.</p></div>
+  </div>
+
+  <!-- TAB CURIOSIDADES -->
+  <div class="tab-panel" id="tab-curiosidades">
+    <div class="sec-eye">¿Sabías que…?</div>
+    <div class="sec-title">Curiosidades de RUSIA</div>
+    <div class="ai-content"><h3>💡 Elige la mejor temporada y aprovecha las Noches Blancas</h3>
+<p>Viajar entre finales de mayo y principios de julio te permitirá disfrutar de las famosas “Noches Blancas” en San Petersburgo, con luz casi continua hasta las 2 am. Para colores otoñales y tarifas más bajas, considera septiembre u octubre. Planifica tus rutas de fotografía y visitas culturales según la luz natural.</p>
+
+<h3>💡 Controla tu presupuesto y evita comisiones ocultas</h3>
+<p>Evita las casas de cambio en zonas turísticas y retira rublos directamente en cajeros ATM de bancos como Sberbank o Tinkoff para obtener mejores tipos de cambio y comisiones bajas. Lleva siempre billetes pequeños (500 y 1 000 RUB) para compras diarias y taxis.</p>
+
+<h3>💡 Usa la tarjeta Troika para moverte en metro y bus</h3>
+<p>Compra y recarga la <strong>Tarjeta Troika</strong> en estaciones de metro de Moscú y San Petersburgo: te ahorrará hasta un 50 % por viaje. Actívala al entrar y salir; recuerda validarla en autobuses y tranvías para evitar multas.</p>
+
+<h3>💡 Fotografía los iconos arquitectónicos sin problemas</h3>
+<p>Para capturar la Catedral de San Basilio o el Hermitage sin aglomeraciones, acude al amanecer. Usa un objetivo gran angular y dispara en RAW para recuperar detalles en zonas con contrastes bruscos de luz y sombra.</p>
+
+<h3>💡 Respeta el código de vestimenta en lugares sagrados</h3>
+<p>Al visitar catedrales ortodoxas, cubre hombros y rodillas; las mujeres deben llevar pañuelo en la cabeza. Evita el uso de flash y el trípode sin permiso: algunos templos cobran una pequeña tarifa por equipo profesional.</p>
+
+<h3>💡 Prueba la gastronomía auténtica fuera de cadenas turísticas</h3>
+<p>Sal de las rutas concurridas y busca cafeterías locales donde sirven <strong>pelmeni caseros</strong>, zakuski (entrantes fríos) y kwass en jarra. Fíjate en los restaurantes con menús solo en cirílico: suelen ser más económicos y auténticos.</p>
+
+<h3>💡 Registra tu visado a tiempo y lleva toda la documentación</h3>
+<p>Evita multas y problemas migratorios registrando tu visado en el hotel o vía agencia turística dentro de las primeras 72 horas. Lleva siempre una copia del pasaporte y del permiso de registro cuando salgas de excursión fuera de la ciudad.</p>
+
+<h3>💡 Deja propina de manera adecuada</h3>
+<p>En Rusia es habitual dejar un 10 % del total de la cuenta. Lo mejor es redondear hacia arriba («спасибо») y dejar el billete en la mesa al irte. En taxis, redondea la carrera o suma unos 50 RUB si el servicio ha sido excelente.</p>
+
+<h3>💡 Regatea solo en mercados de artesanía</h3>
+<p>El mercado de souvenir de Izmailovo en Moscú permite regatear hasta un 15 % en artesanías, matrioskas y joyería de ámbar. Para ropa o comida callejera, el precio es fijo. Paga en efectivo para conseguir mejores descuentos.</p>
+
+<h3>💡 Descarga apps clave antes de viajar</h3>
+<p>Instala Yandex.Metro y Yandex.Taxi para moverte con facilidad, y cultu.ru para reservar entradas a museos estatales. Lleva un VPN para acceder a webs bloqueadas y un diccionario offline de ruso si no dominas el idioma.</p></div>
+  </div>
+
+  <!-- TAB DOCUMENTOS -->
+  <div class="tab-panel" id="tab-docs">
+    <div class="sec-eye">Tus documentos</div>
+    <div class="sec-title">Documentos del viaje</div>
+    <p style="font-size:13px;color:var(--mid);margin-bottom:14px">Guarda aquí tu seguro, tarjetas de embarque, pasaporte o cualquier documento que necesites tener a mano durante el viaje.</p>
+    <div class="docs-upload-area" onclick="document.getElementById('doc-input').click()">
+      <div class="docs-upload-icon">📎</div>
+      <div class="docs-upload-text"><strong>Añadir documento</strong>PDF, imagen, tarjeta de embarque…</div>
+    </div>
+    <input type="file" id="doc-input" accept=".pdf,.jpg,.jpeg,.png,.gif,.webp" multiple onchange="handleDocUpload(event)">
+    <div class="docs-list" id="docs-list"></div>
+  </div>
+
+  <!-- TAB NOTAS -->
+  <div class="tab-panel" id="tab-notas">
+    <div class="sec-eye">Para ti</div>
+    <div class="sec-title">Notas del viajero</div>
+    <div class="note-area">
+      <div class="note-line" contenteditable="true" spellcheck="false">Escribe aquí tus notas…</div>
+      <div class="note-line" contenteditable="true" spellcheck="false"></div>
+      <div class="note-line" contenteditable="true" spellcheck="false"></div>
+      <div class="note-line" contenteditable="true" spellcheck="false"></div>
+      <div class="note-line" contenteditable="true" spellcheck="false"></div>
+      <div class="note-line" contenteditable="true" spellcheck="false"></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ MODAL GUARDAR ══ -->
+<div class="save-modal" id="save-modal" onclick="closeSaveModal(event)">
+  <div class="save-sheet">
+    <h3>Guardar guía</h3>
+    <p>Elige cómo quieres guardar tu guía de RUSIA.</p>
+
+    <!-- Opción Android: botón directo si hay prompt disponible -->
+    <div class="save-option" id="opt-android" style="display:none" onclick="installAndroid()">
+      <div class="save-option-icon">🤖</div>
+      <div class="save-option-text"><strong>Añadir a pantalla de inicio</strong><span>Android · Se abrirá el diálogo de instalación</span></div>
+    </div>
+
+    <!-- Opción iOS: instrucción visual animada -->
+    <div class="save-option" id="opt-ios" style="display:none" onclick="showIOSGuide()">
+      <div class="save-option-icon">🍎</div>
+      <div class="save-option-text"><strong>Añadir a pantalla de inicio</strong><span>iOS · Toca para ver cómo hacerlo en 2 pasos</span></div>
+    </div>
+
+    <div class="save-option" onclick="downloadGuide()">
+      <div class="save-option-icon">⬇️</div>
+      <div class="save-option-text"><strong>Descargar archivo HTML</strong><span>Guárdalo y ábrelo sin internet</span></div>
+    </div>
+    <div class="save-option" onclick="copyLink();closeSaveModal()">
+      <div class="save-option-icon">🔗</div>
+      <div class="save-option-text"><strong>Copiar enlace</strong><span>Comparte o guarda la URL de esta guía</span></div>
+    </div>
+    <button class="save-close" onclick="closeSaveModal()">Cerrar</button>
+  </div>
+</div>
+
+<!-- ══ GUÍA iOS ══ -->
+<div class="save-modal" id="ios-modal" onclick="document.getElementById('ios-modal').classList.remove('open')">
+  <div class="save-sheet">
+    <h3>Añadir a pantalla de inicio</h3>
+    <p style="margin-bottom:18px">Sigue estos 2 pasos en Safari:</p>
+    <div style="background:var(--sand);border-radius:var(--r);padding:16px;margin-bottom:12px;text-align:center">
+      <div style="font-size:32px;margin-bottom:8px">1️⃣</div>
+      <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px">Toca el botón Compartir</div>
+      <div style="font-size:13px;color:var(--mid)">El icono <strong>□↑</strong> de la barra inferior de Safari</div>
+      <div style="font-size:36px;margin-top:10px;animation:bounce .8s infinite alternate">□↑</div>
+    </div>
+    <div style="background:var(--sand);border-radius:var(--r);padding:16px;margin-bottom:16px;text-align:center">
+      <div style="font-size:32px;margin-bottom:8px">2️⃣</div>
+      <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px">Toca "Añadir a pantalla de inicio"</div>
+      <div style="font-size:13px;color:var(--mid)">Desplázate en el menú hasta encontrar esta opción</div>
+      <div style="background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 14px;margin-top:10px;display:inline-flex;align-items:center;gap:8px">
+        <span style="font-size:20px">➕</span>
+        <span style="font-size:13px;font-weight:500;color:var(--ink)">Añadir a pantalla de inicio</span>
+      </div>
+    </div>
+    <button class="save-close" onclick="document.getElementById('ios-modal').classList.remove('open')">Entendido</button>
+  </div>
+</div>
+<style>
+@keyframes bounce{from{transform:translateY(0)}to{transform:translateY(-6px)}}
+</style>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── TABS ──
+function showTab(id,btn){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  btn.classList.add('active');
+  document.getElementById('tabs-content').scrollTop=0;
+  // Scroll tab visible
+  btn.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+  // Ocultar flecha si llegamos al final
+  const scroll=document.getElementById('tabs-scroll');
+  const fade=document.querySelector('.tabs-fade');
+  if(fade)fade.style.display=scroll.scrollLeft+scroll.clientWidth>=scroll.scrollWidth-10?'none':'flex';
+}
+// Ocultar flecha al llegar al final del scroll
+document.getElementById('tabs-scroll').addEventListener('scroll',function(){
+  const fade=document.querySelector('.tabs-fade');
+  if(fade)fade.style.display=this.scrollLeft+this.clientWidth>=this.scrollWidth-10?'none':'flex';
+});
+
+// ── TOAST ──
+function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800)}
+
+// ── COMPARTIR ──
+function shareWpp(){
+  const t=encodeURIComponent('¡Mira mi guía de viaje para RUSIA! 🌍✈️\nGenerada por GuiaMundi.es\n\n'+window.location.href);
+  window.open('https://wa.me/?text='+t,'_blank');
+}
+function copyLink(){navigator.clipboard.writeText(window.location.href).then(()=>showToast('✓ Enlace copiado')).catch(()=>showToast('Copia la URL del navegador'))}
+
+// ── SERVICE WORKER (necesario para installPrompt en Android) ──
+if('serviceWorker' in navigator){
+  const swCode=`self.addEventListener('fetch',e=>{});`;
+  const blob=new Blob([swCode],{type:'application/javascript'});
+  const swUrl=URL.createObjectURL(blob);
+  navigator.serviceWorker.register(swUrl).catch(()=>{});
+}
+
+// ── MODAL GUARDAR ──
+let deferredPrompt=null;
+window.addEventListener('beforeinstallprompt',e=>{
+  e.preventDefault();
+  deferredPrompt=e;
+  document.getElementById('opt-android').style.display='flex';
+});
+
+function openSaveModal(){
+  // Detectar iOS
+  const isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
+  if(isIOS)document.getElementById('opt-ios').style.display='flex';
+  document.getElementById('save-modal').classList.add('open');
+}
+function closeSaveModal(e){
+  if(!e||e.target===document.getElementById('save-modal'))
+    document.getElementById('save-modal').classList.remove('open');
+}
+function installAndroid(){
+  if(deferredPrompt){
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(r=>{
+      if(r.outcome==='accepted')showToast('✓ Añadida a pantalla de inicio');
+      deferredPrompt=null;
+    });
+  }
+  document.getElementById('save-modal').classList.remove('open');
+}
+function showIOSGuide(){
+  document.getElementById('save-modal').classList.remove('open');
+  setTimeout(()=>document.getElementById('ios-modal').classList.add('open'),200);
+}
+function downloadGuide(){
+  try{
+    const blob=new Blob([document.documentElement.outerHTML],{type:'text/html;charset=utf-8'});
+    const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+    a.download='guia-RUSIA-25dias.html';a.click();
+    URL.revokeObjectURL(a.href);showToast('✓ Guía descargada');
+  }catch(e){showToast('Usa el menú del navegador para guardar')}
+  document.getElementById('save-modal').classList.remove('open');
+}
+
+// ── BLOQUES DE DÍA CON NOTAS Y MAPA ──
+function buildDayBlocks(){
+  const container=document.getElementById('itinerario-content');
+  if(!container)return;
+  const raw=container.innerHTML;
+  const parts=raw.split(/(?=<h2[\s>])/i);
+  let html='';
+  parts.forEach((part,i)=>{
+    if(!part.trim())return;
+    const isDay=/^<h2/i.test(part.trim());
+    if(!isDay){html+=part;return;}
+    const titleMatch=part.match(/<h2[^>]*>(.*?)<\/h2>/i);
+    const titleRaw=titleMatch?titleMatch[1]:'Día '+(i);
+    const body=part.replace(/<h2[^>]*>.*?<\/h2>/i,'').trim();
+    html+=`<div class="day-block">
+      <div class="day-block-header" onclick="toggleDay(this)">
+        <span>${titleRaw}</span><span class="day-toggle">⌄</span>
+      </div>
+      <div class="day-block-body">
+        <div class="ai-content">${body}</div>
+        <div class="day-note-wrap">
+          <div class="day-note-label">📝 Mis notas para este día</div>
+          <textarea class="day-note" placeholder="Añade aquí reservas, horarios o cualquier detalle personal…"></textarea>
+        </div>
+      </div>
+    </div>`;
+  });
+  container.innerHTML=html;
+  const first=container.querySelector('.day-block');
+  if(first)first.classList.add('open');
+}
+function toggleDay(header){header.closest('.day-block').classList.toggle('open')}
+document.addEventListener('DOMContentLoaded',buildDayBlocks);
+
+// ── DOCUMENTOS ──
+const uploadedDocs=[];
+function handleDocUpload(e){
+  Array.from(e.target.files).forEach(file=>{
+    const reader=new FileReader();
+    reader.onload=ev=>{
+      const doc={name:file.name,size:formatSize(file.size),type:file.type,url:ev.target.result,id:Date.now()+Math.random()};
+      uploadedDocs.push(doc);renderDocs();
+    };
+    reader.readAsDataURL(file);
+  });
+  e.target.value='';
+}
+function formatSize(b){if(b<1024)return b+'B';if(b<1048576)return(b/1024).toFixed(1)+'KB';return(b/1048576).toFixed(1)+'MB'}
+function getDocIcon(type){if(type==='application/pdf')return '📄';if(type.startsWith('image/'))return '🖼️';return '📎'}
+function renderDocs(){
+  const list=document.getElementById('docs-list');
+  if(!uploadedDocs.length){list.innerHTML='';return;}
+  list.innerHTML=uploadedDocs.map(doc=>`
+    <div class="doc-item">
+      <div class="doc-icon">${getDocIcon(doc.type)}</div>
+      <div class="doc-info"><div class="doc-name">${doc.name}</div><div class="doc-size">${doc.size}</div></div>
+      <button class="doc-open" onclick="openDoc('${doc.id}')">Abrir</button>
+      <button class="doc-del" onclick="deleteDoc('${doc.id}')">✕</button>
+    </div>`).join('');
+}
+function openDoc(id){const d=uploadedDocs.find(d=>d.id==id);if(d)window.open(d.url,'_blank')}
+function deleteDoc(id){const i=uploadedDocs.findIndex(d=>d.id==id);if(i>-1){uploadedDocs.splice(i,1);renderDocs()}}
+
+// ── HERRAMIENTAS TABS ──
+function switchTool(btn,id){
+  document.querySelectorAll('.ttab').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.tool-panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');document.getElementById(id).classList.add('active');
+}
+
+// ── CONVERSOR ──
+const rates={};let ratesLoaded=false;
+const cNames={USD:'Dólar USD',GBP:'Libra',JPY:'Yen',MXN:'Peso MX',BRL:'Real',MAD:'Dírham',TRY:'Lira',THB:'Baht',IDR:'Rupia',AED:'Dírham AE',SGD:'Dólar SG',PLN:'Esloti',CZK:'Corona CZ',HUF:'Forinto',RON:'Leu',DKK:'Corona DK',SEK:'Corona SE',NOK:'Corona NO'};
+async function loadRates(){
+  try{const r=await fetch('https://open.er-api.com/v6/latest/EUR');const d=await r.json();if(d.rates){Object.assign(rates,d.rates);ratesLoaded=true;convertCurrency();document.getElementById('conv-rate').textContent='Actualizado · '+new Date().toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'})}}
+  catch(e){Object.assign(rates,{USD:1.08,GBP:0.86,JPY:162,MXN:18.5,BRL:5.4,MAD:10.8,TRY:35,THB:38,IDR:17000,AED:3.97,SGD:1.45,PLN:4.25,CZK:25,HUF:390,RON:4.97,DKK:7.46,SEK:11.5,NOK:11.8});ratesLoaded=true;convertCurrency();document.getElementById('conv-rate').textContent='Tasas aproximadas'}
+}
+function convertCurrency(){
+  if(!ratesLoaded)return;
+  const eur=parseFloat(document.getElementById('conv-eur').value)||0;
+  const to=document.getElementById('conv-to').value;
+  const res=eur*(rates[to]||1);
+  const fmt=res>=1000?res.toFixed(0):res>=10?res.toFixed(2):res.toFixed(4);
+  document.getElementById('conv-foreign').value=fmt;
+  document.getElementById('conv-display').textContent=fmt+' '+to;
+  document.getElementById('conv-to-label').textContent=cNames[to]||to;
+  document.getElementById('conv-rate').textContent='1 € = '+(rates[to]||1).toFixed(4)+' '+to;
+}
+function convertBack(){
+  if(!ratesLoaded)return;
+  const f=parseFloat(document.getElementById('conv-foreign').value)||0;
+  const to=document.getElementById('conv-to').value;
+  document.getElementById('conv-eur').value=(f/(rates[to]||1)).toFixed(2);convertCurrency();
+}
+loadRates();
+
+// ── TRADUCTOR ──
+const phraseDB={
+  es:['Hola / Buenos días','Por favor','Gracias','¿Cuánto cuesta?','¿Dónde está…?','La cuenta, por favor','No entiendo','¿Habla español?','Ayuda, por favor','Un taxi, por favor','¿Dónde está el baño?','Me llamo…','¿Habla inglés?'],
+  it:['Ciao / Buongiorno','Per favore','Grazie','Quanto costa?','Dov\'è…?','Il conto, per favore','Non capisco','Parla spagnolo?','Aiuto','Un taxi, per favore','Dov\'è il bagno?','Mi chiamo…','Parla inglese?'],
+  fr:['Bonjour','S\'il vous plaît','Merci','Combien ça coûte?','Où est…?','L\'addition, s\'il vous plaît','Je ne comprends pas','Parlez-vous espagnol?','Au secours','Un taxi, s\'il vous plaît','Où sont les toilettes?','Je m\'appelle…','Parlez-vous anglais?'],
+  de:['Hallo','Bitte','Danke','Wie viel kostet das?','Wo ist…?','Die Rechnung, bitte','Ich verstehe nicht','Sprechen Sie Spanisch?','Hilfe','Ein Taxi, bitte','Wo ist die Toilette?','Ich heiße…','Sprechen Sie Englisch?'],
+  pt:['Olá','Por favor','Obrigado/a','Quanto custa?','Onde fica…?','A conta, por favor','Não entendo','Fala espanhol?','Socorro','Um táxi','Onde é o banheiro?','Meu nome é…','Fala inglês?'],
+  ja:['こんにちは','お願いします','ありがとう','いくらですか？','…はどこですか？','お会計をお願いします','わかりません','スペイン語を話しますか？','助けて','タクシーをお願いします','トイレはどこですか？','私の名前は…','英語を話しますか？'],
+  ar:['مرحبا','من فضلك','شكرا','كم يكلف؟','أين…؟','الحساب من فضلك','لا أفهم','هل تتكلم الإسبانية؟','مساعدة','سيارة أجرة','أين الحمام؟','اسمي…','هل تتكلم الإنجليزية؟'],
+  tr:['Merhaba','Lütfen','Teşekkürler','Ne kadar?','Nerede…?','Hesabı lütfen','Anlamıyorum','İspanyolca biliyor musunuz?','Yardım','Taksi lütfen','Tuvalet nerede?','Benim adım…','İngilizce biliyor musunuz?'],
+  th:['สวัสดี','กรุณา','ขอบคุณ','ราคาเท่าไหร่?','…อยู่ที่ไหน?','เก็บเงินด้วย','ไม่เข้าใจ','พูดภาษาสเปนได้ไหม?','ช่วยด้วย','แท็กซี่','ห้องน้ำอยู่ที่ไหน?','ฉันชื่อ…','พูดภาษาอังกฤษได้ไหม?'],
+  zh:['你好','请','谢谢','多少钱？','…在哪里？','买单','我不明白','你会说西班牙语吗？','帮帮我','出租车','洗手间在哪里？','我叫…','你会说英语吗？'],
+  el:['Γεια σας','Παρακαλώ','Ευχαριστώ','Πόσο κοστίζει;','Πού είναι…;','Τον λογαριασμό','Δεν καταλαβαίνω','Μιλάτε ισπανικά;','Βοήθεια','Ένα ταξί','Πού είναι η τουαλέτα;','Με λένε…','Μιλάτε αγγλικά;'],
+  pl:['Dzień dobry','Proszę','Dziękuję','Ile to kosztuje?','Gdzie jest…?','Rachunek, proszę','Nie rozumiem','Czy mówi pan/pani po hiszpańsku?','Pomocy','Taksówkę','Gdzie jest toaleta?','Mam na imię…','Czy mówi pan/pani po angielsku?'],
+  nl:['Hallo','Alstublieft','Dank u','Hoeveel kost het?','Waar is…?','De rekening graag','Ik begrijp het niet','Spreekt u Spaans?','Help','Een taxi','Waar is het toilet?','Ik heet…','Spreekt u Engels?'],
+  ru:['Здравствуйте','Пожалуйста','Спасибо','Сколько стоит?','Где…?','Счёт, пожалуйста','Я не понимаю','Вы говорите по-испански?','Помогите','Такси','Где туалет?','Меня зовут…','Вы говорите по-английски?'],
+  cs:['Dobrý den','Prosím','Děkuji','Kolik to stojí?','Kde je…?','Účet prosím','Nerozumím','Mluvíte španělsky?','Pomozte','Taxi','Kde je toaleta?','Jmenuji se…','Mluvíte anglicky?'],
+  ro:['Bună ziua','Vă rog','Mulțumesc','Cât costă?','Unde este…?','Nota de plată','Nu înțeleg','Vorbiți spaniolă?','Ajutor','Un taxi','Unde este toaleta?','Mă numesc…','Vorbiți engleză?'],
+  hr:['Dobar dan','Molim','Hvala','Koliko košta?','Gdje je…?','Račun, molim','Ne razumijem','Govorite li španjolski?','Pomoć','Taksi','Gdje je zahod?','Zovem se…','Govorite li engleski?'],
+};
+const langMap={it:'it-IT',fr:'fr-FR',de:'de-DE',pt:'pt-PT',ja:'ja-JP',ar:'ar-SA',tr:'tr-TR',th:'th-TH',zh:'zh-CN',el:'el-GR',pl:'pl-PL',nl:'nl-NL',ru:'ru-RU',cs:'cs-CZ',ro:'ro-RO',hr:'hr-HR'};
+function updatePhrases(){
+  const lang=document.getElementById('trans-lang-sel').value;
+  const esp=phraseDB['es'],dest=phraseDB[lang]||phraseDB['it'];
+  document.getElementById('phrases-list').innerHTML=esp.map((es,i)=>`
+    <div class="trans-item">
+      <div class="trans-texts"><div class="trans-es">${es}</div><div class="trans-dest">${dest[i]||''}</div></div>
+      <button class="trans-audio" onclick="speak('${(dest[i]||'').replace(/'/g,"\\'").replace(/"/g,'&quot;')}','${lang}',this)">▶</button>
+    </div>`).join('');
+}
+function speak(text,lang,btn){
+  if(!window.speechSynthesis){showToast('Audio no disponible');return}
+  window.speechSynthesis.cancel();
+  document.querySelectorAll('.trans-audio').forEach(b=>b.classList.remove('playing'));
+  btn.classList.add('playing');
+  const u=new SpeechSynthesisUtterance(text);
+  u.lang=langMap[lang]||lang+'-'+lang.toUpperCase();u.rate=0.82;
+  u.onend=()=>btn.classList.remove('playing');
+  u.onerror=()=>{btn.classList.remove('playing');showToast('Audio no disponible para este idioma')};
+  window.speechSynthesis.speak(u);
+}
+updatePhrases();
+
+// ── CALCULADORA ──
+function calcBudget(){
+  const dias=parseFloat(document.getElementById('c-dias').value)||0;
+  const viaj=Math.max(1,parseFloat(document.getElementById('c-viaj').value)||1);
+  const aloj=parseFloat(document.getElementById('c-aloj').value)||0;
+  const com=parseFloat(document.getElementById('c-com').value)||0;
+  const transp=parseFloat(document.getElementById('c-transp').value)||0;
+  const act=parseFloat(document.getElementById('c-act').value)||0;
+  const tA=aloj*dias,tC=com*dias*viaj,tot=tA+tC+transp+act;
+  const f=n=>n.toLocaleString('es-ES',{maximumFractionDigits:0})+'€';
+  document.getElementById('r-aloj').textContent=f(tA);document.getElementById('r-com').textContent=f(tC);
+  document.getElementById('r-transp').textContent=f(transp);document.getElementById('r-act').textContent=f(act);
+  document.getElementById('r-total').textContent=f(tot);document.getElementById('r-pp').textContent=f(tot/viaj);
+}
+calcBudget();
+
+// ── CHECKLIST ──
+const checkData={
+  ropa:['Ropa ligera (5-7 días)','Chaqueta o jersey fino','Ropa interior extra','Calcetines varios','Calzado cómodo walking','Sandalias o chanclas','Ropa de baño','Pijama','Pañuelo o fular','Chubasquero ligero'],
+  docs:['DNI o Pasaporte vigente','Tarjeta Sanitaria Europea','Seguro de viaje','Reservas alojamiento','Confirmación de vuelo','2 tarjetas bancarias','Efectivo moneda local','Carné de conducir','Visado si aplica','Fotos de pasaporte'],
+  tech:['Móvil cargado','Cargador del móvil','Adaptador de enchufe','Power bank','Auriculares','Cámara de fotos','Tarjeta memoria extra','Cable USB extra','Mapas offline','Cargador laptop'],
+  salud:['Protector solar 50+','Repelente mosquitos','Medicación habitual x2','Botiquín básico','Antihistamínico','Ibuprofeno/paracetamol','Tiritas y venda','Pastillas estómago','Mascarillas','Termómetro'],
+  extras:['Botella reutilizable','Guía de conversación','Bolsa tela mercados','Candado equipaje','Funda impermeable móvil','Snacks viaje','Almohada viaje','Antifaz dormir','Tapones oídos','Colonia pequeña'],
+};
+const checkState={};let currentCat='ropa';
+function initCheck(){Object.keys(checkData).forEach(c=>checkState[c]=checkData[c].map(()=>false));renderCheck()}
+function switchCat(btn,cat){document.querySelectorAll('.check-cat-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');currentCat=cat;renderCheck()}
+function renderCheck(){
+  const items=checkData[currentCat],states=checkState[currentCat];
+  document.getElementById('checklist-items').innerHTML=items.map((item,i)=>`
+    <div class="check-item${states[i]?' done':''}" onclick="toggleCheck('${currentCat}',${i},this)">
+      <div class="check-box">${states[i]?'✓':''}</div>
+      <div class="check-label">${item}</div>
+    </div>`).join('');
+  updateProgress();
+}
+function toggleCheck(cat,idx,el){checkState[cat][idx]=!checkState[cat][idx];el.classList.toggle('done');el.querySelector('.check-box').textContent=checkState[cat][idx]?'✓':'';updateProgress()}
+function updateProgress(){let d=0,t=0;Object.values(checkState).forEach(a=>{t+=a.length;d+=a.filter(Boolean).length});const p=t?Math.round(d/t*100):0;document.getElementById('check-bar').style.width=p+'%';document.getElementById('check-pct').textContent=p+'%'}
+initCheck();
+</script>
+</body>
+</html>
